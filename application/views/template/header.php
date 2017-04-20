@@ -7,29 +7,75 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Welcome To | Aplikasi Borang</title>
     <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url();?>assets/images/banpt.png" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>assets/plugins/node-waves/waves.css" rel="stylesheet" />
 
     <!-- Animation Css -->
-    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>assets/plugins/animate-css/animate.css" rel="stylesheet" />
 
     <!-- Morris Chart Css-->
-    <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>assets/plugins/morrisjs/morris.css" rel="stylesheet" />
+
+    <!-- Colorpicker Css -->
+    <link href="<?php echo base_url();?>assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" />
+
+    <!-- Dropzone Css -->
+    <link href="<?php echo base_url();?>assets/plugins/dropzone/dropzone.css" rel="stylesheet">
+
+    <!-- Multi Select Css -->
+    <link href="<?php echo base_url();?>assets/plugins/multi-select/css/multi-select.css" rel="stylesheet">
+
+    <!-- Bootstrap Spinner Css -->
+    <link href="<?php echo base_url();?>assets/plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
+
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="<?php echo base_url();?>assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+    <!-- Bootstrap Select Css -->
+    <link href="<?php echo base_url();?>assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="<?php echo base_url();?>assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Wait Me Css -->
+    <link href="<?php echo base_url();?>assets/plugins/waitme/waitMe.css" rel="stylesheet" />
+
+    <!-- noUISlider Css -->
+    <link href="<?php echo base_url();?>assets/plugins/nouislider/nouislider.min.css" rel="stylesheet" />
+
+    <!-- Sweet Alert Css -->
+    <link href="<?php echo base_url();?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
+    <!-- JVectorMap Css -->
+    <link href="<?php echo base_url();?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+
+    <!-- Light Gallery Plugin Css -->
+    <link href="<?php echo base_url();?>assets/plugins/light-gallery/css/lightgallery.css" rel="stylesheet">
+
+    <!-- JQuery DataTable Css -->
+    <link href="<?php echo base_url();?>assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- Range Slider Css -->
+    <link href="<?php echo base_url();?>assets/plugins/ion-rangeslider/css/ion.rangeSlider.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>assets/plugins/ion-rangeslider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet" />
+
+    <!-- JQuery Nestable Css -->
+    <link href="<?php echo base_url();?>assets/plugins/nestable/jquery-nestable.css" rel="stylesheet" />
 
     <!-- Custom Css -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="css/themes/all-themes.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>assets/css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
 <body class="theme-red">
@@ -70,7 +116,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.html">BORANG APPLICATION</a>
+                <a class="navbar-brand" href="<?php echo base_url();?>">BORANG APPLICATION</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -276,7 +322,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="images/user.png" width="48" height="48" alt="User" />
+                    <img src="<?php echo base_url();?>assets/images/user.png" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Wahyu Saepuloh</div>
@@ -290,7 +336,7 @@
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                             <li role="seperator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a href="<?php echo base_url()?>index.php/Home/logOut"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -300,25 +346,31 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="active">
-                        <a href="index.html">
+                    <li class="<?php echo ($active_menu=="home") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="pages/typography.html">
-                            <i class="material-icons">text_fields</i>
-                            <span>Typography</span>
+                    <li class="<?php echo ($active_menu=="borang") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>index.php/borang">
+                            <i class="material-icons">settings</i>
+                            <span>Manage Borang</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="pages/helper-classes.html">
-                            <i class="material-icons">layers</i>
-                            <span>Helper Classes</span>
+                    <li class="<?php echo ($active_menu=="penilaian") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>index.php/penilaian">
+                            <i class="material-icons">assignment_turned_in</i>
+                            <span>Penilaian</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="<?php echo ($active_menu=="histori") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>index.php/histori">
+                            <i class="material-icons">history</i>
+                            <span>History Activity</span>
+                        </a>
+                    </li>
+                    <!-- <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
                             <span>Widgets</span>
@@ -330,13 +382,13 @@
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
-                                        <a href="pages/widgets/cards/basic.html">Basic</a>
+                                        <a href="<?php echo base_url();?>assets/pages/widgets/cards/basic.html">Basic</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/cards/colored.html">Colored</a>
+                                        <a href="<?php echo base_url();?>assets/pages/widgets/cards/colored.html">Colored</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/cards/no-header.html">No Header</a>
+                                        <a href="<?php echo base_url();?>assets/pages/widgets/cards/no-header.html">No Header</a>
                                     </li>
                                 </ul>
                             </li>
@@ -346,19 +398,19 @@
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-1.html">Infobox-1</a>
+                                        <a href="<?php echo base_url();?>assets/pages/widgets/infobox/infobox-1.html">Infobox-1</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-2.html">Infobox-2</a>
+                                        <a href="<?php echo base_url();?>assets/pages/widgets/infobox/infobox-2.html">Infobox-2</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-3.html">Infobox-3</a>
+                                        <a href="<?php echo base_url();?>assets/pages/widgets/infobox/infobox-3.html">Infobox-3</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-4.html">Infobox-4</a>
+                                        <a href="<?php echo base_url();?>assets/pages/widgets/infobox/infobox-4.html">Infobox-4</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-5.html">Infobox-5</a>
+                                        <a href="<?php echo base_url();?>assets/pages/widgets/infobox/infobox-5.html">Infobox-5</a>
                                     </li>
                                 </ul>
                             </li>
@@ -371,74 +423,74 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/ui/alerts.html">Alerts</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/alerts.html">Alerts</a>
                             </li>
                             <li>
-                                <a href="pages/ui/animations.html">Animations</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/animations.html">Animations</a>
                             </li>
                             <li>
-                                <a href="pages/ui/badges.html">Badges</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/badges.html">Badges</a>
                             </li>
 
                             <li>
-                                <a href="pages/ui/breadcrumbs.html">Breadcrumbs</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/breadcrumbs.html">Breadcrumbs</a>
                             </li>
                             <li>
-                                <a href="pages/ui/buttons.html">Buttons</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/buttons.html">Buttons</a>
                             </li>
                             <li>
-                                <a href="pages/ui/collapse.html">Collapse</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/collapse.html">Collapse</a>
                             </li>
                             <li>
-                                <a href="pages/ui/colors.html">Colors</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/colors.html">Colors</a>
                             </li>
                             <li>
-                                <a href="pages/ui/dialogs.html">Dialogs</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/dialogs.html">Dialogs</a>
                             </li>
                             <li>
-                                <a href="pages/ui/icons.html">Icons</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/icons.html">Icons</a>
                             </li>
                             <li>
-                                <a href="pages/ui/labels.html">Labels</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/labels.html">Labels</a>
                             </li>
                             <li>
-                                <a href="pages/ui/list-group.html">List Group</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/list-group.html">List Group</a>
                             </li>
                             <li>
-                                <a href="pages/ui/media-object.html">Media Object</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/media-object.html">Media Object</a>
                             </li>
                             <li>
-                                <a href="pages/ui/modals.html">Modals</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/modals.html">Modals</a>
                             </li>
                             <li>
-                                <a href="pages/ui/notifications.html">Notifications</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/notifications.html">Notifications</a>
                             </li>
                             <li>
-                                <a href="pages/ui/pagination.html">Pagination</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/pagination.html">Pagination</a>
                             </li>
                             <li>
-                                <a href="pages/ui/preloaders.html">Preloaders</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/preloaders.html">Preloaders</a>
                             </li>
                             <li>
-                                <a href="pages/ui/progressbars.html">Progress Bars</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/progressbars.html">Progress Bars</a>
                             </li>
                             <li>
-                                <a href="pages/ui/range-sliders.html">Range Sliders</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/range-sliders.html">Range Sliders</a>
                             </li>
                             <li>
-                                <a href="pages/ui/sortable-nestable.html">Sortable & Nestable</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/sortable-nestable.html">Sortable & Nestable</a>
                             </li>
                             <li>
-                                <a href="pages/ui/tabs.html">Tabs</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/tabs.html">Tabs</a>
                             </li>
                             <li>
-                                <a href="pages/ui/thumbnails.html">Thumbnails</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/thumbnails.html">Thumbnails</a>
                             </li>
                             <li>
-                                <a href="pages/ui/tooltips-popovers.html">Tooltips & Popovers</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/tooltips-popovers.html">Tooltips & Popovers</a>
                             </li>
                             <li>
-                                <a href="pages/ui/waves.html">Waves</a>
+                                <a href="<?php echo base_url();?>assets/pages/ui/waves.html">Waves</a>
                             </li>
                         </ul>
                     </li>
@@ -449,22 +501,22 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/forms/basic-form-elements.html">Basic Form Elements</a>
+                                <a href="<?php echo base_url();?>assets/pages/forms/basic-form-elements.html">Basic Form Elements</a>
                             </li>
                             <li>
-                                <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                                <a href="<?php echo base_url();?>assets/pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
                             </li>
                             <li>
-                                <a href="pages/forms/form-examples.html">Form Examples</a>
+                                <a href="<?php echo base_url();?>assets/pages/forms/form-examples.html">Form Examples</a>
                             </li>
                             <li>
-                                <a href="pages/forms/form-validation.html">Form Validation</a>
+                                <a href="<?php echo base_url();?>assets/pages/forms/form-validation.html">Form Validation</a>
                             </li>
                             <li>
-                                <a href="pages/forms/form-wizard.html">Form Wizard</a>
+                                <a href="<?php echo base_url();?>assets/pages/forms/form-wizard.html">Form Wizard</a>
                             </li>
                             <li>
-                                <a href="pages/forms/editors.html">Editors</a>
+                                <a href="<?php echo base_url();?>assets/pages/forms/editors.html">Editors</a>
                             </li>
                         </ul>
                     </li>
@@ -475,13 +527,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/tables/normal-tables.html">Normal Tables</a>
+                                <a href="<?php echo base_url();?>assets/pages/tables/normal-tables.html">Normal Tables</a>
                             </li>
                             <li>
-                                <a href="pages/tables/jquery-datatable.html">Jquery Datatables</a>
+                                <a href="<?php echo base_url();?>assets/pages/tables/jquery-datatable.html">Jquery Datatables</a>
                             </li>
                             <li>
-                                <a href="pages/tables/editable-table.html">Editable Tables</a>
+                                <a href="<?php echo base_url();?>assets/pages/tables/editable-table.html">Editable Tables</a>
                             </li>
                         </ul>
                     </li>
@@ -492,10 +544,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/medias/image-gallery.html">Image Gallery</a>
+                                <a href="<?php echo base_url();?>assets/pages/medias/image-gallery.html">Image Gallery</a>
                             </li>
                             <li>
-                                <a href="pages/medias/carousel.html">Carousel</a>
+                                <a href="<?php echo base_url();?>assets/pages/medias/carousel.html">Carousel</a>
                             </li>
                         </ul>
                     </li>
@@ -506,19 +558,19 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/charts/morris.html">Morris</a>
+                                <a href="<?php echo base_url();?>assets/pages/charts/morris.html">Morris</a>
                             </li>
                             <li>
-                                <a href="pages/charts/flot.html">Flot</a>
+                                <a href="<?php echo base_url();?>assets/pages/charts/flot.html">Flot</a>
                             </li>
                             <li>
-                                <a href="pages/charts/chartjs.html">ChartJS</a>
+                                <a href="<?php echo base_url();?>assets/pages/charts/chartjs.html">ChartJS</a>
                             </li>
                             <li>
-                                <a href="pages/charts/sparkline.html">Sparkline</a>
+                                <a href="<?php echo base_url();?>assets/pages/charts/sparkline.html">Sparkline</a>
                             </li>
                             <li>
-                                <a href="pages/charts/jquery-knob.html">Jquery Knob</a>
+                                <a href="<?php echo base_url();?>assets/pages/charts/jquery-knob.html">Jquery Knob</a>
                             </li>
                         </ul>
                     </li>
@@ -529,22 +581,22 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/examples/sign-in.html">Sign In</a>
+                                <a href="<?php echo base_url();?>assets/pages/examples/sign-in.html">Sign In</a>
                             </li>
                             <li>
-                                <a href="pages/examples/sign-up.html">Sign Up</a>
+                                <a href="<?php echo base_url();?>assets/pages/examples/sign-up.html">Sign Up</a>
                             </li>
                             <li>
-                                <a href="pages/examples/forgot-password.html">Forgot Password</a>
+                                <a href="<?php echo base_url();?>assets/pages/examples/forgot-password.html">Forgot Password</a>
                             </li>
                             <li>
-                                <a href="pages/examples/blank.html">Blank Page</a>
+                                <a href="<?php echo base_url();?>assets/pages/examples/blank.html">Blank Page</a>
                             </li>
                             <li>
-                                <a href="pages/examples/404.html">404 - Not Found</a>
+                                <a href="<?php echo base_url();?>assets/pages/examples/404.html">404 - Not Found</a>
                             </li>
                             <li>
-                                <a href="pages/examples/500.html">500 - Server Error</a>
+                                <a href="<?php echo base_url();?>assets/pages/examples/500.html">500 - Server Error</a>
                             </li>
                         </ul>
                     </li>
@@ -555,13 +607,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/maps/google.html">Google Map</a>
+                                <a href="<?php echo base_url();?>assets/pages/maps/google.html">Google Map</a>
                             </li>
                             <li>
-                                <a href="pages/maps/yandex.html">YandexMap</a>
+                                <a href="<?php echo base_url();?>assets/pages/maps/yandex.html">YandexMap</a>
                             </li>
                             <li>
-                                <a href="pages/maps/jvectormap.html">jVectorMap</a>
+                                <a href="<?php echo base_url();?>assets/pages/maps/jvectormap.html">jVectorMap</a>
                             </li>
                         </ul>
                     </li>
@@ -606,9 +658,9 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="pages/changelogs.html">
+                    </li> -->
+                    <li class="<?php echo ($active_menu=="changelogs") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>index.php/changelogs">
                             <i class="material-icons">update</i>
                             <span>Changelogs</span>
                         </a>

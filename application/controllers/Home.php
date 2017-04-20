@@ -20,8 +20,138 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-        $this->load->view('template/header');
-		$this->load->view('index');
-        $this->load->view('template/footer');
+		if(isset($_SESSION['logged_in']))
+		{
+			$data['active_menu']='home';
+	        $this->load->view('template/header',$data);
+			$this->load->view('index');
+	        $this->load->view('template/footer');
+		}else{
+			redirect('Home/login');
+		}
+	}
+
+	public function forgetpass(){
+		$this->load->view('forget-pass');
+	}
+
+	public function login(){
+		$this->load->view('login');
+	}
+
+	public function register(){
+		$this->load->view('register');
+	}
+
+	public function pages(){
+		$this->load->view('pages');
+	}
+
+	public function changelogs(){
+		$data['active_menu']='changelogs';
+		$this->load->view('template/header',$data);
+		$this->load->view('changelogs');
+		$this->load->view('template/footer');
+	}
+
+	// public function borang(){
+	// 	$data['active_menu']='borang';
+	// 	$this->load->view('template/header',$data);
+	// 	$this->load->view('borang');
+	// 	// $this->load->view('template/footer');
+	// }
+
+	public function histori(){
+		$this->load->model('m_home');
+		// $this->load->library('form_validation');
+		$data['active_menu']='histori';
+		$this->load->view('template/header',$data);
+		$data['histori']=$this->m_home->get_history();
+		$this->load->view('histori',$data);
+	}
+
+	public function penilaian(){
+		$data['active_menu']='penilaian';
+		$this->load->view('template/header',$data);
+		$this->load->view('penilaian');
+		$this->load->view('template/footer');
+	}
+
+	public function insert(){
+	    $this->load->model('m_home');
+	    $data = array(
+			'name' => $this->input->post('nama'),
+	        'username' => $this->input->post('username'),
+	        'password' => md5($this->input->post("password")),
+			'email' => $this->input->post('email'),
+			'role' => $this->input->post('role'),
+			'created_at'=> date('Y-m-d H:i:s')
+	         );
+	    $data = $this->m_home->Insert('users', $data);
+
+		$data = array(
+                        'user'=> $this->input->post('nama'),
+                        'action' => "Berhasil menambah User Baru",
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+		$data = $this->m_home->Insert('log', $data);
+	    redirect('Home/login');
+		echo json_encode(array("status" => TRUE));
+		echo '<script type="text/javascript">alert("Data has been submitted");</script>';
+	}
+
+	public function loginUsers(){
+/*
+        $login = $this->m_login->actLogin();
+        if($login == true){
+            $data = array(
+              'id_admin' => $login->id_admin,
+              'username' => $login->username,
+              'password' => $login->password
+            );
+            $this->session->set_userdata($data);
+            redirect('dashboard/index');
+        }else{
+            redirect('dashboard/login');
+        }*/
+		//redirect('dashboard/index');
+        $this->load->library('session');
+		$this->load->model('m_login');
+				$data=$this->m_login->checkLoginUser();
+				if($data>0){
+					$sessionData=$this->m_login->findByDynamicColumnUser(array('username'=> $_POST['username'],'password'=> md5($_POST['password'])));
+
+					$newdata = array(
+						'username'  => $_POST['username'],
+						'logged_in' => TRUE,
+						'name'		=> $sessionData[0]['name'],
+						'id_session'=> $sessionData[0]['id']
+					);
+
+					$this->session->set_userdata($newdata);
+//					print_r($_SESSION);
+					//echo $_SESSION['logged_in']." asdfasdf";
+					//die();
+					redirect('Home/index');
+				}else{
+					redirect('Home/login');
+				}
+    }
+
+	public function logOut() {
+/*
+        $this->session->unset_userdata('id_user');
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('password');
+        $this->session->sess_destroy();
+        $this->load->view('main/index');
+*/
+		//redirect('main/index');
+        $this->session->sess_destroy();
+		redirect('Home/pages');
+    }
+
+	public function notLoggedIn(){
+		$this->load->view('lockscreen');
 	}
 }

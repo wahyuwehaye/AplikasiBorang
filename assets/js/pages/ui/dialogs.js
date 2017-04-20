@@ -16,6 +16,9 @@ $(function () {
         else if (type === 'cancel') {
             showCancelMessage();
         }
+        else if (type === 'delete') {
+            showDeleteMessage();
+        }
         else if (type === 'with-custom-icon') {
             showWithCustomIconMessage();
         }
@@ -75,6 +78,39 @@ function showCancelMessage() {
     }, function (isConfirm) {
         if (isConfirm) {
             swal("Deleted!", "Your imaginary file has been deleted.", "success");
+        } else {
+            swal("Cancelled", "Your imaginary file is safe :)", "error");
+        }
+    });
+}
+
+function showDeleteMessage() {
+    swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel plx!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    }, function (isConfirm) {
+        if (isConfirm) {
+
+            var button = $(event.relatedTarget)
+            var recipient = button.data('whatever');
+            var link="<?php echo base_url(); ?>index.php/c_borang/destroy";
+            var csrf = $('input[name=_token]').val();
+            $('#del').click(function() {
+              $.ajax({
+                method: "POST",
+                url: link,
+                data: { id: recipient }
+              })
+            swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            location.reload();
+            });
         } else {
             swal("Cancelled", "Your imaginary file is safe :)", "error");
         }
