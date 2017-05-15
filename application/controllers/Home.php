@@ -62,11 +62,11 @@ class Home extends CI_Controller {
 	// }
 
 	public function histori(){
-		$this->load->model('m_home');
+		$this->load->model('M_home');
 		// $this->load->library('form_validation');
 		$data['active_menu']='histori';
 		$this->load->view('template/header',$data);
-		$data['histori']=$this->m_home->get_history();
+		$data['histori']=$this->M_home->get_history();
 		$this->load->view('histori',$data);
 	}
 
@@ -78,7 +78,7 @@ class Home extends CI_Controller {
 	}
 
 	public function insert(){
-	    $this->load->model('m_home');
+	    $this->load->model('M_home');
 	    $data = array(
 			'name' => $this->input->post('nama'),
 	        'username' => $this->input->post('username'),
@@ -87,14 +87,14 @@ class Home extends CI_Controller {
 			'role' => $this->input->post('role'),
 			'created_at'=> date('Y-m-d H:i:s')
 	         );
-	    $data = $this->m_home->Insert('users', $data);
+	    $data = $this->M_home->Insert('users', $data);
 
 		$data = array(
                         'user'=> $this->input->post('nama'),
                         'action' => "Berhasil menambah User Baru",
                         'created_at'=> date('Y-m-d H:i:s')
                 );
-		$data = $this->m_home->Insert('log', $data);
+		$data = $this->M_home->Insert('log', $data);
 	    redirect('Home/login');
 		echo json_encode(array("status" => TRUE));
 		echo '<script type="text/javascript">alert("Data has been submitted");</script>';
@@ -102,7 +102,7 @@ class Home extends CI_Controller {
 
 	public function loginUsers(){
 /*
-        $login = $this->m_login->actLogin();
+        $login = $this->M_login->actLogin();
         if($login == true){
             $data = array(
               'id_admin' => $login->id_admin,
@@ -116,15 +116,16 @@ class Home extends CI_Controller {
         }*/
 		//redirect('dashboard/index');
         $this->load->library('session');
-		$this->load->model('m_login');
-				$data=$this->m_login->checkLoginUser();
+		$this->load->model('M_login');
+				$data=$this->M_login->checkLoginUser();
 				if($data>0){
-					$sessionData=$this->m_login->findByDynamicColumnUser(array('username'=> $_POST['username'],'password'=> md5($_POST['password'])));
+					$sessionData=$this->M_login->findByDynamicColumnUser(array('username'=> $_POST['username'],'password'=> md5($_POST['password'])));
 
 					$newdata = array(
 						'username'  => $_POST['username'],
 						'logged_in' => TRUE,
 						'name'		=> $sessionData[0]['name'],
+						'email'		=> $sessionData[0]['email'],
 						'id_session'=> $sessionData[0]['id']
 					);
 
@@ -134,6 +135,7 @@ class Home extends CI_Controller {
 					//die();
 					redirect('Home/index');
 				}else{
+					$_SESSION['error'] = '';
 					redirect('Home/login');
 				}
     }

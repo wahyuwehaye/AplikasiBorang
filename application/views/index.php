@@ -1,7 +1,14 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
+            <div class="col-sm-6">
             <h2>DASHBOARD</h2>
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb breadcrumb-col-deep-purple align-right">
+                <li class="active"><i class="material-icons">home</i> Home</li>
+            </ol>
+            </div>
         </div>
 
         <!-- Widgets -->

@@ -76,6 +76,20 @@
         </div>
     </div>
 
+    <!-- //session untuk menampilkan pesan error -->
+<?php
+    if (isset($_SESSION['error'])) {
+?>
+    <body onload='swal({title: "Login Gagal!",
+                        text: "Silakan coba lagi",
+                        timer: 3000,
+                        type: "error",
+                        showConfirmButton: false });'>
+<?php
+    unset($_SESSION['error']);
+    }
+?>
+
     <script type="text/javascript">
         function klikme(){
             swal("Good job!", "You clicked the button!", "success");

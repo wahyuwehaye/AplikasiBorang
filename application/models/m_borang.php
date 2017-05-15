@@ -1,6 +1,6 @@
 <?php
 
-class m_borang extends CI_Model {
+class M_borang extends CI_Model {
 
         public function __construct()
         {

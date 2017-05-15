@@ -2,7 +2,15 @@
     <div class="container-fluid">
         <!-- Changelogs -->
         <div class="block-header">
+            <div class="col-sm-6">
             <h2>CHANGELOGS</h2>
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb breadcrumb-col-deep-purple align-right">
+                <li><a href="<?php echo base_url();?>"><i class="material-icons">home</i> Home</a></li>
+                <li class="active"><i class="material-icons">update</i> Changelogs</li>
+            </ol>
+            </div>
         </div>
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

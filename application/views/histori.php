@@ -1,10 +1,18 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
+            <div class="col-sm-6">
             <h2>
                 HISTORY ACTIVITY
-                <!-- <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small> -->
+                <small>Monitoring Aktivitas pada setiap User</small>
             </h2>
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb breadcrumb-col-deep-purple align-right">
+                <li><a href="<?php echo base_url();?>"><i class="material-icons">home</i> Home</a></li>
+                <li class="active"><i class="material-icons">history</i> History Activity</li>
+            </ol>
+            </div>
         </div>
         <!-- Exportable Table -->
         <div class="row clearfix">

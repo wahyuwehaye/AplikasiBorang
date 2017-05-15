@@ -3,15 +3,16 @@
         <div class="block-header">
             <div class="col-sm-6">
             <h2>
-                MANAGE BORANG
+                MANAGE BUTIR BORANG
                 <!-- <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small> -->
-                <small>Mengelola Buku Borang</small>
+                <small><?php echo ucfirst($buku[0]['jenis'])." ".$buku[0]['fakpro']." - ".$buku[0]['tahun']." - Buku : ".$buku[0]['buku']; ?></small>
             </h2>
             </div>
             <div class="col-sm-6">
             <ol class="breadcrumb breadcrumb-col-deep-purple align-right">
                 <li><a href="<?php echo base_url();?>"><i class="material-icons">home</i> Home</a></li>
-                <li class="active"><i class="material-icons">settings</i> Manage Borang</li>
+                <li><a href="<?php echo base_url();?>index.php/borang"><i class="material-icons">settings</i> Manage Borang</a></li>
+                <li class="active"><i class="material-icons">description</i> Butir Borang</li>
             </ol>
             </div>
         </div>
@@ -23,7 +24,7 @@
                         <!-- <button type="button" class="btn btn-success btn-circle waves-effect waves-circle waves-float">
                             <i class="material-icons">add</i>
                         </button> -->
-                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addBorang" data-placement="top" title="Tambah Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -41,36 +42,42 @@
                         <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
                             <thead>
                                 <tr>
-                                    <th>Jenis Borang</th>
-                                    <th>Fakultas / Program Studi</th>
-                                    <th>Tahun</th>
-                                    <th>Buku</th>
-                                    <th>Action</th>
+                                    <th>Butir</th>
+                                    <th>Baku Mutu</th>
+                                    <!-- <th>Penjelasan</th> -->
+                                    <th>Keterangan</th>
+                                    <th width="20%">Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Jenis Borang</th>
-                                    <th>Fakultas / Program Studi</th>
-                                    <th>Tahun</th>
-                                    <th>Buku</th>
-                                    <th>Action</th>
+                                    <th width="5%">Butir</th>
+                                    <th width="30%">Baku Mutu</th>
+                                    <!-- <th>Penjelasan</th> -->
+                                    <th>Keterangan</th>
+                                    <th width="20%">Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
                                 <?php
-                                    foreach ($borang as $key) {
+                                    // foreach ($butir as $key) {
+                                    for($i=0;$i<count($butir);$i++){
                                  ?>
                                 <tr>
-                                    <td><?php echo ucfirst($key->jenis) ?> </td>
-                                    <td><?php echo $key->fakpro ?> </td>
-                                    <td><?php echo $key->tahun ?> </td>
-                                    <td><?php echo $key->buku ?> </td>
+                                    <!-- <td><?php echo $key->butir ?> </td>
+                                    <td><?php echo $key->bakumutu ?> </td>
+                                    <td><?php echo $key->penjelasan ?> </td>
+                                    <td><?php echo $key->keterangan ?> </td> -->
+                                    <td><?php echo $butir[$i]['butir'] ?> </td>
+                                    <td><?php echo $butir[$i]['bakumutu'] ?> </td>
+                                    <!-- <td><?php echo $butir[$i]['penjelasan'] ?> </td> -->
+                                    <td><?php echo $butir[$i]['keterangan'] ?> </td>
                                     <td>
                                         <div class="js-sweetalert">
-                                            <a type="button" data-color="purple" class="btn bg-purple waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Detail" href="<?php echo base_url();?>index.php/butir/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">description</i></a>&nbsp;
-                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateBorang" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">edit</i></a>&nbsp;
-                                            <a id="del" onclick="dele(<?php echo $key->id;?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_borang/destroy/'.$key->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">delete_forever</i></a>
+                                            <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/butir/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
+                                            <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/butir/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
+                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateButir" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">edit</i></a>&nbsp;
+                                            <a id="del" onclick="dele(<?php echo $butir[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$butir[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -104,67 +111,52 @@
             </div>
         </div>
 
-        <div class="modal fade" id="addBorang" tabindex="-1" role="dialog">
+        <div class="modal fade" id="addButir" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title" id="defaultModalLabel">Tambah Borang</h1>
+                        <h1 class="modal-title" id="defaultModalLabel">Tambah Butir</h1>
                     </div>
                     <div class="modal-body">
                 <!-- form start -->
                 <?php
                     // $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
-                    // echo form_open('C_borang/store', $attributes);
+                    // echo form_open('c_borang/store', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_borang/store', $attributes);
-                    // echo form_open('C_borang/store');
+                    echo form_open('C_butir/store', $attributes);
+                    // echo form_open('c_borang/store');
                 ?>
                     <div class="row clearfix">
+                        <input type="hidden" name="id_borang" id="id_borang"value="<?php echo $buku[0]['id']?>">
                         <div class="col-sm-12">
-                            <!-- <select class="form-control show-tick">
-                                <option value="">-- Jenis Akreditasi --</option>
-                                <option value="10">Prodi</option>
-                                <option value="20">Fakultas</option>
-                            </select> -->
-                            <!-- <div class="form-line">
-                                <input name="role" type="radio" id="radio_30" value="Prodi" class="with-gap radio-col-red" />
-                                <label for="radio_30">Prodi</label>
-                                <input name="role" type="radio" id="radio_35" value="Fakultas" class="with-gap radio-col-blue" />
-                                <label for="radio_35">Fakultas</label>
-                            </div> -->
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <label for="jenis">Jenis Akteditasi</label>
-                            <div class="form-group">
+                            <div class="form-group form-float">
                                 <div class="form-line">
-                                <select class="form-control show-tick" name="jenis">
-                                    <option value="">-- Jenis Akreditasi --</option>
-                                    <option value="Prodi">Prodi</option>
-                                    <option value="Fakultas">Fakultas</option>
-                                </select>
+                                    <input type="text" class="form-control" name="butir">
+                                    <label class="form-label">Butir</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="fakpro">
-                                    <label class="form-label">Fakultas / Program Studi</label>
+                                    <textarea class="form-control" name="bakumutu" rows="4"></textarea>
+                                    <label class="form-label">Baku Mutu</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12">
+                        <!-- <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="tahun">
-                                    <label class="form-label">Tahun</label>
+                                    <textarea class="form-control" name="penjelasan" rows="4"></textarea>
+                                    <label class="form-label">Penjelasan</label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="buku">
-                                    <label class="form-label">Buku</label>
+                                    <textarea class="form-control" name="keterangan" rows="4"></textarea>
+                                    <label class="form-label">Keterangan</label>
                                 </div>
                             </div>
                         </div>
@@ -179,67 +171,53 @@
             </div>
         </div>
 
-        <div class="modal fade" id="updateBorang" tabindex="-1" role="dialog">
+        <div class="modal fade" id="updateButir" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title" id="defaultModalLabel">Update Borang</h1>
+                        <h1 class="modal-title" id="defaultModalLabel">Update Butir</h1>
                     </div>
                     <div class="modal-body">
                 <!-- form start -->
                 <?php
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
-                    //   echo form_open('C_borang/update', $attributes);
+                    //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_borang/update', $attributes);
-                    // echo form_open('C_borang/update');
+                    echo form_open('C_butir/update', $attributes);
+                    // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
+                        <input type="hidden" name="idButir" id="idButir" value="">
+                        <input type="hidden" name="id_borang" id="id_borang"value="<?php echo $buku[0]['id']?>">
                         <div class="col-sm-12">
-                            <!-- <select class="form-control show-tick">
-                                <option value="">-- Jenis Akreditasi --</option>
-                                <option value="10">Prodi</option>
-                                <option value="20">Fakultas</option>
-                            </select> -->
-                            <!-- <div class="form-line">
-                                <input name="role" type="radio" id="radio_30" value="Prodi" class="with-gap radio-col-red" />
-                                <label for="radio_30">Prodi</label>
-                                <input name="role" type="radio" id="radio_35" value="Fakultas" class="with-gap radio-col-blue" />
-                                <label for="radio_35">Fakultas</label>
-                            </div> -->
-                            <input type="hidden" name="idBorang" id="idBorang" value="">
-                            <label for="jenis">Jenis Akteditasi</label>
-                            <div class="form-group">
+                            <div class="form-group form-float">
                                 <div class="form-line">
-                                <select class="form-control show-tick" name="jenis" id="jenisBorang">
-                                    <option value="">-- Jenis Akreditasi --</option>
-                                    <option value="Prodi">Prodi</option>
-                                    <option value="Fakultas">Fakultas</option>
-                                </select>
+                                    <input type="text" class="form-control" id="butir" name="butir">
+                                    <label class="form-label">Butir</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="fakpro" id="fakpro">
-                                    <label class="form-label">Fakultas / Program Studi</label>
+                                    <textarea class="form-control" name="bakumutu" id="bakumutu" rows="4"></textarea>
+                                    <label class="form-label">Baku Mutu</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12">
+                        <!-- <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="tahun" id="tahun">
-                                    <label class="form-label">Tahun</label>
+                                    <textarea class="form-control" name="penjelasan" id="penjelasan" rows="4"></textarea>
+                                    <label class="form-label">Penjelasan</label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="buku" id="buku">
-                                    <label class="form-label">Buku</label>
+                                    <textarea class="form-control" name="keterangan" id="keterangan" rows="4"></textarea>
+                                    <label class="form-label">Keterangan</label>
                                 </div>
                             </div>
                         </div>
@@ -329,7 +307,7 @@
     //   "autoWidth": false
     // });
 
-    $('#addBorang').on('shown.bs.modal', function () {
+    $('#addButir').on('shown.bs.modal', function () {
 
         // $( "#jenisBorang" ).change(function() {
         //   var selectedValue = $(this).val();
@@ -341,7 +319,7 @@
         // });
     });
 
-    $('#updateBorang').on('shown.bs.modal', function (event) {
+    $('#updateButir').on('shown.bs.modal', function (event) {
         //$(".fakpro").hide();
         // $( "#updateAccModal #jenisBorang" ).change(function() {
         //   var selectedValue = $(this).val();
@@ -357,7 +335,7 @@
         //ajax call to get Dokumen Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_borang/find";
+        var link="<?php echo base_url(); ?>index.php/C_butir/find";
         $.ajax({
             method: "POST",
             url: link,
@@ -366,14 +344,11 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#idBorang').val(buku[0]['id']);
-              $('#jenisBorang').val(""+buku[0]['jenis']);
-              $('#jenisBorang option[value="'+buku[0]['jenis']+'"]').prop('selected', true);
-              $('#fakpro').val(toTitleCase(buku[0]['fakpro']));
-              $('#fakpro').val(toTitleCase(buku[0]['fakpro']));
-              $('#tahun').val(buku[0]['tahun']);
-              $('#buku').val(buku[0]['buku']);
-              $('#jenisBorang').val(buku[0]['jenis']);
+              $('#idButir').val(buku[0]['id']);
+              $('#butir').val(buku[0]['butir']);
+              $('#bakumutu').val(buku[0]['bakumutu']);
+              // $('#penjelasan').val(buku[0]['penjelasan']);
+              $('#keterangan').val(buku[0]['keterangan']);
 
 
           });
@@ -384,7 +359,7 @@
     $('#hapusBorang').on('shown.bs.modal', function (event) {
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_borang/destroy";
+        var link="<?php echo base_url(); ?>index.php/C_butir/destroy";
         var csrf = $('input[name=_token]').val();
         $('#del').click(function() {
           $.ajax({
@@ -395,7 +370,7 @@
           .done(function( msg ) {
               alert( "Data Saved: " + msg );
             // swal("Good job!", "You clicked the button!", "success");
-              $('#hapusBorang').modal('hide');
+              $('#hapusButir').modal('hide');
               location.reload();
             });
         });
@@ -417,8 +392,8 @@
     //     }, function (isConfirm) {
     //         if (isConfirm) {
     //             swal("Deleted!", "Your imaginary file has been deleted.", "success");
+    //             location.reload();
     //             window.location.href = delete_url;
-
     //         } else {
     //             swal("Cancelled", "Your imaginary file is safe :)", "error");
     //         }
@@ -430,7 +405,8 @@
   });
 
   function dele(x){
-    var delete_url = "<?php echo base_url(); ?>index.php/C_borang/destroy/"+x;
+    var borang = "<?php echo $buku[0]['id']?>";
+    var delete_url = "<?php echo base_url(); ?>index.php/C_butir/destroy/"+x+"/"+borang;
         swal({
             title: "Are you sure?",
             text: "You will not be able to recover this imaginary file!",

@@ -325,8 +325,8 @@
                     <img src="<?php echo base_url();?>assets/images/user.png" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Wahyu Saepuloh</div>
-                    <div class="email">wehaye94@gmail.com</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ($_SESSION['name']); ?></div>
+                    <div class="email"><?php echo ($_SESSION['email']); ?></div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
@@ -665,7 +665,7 @@
                             <span>Changelogs</span>
                         </a>
                     </li>
-                    <li class="header">LABELS</li>
+                    <!-- <li class="header">LABELS</li>
                     <li>
                         <a href="javascript:void(0);">
                             <i class="material-icons col-red">donut_large</i>
@@ -683,7 +683,7 @@
                             <i class="material-icons col-light-blue">donut_large</i>
                             <span>Information</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <!-- #Menu -->
