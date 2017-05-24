@@ -74,8 +74,8 @@
                                     <td><?php echo $butir[$i]['keterangan'] ?> </td>
                                     <td>
                                         <div class="js-sweetalert">
-                                            <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/butir/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
-                                            <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/butir/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
+                                            <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/isian/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
+                                            <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/dokumen/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateButir" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">edit</i></a>&nbsp;
                                             <a id="del" onclick="dele(<?php echo $butir[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$butir[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a>
                                         </div>
@@ -127,7 +127,7 @@
                     // echo form_open('c_borang/store');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id_borang" id="id_borang"value="<?php echo $buku[0]['id']?>">
+                        <input type="hidden" name="id_borang" id="id_borang" value="<?php echo $buku[0]['id']?>">
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -188,7 +188,7 @@
                 ?>
                     <div class="row clearfix">
                         <input type="hidden" name="idButir" id="idButir" value="">
-                        <input type="hidden" name="id_borang" id="id_borang"value="<?php echo $buku[0]['id']?>">
+                        <input type="hidden" name="id_borang" id="id_borang" value="<?php echo $buku[0]['id']?>">
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">

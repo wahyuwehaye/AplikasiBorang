@@ -18,11 +18,18 @@ class C_borang extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	 public function __construct(){
+	     parent::__construct();
+	     $this->load->library('session');
+    }
+
+
 	public function index()
 	{
 	$this->load->library('session');
 	//print_r($this->session);die();
-			if($_SESSION['logged_in']=="1")
+			if(isset($_SESSION['logged_in']))
 		{
 			$this->load->model('M_borang');
 			// $this->load->library('form_validation');

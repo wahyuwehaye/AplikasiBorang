@@ -18,8 +18,16 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	 public function __construct(){
+	     parent::__construct();
+	     $this->load->library('session');
+    }
+
+
 	public function index()
 	{
+		$this->load->library('session');
 		if(isset($_SESSION['logged_in']))
 		{
 			$data['active_menu']='home';
@@ -75,6 +83,13 @@ class Home extends CI_Controller {
 		$this->load->view('template/header',$data);
 		$this->load->view('penilaian');
 		$this->load->view('template/footer');
+	}
+
+	public function editor(){
+		$data['active_menu']='home';
+		$this->load->view('template/header',$data);
+		$this->load->view('editor');
+	    $this->load->view('template/footerEditor');
 	}
 
 	public function insert(){

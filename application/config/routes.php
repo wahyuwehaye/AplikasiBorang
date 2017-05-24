@@ -60,4 +60,7 @@ $route['changelogs'] = 'Home/changelogs';
 $route['borang'] = 'C_borang';
 $route['penilaian'] = 'Home/penilaian';
 $route['histori'] = 'Home/histori';
+$route['editor'] = 'Home/editor';
 $route['butir/:num'] = 'C_butir';
+$route['dokumen/:num'] = 'C_dokumen';
+$route['isian/:num'] = 'C_isian';
