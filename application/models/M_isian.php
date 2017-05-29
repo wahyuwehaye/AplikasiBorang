@@ -85,6 +85,11 @@ class M_isian extends CI_Model {
               return $query->result_array();
         }
 
+        public function findisianversion($column,$id){
+              $query = $this->db->get_where('isian_4kolom_version', array($column => $id));
+              return $query->result_array();
+        }
+
         public function deleteisian($column,$id){
 
             $this->db->delete('isian_4kolom', array($column => $id));

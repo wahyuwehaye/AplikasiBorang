@@ -134,7 +134,7 @@
                                     <th>Misi</th>
                                     <th>Tujuan</th>
                                     <th>Version</th>
-                                    <th width="10%">Action</th>
+                                    <th width="14%">Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -145,7 +145,7 @@
                                     <th>Misi</th>
                                     <th>Tujuan</th>
                                     <th>Version</th>
-                                    <th width="10%">Action</th>
+                                    <th width="14%">Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -159,11 +159,12 @@
                                     <td><?php echo $dataisian[$i]['kolom2'] ?> </td>
                                     <td><?php echo $dataisian[$i]['kolom3'] ?> </td>
                                     <td><?php echo $dataisian[$i]['kolom4'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['version_no'] ?> </td>
+                                    <td><a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a>&nbsp; </td>
                                     <td>
                                         <div class="js-sweetalert">
                                             <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/dataisian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
                                             <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
+                                            <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">book</i></a>&nbsp;
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateIsian1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">edit</i></a>&nbsp;
                                             <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a>
                                         </div>
@@ -182,17 +183,21 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1" id="kolom1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
+                        <!-- <div class="body">
+                            <textarea id="tinymce">
+                            </textarea>
+                        </div> -->
                         <h2 class="card-inside-title">Visi</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom2" id="kolom2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom2" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -202,7 +207,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom3" id="kolom3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom3" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -212,7 +217,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom4" id="kolom4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom4" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -419,6 +424,81 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODALS View Book -->
+        <div class="modal fade" id="viewBook" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Lihat Isian Butir</h4>
+                    </div>
+                    <div class="modal-body">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci ante, sed ornare eros vestibulum ut. Ut accumsan
+                        vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus ullamcorper.
+                        Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus
+                        nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla.
+                        Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODALS Tabel -->
+        <div class="modal fade" id="viewVersion" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Data Version</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th>ID Butir</th>
+                                    <th>Mekanisme Penyusunan</th>
+                                    <th>Visi</th>
+                                    <th>Misi</th>
+                                    <th>Tujuan</th>
+                                    <th>Version</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>ID Butir</th>
+                                    <th>Mekanisme Penyusunan</th>
+                                    <th>Visi</th>
+                                    <th>Misi</th>
+                                    <th>Tujuan</th>
+                                    <th>Version</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <?php
+                                    // foreach ($dataisianversion as $key) {
+                                    for($i=0;$i<count($dataisianversion);$i++){
+                                 ?>
+                                <tr>
+                                    <td><?php echo $dataisianversion[$i]['id_kolom'] ?> </td>
+                                    <td><?php echo $dataisianversion[$i]['kolom1'] ?> </td>
+                                    <td><?php echo $dataisianversion[$i]['kolom2'] ?> </td>
+                                    <td><?php echo $dataisianversion[$i]['kolom3'] ?> </td>
+                                    <td><?php echo $dataisianversion[$i]['kolom4'] ?> </td>
+                                    <td><?php echo $dataisianversion[$i]['version_no'] ?></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
                     </div>
                 </div>
@@ -663,6 +743,21 @@
 <!-- Sweet Alert Plugin Js -->
 <script src="<?php echo base_url();?>assets/plugins/sweetalert/sweetalert.min.js"></script>
 
+<!-- Select Plugin Js -->
+    <script src="<?php echo base_url();?>assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="<?php echo base_url();?>assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="<?php echo base_url();?>assets/plugins/node-waves/waves.js"></script>
+
+    <!-- Ckeditor -->
+    <script src="<?php echo base_url();?>assets/plugins/ckeditor/ckeditor.js"></script>
+
+<!-- TinyMCE -->
+    <script src="<?php echo base_url();?>assets/plugins/tinymce/tinymce.js"></script>
+
 <!-- Custom Js -->
 <script src="<?php echo base_url();?>assets/js/admin.js"></script>
 <script src="<?php echo base_url();?>assets/js/pages/tables/editable-table.js"></script>
@@ -674,6 +769,7 @@
 <!-- Demo Js -->
 <script src="<?php echo base_url();?>assets/js/demo.js"></script>
 <script src="<?php echo base_url();?>assets/js/pages/ui/dialogs.js"></script>
+<!-- <script src="<?php echo base_url();?>assets/js/pages/forms/editors.js"></script> -->
 
 <!-- //session untuk menampilkan pesan Sukses Input Data -->
 <?php
@@ -709,6 +805,71 @@
       return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
   $(function () {
+
+    //TinyMCE
+    tinymce.init({
+        selector: "textarea#tin1",
+        theme: "modern",
+        height: 300,
+        plugins: [
+            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools'
+        ],
+        toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        toolbar2: 'print preview media | forecolor backcolor emoticons',
+        image_advtab: true
+    });
+    //TinyMCE
+    tinymce.init({
+        selector: "textarea#tin2",
+        theme: "modern",
+        height: 300,
+        plugins: [
+            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools'
+        ],
+        toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        toolbar2: 'print preview media | forecolor backcolor emoticons',
+        image_advtab: true
+    });
+    //TinyMCE
+    tinymce.init({
+        selector: "textarea#tin3",
+        theme: "modern",
+        height: 300,
+        plugins: [
+            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools'
+        ],
+        toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        toolbar2: 'print preview media | forecolor backcolor emoticons',
+        image_advtab: true
+    });
+    //TinyMCE
+    tinymce.init({
+        selector: "textarea#tin4",
+        theme: "modern",
+        height: 300,
+        plugins: [
+            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools'
+        ],
+        toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        toolbar2: 'print preview media | forecolor backcolor emoticons',
+        image_advtab: true
+    });
+    tinymce.suffix = ".min";
+    tinyMCE.baseURL = '<?php echo base_url();?>assets/plugins/tinymce';
+
+
     // $(".fakpro").hide();
 
     // $('#borang').DataTable({

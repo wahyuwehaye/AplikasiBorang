@@ -41,6 +41,7 @@ class C_isian extends CI_Controller {
 			$data['buku']=$this->M_borang->find('id',$data['butir'][0]['id_borang']);
 			$data['isian']=$this->M_isian->find('id_butir',$id);
 			$data['dataisian']=$this->M_isian->findisian('id_butir',$id);
+			$data['dataisianversion']=$this->M_isian->findisianversion('id_kolom',$id);
 			$data1['isian']=$this->M_isian->ambildata();
 			$data1['isian']=$this->M_isian->get_entire_data1($id);
 			$this->load->view('isian',$data);
@@ -51,6 +52,24 @@ class C_isian extends CI_Controller {
 		}
 
 
+	}
+
+	public function viewbookbutir(){
+		$this->load->model('M_borang');
+		$this->load->model('M_butir');
+		$this->load->model('M_isian');
+		$this->load->library('form_validation');
+
+		$id=$this->uri->segment(2, 0);
+		$data['active_menu']='borang';
+		$this->load->view('template/header',$data);
+		$data['butir']=$this->M_butir->find('id',$id);
+		$data['buku']=$this->M_borang->find('id',$data['butir'][0]['id_borang']);
+		$data['isian']=$this->M_isian->find('id_butir',$id);
+		$data['dataisian']=$this->M_isian->findisian('id_butir',$id);
+		$data['dataisianversion']=$this->M_isian->findisianversion('id_kolom',$id);
+		$this->load->view('template/header',$data);
+		$this->load->view('viewbookbutir');
 	}
 
 	public function ngisi(){

@@ -64,3 +64,4 @@ $route['editor'] = 'Home/editor';
 $route['butir/:num'] = 'C_butir';
 $route['dokumen/:num'] = 'C_dokumen';
 $route['isian/:num'] = 'C_isian';
+$route['viewbookbutir/:num'] = 'C_isian/viewbookbutir';

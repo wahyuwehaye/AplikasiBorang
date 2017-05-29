@@ -3,15 +3,14 @@
             <div class="block-header">
                 <h2>EDITORS</h2>
             </div>
-
-            <!-- CKEditor -->
+            <!-- TinyMCE -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                CKEDITOR
-                                <small>CKEditor is a ready-for-use HTML text editor designed to simplify web content creation. Taken from <a href="http://ckeditor.com/" target="_blank">ckeditor.com</a></small>
+                                TINYMCE
+                                <small>Taken from <a href="https://www.tinymce.com" target="_blank">www.tinymce.com</a></small>
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -27,7 +26,11 @@
                             </ul>
                         </div>
                         <div class="body">
-                            <textarea id="ckeditor">
+                            <textarea id="tinymce">
+                            </textarea>
+                        </div>
+                        <div class="body">
+                            <textarea id="tinymce1">
                                 <h2>WYSIWYG Editor</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper sapien non nisl facilisis bibendum in quis tellus. Duis in urna bibendum turpis pretium fringilla. Aenean neque velit, porta eget mattis ac, imperdiet quis nisi. Donec non dui et tortor vulputate luctus. Praesent consequat rhoncus velit, ut molestie arcu venenatis sodales.</p>
                                 <h3>Lacinia</h3>
@@ -45,6 +48,6 @@
                     </div>
                 </div>
             </div>
-            <!-- #END# CKEditor -->
+            <!-- #END# TinyMCE -->
         </div>
     </section>
