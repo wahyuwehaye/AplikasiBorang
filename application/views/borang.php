@@ -136,7 +136,7 @@
                             <label for="jenis">Jenis Akteditasi</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                <select class="form-control show-tick" name="jenis">
+                                <select class="form-control show-tick" name="jenis" required>
                                     <option value="">-- Jenis Akreditasi --</option>
                                     <option value="Prodi">Prodi</option>
                                     <option value="Fakultas">Fakultas</option>
@@ -147,7 +147,7 @@
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="fakpro">
+                                    <input type="text" class="form-control" name="fakpro" required>
                                     <label class="form-label">Fakultas / Program Studi</label>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="tahun">
+                                    <input type="text" class="form-control" name="tahun" required>
                                     <label class="form-label">Tahun</label>
                                 </div>
                             </div>
@@ -163,7 +163,7 @@
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="buku">
+                                    <input type="text" class="form-control" name="buku" required>
                                     <label class="form-label">Buku</label>
                                 </div>
                             </div>

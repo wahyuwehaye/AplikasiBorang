@@ -44,17 +44,110 @@
                         <div class="body">
                             <textarea id="tinymce">
                             <?php
-                                for($i=0;$i<count($dataisian);$i++){
+                            $jum = $this->uri->segment(2, 0);
+                            // if ($jum==1) {
+                                for($i=0;$i<count($dataisian1);$i++){
+                                ?>
+                                    <h1 style="text-align: center;"><strong>STANDAR 1.</strong></h1>
+                                    <h1 style="text-align: center;"><strong>VISI, MISI, TUJUAN DAN SASARAN, SERTA STRATEGI PENCAPAIAN</strong></h1>
+                                    <h3 style="text-align: left;"><strong>1.1 &nbsp;Jelaskan dasar penyusunan dan mekanisme penyusunan visi, misi, tujuan dan sasaran institusi perguruan tinggi, serta pihakpihak yang dilibatkan dalam penyusunannya.&nbsp;</strong></h3>
+                                    <h3><strong>Paparan Penyusunan Visi, Misi, Tujuan dan Sasaran</strong></h3>
+                                    <p><?php echo $dataisian1[$i]['kolom1'] ?></p>
+                                    <!-- <h3>Visi</h3> -->
+                                    <p><?php echo $dataisian1[$i]['kolom2'] ?></p>
+                                    <!-- <h3>Misi</h3> -->
+                                    <p><?php echo $dataisian1[$i]['kolom3'] ?></p>
+                                    <!-- <h3>Tujuan</h3> -->
+                                    <p><?php echo $dataisian1[$i]['kolom4'] ?></p>
+                                <?php }
+                            // }elseif ($jum==2) {
+                                for($i=0;$i<count($dataisian2);$i++){
+                                ?>
+                                    <h3>1.2&nbsp;Pernyataan tonggak-tonggak capaian (milestones) tujuan yang dinyatakan dalam sasaran-sasaran yang merupakan target terukur, dan penjelasan mengenai strategi serta tahapan pencapaiannya.&nbsp;</h3>
+                                    <p><?php echo $dataisian2[$i]['kolom1'] ?></p>
+                                <?php }
+                            // }elseif ($jum==3) {
+                                for($i=0;$i<count($dataisian3);$i++){
+                                ?>
+                                    <h3>1.3&nbsp;Sosialisasi visi, misi, tujuan, sasaran dan strategi pencapaian dan penggunaannya sebagai acuan dalam penyusunan rencana kerja institusi perguruan tinggi.&nbsp;</h3>
+                                    <h3>1.3.1&nbsp;Uraikan sosialisasi visi, misi, tujuan, dan sasaran perguruan tinggi agar dipahami seluruh pemangku kepentingan (sivitas akademika, tenaga kependidikan, pengguna lulusan, dan masyarakat).</h3>
+                                    <p><?php echo $dataisian3[$i]['kolom1'] ?></p>
+                                <?php }
+                                for($i=0;$i<count($dataisian4);$i++){
+                                 ?>
+                                    <h1 style="text-align: center;">STANDAR 2.</h1>
+                                    <h1 style="text-align: center;">TATA PAMONG, KEPEMIMPINAN, SISTEM PENGELOLAAN, DAN PENJAMINAN MUTU</h1>
+                                    <p><strong>2.1 Tata Pamong di Universitas Telkom</strong></p>
+                                    <p><strong>2.1.1 Uraikan secara ringkas sistem tatapamong (sebutkan lembaga yang berperan, perangkat pendukung, kebijakan dan peraturan/ketentuan termasuk kode etik yang dijadikan pedoman dalam penyelenggaraan perguruan tinggi, serta prosedur penetapannya) &nbsp;di institusi perguruan tinggi dalam &nbsp;membangun sistem tata pamong yang kredibel, transparan, akuntabel, bertanggung jawab, dan adil, serta pelaksanaannya.&nbsp;</strong></p>
+                                    <p>&nbsp;</p>
+                                    <p><?php echo $dataisian4[$i]['kolom1'] ?></p>
+                                 <?php
+                                 }
+                                 for($i=0;$i<count($dataisian5);$i++){
+                                 ?>
+                                    <h3>2.2 Kepemimpinan</h3>
+                                    <h3>Jelaskan pola dan kinerja kepemimpinan di Institusi perguruan tinggi, mencakup informasi tentang kepemimpinan operasional, organisasi, dan publik.&nbsp;</h3>
+                                    <p><?php echo $dataisian5[$i]['kolom1'] ?></p>
+                                 <?php
+                                 }
+                                 for($i=0;$i<count($dataisian6);$i++){
+                                 ?>
+                                    <h3>2.3 Sistem Pengelolaan&nbsp;</h3>
+                                    <p>Sistem pengelolaan fungsional dan operasional institusi perguruan tinggi mencakup fungsi pengelolaan (planning, organizing, staffing, leading, dan controlling) dalam penyelenggaraan program dan kegiatan perguruan tinggi.&nbsp;</p>
+                                    <h3>2.3.1 Jelaskan sistem pengelolaan institusi perguruan tinggi serta dokumen pendukungnya (Jelaskan unit/bagian/lembaga yang berperan dalam setiap fungsi pengelolaan serta proses pengambilan keputusan).&nbsp;</h3>
+                                    <p><?php echo $dataisian6[$i]['kolom1'] ?></p>
+                                 <?php
+                                 }
+                                 for($i=0;$i<count($dataisian7);$i++){
+                                 ?>
+                                    <h3>2.4 Sistem Penjaminan Mutu</h3>
+                                    <p>Sistem penjaminan mutu meliputi kebijakan mutu, perangkat penjaminan mutu (organisasi, pernyataan mutu, manual mutu, standar mutu), pelaksanaan penjaminan mutu, serta monitoring dan evaluasi.&nbsp;</p>
+                                    <h3>2.4.1 Jelaskan &nbsp;keberadaan manual mutu yang mencakup informasi tentang kebijakan, pernyataan, unit pelaksana, standar, prosedur, SOP, dan pentahapan sasaran mutu perguruan tinggi.&nbsp;</h3>
+                                    <p><?php echo $dataisian7[$i]['kolom1'] ?></p>
+                                 <?php
+                                 }
+                                 for($i=0;$i<count($dataisian8);$i++){
+                                 ?>
+                                    <h3>2.5 Umpan Balik</h3>
+                                    <h3>Umpan Balik dari <?php echo $dataisian8[$i]['kolom1'] ?></h3>
+                                    <h4>Isi Umpan Balik :</h4>
+                                    <p><?php echo $dataisian8[$i]['kolom2'] ?></p>
+                                    <h4>Tindak Lanjut :</h4>
+                                    <p><?php echo $dataisian8[$i]['kolom3'] ?></p>
+                                    <h3>Umpan Balik dari <?php echo $dataisian8[$i]['kolom4'] ?></h3>
+                                    <h4>Isi Umpan Balik :</h4>
+                                    <p><?php echo $dataisian8[$i]['kolom5'] ?></p>
+                                    <h4>Tindak Lanjut :</h4>
+                                    <p><?php echo $dataisian8[$i]['kolom6'] ?></p>
+                                    <h3>Umpan Balik dari <?php echo $dataisian8[$i]['kolom7'] ?></h3>
+                                    <h4>Isi Umpan Balik :</h4>
+                                    <p><?php echo $dataisian8[$i]['kolom8'] ?></p>
+                                    <h4>Tindak Lanjut :</h4>
+                                    <p><?php echo $dataisian8[$i]['kolom9'] ?></p>
+                                    <h3>Umpan Balik dari <?php echo $dataisian8[$i]['kolom10'] ?></h3>
+                                    <h4>Isi Umpan Balik :</h4>
+                                    <p><?php echo $dataisian8[$i]['kolom11'] ?></p>
+                                    <h4>Tindak Lanjut :</h4>
+                                    <p><?php echo $dataisian8[$i]['kolom12'] ?></p>
+                                 <?php
+                                 }
+                                 for($i=0;$i<count($dataisian9);$i++){
+                                 ?>
+                                    <h3>2.6 Keberlanjutan</h3>
+                                    <h3>a.  Upaya untuk peningkatan animo calon mahasiswa:</h3>
+                                    <p><?php echo $dataisian9[$i]['kolom1'] ?></p>
+                                    <h3>b.  Upaya peningkatan mutu manajemen:</h3>
+                                    <p><?php echo $dataisian9[$i]['kolom2'] ?></p>
+                                    <h3>c.  Upaya untuk peningkatan mutu lulusan:</h3>
+                                    <p><?php echo $dataisian9[$i]['kolom3'] ?></p>
+                                    <h3>d.  Upaya untuk pelaksanaan dan hasil kerjasama kemitraan:</h3>
+                                    <p><?php echo $dataisian9[$i]['kolom4'] ?></p>
+                                    <h3>e.  Upaya dan prestasi memperoleh dana hibah kompetitif:</h3>
+                                    <p><?php echo $dataisian9[$i]['kolom5'] ?></p>
+                                 <?php
+                                 }
                             ?>
-                            	<h3>mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</h3>
-                                <p><?php echo $dataisian[$i]['kolom1'] ?></p>
-                                <h3>Visi</h3>
-                                <p><?php echo $dataisian[$i]['kolom2'] ?></p>
-                                <h3>Misi</h3>
-                                <p><?php echo $dataisian[$i]['kolom3'] ?></p>
-                                <h3>Tujuan</h3>
-                                <p><?php echo $dataisian[$i]['kolom4'] ?></p>
-                            <?php } ?>
+                                
                             </textarea>
                         </div>
                     </div>

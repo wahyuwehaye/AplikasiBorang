@@ -40,8 +40,19 @@ class C_isian extends CI_Controller {
 			$data['butir']=$this->M_butir->find('id',$id);
 			$data['buku']=$this->M_borang->find('id',$data['butir'][0]['id_borang']);
 			$data['isian']=$this->M_isian->find('id_butir',$id);
-			$data['dataisian']=$this->M_isian->findisian('id_butir',$id);
-			$data['dataisianversion']=$this->M_isian->findisianversion('id_kolom',$id);
+			if ($id==1) {
+				$data['dataisian']=$this->M_isian->findisian4kolom('id_butir',$id);
+				$data['dataisianversion']=$this->M_isian->findisian4kolomversion('id_kolom',$id);
+			}elseif (($id==2) || ($id==3) || ($id==4) || ($id==5) || ($id==6) || ($id==7)){
+				$data['dataisian']=$this->M_isian->findisian1kolom('id_butir',$id);
+				$data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$id);
+			}elseif ($id==8) {
+				$data['dataisian']=$this->M_isian->findisian12kolom('id_butir',$id);
+				$data['dataisianversion']=$this->M_isian->findisian12kolomversion('id_kolom',$id);
+			}elseif ($id==9) {
+				$data['dataisian']=$this->M_isian->findisian5kolom('id_butir',$id);
+				$data['dataisianversion']=$this->M_isian->findisian5kolomversion('id_kolom',$id);
+			}
 			$data1['isian']=$this->M_isian->ambildata();
 			$data1['isian']=$this->M_isian->get_entire_data1($id);
 			$this->load->view('isian',$data);
@@ -66,48 +77,301 @@ class C_isian extends CI_Controller {
 		$data['butir']=$this->M_butir->find('id',$id);
 		$data['buku']=$this->M_borang->find('id',$data['butir'][0]['id_borang']);
 		$data['isian']=$this->M_isian->find('id_butir',$id);
-		$data['dataisian']=$this->M_isian->findisian('id_butir',$id);
-		$data['dataisianversion']=$this->M_isian->findisianversion('id_kolom',$id);
+		// if ($id==1) {
+			$data['dataisian1']=$this->M_isian->findisian4kolom('id_butir',1);
+			$data['dataisianversion1']=$this->M_isian->findisian4kolomversion('id_kolom',1);
+		// }elseif ($id==2) {
+			$data['dataisian2']=$this->M_isian->findisian1kolom('id_butir',2);
+			$data['dataisianversion2']=$this->M_isian->findisian1kolomversion('id_kolom',2);
+		// }elseif ($id==3) {
+			$data['dataisian3']=$this->M_isian->findisian1kolom('id_butir',3);
+			$data['dataisianversion3']=$this->M_isian->findisian1kolomversion('id_kolom',3);
+		// }
+		$data['dataisian4']=$this->M_isian->findisian1kolom('id_butir',4);
+		$data['dataisianversion4']=$this->M_isian->findisian1kolomversion('id_kolom',4);
+		$data['dataisian5']=$this->M_isian->findisian1kolom('id_butir',5);
+		$data['dataisianversion5']=$this->M_isian->findisian1kolomversion('id_kolom',5);
+		$data['dataisian6']=$this->M_isian->findisian1kolom('id_butir',6);
+		$data['dataisianversion6']=$this->M_isian->findisian1kolomversion('id_kolom',6);
+		$data['dataisian7']=$this->M_isian->findisian1kolom('id_butir',7);
+		$data['dataisianversion7']=$this->M_isian->findisian1kolomversion('id_kolom',7);
+		$data['dataisian8']=$this->M_isian->findisian12kolom('id_butir',8);
+		$data['dataisianversion8']=$this->M_isian->findisian12kolomversion('id_kolom',8);
+		$data['dataisian9']=$this->M_isian->findisian5kolom('id_butir',9);
+		$data['dataisianversion9']=$this->M_isian->findisian5kolomversion('id_kolom',9);
 		$this->load->view('template/header',$data);
 		$this->load->view('viewbookbutir');
 	}
 
-	public function ngisi(){
+// QUERY INSERT ISIAN
+	public function ngisi11(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir11'];
+       	$this->M_isian->insert_isian11();
+       	$_SESSION['suksesinput'] = '';
+        redirect('isian/'.$_POST['id_butir11']);
+	}
+
+	public function ngisi11b(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir11b'];
+       	$this->M_isian->insert_isian11b();
+       	$_SESSION['suksesinput'] = '';
+        redirect('isian/'.$_POST['id_butir11b']);
+	}
+
+	public function ngisi12(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir12'];
+       	$this->M_isian->insert_isian12();
+       	$_SESSION['suksesinput'] = '';
+        redirect('isian/'.$_POST['id_butir12']);
+	}
+
+	public function ngisi21(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir21'];
+       	$this->M_isian->insert_isian21();
+       	$_SESSION['suksesinput'] = '';
+        redirect('isian/'.$_POST['id_butir21']);
+	}
+
+	public function ngisi22(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir22'];
+       	$this->M_isian->insert_isian22();
+       	$_SESSION['suksesinput'] = '';
+        redirect('isian/'.$_POST['id_butir22']);
+	}
+
+	public function ngisi23(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir23'];
+       	$this->M_isian->insert_isian23();
+       	$_SESSION['suksesinput'] = '';
+        redirect('isian/'.$_POST['id_butir23']);
+	}
+
+	public function ngisi24(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir24'];
+       	$this->M_isian->insert_isian24();
+       	$_SESSION['suksesinput'] = '';
+        redirect('isian/'.$_POST['id_butir24']);
+	}
+
+	public function ngisi25(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir25'];
+       	$this->M_isian->insert_isian25();
+       	$_SESSION['suksesinput'] = '';
+        redirect('isian/'.$_POST['id_butir25']);
+	}
+
+	public function ngisi26(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir26'];
+       	$this->M_isian->insert_isian26();
+       	$_SESSION['suksesinput'] = '';
+        redirect('isian/'.$_POST['id_butir26']);
+	}
+
+	public function ngisi2kolom(){
 		//load needed library,helper,model
        	$this->load->library('form_validation');
        	$this->load->model('M_butir');
        	$this->load->model('M_borang');
        	$this->load->model('M_isian');
        	$id=$_POST['id_butir'];
-       	$this->M_isian->insert_isian();
+       	$this->M_isian->insert_isian2kolom();
        	$_SESSION['suksesinput'] = '';
         redirect('isian/'.$_POST['id_butir']);
 	}
 
+	
+// TUTUP QUERY INSERT ISIAN
+
 	public function findisian(){
 		$id=$_POST['id'];
 		$this->load->model('M_isian');
-		$data=$this->M_isian->findisian('id',$id);
+		if ($id==1) {
+			$data=$this->M_isian->findisian4kolom('id',$id);
+		}elseif (($id==2) || ($id==3) || ($id==4) || ($id==5) || ($id==6) || ($id==7)) {
+			$data=$this->M_isian->findisian1kolom('id',$id);
+		}elseif ($id==8) {
+			$data=$this->M_isian->findisian12kolom('id',$id);
+		}elseif ($id==9) {
+			$data=$this->M_isian->findisian5kolom('id',$id);
+		}
 		echo json_encode($data);
 	}
 
-	public function updateisian1(){
+// QUERY UPDATE ISIAN
+	public function updateisian11(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir11'];
+       	$this->M_isian->update_isian11();
+       	$_SESSION['suksesupdate'] = '';
+        redirect('isian/'.$_POST['id_butir11']);
+	}
+
+	public function updateisian11b(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir11b'];
+       	$this->M_isian->update_isian11b();
+       	$_SESSION['suksesupdate'] = '';
+        redirect('isian/'.$_POST['id_butir11b']);
+	}
+
+	public function updateisian12(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir12'];
+       	$this->M_isian->update_isian12();
+       	$_SESSION['suksesupdate'] = '';
+        redirect('isian/'.$_POST['id_butir12']);
+	}
+
+	public function updateisian21(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir21'];
+       	$this->M_isian->update_isian21();
+       	$_SESSION['suksesupdate'] = '';
+        redirect('isian/'.$_POST['id_butir21']);
+	}
+
+	public function updateisian22(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir22'];
+       	$this->M_isian->update_isian22();
+       	$_SESSION['suksesupdate'] = '';
+        redirect('isian/'.$_POST['id_butir22']);
+	}
+
+	public function updateisian23(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir23'];
+       	$this->M_isian->update_isian23();
+       	$_SESSION['suksesupdate'] = '';
+        redirect('isian/'.$_POST['id_butir23']);
+	}
+
+	public function updateisian24(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir24'];
+       	$this->M_isian->update_isian24();
+       	$_SESSION['suksesupdate'] = '';
+        redirect('isian/'.$_POST['id_butir24']);
+	}
+
+	public function updateisian25(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir25'];
+       	$this->M_isian->update_isian25();
+       	$_SESSION['suksesupdate'] = '';
+        redirect('isian/'.$_POST['id_butir25']);
+	}
+
+	public function updateisian26(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$this->load->model('M_isian');
+       	$id=$_POST['id_butir26'];
+       	$this->M_isian->update_isian26();
+       	$_SESSION['suksesupdate'] = '';
+        redirect('isian/'.$_POST['id_butir26']);
+	}
+
+	public function updateisian2kolom(){
 		//load needed library,helper,model
        	$this->load->library('form_validation');
        	$this->load->model('M_butir');
        	$this->load->model('M_borang');
        	$this->load->model('M_isian');
        	$id=$_POST['id_butir'];
-       	$this->M_isian->update_isian();
+       	$this->M_isian->update_isian2kolom();
        	$_SESSION['suksesupdate'] = '';
         redirect('isian/'.$_POST['id_butir']);
 	}
 
-	public function destroyisian($id,$borang){
+	
+// TUTUP QUERY UPDATE ISIAN
+
+// QUERY DELETE ISIAN
+	public function destroyisian1kolom($id,$borang){
 		// $id=$_POST['id'];
         // $idbut=3;
 		$this->load->model('M_isian');
-		$result=$this->M_isian->deleteisian('id',$id);
+		$result=$this->M_isian->deleteisian1kolom('id_butir',$id);
 		if($result > 0){
 			echo json_encode('success');
 		}else{
@@ -116,6 +380,63 @@ class C_isian extends CI_Controller {
         // redirect('butir/'.$idbut);
         redirect('isian/'.$borang);
 	}
+
+	public function destroyisian2kolom($id,$borang){
+		// $id=$_POST['id'];
+        // $idbut=3;
+		$this->load->model('M_isian');
+		$result=$this->M_isian->deleteisian2kolom('id_butir',$id);
+		if($result > 0){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
+        // redirect('butir/'.$idbut);
+        redirect('isian/'.$borang);
+	}
+
+	public function destroyisian4kolom($id,$borang){
+		// $id=$_POST['id'];
+        // $idbut=3;
+		$this->load->model('M_isian');
+		$result=$this->M_isian->deleteisian4kolom('id_butir',$id);
+		if($result > 0){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
+        // redirect('butir/'.$idbut);
+        redirect('isian/'.$borang);
+	}
+
+	public function destroyisian12kolom($id,$borang){
+		// $id=$_POST['id'];
+        // $idbut=3;
+		$this->load->model('M_isian');
+		$result=$this->M_isian->deleteisian12kolom('id_butir',$id);
+		if($result > 0){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
+        // redirect('butir/'.$idbut);
+        redirect('isian/'.$borang);
+	}
+
+	public function destroyisian5kolom($id,$borang){
+		// $id=$_POST['id'];
+        // $idbut=3;
+		$this->load->model('M_isian');
+		$result=$this->M_isian->deleteisian5kolom('id_butir',$id);
+		if($result > 0){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
+        // redirect('butir/'.$idbut);
+        redirect('isian/'.$borang);
+	}
+// TUTUP QUERY DELETE ISIAN
 
 	// dibawah itu kode lama ya
 
