@@ -11,8 +11,8 @@
             <div class="col-sm-8">
             <ol class="breadcrumb breadcrumb-col-deep-purple align-right">
                 <li><a href="<?php echo base_url();?>"><i class="material-icons">home</i> Home</a></li>
-                <li><a href="<?php echo base_url();?>index.php/borang"><i class="material-icons">settings</i> Manage Borang</a></li>
-                <li><a href="<?php echo base_url();?>index.php/butir/<?php echo $buku[0]['id']; ?>"><i class="material-icons">description</i> Butir Borang</a></li>
+                <li><a href="<?php echo base_url();?>borang"><i class="material-icons">settings</i> Manage Borang</a></li>
+                <li><a href="<?php echo base_url();?>butir/<?php echo $buku[0]['id']; ?>"><i class="material-icons">description</i> Butir Borang</a></li>
                 <li class="active"><i class="material-icons">file_upload</i> Dokumen Butir</li>
             </ol>
             </div>

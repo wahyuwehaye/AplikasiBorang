@@ -36,7 +36,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_in" method="POST" action="<?php echo base_url()?>index.php/Home/loginUsers">
+                <form id="sign_in" method="POST" action="<?php echo base_url()?>Home/loginUsers">
                     <div class="msg">Sign in to start your session</div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -65,10 +65,10 @@
                     </div>
                     <div class="row m-t-15 m-b--20">
                         <div class="col-xs-6">
-                            <a href="<?php echo base_url();?>index.php/register">Register Now!</a>
+                            <a href="<?php echo base_url();?>register">Register Now!</a>
                         </div>
                         <div class="col-xs-6 align-right">
-                            <a href="<?php echo base_url();?>index.php/forget-pass">Forgot Password?</a>
+                            <a href="<?php echo base_url();?>forget-pass">Forgot Password?</a>
                         </div>
                     </div>
                 </form>

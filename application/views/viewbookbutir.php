@@ -11,9 +11,9 @@
             <div class="col-sm-8">
             <ol class="breadcrumb breadcrumb-col-deep-purple align-right">
                 <li><a href="<?php echo base_url();?>"><i class="material-icons">home</i> Home</a></li>
-                <li><a href="<?php echo base_url();?>index.php/borang"><i class="material-icons">settings</i> Manage Borang</a></li>
-                <li><a href="<?php echo base_url();?>index.php/butir/<?php echo $buku[0]['id']; ?>"><i class="material-icons">description</i> Butir Borang</a></li>
-                <li><a href="<?php echo base_url();?>index.php/isian/<?php echo $butir[0]['id']; ?>"><i class="material-icons">description</i> Isian Butir</a></li>
+                <li><a href="<?php echo base_url();?>borang"><i class="material-icons">settings</i> Manage Borang</a></li>
+                <li><a href="<?php echo base_url();?>butir/<?php echo $buku[0]['id']; ?>"><i class="material-icons">description</i> Butir Borang</a></li>
+                <li><a href="<?php echo base_url();?>isian/<?php echo $butir[0]['id']; ?>"><i class="material-icons">description</i> Isian Butir</a></li>
                 <li class="active"><i class="material-icons">book</i> Lihat Isian Butir</li>
             </ol>
             </div>
@@ -144,6 +144,27 @@
                                     <p><?php echo $dataisian9[$i]['kolom4'] ?></p>
                                     <h3>e.  Upaya dan prestasi memperoleh dana hibah kompetitif:</h3>
                                     <p><?php echo $dataisian9[$i]['kolom5'] ?></p>
+                                 <?php
+                                 }
+                                 for($i=0;$i<count($dataisian26);$i++){
+                                 ?>
+                                    <h1 style="text-align: center;">STANDAR 4.</h1>
+                                    <h1 style="text-align: center;">SUMBERDAYA MANUSIA&nbsp;</h1>
+                                    <h3>4.1 Sistem Pengelolaan Sumber Daya Manusia</h3>
+                                    <p>Jelaskan sistem pengelolaan sumber daya manusia yang meliputi perencanaan seleksi/perekrutan, penempatan, pengembangan, retensi, dan pemberhentian dosen dan tenaga kependidikan untuk menjamin mutu penyelenggaraan program akademik, serta remunerasi, penghargaan, dan sanksi, termasuk informasi tentang ketersediaan pedoman tertulis dan konsistensi pelaksanaannya.&nbsp;</p>
+                                    <p><?php echo $dataisian26[$i]['kolom1'] ?></p>
+                                 <?php
+                                 }
+                                 for($i=0;$i<count($dataisian27);$i++){
+                                 ?>
+                                    <h3>4.2.1 Pedoman tertulis tentang sistem monitoring dan evaluasi, serta rekam jejak kinerja dosen dan tenaga kependidikan</h3>
+                                    <p><?php echo $dataisian27[$i]['kolom1'] ?></p>
+                                 <?php
+                                 }
+                                 for($i=0;$i<count($dataisian28);$i++){
+                                 ?>
+                                    <h3>4.2.1 Pelaksanaan monitoring dan evaluasi kinerja dosen di bidang pendidikan, penelitian, pelayanan/pengabdian kepada masyarakat</h3>
+                                    <p><?php echo $dataisian28[$i]['kolom1'] ?></p>
                                  <?php
                                  }
                             ?>

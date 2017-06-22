@@ -33,7 +33,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_up" method="POST" action="<?php echo base_url()?>index.php/Home/insert">
+                <form id="sign_up" method="POST" action="<?php echo base_url()?>Home/insert">
                     <div class="msg">Register a new Account</div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -96,7 +96,7 @@
                     <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SIGN UP</button>
 
                     <div class="m-t-25 m-b--5 align-center">
-                        <a href="<?php echo base_url();?>index.php/login">You already have a account?</a>
+                        <a href="<?php echo base_url();?>login">You already have a account?</a>
                     </div>
                 </form>
             </div>

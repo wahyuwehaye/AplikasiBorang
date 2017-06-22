@@ -336,7 +336,7 @@
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                             <li role="seperator" class="divider"></li>
-                            <li><a href="<?php echo base_url()?>index.php/Home/logOut"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a href="<?php echo base_url()?>Home/logOut"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -353,19 +353,19 @@
                         </a>
                     </li>
                     <li class="<?php echo ($active_menu=="borang") ? "active" :""; ?>">
-                        <a href="<?php echo base_url();?>index.php/borang">
+                        <a href="<?php echo base_url();?>borang">
                             <i class="material-icons">settings</i>
                             <span>Manage Borang</span>
                         </a>
                     </li>
                     <li class="<?php echo ($active_menu=="penilaian") ? "active" :""; ?>">
-                        <a href="<?php echo base_url();?>index.php/penilaian">
+                        <a href="<?php echo base_url();?>penilaian">
                             <i class="material-icons">assignment_turned_in</i>
                             <span>Penilaian</span>
                         </a>
                     </li>
                     <li class="<?php echo ($active_menu=="histori") ? "active" :""; ?>">
-                        <a href="<?php echo base_url();?>index.php/histori">
+                        <a href="<?php echo base_url();?>histori">
                             <i class="material-icons">history</i>
                             <span>History Activity</span>
                         </a>
@@ -660,7 +660,7 @@
                         </ul>
                     </li> -->
                     <li class="<?php echo ($active_menu=="changelogs") ? "active" :""; ?>">
-                        <a href="<?php echo base_url();?>index.php/changelogs">
+                        <a href="<?php echo base_url();?>changelogs">
                             <i class="material-icons">update</i>
                             <span>Changelogs</span>
                         </a>

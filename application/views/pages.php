@@ -27,7 +27,7 @@
         <div class="error-code">Welcome</div>
         <div class="error-message">Aplikasi Borang Universitas</div>
         <div class="button-place">
-            <a href="<?php echo base_url();?>index.php/login" class="btn btn-default btn-lg waves-effect">GO TO LOGIN PAGE</a>
+            <a href="<?php echo base_url();?>login" class="btn btn-default btn-lg waves-effect">GO TO LOGIN PAGE</a>
         </div>
     </div>
 
