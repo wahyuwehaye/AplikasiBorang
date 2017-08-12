@@ -1,6 +1,7 @@
 <?php
 
 class M_dokumen extends CI_Model {
+    var $table = 'dokumen';
 
         public function __construct()
         {
@@ -62,19 +63,19 @@ class M_dokumen extends CI_Model {
         {
                  $data = array(
                         'nama' => $this->input->post('nama'),
-						'filename'=>$this->input->post('fileExisting'),
+						// 'filename'=>$this->input->post('fileExisting'),
                         'pemilik' => $this->input->post('pemilik'),
-                        'hardcopy' => $this->input->post('hardcopy'),
-                        'priority'  => $this->input->post('prioritas'),
-                        'ket'  => $this->input->post('keterangan'),
-                        'jum'  => $this->input->post('jum'),
-                        'status'  => $this->input->post('status'),
-                        'progress'=> $this->input->post('progress'),
-                        'created_at'=> date('Y-m-d H:i:s'),
-						'flag'	=> $this->input->post('flag')
+                        // 'hardcopy' => $this->input->post('hardcopy'),
+                        // 'priority'  => $this->input->post('prioritas'),
+                        'ket'  => $this->input->post('ket'),
+                        // 'jum'  => $this->input->post('jum'),
+                        // 'status'  => $this->input->post('status'),
+                        // 'progress'=> $this->input->post('progress'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+						// 'flag'	=> $this->input->post('flag')
                 );
 
-                $this->db->update('dokumen', $data, array('id' => $this->input->post('id_dokumen')));
+                $this->db->update('dokumen', $data, array('id' => $this->input->post('id')));
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -83,6 +84,15 @@ class M_dokumen extends CI_Model {
                 );
 
                 $this->db->insert('log', $data);
+        }
+
+        public function get_by_id_hapus($id)
+        {
+                $this->db->from($this->table);
+                $this->db->where('id',$id);
+                $query = $this->db->get();
+
+                return $query->row();
         }
 
         public function update_column($data,$id){
@@ -137,10 +147,29 @@ class M_dokumen extends CI_Model {
 
         public function delete($column,$id){
             $this->db->delete('dokumen', array($column => $id));
+            $this->db->delete('document_version', array($column => $id));
+            $this->db->query('ALTER TABLE dokumen AUTO_INCREMENT 0');
+            $this->db->query('ALTER TABLE document_version AUTO_INCREMENT 0');
 
             $data = array(
                         'user'=> $_SESSION['name'],
-                        'action' => "Menghapus dokumen dengan ID".$id,
+                        'action' => "Menghapus dokumen dengan ID ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+            return $this->db->affected_rows();
+        }
+
+        public function deletedokall($column,$id){
+            $this->db->delete('dokumen', array($column => $id));
+            $this->db->delete('document_version', array('id_dokumen' => $id));
+            $this->db->query('ALTER TABLE dokumen AUTO_INCREMENT 0');
+            $this->db->query('ALTER TABLE document_version AUTO_INCREMENT 0');
+
+            $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menghapus dokumen dengan ID Butir ".$id,
                         'created_at'=> date('Y-m-d H:i:s')
                 );
 

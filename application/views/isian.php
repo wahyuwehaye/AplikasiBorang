@@ -133,7 +133,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian4kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -293,7 +293,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -382,7 +382,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -473,7 +473,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -524,7 +524,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -575,7 +575,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -626,7 +626,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -677,7 +677,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian12kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -878,7 +878,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian5kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -1000,6 +1000,379 @@
                         </form>
                             <?php
                                 }
+                        }elseif ($isiannya==10) {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian311">
+                        <input type="hidden" name="id311" id="id311" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian5kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
+                        </div>
+                        <h2 class="card-inside-title">Keberlanjutan&nbsp;
+                        <button type="button" onclick="info311()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <h2 class="card-inside-title">Upaya untuk peningkatan animo calon mahasiswa :</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Upaya peningkatan mutu manajemen :</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Upaya untuk peningkatan mutu lulusan :</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Upaya untuk pelaksanaan dan hasil kerjasama kemitraan :</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Upaya dan prestasi memperoleh dana hibah kompetitif :</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom5_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom5'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no311" id="version_no311" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at311" id="created_at311" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi311">
+                        <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Keberlanjutan&nbsp;
+                        <button type="button" onclick="info311()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <h2 class="card-inside-title">Upaya untuk peningkatan animo calon mahasiswa :</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Upaya peningkatan mutu manajemen :</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Upaya untuk peningkatan mutu lulusan :</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Upaya untuk pelaksanaan dan hasil kerjasama kemitraan :</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Upaya dan prestasi memperoleh dana hibah kompetitif :</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom5_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        }elseif ($isiannya==15) {
+                            // if (count($dataisian)>0) {
+                            // for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <!-- <form method="POST" action="<?php echo base_url()?>C_isian/updateisian313">
+                        <input type="hidden" name="id313" id="id313" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir313" id="id_butir313" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
+                        </div>
+                        <h2 class="card-inside-title">Pelaksanaan monitoring dan evaluasi kinerja dosen di bidang pendidikan, penelitian, pelayanan/pengabdian kepada masyarakat&nbsp;
+                        <button type="button" onclick="info313()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_313" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no313" id="version_no313" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at313" id="created_at313" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form> -->
+                        <?php 
+                                // }
+                                // }else{
+                            ?>
+                        <!-- Buat Table -->
+
+                        <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Kegiatan</th>
+                                    <th>Waktu Penyelenggaraan</th>
+                                    <th>Tingkat</th>
+                                    <th>Prestasi yang Dicapai</th>
+                                    <th width="5%">Action</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Kegiatan</th>
+                                    <th>Waktu Penyelenggaraan</th>
+                                    <th>Tingkat</th>
+                                    <th>Prestasi yang Dicapai</th>
+                                    <th width="5%">Action</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <?php
+                                    // foreach ($dataisian as $key) {
+                                    for($i=0;$i<count($dataisian);$i++){
+                                 ?>
+                                <tr>
+                                    <td><?php echo $i+1 ?> </td>
+                                    <td><?php echo $dataisian[$i]['kolom1'] ?> </td>
+                                    <td><?php echo $dataisian[$i]['kolom2'] ?> </td>
+                                    <td><?php echo $dataisian[$i]['kolom3'] ?> </td>
+                                    <td><?php echo $dataisian[$i]['kolom4'] ?> </td>
+                                    <td>
+                                        <div class="js-sweetalert">
+                                            <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/dataisian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
+                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
+                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a>&nbsp;
+                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateIsian1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">edit</i></a>&nbsp; -->
+                                            <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian4kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+
+                        <!-- tutup table -->
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi313">
+                        <input type="hidden" name="id_butir313" id="id_butir313" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Penghargaan atas prestasi mahasiswa di bidang nalar, bakat dan minat&nbsp;
+                        <button type="button" onclick="info313()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <h2 class="card-inside-title">Nama Kegiatan</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_313" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Waktu Penyelenggaraan</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_313" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Tingkat</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <!-- <div class="form-line">
+                                            <textarea name="kolom3_313" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div> -->
+                                        <select class="form-control show-tick" name="kolom3_313">
+                                            <option value="">-- Please select --</option>
+                                            <option value="lokal">Lokal/Wilayah</option>
+                                            <option value="nasional">Nasional</option>
+                                            <option value="internasional">Internasional</option>
+                                        </select>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Prestasi yang Dicapai</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_313" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                // }
+                        }elseif ($isiannya==24) {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian341">
+                        <input type="hidden" name="id341" id="id341" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir341" id="id_butir341" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
+                        </div>
+                        <h2 class="card-inside-title">Partisipasi alumni dalam mendukung pengembangan akademik program studi dalam bentuk: (1) Sumbangan dana (2) Sumbangan fasilitas (3) Keterlibatan dalam kegiatan akademik (4) Pengembangan jejaring (5) Penyediaan fasilitas untuk kegiatan akademik&nbsp;
+                        <button type="button" onclick="info341()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_341" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no341" id="version_no341" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at341" id="created_at341" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi341">
+                        <input type="hidden" name="id_butir341" id="id_butir341" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Partisipasi alumni dalam mendukung pengembangan akademik program studi dalam bentuk: (1) Sumbangan dana (2) Sumbangan fasilitas (3) Keterlibatan dalam kegiatan akademik (4) Pengembangan jejaring (5) Penyediaan fasilitas untuk kegiatan akademik&nbsp;
+                        <button type="button" onclick="info341()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_341" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        }elseif ($isiannya==25) {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian342">
+                        <input type="hidden" name="id342" id="id342" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir342" id="id_butir342" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
+                        </div>
+                        <h2 class="card-inside-title">Partisipasi lulusan dan alumni dalam mendukung pengembangan non-akademik program studi dalam bentuk: (1) Sumbangan dana (2) Sumbangan fasilitas (3) Keterlibatan dalam kegiatan non akademik (4) Pengembangan jejaring (5) Penyediaan fasilitas untuk kegiatan non akademik&nbsp;
+                        <button type="button" onclick="info342()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_342" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no342" id="version_no342" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at342" id="created_at342" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi342">
+                        <input type="hidden" name="id_butir342" id="id_butir342" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Partisipasi lulusan dan alumni dalam mendukung pengembangan non-akademik program studi dalam bentuk: (1) Sumbangan dana (2) Sumbangan fasilitas (3) Keterlibatan dalam kegiatan non akademik (4) Pengembangan jejaring (5) Penyediaan fasilitas untuk kegiatan non akademik&nbsp;
+                        <button type="button" onclick="info342()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_342" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
                         }elseif ($isiannya==26) {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
@@ -1011,7 +1384,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -1062,7 +1435,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -1113,7 +1486,7 @@
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">View Book Standar 1 : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
@@ -2140,14 +2513,16 @@
 
   function deleisi(x){
     var borang = "<?php echo $this->uri->segment(2, 0)?>";
-    if (borang==1) {
+    if ((borang==1)) {
         var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolom/"+x+"/"+borang;
-    } else if ((borang==2) || (borang==3) || (borang==4) || (borang==5) || (borang==6) || (borang==7) || (borang==26) || (borang==27) || (borang==28)){
+    } else if ((borang==2) || (borang==3) || (borang==4) || (borang==5) || (borang==6) || (borang==7) || (borang==24) || (borang==25) || (borang==26) || (borang==27) || (borang==28)){
         var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian1kolom/"+x+"/"+borang;
     } else if (borang==8){
         var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian12kolom/"+x+"/"+borang;
     } else if (borang==9){
         var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian5kolom/"+x+"/"+borang;
+    }else if(borang==15){
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolomsatupersatu/"+x+"/"+borang;
     }
     
         swal({
@@ -2223,6 +2598,30 @@
     swal({
         title: "Info <small>dari </small>Keberlanjutan",
         text: "Jelaskan upaya untuk menjamin keberlanjutan (sustainability) program studi ini, khususnya dalam hal berikut ini</b>",
+        html: true
+    });
+  }
+
+  function info313(){
+    swal({
+        title: "Info <small>dari </small>Penghargaan atas prestasi mahasiswa di bidang nalar, bakat dan minat",
+        text: "Sebutkan pencapaian prestasi/reputasi mahasiswa dalam tiga tahun terakhir di bidang akademik dan non-akademik (misalnya prestasi dalam penelitian dan lomba karya ilmiah, olahraga, dan seni).</b>",
+        html: true
+    });
+  }
+
+  function info341(){
+    swal({
+        title: "Info <small>dari </small>Partisipasi alumni dalam mendukung pengembangan akademik program studi dalam bentuk: (1) Sumbangan dana (2) Sumbangan fasilitas (3) Keterlibatan dalam kegiatan akademik (4) Pengembangan jejaring (5) Penyediaan fasilitas untuk kegiatan akademik",
+        text: "Jelaskan apakah lulusan program studi memiliki himpunan alumni.  Jika memiliki, jelaskan aktivitas dan hasil kegiatan dari himpunan alumni untuk kemajuan program studi dalam kegiatan akademik dan non akademik, meliputi sumbangan dana, sumbangan fasilitas, keterlibatan dalam kegiatan, pengembangan jejaring, dan penyediaan fasilitas.</b>",
+        html: true
+    });
+  }
+
+  function info342(){
+    swal({
+        title: "Info <small>dari </small>Partisipasi lulusan dan alumni dalam mendukung pengembangan non-akademik program studi dalam bentuk: (1) Sumbangan dana (2) Sumbangan fasilitas (3) Keterlibatan dalam kegiatan non akademik (4) Pengembangan jejaring (5) Penyediaan fasilitas untuk kegiatan non akademik",
+        text: "Jelaskan apakah lulusan program studi memiliki himpunan alumni.  Jika memiliki, jelaskan aktivitas dan hasil kegiatan dari himpunan alumni untuk kemajuan program studi dalam kegiatan akademik dan non akademik, meliputi sumbangan dana, sumbangan fasilitas, keterlibatan dalam kegiatan, pengembangan jejaring, dan penyediaan fasilitas.</b>",
         html: true
     });
   }

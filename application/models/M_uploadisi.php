@@ -1,6 +1,9 @@
 <?php
 
-class M_isian extends CI_Model {
+class M_uploadisi extends CI_Model {
+        var $table = 'uploadisian';
+        var $table1 = 'uploadisian_version';
+        var $table2 = 'log';
 
         public function __construct()
         {
@@ -10,37 +13,123 @@ class M_isian extends CI_Model {
                 $this->load->database();
         }
 
+        // Query baru buat upload
+
+        public function count_all()
+        {
+                $this->db->from($this->table);
+                return $this->db->count_all_results();
+        }
+
+        public function get_by_id($id)
+        {
+                $this->db->from($this->table);
+                $this->db->where('id',$id);
+                $query = $this->db->get();
+
+                return $query->row();
+        }
+
+        public function get_by_id_hapus($id)
+        {
+                $this->db->from($this->table);
+                $this->db->where('id_butir',$id);
+                $query = $this->db->get();
+
+                return $query->row();
+        }
+
+        public function save($data)
+        {
+                $this->db->insert($this->table, $data);
+                return $this->db->insert_id();
+        }
+
+        public function save1($data1)
+        {
+                $this->db->insert($this->table1, $data1);
+                return $this->db->insert_id();
+        }
+
+        public function save2($data2)
+        {
+                $this->db->insert($this->table2, $data2);
+                return $this->db->insert_id();
+        }
+
+        public function update($where, $data)
+        {
+                $this->db->update($this->table, $data, $where);
+                return $this->db->affected_rows();
+        }
+
+        public function delete_by_id($id)
+        {
+                $this->db->where('id', $id);
+                $this->db->delete($this->table);
+        }
+
+        public function deleteuploadisi($id)
+        {
+                $this->db->where('id_butir', $id);
+                $this->db->delete($this->table);
+        }
+
+        private function _do_upload()
+          {
+            $config['upload_path']          = 'uploads/isian/';
+            $config['allowed_types']        = 'pdf';
+            $config['max_size']             = 0; //set max size allowed in Kilobyte
+            $config['max_width']            = 0; // set max width image allowed
+            $config['max_height']           = 0; // set max height allowed
+            // $config['file_name']            = round(microtime(true) * 1000); //just milisecond timestamp fot unique name
+            $config['file_name']      = ($_FILES['filename']['name']);
+
+            $this->load->library('upload', $config);
+
+            if(!$this->upload->do_upload('isian')) //upload and validate
+            {
+              $data['inputerror'][] = 'isian';
+              $data['error_string'][] = 'Upload error: '.$this->upload->display_errors('',''); //show ajax error
+              $data['status'] = FALSE;
+              echo json_encode($data);
+              exit();
+            }
+            return $this->upload->data('file_name');
+          }
+
+        // Tutup Query baru upload
+
 // QUERY INSERT ISIAN
         public function insert_isian11()
         {
                 $data = array(
                         'id_butir' => $this->input->post('id_butir11'),
-                        'kolom1' => $this->input->post('kolom1_11'),
-                        'kolom2' => $this->input->post('kolom2_11'),
-                        'kolom3' => $this->input->post('kolom3_11'),
-                        'kolom4' => $this->input->post('kolom4_11'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
 
-                // $this->db->insert('isian_4kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                if(!empty($_FILES['isian']['name']))
+                {
+                        $upload = $this->_do_upload();
+                        $data['isian'] = $upload;
+                }
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir11'),
-                        'kolom1' => $this->input->post('kolom1_11'),
-                        'kolom2' => $this->input->post('kolom2_11'),
-                        'kolom3' => $this->input->post('kolom3_11'),
-                        'kolom4' => $this->input->post('kolom4_11'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
-                // $this->db->insert('isian_4kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                if(!empty($_FILES['isian']['name']))
+                {
+                        $upload = $this->_do_upload();
+                        $data['isian'] = $upload;
+                }
+                $this->db->insert('uploadisian_version', $data);
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -62,7 +151,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_1kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir11b'),
@@ -72,9 +161,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -96,7 +185,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_1kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir12'),
@@ -106,9 +195,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -130,7 +219,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_1kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir21'),
@@ -140,9 +229,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -164,7 +253,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_1kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir22'),
@@ -174,9 +263,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -198,7 +287,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_1kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir23'),
@@ -208,9 +297,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -232,7 +321,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_1kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir24'),
@@ -242,9 +331,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -277,7 +366,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_4kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir25'),
@@ -298,9 +387,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_4kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -326,7 +415,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_4kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir26'),
@@ -340,9 +429,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_4kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -367,7 +456,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_4kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir313'),
@@ -380,9 +469,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_4kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -404,7 +493,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_1kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir341'),
@@ -414,9 +503,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -438,7 +527,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_1kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir342'),
@@ -448,9 +537,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -472,7 +561,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_1kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir41'),
@@ -482,9 +571,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -506,7 +595,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_1kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir421'),
@@ -516,9 +605,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -540,7 +629,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_1kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir422'),
@@ -550,9 +639,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -575,7 +664,7 @@ class M_isian extends CI_Model {
                 );
 
                 // $this->db->insert('isian_2kolom', $data);
-                $this->db->insert('isian_16kolom', $data);
+                $this->db->insert('uploadisian', $data);
 
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir'),
@@ -586,9 +675,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_2kolom_version', $data);
-                $this->db->insert('isian_16kolom_version', $data);
-                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                $this->db->insert('uploadisian_version', $data);
+                // $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -609,15 +698,11 @@ class M_isian extends CI_Model {
             $new_version = $last_version + 1;
                  $data = array(
                         'id_butir' => $this->input->post('id_butir11'),
-                        'kolom1' => $this->input->post('kolom1_11'),
-                        'kolom2' => $this->input->post('kolom2_11'),
-                        'kolom3' => $this->input->post('kolom3_11'),
-                        'kolom4' => $this->input->post('kolom4_11'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_4kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id11')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id11')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir11'),
@@ -630,9 +715,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_4kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -654,7 +739,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id11b')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id11b')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir11b'),
@@ -664,9 +749,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -688,7 +773,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id12')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id12')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir12'),
@@ -698,9 +783,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -722,7 +807,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id21')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id21')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir21'),
@@ -732,9 +817,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -756,7 +841,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id22')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id22')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir22'),
@@ -766,9 +851,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -790,7 +875,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id23')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id23')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir23'),
@@ -800,9 +885,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -824,7 +909,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id24')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id24')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir24'),
@@ -834,9 +919,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -869,7 +954,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_4kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id25')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id25')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir25'),
@@ -890,9 +975,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_4kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -918,7 +1003,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_4kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id26')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id26')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir26'),
@@ -932,9 +1017,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_4kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -959,7 +1044,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_4kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id313')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id313')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir313'),
@@ -972,9 +1057,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_4kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -996,7 +1081,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id341')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id341')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir341'),
@@ -1006,9 +1091,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -1030,7 +1115,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id342')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id342')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir342'),
@@ -1040,9 +1125,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -1064,7 +1149,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id41')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id41')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir41'),
@@ -1074,9 +1159,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -1098,7 +1183,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id421')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id421')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir421'),
@@ -1108,9 +1193,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -1132,7 +1217,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id422')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id422')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir422'),
@@ -1142,9 +1227,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_1kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -1167,7 +1252,7 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->update('isian_2kolom', $data, array('id' => $this->input->post('id')));
-                 $this->db->update('isian_16kolom', $data, array('id' => $this->input->post('id')));
+                 $this->db->update('uploadisian', $data, array('id' => $this->input->post('id')));
 
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir'),
@@ -1178,9 +1263,9 @@ class M_isian extends CI_Model {
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
                 // $this->db->insert('isian_2kolom_version', $data);
-                 $this->db->insert('isian_16kolom_version', $data);
-                 $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+                 $this->db->insert('uploadisian_version', $data);
+                 $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
 
                 $data = array(
                         'user'=> $_SESSION['name'],
@@ -1196,67 +1281,91 @@ class M_isian extends CI_Model {
 
 // QUERY FIND ISIAN
         public function findallisian(){
-            $query = $this->db->get('isian_16kolom');
-            return $query->result();
+            $query = $this->db->get('uploadisian');
+            return $query->result_array();
         }
 
         public function findisian1kolom($column,$id){
               // $query = $this->db->get_where('isian_1kolom', array($column => $id));
-            $query = $this->db->get_where('isian_16kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
               return $query->result_array();
         }
 
         public function findisian1kolomversion($column,$id){
               // $query = $this->db->get_where('isian_1kolom_version', array($column => $id));
-            $query = $this->db->get_where('isian_16kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
               return $query->result_array();
         }
 
         public function findisian2kolom($column,$id){
               // $query = $this->db->get_where('isian_2kolom', array($column => $id));
-            $query = $this->db->get_where('isian_16kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
               return $query->result_array();
         }
 
         public function findisian2kolomversion($column,$id){
               // $query = $this->db->get_where('isian_2kolom_version', array($column => $id));
-            $query = $this->db->get_where('isian_16kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
               return $query->result_array();
         }
 
         public function findisian4kolom($column,$id){
               // $query = $this->db->get_where('isian_4kolom', array($column => $id));
-            $query = $this->db->get_where('isian_16kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
               return $query->result_array();
         }
 
         public function findisian4kolomversion($column,$id){
               // $query = $this->db->get_where('isian_4kolom_version', array($column => $id));
-            $query = $this->db->get_where('isian_16kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
               return $query->result_array();
         }
 
         public function findisian5kolom($column,$id){
               // $query = $this->db->get_where('isian_4kolom', array($column => $id));
-            $query = $this->db->get_where('isian_16kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
               return $query->result_array();
         }
 
         public function findisian5kolomversion($column,$id){
               // $query = $this->db->get_where('isian_4kolom_version', array($column => $id));
-            $query = $this->db->get_where('isian_16kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
               return $query->result_array();
         }
 
         public function findisian12kolom($column,$id){
               // $query = $this->db->get_where('isian_4kolom', array($column => $id));
-            $query = $this->db->get_where('isian_16kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
               return $query->result_array();
         }
 
         public function findisian12kolomversion($column,$id){
               // $query = $this->db->get_where('isian_4kolom_version', array($column => $id));
-            $query = $this->db->get_where('isian_16kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function finduploadisi($column,$id){
+              // $query = $this->db->get_where('isian_1kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function finduploadisiversion($column,$id){
+              // $query = $this->db->get_where('isian_1kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function finduploaddokumen($column,$id){
+              // $query = $this->db->get_where('isian_1kolom', array($column => $id));
+            $query = $this->db->get_where('dokumen', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function finduploaddokumenversion($column,$id){
+              // $query = $this->db->get_where('isian_1kolom', array($column => $id));
+            $query = $this->db->get_where('document_version', array($column => $id));
               return $query->result_array();
         }
 // TUTUP QUERY FIND ISIAN
@@ -1268,10 +1377,10 @@ class M_isian extends CI_Model {
             // $this->db->delete('isian_1kolom', array($column => $id));
             // $this->db->query('ALTER TABLE isian_1kolom AUTO_INCREMENT 0');
             // $this->db->query('ALTER TABLE isian_1kolom_version AUTO_INCREMENT 0');
-            $this->db->delete('isian_16kolom', array($column => $id));
-            $this->db->delete('isian_16kolom_version', array('id_kolom' => $id));
-            $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-            $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+            $this->db->delete('uploadisian', array($column => $id));
+            $this->db->delete('uploadisian_version', array('id_kolom' => $id));
+            $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
             $data = array(
                         'user'=> $_SESSION['name'],
                         'action' => "menghapus Isian dengan id : ".$id,
@@ -1286,10 +1395,10 @@ class M_isian extends CI_Model {
             // $this->db->delete('isian_2kolom', array($column => $id));
             // $this->db->query('ALTER TABLE isian_2kolom AUTO_INCREMENT 0');
             // $this->db->query('ALTER TABLE isian_2kolom_version AUTO_INCREMENT 0');
-            $this->db->delete('isian_16kolom', array($column => $id));
-            $this->db->delete('isian_16kolom_version', array('id_kolom' => $id));
-            $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-            $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+            $this->db->delete('uploadisian', array($column => $id));
+            $this->db->delete('uploadisian_version', array('id_kolom' => $id));
+            $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
             $data = array(
                         'user'=> $_SESSION['name'],
                         'action' => "menghapus Isian dengan id : ".$id,
@@ -1304,10 +1413,10 @@ class M_isian extends CI_Model {
             // $this->db->delete('isian_4kolom', array($column => $id));
             // $this->db->query('ALTER TABLE isian_4kolom AUTO_INCREMENT 0');
             // $this->db->query('ALTER TABLE isian_4kolom_version AUTO_INCREMENT 0');
-            $this->db->delete('isian_16kolom', array($column => $id));
-            $this->db->delete('isian_16kolom_version', array('id_kolom' => $id));
-            $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-            $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+            $this->db->delete('uploadisian', array($column => $id));
+            $this->db->delete('uploadisian_version', array('id_kolom' => $id));
+            $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
             $data = array(
                         'user'=> $_SESSION['name'],
                         'action' => "menghapus Isian dengan id : ".$id,
@@ -1322,10 +1431,10 @@ class M_isian extends CI_Model {
             // $this->db->delete('isian_4kolom', array($column => $id));
             // $this->db->query('ALTER TABLE isian_4kolom AUTO_INCREMENT 0');
             // $this->db->query('ALTER TABLE isian_4kolom_version AUTO_INCREMENT 0');
-            $this->db->delete('isian_16kolom', array($column => $id));
-            $this->db->delete('isian_16kolom_version', array('id_kolom' => $id));
-            $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-            $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+            $this->db->delete('uploadisian', array($column => $id));
+            $this->db->delete('uploadisian_version', array('id_kolom' => $id));
+            $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
             $data = array(
                         'user'=> $_SESSION['name'],
                         'action' => "menghapus Isian dengan id : ".$id,
@@ -1340,10 +1449,10 @@ class M_isian extends CI_Model {
             // $this->db->delete('isian_4kolom', array($column => $id));
             // $this->db->query('ALTER TABLE isian_4kolom AUTO_INCREMENT 0');
             // $this->db->query('ALTER TABLE isian_4kolom_version AUTO_INCREMENT 0');
-            $this->db->delete('isian_16kolom', array($column => $id));
-            $this->db->delete('isian_16kolom_version', array('id_kolom' => $id));
-            $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-            $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+            $this->db->delete('uploadisian', array($column => $id));
+            $this->db->delete('uploadisian_version', array('id_kolom' => $id));
+            $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
             $data = array(
                         'user'=> $_SESSION['name'],
                         'action' => "menghapus Isian dengan id : ".$id,
@@ -1358,10 +1467,28 @@ class M_isian extends CI_Model {
             // $this->db->delete('isian_4kolom', array($column => $id));
             // $this->db->query('ALTER TABLE isian_4kolom AUTO_INCREMENT 0');
             // $this->db->query('ALTER TABLE isian_4kolom_version AUTO_INCREMENT 0');
-            $this->db->delete('isian_16kolom', array($column => $id));
-            $this->db->delete('isian_16kolom_version', array('id' => $id));
-            $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
-            $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+            $this->db->delete('uploadisian', array($column => $id));
+            $this->db->delete('uploadisian_version', array('id' => $id));
+            $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 1');
+            $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "menghapus Isian dengan id : ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                    );
+            $this->db->insert('log', $data);
+            return $this->db->affected_rows();
+        }
+
+        public function deleteuploadisian($column,$id){
+
+            // $this->db->delete('isian_4kolom', array($column => $id));
+            // $this->db->query('ALTER TABLE isian_4kolom AUTO_INCREMENT 0');
+            // $this->db->query('ALTER TABLE isian_4kolom_version AUTO_INCREMENT 0');
+            $this->db->delete('uploadisian', array($column => $id));
+            $this->db->delete('uploadisian_version', array('id_kolom' => $id));
+            $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 0');
+            $this->db->query('ALTER TABLE uploadisian_version AUTO_INCREMENT 0');
             $data = array(
                         'user'=> $_SESSION['name'],
                         'action' => "menghapus Isian dengan id : ".$id,

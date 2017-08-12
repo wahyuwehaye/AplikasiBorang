@@ -71,6 +71,10 @@
     <!-- JQuery Nestable Css -->
     <link href="<?php echo base_url();?>assets/plugins/nestable/jquery-nestable.css" rel="stylesheet" />
 
+    <!-- Dropzone nya -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dropzone/dropzone.min.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dropzone/basic.min.css') ?>">
+
     <!-- Custom Css -->
     <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 

@@ -103,6 +103,25 @@ class C_dokumen extends CI_Controller {
 
 	}
 
+	public function destroydok($id,$butir){
+		// $id=$_POST['id'];
+        // $idbut=3;
+		$this->load->model('M_dokumen');
+		$uploadisi = $this->M_dokumen->get_by_id_hapus($id);
+		for ($i=0; $i<count($uploadisi); $i++){
+			if(file_exists('uploads/dokumen/'.$uploadisi->filename) && $uploadisi->filename)
+      		unlink('uploads/dokumen/'.$uploadisi->filename);
+		}
+		$result=$this->M_dokumen->delete('id',$id);
+		if($result > 0){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
+        // redirect('butir/'.$idbut);
+        redirect('uploadisi/'.$butir);
+	}
+
 	function delete_multiple(){
 		//$id=$_POST['id'];
 		$this->load->model('M_dokumen');
@@ -143,6 +162,15 @@ class C_dokumen extends CI_Controller {
 			}
 			closedir($handle);
 		}
+	}
+
+	public function updatedok(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_dokumen');
+       	$id=$_POST['id_butir'];
+        $this->M_dokumen->update_entry();
+		redirect('uploadisi/'.$_POST['id_butir']);
 	}
 
 	public function update(){

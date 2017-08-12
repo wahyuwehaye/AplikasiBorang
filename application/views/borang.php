@@ -45,7 +45,7 @@
                                     <th>Fakultas / Program Studi</th>
                                     <th>Tahun</th>
                                     <th>Buku</th>
-                                    <th>Action</th>
+                                    <th width="14%">Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -54,7 +54,7 @@
                                     <th>Fakultas / Program Studi</th>
                                     <th>Tahun</th>
                                     <th>Buku</th>
-                                    <th>Action</th>
+                                    <th width="14%">Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
