@@ -264,7 +264,7 @@ class C_penilaian extends CI_Controller {
         	$nilainya = ((40*$totalnya-10)/7);
         }
 
-        echo '<input type="text" name="311bnilai" id="311bnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ",", ".").'">
+        echo '<input type="text" name="311bnilai" id="311bnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
         ';
     }
 
@@ -301,7 +301,7 @@ class C_penilaian extends CI_Controller {
         	$nilainya = 4;
         }
 
-        echo '<input type="text" name="311cnilai" id="311cnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ",", ".").'">
+        echo '<input type="text" name="311cnilai" id="311cnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
         ';
     }
 
@@ -348,11 +348,97 @@ class C_penilaian extends CI_Controller {
         ';
     }
 
-    // public function nilaiborang($nil1,$nil2,$nil3,$nil4,$nil5,$nil6,$nil7,$nil8,$nil9,$nil10,$nil11,$nil12,$nil13){
-    public function nilaiborang($nil1,$nil2,$nil3,$nil4,$nil5,$nil6,$nil7,$nil8,$nil9,$nil10){
+    public function cekjumlah312($isi1){
 
-        // $totalnya = $nil1+$nil2+$nil3+$nil4+$nil5+$nil6+$nil7+$nil8+$nil9+$nil10+$nil11+$nil12+$nil13;
-        $totalnya = $nil1+$nil2+$nil3+$nil4+$nil5+$nil6+$nil7+$nil8+$nil9+$nil10;
+        $totalnya = (($isi1));
+
+        echo '<input type="text" name="312nilai" id="312nilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        ';
+    }
+
+    public function cekjumlah313($isi1){
+
+        $totalnya = (($isi1));
+
+        echo '<input type="text" name="313nilai" id="313nilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        ';
+    }
+
+    public function rasio314a($isi1,$isi2){
+
+        $totalnya = (($isi2/$isi1)*100);
+
+        echo '<input type="text" name="314arasio" id="314arasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        ';
+    }
+
+    public function cekjumlah314a($isi1,$isi2){
+
+        $totalnya = (($isi2/$isi1));
+        $nilainya = 0;
+        if ($totalnya>=50) {
+            $nilainya = 4;
+        }else {
+            $nilainya = ((1+6*$totalnya));
+        }
+
+        echo '<input type="text" name="314anilai" id="314anilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
+        ';
+    }
+
+    public function info314a($isi1,$isi2){
+
+        $totalnya = (($isi2/$isi1)*100);
+        $nilainya = 0;
+        if ($totalnya>=50) {
+            $nilainya = 4;
+        }else {
+            $nilainya = ((1+6*$totalnya));
+        }
+
+        echo '<textarea rows="4" name="" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">Presentase kelulusan tepat waktu (KWT) = '.number_format($isi2, 0, ".", ".").' / '.number_format($isi1, 0, ".", ".").' = '.number_format($totalnya, 2, ".", ".").'</textarea>
+        ';
+    }
+
+    public function rasio314b($isi1,$isi2,$isi3){
+
+        $totalnya = ((($isi1-$isi2-$isi3)/$isi1)*100);
+
+        echo '<input type="text" name="314brasio" id="314brasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        ';
+    }
+
+    public function cekjumlah314b($isi1,$isi2,$isi3){
+
+        $totalnya = ((($isi1-$isi2-$isi3)/$isi1)*100);
+        $nilainya = 0;
+        if ($totalnya<=6) {
+            $nilainya = 4;
+        }else {
+            $nilainya = ((180-400*$totalnya)/39);
+        }
+
+        echo '<input type="text" name="314bnilai" id="314bnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
+        ';
+    }
+
+    public function info314b($isi1,$isi2,$isi3){
+
+        $totalnya = ((($isi1-$isi2-$isi3)/$isi1)*100);
+        $nilainya = 0;
+        if ($totalnya<=6) {
+            $nilainya = 4;
+        }else {
+            $nilainya = ((180-400*$totalnya)/39);
+        }
+
+        echo '<textarea rows="4" name="" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">Presentase mahasiswa yang DO atau mengundurkan diri = '.number_format($isi1, 0, ".", ".").' - '.number_format($isi2, 0, ".", ".").' - '.number_format($isi3, 0, ".", ".").' = '.number_format($totalnya, 2, ".", ".").'</textarea>
+        ';
+    }
+
+    public function nilaiborang($nil1,$nil2,$nil3,$nil4,$nil5,$nil6,$nil7,$nil8,$nil9,$nil10,$nil11,$nil12,$nil13,$nil14,$nil15,$nil16,$nil17){
+
+        $totalnya = $nil1+$nil2+$nil3+$nil4+$nil5+$nil6+$nil7+$nil8+$nil9+$nil10+$nil11+$nil12+$nil13+$nil14+$nil15+$nil16+$nil17;
 
         echo '<p>'.number_format($totalnya, 2, ".", ".").'</p>
         ';

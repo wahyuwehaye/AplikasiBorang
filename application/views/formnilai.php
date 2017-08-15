@@ -636,6 +636,192 @@
                                         <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
                                     </tr> -->
                                 </tbody>
+            <!-- BUTIR 3.1.2 -->
+                                <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row">14</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[84]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[84]['bakumutu'] ?></td>
+                                        <td width="10%"><input type="text" name="312" id="312" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen sangat berat, melebihi 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen relatif berat, yaitu lebih dari 17 s.d. 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 15  s.d. 17 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 13  s.d. 15 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban mendekati ideal, yaitu kurang atau sama dengan 13 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai312"><input type="text" name="312nilai" id="312nilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+            <!-- BUTIR 3.1.3 -->
+                                <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row">15</th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[83]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[83]['bakumutu'] ?></td>
+                                        <td width="10%"><input type="text" name="313" id="313" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah313()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="12" name="" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Tidak ada bukti penghargaan. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat lokal PT.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat wilayah.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat nasional atau internasional.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai313"><input type="text" name="313nilai" id="313nilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+            <!-- BUTIR 3.1.4.a -->
+                                <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">16</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[82]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[82]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <td width="25%"><div id="info314a"><textarea rows="2" name="" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>d</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima pada TS-3 (4 tahun yang lalu)</td>
+                                        <td width="10%"><input type="text" name="314a1" id="314a1" placeholder="4,00" style="background: yellow;" class="form-control no-resize"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>f</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima pada TS-3 yang telah lulus.</td>
+                                        <td width="10%"><input type="text" name="314a2" id="314a2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314a()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">KTW (Kelulusan tepat waktu dalam persen, kisaran nilai 0 - 100.)</td>
+                                        <td width="10%"><div id="rasio314a"><input type="text" name="314arasio" id="314arasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai314a"><input type="text" name="314anilai" id="314anilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+            <!-- BUTIR 3.1.4.b -->
+                                <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row">17</th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[81]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[81]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <td width="25%"><div id="info314b"><textarea rows="2" name="" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>a</td>
+                                        <td width="45%">Jumlah mahasiswa baru yang diterima pada TS-6 (7 tahun yang lalu)</td>
+                                        <td width="10%"><input type="text" name="314b1" id="314b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>b</td>
+                                        <td width="45%">Jumlah mahasiswa baru yang diterima pada TS-6 yang masih terdaftar pada TS</td>
+                                        <td width="10%"><input type="text" name="314b2" id="314b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>f</td>
+                                        <td width="45%">Jumlah mahasiswa baru yang diterima pada TS-6 yang telah lulus</td>
+                                        <td width="10%"><input type="text" name="314b3" id="314b3" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314b()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">MDO (Persentase mahasiswa DO/Mengundurkan diri)</td>
+                                        <td width="10%"><div id="rasio314b"><input type="text" name="314brasio" id="314brasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai314b"><input type="text" name="314bnilai" id="314bnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -662,6 +848,21 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
+                        <div class="header js-sweetalert">
+                            <button onclick="akumulasi()" type="button" class="btn btn-primary waves-effect">Akumulasi Nilai</button>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="body table-responsive">
                             <table class="table table-hover">
                                 <!-- <thead>
@@ -896,20 +1097,6 @@
         function cekjumlah311d(){
           var isi1 = $("#311d1").val();
           var isi2 = $("#311d2").val();
-
-          var nil1 = $("#11askor").val();
-          var nil2 = $("#11bskor").val();
-          var nil3 = $("#12skor").val();
-          var nil4 = $("#21skor").val();
-          var nil5 = $("#22skor").val();
-          var nil6 = $("#23skor").val();
-          var nil7 = $("#24skor").val();
-          var nil8 = $("#25skor").val();
-          var nil9 = $("#26skor").val();
-          var nil10 = $("#311anilai").val();
-          var nil11 = $("#311bnilai").val();
-          var nil12 = $("#311cnilai").val();
-          var nil13 = $("#311dnilai").val();
                if(isi2 !=''){
                $.ajax({
                    url:"<?php echo base_url()?>index.php/C_penilaian/cekjumlah311d/"+isi1+"/"+isi2,
@@ -923,14 +1110,109 @@
                        $("#info311d").html(data);
                    }
                });
+               }
+        }
+
+        function cekjumlah312(){
+          var isi1 = $("#312").val();
+               if(isi1 !=''){
+               $.ajax({
+                   url:"<?php echo base_url()?>index.php/C_penilaian/cekjumlah312/"+isi1,
+                   success:function(data){
+                       $("#nilai312").html(data);
+                   }
+               });
+               }
+        }
+
+        function cekjumlah313(){
+          var isi1 = $("#313").val();
+               if(isi1 !=''){
+               $.ajax({
+                   url:"<?php echo base_url()?>index.php/C_penilaian/cekjumlah313/"+isi1,
+                   success:function(data){
+                       $("#nilai313").html(data);
+                   }
+               });
+               }
+        }
+
+        function cekjumlah314a(){
+          var isi1 = $("#314a1").val();
+          var isi2 = $("#314a2").val();
+               if(isi2 !=''){
+               $.ajax({
+                   url:"<?php echo base_url()?>index.php/C_penilaian/rasio314a/"+isi1+"/"+isi2,
+                   success:function(data){
+                       $("#rasio314a").html(data);
+                   }
+               });
+               $.ajax({
+                   url:"<?php echo base_url()?>index.php/C_penilaian/cekjumlah314a/"+isi1+"/"+isi2,
+                   success:function(data){
+                       $("#nilai314a").html(data);
+                   }
+               });
+               $.ajax({
+                   url:"<?php echo base_url()?>index.php/C_penilaian/info314a/"+isi1+"/"+isi2,
+                   success:function(data){
+                       $("#info314a").html(data);
+                   }
+               });
+               }
+        }
+
+        function cekjumlah314b(){
+          var isi1 = $("#314b1").val();
+          var isi2 = $("#314b2").val();
+          var isi3 = $("#314b3").val();
+               if(isi3 !=''){
+               $.ajax({
+                   url:"<?php echo base_url()?>index.php/C_penilaian/rasio314b/"+isi1+"/"+isi2+"/"+isi3,
+                   success:function(data){
+                       $("#rasio314b").html(data);
+                   }
+               });
+               $.ajax({
+                   url:"<?php echo base_url()?>index.php/C_penilaian/cekjumlah314b/"+isi1+"/"+isi2+"/"+isi3,
+                   success:function(data){
+                       $("#nilai314b").html(data);
+                   }
+               });
+               $.ajax({
+                   url:"<?php echo base_url()?>index.php/C_penilaian/info314b/"+isi1+"/"+isi2+"/"+isi3,
+                   success:function(data){
+                       $("#info314b").html(data);
+                   }
+               });
+               }
+        }
+
+        function akumulasi(){
+          var nil1 = $("#11askor").val();
+          var nil2 = $("#11bskor").val();
+          var nil3 = $("#12skor").val();
+          var nil4 = $("#21skor").val();
+          var nil5 = $("#22skor").val();
+          var nil6 = $("#23skor").val();
+          var nil7 = $("#24skor").val();
+          var nil8 = $("#25skor").val();
+          var nil9 = $("#26skor").val();
+          var nil10 = $("#311anilai").val();
+          var nil11 = $("#311bnilai").val();
+          var nil12 = $("#311cnilai").val();
+          var nil13 = $("#311dnilai").val();
+          var nil14 = $("#312nilai").val();
+          var nil15 = $("#313nilai").val();
+          var nil16 = $("#314anilai").val();
+          var nil17 = $("#314bnilai").val();
                $.ajax({
                    // url:"<?php echo base_url()?>index.php/C_penilaian/nilaiborang/"+nil1+"/"+nil2+"/"+nil3+"/"+nil4+"/"+nil5+"/"+nil6+"/"+nil7+"/"+nil8+"/"+nil9+"/"+nil10+"/"+nil11+"/"+nil12+"/"+nil13,
-                   url:"<?php echo base_url()?>index.php/C_penilaian/nilaiborang/"+nil1+"/"+nil2+"/"+nil3+"/"+nil4+"/"+nil5+"/"+nil6+"/"+nil7+"/"+nil8+"/"+nil9+"/"+nil10,
+                   url:"<?php echo base_url()?>index.php/C_penilaian/nilaiborang/"+nil1+"/"+nil2+"/"+nil3+"/"+nil4+"/"+nil5+"/"+nil6+"/"+nil7+"/"+nil8+"/"+nil9+"/"+nil10+"/"+nil11+"/"+nil12+"/"+nil13+"/"+nil14+"/"+nil15+"/"+nil16+"/"+nil17,
                    success:function(data){
                        $("#nilaiborang").html(data);
                    }
                });
-               }
         }
     </script>
 
