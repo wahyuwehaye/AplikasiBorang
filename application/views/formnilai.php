@@ -779,43 +779,112 @@
                                         <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
                                     </tr> -->
                                 </tbody>
-            <!-- BUTIR 3.1.4.b -->
+            <!-- BUTIR 3.2.1.a -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row">17</th>
-                                        <td width="5%" rowspan="7"><?php echo $butir[81]['butir'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row">17</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[81]['butir'] ?></td>
                                         <td colspan="2"><?php echo $butir[81]['bakumutu'] ?></td>
+                                        <td width="10%"><input type="text" name="321a" id="321a" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah321a()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
                                         <td width="10%"></td>
                                         <td></td>
-                                        <td width="25%"><div id="info314b"><textarea rows="2" name="" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></div></td>
                                     </tr>
                                     <tr>
-                                        <td>a</td>
-                                        <td width="45%">Jumlah mahasiswa baru yang diterima pada TS-6 (7 tahun yang lalu)</td>
-                                        <td width="10%"><input type="text" name="314b1" id="314b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="5"><textarea rows="8" name="" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td>b</td>
-                                        <td width="45%">Jumlah mahasiswa baru yang diterima pada TS-6 yang masih terdaftar pada TS</td>
-                                        <td width="10%"><input type="text" name="314b2" id="314b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize"></td>
+                                        <td>0</td>
+                                        <td width="45%">Kurang dari 2 unit pelayanan. </td>
+                                        <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td>f</td>
-                                        <td width="45%">Jumlah mahasiswa baru yang diterima pada TS-6 yang telah lulus</td>
-                                        <td width="10%"><input type="text" name="314b3" id="314b3" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314b()"></td>
+                                        <td>1</td>
+                                        <td width="45%">Ada 2 jenis unit pelayanan. </td>
+                                        <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">MDO (Persentase mahasiswa DO/Mengundurkan diri)</td>
-                                        <td width="10%"><div id="rasio314b"><input type="text" name="314brasio" id="314brasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td>2</td>
+                                        <td width="45%">Ada jenis layanan nomor 1 sampai dengan nomor 2.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada jenis layanan nomor 1 sampai dengan nomor 3.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada semua (5 jenis) pelayanan mahasiswa yang dapat diakses. </td>
+                                        <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai314b"><input type="text" name="314bnilai" id="314bnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai321a"><input type="text" name="321anilai" id="321anilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+            <!-- BUTIR 3.2.1.b -->
+                                <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row">18</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[80]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[80]['bakumutu'] ?></td>
+                                        <td width="10%"><input type="text" name="321b" id="321b" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah321b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Kurang dari 2 unit pelayanan. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Ada 2 jenis unit pelayanan. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada jenis layanan nomor 1 sampai dengan nomor 2.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada jenis layanan nomor 1 sampai dengan nomor 3.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada semua (5 jenis) pelayanan mahasiswa yang dapat diakses. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai321b"><input type="text" name="321bnilai" id="321bnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <!-- <tr>
@@ -1162,27 +1231,25 @@
                }
         }
 
-        function cekjumlah314b(){
-          var isi1 = $("#314b1").val();
-          var isi2 = $("#314b2").val();
-          var isi3 = $("#314b3").val();
-               if(isi3 !=''){
+        function cekjumlah321a(){
+          var isi1 = $("#321a").val();
+               if(isi1 !=''){
                $.ajax({
-                   url:"<?php echo base_url()?>index.php/C_penilaian/rasio314b/"+isi1+"/"+isi2+"/"+isi3,
+                   url:"<?php echo base_url()?>index.php/C_penilaian/cekjumlah321a/"+isi1,
                    success:function(data){
-                       $("#rasio314b").html(data);
+                       $("#nilai321a").html(data);
                    }
                });
+               }
+        }
+
+        function cekjumlah321b(){
+          var isi1 = $("#321b").val();
+               if(isi1 !=''){
                $.ajax({
-                   url:"<?php echo base_url()?>index.php/C_penilaian/cekjumlah314b/"+isi1+"/"+isi2+"/"+isi3,
+                   url:"<?php echo base_url()?>index.php/C_penilaian/cekjumlah321b/"+isi1,
                    success:function(data){
-                       $("#nilai314b").html(data);
-                   }
-               });
-               $.ajax({
-                   url:"<?php echo base_url()?>index.php/C_penilaian/info314b/"+isi1+"/"+isi2+"/"+isi3,
-                   success:function(data){
-                       $("#info314b").html(data);
+                       $("#nilai321b").html(data);
                    }
                });
                }
@@ -1205,10 +1272,11 @@
           var nil14 = $("#312nilai").val();
           var nil15 = $("#313nilai").val();
           var nil16 = $("#314anilai").val();
-          var nil17 = $("#314bnilai").val();
+          var nil17 = $("#321anilai").val();
+          var nil18 = $("#321bnilai").val();
                $.ajax({
                    // url:"<?php echo base_url()?>index.php/C_penilaian/nilaiborang/"+nil1+"/"+nil2+"/"+nil3+"/"+nil4+"/"+nil5+"/"+nil6+"/"+nil7+"/"+nil8+"/"+nil9+"/"+nil10+"/"+nil11+"/"+nil12+"/"+nil13,
-                   url:"<?php echo base_url()?>index.php/C_penilaian/nilaiborang/"+nil1+"/"+nil2+"/"+nil3+"/"+nil4+"/"+nil5+"/"+nil6+"/"+nil7+"/"+nil8+"/"+nil9+"/"+nil10+"/"+nil11+"/"+nil12+"/"+nil13+"/"+nil14+"/"+nil15+"/"+nil16+"/"+nil17,
+                   url:"<?php echo base_url()?>index.php/C_penilaian/nilaiborang/"+nil1+"/"+nil2+"/"+nil3+"/"+nil4+"/"+nil5+"/"+nil6+"/"+nil7+"/"+nil8+"/"+nil9+"/"+nil10+"/"+nil11+"/"+nil12+"/"+nil13+"/"+nil14+"/"+nil15+"/"+nil16+"/"+nil17+"/"+nil18,
                    success:function(data){
                        $("#nilaiborang").html(data);
                    }
