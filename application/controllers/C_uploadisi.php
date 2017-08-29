@@ -181,6 +181,7 @@ class C_uploadisi extends CI_Controller {
             'updated_at'=> date('Y-m-d H:i:s'),
             );
           $this->db->insert('uploadisian', $data);
+          // 
 
           // membuat versi isian
           $data1 = array(

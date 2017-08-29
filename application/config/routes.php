@@ -63,6 +63,7 @@ $route['formnilai/:num'] = 'C_penilaian/formnilai';
 $route['histori'] = 'Home/histori';
 $route['editor'] = 'Home/editor';
 $route['butir/:num'] = 'C_butir';
+$route['uploadexcel/:num'] = 'C_uploadexcel';
 $route['dokumen/:num'] = 'C_dokumen';
 $route['isian/:num'] = 'C_isian';
 $route['uploadisi/:num'] = 'C_uploadisi';

@@ -45,7 +45,7 @@
                                     <th>Fakultas / Program Studi</th>
                                     <th>Tahun</th>
                                     <th>Buku</th>
-                                    <th width="14%">Action</th>
+                                    <th width="15%">Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -54,7 +54,7 @@
                                     <th>Fakultas / Program Studi</th>
                                     <th>Tahun</th>
                                     <th>Buku</th>
-                                    <th width="14%">Action</th>
+                                    <th width="15%">Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -68,6 +68,7 @@
                                     <td><?php echo $key->buku ?> </td>
                                     <td>
                                         <div class="js-sweetalert">
+                                            <a type="button" data-color="purple" class="btn bg-teal waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Input dari Excel" href="<?php echo base_url();?>uploadexcel/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">input</i></a>&nbsp;
                                             <a type="button" data-color="purple" class="btn bg-purple waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Detail" href="<?php echo base_url();?>butir/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">description</i></a>&nbsp;
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateBorang" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">edit</i></a>&nbsp;
                                             <a id="del" onclick="dele(<?php echo $key->id;?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_borang/destroy/'.$key->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">delete_forever</i></a>
