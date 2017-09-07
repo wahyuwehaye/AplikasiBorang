@@ -48,7 +48,7 @@ class M_uploadexcel extends CI_Model {
         $worksheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
         $numRows = count($worksheet);
 
-        for ($i=1; $i < ($numRows+1) ; $i++) { 
+        for ($i=2; $i < ($numRows+1) ; $i++) { 
             // // Create at
             // $tgl_asli = str_replace('/', '-', $worksheet[$i]['E']);
             // $exp_tgl_asli = explode('-', $tgl_asli);
@@ -74,6 +74,97 @@ class M_uploadexcel extends CI_Model {
             $this->db->insert('uploadisian', $ins);
         }
     }
+
+    // QUERY FIND ISIAN
+        public function findallisian(){
+            $query = $this->db->get('uploadisian');
+            return $query->result_array();
+        }
+
+        public function findisian1kolom($column,$id){
+              // $query = $this->db->get_where('isian_1kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findisian1kolomversion($column,$id){
+              // $query = $this->db->get_where('isian_1kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findisian2kolom($column,$id){
+              // $query = $this->db->get_where('isian_2kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findisian2kolomversion($column,$id){
+              // $query = $this->db->get_where('isian_2kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findisian4kolom($column,$id){
+              // $query = $this->db->get_where('isian_4kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findisian4kolomversion($column,$id){
+              // $query = $this->db->get_where('isian_4kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findisian5kolom($column,$id){
+              // $query = $this->db->get_where('isian_4kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findisian5kolomversion($column,$id){
+              // $query = $this->db->get_where('isian_4kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findisian12kolom($column,$id){
+              // $query = $this->db->get_where('isian_4kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findisian12kolomversion($column,$id){
+              // $query = $this->db->get_where('isian_4kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function finduploadisi($column,$id){
+              // $query = $this->db->get_where('isian_1kolom', array($column => $id));
+            $query = $this->db->get_where('uploadisian', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function finduploadisiversion($column,$id){
+              // $query = $this->db->get_where('isian_1kolom_version', array($column => $id));
+            $query = $this->db->get_where('uploadisian_version', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function finduploaddokumen($column,$id){
+              // $query = $this->db->get_where('isian_1kolom', array($column => $id));
+            $query = $this->db->get_where('dokumen', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function finduploaddokumenversion($column,$id){
+              // $query = $this->db->get_where('isian_1kolom', array($column => $id));
+            $query = $this->db->get_where('document_version', array($column => $id));
+              return $query->result_array();
+        }
+// TUTUP QUERY FIND ISIAN
 
 }
 ?>

@@ -133,7 +133,7 @@ class C_uploadexcel extends CI_Controller {
             $filename = $upload_data['file_name'];
             $this->M_uploadexcel->upload_data($filename);
             unlink('./dataexcel/uploads/'.$filename);
-            redirect('butir/3','refresh');
+            redirect('viewbookexcel/3','refresh');
 		}
 	}
 
@@ -186,4 +186,25 @@ class C_uploadexcel extends CI_Controller {
             $objWriter->save("php://output");
  
         }
+
+    public function viewbookexcel(){
+		$this->load->model('M_borang');
+		$this->load->model('M_butir');
+		$this->load->model('M_uploadexcel');
+		$this->load->library('form_validation');
+
+		$id=$this->uri->segment(2, 0);
+		$data['active_menu']='borang';
+		$this->load->view('template/header',$data);
+		$data['butir']=$this->M_butir->find('id',$id);
+		$data['buku']=$this->M_borang->find('id',$data['butir'][0]['id_borang']);
+		// $data['isian']=$this->M_uploadexcel->find('id_butir',$id);
+		// $data['dataisian']=$this->M_uploadexcel->finduploadisi('id_butir',$id);
+	 //    $data['dataisianversion']=$this->M_uploadexcel->finduploadisiversion('id_kolom',$id);
+	 //    $data['datadokumen']=$this->M_uploadexcel->finduploaddokumen('id_butir',$id);
+	 //    $data['datadokumenversion']=$this->M_uploadexcel->finduploaddokumenversion('id_dokumen',$id);
+	    $data['getalldata']=$this->M_uploadexcel->findallisian();
+		$this->load->view('template/header',$data);
+		$this->load->view('viewbookexcel',$data);
+	}
 }
