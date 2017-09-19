@@ -67,6 +67,7 @@ $route['uploadexcel/:num'] = 'C_uploadexcel';
 $route['dokumen/:num'] = 'C_dokumen';
 $route['isian/:num'] = 'C_isian';
 $route['uploadisi/:num'] = 'C_uploadisi';
+$route['uploaddokumen/:num'] = 'C_uploadisi';
 $route['viewbookbutir/:num'] = 'C_isian/viewbookbutir';
 $route['viewbook/:num'] = 'C_uploadisi/viewbook';
 $route['viewbookexcel/:num'] = 'C_uploadexcel/viewbookexcel';
