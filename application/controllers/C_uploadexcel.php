@@ -42,6 +42,7 @@ class C_uploadexcel extends CI_Controller {
     		$this->load->view('template/header',$data);
 			$data['buku']=$this->M_borang->find('id',$id);
 			$data['butir']=$this->M_uploadexcel->find('id_borang',$id);
+			$data['dataisian']=$this->M_uploadexcel->finduploadisi('id_butir',$id);
 
 			// formnya
 			$data['judul_besar'] = 'PHPExcel';
@@ -133,7 +134,7 @@ class C_uploadexcel extends CI_Controller {
             $filename = $upload_data['file_name'];
             $this->M_uploadexcel->upload_data($filename);
             unlink('./dataexcel/uploads/'.$filename);
-            redirect('viewbookexcel/3','refresh');
+            redirect('uploadexcel/3','refresh');
 		}
 	}
 
@@ -193,6 +194,7 @@ class C_uploadexcel extends CI_Controller {
 		$this->load->model('M_uploadexcel');
 		$this->load->library('form_validation');
 
+		$id_butir=$this->uri->segment(2, 0);
 		$id=$this->uri->segment(2, 0);
 		$data['active_menu']='borang';
 		$this->load->view('template/header',$data);
@@ -204,7 +206,22 @@ class C_uploadexcel extends CI_Controller {
 	 //    $data['datadokumen']=$this->M_uploadexcel->finduploaddokumen('id_butir',$id);
 	 //    $data['datadokumenversion']=$this->M_uploadexcel->finduploaddokumenversion('id_dokumen',$id);
 	    $data['getalldata']=$this->M_uploadexcel->findallisian();
+	    $data['getallbutir']=$this->M_uploadexcel->findallbutir();
 		$this->load->view('template/header',$data);
 		$this->load->view('viewbookexcel',$data);
 	}
+
+	// QUERY DELETE ISIAN
+	public function destroybuku($id,$borang){
+	$this->load->model('M_uploadexcel');
+    $result=$this->M_uploadexcel->deletedokall('version_no',$id);
+		if($result > 0){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
+        // redirect('butir/'.$idbut);
+        redirect('viewbookexcel/'.$borang);
+	}
+// TUTUP QUERY DELETE ISIAN
 }

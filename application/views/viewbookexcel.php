@@ -1,3 +1,7 @@
+<?php
+  $CI =& get_instance();
+  // $CI->load->model('M_uploadecxel');
+?>
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
@@ -41,13 +45,31 @@
                     <div class="card">
                         <div class="body">
                             <?php
-                            for($i=0;$i<count($getalldata);$i++){
+                            if (count($getalldata)>0) {
                                 ?>
-                                <div>
-                                    <p><?php echo $getalldata[$i]['isian']; ?></p>
-                                </div>
+                                    <div>
+                                        <h2 class="card-inside-title">Delete Buku : <a id="del" onclick="deleisi()" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Delete" href="javascript:void(0)"><i class="material-icons">delete_forever</i></a></h2>
+                                    </div>
+                                <?php
+                                for($i=0;$i<count($getalldata);$i++){
+                                    // $query = $CI->db->query("SELECT butir FROM butir WHERE id IN (SELECT id_butir FROM uploadisian WHERE id_butir = '".$getalldata[$i]['id_butir']."')");
+                                    // $query = $CI->db->query("SELECT butir FROM butir WHERE id IN (SELECT id_butir FROM uploadisian WHERE id_butir = 1)");
+                                    ?>
+                                    <div>
+                                        <!-- <b><?php echo $query; ?></b> -->
+                                        <b><?php echo $getallbutir[$i]['butir']; ?> <?php echo $getallbutir[$i]['bakumutu']; ?></b>
+                                        <p><?php echo $getalldata[$i]['isian']; ?></p>
+                                    </div>
+                                    <?php
+                                }
+                            } else{
+                                ?>
+                                    <div>
+                                        <p>Belum ada Data</p>
+                                    </div>
                                 <?php
                             }
+                            
                             ?>
                         </div>
                     </div>
@@ -72,6 +94,8 @@
     <!-- Waves Effect Plugin Js -->
     <script src="<?php echo base_url();?>assets/plugins/node-waves/waves.js"></script>
 
+    <!-- Sweet Alert Plugin Js -->
+    <script src="<?php echo base_url();?>assets/plugins/sweetalert/sweetalert.min.js"></script>
 
     <!-- TinyMCE -->
     <script src="<?php echo base_url();?>assets/plugins/tinymce/tinymce.js"></script>
@@ -103,6 +127,31 @@
     tinymce.suffix = ".min";
     tinyMCE.baseURL = '<?php echo base_url();?>assets/plugins/tinymce';
 });
+
+    function deleisi(){
+    var borang = "<?php echo $this->uri->segment(2, 0)?>";
+    var delete_url = "<?php echo base_url(); ?>index.php/C_uploadexcel/destroybuku/"+1+"/"+borang;
+    
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                window.location.href = delete_url;
+
+            } else {
+                swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+        });
+    }
     </script>
 </body>
 

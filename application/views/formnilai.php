@@ -947,7 +947,7 @@
                                         <th scope="row">Borang Program Studi</th>
                                         <td><div id="nilaiborang"><p>0</p></div></td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <th scope="row">Evaluasi Diri</th>
                                         <td><div id="nilaied">0</div></td>
                                     </tr>
@@ -962,7 +962,7 @@
                                     <tr>
                                         <th scope="row">Hasil Asesmen Kecukupan</th>
                                         <td><div id="nilaiasesmen">0</div></td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

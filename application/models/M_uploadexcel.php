@@ -67,8 +67,8 @@ class M_uploadexcel extends CI_Model {
                     "version_no"        => $worksheet[$i]["D"],
                     // "created_at"        => $tgl_sql,
                     // "updated_at"        => $tgl_sql1
-                    "created_at"        => $worksheet[$i]["E"],
-                    "updated_at"        => $worksheet[$i]["F"]
+                    // "created_at"        => $worksheet[$i]["E"],
+                    // "updated_at"        => $worksheet[$i]["F"]
                    );
 
             $this->db->insert('uploadisian', $ins);
@@ -78,6 +78,11 @@ class M_uploadexcel extends CI_Model {
     // QUERY FIND ISIAN
         public function findallisian(){
             $query = $this->db->get('uploadisian');
+            return $query->result_array();
+        }
+
+        public function findallbutir(){
+            $query = $this->db->get('butir');
             return $query->result_array();
         }
 
@@ -166,5 +171,18 @@ class M_uploadexcel extends CI_Model {
         }
 // TUTUP QUERY FIND ISIAN
 
+        public function deletedokall($column,$id){
+            $this->db->delete('uploadisian', array($column => $id));
+            $this->db->query('ALTER TABLE uploadisian AUTO_INCREMENT 0');
+
+            $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menghapus uploadisian dengan ID Butir ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+            return $this->db->affected_rows();
+        }
 }
 ?>

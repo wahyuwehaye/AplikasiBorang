@@ -26,10 +26,24 @@
                         </ul>
                     </div>
                     <div class="body">
-                      <div>
-                        <?php echo @$pesan; ?>
-                        <?php echo $output; ?>
-                      </div>
+                        <?php
+                            if (count($dataisian)>0) {
+                                $id=$this->uri->segment(2, 0);
+                                ?>
+                                    <div>
+                                        <b>Data Sudah Di Upload</b></br>
+                                        <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" href="<?php echo base_url();?>viewbookexcel/<?php echo $id; ?>"><b>Lihat Buku Borang</b></a>
+                                    </div>
+                                <?php
+                            } else {
+                                ?>
+                                    <div>
+                                       <?php echo @$pesan; ?>
+                                       <?php echo $output; ?>
+                                    </div>
+                                <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
