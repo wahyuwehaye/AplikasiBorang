@@ -356,6 +356,9 @@
                             <span>Home</span>
                         </a>
                     </li>
+                    <?php
+                    if($_SESSION['role']=="Admin"){
+                        ?>
                     <li class="<?php echo ($active_menu=="borang") ? "active" :""; ?>">
                         <a href="<?php echo base_url();?>borang">
                             <i class="material-icons">settings</i>
@@ -368,6 +371,27 @@
                             <span>Penilaian</span>
                         </a>
                     </li>
+                        <?php
+                    }else if ($_SESSION['role']=="Kaprodi") {
+                        ?>
+                     <li class="<?php echo ($active_menu=="borang") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>borang">
+                            <i class="material-icons">settings</i>
+                            <span>Manage Borang</span>
+                        </a>
+                    </li>
+                        <?php
+                    }else if ($_SESSION['role']=="Assessor") {
+                        ?>
+                    <li class="<?php echo ($active_menu=="penilaian") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>penilaian">
+                            <i class="material-icons">assignment_turned_in</i>
+                            <span>Penilaian</span>
+                        </a>
+                    </li>
+                        <?php
+                    }
+                    ?>
                     <li class="<?php echo ($active_menu=="histori") ? "active" :""; ?>">
                         <a href="<?php echo base_url();?>histori">
                             <i class="material-icons">history</i>

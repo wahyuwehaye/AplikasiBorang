@@ -141,6 +141,7 @@ class Home extends CI_Controller {
 						'logged_in' => TRUE,
 						'name'		=> $sessionData[0]['name'],
 						'email'		=> $sessionData[0]['email'],
+						'role'		=> $sessionData[0]['role'],
 						'id_session'=> $sessionData[0]['id']
 					);
 

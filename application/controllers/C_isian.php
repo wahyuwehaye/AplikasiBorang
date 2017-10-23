@@ -117,6 +117,58 @@ class C_isian extends CI_Controller {
 		$this->load->view('viewbookbutir');
 	}
 
+  public function bukuborang(){
+    $this->load->model('M_borang');
+    $this->load->model('M_butir');
+    $this->load->model('M_isian');
+    $this->load->library('form_validation');
+
+    $id=$this->uri->segment(2, 0);
+    $data['active_menu']='penilaian';
+    $this->load->view('template/header',$data);
+    $data['butir']=$this->M_butir->find('id',$id);
+    $data['buku']=$this->M_borang->find('id',$data['butir'][0]['id_borang']);
+    $data['isian']=$this->M_isian->find('id_butir',$id);
+    // if ($id==1) {
+      $data['dataisian1']=$this->M_isian->findisian4kolom('id_butir',1);
+      $data['dataisianversion1']=$this->M_isian->findisian4kolomversion('id_kolom',1);
+    // }elseif ($id==2) {
+      $data['dataisian2']=$this->M_isian->findisian1kolom('id_butir',2);
+      $data['dataisianversion2']=$this->M_isian->findisian1kolomversion('id_kolom',2);
+    // }elseif ($id==3) {
+      $data['dataisian3']=$this->M_isian->findisian1kolom('id_butir',3);
+      $data['dataisianversion3']=$this->M_isian->findisian1kolomversion('id_kolom',3);
+    // }
+    $data['dataisian4']=$this->M_isian->findisian1kolom('id_butir',4);
+    $data['dataisianversion4']=$this->M_isian->findisian1kolomversion('id_kolom',4);
+    $data['dataisian5']=$this->M_isian->findisian1kolom('id_butir',5);
+    $data['dataisianversion5']=$this->M_isian->findisian1kolomversion('id_kolom',5);
+    $data['dataisian6']=$this->M_isian->findisian1kolom('id_butir',6);
+    $data['dataisianversion6']=$this->M_isian->findisian1kolomversion('id_kolom',6);
+    $data['dataisian7']=$this->M_isian->findisian1kolom('id_butir',7);
+    $data['dataisianversion7']=$this->M_isian->findisian1kolomversion('id_kolom',7);
+    $data['dataisian8']=$this->M_isian->findisian12kolom('id_butir',8);
+    $data['dataisianversion8']=$this->M_isian->findisian12kolomversion('id_kolom',8);
+    $data['dataisian9']=$this->M_isian->findisian5kolom('id_butir',9);
+    $data['dataisianversion9']=$this->M_isian->findisian5kolomversion('id_kolom',9);
+    $data['dataisian10']=$this->M_isian->findisian5kolom('id_butir',10);
+    $data['dataisianversion10']=$this->M_isian->findisian5kolomversion('id_kolom',10);
+    $data['dataisian15']=$this->M_isian->findisian4kolom('id_butir',15);
+    $data['dataisianversion15']=$this->M_isian->findisian4kolomversion('id_kolom',15);
+    $data['dataisian24']=$this->M_isian->findisian1kolom('id_butir',24);
+    $data['dataisianversion24']=$this->M_isian->findisian1kolomversion('id_kolom',24);
+    $data['dataisian25']=$this->M_isian->findisian1kolom('id_butir',25);
+    $data['dataisianversion25']=$this->M_isian->findisian1kolomversion('id_kolom',25);
+    $data['dataisian26']=$this->M_isian->findisian1kolom('id_butir',26);
+    $data['dataisianversion26']=$this->M_isian->findisian1kolomversion('id_kolom',26);
+    $data['dataisian27']=$this->M_isian->findisian1kolom('id_butir',27);
+    $data['dataisianversion27']=$this->M_isian->findisian1kolomversion('id_kolom',27);
+    $data['dataisian28']=$this->M_isian->findisian1kolom('id_butir',28);
+    $data['dataisianversion28']=$this->M_isian->findisian1kolomversion('id_kolom',28);
+    $this->load->view('template/header',$data);
+    $this->load->view('viewbookbutir');
+  }
+
 // QUERY INSERT ISIAN
 	public function ngisi11(){
 		//load needed library,helper,model
