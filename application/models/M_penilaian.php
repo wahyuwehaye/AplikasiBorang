@@ -82,5 +82,15 @@ class M_penilaian extends CI_Model {
 
         }
 
+        function post_add($result = array())
+        {
+            $total_array = count($result);
+
+            if($total_array != 0)
+            {
+                $this->db->insert_batch('hitungf1', $result);
+            }
+        }
+
 }
 ?>

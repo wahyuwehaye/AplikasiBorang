@@ -22,6 +22,9 @@ class C_penilaian extends CI_Controller {
 	 public function __construct(){
 	     parent::__construct();
 	     $this->load->library('session');
+         // $this->load->model("M_penilaian","get_db");
+         $this->load->helper('form');
+         $this->load->library('form_validation');
     }
 
 
@@ -65,6 +68,62 @@ class C_penilaian extends CI_Controller {
 		$this->load->view('template/header',$data);
 		$this->load->view('formnilai',$data);
 	}
+
+    public function hitungF1(){
+        $this->load->model('M_borang');
+        $this->load->model('M_butir');
+        $this->load->model('M_uploadisi');
+        $this->load->library('form_validation');
+
+        $id=$this->uri->segment(2, 0);
+        $data['active_menu']='penilaian';
+        $this->load->view('template/header',$data);
+        $data['buku']=$this->M_borang->find('id',$id);
+        $data['butir']=$this->M_butir->find('id_borang',$id);
+        $data['isian']=$this->M_uploadisi->find('id_butir',$id);
+        $data['dataisian']=$this->M_uploadisi->finduploadisi('id_butir',$id);
+        $data['dataisianversion']=$this->M_uploadisi->finduploadisiversion('id_kolom',$id);
+        $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
+        $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$id);
+        $data['getalldata']=$this->M_uploadisi->findallisian();
+        $this->load->view('template/header',$data);
+        $this->load->view('hitungF1',$data);
+    }
+
+    public function inputnilaiF1()
+    {
+        $post = $this->input->post();
+        $result = array();
+        $total_post = count($post['butir']);
+        $buku = $post['id_buku'];
+
+        foreach($post['butir'] AS $key => $val)
+        {
+            $result[] = array(
+            "id_buku"  => $post['id_buku'][$key],
+            "butir"  => $post['butir'][$key],
+            "nama_asesor"  => $post['nama_asesor'][$key],
+            "nilai1"  => $post['nilai1'][$key],
+            "nilai2"  => $post['nilai2'][$key],
+            "nilai3"  => $post['nilai3'][$key],
+            "nilai4"  => $post['nilai4'][$key],
+            "nilai5"  => $post['nilai5'][$key],
+            "nilai6"  => $post['nilai6'][$key],
+            "nilai7"  => $post['nilai7'][$key],
+            "nilai8"  => $post['nilai8'][$key],
+            "nilai9"  => $post['nilai9'][$key],
+            "nilai10"  => $post['nilai10'][$key],
+            "skorakhir"  => $post['skorakhir'][$key],
+            "masukan"  => $post['masukan'][$key],
+            "komentar"  => $post['komentar'][$key],
+            "created_at"  => date('Y-m-d H:i:s')[$key]
+            );
+        }
+        $this->M_penilaian->post_add($result);
+            
+        // $this->session->set_flashdata('notif', '<p style="color:green;font-weight:bold;">'.$total_post.' data berhasil di simpan!</p>');
+        redirect('/penilaian');
+    }
 
 	public function store(){
 		//load needed library,helper,model

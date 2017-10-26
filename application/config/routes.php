@@ -60,6 +60,7 @@ $route['changelogs'] = 'Home/changelogs';
 $route['borang'] = 'C_borang';
 $route['penilaian'] = 'C_penilaian';
 $route['formnilai/:num'] = 'C_penilaian/formnilai';
+$route['hitungF1/:num'] = 'C_penilaian/hitungF1';
 $route['histori'] = 'Home/histori';
 $route['editor'] = 'Home/editor';
 $route['butir/:num'] = 'C_butir';
