@@ -22,7 +22,7 @@ class C_penilaian extends CI_Controller {
 	 public function __construct(){
 	     parent::__construct();
 	     $this->load->library('session');
-         // $this->load->model("M_penilaian","get_db");
+         $this->load->model("M_penilaian","get_db");
          $this->load->helper('form');
          $this->load->library('form_validation');
     }
@@ -73,6 +73,7 @@ class C_penilaian extends CI_Controller {
         $this->load->model('M_borang');
         $this->load->model('M_butir');
         $this->load->model('M_uploadisi');
+        $this->load->model('M_penilaian');
         $this->load->library('form_validation');
 
         $id=$this->uri->segment(2, 0);
@@ -81,6 +82,7 @@ class C_penilaian extends CI_Controller {
         $data['buku']=$this->M_borang->find('id',$id);
         $data['butir']=$this->M_butir->find('id_borang',$id);
         $data['isian']=$this->M_uploadisi->find('id_butir',$id);
+        $data['f1']=$this->M_penilaian->get_f1();
         $data['dataisian']=$this->M_uploadisi->finduploadisi('id_butir',$id);
         $data['dataisianversion']=$this->M_uploadisi->finduploadisiversion('id_kolom',$id);
         $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
@@ -94,13 +96,14 @@ class C_penilaian extends CI_Controller {
     {
         $post = $this->input->post();
         $result = array();
-        $total_post = count($post['butir']);
+        $total_post = count($post['id_buku']);
         $buku = $post['id_buku'];
 
-        foreach($post['butir'] AS $key => $val)
+        foreach($post['id_buku'] AS $key => $val)
         {
             $result[] = array(
             "id_buku"  => $post['id_buku'][$key],
+            "id_f1"  => $post['id_f1'][$key],
             "butir"  => $post['butir'][$key],
             "nama_asesor"  => $post['nama_asesor'][$key],
             "nilai1"  => $post['nilai1'][$key],
@@ -116,10 +119,12 @@ class C_penilaian extends CI_Controller {
             "skorakhir"  => $post['skorakhir'][$key],
             "masukan"  => $post['masukan'][$key],
             "komentar"  => $post['komentar'][$key],
-            "created_at"  => date('Y-m-d H:i:s')[$key]
+            "created_at"  => $post['created_at'][$key],
+            "review_ke"  => $post['review_ke'][$key]
             );
         }
-        $this->M_penilaian->post_add($result);
+        // $this->get_db->post_add($result);
+        $this->db->insert_batch('hitungf1', $result);
             
         // $this->session->set_flashdata('notif', '<p style="color:green;font-weight:bold;">'.$total_post.' data berhasil di simpan!</p>');
         redirect('/penilaian');
@@ -201,7 +206,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1+$isi2+$isi3+$isi4)/4);
 
-        echo '<input type="text" name="11askor" id="11askor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="11askor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -209,7 +214,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1+$isi2)/2);
 
-        echo '<input type="text" name="11bskor" id="11bskor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="11bskor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -217,7 +222,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1));
 
-        echo '<input type="text" name="12skor" id="12skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="12skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -225,7 +230,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1));
 
-        echo '<input type="text" name="21skor" id="21skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="21skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -233,7 +238,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1));
 
-        echo '<input type="text" name="22skor" id="22skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="22skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -241,7 +246,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1));
 
-        echo '<input type="text" name="23skor" id="23skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="23skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -249,7 +254,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1));
 
-        echo '<input type="text" name="24skor" id="24skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="24skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -257,7 +262,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1));
 
-        echo '<input type="text" name="25skor" id="25skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="25skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -265,7 +270,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1));
 
-        echo '<input type="text" name="26skor" id="26skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="26skor" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -273,7 +278,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1/$isi2));
 
-        echo '<input type="text" name="311arasio" id="311arasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="nilai3[]" id="311arasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -287,7 +292,7 @@ class C_penilaian extends CI_Controller {
         	$nilainya = ((3+$totalnya)/2);
         }
 
-        echo '<input type="text" name="311anilai" id="311anilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="311anilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
         ';
     }
 
@@ -301,7 +306,7 @@ class C_penilaian extends CI_Controller {
         	$nilainya = ((3+$totalnya)/2);
         }
 
-        echo '<textarea rows="4" name="" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">Jumlah calon yang ikut seleksi = '.number_format($isi1, 0, ",", ".").', daya tampung PS = '.number_format($isi2, 0, ".", ".").', Rasio Calon Mahasiswa yang ikut seleksi terhadap daya tampung = '.number_format($totalnya, 2, ".", ".").'</textarea>
+        echo '<textarea rows="4" name="masukan[]" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">Jumlah calon yang ikut seleksi = '.number_format($isi1, 0, ",", ".").', daya tampung PS = '.number_format($isi2, 0, ".", ".").', Rasio Calon Mahasiswa yang ikut seleksi terhadap daya tampung = '.number_format($totalnya, 2, ".", ".").'</textarea>
         ';
     }
 
@@ -309,7 +314,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1/$isi2));
 
-        echo '<input type="text" name="311brasio" id="311brasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="nilai3[]" id="311brasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -323,7 +328,7 @@ class C_penilaian extends CI_Controller {
         	$nilainya = ((40*$totalnya-10)/7);
         }
 
-        echo '<input type="text" name="311bnilai" id="311bnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="311bnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
         ';
     }
 
@@ -337,7 +342,7 @@ class C_penilaian extends CI_Controller {
         	$nilainya = ((40*$totalnya-10)/7);
         }
 
-        echo '<textarea rows="4" name="" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi = '.number_format($isi1, 0, ",", ".").' / '.number_format($isi2, 0, ",", ".").' = '.number_format($totalnya, 2, ".", ".").'</textarea>
+        echo '<textarea rows="4" name="masukan[]" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi = '.number_format($isi1, 0, ",", ".").' / '.number_format($isi2, 0, ",", ".").' = '.number_format($totalnya, 2, ".", ".").'</textarea>
         ';
     }
 
@@ -345,7 +350,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1/$isi2));
 
-        echo '<input type="text" name="311crasio" id="311crasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="nilai3[]" id="311crasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -360,7 +365,7 @@ class C_penilaian extends CI_Controller {
         	$nilainya = 4;
         }
 
-        echo '<input type="text" name="311cnilai" id="311cnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="311cnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
         ';
     }
 
@@ -374,7 +379,7 @@ class C_penilaian extends CI_Controller {
         	$nilainya = ((5-4*$totalnya));
         }
 
-        echo '<textarea rows="4" name="" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi = '.number_format($isi1, 0, ".", ".").' / '.number_format($isi2, 0, ".", ".").' = '.number_format($totalnya, 2, ".", ".").'</textarea>
+        echo '<textarea rows="4" name="masukan[]" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi = '.number_format($isi1, 0, ".", ".").' / '.number_format($isi2, 0, ".", ".").' = '.number_format($totalnya, 2, ".", ".").'</textarea>
         ';
     }
 
@@ -389,7 +394,7 @@ class C_penilaian extends CI_Controller {
         	$nilainya = 4;
         // }
 
-        echo '<input type="text" name="311dnilai" id="311dnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="311dnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
         ';
     }
 
@@ -403,7 +408,7 @@ class C_penilaian extends CI_Controller {
         // 	$nilainya = ((5-4*$totalnya));
         // }
 
-        echo '<textarea rows="4" name="" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">rata-rata IPK Makasiswa = '.number_format($isi1, 0, ".", ".").'</textarea>
+        echo '<textarea rows="4" name="masukan[]" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">rata-rata IPK Makasiswa = '.number_format($isi1, 0, ".", ".").'</textarea>
         ';
     }
 
@@ -411,7 +416,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1));
 
-        echo '<input type="text" name="312nilai" id="312nilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="312nilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -419,7 +424,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi1));
 
-        echo '<input type="text" name="313nilai" id="313nilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="313nilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -427,7 +432,7 @@ class C_penilaian extends CI_Controller {
 
         $totalnya = (($isi2/$isi1)*100);
 
-        echo '<input type="text" name="314arasio" id="314arasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="nilai3[]" id="314arasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
@@ -441,7 +446,7 @@ class C_penilaian extends CI_Controller {
             $nilainya = ((1+6*$totalnya));
         }
 
-        echo '<input type="text" name="314anilai" id="314anilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="314anilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
         ';
     }
 
@@ -455,29 +460,84 @@ class C_penilaian extends CI_Controller {
             $nilainya = ((1+6*$totalnya));
         }
 
-        echo '<textarea rows="4" name="" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">Presentase kelulusan tepat waktu (KWT) = '.number_format($isi2, 0, ".", ".").' / '.number_format($isi1, 0, ".", ".").' = '.number_format($totalnya, 2, ".", ".").'</textarea>
+        echo '<textarea rows="4" name="masukan[]" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">Presentase kelulusan tepat waktu (KWT) = '.number_format($isi2, 0, ".", ".").' / '.number_format($isi1, 0, ".", ".").' = '.number_format($totalnya, 2, ".", ".").'</textarea>
         ';
     }
 
-    public function cekjumlah321a($isi1){
+    public function rasio314b($isi1,$isi2,$isi3){
+
+        $totalnya = ((($isi1-$isi2-$isi3)/$isi1)*100);
+
+        echo '<input type="text" name="nilai4[]" id="314brasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        ';
+    }
+
+    public function cekjumlah314b($isi1,$isi2,$isi3){
+
+        $totalnya = ((($isi1-$isi2-$isi3)/$isi1)*100);
+        $dihitung = ((($isi1-$isi2-$isi3)/$isi1));
+        $nilainya = 0;
+        if ($totalnya<=6) {
+            $nilainya = 4;
+        }else if($totalnya<45) {
+            $nilainya = ((180-(400*$dihitung))/39);
+        }
+
+        echo '<input type="text" name="skorakhir[]" id="314bnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($nilainya, 2, ".", ".").'">
+        ';
+    }
+
+    public function info314b($isi1,$isi2,$isi3){
+
+        $totalnya = ((($isi1-$isi2-$isi3)/$isi1)*100);
+        $dihitung = ((($isi1-$isi2-$isi3)/$isi1));
+        $pembagi = ($isi1-$isi2-$isi3);
+        $nilainya = 0;
+        if ($totalnya<=6) {
+            $nilainya = 4;
+        }else if($totalnya<45) {
+            $nilainya = ((180-400*$totalnya)/39);
+        }
+
+        echo '<textarea rows="4" name="masukan[]" id="" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize">Presentase Mahasiswa yang DO atau mengundurkan diri = '.number_format($pembagi, 0, ".", ".").' / '.number_format($isi1, 0, ".", ".").' = '.number_format($totalnya, 2, ".", ".").'</textarea>
+        ';
+    }
+
+    public function cekjumlah321($isi1){
 
         $totalnya = (($isi1));
 
-        echo '<input type="text" name="321anilai" id="321anilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="321nilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
-    public function cekjumlah321b($isi1){
+    public function cekjumlah322($isi1){
 
         $totalnya = (($isi1));
 
-        echo '<input type="text" name="321bnilai" id="321bnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        echo '<input type="text" name="skorakhir[]" id="322nilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
         ';
     }
 
-    public function nilaiborang($nil1,$nil2,$nil3,$nil4,$nil5,$nil6,$nil7,$nil8,$nil9,$nil10,$nil11,$nil12,$nil13,$nil14,$nil15,$nil16,$nil17,$nil18){
+    public function cekjumlah331a($isi1){
 
-        $totalnya = $nil1+$nil2+$nil3+$nil4+$nil5+$nil6+$nil7+$nil8+$nil9+$nil10+$nil11+$nil12+$nil13+$nil14+$nil15+$nil16+$nil17+$nil18;
+        $totalnya = (($isi1));
+
+        echo '<input type="text" name="skorakhir[]" id="331anilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        ';
+    }
+
+    public function cekjumlah331b($isi1){
+
+        $totalnya = (($isi1));
+
+        echo '<input type="text" name="skorakhir[]" id="331bnilai" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize" disabled value="'.number_format($totalnya, 2, ".", ".").'">
+        ';
+    }
+
+    public function nilaiborang($nil1,$nil2,$nil3,$nil4,$nil5,$nil6,$nil7,$nil8,$nil9,$nil10,$nil11,$nil12,$nil13,$nil14,$nil15,$nil16,$nil17,$nil18,$nil19,$nil20,$nil21){
+
+        $totalnya = $nil1+$nil2+$nil3+$nil4+$nil5+$nil6+$nil7+$nil8+$nil9+$nil10+$nil11+$nil12+$nil13+$nil14+$nil15+$nil16+$nil17+$nil18+$nil19+$nil20+$nil21;
 
         echo '<p>'.number_format($totalnya, 2, ".", ".").'</p>
         ';
