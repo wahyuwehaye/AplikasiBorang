@@ -48,68 +48,72 @@
                             // if ($jum==1) {
                                 for($i=0;$i<count($dataisian1);$i++){
                                 ?>
-                                    <h1 style="text-align: center;"><strong>STANDAR 1.</strong></h1>
-                                    <h1 style="text-align: center;"><strong>VISI, MISI, TUJUAN DAN SASARAN, SERTA STRATEGI PENCAPAIAN</strong></h1>
-                                    <h3 style="text-align: left;"><strong>1.1 &nbsp;Jelaskan dasar penyusunan dan mekanisme penyusunan visi, misi, tujuan dan sasaran institusi perguruan tinggi, serta pihakpihak yang dilibatkan dalam penyusunannya.&nbsp;</strong></h3>
-                                    <h3><strong>Paparan Penyusunan Visi, Misi, Tujuan dan Sasaran</strong></h3>
-                                    <p><?php echo $dataisian1[$i]['kolom1'] ?></p>
-                                    <!-- <h3>Visi</h3> -->
-                                    <p><?php echo $dataisian1[$i]['kolom2'] ?></p>
-                                    <!-- <h3>Misi</h3> -->
-                                    <p><?php echo $dataisian1[$i]['kolom3'] ?></p>
+                                    <h1 style="text-align: center;">STANDAR 1. VISI, MISI, TUJUAN, DAN SASARAN, SERTA STRATEGI PENCAPAIAN&nbsp;</h1>
+                                    <h1 style="text-align: left;">1.1 Visi, Misi, Tujuan, dan Sasaran serta Strategi Pencapaian</h1>
+                                    <h3 style="text-align: left;">Jelaskan mekanisme <strong>penyusunan</strong> visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</h3>
                                     <!-- <h3>Tujuan</h3> -->
+                                    <p>&nbsp;</p>
+                                    <p><?php echo $dataisian1[$i]['kolom1'] ?></p>
+                                    <h1 style="text-align: left;">1.1.1 Visi&nbsp;&nbsp;</h1>
+                                    <p><?php echo $dataisian1[$i]['kolom2'] ?></p>
+                                    <h1 style="text-align: left;">1.1.2 Misi</h1>
+                                    <p><?php echo $dataisian1[$i]['kolom3'] ?></p>
+                                    <h1 style="text-align: left;">1.1.3 Tujuan&nbsp;</h1>
                                     <p><?php echo $dataisian1[$i]['kolom4'] ?></p>
                                 <?php }
                             // }elseif ($jum==2) {
                                 for($i=0;$i<count($dataisian2);$i++){
                                 ?>
-                                    <h3>1.2&nbsp;Pernyataan tonggak-tonggak capaian (milestones) tujuan yang dinyatakan dalam sasaran-sasaran yang merupakan target terukur, dan penjelasan mengenai strategi serta tahapan pencapaiannya.&nbsp;</h3>
+                                    <h1 style="text-align: left;">1.1.4 Sasaran dan Strategi Pencapaiannya</h1>
                                     <p><?php echo $dataisian2[$i]['kolom1'] ?></p>
                                 <?php }
                             // }elseif ($jum==3) {
                                 for($i=0;$i<count($dataisian3);$i++){
                                 ?>
-                                    <h3>1.3&nbsp;Sosialisasi visi, misi, tujuan, sasaran dan strategi pencapaian dan penggunaannya sebagai acuan dalam penyusunan rencana kerja institusi perguruan tinggi.&nbsp;</h3>
-                                    <h3>1.3.1&nbsp;Uraikan sosialisasi visi, misi, tujuan, dan sasaran perguruan tinggi agar dipahami seluruh pemangku kepentingan (sivitas akademika, tenaga kependidikan, pengguna lulusan, dan masyarakat).</h3>
+                                    <h1 style="text-align: left;">1.2 Sosialisasi&nbsp;</h1>
+                                    <h3>Uraikan upaya penyebaran/sosialisasi visi, misi dan tujuan program studi serta pemahaman sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan.&nbsp;</h3>
                                     <p><?php echo $dataisian3[$i]['kolom1'] ?></p>
                                 <?php }
                                 for($i=0;$i<count($dataisian4);$i++){
                                  ?>
-                                    <h1 style="text-align: center;">STANDAR 2.</h1>
-                                    <h1 style="text-align: center;">TATA PAMONG, KEPEMIMPINAN, SISTEM PENGELOLAAN, DAN PENJAMINAN MUTU</h1>
-                                    <p><strong>2.1 Tata Pamong di Universitas Telkom</strong></p>
-                                    <p><strong>2.1.1 Uraikan secara ringkas sistem tatapamong (sebutkan lembaga yang berperan, perangkat pendukung, kebijakan dan peraturan/ketentuan termasuk kode etik yang dijadikan pedoman dalam penyelenggaraan perguruan tinggi, serta prosedur penetapannya) &nbsp;di institusi perguruan tinggi dalam &nbsp;membangun sistem tata pamong yang kredibel, transparan, akuntabel, bertanggung jawab, dan adil, serta pelaksanaannya.&nbsp;</strong></p>
-                                    <p>&nbsp;</p>
+                                    <h1 style="text-align: center;">STANDAR 2. <strong>Tata &nbsp;Pamong, KEPEMIMPINAN, SISTEM &nbsp;Pengelolaan, DAN Penjaminan Mutu</strong></h1>
+                                    <h2>2.1&nbsp; &nbsp;Sistem Tata Pamong</h2>
+                                    <h3>Sistem tata pamong berjalan secara efektif melalui mekanisme yang disepakati bersama, serta dapat memelihara dan mengakomodasi semua unsur, fungsi, dan peran dalam program studi. Tata pamong didukung dengan budaya organisasi yang dicerminkan dengan ada dan tegaknya aturan, tatacara pemilihan pimpinan, etika dosen, etika mahasiswa, etika tenaga kependidikan, sistem penghargaan dan sanksi serta pedoman dan prosedur pelayanan (administrasi, perpustakaan, laboratorium, dan studio). Sistem tata pamong (<em>input</em>, proses, <em>output</em> dan <em>outcome</em> serta lingkungan eksternal yang menjamin terlaksananya tata pamong yang baik) harus diformulasikan, disosialisasikan, dilaksanakan, &nbsp;dipantau dan dievaluasi dengan peraturan dan prosedur yang jelas.</h3>
+                                    <h3>&nbsp;</h3>
+                                    <h3>Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk&nbsp; membangun sistem tata pamong yang kredibel, transparan, akuntabel, bertanggung jawab dan adil.</h3>
                                     <p><?php echo $dataisian4[$i]['kolom1'] ?></p>
                                  <?php
                                  }
                                  for($i=0;$i<count($dataisian5);$i++){
                                  ?>
-                                    <h3>2.2 Kepemimpinan</h3>
-                                    <h3>Jelaskan pola dan kinerja kepemimpinan di Institusi perguruan tinggi, mencakup informasi tentang kepemimpinan operasional, organisasi, dan publik.&nbsp;</h3>
+                                    <h1 style="text-align: left;">2.2&nbsp; Kepemimpinan</h1>
+                                    <h3>Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat.</h3>
+                                    <h3>Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistik, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi. Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.&nbsp; Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.&nbsp; Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.&nbsp; Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.</h3>
+                                    <h3>Jelaskan pola kepemimpinan dalam Program Studi.</h3>
                                     <p><?php echo $dataisian5[$i]['kolom1'] ?></p>
                                  <?php
                                  }
                                  for($i=0;$i<count($dataisian6);$i++){
                                  ?>
-                                    <h3>2.3 Sistem Pengelolaan&nbsp;</h3>
-                                    <p>Sistem pengelolaan fungsional dan operasional institusi perguruan tinggi mencakup fungsi pengelolaan (planning, organizing, staffing, leading, dan controlling) dalam penyelenggaraan program dan kegiatan perguruan tinggi.&nbsp;</p>
-                                    <h3>2.3.1 Jelaskan sistem pengelolaan institusi perguruan tinggi serta dokumen pendukungnya (Jelaskan unit/bagian/lembaga yang berperan dalam setiap fungsi pengelolaan serta proses pengambilan keputusan).&nbsp;</h3>
+                                    <h1>2.3&nbsp;&nbsp;&nbsp; Sistem Pengelolaan</h1>
+                                    <h3>Sistem pengelolaan fungsional dan operasional program studi mencakup <em>planning, organizing</em>, <em>staffing, leading, controlling</em> dalam kegiatan &nbsp;internal maupun eksternal<em>.</em></h3>
+                                    <h3>Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</h3>
                                     <p><?php echo $dataisian6[$i]['kolom1'] ?></p>
                                  <?php
                                  }
                                  for($i=0;$i<count($dataisian7);$i++){
                                  ?>
-                                    <h3>2.4 Sistem Penjaminan Mutu</h3>
-                                    <p>Sistem penjaminan mutu meliputi kebijakan mutu, perangkat penjaminan mutu (organisasi, pernyataan mutu, manual mutu, standar mutu), pelaksanaan penjaminan mutu, serta monitoring dan evaluasi.&nbsp;</p>
-                                    <h3>2.4.1 Jelaskan &nbsp;keberadaan manual mutu yang mencakup informasi tentang kebijakan, pernyataan, unit pelaksana, standar, prosedur, SOP, dan pentahapan sasaran mutu perguruan tinggi.&nbsp;</h3>
+                                    <h1>2.4&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Penjaminan Mutu</h1>
+                                    <h3>Bagaimanakah pelaksanaan penjaminan mutu pada Program Studi? Jelaskan.</h3>
                                     <p><?php echo $dataisian7[$i]['kolom1'] ?></p>
                                  <?php
                                  }
-                                 // for($i=0;$i<count($dataisian8);$i++){
+                                 for($i=0;$i<count($dataisian8);$i++){
                                  ?>
-                                    <!-- <h3>2.5 Umpan Balik</h3>
-                                    <h3>Umpan Balik dari <?php echo $dataisian8[$i]['kolom1'] ?></h3>
+                                    <h1>2.5 &nbsp;&nbsp;Umpan Balik</h1>
+                                    <h3>Apakah program studi telah melakukan kajian tentang proses pembelajaran melalui umpan balik dari dosen, mahasiswa, alumni, dan pengguna lulusan mengenai harapan dan persepsi mereka?&nbsp; Jika Ya, jelaskan isi umpan balik dan tindak lanjutnya.</h3>
+                                    <p>&nbsp;</p>
+                                    <!-- <h3>Umpan Balik dari <?php echo $dataisian8[$i]['kolom1'] ?></h3>
                                     <h4>Isi Umpan Balik :</h4>
                                     <p><?php echo $dataisian8[$i]['kolom2'] ?></p>
                                     <h4>Tindak Lanjut :</h4>
@@ -172,10 +176,11 @@
                                     </tbody>
                                     </table>
                                  <?php
-                                 // }
+                                 }
                                  for($i=0;$i<count($dataisian9);$i++){
                                  ?>
-                                    <h3>2.6 Keberlanjutan</h3>
+                                    <h1>2.6&nbsp; Keberlanjutan</h1>
+                                    <h3>Jelaskan upaya untuk menjamin keberlanjutan (<em>sustainability</em>) program studi ini, khususnya dalam hal:</h3>
                                     <h3>a.  Upaya untuk peningkatan animo calon mahasiswa:</h3>
                                     <p><?php echo $dataisian9[$i]['kolom1'] ?></p>
                                     <h3>b.  Upaya peningkatan mutu manajemen:</h3>

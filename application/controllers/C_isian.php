@@ -20,8 +20,14 @@ class C_isian extends CI_Controller {
 	 */
 
 	 public function __construct(){
-	     parent::__construct();
-	     $this->load->library('session');
+	      parent::__construct();
+	      $this->load->library('session');
+        $this->load->model('M_borang');
+        $this->load->model('M_butir');
+        $this->load->model('M_isian');
+        $this->load->model('M_uploadisi');
+        $this->load->model('M_dokumen');
+        $this->load->library('form_validation');
     }
 
 
@@ -29,10 +35,6 @@ class C_isian extends CI_Controller {
 	{
 		if(isset($_SESSION['logged_in']))
 		{
-			$this->load->model('M_borang');
-			$this->load->model('M_butir');
-			$this->load->model('M_isian');
-			$this->load->library('form_validation');
 
 			$id=$this->uri->segment(2, 0);
 			$data['active_menu']='borang';
@@ -43,15 +45,23 @@ class C_isian extends CI_Controller {
 			if (($id==1) || ($id==15)) {
 				$data['dataisian']=$this->M_isian->findisian4kolom('id_butir',$id);
 				$data['dataisianversion']=$this->M_isian->findisian4kolomversion('id_kolom',$id);
+        $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
+        $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$id);
 			}elseif (($id==2) || ($id==3) || ($id==4) || ($id==5) || ($id==6) || ($id==7) || ($id==24) || ($id==25) || ($id==26) || ($id==27) || ($id==28)){
 				$data['dataisian']=$this->M_isian->findisian1kolom('id_butir',$id);
 				$data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$id);
+        $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
+        $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$id);
 			}elseif ($id==8) {
 				$data['dataisian']=$this->M_isian->findisian12kolom('id_butir',$id);
 				$data['dataisianversion']=$this->M_isian->findisian12kolomversion('id_kolom',$id);
+        $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
+        $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$id);
 			}elseif (($id==9) || ($id==10)) {
 				$data['dataisian']=$this->M_isian->findisian5kolom('id_butir',$id);
 				$data['dataisianversion']=$this->M_isian->findisian5kolomversion('id_kolom',$id);
+        $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
+        $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$id);
 			}
 			$data1['isian']=$this->M_isian->ambildata();
 			$data1['isian']=$this->M_isian->get_entire_data1($id);
@@ -376,6 +386,62 @@ class C_isian extends CI_Controller {
 
 	
 // TUTUP QUERY INSERT ISIAN
+
+// QUERY UPLOAD DOKUMEN
+
+  public function dokumen11(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_uploadisi');
+        $id=$_POST['id_butir11'];
+        $config['upload_path']   = FCPATH.'/uploads/dokumen/';
+        $config['allowed_types'] = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip';
+        $this->load->library('upload',$config);
+
+        // input ke tabel dokumen
+        if($this->upload->do_upload('file')){
+          $data = array(
+            'id_butir' => $this->input->post('id_butir11'),
+            'nama' => $this->input->post('nama'),
+            'filename' => $this->upload->data('file_name'),
+            'ket' => $this->input->post('ket'),
+            'pemilik' => $this->input->post('pemilik'),
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+          $this->db->insert('dokumen', $data);
+
+          // membuat versi dokumen
+          $data1 = array(
+            'id_dokumen' => $this->input->post('id_butir11'),
+            'nama' => $this->input->post('nama'),
+            'version_no' => "1",
+            'filename' => $this->upload->data('file_name'),
+            'pemilik' => $this->input->post('pemilik'),
+            'created_at'=> date('Y-m-d H:i:s'),
+            'created_by'=> $_SESSION['name'],
+            );
+          $this->db->insert('document_version', $data1);
+
+          // membuat history dari dokumen
+          $data2 = array(
+                'user'=> $_SESSION['name'],
+                'action' => "Menambahkan Dokumen pada butir ke : ".$this->input->post('id_butir11'),
+                'created_at'=> date('Y-m-d H:i:s')
+          );
+
+          $this->db->insert('log', $data2);
+        }
+
+        // membuat notify dan redirect
+        $_SESSION['suksesinput'] = '';
+        redirect('isian/'.$_POST['id_butir11']);
+  }
+
+// TUTUP QUERY UPLOAD DOKUMEN
 
 	public function findisian(){
 		$id=$_POST['id'];
@@ -720,6 +786,25 @@ class C_isian extends CI_Controller {
 
 	}
 
+  public function destroydok($id,$borang){
+    // $id=$_POST['id'];
+        // $idbut=3;
+    $this->load->model('M_dokumen');
+    $uploadisi = $this->M_dokumen->get_by_id_hapus($id);
+    for ($i=0; $i<count($uploadisi); $i++){
+      if(file_exists('uploads/dokumen/'.$uploadisi->filename) && $uploadisi->filename)
+          unlink('uploads/dokumen/'.$uploadisi->filename);
+    }
+    $result=$this->M_dokumen->delete('id',$id);
+    if($result > 0){
+      echo json_encode('success');
+    }else{
+      echo json_encode('failed');
+    }
+        // redirect('butir/'.$idbut);
+        redirect('isian/'.$borang);
+  }
+
 	public function destroy(){
 		$id=$_POST['id'];
 		$this->load->model('M_isian');
@@ -736,7 +821,7 @@ class C_isian extends CI_Controller {
 		}else{
 			echo json_encode('failed');
 		}
-
+    redirect('butir/'.$borang);
 	}
 
 	function delete_multiple(){
