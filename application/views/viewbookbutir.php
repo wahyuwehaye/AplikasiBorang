@@ -193,170 +193,17 @@
                                     <p><?php echo $dataisian9[$i]['kolom5'] ?></p>
                                  <?php
                                  }
-                                 // for($i=0;$i<count($dataisian15);$i++){
+                                 for($i=0;$i<count($dataisian10);$i++){
                                  ?>
                                     <h1 style="text-align: center;">STANDAR 3.</h1>
                                     <h1 style="text-align: center;">MAHASISWA DAN LULUSAN&nbsp;</h1>
                                     <h3>3.1&nbsp; Profil Mahasiswa dan Lulusan</h3>
                                     <h3>3.1.1 Tuliskan data <strong>seluruh</strong> mahasiswa reguler<sup>(1)</sup> dan lulusannya dalam lima tahun terakhir dengan mengikuti format tabel berikut:</h3>
                                     <p>&nbsp;</p>
-                                    <table style="height: 42px;" border="1" width="935" cellspacing="0" cellpadding="0">
-                                    <tbody>
-                                    <tr style="height: 26px;">
-                                    <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Tahun Akademik</th>
-                                    <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Daya Tampung</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Calon Mahasiswa Reguler</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Mahasiswa Baru</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Total Mahasiswa</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Lulusan</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="3">IPK Lulusan Reguler</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="3">Presentase Lulusan Reguler dengan IPK :</th>
-                                    </tr>
-                                    <tr style="height: 26px;">
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Ikut Seleksi</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Lulus Seleksi</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler Bukan Transfer</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler Bukan Transfer</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler bukan Transfer</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Min</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Rat</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Mak</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">&lt; 2,75</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">2,75-3,00</th>
-                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">&gt; 3,50</th>
-                                    </tr>
-                                    <tr style="height: 13px;">
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(1)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(2)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(3)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(4)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(5)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(6)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(7)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(8)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(9)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(10)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(11)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(12)</strong></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(13)</strong></td>
-                                    <td style="width: 53px; text-align: center; height: 13px;"><strong>(14)</strong></td>
-                                    <td style="width: 53px; text-align: center; height: 13px;"><strong>(15)</strong></td>
-                                    <td style="width: 53px; text-align: center; height: 13px;"><strong>(16)</strong></td>
-                                    </tr>
-                                    <tr style="height: 13px;">
-                                    <td style="width: 52px; text-align: center; height: 13px;">TS-4</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    </tr>
-                                    <tr style="height: 13px;">
-                                    <td style="width: 52px; text-align: center; height: 13px;">TS-3</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    </tr>
-                                    <tr style="height: 13px;">
-                                    <td style="width: 52px; text-align: center; height: 13px;">TS-2</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    </tr>
-                                    <tr style="height: 13px;">
-                                    <td style="width: 52px; text-align: center; height: 13px;">TS-1</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    </tr>
-                                    <tr style="height: 13px;">
-                                    <td style="width: 52px; text-align: center; height: 13px;">TS</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
-                                    </tr>
-                                    <tr style="height: 13px;">
-                                    <td style="width: 52px; text-align: center; height: 13px;">Jumlah</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">&nbsp;</td>
-                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">&nbsp;</td>
-                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">&nbsp;</td>
-                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">&nbsp;</td>
-                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">&nbsp;</td>
-                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">&nbsp;</td>
-                                    </tr>
-                                    </tbody>
-                                    </table>
-
+                                    <?php echo $dataisian10[$i]['kolom1'] ?>
+                                 <?php
+                                 }
+                                 ?>
                                     <h3>3.1.3  Sebutkan pencapaian prestasi mahasiswa dalam tiga tahun terakhir di bidang akademik dan non-akademik, antara lain prestasi dalam penelitian dan lomba karya ilmiah, PkM, olahraga, dan seni dalam tabel berikut. </h3>
                                     <p style="text-align: center;"><strong>Tabel 3.1.3 Pencapaian prestasi Mahasiswa</strong></p>
                                     <table style="height: 49px; width: 931px; margin-left: auto; margin-right: auto;" border="1" cellspacing="0" cellpadding="0">
