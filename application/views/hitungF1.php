@@ -463,7 +463,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="24" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah24()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -506,7 +506,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai24"><input type="text" required name="skorakhir[]" id="24nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai25"><input type="text" required name="skorakhir[]" id="25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -1511,31 +1511,31 @@
                                     </tr>
                                     <tr>
                                         <td>0</td>
-                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen sangat berat, melebihi 19 sks.</td>
+                                        <td width="45%">Tidak ada partisipasi alumni.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen relatif berat, yaitu lebih dari 17 s.d. 19 sks.</td>
+                                        <td width="45%">Hanya 1 bentuk partisipasi saja yang dilakukan oleh alumni.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 15  s.d. 17 sks.</td>
+                                        <td width="45%">Hanya 2 bentuk partisipasi yang dilakukan oleh alumni.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 13  s.d. 15 sks.</td>
+                                        <td width="45%">3-4 bentuk partisipasi dilakukan oleh alumni.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban mendekati ideal, yaitu kurang atau sama dengan 13 sks.</td>
+                                        <td width="45%">Semua bentuk partisipasi dilakukan oleh alumni.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -1557,6 +1557,276 @@
                                         <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
                                     </tr> -->
                                 </tbody>
+
+     <!--Butir 3.4.2 -->
+                        <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[25]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[25]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[25]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[25]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[25]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="341" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah341()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada partisipasi alumni.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Hanya 1 bentuk partisipasi saja yang dilakukan oleh alumni.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Hanya 2 bentuk partisipasi yang dilakukan oleh alumni.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">3-4 bentuk partisipasi dilakukan oleh alumni.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Semua bentuk partisipasi dilakukan oleh alumni.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="341nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+
+                 <!--Butir 4.1 -->
+                        <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[26]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[26]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[26]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[26]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[26]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="341" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah341()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada partisipasi alumni.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Ada pedoman tertulis, tidak lengkap dan tidak dilaksanakan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada pedoman tertulis yang lengkap; tetapi tidak dilaksanakan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada pedoman tertulis yang lengkap; dan tidak ada bukti dilaksanakan secara konsisten.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada pedoman tertulis yang lengkap; dan ada bukti dilaksanakan secara konsisten.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="341nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+
+                 <!--Butir 4.2.1 -->
+                        <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[27]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[27]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[27]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[27]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[27]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="341" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah341()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada partisipasi alumni.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Ada pedoman tertulis, tidak lengkap dan tidak dilaksanakan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada pedoman tertulis yang lengkap; tetapi tidak dilaksanakan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada pedoman tertulis yang lengkap; dan tidak ada bukti dilaksanakan secara konsisten.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada pedoman tertulis yang lengkap; dan ada bukti dilaksanakan secara konsisten.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="341nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+
+                <!--Butir 4.2.2 -->
+                        <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[28]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[28]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[28]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[28]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[28]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="341" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah341()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada bukti tentang kinerja dosen yang terdokumentasikan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Ada bukti tentang kinerja dosen di bidang  pendidikan tetapi tidak terdokumentasikan dengan baik serta tidak ada di bidang penelitian  atau pelayanan/ pengabdian kepada masyarakat. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada bukti tentang kinerja dosen di bidang pendidikan yang terdokumentasikan dengan baik tetapi tidak ada di bidang penelitian  atau pelayanan/ pengabdian kepada masyarakat. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada bukti tentang kinerja dosen di bidang: (1) pendidikan, (2) penelitian, (3) pelayanan/ pengabdian kepada masyarakat tetapi tidak terdokumentasi dengan baik.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada bukti tentang kinerja dosen di bidang: (1) pendidikan, (2) penelitian, (3) pelayanan/ pengabdian kepada masyarakat yang terdokumentasi dengan baik.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="341nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+
+                                
                             </table>
                         </div>
                     </div>
@@ -1725,12 +1995,12 @@
               }
         }
 
-        function cekjumlah24(){
-              var txt1 = document.getElementById('24').value;
+        function cekjumlah25(){
+              var txt1 = document.getElementById('25').value;
               var result = ((parseFloat(txt1)));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('24nilai').value = desimalnya;
+                     document.getElementById('25nilai').value = desimalnya;
               }
         }
 
@@ -2020,7 +2290,7 @@
           var nil4 = $("#21nilai").val();
           var nil5 = $("#22nilai").val();
           var nil6 = $("#23nilai").val();
-          var nil7 = $("#24nilai").val();
+          var nil7 = $("#25nilai").val();
           var nil8 = $("#25nilai").val();
           var nil9 = $("#26nilai").val();
           var nil10 = $("#311anilai").val();
