@@ -1484,6 +1484,79 @@
                                         <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
                                     </tr> -->
                                 </tbody>
+
+        <!--Butir 3.4.1 -->
+        <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[24]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[24]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[24]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[24]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[24]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" name="nilai1[]" id="341" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah341()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen sangat berat, melebihi 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen relatif berat, yaitu lebih dari 17 s.d. 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 15  s.d. 17 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 13  s.d. 15 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban mendekati ideal, yaitu kurang atau sama dengan 13 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="341nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -1880,8 +1953,12 @@
               var txt2 = document.getElementById('331c2').value;
               var txt3 = document.getElementById('331c3').value;
               var txt4 = document.getElementById('331c4').value;
-              var result = ((parseFloat(txt1) + parseFloat(txt2) + parseFloat(txt3) + parseFloat(txt4)));
-              var dihitung= (((4*(parseFloat(txt1))) + (3*(parseFloat(txt2))) + (2*(parseFloat(txt3))) + parseFloat(txt4))/7);
+              var nilai1 = (parseFloat(txt1)/100).toFixed(2);
+              var nilai2 = (parseFloat(txt2)/100).toFixed(2);
+              var nilai3 = (parseFloat(txt3)/100).toFixed(2);
+              var nilai4 = (parseFloat(txt4)/100).toFixed(2);
+              var result = ((parseFloat(nilai1) + parseFloat(nilai2) + parseFloat(nilai3) + parseFloat(nilai4)));
+              var dihitung= (((4*(parseFloat(nilai1))) + (3*(parseFloat(nilai2))) + (2*(parseFloat(nilai3))) + parseFloat(nilai4))/7);
               // var desimalnya = dihitung.toFixed(2);
               var nilainya = 0;
               if (result>7) {
@@ -1908,6 +1985,32 @@
                      document.getElementById('331cinfo').value = str1.concat(str2,str3,str4);
                   }
         }
+
+         function cekjumlah332(){
+              var txt1 = document.getElementById('332').value;
+              var result = (parseFloat(txt1));
+
+              var nilainya = 0 ;
+                if(result==0){
+                    nilainya = 0;
+                } else if (result <=3) { 
+                    nilainya=4;
+                } else if (result <18) {
+                    nilainya= (72-4*result)/15;
+                }
+                var nilaides= nilainya.toFixed(2);
+                var str1= 'Rata-rata waktu tunggu lulusan untuk memperoleh pekerjaan yang pertama = '.concat(result);
+                var str2= ' bulan';
+              if (!isNaN(result)) {
+                     document.getElementById('332nilai').value = nilaides;
+                    document.getElementById('332info').value = str1.concat(str2);
+                  }
+        }
+
+
+
+
+
 
         function akumulasi(){
           var nil1 = $("#11anilai").val();
