@@ -63,7 +63,7 @@ class C_isian extends CI_Controller {
         $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
         $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$id);
 			}elseif (($id==10) || ($id==11) || ($id==12) || ($id==13)) {
-        $data['dataisian']=$this->M_isian->findisian1kolom('id_butir',10);
+        $data['dataisian']=$this->M_isian->findisian311kolom('id_butir',10);
         $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',10);
         $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',10);
         $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',10);

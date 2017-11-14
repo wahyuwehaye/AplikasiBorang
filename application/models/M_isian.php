@@ -6,8 +6,7 @@ class M_isian extends CI_Model {
         {
                 // Call the CI_Model constructor
                 parent::__construct();
-                $this->load->database();
-                $this->load->database();
+                $this->load->database();                
         }
 
 // QUERY INSERT ISIAN
@@ -358,6 +357,21 @@ class M_isian extends CI_Model {
                 $data = array(
                         'id_butir' => $this->input->post('id_butir311'),
                         'kolom1' => $this->input->post('kolom1_311'),
+                        'kolom2' => $this->input->post('kolom2_311'),
+                        'kolom3' => $this->input->post('kolom3_311'),
+                        'kolom4' => $this->input->post('kolom4_311'),
+                        'kolom5' => $this->input->post('kolom5_311'),
+                        'kolom6' => $this->input->post('kolom6_311'),
+                        'kolom7' => $this->input->post('kolom7_311'),
+                        'kolom8' => $this->input->post('kolom8_311'),
+                        'kolom9' => $this->input->post('kolom9_311'),
+                        'kolom10' => $this->input->post('kolom10_311'),
+                        'kolom11' => $this->input->post('kolom11_311'),
+                        'kolom12' => $this->input->post('kolom12_311'),
+                        'kolom13' => $this->input->post('kolom13_311'),
+                        'kolom14' => $this->input->post('kolom14_311'),
+                        'kolom15' => $this->input->post('kolom15_311'),
+                        'kolom16' => $this->input->post('kolom16_311'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -369,6 +383,21 @@ class M_isian extends CI_Model {
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir311'),
                         'kolom1' => $this->input->post('kolom1_311'),
+                        'kolom2' => $this->input->post('kolom2_311'),
+                        'kolom3' => $this->input->post('kolom3_311'),
+                        'kolom4' => $this->input->post('kolom4_311'),
+                        'kolom5' => $this->input->post('kolom5_311'),
+                        'kolom6' => $this->input->post('kolom6_311'),
+                        'kolom7' => $this->input->post('kolom7_311'),
+                        'kolom8' => $this->input->post('kolom8_311'),
+                        'kolom9' => $this->input->post('kolom9_311'),
+                        'kolom10' => $this->input->post('kolom10_311'),
+                        'kolom11' => $this->input->post('kolom11_311'),
+                        'kolom12' => $this->input->post('kolom12_311'),
+                        'kolom13' => $this->input->post('kolom13_311'),
+                        'kolom14' => $this->input->post('kolom14_311'),
+                        'kolom15' => $this->input->post('kolom15_311'),
+                        'kolom16' => $this->input->post('kolom16_311'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -2552,6 +2581,19 @@ class M_isian extends CI_Model {
               // $query = $this->db->get_where('isian_1kolom', array($column => $id));
             $query = $this->db->get_where('isian_16kolom', array($column => $id));
               return $query->result_array();
+        }
+
+        public function findisian311kolom($column,$id){
+              // $query = $this->db->get_where('isian_1kolom', array($column => $id));
+            // $query = $this->db->get_where('isian_16kolom', array($column => $id));
+            //   return $query->result_array();
+                $this->db->select('*');
+                $this->db->where('id_butir',$id);
+                $this->db->order_by("id","desc");
+                $this->db->limit(5);
+                $this->db->from('isian_16kolom');
+                $query=$this->db->get();
+                return $query->result_array();
         }
 
         public function findisian1kolomversion($column,$id){

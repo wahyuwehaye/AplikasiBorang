@@ -1026,10 +1026,220 @@
                                 }
                         }elseif (($isiannya==10) || ($isiannya==11) || ($isiannya==12) || ($isiannya==13)) {
                             if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
+                            // for($i=0;$i<count($dataisian);$i++){
                             ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi311">
+                        <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
+                        <h2 class="card-inside-title">Tuliskan data seluruh mahasiswa reguler(1) dan lulusannya dalam lima tahun terakhir dengan mengikuti format berikut:</h2>
+                        <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <b>Daya Tampung</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Calon Mahasiswa Reguler :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Ikut Seleksi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Lulus Seleksi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Mahasiswa Baru :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Reguler Bukan Transfer</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Transfer(3)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Total Mahasiswa :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Reguler Bukan Transfer</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom6_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Transfer(3)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom7_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Lulusan :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Reguler Bukan Transfer</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Transfer(3)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom9_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>IPK Lulusan Reguler :</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Minimal</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom10_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Rata-rata</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom11_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Maksimal</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text"  name="kolom12_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Presentase Lulusan Reguler dengan IPK :</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>< 2,75</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom13_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>2,75 - 3,50</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom14_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>> 3,50</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom15_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Isian / Catatan :</b>
+                                    </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom16_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                    <p>Catatan:</p>
+                                    <p>TS:Tahun akademik penuh terakhir saat pengisian borang</p>
+                                    <p>Min: IPK Minimum; Rat:IPK Rata-rata; Mak:IPK Maksimum</p>
+                                    <p>Catatan:</p>
+                                    <p>(1)&nbsp; Mahasiswa <strong>program reguler</strong> adalah mahasiswa yang mengikuti program pendidikan secara penuh waktu (baik kelas pagi, siang, sore, malam, dan di seluruh kampus).</p>
+                                    <p>(2)&nbsp; Mahasiswa <strong>program non-reguler</strong> adalah mahasiswa yang mengikuti program pendidikan secara paruh waktu.</p>
+                                    <p>(3)&nbsp; Mahasiswa <strong>transfer</strong> adalah mahasiswa yang masuk ke program studi dengan mentransfer mata kuliah yang telah diperolehnya dari PS lain, baik dari dalam PT maupun luar PT.</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                        <!-- PEMBATAS UPDATE BAWAH DAN TAMABAH ATAS -->
                         <form method="POST" action="<?php echo base_url()?>C_isian/updateisian311">
-                        <input type="hidden" name="id311" id="id311" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <!-- <input type="hidden" name="id311" id="id311" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Version Number : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
@@ -1039,35 +1249,424 @@
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a></h2>
-                        </div>
+                        </div> -->
+                        <h2 class="card-inside-title"></h2>
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
                         <h2 class="card-inside-title">Tuliskan data seluruh mahasiswa reguler(1) dan lulusannya dalam lima tahun terakhir dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <!-- <?php echo $dataisian[$i]['kolom1'] ?> -->
+                                    <table style="height: 42px;" border="1" width="935" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                    <tr style="height: 26px;">
+                                    <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Tahun Akademik</th>
+                                    <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Daya Tampung</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Calon Mahasiswa Reguler</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Mahasiswa Baru</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Total Mahasiswa</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Lulusan</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="3">IPK Lulusan Reguler</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="3">Presentase Lulusan Reguler dengan IPK :</th>
+                                    </tr>
+                                    <tr style="height: 26px;">
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Ikut Seleksi</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Lulus Seleksi</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler Bukan Transfer</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler Bukan Transfer</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler bukan Transfer</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Min</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Rat</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Mak</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">&lt; 2,75</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">2,75-3,00</th>
+                                    <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">&gt; 3,50</th>
+                                    </tr>
+                                    <tr style="height: 13px;">
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(1)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(2)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(3)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(4)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(5)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(6)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(7)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(8)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(9)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(10)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(11)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(12)</strong></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><strong>(13)</strong></td>
+                                    <td style="width: 53px; text-align: center; height: 13px;"><strong>(14)</strong></td>
+                                    <td style="width: 53px; text-align: center; height: 13px;"><strong>(15)</strong></td>
+                                    <td style="width: 53px; text-align: center; height: 13px;"><strong>(16)</strong></td>
+                                    </tr>
+                                    <!-- <tr style="height: 13px;">
+                                    <td style="width: 52px; text-align: center; height: 13px;">TS-4</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    </tr>
+                                    <tr style="height: 13px;">
+                                    <td style="width: 52px; text-align: center; height: 13px;">TS-3</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    </tr>
+                                    <tr style="height: 13px;">
+                                    <td style="width: 52px; text-align: center; height: 13px;">TS-2</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    </tr>
+                                    <tr style="height: 13px;">
+                                    <td style="width: 52px; text-align: center; height: 13px;">TS-1</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;">&nbsp;</td>
+                                    </tr> -->
+                                    <?php 
+                                        $jum1 = 0;
+                                        $jum2 = 0;
+                                        $jum3 = 0;
+                                        $jum4 = 0;
+                                        $jum5 = 0;
+                                        $jum6 = 0;
+                                        $jum7 = 0;
+                                        $jum8 = 0;
+                                        $jum9 = 0;
+                                        $jum10 = 0;
+                                        $jum11 = 0;
+                                        $jum12 = 0;
+                                        $jum13 = 0;
+                                        $jum14 = 0;
+                                        $jum15 = 0;
+                                        $tsnya = array('TS-4','TS-3','TS-2','TS-1','TS');
+                                        $nil = 0;
+                                    for($i=0;$i<5;$i++){ 
+                                        $jum1 = $jum1 + $dataisian[$i]['kolom1'];
+                                        $jum2 = $jum2 + $dataisian[$i]['kolom2'];
+                                        $jum3 = $jum3 + $dataisian[$i]['kolom3'];
+                                        $jum4 = $jum4 + $dataisian[$i]['kolom4'];
+                                        $jum5 = $jum5 + $dataisian[$i]['kolom5'];
+                                        $jum6 = $jum6 + $dataisian[$i]['kolom6'];
+                                        $jum7 = $jum7 + $dataisian[$i]['kolom7'];
+                                        $jum8 = $jum8 + $dataisian[$i]['kolom8'];
+                                        $jum9 = $jum9 + $dataisian[$i]['kolom9'];
+                                        $jum10 = ($jum10 + $dataisian[$i]['kolom10']);
+                                        $jum11 = ($jum11 + $dataisian[$i]['kolom11']);
+                                        $jum12 = ($jum12 + $dataisian[$i]['kolom12']);
+                                        $jum13 = ($jum13 + $dataisian[$i]['kolom13']);
+                                        $jum14 = ($jum14 + $dataisian[$i]['kolom14']);
+                                        $jum15 = ($jum15 + $dataisian[$i]['kolom15']);
+                                    ?>
+                                    <tr style="height: 13px;">
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $tsnya[$i] ?></td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom1'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom2'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom3'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom4'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom5'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom6'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom7'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom8'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom9'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom10'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom11'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom12'] ?>&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom13'] ?>&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom14'] ?>&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom15'] ?>&nbsp;</td>
+                                    </tr>
+                                    <?php
+                                    $nil = $nil + 1;
+                                    // if ($nil>6) {
+                                    //     break;
+                                    // }
+                                     } ?>
+                                    <tr style="height: 13px;">
+                                    <td style="width: 52px; text-align: center; height: 13px;">Jumlah</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum1;?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum2;?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum3;?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum4;?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum5;?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum6;?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum7;?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum8;?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum9;?>&nbsp;</td>
+                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum10/$nil;?>&nbsp;</td>
+                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum11/$nil;?>&nbsp;</td>
+                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum12/$nil;?>&nbsp;</td>
+                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum13/$nil;?>&nbsp;</td>
+                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum14/$nil;?>&nbsp;</td>
+                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum15/$nil;?>&nbsp;</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <!-- <?php echo $dataisian[$i]['kolom16'] ?> -->
+                                    <?php echo $dataisian[0]['kolom16'] ?>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <input type="hidden" name="version_no311" id="version_no311" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at311" id="created_at311" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        <!-- <input type="hidden" name="version_no311" id="version_no311" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at311" id="created_at311" value="<?php echo $dataisian[$i]['updated_at'] ?>"> -->
+                        <!-- <button type="submit" class="btn btn-primary waves-effect">UPDATE</button> -->
                         </form>
-                        <?php }
+                        <?php 
+                    // }
                                 }else{
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian/ngisi311">
                         <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
-                        <h2 class="card-inside-title">Tuliskan data seluruh mahasiswa reguler(1) dan lulusannya dalam lima tahun terakhir dengan mengikuti format tabel berikut:</h2>
+                        <h2 class="card-inside-title">Tuliskan data seluruh mahasiswa reguler(1) dan lulusannya dalam lima tahun terakhir dengan mengikuti format berikut:</h2>
                         <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <b>Daya Tampung</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Calon Mahasiswa Reguler :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Ikut Seleksi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Lulus Seleksi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Mahasiswa Baru :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Reguler Bukan Transfer</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Transfer(3)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Total Mahasiswa :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Reguler Bukan Transfer</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom6_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Transfer(3)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom7_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Lulusan :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Reguler Bukan Transfer</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Transfer(3)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom9_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>IPK Lulusan Reguler :</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Minimal</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom10_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Rata-rata</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom11_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Maksimal</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text"  name="kolom12_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Presentase Lulusan Reguler dengan IPK :</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>< 2,75</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom13_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>2,75 - 3,50</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom14_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>> 3,50</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom15_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Isian / Catatan :</b>
+                                    </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    <table style="height: 42px;" border="1" width="935" cellspacing="0" cellpadding="0">
+                                            <textarea name="kolom16_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                    <!-- <table style="height: 42px;" border="1" width="935" cellspacing="0" cellpadding="0">
                                     <tbody>
                                     <tr style="height: 26px;">
                                     <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Tahun Akademik</th>
@@ -1222,7 +1821,7 @@
                                     <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">&nbsp;</td>
                                     </tr>
                                     </tbody>
-                                    </table>
+                                    </table> -->
 
                                     <p>Catatan:</p>
                                     <p>TS:Tahun akademik penuh terakhir saat pengisian borang</p>
@@ -12377,6 +12976,8 @@
         var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian5kolom/"+x+"/"+borang;
     }else if(borang==15){
         var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolomsatupersatu/"+x+"/"+borang;
+    }else{
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian1kolom/"+x+"/"+borang;
     }
     
         swal({
