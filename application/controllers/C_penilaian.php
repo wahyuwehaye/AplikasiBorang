@@ -535,9 +535,9 @@ class C_penilaian extends CI_Controller {
         ';
     }
 
-    public function nilaiborang($nil1,$nil2,$nil3,$nil4,$nil5,$nil6,$nil7,$nil8,$nil9,$nil10,$nil11,$nil12,$nil13,$nil14,$nil15,$nil16,$nil17,$nil18,$nil19,$nil20,$nil21,$nil22,$nil23){
+    public function nilaiborang($nil1,$nil2,$nil3,$nil4,$nil5,$nil6,$nil7,$nil8,$nil9,$nil10,$nil11,$nil12,$nil13,$nil14,$nil15,$nil16,$nil17,$nil18,$nil19,$nil20,$nil21,$nil22,$nil23,$nil24,$nil25,$nil26,$nil27,$nil28,$nil29){
 
-        $totalnya = $nil1+$nil2+$nil3+$nil4+$nil5+$nil6+$nil7+$nil8+$nil9+$nil10+$nil11+$nil12+$nil13+$nil14+$nil15+$nil16+$nil17+$nil18+$nil19+$nil20+$nil21+$nil22+$nil23;
+        $totalnya = $nil1+$nil2+$nil3+$nil4+$nil5+$nil6+$nil7+$nil8+$nil9+$nil10+$nil11+$nil12+$nil13+$nil14+$nil15+$nil16+$nil17+$nil18+$nil19+$nil20+$nil21+$nil22+$nil23+$nil24+$nil25+$nil26+$nil27+$nil28+$nil29;
 
         echo '<p>'.number_format($totalnya, 2, ".", ".").'</p>
         ';
