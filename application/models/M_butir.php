@@ -76,6 +76,17 @@ class M_butir extends CI_Model {
 
         }
 
+        public function findButir($column,$id){
+            return $this->db->select("*")
+              ->from('butir')
+              ->where($column, $id)
+              ->where($column, "column LIKE '%$keyword%'")
+              ->order_by('id', 'DESC')
+              ->get()
+              ->result_array();
+
+        }
+
         public function delete($column,$id){
 
             $this->db->delete('butir', array($column => $id));
