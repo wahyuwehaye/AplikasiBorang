@@ -200,104 +200,389 @@
                                     <h3>3.1&nbsp; Profil Mahasiswa dan Lulusan</h3>
                                     <h3>3.1.1 Tuliskan data <strong>seluruh</strong> mahasiswa reguler<sup>(1)</sup> dan lulusannya dalam lima tahun terakhir dengan mengikuti format tabel berikut:</h3>
                                     <p>&nbsp;</p>
-                                    <?php echo $dataisian10[$i]['kolom1'] ?>
-                                 <?php
-                                 }
-                                 ?>
-                                    <h3>3.1.3  Sebutkan pencapaian prestasi mahasiswa dalam tiga tahun terakhir di bidang akademik dan non-akademik, antara lain prestasi dalam penelitian dan lomba karya ilmiah, PkM, olahraga, dan seni dalam tabel berikut. </h3>
-                                    <p style="text-align: center;"><strong>Tabel 3.1.3 Pencapaian prestasi Mahasiswa</strong></p>
                                     <table style="height: 49px; width: 931px; margin-left: auto; margin-right: auto;" border="1" cellspacing="0" cellpadding="0">
+                                    <thead>
+                                        <tr style="height: 26px;">
+                                            <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">No</th>
+                                            <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Tahun Akademik</th>
+                                            <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Daya Tampung</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Calon Mahasiswa Reguler</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Mahasiswa Baru</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Total Mahasiswa</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Lulusan</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="3">IPK Lulusan Reguler</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="3">Presentase Lulusan Reguler dengan IPK :</th>
+                                        </tr>
+                                        <tr style="height: 26px;">
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Ikut Seleksi</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Lulus Seleksi</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler Bukan Transfer</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler Bukan Transfer</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler bukan Transfer</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Min</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Rat</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Mak</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">&lt; 2,75</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">2,75-3,00</th>
+                                            <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">&gt; 3,50</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
-                                    <tr style="height: 50px;">
-                                    <th style="width: 24px; height: 73px; background-color: #2d6ba6; text-align: center;" rowspan="2">
-                                    <p>No</p>
-                                    (1)</th>
-                                    <th style="width: 24px; height: 73px; background-color: #2d6ba6; text-align: center;" rowspan="2">
-                                    <p>Nama Kegiatan</p>
-                                    (2)</th>
-                                    <th style="width: 24px; height: 73px; background-color: #2d6ba6; text-align: center;" rowspan="2">
-                                    <p>Waktu Penyelenggaraan</p>
-                                    (3)</th>
-                                    <th style="width: 24px; height: 50px; background-color: #2d6ba6; text-align: center;" colspan="3">Tingkat*</th>
-                                    <th style="width: 24px; height: 73px; background-color: #2d6ba6; text-align: center;" rowspan="2">
-                                    <p>Prestasi yang Dicapai</p>
-                                    <p>(7)</p>
-                                    </th>
+                                        <tr>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
+                                            <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(2)</strong></td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(3)</strong></td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(4)</strong></td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(5)</strong></td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(6)</strong></td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(7)</strong></td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(8)</strong></td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(9)</strong></td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(10)</strong></td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(11)</strong></td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(12)</strong></td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><strong>(13)</strong></td>
+                                            <td style="width: 53px; text-align: center; height: 13px;"><strong>(14)</strong></td>
+                                            <td style="width: 53px; text-align: center; height: 13px;"><strong>(15)</strong></td>
+                                            <td style="width: 53px; text-align: center; height: 13px;"><strong>(16)</strong></td>
+                                        </tr>
+                                        <?php 
+                                            $jum1 = 0;
+                                            $jum2 = 0;
+                                            $jum3 = 0;
+                                            $jum4 = 0;
+                                            $jum5 = 0;
+                                            $jum6 = 0;
+                                            $jum7 = 0;
+                                            $jum8 = 0;
+                                            $jum9 = 0;
+                                            $jum10 = 0;
+                                            $jum11 = 0;
+                                            $jum12 = 0;
+                                            $jum13 = 0;
+                                            $jum14 = 0;
+                                            $jum15 = 0;
+                                            // $tsnya = array('TS-4','TS-3','TS-2','TS-1','TS');
+                                            $tsnya = array('TS','TS-1','TS-2','TS-3','TS-4');
+                                            $nil = 0;
+                                            $diloop = count($dataisian10);
+                                        for($i=0;$i<count($dataisian10);$i++){
+                                            $jum1 = $jum1 + $dataisian10[$i]['kolom1'];
+                                            $jum2 = $jum2 + $dataisian10[$i]['kolom2'];
+                                            $jum3 = $jum3 + $dataisian10[$i]['kolom3'];
+                                            $jum4 = $jum4 + $dataisian10[$i]['kolom4'];
+                                            $jum5 = $jum5 + $dataisian10[$i]['kolom5'];
+                                            $jum6 = $jum6 + $dataisian10[$i]['kolom6'];
+                                            $jum7 = $jum7 + $dataisian10[$i]['kolom7'];
+                                            $jum8 = $jum8 + $dataisian10[$i]['kolom8'];
+                                            $jum9 = $jum9 + $dataisian10[$i]['kolom9'];
+                                            $jum10 = ($jum10 + $dataisian10[$i]['kolom10']);
+                                            $jum11 = ($jum11 + $dataisian10[$i]['kolom11']);
+                                            $jum12 = ($jum12 + $dataisian10[$i]['kolom12']);
+                                            $jum13 = ($jum13 + $dataisian10[$i]['kolom13']);
+                                            $jum14 = ($jum14 + $dataisian10[$i]['kolom14']);
+                                            $jum15 = ($jum15 + $dataisian10[$i]['kolom15']);
+                                            $diloop = $diloop - 1;
+                                            $nil = $nil + 1;
+                                        ?>
+                                        <tr style="height: 13px;">
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?>&nbsp;</td>
+                                            <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $tsnya[$diloop] ?></th>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom1'] ?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom2'] ?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom3'] ?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom4'] ?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom5'] ?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom6'] ?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom7'] ?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom8'] ?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom9'] ?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom10'] ?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom11'] ?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom12'] ?>&nbsp;</td>
+                                            <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom13'] ?>&nbsp;</td>
+                                            <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom14'] ?>&nbsp;</td>
+                                            <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian10[$diloop]['kolom15'] ?>&nbsp;</td>
+                                        </tr>
+                                        <?php
+                                            } ?>
+                                        <tr style="height: 13px;">
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil+1 ?>&nbsp;</td>
+                                            <th scope="row" style="width: 52px; text-align: center; height: 13px;">Jumlah</th>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum1;?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum2;?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum3;?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum4;?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum5;?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum6;?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum7;?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum8;?>&nbsp;</td>
+                                            <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum9;?>&nbsp;</td>
+                                            <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum10/$nil;?>&nbsp;</td>
+                                            <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum11/$nil;?>&nbsp;</td>
+                                            <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum12/$nil;?>&nbsp;</td>
+                                            <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum13/$nil;?> %&nbsp;</td>
+                                            <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum14/$nil;?> %&nbsp;</td>
+                                            <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum15/$nil;?> %&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                 <?php
+                                    }
+                                 ?>
+                                 <h3>3.1.2 Tuliskan data <strong>seluruh</strong> mahasiswa reguler<sup>(1)</sup> dan lulusannya dalam lima tahun terakhir dengan mengikuti format tabel berikut:</h3>
+                                 <p>&nbsp;</p>
+                                    <table style="height: 49px; width: 931px; margin-left: auto; margin-right: auto;" border="1" cellspacing="0" cellpadding="0">
+                                        <thead>
+                                            <tr style="height: 26px;">
+                                                <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">No</th>
+                                                <th style="width: 84.4px; background-color: #ababab; text-align: center;" rowspan="2">
+                                                <p><strong>Tahun Akademik</strong></p>
+                                                </th>
+                                                <th style="width: 84.4px; background-color: #ababab; text-align: center;" rowspan="2">
+                                                <p><strong>Daya Tampung</strong></p>
+                                                </th>
+                                                <th style="width: 84.4px; background-color: #ababab; text-align: center;" colspan="2">
+                                                <p><strong>Jumlah Calon Mahasiswa&nbsp; </strong></p>
+                                                </th>
+                                                <th style="width: 84.4px; background-color: #ababab; text-align: center;" colspan="2">
+                                                <p><strong>Jumlah Mahasiswa Baru </strong></p>
+                                                </th>
+                                                <th style="width: 84.4px; background-color: #ababab; text-align: center;" colspan="2">
+                                                <p><strong>Jumlah Total Mahasiswa</strong></p></th>
+                                            </tr>
+                                            <tr style="height: 26px;">
+                                                <th style="width: 84.4px; background-color: #ababab; text-align: center;">
+                                                <p><strong>Ikut Seleksi</strong></p>
+                                                </th>
+                                                <th style="width: 84.4px; background-color: #ababab; text-align: center;">
+                                                <p><strong>Lulus Seleksi</strong></p>
+                                                </th>
+                                                <th style="width: 84.4px; background-color: #ababab; text-align: center;">
+                                                <p><strong>Non-Reguler</strong></p>
+                                                </th>
+                                                <th style="width: 84.4px; background-color: #ababab; text-align: center;">
+                                                <p><strong>Transfer<sup>(3)</sup></strong></p>
+                                                </th>
+                                                <th style="width: 84.4px; background-color: #ababab; text-align: center;">
+                                                <p><strong>Non-Reguler</strong></p>
+                                                </th>
+                                                <th style="width: 84.4px; background-color: #ababab; text-align: center;">
+                                                <p><strong>Transfer<sup>(3)</sup></strong></p>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
+                                                <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><strong>(2)</strong></td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><strong>(3)</strong></td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><strong>(4)</strong></td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><strong>(5)</strong></td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><strong>(6)</strong></td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><strong>(7)</strong></td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><strong>(8)</strong></td>
+                                            </tr>
+                                            <?php 
+                                                $jum1 = 0;
+                                                $jum2 = 0;
+                                                $jum3 = 0;
+                                                $jum4 = 0;
+                                                $jum5 = 0;
+                                                $jum6 = 0;
+                                                $jum7 = 0;
+                                                // $tsnya = array('TS-4','TS-3','TS-2','TS-1','TS');
+                                                $tsnya = array('TS','TS-1','TS-2','TS-3','TS-4');
+                                                $nil = 0;
+                                                $diloop = count($dataisian14);
+                                            for($i=0;$i<count($dataisian14);$i++){
+                                                $jum1 = $jum1 + $dataisian14[$i]['kolom1'];
+                                                $jum2 = $jum2 + $dataisian14[$i]['kolom2'];
+                                                $jum3 = $jum3 + $dataisian14[$i]['kolom3'];
+                                                $jum4 = $jum4 + $dataisian14[$i]['kolom4'];
+                                                $jum5 = $jum5 + $dataisian14[$i]['kolom5'];
+                                                $jum6 = $jum6 + $dataisian14[$i]['kolom6'];
+                                                $jum7 = $jum7 + $dataisian14[$i]['kolom7'];
+                                                $diloop = $diloop - 1;
+                                                $nil = $nil + 1;
+                                            ?>
+                                            <tr style="height: 13px;">
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?>&nbsp;</td>
+                                                <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $tsnya[$diloop] ?></th>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian14[$diloop]['kolom1'] ?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian14[$diloop]['kolom2'] ?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian14[$diloop]['kolom3'] ?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian14[$diloop]['kolom4'] ?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian14[$diloop]['kolom5'] ?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian14[$diloop]['kolom6'] ?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian14[$diloop]['kolom7'] ?>&nbsp;</td>
+                                            </tr>
+                                            <?php
+                                             } ?>
+                                            <tr style="height: 13px;">
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil+1 ?>&nbsp;</td>
+                                                <th scope="row" style="width: 52px; text-align: center; height: 13px;">Jumlah</th>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum1;?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum2;?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum3;?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum4;?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum5;?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum6;?>&nbsp;</td>
+                                                <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum7;?>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h3>3.1.3  Sebutkan pencapaian prestasi mahasiswa dalam tiga tahun terakhir di bidang akademik dan non-akademik, antara lain prestasi dalam penelitian dan lomba karya ilmiah, PkM, olahraga, dan seni dalam tabel berikut. </h3>
+                                    <p>Sebutkan pencapaian prestasi/reputasi mahasiswa dalam tiga tahun terakhir di bidang akademik dan non-akademik (misalnya prestasi dalam penelitian dan lomba karya ilmiah, olahraga, dan seni). </p>
+                                    <p style="text-align: center;"><strong>Tabel 3.1.3 Pencapaian prestasi Mahasiswa</strong></p>
+                                 <?php
+                                    for($i=0;$i<count($dataisian15);$i++){
+                                        ?>
+                                    <table style="height: 49px; width: 931px; margin-left: auto; margin-right: auto;" border="1" cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <tr style="height: 26px;">
+                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">No</th>
+                                        <th style="width: 50px; background-color: #9e9e9e; text-align: center;">
+                                        <p><strong>Nama Kegiatan dan Waktu Penyelenggaraan</strong></p>
+                                        </th>
+                                        <th style="width: 50px; background-color: #9e9e9e; text-align: center;">
+                                        <p><strong>Tingkat (Lokal, Wilayah, Nasional, atau Internasional)</strong></p>
+                                        </th>
+                                        <th style="width: 50px; background-color: #9e9e9e; text-align: center;">
+                                        <p><strong>Prestasi yang Dicapai</strong></p>
+                                        </th>
                                     </tr>
-                                    <tr style="height: 23px;">
-                                    <th style="width: 24px; height: 23px; background-color: #2d6ba6; text-align: center;">
-                                    <p>Prop/Wil</p>
-                                    <p>(4)</p>
-                                    </th>
-                                    <th style="width: 24px; height: 23px; background-color: #2d6ba6; text-align: center;">
-                                    <p>Nas</p>
-                                    <p>(5)</p>
-                                    </th>
-                                    <th style="width: 24px; height: 23px; background-color: #2d6ba6; text-align: center;">
-                                    <p>Inter</p>
-                                    <p>(6)</p>
-                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(2)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(3)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(4)</strong></td>
                                     </tr>
                                     <?php
-                                        for($i=0;$i<count($dataisian15);$i++){
+                                        $nil = 0;
+                                        $diloop = count($dataisian15);
+                                    for($i=0;$i<count($dataisian15);$i++){
+                                        $diloop = $diloop - 1;
+                                        $nil = $nil + 1;
                                     ?>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 24px; height: 35px; text-align: center;">&nbsp;<?php echo $i+1 ?></td>
-                                    <td style="width: 232px; height: 35px; text-align: center;">&nbsp;<?php echo $dataisian15[$i]['kolom1'] ?></td>
-                                    <td style="width: 148px; height: 35px; text-align: center;">&nbsp;<?php echo $dataisian15[$i]['kolom2'] ?></td>
-                                    <td style="width: 105px; height: 35px; text-align: center;">&nbsp;<?php if((($dataisian15[$i]['kolom3'])=='lokal')){ echo "lokal";}else{echo "-";} ?></td>
-                                    <td style="width: 128px; height: 35px; text-align: center;">&nbsp;<?php if((($dataisian15[$i]['kolom3'])=='nasional')){ echo "nasional";}else{echo "-";} ?></td>
-                                    <td style="width: 128px; height: 35px; text-align: center;">&nbsp;<?php if((($dataisian15[$i]['kolom3'])=='internasional')){ echo "internasional";}else{echo "-";} ?></td>
-                                    <td style="width: 128px; height: 35px; text-align: center;">&nbsp;<?php echo $dataisian15[$i]['kolom4'] ?></td>
+                                    <tr style="height: 13px;">
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?></th>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian15[$diloop]['kolom1'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian15[$diloop]['kolom2'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian15[$diloop]['kolom3'] ?>&nbsp;</td>
                                     </tr>
                                     <?php
-                                        }
-                                    ?>
+                                     } ?>
+                                </tbody>
+                            </table>
+                                        <?php
+                                    }
+                            ?>
+                            <h3>3.1.4  Tuliskan data jumlah mahasiswa reguler tujuh tahun terakhir dengan mengikuti format tabel berikut:</h3>
+                            <p>* Tidak memasukkan mahasiswa transfer.
+                                Catatan : huruf-huruf a, b, c, d, e dan f harus tetap tercantum pada tabel di atas.
+                                </p>
+                            <h3>3.2  Layanan kepada Mahasiswa  </h3>
+                            <h3>Lengkapilah tabel berikut untuk setiap jenis pelayanan kepada mahasiswa PS.</h3>
+                            <?php
+                            for($i=0;$i<count($dataisian17);$i++){
+                                ?>
+                            <table style="margin-left: auto; margin-right: auto; height: 387px;" border="1" width="1072" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width: 54.8px; background-color: #9c9c9c; text-align: center;">
+                                        <p><strong>No.</strong></p>
+                                        </td>
+                                        <td style="width: 54.8px; background-color: #9c9c9c; text-align: center;">
+                                        <p><strong>Jenis Pelayanan kepada Mahasiswa</strong></p>
+                                        </td>
+                                        <td style="width: 54.8px; background-color: #9c9c9c; text-align: center;">
+                                        <p><strong>Bentuk kegiatan, Pelaksanaan dan Hasilnya</strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 54.8px; text-align: center;">
+                                        <p>(1)</p>
+                                        </td>
+                                        <td style="width: 306px; text-align: center;">
+                                        <p>(2)</p>
+                                        </td>
+                                        <td style="width: 703.6px; text-align: center;">
+                                        <p>(3)</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 54.8px; text-align: center;">
+                                        <p>1</p>
+                                        </td>
+                                        <td style="width: 306px; text-align: center;">
+                                        <p>Bimbingan dan konseling</p>
+                                        </td>
+                                        <td style="width: 703.6px; text-align: center;">
+                                        <p><?php echo $dataisian17[$diloop]['kolom2'] ?></p>
+                                        <p>&nbsp;</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 54.8px; text-align: center;">
+                                        <p>2</p>
+                                        </td>
+                                        <td style="width: 306px; text-align: center;">
+                                        <p>Minat dan bakat (ekstra kurikuler)</p>
+                                        </td>
+                                        <td style="width: 703.6px; text-align: center;">
+                                        <p><?php echo $dataisian17[$diloop]['kolom4'] ?></p>
+                                        <p>&nbsp;</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 54.8px; text-align: center;">
+                                        <p>3</p>
+                                        </td>
+                                        <td style="width: 306px; text-align: center;">
+                                        <p>Pembinaan <em>soft skills</em></p>
+                                        </td>
+                                        <td style="width: 703.6px; text-align: center;">
+                                        <p><?php echo $dataisian17[$diloop]['kolom6'] ?></p>
+                                        <p>&nbsp;</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 54.8px; text-align: center;">
+                                        <p>4</p>
+                                        </td>
+                                        <td style="width: 306px; text-align: center;">
+                                        <p>Beasiswa</p>
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 703.6px; text-align: center;">
+                                        <p><?php echo $dataisian17[$diloop]['kolom8'] ?></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <td style="width: 54.8px; text-align: center;">
+                                    <p>5</p>
+                                    </td>
+                                    <td style="width: 306px; text-align: center;">
+                                    <p>Kesehatan</p>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td style="width: 703.6px; text-align: center;">
+                                    <p><?php echo $dataisian17[$diloop]['kolom10'] ?></p>
+                                    </td>
+                                    </tr>
                                     </tbody>
                                     </table>
-                                 <?php
-                                 // }
-                                 for($i=0;$i<count($dataisian24);$i++){
-                                 ?>
-                                    <h3>3.4.1 Partisipasi alumni dalam mendukung pengembangan akademik program studi dalam bentuk: (1) Sumbangan dana (2) Sumbangan fasilitas (3) Keterlibatan dalam kegiatan akademik (4) Pengembangan jejaring (5) Penyediaan fasilitas untuk kegiatan akademik</h3>
-                                    <p><?php echo $dataisian24[$i]['kolom1'] ?></p>
-                                 <?php
-                                 }
-                                 for($i=0;$i<count($dataisian25);$i++){
-                                 ?>
-                                    <h3>3.4.2 Partisipasi lulusan dan alumni dalam mendukung pengembangan non-akademik program studi dalam bentuk: (1) Sumbangan dana (2) Sumbangan fasilitas (3) Keterlibatan dalam kegiatan non akademik (4) Pengembangan jejaring (5) Penyediaan fasilitas untuk kegiatan non akademik</h3>
-                                    <p><?php echo $dataisian25[$i]['kolom1'] ?></p>
-                                 <?php
-                                 }
-                                 for($i=0;$i<count($dataisian27);$i++){
-                                 ?>
-                                    <h3>4.2.1 Pedoman tertulis tentang sistem monitoring dan evaluasi, serta rekam jejak kinerja dosen dan tenaga kependidikan</h3>
-                                    <p><?php echo $dataisian27[$i]['kolom1'] ?></p>
-                                 <?php
-                                 }
-                                 for($i=0;$i<count($dataisian26);$i++){
-                                 ?>
-                                    <h1 style="text-align: center;">STANDAR 4.</h1>
-                                    <h1 style="text-align: center;">SUMBERDAYA MANUSIA&nbsp;</h1>
-                                    <h3>4.1 Sistem Pengelolaan Sumber Daya Manusia</h3>
-                                    <p>Jelaskan sistem pengelolaan sumber daya manusia yang meliputi perencanaan seleksi/perekrutan, penempatan, pengembangan, retensi, dan pemberhentian dosen dan tenaga kependidikan untuk menjamin mutu penyelenggaraan program akademik, serta remunerasi, penghargaan, dan sanksi, termasuk informasi tentang ketersediaan pedoman tertulis dan konsistensi pelaksanaannya.&nbsp;</p>
-                                    <p><?php echo $dataisian26[$i]['kolom1'] ?></p>
-                                 <?php
-                                 }
-                                 for($i=0;$i<count($dataisian27);$i++){
-                                 ?>
-                                    <h3>4.2.1 Pedoman tertulis tentang sistem monitoring dan evaluasi, serta rekam jejak kinerja dosen dan tenaga kependidikan</h3>
-                                    <p><?php echo $dataisian27[$i]['kolom1'] ?></p>
-                                 <?php
-                                 }
-                                 for($i=0;$i<count($dataisian28);$i++){
-                                 ?>
-                                    <h3>4.2.1 Pelaksanaan monitoring dan evaluasi kinerja dosen di bidang pendidikan, penelitian, pelayanan/pengabdian kepada masyarakat</h3>
-                                    <p><?php echo $dataisian28[$i]['kolom1'] ?></p>
-                                 <?php
-                                 }
+                                <?php
+                            }
                             ?>
-                                
                             </textarea>
                         </div>
                     </div>
