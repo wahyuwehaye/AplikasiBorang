@@ -59,7 +59,7 @@
                 }
                 
             ?>
-                            <table class="table table-hover" >
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th width="5%">NO.</th>
@@ -89,36 +89,36 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kejelasan (1 - 4) </td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="11a1" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="11a1" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kerealistikan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="11a2" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai2[]" id="11a2" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor keterkaitan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="11a3" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai3[]" id="11a3" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor keterlibatan pemangku kepentingan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai4[]" id="11a4" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai4[]" id="11a4" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor akhir</td>
-                                        <td width="10%"><input type="text" required name="nilai5[]" id="11askorakhir" readonly="readonly" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="nilai5[]" id="11askorakhir" readonly="readonly" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="11anilai" readonly="readonly" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="11anilai" readonly="readonly" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai6[]' value="0">
@@ -149,24 +149,24 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kejelasan tahapan waktu dan kerealistikan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="11b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="11b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kelengkapan dokumen (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="11b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai2[]" id="11b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor akhir</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="11bskor" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="nilai3[]" id="11bskor" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="11bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="11bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai4[]' value="0">
@@ -193,7 +193,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="12" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah12()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="12" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah12()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -230,7 +230,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai12"><input type="text" required name="skorakhir[]" id="12nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai12"><input type="text" name="skorakhir[]" id="12nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -259,7 +259,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="21" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah21()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="21" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah21()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -296,7 +296,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai21"><input type="text" required name="skorakhir[]" id="21nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai21"><input type="text" name="skorakhir[]" id="21nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -325,7 +325,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="22" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah22()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="22" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah22()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -362,7 +362,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai22"><input type="text" required name="skorakhir[]" id="22nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai22"><input type="text" name="skorakhir[]" id="22nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -391,7 +391,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="23" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah23()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="23" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah23()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -434,7 +434,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai23"><input type="text" required name="skorakhir[]" id="23nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai23"><input type="text" name="skorakhir[]" id="23nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -463,7 +463,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="24" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah24()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -506,7 +506,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai25"><input type="text" required name="skorakhir[]" id="25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai24"><input type="text" name="skorakhir[]" id="24nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -535,7 +535,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -578,7 +578,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai25"><input type="text" required name="skorakhir[]" id="25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai25"><input type="text" name="skorakhir[]" id="25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -607,7 +607,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="26" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah26()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="26" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah26()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -650,7 +650,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai26"><input type="text" required name="skorakhir[]" id="26nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai26"><input type="text" name="skorakhir[]" id="26nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -684,23 +684,23 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Jumlah kolom 3 (Jumlah yang ikut seleksi))</td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="311a1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
+                                        <td width="10%"><input type="text" name="nilai1[]" id="311a1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
                                         <td></td>
                                         <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Jumlah kolom 2 (Daya tampung PS)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="311a2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
+                                        <td width="10%"><input type="text" name="nilai2[]" id="311a2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Rasio = (jumlah kolom 3)/(jumlah kolom 2)</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="311arasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="nilai3[]" id="311arasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311anilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="311anilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai4[]' value="0">
@@ -732,23 +732,23 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Jumlah kolom 5 (Jumlah mhs baru reguler yang melakukan registrasi)</td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="311b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
+                                        <td width="10%"><input type="text" name="nilai1[]" id="311b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
                                         <td></td>
                                         <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Jumlah kolom 4 (Jumlah calon mhs yang lulus seleksi)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="311b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
+                                        <td width="10%"><input type="text" name="nilai2[]" id="311b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Rasio=(jumlah kolom 5)/jumlah kolom 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="311brasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="nilai3[]" id="311brasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="311bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai4[]' value="0">
@@ -780,23 +780,23 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">TMBT = total mahasiswa baru transfer untuk program S1 reguler dan S1 non-reguler</td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="311c1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
+                                        <td width="10%"><input type="text" name="nilai1[]" id="311c1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
                                         <td></td>
                                         <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">TMB = total mahasiswa baru bukan transfer untuk program S1 reguler dan S1 non-reguler</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="311c2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
+                                        <td width="10%"><input type="text" name="nilai2[]" id="311c2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">RM = TMBT/TMB</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="311crasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="nilai3[]" id="311crasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311cnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="311cnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai4[]' value="0">
@@ -822,19 +822,19 @@
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="311d1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
+                                        <td width="10%"><input type="text" name="nilai1[]" id="311d1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
                                         <td></td>
                                         <td width="25%"><textarea rows="2" name="masukan[]" id="311dinfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">IPK (Isi angka 0 jika belum ada lulusan)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="311d2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
+                                        <td width="10%"><input type="text" name="nilai2[]" id="311d2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
                                         <td></td>
                                         <td width="25%" rowspan="3"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311dnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="311dnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai3[]' value="0">
@@ -862,7 +862,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="312" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="312" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -905,7 +905,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="312nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="312nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -934,7 +934,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="313" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah313()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="313" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah313()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="7"><textarea rows="12" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -971,7 +971,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="313nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="313nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -1006,24 +1006,24 @@
                                     <tr>
                                         <td>d</td>
                                         <td width="45%">Jumlah mahasiswa yang diterima pada TS-3 (4 tahun yang lalu)</td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="314a1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314a()"></td>
+                                        <td width="10%"><input type="text" name="nilai1[]" id="314a1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314a()"></td>
                                         <td></td>
                                         <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize" ></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>f</td>
                                         <td width="45%">Jumlah mahasiswa yang diterima pada TS-3 yang telah lulus.</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="314a2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314a()"></td>
+                                        <td width="10%"><input type="text" name="nilai2[]" id="314a2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314a()"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">KTW (Kelulusan tepat waktu dalam persen, kisaran nilai 0 - 100.)</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="314arasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="nilai3[]" id="314arasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="314anilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="314anilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai4[]' value="0">
@@ -1056,30 +1056,30 @@
                                     <tr>
                                         <td>a</td>
                                         <td width="45%">Jumlah mahasiswa baru yang diterima pada TS-6 (7 tahun yang lalu)</td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="314b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314b()"></td>
+                                        <td width="10%"><input type="text" name="nilai1[]" id="314b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314b()"></td>
                                         <td></td>
                                         <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>b</td>
                                         <td width="45%">Jumlah mahasiswa baru yang diterima pada TS-6 yang masih terdaftar pada TS</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="314b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314b()"></td>
+                                        <td width="10%"><input type="text" name="nilai2[]" id="314b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314b()"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>c</td>
                                         <td width="45%">Jumlah mahasiswa baru yang diterima pada TS-6 yang telah lulus</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="314b3" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314b()"></td>
+                                        <td width="10%"><input type="text" name="nilai3[]" id="314b3" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah314b()"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">MDO (Persentase mahasiswa DO/Mengundurkan diri)</td>
-                                        <td width="10%"><input type="text" required name="nilai4[]" id="314brasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="nilai4[]" id="314brasio" placeholder="4,00" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="314bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="314bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai5[]' value="0">
@@ -1105,7 +1105,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="321" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah321()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="321" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah321()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -1148,7 +1148,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="321nilai" placeholder="4,00" readonly="readonly"  style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="321nilai" placeholder="4,00" readonly="readonly"  style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -1177,7 +1177,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="322" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah322()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="322" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah322()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="4"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -1190,12 +1190,12 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">SL</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="322sl" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="nilai2[]" id="322sl" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="322nilai" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="322nilai" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai3[]' value="0">
@@ -1223,7 +1223,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="331a" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331a()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="331a" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331a()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -1266,7 +1266,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai331a"><input type="text" required name="skorakhir[]" id="331anilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai331a"><input type="text" name="skorakhir[]" id="331anilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -1295,7 +1295,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="331b" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="331b" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -1338,7 +1338,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai331b"><input type="text" required name="skorakhir[]" id="331bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai331b"><input type="text" name="skorakhir[]" id="331bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -1373,36 +1373,36 @@
                                     <tr>
                                         <td>a</td>
                                         <td width="45%">Jumlah persentase untuk respon sangat baik (Kisaran nilai 0 - 700%)</td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="331c1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331c()"></td>
+                                        <td width="10%"><input type="text" name="nilai1[]" id="331c1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331c()"></td>
                                         <td></td>
                                         <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>b</td>
                                         <td width="45%">Jumlah persentase untuk respon baik (Kisaran nilai 0 - 700%)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="331c2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331c()"></td>
+                                        <td width="10%"><input type="text" name="nilai2[]" id="331c2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331c()"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>c</td>
                                         <td width="45%">Jumlah persentase untuk respon cukup (Kisaran nilai 0 - 700%)</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="331c3" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331c()"></td>
+                                        <td width="10%"><input type="text" name="nilai3[]" id="331c3" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331c()"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>d</td>
                                         <td width="45%">Jumlah persentase untuk respon kurang (Kisaran nilai 0 - 700%)</td>
-                                        <td width="10%"><input type="text" required name="nilai4[]" id="331c4" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331c()"></td>
+                                        <td width="10%"><input type="text" name="nilai4[]" id="331c4" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331c()"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor akhir (Jumlah a + b + c + d paling besar = 700%)</td>
-                                        <td width="10%"><input type="text" required name="nilai5[]" id="331crasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="nilai5[]" id="331crasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="331cnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="331cnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai6[]' value="0">
@@ -1426,13 +1426,13 @@
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="332" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah332()"></td>
+                                        <td width="10%"><input type="text" name="nilai1[]" id="332" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah332()"></td>
                                         <td></td>
                                         <td width="25%"><textarea rows="2" name="masukan[]" id="332info" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai (bila belum ada lulusan otomatis bernilai nol, lihat butir 3.1.4b)</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="332nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="332nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                         <td width="25%" rowspan="3"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
@@ -1461,13 +1461,13 @@
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="333" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah333()"></td>
+                                        <td width="10%"><input type="text" name="nilai1[]" id="333" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah333()"></td>
                                         <td></td>
                                         <td width="25%"><textarea rows="2" name="masukan[]" id="333info" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai (bila belum ada lulusan otomatis bernilai nol, lihat butir 3.1.4b)</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="333nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="333nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                         <td width="25%" rowspan="3"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
@@ -1486,7 +1486,7 @@
                                 </tbody>
 
         <!--Butir 3.4.1 -->
-                            <tbody>
+        <tbody>
                                     <tr>
                                         <th width="5%" rowspan="8" scope="row"><?php echo $f1[24]['id'] ?></th>
                                         <td width="5%" rowspan="8"><?php echo $f1[24]['butir'] ?></td>
@@ -1498,7 +1498,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="341" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah341()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" name="nilai1[]" id="341" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah341()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -1511,37 +1511,37 @@
                                     </tr>
                                     <tr>
                                         <td>0</td>
-                                        <td width="45%">Tidak ada partisipasi alumni.</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen sangat berat, melebihi 19 sks.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Hanya 1 bentuk partisipasi saja yang dilakukan oleh alumni.</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen relatif berat, yaitu lebih dari 17 s.d. 19 sks.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Hanya 2 bentuk partisipasi yang dilakukan oleh alumni.</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 15  s.d. 17 sks.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">3-4 bentuk partisipasi dilakukan oleh alumni.</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 13  s.d. 15 sks.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Semua bentuk partisipasi dilakukan oleh alumni.</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban mendekati ideal, yaitu kurang atau sama dengan 13 sks.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="341nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" name="skorakhir[]" id="341nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -1557,208 +1557,115 @@
                                         <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
                                     </tr> -->
                                 </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Hover Rows -->
 
-     <!--Butir 3.4.2 -->
-                        <tbody>
+            <!-- Hover Zoom Effect -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="info-box-2 bg-blue hover-zoom-effect">
+                        <div class="icon">
+                            <i class="material-icons">assessment</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">BORANG PROGRAM STUDI</div>
+                            <div class="number">REKAP ASESMEN KECUKUPAN</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Hover Zoom Effect -->
+            <!-- Hover Rows -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header js-sweetalert">
+                            <button onclick="akumulasi()" type="button" class="btn btn-primary waves-effect">Akumulasi Nilai</button>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table table-hover">
+                                <!-- <thead>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[25]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[25]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[25]['aspek'] ?></td>
-                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[25]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[25]['butir'];?>">
-                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
-                                        <input type='hidden' name='masukan[]' value="">
-                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="342" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah342()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                        <th>#</th>
+                                        <th>FIRST NAME</th>
+                                        <th>LAST NAME</th>
+                                        <th>USERNAME</th>
                                     </tr>
+                                </thead> -->
+                                <tbody>
                                     <tr>
-                                        <td>0</td>
-                                        <td width="45%">Tidak ada partisipasi alumni.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
+                                        <th scope="row">Borang Program Studi</th>
+                                        <td><div id="nilaiborang"><p>0</p></div></td>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td width="45%">Hanya 1 bentuk partisipasi saja yang dilakukan oleh alumni.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td width="45%">Hanya 2 bentuk partisipasi yang dilakukan oleh alumni.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td width="45%">3-4 bentuk partisipasi dilakukan oleh alumni.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td width="45%">Semua bentuk partisipasi dilakukan oleh alumni.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="342nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
-                                        <td></td>
-                                    </tr>
-                                    <input type='hidden' name='nilai2[]' value="0">
-                                    <input type='hidden' name='nilai3[]' value="0">
-                                    <input type='hidden' name='nilai4[]' value="0">
-                                    <input type='hidden' name='nilai5[]' value="0">
-                                    <input type='hidden' name='nilai6[]' value="0">
-                                    <input type='hidden' name='nilai7[]' value="0">
-                                    <input type='hidden' name='nilai8[]' value="0">
-                                    <input type='hidden' name='nilai9[]' value="0">
-                                    <input type='hidden' name='nilai10[]' value="0">
                                     <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                        <th scope="row">Evaluasi Diri</th>
+                                        <td><div id="nilaied">0</div></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Borang Unit Pengelola</th>
+                                        <td><div id="nilaipengelola">0</div></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Nilai Akhir</th>
+                                        <td><div id="nilaiakhir">0</div></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Hasil Asesmen Kecukupan</th>
+                                        <td><div id="nilaiasesmen">0</div></td>
                                     </tr> -->
                                 </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Hover Rows -->
+            <!-- Hover Zoom Effect -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="info-box-2 bg-light-green hover-zoom-effect">
+                        <div class="icon">
+                            <i class="material-icons">done_all</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">SIMPAN SEMUA NILAI BORANG UNTUK PROGRAM STUDI <?php echo strtoupper($buku[0]['fakpro']); ?></div>
+                            <div class="number"><button type="submit" class="btn bg-teal btn-block btn-lg waves-effect">Simpan Nilai</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Hover Zoom Effect -->
+        </div>
+        <?=form_close();?>
+    </section>
 
-                 <!--Butir 4.1 -->
-                        <tbody>
-                                    <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[26]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[26]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[26]['aspek'] ?></td>
-                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[26]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[26]['butir'];?>">
-                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
-                                        <input type='hidden' name='masukan[]' value="">
-                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="41" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah41()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td width="45%">Tidak ada partisipasi alumni.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td width="45%">Ada pedoman tertulis, tidak lengkap dan tidak dilaksanakan.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td width="45%">Ada pedoman tertulis yang lengkap; tetapi tidak dilaksanakan.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td width="45%">Ada pedoman tertulis yang lengkap; dan tidak ada bukti dilaksanakan secara konsisten.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td width="45%">Ada pedoman tertulis yang lengkap; dan ada bukti dilaksanakan secara konsisten.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="41nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
-                                        <td></td>
-                                    </tr>
-                                    <input type='hidden' name='nilai2[]' value="0">
-                                    <input type='hidden' name='nilai3[]' value="0">
-                                    <input type='hidden' name='nilai4[]' value="0">
-                                    <input type='hidden' name='nilai5[]' value="0">
-                                    <input type='hidden' name='nilai6[]' value="0">
-                                    <input type='hidden' name='nilai7[]' value="0">
-                                    <input type='hidden' name='nilai8[]' value="0">
-                                    <input type='hidden' name='nilai9[]' value="0">
-                                    <input type='hidden' name='nilai10[]' value="0">
-                                    <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
-                                    </tr> -->
-                                </tbody>
+    <script type="text/javascript">
+        function sum() {
+              var txtFirstNumberValue = document.getElementById('txt1').value;
+              var txtSecondNumberValue = document.getElementById('txt2').value;
+              var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue);
+              if (!isNaN(result)) {
+                 document.getElementById('txt3').value = result;
+              }
+        }
 
-                 <!--Butir 4.2.1 -->
-                        <tbody>
-                                    <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[27]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[27]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[27]['aspek'] ?></td>
-                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[27]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[27]['butir'];?>">
-                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
-                                        <input type='hidden' name='masukan[]' value="">
-                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="421" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah421()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td width="45%">Tidak ada partisipasi alumni.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td width="45%">Ada pedoman tertulis, tidak lengkap dan tidak dilaksanakan.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td width="45%">Ada pedoman tertulis yang lengkap; tetapi tidak dilaksanakan.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td width="45%">Ada pedoman tertulis yang lengkap; dan tidak ada bukti dilaksanakan secara konsisten.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td width="45%">Ada pedoman tertulis yang lengkap; dan ada bukti dilaksanakan secara konsisten.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="421nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
-                                        <td></td>
-                                    </tr>
-                                    <input type='hidden' name='nilai2[]' value="0">
-                                    <input type='hidden' name='nilai3[]' value="0">
-                                    <input type='hidden' name='nilai4[]' value="0">
-                                    <input type='hidden' name='nilai5[]' value="0">
-                                    <input type='hidden' name='nilai6[]' value="0">
-                                    <input type='hidden' name='nilai7[]' value="0">
-                                    <input type='hidden' name='nilai8[]' value="0">
-                                    <input type='hidden' name='nilai9[]' value="0">
-                                    <input type='hidden' name='nilai10[]' value="0">
-                                    <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
-                                    </tr> -->
-                                </tbody>
-
+<<<<<<< HEAD
                 <!--Butir 4.2.2 -->
                         <tbody>
                                     <tr>
@@ -6361,12 +6268,15 @@
               }
         }
 
+=======
+>>>>>>> a7f06b8ee0a320d5fd4a888af9010ee1052addaf
         function cekjumlah11a(){
               var txt1 = document.getElementById('11a1').value;
               var txt2 = document.getElementById('11a2').value;
               var txt3 = document.getElementById('11a3').value;
               var txt4 = document.getElementById('11a4').value;
               var result = ((parseFloat(txt1) + parseFloat(txt2) + parseFloat(txt3) + parseFloat(txt4))/4);
+<<<<<<< HEAD
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
                      document.getElementById('11askorakhir').value = desimalnya;
@@ -7564,8 +7474,106 @@
          function cekjumlah641d(){
               var txt1 = document.getElementById('641d').value;
               var result = (parseFloat(txt1));
+=======
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
+                     document.getElementById('11askorakhir').value = desimalnya;
+                     document.getElementById('11anilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah11b(){
+              var txt1 = document.getElementById('11b1').value;
+              var txt2 = document.getElementById('11b2').value;
+              var result = ((parseFloat(txt1) + parseFloat(txt2))/2);
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('11bskor').value = desimalnya;
+                     document.getElementById('11bnilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah12(){
+              var txt1 = document.getElementById('12').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('12nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah21(){
+              var txt1 = document.getElementById('21').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('21nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah22(){
+              var txt1 = document.getElementById('22').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('22nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah23(){
+              var txt1 = document.getElementById('23').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('23nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah24(){
+              var txt1 = document.getElementById('24').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('24nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah25(){
+              var txt1 = document.getElementById('25').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('25nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah26(){
+              var txt1 = document.getElementById('26').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('26nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah311a(){
+              var txt1 = document.getElementById('311a1').value;
+              var txt2 = document.getElementById('311a2').value;
+              var result = (parseFloat(txt1) / parseFloat(txt2));
+>>>>>>> a7f06b8ee0a320d5fd4a888af9010ee1052addaf
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (result>=4) {
+                nilainya = 4;
+              }else {
+                nilainya = ((3+desimalnya)/2);
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Jumlah calon yang ikut seleksi = '.concat(txt1);
+              var str2 = ', daya tampung PS = '.concat(txt2);
+              var str3 = ', Rasio Calon Mahasiswa yang ikut seleksi terhadap daya tampung = '.concat(desimalnya);
+              if (!isNaN(result)) {
+<<<<<<< HEAD
                      document.getElementById('641dnilai').value = desimalnya;
                   }
         }
@@ -7590,16 +7598,82 @@
          function cekjumlah642(){
               var txt1 = document.getElementById('642').value;
               var result = (parseFloat(txt1));
+=======
+                     document.getElementById('311arasio').value = desimalnya;
+                     document.getElementById('311anilai').value = hasilnya;
+                     document.getElementById('311ainfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah311b(){
+              var txt1 = document.getElementById('311b1').value;
+              var txt2 = document.getElementById('311b2').value;
+              var result = (parseFloat(txt1) / parseFloat(txt2));
               var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (result>=95) {
+                nilainya = 4;
+              }else {
+                nilainya = ((40*desimalnya-10)/7);
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi = '.concat(txt1);
+              var str2 = ' / '.concat(txt2);
+              var str3 = ' = '.concat(desimalnya);
               if (!isNaN(result)) {
+                     document.getElementById('311brasio').value = desimalnya;
+                     document.getElementById('311bnilai').value = hasilnya;
+                     document.getElementById('311binfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah311c(){
+              var txt1 = document.getElementById('311c1').value;
+              var txt2 = document.getElementById('311c2').value;
+              var result = (parseFloat(txt1) / parseFloat(txt2));
+>>>>>>> a7f06b8ee0a320d5fd4a888af9010ee1052addaf
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (desimalnya>=1.25) {
+                nilainya = 0;
+              }else {
+                nilainya = 4;
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Rasio mahasiswa baru transfer terhadap mahasiswa baru bukan transfer = '.concat(txt1);
+              var str2 = ' / '.concat(txt2);
+              var str3 = ' = '.concat(desimalnya);
+              if (!isNaN(result)) {
+<<<<<<< HEAD
                      document.getElementById('642nilai').value = desimalnya;
                   }
         }
          function cekjumlah643(){
               var txt1 = document.getElementById('643').value;
               var result = (parseFloat(txt1));
+=======
+                     document.getElementById('311crasio').value = desimalnya;
+                     document.getElementById('311cnilai').value = hasilnya;
+                     document.getElementById('311cinfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah311d(){
+              var txt1 = document.getElementById('311d1').value;
+              var txt2 = document.getElementById('311d2').value;
+              var result = (parseFloat(txt1) / parseFloat(txt2));
+>>>>>>> a7f06b8ee0a320d5fd4a888af9010ee1052addaf
               var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (desimalnya>=0) {
+                nilainya = 4;
+              }else {
+                nilainya = 4;
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'rata-rata IPK Makasiswa = '.concat(txt1);
               if (!isNaN(result)) {
+<<<<<<< HEAD
                      document.getElementById('643nilai').value = desimalnya;
                   }
         }
@@ -7645,9 +7719,63 @@
                      document.getElementById('652rasio').value = nilainya;
                      document.getElementById('652nilai').value = nilainya;
                      document.getElementById('652info').value = str1.concat(str2,str3,str4);
+=======
+                     document.getElementById('311dnilai').value = hasilnya;
+                     document.getElementById('311dinfo').value = str1;
+                  }
+        }
+
+        function cekjumlah312(){
+              var txt1 = document.getElementById('312').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('312nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah313(){
+              var txt1 = document.getElementById('313').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('313nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah314a(){
+              var txt1 = document.getElementById('314a1').value;
+              var txt2 = document.getElementById('314a2').value;
+              var result1 = ((parseFloat(txt2) / parseFloat(txt1))*100);
+              var result2= (parseFloat(txt2) / parseFloat(txt1));
+              var desimalnya1 = result1.toFixed(2);
+              var desimalnya2 = result2.toFixed(2);
+              var nilainya1 = 0;
+              var nilainya2 = 0;
+              if (desimalnya1>=50) {
+                nilainya1 = 4;
+              }else {
+                nilainya1= ((1+6*desimalnya1));
+              }
+              if (desimalnya2 >=50) {
+                nilainya2  = 4;
+              }else {
+                nilainya2 = ((1+6*desimalnya2));
+              }
+              var hasilnya1 = nilainya1.toFixed(2);
+              var hasilnya2 = nilainya2.toFixed(2);
+              var str1 = 'Presentase kelulusan tepat waktu (KWT) = '.concat(txt2);
+              var str2 = ' / '.concat(txt1);
+              var str3 = ' = '.concat(desimalnya1);
+              if (!isNaN(result1)) {
+                     document.getElementById('314arasio').value = desimalnya1;
+                     document.getElementById('314anilai').value = hasilnya2;
+                     document.getElementById('314ainfo').value = str1.concat(str2,str3);
+>>>>>>> a7f06b8ee0a320d5fd4a888af9010ee1052addaf
                   }
               }
 
+<<<<<<< HEAD
 
         function cekjumlah714(){
               var txt1 = document.getElementById('714').value;
@@ -7680,22 +7808,151 @@
 
         function cekjumlah732(){
               var txt1 = document.getElementById('732').value;
+=======
+        function cekjumlah314b(){
+              var txt1 = document.getElementById('314b1').value;
+              var txt2 = document.getElementById('314b2').value;
+              var txt3 = document.getElementById('314b3').value;
+              var result = (((parseFloat(txt1) - parseFloat(txt2) - parseFloat(txt3))/parseFloat(txt1))*100);
+              var dihitung= (((parseFloat(txt1) - parseFloat(txt2) - parseFloat(txt3))/parseFloat(txt1)));
+              var pembagi= (parseFloat(txt1) - parseFloat(txt2) - parseFloat(txt3));
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (desimalnya<=6) {
+                nilainya = 4;
+              }else if (desimalnya<45) {
+                nilainya= ((180-(400*dihitung))/39);
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Presentase Mahasiswa yang DO atau mengundurkan diri = '.concat(pembagi);
+              var str2 = ' / '.concat(txt1);
+              var str3 = ' = '.concat(desimalnya);
+              if (!isNaN(result)) {
+                     document.getElementById('314brasio').value = desimalnya;
+                     document.getElementById('314bnilai').value = hasilnya;
+                     document.getElementById('314binfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah321(){
+              var txt1 = document.getElementById('321').value;
               var result = (parseFloat(txt1));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
+                     document.getElementById('321nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah322(){
+              var txt1 = document.getElementById('322').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('322nilai').value = desimalnya;
+                     document.getElementById('322sl').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah331a(){
+              var txt1 = document.getElementById('331a').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('331anilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah331b(){
+              var txt1 = document.getElementById('331b').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('331bnilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah331c(){
+              var txt1 = document.getElementById('331c1').value;
+              var txt2 = document.getElementById('331c2').value;
+              var txt3 = document.getElementById('331c3').value;
+              var txt4 = document.getElementById('331c4').value;
+              var nilai1 = (parseFloat(txt1)/100).toFixed(2);
+              var nilai2 = (parseFloat(txt2)/100).toFixed(2);
+              var nilai3 = (parseFloat(txt3)/100).toFixed(2);
+              var nilai4 = (parseFloat(txt4)/100).toFixed(2);
+              var result = ((parseFloat(nilai1) + parseFloat(nilai2) + parseFloat(nilai3) + parseFloat(nilai4)));
+              var dihitung= (((4*(parseFloat(nilai1))) + (3*(parseFloat(nilai2))) + (2*(parseFloat(nilai3))) + parseFloat(nilai4))/7);
+              // var desimalnya = dihitung.toFixed(2);
+              var nilainya = 0;
+              if (result>7) {
+                nilainya = 0;
+              }else {
+                nilainya= dihitung;
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var info1 = (parseFloat(txt1)/7*100);
+              var info2 = (parseFloat(txt2)/7*100);
+              var info3 = (parseFloat(txt3)/7*100);
+              var info4 = (parseFloat(txt4)/7*100);
+              var hasilinfo1 = info1.toFixed(2);
+              var hasilinfo2 = info2.toFixed(2);
+              var hasilinfo3 = info3.toFixed(2);
+              var hasilinfo4 = info4.toFixed(2);
+              var str1 = 'Pendapat pengguna terhadap kualitas alumni. Respon sangat baik = '.concat(hasilinfo1);
+              var str2 = ' .Respon baik '.concat(hasilinfo2);
+              var str3 = ' .Respon cukup '.concat(hasilinfo3);
+              var str4 = ' .Respon kurang '.concat(hasilinfo4);
+              if (!isNaN(result)) {
+                     document.getElementById('331crasio').value = nilainya;
+                     document.getElementById('331cnilai').value = nilainya;
+                     document.getElementById('331cinfo').value = str1.concat(str2,str3,str4);
+                  }
+        }
+
+         function cekjumlah332(){
+              var txt1 = document.getElementById('332').value;
+>>>>>>> a7f06b8ee0a320d5fd4a888af9010ee1052addaf
+              var result = (parseFloat(txt1));
+
+              var nilainya = 0 ;
+                if(result==0){
+                    nilainya = 0;
+                } else if (result <=3) { 
+                    nilainya=4;
+                } else if (result <18) {
+                    nilainya= (72-4*result)/15;
+                }
+                var nilaides= nilainya.toFixed(2);
+                var str1= 'Rata-rata waktu tunggu lulusan untuk memperoleh pekerjaan yang pertama = '.concat(result);
+                var str2= ' bulan';
+              if (!isNaN(result)) {
+<<<<<<< HEAD
                      document.getElementById('732nilai').value = desimalnya;
                   }
         }
 
        function akumulasi(){
      
+=======
+                     document.getElementById('332nilai').value = nilaides;
+                    document.getElementById('332info').value = str1.concat(str2);
+                  }
+        }
+
+
+
+
+
+
+        function akumulasi(){
+>>>>>>> a7f06b8ee0a320d5fd4a888af9010ee1052addaf
           var nil1 = $("#11anilai").val();
           var nil2 = $("#11bnilai").val();
           var nil3 = $("#12nilai").val();
           var nil4 = $("#21nilai").val();
           var nil5 = $("#22nilai").val();
           var nil6 = $("#23nilai").val();
-          var nil7 = $("#25nilai").val();
+          var nil7 = $("#24nilai").val();
           var nil8 = $("#25nilai").val();
           var nil9 = $("#26nilai").val();
           var nil10 = $("#311anilai").val();
@@ -7711,6 +7968,7 @@
           var nil20 = $("#331anilai").val();
           var nil21 = $("#331bnilai").val();
           var nil22 = $("#331cnilai").val();
+<<<<<<< HEAD
           var nil23 = $("#332nilai").val();
           var nil24 = $("#333nilai").val();
           var nil25 = $("#341nilai").val();
@@ -7725,16 +7983,15 @@
                $.ajax({
                    // url:"<?php echo base_url()?>index.php/C_penilaian/nilaiborang/"+nil1+"/"+nil2+"/"+nil3+"/"+nil4+"/"+nil5+"/"+nil6+"/"+nil7+"/"+nil8+"/"+nil9+"/"+nil10+"/"+nil11+"/"+nil12+"/"+nil13,
                    url:"<?php echo base_url()?>index.php/C_penilaian/nilaiborang/"+nil1+"/"+nil2+"/"+nil3+"/"+nil4+"/"+nil5+"/"+nil6+"/"+nil7+"/"+nil8+"/"+nil9+"/"+nil10+"/"+nil11+"/"+nil12+"/"+nil13+"/"+nil14+"/"+nil15+"/"+nil16+"/"+nil17+"/"+nil18+"/"+nil19+"/"+nil20+"/"+nil21+"/"+nil22+"/"+nil23+"/"+nil24+"/"+nil25+"/"+nil26+"/"+nil27+"/"+nil28+"/"+nil29+"/"+nil30,
+=======
+               $.ajax({
+                   // url:"<?php echo base_url()?>index.php/C_penilaian/nilaiborang/"+nil1+"/"+nil2+"/"+nil3+"/"+nil4+"/"+nil5+"/"+nil6+"/"+nil7+"/"+nil8+"/"+nil9+"/"+nil10+"/"+nil11+"/"+nil12+"/"+nil13,
+                   url:"<?php echo base_url()?>index.php/C_penilaian/nilaiborang/"+nil1+"/"+nil2+"/"+nil3+"/"+nil4+"/"+nil5+"/"+nil6+"/"+nil7+"/"+nil8+"/"+nil9+"/"+nil10+"/"+nil11+"/"+nil12+"/"+nil13+"/"+nil14+"/"+nil15+"/"+nil16+"/"+nil17+"/"+nil18+"/"+nil19+"/"+nil20+"/"+nil21+"/"+nil22,
+>>>>>>> a7f06b8ee0a320d5fd4a888af9010ee1052addaf
                    success:function(data){
                        $("#nilaiborang").html(data);
                    }
                });
-             }
-             else {
-               swal("Cancelled", "Your imaginary file is safe :)", "error");
-             //  document.getElementById('nilaiborang').value = coba;
-
-             }
         }
     </script>
 
@@ -7753,8 +8010,6 @@
     <!-- Waves Effect Plugin Js -->
     <script src="<?php echo base_url();?>assets/plugins/node-waves/waves.js"></script>
 
-    <!-- Sweet Alert Plugin Js -->
-    <script src="<?php echo base_url();?>assets/plugins/sweetalert/sweetalert.min.js"></script>
 
     <!-- TinyMCE -->
     <script src="<?php echo base_url();?>assets/plugins/tinymce/tinymce.js"></script>

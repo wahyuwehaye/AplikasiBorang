@@ -1031,6 +1031,155 @@
                         <form method="POST" action="<?php echo base_url()?>C_isian/ngisi311">
                         <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
+        <!-- Tabel Edit -->
+                        <div class="header">
+                            <h2>
+                                Edit Tabel Butir <?php echo $butir[0]['butir'] ?>
+                                <small><?php echo $butir[0]['bakumutu'] ?></small>
+                            </h2>
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                <thead>
+                                    <tr style="height: 26px;">
+                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">No</th>
+                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Tahun Akademik</th>
+                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Daya Tampung</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Calon Mahasiswa Reguler</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Mahasiswa Baru</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Total Mahasiswa</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Lulusan</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="3">IPK Lulusan Reguler</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="3">Presentase Lulusan Reguler dengan IPK :</th>
+                                        <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Pengaturan</th>
+                                    </tr>
+                                    <tr style="height: 26px;">
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Ikut Seleksi</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Lulus Seleksi</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler Bukan Transfer</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler Bukan Transfer</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler bukan Transfer</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Min</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Rat</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Mak</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">&lt; 2,75</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">2,75-3,00</th>
+                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">&gt; 3,50</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(2)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(3)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(4)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(5)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(6)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(7)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(8)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(9)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(10)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(11)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(12)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(13)</strong></td>
+                                        <td style="width: 53px; text-align: center; height: 13px;"><strong>(14)</strong></td>
+                                        <td style="width: 53px; text-align: center; height: 13px;"><strong>(15)</strong></td>
+                                        <td style="width: 53px; text-align: center; height: 13px;"><strong>(16)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
+                                    </tr>
+                                    <?php 
+                                        $jum1 = 0;
+                                        $jum2 = 0;
+                                        $jum3 = 0;
+                                        $jum4 = 0;
+                                        $jum5 = 0;
+                                        $jum6 = 0;
+                                        $jum7 = 0;
+                                        $jum8 = 0;
+                                        $jum9 = 0;
+                                        $jum10 = 0;
+                                        $jum11 = 0;
+                                        $jum12 = 0;
+                                        $jum13 = 0;
+                                        $jum14 = 0;
+                                        $jum15 = 0;
+                                        $tsnya = array('TS-4','TS-3','TS-2','TS-1','TS');
+                                        $nil = 0;
+                                        $diloop = 5;
+                                    for($i=0;$i<5;$i++){
+                                        $jum1 = $jum1 + $dataisian[$i]['kolom1'];
+                                        $jum2 = $jum2 + $dataisian[$i]['kolom2'];
+                                        $jum3 = $jum3 + $dataisian[$i]['kolom3'];
+                                        $jum4 = $jum4 + $dataisian[$i]['kolom4'];
+                                        $jum5 = $jum5 + $dataisian[$i]['kolom5'];
+                                        $jum6 = $jum6 + $dataisian[$i]['kolom6'];
+                                        $jum7 = $jum7 + $dataisian[$i]['kolom7'];
+                                        $jum8 = $jum8 + $dataisian[$i]['kolom8'];
+                                        $jum9 = $jum9 + $dataisian[$i]['kolom9'];
+                                        $jum10 = ($jum10 + $dataisian[$i]['kolom10']);
+                                        $jum11 = ($jum11 + $dataisian[$i]['kolom11']);
+                                        $jum12 = ($jum12 + $dataisian[$i]['kolom12']);
+                                        $jum13 = ($jum13 + $dataisian[$i]['kolom13']);
+                                        $jum14 = ($jum14 + $dataisian[$i]['kolom14']);
+                                        $jum15 = ($jum15 + $dataisian[$i]['kolom15']);
+                                        $diloop = $diloop - 1;
+                                        $nil = $nil + 1;
+                                    ?>
+                                    <tr style="height: 13px;">
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?>&nbsp;</td>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $tsnya[$i] ?></th>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom1'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom2'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom3'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom4'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom5'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom6'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom7'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom8'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom9'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom10'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom11'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom12'] ?>&nbsp;</td>
+                                        <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom13'] ?>&nbsp;</td>
+                                        <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom14'] ?>&nbsp;</td>
+                                        <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom15'] ?>&nbsp;</td>
+                                        <td style="width: 53px; text-align: center; height: 13px;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update311" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="material-icons">edit</i></a>&nbsp;
+                                                <a id="del" onclick="dele(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="material-icons">delete_forever</i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                     } ?>
+                                    <tr style="height: 13px;">
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil+1 ?>&nbsp;</td>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">Jumlah</th>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum1;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum2;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum3;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum4;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum5;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum6;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum7;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum8;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum9;?>&nbsp;</td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum10/$nil;?>&nbsp;</td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum11/$nil;?>&nbsp;</td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum12/$nil;?>&nbsp;</td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum13/$nil;?> %&nbsp;</td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum14/$nil;?> %&nbsp;</td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum15/$nil;?> %&nbsp;</td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">Pengaturan</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+        <!-- Tutup Tabel Edit -->
                         <h2 class="card-inside-title">Tuliskan data seluruh mahasiswa reguler(1) dan lulusannya dalam lima tahun terakhir dengan mengikuti format berikut:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
@@ -1252,7 +1401,7 @@
                         </div> -->
                         <h2 class="card-inside-title"></h2>
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
-                        <h2 class="card-inside-title">Tuliskan data seluruh mahasiswa reguler(1) dan lulusannya dalam lima tahun terakhir dengan mengikuti format tabel berikut:</h2>
+                        <h2 class="card-inside-title">Data seluruh mahasiswa reguler(1) dan lulusannya dalam lima tahun terakhir dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -1395,6 +1544,7 @@
                                         $jum15 = 0;
                                         $tsnya = array('TS-4','TS-3','TS-2','TS-1','TS');
                                         $nil = 0;
+                                        $diloop = 5;
                                     for($i=0;$i<5;$i++){ 
                                         $jum1 = $jum1 + $dataisian[$i]['kolom1'];
                                         $jum2 = $jum2 + $dataisian[$i]['kolom2'];
@@ -1411,24 +1561,25 @@
                                         $jum13 = ($jum13 + $dataisian[$i]['kolom13']);
                                         $jum14 = ($jum14 + $dataisian[$i]['kolom14']);
                                         $jum15 = ($jum15 + $dataisian[$i]['kolom15']);
+                                        $diloop = $diloop - 1;
                                     ?>
                                     <tr style="height: 13px;">
                                     <td style="width: 52px; text-align: center; height: 13px;"><?php echo $tsnya[$i] ?></td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom1'] ?>&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom2'] ?>&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom3'] ?>&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom4'] ?>&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom5'] ?>&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom6'] ?>&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom7'] ?>&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom8'] ?>&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom9'] ?>&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom10'] ?>&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom11'] ?>&nbsp;</td>
-                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom12'] ?>&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom13'] ?>&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom14'] ?>&nbsp;</td>
-                                    <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$i]['kolom15'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom1'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom2'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom3'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom4'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom5'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom6'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom7'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom8'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom9'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom10'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom11'] ?>&nbsp;</td>
+                                    <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom12'] ?>&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom13'] ?>&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom14'] ?>&nbsp;</td>
+                                    <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom15'] ?>&nbsp;</td>
                                     </tr>
                                     <?php
                                     $nil = $nil + 1;
@@ -1450,9 +1601,9 @@
                                     <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum10/$nil;?>&nbsp;</td>
                                     <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum11/$nil;?>&nbsp;</td>
                                     <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum12/$nil;?>&nbsp;</td>
-                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum13/$nil;?>&nbsp;</td>
-                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum14/$nil;?>&nbsp;</td>
-                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum15/$nil;?>&nbsp;</td>
+                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum13/$nil;?> %&nbsp;</td>
+                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum14/$nil;?> %&nbsp;</td>
+                                    <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum15/$nil;?> %&nbsp;</td>
                                     </tr>
                                     </tbody>
                                     </table>
@@ -12157,6 +12308,70 @@
             </div>
         </div>
 
+
+        <!-- Molda Update Tabel 311 -->
+        <div class="modal fade" id="update311" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updatetabel311', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="idButir" id="idButir" value="">
+                        <input type="hidden" name="id_borang" id="id_borang" value="<?php echo $buku[0]['id']?>">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="butir" name="butir">
+                                    <label class="form-label">Butir</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="bakumutu" id="bakumutu" rows="4"></textarea>
+                                    <label class="form-label">Baku Mutu</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="penjelasan" id="penjelasan" rows="4"></textarea>
+                                    <label class="form-label">Penjelasan</label>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="keterangan" id="keterangan" rows="4"></textarea>
+                                    <label class="form-label">Keterangan</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 311 -->
+
         <!-- modals isian 1 -->
 
         <div class="modal fade" id="updateIsian1" tabindex="-1" role="dialog">
@@ -12755,6 +12970,43 @@
 
     });
 
+    $('#update311').on('shown.bs.modal', function (event) {
+        //$(".fakpro").hide();
+        // $( "#updateAccModal #jenisBorang" ).change(function() {
+        //   var selectedValue = $(this).val();
+        //   if(selectedValue!='universitas'){
+        //     $(".fakpro").show();
+        //   }else{
+        //     $(".fakpro").hide();
+        //     $("#fakpro").val("");
+        //   }
+        // });
+
+
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_butir/find";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#idButir').val(buku[0]['id']);
+              $('#butir').val(buku[0]['butir']);
+              $('#bakumutu').val(buku[0]['bakumutu']);
+              // $('#penjelasan').val(buku[0]['penjelasan']);
+              $('#keterangan').val(buku[0]['keterangan']);
+
+
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
     $('#updateIsian1').on('shown.bs.modal', function (event) {
         //$(".fakpro").hide();
         // $( "#updateAccModal #jenisBorang" ).change(function() {
@@ -12911,6 +13163,14 @@
 
 
   });
+
+function printContent(el){
+    var restorepage = document.body.innerHTML;
+    var printcontent = document.getElementById(el).innerHTML;
+    document.body.innerHTML = printcontent;
+    window.print();
+    document.body.innerHTML = restorepage;
+}
 
     function reloadaja(){
         location.reload();
