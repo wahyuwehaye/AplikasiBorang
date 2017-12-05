@@ -42,6 +42,7 @@ class C_isian extends CI_Controller {
 			$data['butir']=$this->M_butir->find('id',$id);
 			$data['buku']=$this->M_borang->find('id',$data['butir'][0]['id_borang']);
 			$data['isian']=$this->M_isian->find('id_butir',$id);
+            $data['getdata']=$this->M_isian->join3tabel($id);
             $id_but = $data['butir'][0]['id'];
             $id_bor = $data['butir'][0]['id_borang'];
             $caributir['carbut'] = $this->M_isian->findButirnya('id',$id_but,'id_borang',$id_bor);
@@ -101,12 +102,21 @@ class C_isian extends CI_Controller {
                 $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$butirnya431);
                 $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
                 $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$butirnya431);
+            }elseif (($butirnya=='5.1.2.a') || ($butirnya=='5.1.2.b')) {
+                $id_but = $data['butir'][0]['id'];
+                $id_bor = $data['butir'][0]['id_borang'];
+                $caributir431['carbut431'] = $this->M_isian->findButirnyasama('id_borang',$id_bor,'butir','5.1.2.a');
+                $butirnya431 = $caributir431['carbut431'][0]['id'];
+                $data['dataisian']=$this->M_isian->findisian1kolom('id_butir',$butirnya431);
+                $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$butirnya431);
+                $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
+                $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$butirnya431);
             }elseif (($butirnya=='4.6.1.a') || ($butirnya=='4.6.1.b') || ($butirnya=='4.6.1.c')) {
                 $id_but = $data['butir'][0]['id'];
                 $id_bor = $data['butir'][0]['id_borang'];
                 $caributir431['carbut431'] = $this->M_isian->findButirnyasama('id_borang',$id_bor,'butir','4.6.1.a');
                 $butirnya431 = $caributir431['carbut431'][0]['id'];
-                $data['dataisian']=$this->M_isian->findisian331kolom('id_butir',$butirnya431);
+                $data['dataisian']=$this->M_isian->findisian1kolom('id_butir',$butirnya431);
                 $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$butirnya431);
                 $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
                 $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$butirnya431);
@@ -168,6 +178,24 @@ class C_isian extends CI_Controller {
                 $id_but = $data['butir'][0]['id'];
                 $id_bor = $data['butir'][0]['id_borang'];
                 $caributir431['carbut431'] = $this->M_isian->findButirnyasama('id_borang',$id_bor,'butir','6.5.2');
+                $butirnya431 = $caributir431['carbut431'][0]['id'];
+                $data['dataisian']=$this->M_isian->findisian331kolom('id_butir',$butirnya431);
+                $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$butirnya431);
+                $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
+                $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$butirnya431);
+            }elseif (($butirnya=='7.1.1')) {
+                $id_but = $data['butir'][0]['id'];
+                $id_bor = $data['butir'][0]['id_borang'];
+                $caributir431['carbut431'] = $this->M_isian->findButirnyasama('id_borang',$id_bor,'butir','7.1.1');
+                $butirnya431 = $caributir431['carbut431'][0]['id'];
+                $data['dataisian']=$this->M_isian->findisian331kolom('id_butir',$butirnya431);
+                $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$butirnya431);
+                $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
+                $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$butirnya431);
+            }elseif (($butirnya=='7.2.1')) {
+                $id_but = $data['butir'][0]['id'];
+                $id_bor = $data['butir'][0]['id_borang'];
+                $caributir431['carbut431'] = $this->M_isian->findButirnyasama('id_borang',$id_bor,'butir','7.2.1');
                 $butirnya431 = $caributir431['carbut431'][0]['id'];
                 $data['dataisian']=$this->M_isian->findisian331kolom('id_butir',$butirnya431);
                 $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$butirnya431);
@@ -278,7 +306,7 @@ class C_isian extends CI_Controller {
     $data['buku']=$this->M_borang->find('id',$data['butir'][0]['id_borang']);
     $data['isian']=$this->M_isian->find('id_butir',$id);
     // if ($id==1) {
-      $data['dataisian1']=$this->M_isian->findisian4kolom('id_butir',1);
+      $data['dataisian1']=$this->M_isian->findisian1kolom('id_butir',1);
       $data['dataisianversion1']=$this->M_isian->findisian4kolomversion('id_kolom',1);
     // }elseif ($id==2) {
       $data['dataisian2']=$this->M_isian->findisian1kolom('id_butir',2);
@@ -457,9 +485,20 @@ class C_isian extends CI_Controller {
        	$this->load->model('M_borang');
        	$this->load->model('M_isian');
        	$id=$_POST['id_butir311'];
-       	$this->M_isian->insert_isian311();
-       	$_SESSION['suksesinput'] = '';
-        redirect('isian/'.$_POST['311id_butir']);
+        $rbt = (int)($_POST['kolom4_311']);
+        $ls = (int)($_POST['kolom3_311']);
+        if ($rbt>=$ls) {
+            $_SESSION['gagalinputrbt'] = '';
+            redirect('isian/'.$_POST['311id_butir']);
+        }else{
+            
+            $this->M_isian->insert_isian311();
+            $_SESSION['suksesinput'] = '';
+            redirect('isian/'.$_POST['311id_butir']);
+        }
+       	// $this->M_isian->insert_isian311();
+        //     $_SESSION['suksesinput'] = '';
+        //     redirect('isian/'.$_POST['311id_butir']);
 	}
 
   public function ngisi312(){

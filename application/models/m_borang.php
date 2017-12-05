@@ -9,12 +9,13 @@ class M_borang extends CI_Model {
                 $this->load->database();
         }
 
-        public function get_entire_data()
+        public function get_entire_data($id_prodi)
         {
                 //$query = $this->db->get('borang');
                 //return $query->result();
 				return $this->db->select("*")
               ->from('borang')
+              ->where('id_prodi', $id_prodi)
               ->order_by('id', 'DESC')
               ->get()
               ->result();
@@ -23,6 +24,7 @@ class M_borang extends CI_Model {
         public function insert_entry()
         {
                 $data = array(
+                        'id_prodi' => $this->input->post('id_prodi'),
                         'jenis' => $this->input->post('jenis'),
                         'fakpro' => $this->input->post('fakpro'),
                         'tahun' => $this->input->post('tahun'),
@@ -44,6 +46,7 @@ class M_borang extends CI_Model {
         public function update_entry()
         {
                 $data = array(
+                        'id_prodi' => $this->input->post('id_prodi'),
                         'jenis'  => $this->input->post('jenis'),
                         'fakpro' => $this->input->post('fakpro'),
                         'tahun'  => $this->input->post('tahun'),
@@ -66,6 +69,15 @@ class M_borang extends CI_Model {
               return $query->result_array();
         }
 
+        public function getidfakultas($id){
+            return $this->db->select("fakultas.id, fakultas.nama")
+              ->from('fakultas')
+              ->join('prodi','prodi.id_fakultas=fakultas.id')
+              ->where('prodi.id', $id)
+              ->get()
+              ->result_array();
+        }
+
         public function delete($column,$id){
             $data = array(
                        'user'=> $_SESSION['name'],
@@ -76,6 +88,7 @@ class M_borang extends CI_Model {
             $this->db->insert('log', $data);
 
             $this->db->delete('borang', array($column => $id));
+            $this->db->query('ALTER TABLE borang AUTO_INCREMENT 1');
             return $this->db->affected_rows();
 
 

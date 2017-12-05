@@ -22,6 +22,11 @@ class C_butir extends CI_Controller {
 	 public function __construct(){
 	     parent::__construct();
 	     $this->load->library('session');
+		 $this->load->model('M_borang');
+		 $this->load->model('M_butir');
+	     $this->load->model('M_prodi');
+		 $this->load->model('M_fakultas');
+		 $this->load->model('M_borang');
     }
 
 
@@ -29,8 +34,6 @@ class C_butir extends CI_Controller {
 	{
 		if(isset($_SESSION['logged_in']))
 		{
-			$this->load->model('M_borang');
-			$this->load->model('M_butir');
 			$this->load->library('form_validation');
 
 			$id=$this->uri->segment(2, 0);
@@ -38,6 +41,7 @@ class C_butir extends CI_Controller {
     		$this->load->view('template/header',$data);
 			$data['buku']=$this->M_borang->find('id',$id);
 			$data['butir']=$this->M_butir->find('id_borang',$id);
+			$data['getdata']=$this->M_butir->join3tabel($id);
 			$this->load->view('butir',$data);
 		}else{
 			redirect('Home/pages');
@@ -80,6 +84,11 @@ class C_butir extends CI_Controller {
 			*/
         // }
 
+	}
+
+	public function buatbutir($id,$borang){
+		$this->M_butir->buatbutir($id);
+		redirect('butir/'.$borang);
 	}
 
 	public function destroy($id,$borang){

@@ -3,16 +3,19 @@
         <div class="block-header">
             <div class="col-sm-6">
             <h2>
-                MANAGE BUTIR BORANG
+                MENGELOLA BUTIR <?php echo strtoupper(($buku[0]['jenis'])." ".$buku[0]['fakpro']." - ".$buku[0]['tahun']." - Buku : ".$buku[0]['buku']);?>
                 <!-- <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small> -->
-                <small><?php echo ucfirst($buku[0]['jenis'])." ".$buku[0]['fakpro']." - ".$buku[0]['tahun']." - Buku : ".$buku[0]['buku']; ?></small>
+                <!-- <small><?php echo ucfirst($buku[0]['jenis'])." ".$buku[0]['fakpro']." - ".$buku[0]['tahun']." - Buku : ".$buku[0]['buku']; ?></small> -->
+                <small><?php echo strtoupper($getdata[0]['namafakultas']); ?> UNIVERSITAS TELKOM</small>
             </h2>
             </div>
             <div class="col-sm-6">
             <ol class="breadcrumb breadcrumb-col-deep-purple align-right">
                 <li><a href="<?php echo base_url();?>"><i class="material-icons">home</i> Home</a></li>
-                <li><a href="<?php echo base_url();?>borang"><i class="material-icons">settings</i> Manage Borang</a></li>
-                <li class="active"><i class="material-icons">description</i> Butir Borang</li>
+                <li><a href="<?php echo base_url();?>fakultas"> Kelola Fakultas</a></li>
+                <li><a href="<?php echo base_url();?>prodi/<?php echo $getdata[0]['idfakultas']; ?>"> Kelola Borang</a></li>
+                <li><a href="<?php echo base_url();?>borang/<?php echo $getdata[0]['idprodi']; ?>"> Kelola Jenis Borang</a></li>
+                <li class="active"><i class="material-icons">description</i> Kelola Butir Borang</li>
             </ol>
             </div>
         </div>
@@ -24,7 +27,28 @@
                         <!-- <button type="button" class="btn btn-success btn-circle waves-effect waves-circle waves-float">
                             <i class="material-icons">add</i>
                         </button> -->
+                        <?php
+                        if($_SESSION['role']=="Admin"){
+                        ?>
+                        <h2>
+                        Tabel Butir <?php echo (ucwords($getdata[0]['namaprodi'])); ?> &nbsp;
+                        <?php
+                        if (count($butir)>0) {
+                        ?>
                         <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <?php
+                        }else{
+                        ?>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <?php
+                        }
+                        ?>
+                        </h2>
+                        <?php
+                        }else{
+                            echo "Tabel Butir <?php echo (ucwords($getdata[0]['namaprodi'])); ?>";
+                        }
+                        ?>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -76,8 +100,15 @@
                                         <div class="js-sweetalert">
                                             <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
                                             <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>dokumen/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
+                                            <?php
+                                            if($_SESSION['role']=="Admin"){
+                                                ?>
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateButir" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">edit</i></a>&nbsp;
                                             <a id="del" onclick="dele(<?php echo $butir[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$butir[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a>
+                                            <?php
+                                            }?>
+                                            <a type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Sudah Terisi" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">done</i></a>&nbsp;
+                                            <a type="button" data-color="light-blue" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Nilai" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">looks_3</i></a>&nbsp;
                                         </div>
                                     </td>
                                 </tr>
@@ -424,6 +455,30 @@
 
             } else {
                 swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+        });
+  }
+
+  function buatbutir(x){
+    var borang = "<?php echo $buku[0]['id']?>";
+    var delete_url = "<?php echo base_url(); ?>index.php/C_butir/buatbutir/"+x+"/"+borang;
+        swal({
+            title: "Membuat Butir Borang Baru?",
+            text: "Butir Borang Akan Terbuat Otomatis dari Standar 1 - 7",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                swal("Sukses!", "Butir Borang Sudah Terbuat", "success");
+                window.location.href = delete_url;
+
+            } else {
+                swal("Cancelled!", "Butir Borang Tidak Terbuat :)", "error");
             }
         });
   }

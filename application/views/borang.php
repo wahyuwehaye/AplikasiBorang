@@ -3,15 +3,17 @@
         <div class="block-header">
             <div class="col-sm-6">
             <h2>
-                MANAGE BORANG
+                MENGELOLA JENIS <?php echo strtoupper($prodi[0]['nama']);?>
                 <!-- <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small> -->
-                <small>Mengelola Buku Borang</small>
+                <small><?php echo strtoupper($fakultas[0]['nama']); ?> UNIVERSITAS TELKOM</small>
             </h2>
             </div>
             <div class="col-sm-6">
             <ol class="breadcrumb breadcrumb-col-deep-purple align-right">
                 <li><a href="<?php echo base_url();?>"><i class="material-icons">home</i> Home</a></li>
-                <li class="active"><i class="material-icons">settings</i> Manage Borang</li>
+                <li><a href="<?php echo base_url();?>fakultas"> Kelola Fakultas</a></li>
+                <li><a href="<?php echo base_url();?>prodi/<?php echo $prodi[0]['id_fakultas']; ?>"> Kelola Borang</a></li>
+                <li class="active"><i class="material-icons">settings</i> Kelola Jenis Borang</li>
             </ol>
             </div>
         </div>
@@ -23,7 +25,17 @@
                         <!-- <button type="button" class="btn btn-success btn-circle waves-effect waves-circle waves-float">
                             <i class="material-icons">add</i>
                         </button> -->
-                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addBorang" data-placement="top" title="Tambah Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <?php
+                        if($_SESSION['role']=="Admin"){
+                        ?>
+                        <h2>
+                        Tabel Jenis <?php echo (ucwords($prodi[0]['nama'])); ?> &nbsp;<button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addBorang" data-placement="top" title="Tambah Jenis Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        </h2>
+                        <?php
+                        }else{
+                            echo "Tabel Jenis <?php echo (ucwords($prodi[0]['nama'])); ?>";
+                        }
+                        ?>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -68,7 +80,7 @@
                                     <td><?php echo $key->buku ?> </td>
                                     <td>
                                         <div class="js-sweetalert">
-                                            <a type="button" data-color="purple" class="btn bg-teal waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Input dari Excel" href="<?php echo base_url();?>uploadexcel/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">input</i></a>&nbsp;
+                                            <!-- <a type="button" data-color="purple" class="btn bg-teal waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Input dari Excel" href="<?php echo base_url();?>uploadexcel/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">input</i></a>&nbsp; -->
                                             <a type="button" data-color="purple" class="btn bg-purple waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Detail" href="<?php echo base_url();?>butir/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">description</i></a>&nbsp;
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateBorang" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">edit</i></a>&nbsp;
                                             <a id="del" onclick="dele(<?php echo $key->id;?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_borang/destroy/'.$key->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">delete_forever</i></a>
@@ -134,13 +146,30 @@
                                 <label for="radio_35">Fakultas</label>
                             </div> -->
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <label for="jenis">Jenis Akteditasi</label>
+                            <input type="hidden" name="id_prodi" value="<?php echo $this->uri->segment(2, 0); ?>">
+                            <label for="jenis">Jenis Borang</label>
                             <div class="form-group">
                                 <div class="form-line">
                                 <select class="form-control show-tick" name="jenis" required>
-                                    <option value="">-- Jenis Akreditasi --</option>
-                                    <option value="Prodi">Prodi</option>
-                                    <option value="Fakultas">Fakultas</option>
+                                    <option value="">-- Jenis Borang --</option>
+                                    <?php
+                                    $jenisnya = stripos(($prodi[0]['nama']), 'Fakultas');
+                                    if ($jenisnya !== FALSE) {
+                                    ?>
+                                        <option value="Borang 3B">Borang 3B</option>
+                                        <option value="Excel 3B">Excel 3B</option>
+                                        <option value="Evaluasi Diri 3B">Evaluasi Diri 3B</option>
+                                        <option value="Lampiran 3B">Lampiran 3B</option>
+                                    <?php
+                                    }else{
+                                    ?>
+                                        <option value="Borang 3A">Borang 3A</option>
+                                        <option value="Excel 3A">Excel 3A</option>
+                                        <option value="Evaluasi Diri 3A">Evaluasi Diri 3A</option>
+                                        <option value="Lampiran 3A">Lampiran 3A</option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                                 </div>
                             </div>
@@ -148,7 +177,7 @@
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="fakpro" required>
+                                    <input type="text" class="form-control" name="fakpro" value="<?php echo ($prodi[0]['nama']); ?>" required>
                                     <label class="form-label">Fakultas / Program Studi</label>
                                 </div>
                             </div>
@@ -209,13 +238,30 @@
                                 <label for="radio_35">Fakultas</label>
                             </div> -->
                             <input type="hidden" name="idBorang" id="idBorang" value="">
-                            <label for="jenis">Jenis Akteditasi</label>
+                            <input type="hidden" name="id_prodi" id="id_prodi">
+                            <label for="jenis">Jenis Borang</label>
                             <div class="form-group">
                                 <div class="form-line">
                                 <select class="form-control show-tick" name="jenis" id="jenisBorang">
-                                    <option value="">-- Jenis Akreditasi --</option>
-                                    <option value="Prodi">Prodi</option>
-                                    <option value="Fakultas">Fakultas</option>
+                                    <option value="">-- Jenis Borang --</option>
+                                    <?php
+                                    $jenisnya = stripos(($prodi[0]['nama']), 'Fakultas');
+                                    if ($jenisnya !== FALSE) {
+                                    ?>
+                                        <option value="Borang 3B">Borang 3B</option>
+                                        <option value="Excel 3B">Excel 3B</option>
+                                        <option value="Evaluasi Diri 3B">Evaluasi Diri 3B</option>
+                                        <option value="Lampiran 3B">Lampiran 3B</option>
+                                    <?php
+                                    }else{
+                                    ?>
+                                        <option value="Borang 3A">Borang 3A</option>
+                                        <option value="Excel 3A">Excel 3A</option>
+                                        <option value="Evaluasi Diri 3A">Evaluasi Diri 3A</option>
+                                        <option value="Lampiran 3A">Lampiran 3A</option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                                 </div>
                             </div>
@@ -368,6 +414,7 @@
           .done(function( msg ) {
               var buku = JSON.parse(msg);
               $('#idBorang').val(buku[0]['id']);
+              $('#id_prodi').val(buku[0]['id_prodi']);
               $('#jenisBorang').val(""+buku[0]['jenis']);
               $('#jenisBorang option[value="'+buku[0]['jenis']+'"]').prop('selected', true);
               $('#fakpro').val(toTitleCase(buku[0]['fakpro']));
@@ -431,7 +478,8 @@
   });
 
   function dele(x){
-    var delete_url = "<?php echo base_url(); ?>index.php/C_borang/destroy/"+x;
+    var id = "<?php echo $prodi[0]['id']?>";
+    var delete_url = "<?php echo base_url(); ?>index.php/C_borang/destroy/"+x+"/"+id;
         swal({
             title: "Are you sure?",
             text: "You will not be able to recover this imaginary file!",

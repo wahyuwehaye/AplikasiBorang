@@ -360,9 +360,9 @@
                     if($_SESSION['role']=="Admin"){
                         ?>
                     <li class="<?php echo ($active_menu=="borang") ? "active" :""; ?>">
-                        <a href="<?php echo base_url();?>borang">
+                        <a href="<?php echo base_url();?>fakultas">
                             <i class="material-icons">settings</i>
-                            <span>Manage Borang</span>
+                            <span>Kelola Borang</span>
                         </a>
                     </li>
                     <li class="<?php echo ($active_menu=="penilaian") ? "active" :""; ?>">
@@ -375,9 +375,9 @@
                     }else if ($_SESSION['role']=="Kaprodi") {
                         ?>
                      <li class="<?php echo ($active_menu=="borang") ? "active" :""; ?>">
-                        <a href="<?php echo base_url();?>borang">
+                        <a href="<?php echo base_url();?>fakultas">
                             <i class="material-icons">settings</i>
-                            <span>Manage Borang</span>
+                            <span>Kelola Borang</span>
                         </a>
                     </li>
                         <?php

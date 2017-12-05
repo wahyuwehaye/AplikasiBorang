@@ -22,6 +22,9 @@ class C_borang extends CI_Controller {
 	 public function __construct(){
 	     parent::__construct();
 	     $this->load->library('session');
+	     $this->load->model('M_prodi');
+		 $this->load->model('M_fakultas');
+		 $this->load->model('M_borang');
     }
 
 
@@ -31,11 +34,13 @@ class C_borang extends CI_Controller {
 	//print_r($this->session);die();
 			if(isset($_SESSION['logged_in']))
 		{
-			$this->load->model('M_borang');
+			$id=$this->uri->segment(2, 0);
 			// $this->load->library('form_validation');
             $data['active_menu']='borang';
     		$this->load->view('template/header',$data);
-			$data['borang']=$this->M_borang->get_entire_data();
+    		$data['prodi']=$this->M_prodi->find('id',$id);
+    		$data['fakultas']=$this->M_borang->getidfakultas($id);
+			$data['borang']=$this->M_borang->get_entire_data($id);
     		$this->load->view('borang',$data);
 		}else{
 			redirect('Home/pages');
@@ -65,13 +70,13 @@ class C_borang extends CI_Controller {
         // else
         // {
         	$this->M_borang->insert_entry();
-        	redirect('/borang');
+        	redirect('borang/'.$_POST['id_prodi']);
             echo json_encode(array("status" => TRUE));
         // }
 
 	}
 
-	public function destroy($id){
+	public function destroy($id,$redirect){
 		// $id=$_POST['id'];
 		$this->load->model('M_borang');
 		$result=$this->M_borang->delete('id',$id);
@@ -81,7 +86,7 @@ class C_borang extends CI_Controller {
 		}else{
 			echo json_encode('failed');
 		}
-        redirect('/borang');
+        redirect('borang/'.$redirect);
 	}
 
 
@@ -106,7 +111,7 @@ class C_borang extends CI_Controller {
         // else
         // {
         	$this->M_borang->update_entry();
-        	redirect('/borang');
+        	redirect('borang/'.$_POST['id_prodi']);
         // }
 	}
 
