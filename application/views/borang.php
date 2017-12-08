@@ -29,11 +29,24 @@
                         if($_SESSION['role']=="Admin"){
                         ?>
                         <h2>
-                        Tabel Jenis <?php echo (ucwords($prodi[0]['nama'])); ?> &nbsp;<button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addBorang" data-placement="top" title="Tambah Jenis Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        Tabel Jenis <?php echo (ucwords($prodi[0]['nama'])); ?> &nbsp;
+                        <?php
+                        if (count($borang)>0) {
+                        ?>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addBorang" data-placement="top" title="Tambah Jenis Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <?php
+                        }else{
+                        ?>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatjenisborang(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Jenis Borang Otomatis" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <?php
+                        }
+                        ?>
                         </h2>
                         <?php
                         }else{
-                            echo "Tabel Jenis <?php echo (ucwords($prodi[0]['nama'])); ?>";
+                        ?>
+                        <h2>Tabel Jenis <?php echo (ucwords($prodi[0]['nama'])); ?></h2>
+                        <?php
                         }
                         ?>
                         <ul class="header-dropdown m-r--5">
@@ -50,14 +63,22 @@
                         </ul>
                     </div>
                     <div class="body">
-                        <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <table id="borang"
+                        <?php
+                                if($_SESSION['role']=="Admin"){
+                                    echo 'class="table table-bordered table-striped table-hover dataTable js-exportable"';
+                                }elseif (($_SESSION['role']=="Kaprodi") || ($_SESSION['role']=="Assessor")) {
+                                    echo 'class="table table-bordered table-striped table-hover js-basic-example dataTable"';
+                                }
+                            ?>
+                        >
                             <thead>
                                 <tr>
                                     <th>Jenis Borang</th>
                                     <th>Fakultas / Program Studi</th>
                                     <th>Tahun</th>
                                     <th>Buku</th>
-                                    <th width="15%">Action</th>
+                                    <th >Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -66,7 +87,7 @@
                                     <th>Fakultas / Program Studi</th>
                                     <th>Tahun</th>
                                     <th>Buku</th>
-                                    <th width="15%">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -82,8 +103,17 @@
                                         <div class="js-sweetalert">
                                             <!-- <a type="button" data-color="purple" class="btn bg-teal waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Input dari Excel" href="<?php echo base_url();?>uploadexcel/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">input</i></a>&nbsp; -->
                                             <a type="button" data-color="purple" class="btn bg-purple waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Detail" href="<?php echo base_url();?>butir/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">description</i></a>&nbsp;
+                                            <a type="button" data-color="amber" class="btn bg-amber waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Resume Borang" href="<?php echo base_url();?>resume/<?php echo $key->id; ?>"><i class="material-icons">pageview</i></a>&nbsp;
+                                            <a onclick="downloadborang()" type="button" data-color="blue-grey" class="btn bg-blue-grey waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Download Borang"><i class="material-icons">file_download</i></a>&nbsp;
+                                            <a onclick="nilaiborang()" type="button" data-color="yellow" class="btn bg-yellow waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Nilai"><i class="material-icons">grade</i></a>&nbsp;
+                                            <?php
+                                            if($_SESSION['role']=="Admin"){
+                                            ?>
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateBorang" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">edit</i></a>&nbsp;
                                             <a id="del" onclick="dele(<?php echo $key->id;?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_borang/destroy/'.$key->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">delete_forever</i></a>
+                                            <?php
+                                            }
+                                            ?>
                                         </div>
                                     </td>
                                 </tr>
@@ -477,6 +507,19 @@
 
   });
 
+  function downloadborang(){
+    swal({
+        title: "Download File Borang?",
+        text: "Saat ini File Borang yang anda pilih belum tersedia",
+        imageUrl: "<?php echo base_url(); ?>assets/images/download.png"
+    });
+  }
+
+  function nilaiborang(){
+    swal("Nilai Buku Borang", "Saat ini belum ada nilai dari borang yang anda pilih.", "success");
+                window.location.href = delete_url;
+  }
+
   function dele(x){
     var id = "<?php echo $prodi[0]['id']?>";
     var delete_url = "<?php echo base_url(); ?>index.php/C_borang/destroy/"+x+"/"+id;
@@ -500,6 +543,32 @@
             }
         });
   }
+
+  function buatjenisborang(x){
+    var prodi = "<?php echo ($prodi[0]['nama'])?>";
+    var delete_url = "<?php echo base_url(); ?>index.php/C_borang/buatjenisborang/"+x+"/"+prodi;
+        swal({
+            title: "Membuat Jenis Borang Baru?",
+            text: "Jenis Borang Akan Terbuat Sebanyak 4 jenis",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, create it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                swal("Sukses!", "Jenis Borang Sudah Terbuat", "success");
+                window.location.href = delete_url;
+
+            } else {
+                swal("Cancelled!", "Jenis Borang Tidak Terbuat :)", "error");
+            }
+        });
+  }
+
+  
 </script>
 
 </body>

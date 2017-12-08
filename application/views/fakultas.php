@@ -61,14 +61,14 @@
                                 <tr>
                                     <th width="6%">No</th>
                                     <th>Nama Fakultas</th>
-                                    <th width="15%">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th width="6%">No</th>
                                     <th>Nama Fakultas</th>
-                                    <th width="15%">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -244,7 +244,61 @@
 <!-- Demo Js -->
 <script src="<?php echo base_url();?>assets/js/demo.js"></script>
 <script src="<?php echo base_url();?>assets/js/pages/ui/dialogs.js"></script>
+<!-- //session untuk menampilkan pesan Sukses Input Data -->
+<?php
+    if (isset($_SESSION['sukseshapus'])) {
+?>
+    <body onload='swal({title: "Selamat!!!",
+                        text: "Data Berhasil Terhapus",
+                        // timer: 3000,
+                        type: "success",
+                        showConfirmButton: true });'>
+<?php
+    unset($_SESSION['sukseshapus']);
+    }
+?>
 
+<!-- gagal input dengan isian yang salah -->
+<?php
+    if (isset($_SESSION['gagalinputrbt'])) {
+?>
+    <body onload='swal({title: "Gagal Input!!!",
+                        text: "Data Gagal Tersimpan",
+                        // timer: 3000,
+                        type: "success",
+                        showConfirmButton: true });'>
+<?php
+    unset($_SESSION['gagalinputrbt']);
+    }
+?>
+
+<!-- gagal hapus fakultas -->
+<?php
+    if (isset($_SESSION['gagalhapusfakultas'])) {
+?>
+    <body onload='swal({title: "Gagal Terhapus!!!",
+                        text: "Hapus terlebih dahulu data borang",
+                        // timer: 3000,
+                        type: "error",
+                        showConfirmButton: true });'>
+<?php
+    unset($_SESSION['gagalinputrbt']);
+    }
+?>
+
+<!-- //session untuk menampilkan pesan Sukses Update Data -->
+<?php
+    if (isset($_SESSION['suksesupdate'])) {
+?>
+    <body onload='swal({title: "Selamat!!!",
+                        text: "Data Berhasil Terupdate",
+                        // timer: 3000,
+                        type: "success",
+                        showConfirmButton: true });'>
+<?php
+    unset($_SESSION['suksesupdate']);
+    }
+?>
 <script>
   function toTitleCase(str)
   {

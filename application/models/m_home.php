@@ -9,6 +9,60 @@ class M_home extends CI_Model{
             $this->load->database();
     }
 
+    public function get_all_data(){
+        return $this->db->select("*")
+              ->from('users')
+              ->order_by('id', 'DESC')
+              ->get()
+              ->result();
+    }
+
+    public function get_all_borang(){
+        return $this->db->select("*")
+              ->from('borang')
+              ->order_by('id', 'DESC')
+              ->get()
+              ->result();
+    }
+
+    public function get_isian_data(){
+        return $this->db->distinct("id_butir")
+              ->from('isian_16kolom')
+              ->order_by('id', 'DESC')
+              ->group_by('id_butir')
+              ->get()
+              ->result();
+    }
+
+    public function getjumlahborang(){
+            return $this->db->distinct("borang.id")
+              ->from('borang')
+              ->join('butir','butir.id_borang=borang.id')
+              ->join('isian_16kolom','isian_16kolom.id_butir=butir.id')
+              ->group_by('borang.id')
+              ->get()
+              ->result_array();
+        }
+
+    public function getdashboard(){
+      // return $this->db->select('fakultas.nama AS namafakultas, prodi.nama AS namaprodi, borang.jenis AS jenisborang')
+      return $this->db->select('*')
+          ->from('fakultas')
+          ->join('prodi','prodi.id_fakultas = fakultas.id')
+          ->join('borang','borang.id_prodi = prodi.id')
+          ->get()
+          ->result_array();
+    }
+
+    public function join3tabel(){
+            return $this->db->select("fakultas.id as idfakultas, fakultas.nama as namafakultas, prodi.id as idprodi, prodi.id_fakultas as idfakpro, prodi.nama as namaprodi, borang.id as idborang, borang.jenis as jenisborang")
+              ->from('fakultas')
+              ->join('prodi','prodi.id_fakultas=fakultas.id')
+              ->join('borang','borang.id_prodi=prodi.id')
+              ->get()
+              ->result_array();
+        }
+
     public function getData($table){
         $res=$this->db->get($table); // Kode ini berfungsi untuk memilih tabel yang akan ditampilkan
         return $res->result_array(); // Kode ini digunakan untuk mengembalikan hasil operasi $res menjadi sebuah array

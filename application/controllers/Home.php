@@ -22,6 +22,11 @@ class Home extends CI_Controller {
 	 public function __construct(){
 	     parent::__construct();
 	     $this->load->library('session');
+	     $this->load->model('M_home');
+	     $this->load->model('M_prodi');
+		 $this->load->model('M_fakultas');
+		 $this->load->model('M_borang');
+		 $this->load->model('M_butir');
     }
 
 
@@ -32,7 +37,15 @@ class Home extends CI_Controller {
 		{
 			$data['active_menu']='home';
 	        $this->load->view('template/header',$data);
-			$this->load->view('index');
+    		$data['prodi']=$this->M_prodi->get_all_data();
+    		$data['fakultas']=$this->M_fakultas->get_entire_data();
+			$data['borang']=$this->M_borang->get_all_data();
+			$data['butir']=$this->M_butir->get_entire_data();
+			$data['users']=$this->M_home->get_all_data();
+			$data['isian']=$this->M_home->get_isian_data();
+			$data['jumlahisi']=$this->M_home->getjumlahborang();
+			$data['dashboard']=$this->M_home->join3tabel();
+			$this->load->view('index',$data);
 	        $this->load->view('template/footer');
 		}else{
 			redirect('Home/login');

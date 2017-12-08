@@ -76,6 +76,11 @@ class C_borang extends CI_Controller {
 
 	}
 
+	public function buatjenisborang($id,$prodi){
+		$this->M_borang->insert_default_borang_prodi($id,$prodi);
+		redirect('borang/'.$id);
+	}
+
 	public function destroy($id,$redirect){
 		// $id=$_POST['id'];
 		$this->load->model('M_borang');

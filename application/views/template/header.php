@@ -371,6 +371,12 @@
                             <span>Penilaian</span>
                         </a>
                     </li>
+                    <li class="<?php echo ($active_menu=="histori") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>histori">
+                            <i class="material-icons">history</i>
+                            <span>History Activity</span>
+                        </a>
+                    </li>
                         <?php
                     }else if ($_SESSION['role']=="Kaprodi") {
                         ?>
@@ -392,12 +398,6 @@
                         <?php
                     }
                     ?>
-                    <li class="<?php echo ($active_menu=="histori") ? "active" :""; ?>">
-                        <a href="<?php echo base_url();?>histori">
-                            <i class="material-icons">history</i>
-                            <span>History Activity</span>
-                        </a>
-                    </li>
                     <!-- <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>

@@ -29,7 +29,9 @@
                         </h2>
                         <?php
                         }else{
-                            echo "<h2>Tabel Borang <?php echo (ucwords($fakultas[0]['nama'])); ?></h2>";
+                        ?>
+                        <h2>Tabel Borang <?php echo (ucwords($fakultas[0]['nama'])); ?></h2>
+                        <?php
                         }
                         ?>
                         <ul class="header-dropdown m-r--5">
@@ -59,14 +61,14 @@
                                 <tr>
                                     <th width="6%">No</th>
                                     <th>Nama Borang</th>
-                                    <th width="15%">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th width="6%">No</th>
                                     <th>Nama Borang</th>
-                                    <th width="15%">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -138,7 +140,7 @@
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="nama" required>
+                                    <input type="text" class="form-control" name="nama" autofocus required>
                                     <label class="form-label">Nama Borang</label>
                                 </div>
                             </div>

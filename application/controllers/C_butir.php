@@ -47,8 +47,22 @@ class C_butir extends CI_Controller {
 			redirect('Home/pages');
 			//echo $_SESSION['logged_in']." asdfasdf";
 		}
+	}
 
-
+	public function resume(){
+		if(isset($_SESSION['logged_in']))
+		{
+			$id=$this->uri->segment(2, 0);
+            $data['active_menu']='borang';
+    		$this->load->view('template/header',$data);
+			$data['buku']=$this->M_borang->find('id',$id);
+			$data['butir']=$this->M_butir->findresume('id_borang',$id);
+			$data['getdata']=$this->M_butir->join3tabel($id);
+			$this->load->view('resume',$data);
+		}else{
+			redirect('Home/pages');
+			//echo $_SESSION['logged_in']." asdfasdf";
+		}
 	}
 
 	public function store(){
@@ -102,6 +116,17 @@ class C_butir extends CI_Controller {
 			echo json_encode('failed');
 		}
         // redirect('butir/'.$idbut);
+        redirect('butir/'.$borang);
+	}
+
+	public function destroyallbutir($id,$borang){
+		$this->load->model('M_butir');
+		$result=$this->M_butir->deleteallbutir('id_borang',$id);
+		if($result > 0){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
         redirect('butir/'.$borang);
 	}
 

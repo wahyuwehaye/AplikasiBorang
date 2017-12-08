@@ -61,7 +61,7 @@ class C_fakultas extends CI_Controller {
 			echo json_encode('success');
 
 		}else{
-			echo json_encode('failed');
+			($_SESSION['sukseshapus'] = '');
 		}
         redirect('/fakultas');
 	}

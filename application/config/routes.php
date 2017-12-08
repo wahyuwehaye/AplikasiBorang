@@ -66,6 +66,7 @@ $route['hitungF1/:num'] = 'C_penilaian/hitungF1';
 $route['histori'] = 'Home/histori';
 $route['editor'] = 'Home/editor';
 $route['butir/:num'] = 'C_butir';
+$route['resume/:num'] = 'C_butir/resume';
 $route['uploadexcel/:num'] = 'C_uploadexcel';
 $route['dokumen/:num'] = 'C_dokumen';
 $route['isian/:num'] = 'C_isian';

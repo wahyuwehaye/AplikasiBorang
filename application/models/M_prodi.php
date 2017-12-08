@@ -21,6 +21,17 @@ class M_prodi extends CI_Model {
               ->result();
         }
 
+        public function get_all_data()
+        {
+                //$query = $this->db->get('prodi');
+                //return $query->result();
+                return $this->db->select("*")
+              ->from('prodi')
+              ->order_by('id', 'DESC')
+              ->get()
+              ->result();
+        }
+
         public function insert_entry()
         {
                 $data = array(

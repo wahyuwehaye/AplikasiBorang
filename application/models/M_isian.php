@@ -6008,6 +6008,15 @@ class M_isian extends CI_Model {
               ->result_array();
         }
 
+        public function findNilai($column,$id){
+            return $this->db->select("*")
+              ->from('hitungf1')
+              ->where($column, $id)
+              ->order_by('id', 'DESC')
+              ->get()
+              ->result_array();
+        }
+
         public function findButirnya($column1,$id,$column2,$id_borang){
             return $this->db->select("butir")
               ->from('butir')

@@ -27,6 +27,7 @@ class C_isian extends CI_Controller {
         $this->load->model('M_isian');
         $this->load->model('M_uploadisi');
         $this->load->model('M_dokumen');
+        $this->load->model('M_penilaian');
         $this->load->library('form_validation');
     }
 
@@ -43,6 +44,7 @@ class C_isian extends CI_Controller {
 			$data['buku']=$this->M_borang->find('id',$data['butir'][0]['id_borang']);
 			$data['isian']=$this->M_isian->find('id_butir',$id);
             $data['getdata']=$this->M_isian->join3tabel($id);
+            $data['f1']=$this->M_penilaian->get_f1();
             $id_but = $data['butir'][0]['id'];
             $id_bor = $data['butir'][0]['id_borang'];
             $caributir['carbut'] = $this->M_isian->findButirnya('id',$id_but,'id_borang',$id_bor);
@@ -1547,6 +1549,13 @@ class C_isian extends CI_Controller {
         $id=$_POST['id'];
         $this->load->model('M_isian');
         $data=$this->M_isian->findUpdateTbl('id',$id);
+        echo json_encode($data);
+    }
+
+    public function findNilai(){
+        $id=$_POST['id'];
+        $this->load->model('M_isian');
+        $data=$this->M_isian->findNilai('id_buku',$id);
         echo json_encode($data);
     }
 

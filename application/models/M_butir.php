@@ -146,7 +146,14 @@ class M_butir extends CI_Model {
 ('7.2.2', ' Keterlibatan mahasiswa dalam kegiatan pelayanan/pengabdian kepada masyarakat', '', 'Nilai 4 - Mahasiswa terlibat penuh dan diberi tanggung jawab.', NOW(), NOW(), ".$id."),
 ('7.3.1', 'Kegiatan kerjasama dengan instansi di dalam negeri dalam tiga tahun terakhir\r\n\r\nCatatan;\r\nTingkat kecukupan bergantung pada jumlah dosen tetap PS.', '', 'Nilai 4 - Ada kerjasama dengan institusi di dalam negeri, banyak dalam jumlah.  Semuanya  relevan dengan bidang keahlian PS.', NOW(), NOW(), ".$id."),
 ('7.3.2', 'Kegiatan kerjasama dengan instansi di luar negeri dalam tiga tahun terakhir.\r\n\r\nCatatan;\r\nTingkat kecukupan bergantung pada jumlah dosen tetap PS', '', 'Nilai 4 - Ada kerjasama dengan institusi di luar negeri, banyak dalam jumlah.  Semuanya  relevan dengan bidang keahlian PS.', NOW(), NOW(), ".$id.")");
-            return $this->db->affected_rows();
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Berhasil Membuat Butir Borang Baru dengan ID = ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+                $this->db->insert('log', $data);
+                return $this->db->affected_rows();
         }
 
         public function update_entry()
@@ -173,6 +180,16 @@ class M_butir extends CI_Model {
               ->from('butir')
               ->where($column, $id)
               ->order_by('id', 'DESC')
+              ->get()
+              ->result_array();
+
+        }
+
+        public function findresume($column,$id){
+            return $this->db->select("*")
+              ->from('butir')
+              ->where($column, $id)
+              ->order_by('id', 'ASC')
               ->get()
               ->result_array();
 
@@ -209,10 +226,18 @@ class M_butir extends CI_Model {
                     );
             $this->db->insert('log', $data);
             return $this->db->affected_rows();
+        }
 
+        public function deleteallbutir($column,$id){
 
-
-
+            $this->db->delete('butir', array($column => $id));
+            $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "menghapus Semua Butir dengan ID Borang = ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                    );
+            $this->db->insert('log', $data);
+            return $this->db->affected_rows();
         }
 
 }

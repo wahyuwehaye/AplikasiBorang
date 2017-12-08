@@ -1,15 +1,15 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <div class="col-sm-6">
+            <div class="col-sm-5">
             <h2>
-                MENGELOLA BUTIR <?php echo strtoupper(($buku[0]['jenis'])." ".$buku[0]['fakpro']." - ".$buku[0]['tahun']." - Buku : ".$buku[0]['buku']);?>
+                MENGELOLA BUTIR <?php echo strtoupper(($buku[0]['jenis']));?>
                 <!-- <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small> -->
                 <!-- <small><?php echo ucfirst($buku[0]['jenis'])." ".$buku[0]['fakpro']." - ".$buku[0]['tahun']." - Buku : ".$buku[0]['buku']; ?></small> -->
-                <small><?php echo strtoupper($getdata[0]['namafakultas']); ?> UNIVERSITAS TELKOM</small>
+                <small><?php echo strtoupper($buku[0]['fakpro']." - ".$buku[0]['tahun']." - ".$getdata[0]['namafakultas']); ?></small>
             </h2>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-7">
             <ol class="breadcrumb breadcrumb-col-deep-purple align-right">
                 <li><a href="<?php echo base_url();?>"><i class="material-icons">home</i> Home</a></li>
                 <li><a href="<?php echo base_url();?>fakultas"> Kelola Fakultas</a></li>
@@ -35,7 +35,8 @@
                         <?php
                         if (count($butir)>0) {
                         ?>
-                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>&nbsp;
+                        <button type="button" data-color="light-blue" class="btn bg-red waves-effect btn-xs" onclick="deleteallbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Hapus Semua Butir Borang" href="javascript:void(0)"><i class="material-icons">delete</i></button>
                         <?php
                         }else{
                         ?>
@@ -46,7 +47,9 @@
                         </h2>
                         <?php
                         }else{
-                            echo "Tabel Butir <?php echo (ucwords($getdata[0]['namaprodi'])); ?>";
+                        ?>
+                        <h2>Tabel Butir <?php echo (ucwords($getdata[0]['namaprodi'])); ?></h2>
+                        <?php
                         }
                         ?>
                         <ul class="header-dropdown m-r--5">
@@ -63,14 +66,22 @@
                         </ul>
                     </div>
                     <div class="body">
-                        <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <table id="borang" 
+                            <?php
+                                if($_SESSION['role']=="Admin"){
+                                    echo 'class="table table-bordered table-striped table-hover dataTable js-exportable"';
+                                }elseif (($_SESSION['role']=="Kaprodi") || ($_SESSION['role']=="Assessor")) {
+                                    echo 'class="table table-bordered table-striped table-hover js-basic-example dataTable"';
+                                }
+                            ?>
+                        >
                             <thead>
                                 <tr>
-                                    <th>Butir</th>
-                                    <th>Baku Mutu</th>
+                                    <th width="5%">Butir</th>
+                                    <th width="30%">Baku Mutu</th>
                                     <!-- <th>Penjelasan</th> -->
-                                    <th>Keterangan</th>
-                                    <th width="14%">Action</th>
+                                    <th width="40%">Keterangan</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -78,8 +89,8 @@
                                     <th width="5%">Butir</th>
                                     <th width="30%">Baku Mutu</th>
                                     <!-- <th>Penjelasan</th> -->
-                                    <th>Keterangan</th>
-                                    <th width="14%">Action</th>
+                                    <th width="40%">Keterangan</th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -97,6 +108,26 @@
                                     <!-- <td><?php echo $butir[$i]['penjelasan'] ?> </td> -->
                                     <td><?php echo $butir[$i]['keterangan'] ?> </td>
                                     <td>
+                                    <?php
+                                        $CI =& get_instance();
+                                        // cek sudah terisi atau belum
+                                        $queryCekisi=$CI->db->query('SELECT COUNT(id) as cekisi FROM isian_16kolom WHERE id_butir IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
+                                        $cekisi=$queryCekisi->result_array()[0]['cekisi'];
+                                        $isinya=($cekisi!=0)?($cekisi):0;
+
+                                        // cek nilainya
+                                        $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
+                                        $cekskor=$queryceknilai->result_array()[0]['cekskor'];
+                                        $cekskornya=($cekskor!=0)?($cekskor):0;
+                                        if ($cekskornya!==0) {
+                                            // ambil nilainya
+                                            $querygetnilai=$CI->db->query('SELECT skorakhir FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].') order by id desc');
+                                            $getnilai=$querygetnilai->result_array()[0]['skorakhir'];
+                                            $skor=($getnilai!=0)?($getnilai):0;
+                                        }else{
+                                            $skor=0;
+                                        }
+                                    ?>
                                         <div class="js-sweetalert">
                                             <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
                                             <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>dokumen/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
@@ -106,9 +137,14 @@
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateButir" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">edit</i></a>&nbsp;
                                             <a id="del" onclick="dele(<?php echo $butir[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$butir[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">delete_forever</i></a>
                                             <?php
-                                            }?>
-                                            <a type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Sudah Terisi" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">done</i></a>&nbsp;
-                                            <a type="button" data-color="light-blue" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Nilai" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">looks_3</i></a>&nbsp;
+                                            }
+                                            if ($isinya!==0) {
+                                                ?>
+                                            <a type="button" onclick="sudahterisi()" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Sudah Terisi" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">done</i></a>&nbsp;
+                                                <?php
+                                            }
+                                            ?>
+                                            <a type="button" onclick="sudahdinilai()" data-color="light-blue" class="btn bg-amber waves-effect btn-sm" data-toggle="tooltip" data-placement="top" title="Nilai" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><span class="badge"><?php echo $skor; ?></span></a>&nbsp;
                                         </div>
                                     </td>
                                 </tr>
@@ -468,7 +504,7 @@
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Yes, create it!",
             cancelButtonText: "No, cancel plx!",
             closeOnConfirm: false,
             closeOnCancel: false
@@ -482,6 +518,46 @@
             }
         });
   }
+
+  function deleteallbutir(x){
+    var borang = "<?php echo $buku[0]['id']?>";
+    var delete_url = "<?php echo base_url(); ?>index.php/C_butir/destroyallbutir/"+x+"/"+borang;
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                window.location.href = delete_url;
+
+            } else {
+                swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+        });
+  }
+
+  function sudahterisi() {
+    swal({
+        title: "Hebat!",
+        text: "Isian pada butir ini sudah terisi.",
+        imageUrl: "<?php echo base_url(); ?>assets/images/thumbs-up.png"
+    });
+}
+
+function sudahdinilai() {
+    swal({
+        title: "Hebat!",
+        text: "",
+        imageUrl: "<?php echo base_url(); ?>assets/images/thumbs-up.png"
+    });
+}
 </script>
 
 </body>
