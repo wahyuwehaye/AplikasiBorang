@@ -71,6 +71,7 @@ $route['resume/:num'] = 'C_butir/resume';
 $route['uploadexcel/:num'] = 'C_uploadexcel';
 $route['dokumen/:num'] = 'C_dokumen';
 $route['isian/:num'] = 'C_isian';
+$route['isian3ad3/:num'] = 'C_isian3ad3';
 $route['uploadisi/:num'] = 'C_uploadisi';
 $route['uploaddokumen/:num'] = 'C_uploadisi';
 $route['viewbookbutir/:num'] = 'C_isian/viewbookbutir';

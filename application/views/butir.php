@@ -129,7 +129,16 @@
                                         }
                                     ?>
                                         <div class="js-sweetalert">
+                                            <?php 
+                                                $jenisd3 = stripos(($getdata[0]['namaprodi']), 'D3');
+                                                $jeniss1 = stripos(($getdata[0]['namaprodi']), 'S1');
+                                                if ($jenisd3 !== false) {
+                                            ?>
+                                                   <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian3ad3/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; 
+                                            <?php } elseif ($jeniss1) { ?>
                                             <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
+                                            <?php } ?>
+
                                             <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>dokumen/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
                                             <?php
                                             if($_SESSION['role']=="Admin"){
