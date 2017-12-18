@@ -24027,6 +24027,1786 @@
         </div>
         <!-- TUTUP MODAL VIEW NILAI 1.1.A -->
 
+        <!-- BUKA MODAL NILAI 1.1.B -->
+        <div class="modal fade" id="nilai11b" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="5" scope="row"><?php echo $f1[1]['id'] ?></th>
+                                        <td width="5%" rowspan="5"><?php echo $f1[1]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[1]['aspek'] ?></td>
+                                        <td></td>
+                                        <td></td>
+                                        <input type='hidden' name='direct' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[1]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[1]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="25%" rowspan="5"><textarea rows="12" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor kejelasan tahapan waktu dan kerealistikan (1 - 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="11b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor kelengkapan dokumen (1 - 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="11b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor akhir</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="11bskor" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="11bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 1.1.B -->
+
+        <!-- BUKA MODAL VIEW NILAI 1.1.B -->
+        <div class="modal fade" id="viewnilai11b" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="5" scope="row"><?php echo $f1[1]['id'] ?></th>
+                                        <td width="5%" rowspan="5"><?php echo $f1[1]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[1]['aspek'] ?></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="12" name="komentar[]" id="view11bkomentar" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor kejelasan tahapan waktu dan kerealistikan (1 - 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view11b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor kelengkapan dokumen (1 - 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view11b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor akhir</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="view11bskorakhir" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view11bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 1.1.B -->
+
+        <!-- BUKA MODAL NILAI 1.2 -->
+        <div class="modal fade" id="nilai12" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[2]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $f1[2]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[2]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[2]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[2]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="12" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah12()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Tidak dipahami oleh seluruh sivitas akademika dan tenaga kependidikan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Kurang dipahami oleh  sivitas akademika  dan tenaga kependidikan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Dipahami dengan baik oleh sebagian  sivitas akademika dan tenaga kependidikan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Dipahami dengan baik oleh seluruh sivitas akademika  dan tenaga kependidikan. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai12"><input type="text" required name="skorakhir[]" id="12nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 1.2 -->
+
+        <!-- BUKA MODAL VIEW NILAI 1.2 -->
+        <div class="modal fade" id="viewnilai12" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[2]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $f1[2]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[2]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[2]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[2]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view12" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah12()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="viewkomentar12" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Tidak dipahami oleh seluruh sivitas akademika dan tenaga kependidikan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Kurang dipahami oleh  sivitas akademika  dan tenaga kependidikan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Dipahami dengan baik oleh sebagian  sivitas akademika dan tenaga kependidikan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Dipahami dengan baik oleh seluruh sivitas akademika  dan tenaga kependidikan. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view12nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 1.2 -->
+
+        <!-- BUKA MODAL NILAI 2.1 -->
+        <div class="modal fade" id="nilai21" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[3]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $f1[3]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[3]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[3]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[3]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="21" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah21()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Program studi memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 aspek tsb di atas.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada tata pamong yang  menjamin penyelenggaraan program studi, namun hanya memenuhi 3 dari 5 aspek tsb di atas.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 aspek tsb di atas.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 5 aspek tsb di atas.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai21"><input type="text" required name="skorakhir[]" id="21nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 2.1 -->
+
+        <!-- BUKA MODAL VIEW NILAI 2.1 -->
+        <div class="modal fade" id="viewnilai21" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[3]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $f1[3]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[3]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[3]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[3]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view21" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah21()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="viewkomentar21" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Program studi memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 aspek tsb di atas.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada tata pamong yang  menjamin penyelenggaraan program studi, namun hanya memenuhi 3 dari 5 aspek tsb di atas.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 aspek tsb di atas.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 5 aspek tsb di atas.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai21"><input type="text" required name="skorakhir[]" id="view21nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 2.1 -->
+
+        <!-- BUKA MODAL NILAI 2.2 -->
+        <div class="modal fade" id="nilai22" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[4]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $f1[4]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[4]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[4]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[4]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="22" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah22()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Kepemimpinan program studi lemah dalam karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam salah satu dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam dua dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakteristik yang kuat dalam: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai22"><input type="text" required name="skorakhir[]" id="22nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 2.2 -->
+
+        <!-- BUKA MODAL VIEW NILAI 2.2 -->
+        <div class="modal fade" id="viewnilai22" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[4]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $f1[4]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[4]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[4]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[4]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view22" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah22()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="viewkomentar22" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Kepemimpinan program studi lemah dalam karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam salah satu dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam dua dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakteristik yang kuat dalam: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai22"><input type="text" required name="skorakhir[]" id="view22nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 2.2 -->
+
+        <!-- BUKA MODAL NILAI 2.3 -->
+        <div class="modal fade" id="nilai23" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[5]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[5]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[5]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[5]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[5]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="23" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah23()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada sistem pengelolaan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan tidak sesuai dengan SOP.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan hanya sebagian sesuai dengan SOP dan dokumen kurang lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan dengan cukup baik, sesuai dengan SOP, namun dokumen kurang lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi berjalan sesuai dengan SOP, yang didukung dokumen yang lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai23"><input type="text" required name="skorakhir[]" id="23nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 2.3 -->
+
+        <!-- BUKA MODAL VIEW NILAI 2.3 -->
+        <div class="modal fade" id="viewnilai23" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[5]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[5]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[5]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[5]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[5]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view23" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah23()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar23" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada sistem pengelolaan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan tidak sesuai dengan SOP.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan hanya sebagian sesuai dengan SOP dan dokumen kurang lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan dengan cukup baik, sesuai dengan SOP, namun dokumen kurang lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi berjalan sesuai dengan SOP, yang didukung dokumen yang lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai23"><input type="text" required name="skorakhir[]" id="view23nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 2.3 -->
+
+        <!-- BUKA MODAL NILAI 2.4 -->
+        <div class="modal fade" id="nilai24" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[6]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[6]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[6]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[6]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[6]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada sistem penjaminan mutu.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Ada sistem penjaminan mutu, tetapi tidak berfungsi.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Sistem penjaminan mutu berfungsi sebagian namun  tidak ada umpan balik dan dokumen kurang lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, umpan balik tersedia tetapi tidak ada tindak lanjut.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, ada  umpan balik dan tindak lanjutnya, yang didukung dokumen yang lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai25"><input type="text" required name="skorakhir[]" id="25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 2.4 -->
+
+        <!-- BUKA MODAL VIEW NILAI 2.4 -->
+        <div class="modal fade" id="viewnilai24" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[6]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[6]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[6]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[6]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[6]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar24" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada sistem penjaminan mutu.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Ada sistem penjaminan mutu, tetapi tidak berfungsi.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Sistem penjaminan mutu berfungsi sebagian namun  tidak ada umpan balik dan dokumen kurang lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, umpan balik tersedia tetapi tidak ada tindak lanjut.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, ada  umpan balik dan tindak lanjutnya, yang didukung dokumen yang lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai25"><input type="text" required name="skorakhir[]" id="view25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 2.4 -->
+
+        <!-- BUKA MODAL NILAI 2.5 -->
+        <div class="modal fade" id="nilai25" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[7]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[7]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[7]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[7]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[7]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada umpan balik.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan tidak ada tindak lanjut.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan ada tindak lanjut secara insidental.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara insidental.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara berkelanjutan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai25"><input type="text" required name="skorakhir[]" id="25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 2.5 -->
+
+        <!-- BUKA MODAL VIEW NILAI 2.5 -->
+        <div class="modal fade" id="viewnilai25" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[7]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[7]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[7]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[7]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[7]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar25" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada umpan balik.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan tidak ada tindak lanjut.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan ada tindak lanjut secara insidental.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara insidental.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara berkelanjutan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai25"><input type="text" required name="skorakhir[]" id="view25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 2.5 -->
+
+        <!-- BUKA MODAL NILAI 2.6 -->
+        <div class="modal fade" id="nilai26" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[8]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[8]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[8]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[8]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[8]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="26" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah26()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada usaha.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Ada bukti hanya 1 usaha yang dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada bukti hanya sebagian kecil usaha (2-3) yang dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada bukti sebagian usaha ( > 3) dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada bukti semua usaha dilakukan berikut hasilnya.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai26"><input type="text" required name="skorakhir[]" id="26nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 2.6 -->
+
+        <!-- BUKA MODAL VIEW NILAI 2.6 -->
+        <div class="modal fade" id="viewnilai26" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[8]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $f1[8]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $f1[8]['aspek'] ?></td>
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[8]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $f1[8]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view26" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah26()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar26" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada usaha.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Ada bukti hanya 1 usaha yang dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada bukti hanya sebagian kecil usaha (2-3) yang dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada bukti sebagian usaha ( > 3) dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada bukti semua usaha dilakukan berikut hasilnya.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai26"><input type="text" required name="skorakhir[]" id="view26nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 2.6 -->
+
     </div>
 </section>
 
@@ -25784,6 +27564,183 @@
 
     });
 
+    $('#viewnilai11b').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar11b').val(buku[0]['komentar']);
+              $('#view11b1').val(buku[0]['nilai1']);
+              $('#view11b2').val(buku[0]['nilai2']);
+              $('#view11bskorakhir').val(buku[0]['nilai3']);
+              $('#view11bnilai').val(buku[0]['skorakhir']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#viewnilai12').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar12').val(buku[0]['komentar']);
+              $('#view12').val(buku[0]['nilai1']);
+              $('#view12skorakhir').val(buku[0]['nilai2']);
+              $('#view12nilai').val(buku[0]['skorakhir']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#viewnilai21').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar21').val(buku[0]['komentar']);
+              $('#view21').val(buku[0]['nilai1']);
+              $('#view21skorakhir').val(buku[0]['nilai2']);
+              $('#view21nilai').val(buku[0]['skorakhir']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#viewnilai22').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar22').val(buku[0]['komentar']);
+              $('#view22').val(buku[0]['nilai1']);
+              $('#view22skorakhir').val(buku[0]['nilai2']);
+              $('#view22nilai').val(buku[0]['skorakhir']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#viewnilai23').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar23').val(buku[0]['komentar']);
+              $('#view23').val(buku[0]['nilai1']);
+              $('#view23skorakhir').val(buku[0]['nilai2']);
+              $('#view23nilai').val(buku[0]['skorakhir']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#viewnilai24').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar24').val(buku[0]['komentar']);
+              $('#view24').val(buku[0]['nilai1']);
+              $('#view24skorakhir').val(buku[0]['nilai2']);
+              $('#view24nilai').val(buku[0]['skorakhir']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#viewnilai25').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar25').val(buku[0]['komentar']);
+              $('#view25').val(buku[0]['nilai1']);
+              $('#view25skorakhir').val(buku[0]['nilai2']);
+              $('#view25nilai').val(buku[0]['skorakhir']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#viewnilai26').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar26').val(buku[0]['komentar']);
+              $('#view26').val(buku[0]['nilai1']);
+              $('#view26skorakhir').val(buku[0]['nilai2']);
+              $('#view26nilai').val(buku[0]['skorakhir']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
     // $('#del').click(function() {
     //     var delete_url = $(this).attr('data-url');
     //     swal({
@@ -25943,7 +27900,16 @@ function printContent(el){
     }
   }
 
-  function cekjumlah11a(){
+  function sum() {
+              var txtFirstNumberValue = document.getElementById('txt1').value;
+              var txtSecondNumberValue = document.getElementById('txt2').value;
+              var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue);
+              if (!isNaN(result)) {
+                 document.getElementById('txt3').value = result;
+              }
+        }
+
+        function cekjumlah11a(){
               var txt1 = document.getElementById('11a1').value;
               var txt2 = document.getElementById('11a2').value;
               var txt3 = document.getElementById('11a3').value;
@@ -25954,7 +27920,1321 @@ function printContent(el){
                      document.getElementById('11askorakhir').value = desimalnya;
                      document.getElementById('11anilai').value = desimalnya;
                   }
-    }
+        }
+
+        function cekjumlah11b(){
+              var txt1 = document.getElementById('11b1').value;
+              var txt2 = document.getElementById('11b2').value;
+              var result = ((parseFloat(txt1) + parseFloat(txt2))/2);
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('11bskor').value = desimalnya;
+                     document.getElementById('11bnilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah12(){
+              var txt1 = document.getElementById('12').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('12nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah21(){
+              var txt1 = document.getElementById('21').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('21nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah22(){
+              var txt1 = document.getElementById('22').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('22nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah23(){
+              var txt1 = document.getElementById('23').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('23nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah25(){
+              var txt1 = document.getElementById('25').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('25nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah25(){
+              var txt1 = document.getElementById('25').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('25nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah26(){
+              var txt1 = document.getElementById('26').value;
+              var result = ((parseFloat(txt1)));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('26nilai').value = desimalnya;
+              }
+        }
+
+        function cekjumlah311a(){
+              var txt1 = document.getElementById('311a1').value;
+              var txt2 = document.getElementById('311a2').value;
+              var result = (parseFloat(txt1) / parseFloat(txt2));
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (result>=4) {
+                nilainya = 4;
+              }else {
+                nilainya = ((3+desimalnya)/2);
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Jumlah calon yang ikut seleksi = '.concat(txt1);
+              var str2 = ', daya tampung PS = '.concat(txt2);
+              var str3 = ', Rasio Calon Mahasiswa yang ikut seleksi terhadap daya tampung = '.concat(desimalnya);
+              if (!isNaN(result)) {
+                     document.getElementById('311arasio').value = desimalnya;
+                     document.getElementById('311anilai').value = hasilnya;
+                     document.getElementById('311ainfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah311b(){
+              var txt1 = document.getElementById('311b1').value;
+              var txt2 = document.getElementById('311b2').value;
+              var result = (parseFloat(txt1) / parseFloat(txt2));
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (result>=95) {
+                nilainya = 4;
+              }else {
+                nilainya = ((40*desimalnya-10)/7);
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi = '.concat(txt1);
+              var str2 = ' / '.concat(txt2);
+              var str3 = ' = '.concat(desimalnya);
+              if (!isNaN(result)) {
+                     document.getElementById('311brasio').value = desimalnya;
+                     document.getElementById('311bnilai').value = hasilnya;
+                     document.getElementById('311binfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah311c(){
+              var txt1 = document.getElementById('311c1').value;
+              var txt2 = document.getElementById('311c2').value;
+              var result = (parseFloat(txt1) / parseFloat(txt2));
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (desimalnya>=1.25) {
+                nilainya = 0;
+              }else {
+                nilainya = 4;
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Rasio mahasiswa baru transfer terhadap mahasiswa baru bukan transfer = '.concat(txt1);
+              var str2 = ' / '.concat(txt2);
+              var str3 = ' = '.concat(desimalnya);
+              if (!isNaN(result)) {
+                     document.getElementById('311crasio').value = desimalnya;
+                     document.getElementById('311cnilai').value = hasilnya;
+                     document.getElementById('311cinfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah311d(){
+              var txt1 = document.getElementById('311d1').value;
+              var txt2 = document.getElementById('311d2').value;
+              var result = (parseFloat(txt1) / parseFloat(txt2));
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (desimalnya>=0) {
+                nilainya = 4;
+              }else {
+                nilainya = 4;
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'rata-rata IPK Makasiswa = '.concat(txt1);
+              if (!isNaN(result)) {
+                     document.getElementById('311dnilai').value = hasilnya;
+                     document.getElementById('311dinfo').value = str1;
+                  }
+        }
+
+        function cekjumlah312(){
+              var txt1 = document.getElementById('312').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('312nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah313(){
+              var txt1 = document.getElementById('313').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('313nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah314a(){
+              var txt1 = document.getElementById('314a1').value;
+              var txt2 = document.getElementById('314a2').value;
+              var result1 = ((parseFloat(txt2) / parseFloat(txt1))*100);
+              var result2= (parseFloat(txt2) / parseFloat(txt1));
+              var desimalnya1 = result1.toFixed(2);
+              var desimalnya2 = result2.toFixed(2);
+              var nilainya1 = 0;
+              var nilainya2 = 0;
+              if (desimalnya1>=50) {
+                nilainya1 = 4;
+              }else {
+                nilainya1= ((1+6*desimalnya1));
+              }
+              if (desimalnya2 >=50) {
+                nilainya2  = 4;
+              }else {
+                nilainya2 = ((1+6*desimalnya2));
+              }
+              var hasilnya1 = nilainya1.toFixed(2);
+              var hasilnya2 = nilainya2.toFixed(2);
+              var str1 = 'Presentase kelulusan tepat waktu (KWT) = '.concat(txt2);
+              var str2 = ' / '.concat(txt1);
+              var str3 = ' = '.concat(desimalnya1);
+              if (!isNaN(result1)) {
+                     document.getElementById('314arasio').value = desimalnya1;
+                     document.getElementById('314anilai').value = hasilnya2;
+                     document.getElementById('314ainfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah314b(){
+              var txt1 = document.getElementById('314b1').value;
+              var txt2 = document.getElementById('314b2').value;
+              var txt3 = document.getElementById('314b3').value;
+              var result = (((parseFloat(txt1) - parseFloat(txt2) - parseFloat(txt3))/parseFloat(txt1))*100);
+              var dihitung= (((parseFloat(txt1) - parseFloat(txt2) - parseFloat(txt3))/parseFloat(txt1)));
+              var pembagi= (parseFloat(txt1) - parseFloat(txt2) - parseFloat(txt3));
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (desimalnya<=6) {
+                nilainya = 4;
+              }else if (desimalnya<45) {
+                nilainya= ((180-(400*dihitung))/39);
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Presentase Mahasiswa yang DO atau mengundurkan diri = '.concat(pembagi);
+              var str2 = ' / '.concat(txt1);
+              var str3 = ' = '.concat(desimalnya);
+              if (!isNaN(result)) {
+                     document.getElementById('314brasio').value = desimalnya;
+                     document.getElementById('314bnilai').value = hasilnya;
+                     document.getElementById('314binfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah321(){
+              var txt1 = document.getElementById('321').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('321nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah322(){
+              var txt1 = document.getElementById('322').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('322nilai').value = desimalnya;
+                     document.getElementById('322sl').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah331a(){
+              var txt1 = document.getElementById('331a').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('331anilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah331b(){
+              var txt1 = document.getElementById('331b').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('331bnilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah331c(){
+              var txt1 = document.getElementById('331c1').value;
+              var txt2 = document.getElementById('331c2').value;
+              var txt3 = document.getElementById('331c3').value;
+              var txt4 = document.getElementById('331c4').value;
+              var nilai1 = (parseFloat(txt1)/100).toFixed(2);
+              var nilai2 = (parseFloat(txt2)/100).toFixed(2);
+              var nilai3 = (parseFloat(txt3)/100).toFixed(2);
+              var nilai4 = (parseFloat(txt4)/100).toFixed(2);
+              var result = ((parseFloat(nilai1) + parseFloat(nilai2) + parseFloat(nilai3) + parseFloat(nilai4)));
+              var dihitung= (((4*(parseFloat(nilai1))) + (3*(parseFloat(nilai2))) + (2*(parseFloat(nilai3))) + parseFloat(nilai4))/7);
+              // var desimalnya = dihitung.toFixed(2);
+              var nilainya = 0;
+              if (result>7) {
+                nilainya = 0;
+              }else {
+                nilainya= dihitung;
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var info1 = (parseFloat(txt1)/7*100);
+              var info2 = (parseFloat(txt2)/7*100);
+              var info3 = (parseFloat(txt3)/7*100);
+              var info4 = (parseFloat(txt4)/7*100);
+              var hasilinfo1 = info1.toFixed(2);
+              var hasilinfo2 = info2.toFixed(2);
+              var hasilinfo3 = info3.toFixed(2);
+              var hasilinfo4 = info4.toFixed(2);
+              var str1 = 'Pendapat pengguna terhadap kualitas alumni. Respon sangat baik = '.concat(hasilinfo1);
+              var str2 = ' .Respon baik '.concat(hasilinfo2);
+              var str3 = ' .Respon cukup '.concat(hasilinfo3);
+              var str4 = ' .Respon kurang '.concat(hasilinfo4);
+              if (!isNaN(result)) {
+                     document.getElementById('331crasio').value = nilainya;
+                     document.getElementById('331cnilai').value = nilainya;
+                     document.getElementById('331cinfo').value = str1.concat(str2,str3,str4);
+                  }
+        }
+
+         function cekjumlah332(){
+              var txt1 = document.getElementById('332').value;
+              var result = (parseFloat(txt1));
+
+              var nilainya = 0 ;
+                if(result==0){
+                    nilainya = 0;
+                } else if (result <=3) { 
+                    nilainya=4;
+                } else if (result <18) {
+                    nilainya= (72-4*result)/15;
+                }
+                var nilaides= nilainya.toFixed(2);
+                var str1= 'Rata-rata waktu tunggu lulusan untuk memperoleh pekerjaan yang pertama = '.concat(result);
+                var str2= ' bulan';
+              if (!isNaN(result)) {
+                     document.getElementById('332nilai').value = nilaides;
+                    document.getElementById('332info').value = str1.concat(str2);
+                  }
+        }
+
+        function cekjumlah333(){
+              var txt1 = document.getElementById('333').value;
+              var nilai = (parseFloat(txt1)/100).toFixed(2);
+              var result = (parseFloat(txt1));
+              var hitung = ((parseFloat(nilai)));
+
+              var nilainya = 0 ;
+                if(result==0){
+                    nilainya = 0;
+                } else if (result > 100) { 
+                   
+                } else if (result >=80/100) {
+                    nilainya= 4;
+                } else {
+                    nilainya = (5*result);
+                }
+                var nilaides= nilainya.toFixed(2);
+
+                var str1= 'Persentase lulusan yang bekerja sesuai dengan bidang keahliannya = '.concat(result);
+              if (!isNaN(result)) {
+                     document.getElementById('333nilai').value = nilaides;
+                    document.getElementById('333info').value = str1;
+                  }
+        } 
+
+          function cekjumlah341(){
+              var txt1 = document.getElementById('341').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('341nilai').value = desimalnya;
+                  }
+        }
+
+           
+            function cekjumlah342(){
+              var txt1 = document.getElementById('342').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('342nilai').value = desimalnya;
+                  }
+        }
+
+            function cekjumlah41(){
+              var txt1 = document.getElementById('41').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('41nilai').value = desimalnya;
+                  }
+        }
+
+            function cekjumlah421(){
+              var txt1 = document.getElementById('421').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('421nilai').value = desimalnya;
+                  }
+        }
+
+            function cekjumlah422(){
+              var txt1 = document.getElementById('422').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('422nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah431a(){
+              var txt1 = document.getElementById('431a1').value;
+              var txt2 = document.getElementById('431a2').value;
+              var txt3 = document.getElementById('431a3').value;
+              var txt4 = document.getElementById('431a4').value;
+             
+              var hasilnya1 = 0;
+              var hasilnya3 = 0;
+              var result = ((parseFloat(txt1) + parseFloat(txt2) + parseFloat(txt3) + parseFloat(txt4)));
+              var jum1 = parseFloat(txt2) + parseFloat(txt3);
+              if (jum1>txt1) {
+                hasilnya1 = 0;
+              }else{
+                hasilnya1 = parseFloat(txt3) + parseFloat(txt4);
+              }
+
+              var hasilnya2 = ((hasilnya1/txt1)*100);
+              if (hasilnya2 >= 90) {
+                hasilnya=4;
+              }else if (hasilnya2>30) {
+                hasilnya3 = ((20*hasilnya2)/3-2);
+              }else{
+                hasilnya3 = 0;
+              }
+
+            var KD2 = ((txt4) /(hasilnya1)*100); 
+            var nilai431=0;
+            if(KD2>=40) {
+                nilai431=4;
+            } else {
+                nilai431=(2+(5*KD2));
+            }
+           
+             var nil =nilai431.toFixed(2);
+             var nil1= KD2.toFixed(2);
+            
+             var has2 = hasilnya2.toFixed(2);
+             var has3 = hasilnya3.toFixed(2);
+             var has4= parseFloat(hasilnya1);
+             
+              if (!isNaN(result)) {
+                     document.getElementById('431ajumlah').value = hasilnya1;
+                     document.getElementById('431aKD').value = has2;
+                     document.getElementById('431anilai').value =has3 ;
+                     document.getElementById('431ainfo').value = has3;
+                     document.getElementById('431bnilai').value = nil;
+                     document.getElementById('431bKD2').value = nil1;
+                     document.getElementById('431bjumlah').value = has4;
+                     document.getElementById('431b').value = txt4;
+           }      
+        }
+
+         function cekjumlah431c(){
+             var jumlah=document.getElementById('431ajumlah').value;
+             var nil2 =nilai431c.toFixed(2);
+             var nil02= KD3.toFixed(2);
+
+            var txt5 = document.getElementById('431c1').value;
+            var result=parseFloat(txt5);
+            KD3 = ((txt5) /(jumlah)*100); 
+            var nilai431c=0;
+            if (KD3>=40/400) {
+                nilai431c=4;
+            } else {
+                nilai431=((1+7.5*KD3));
+            }
+            var has5= parseFloat(jumlah);
+               if (!isNaN(result)) {
+                     document.getElementById('431cjumlah').value = has5;
+                     document.getElementById('431cnilai').value =nil2;
+                     document.getElementById('431cKD3').value = nil02;
+
+                  }    
+
+         }
+
+         function cekjumlah432(){
+              var txt1 = document.getElementById('432c1').value;
+              var txt2 = document.getElementById('432c2').value;
+              var txt3 = document.getElementById('432c3').value;
+              var txt4 = document.getElementById('432c4').value;
+              var nilai1 = (parseFloat(txt1));
+              var nilai2 = (parseFloat(txt2));
+              var nilai3 = (parseFloat(txt3));
+              var nilai4 = (parseFloat(txt4));
+              var result = ((parseFloat(nilai1) + parseFloat(nilai2) + parseFloat(nilai3) + parseFloat(nilai4)));
+            var  htg= (parseFloat(nilai1) / parseFloat(nilai3));
+            var  htg1= (parseFloat(nilai2) / parseFloat(nilai4));
+            var  hitung=0;
+              if ( nilai1==0 || nilai3==0) {
+                hitung=0;
+              } else {
+                hitung = htg;
+              }
+
+            var hitung1=0;
+              if ( nilai1==0 || nilai3==0) {
+                hitung1=0;
+              } else {
+                hitung1 = htg1;
+              }
+
+            var  hitung3=0;
+              if (hitung1<=5) {
+                hitung3=0;
+              } else if (hitung1<27){
+                hitung3=((2*(hitung1-5)/11));
+              } else if (hitung1<70) {
+                hitung3=((4*(70-hitung1)/37));
+              } else {
+                hitung3=0;
+              }
+
+            var hitung4=0;
+            if (hitung<17) {
+                hitung4=((4*hitung)/17);
+            } else if (hitung<=23) {
+                hitung4=(4*(60-hitung));
+            } else {
+                hitung4=0;
+            }
+
+            var nilainya=0;
+             if (txt1>0){
+                nilainya=hitung4;
+             }else {
+                nilainya=hitung3;
+             }
+              var hasilnya1 = hitung.toFixed(2);
+              var hasilnya2 = hitung1.toFixed(2);
+          
+              var hasilnya4 = hitung3.toFixed(2);
+              var hasilnya5 = hitung4.toFixed(2);
+              var hasilnya = nilainya.toFixed(2);
+              var info1 = (parseFloat(txt1));
+              var info2 = (parseFloat(txt2));
+              var info3 = (parseFloat(txt3));
+              var info4 = (parseFloat(txt4));
+              var hasilinfo1 = info1.toFixed(2);
+              var hasilinfo2 = info2.toFixed(2);
+              var hasilinfo3 = info3.toFixed(2);
+              var hasilinfo4 = info4.toFixed(2);
+              var str1 = 'Pendapat pengguna terhadap kualitas alumni. Respon sangat baik = '.concat(hasilinfo1);
+              var str2 = ' .Respon baik '.concat(hasilinfo2);
+              var str3 = ' .Respon cukup '.concat(hasilinfo3);
+              var str4 = ' .Respon kurang '.concat(hasilinfo4);
+              if (!isNaN(result)) {
+                     document.getElementById('432rasio').value = hasilnya1;
+                     document.getElementById('432rasio1').value = hasilnya2;
+                     document.getElementById('432rasio3').value = hasilnya4;
+                     document.getElementById('432rasio4').value = hasilnya5;
+                     document.getElementById('432nilai').value = nilainya;
+                     document.getElementById('432info').value = str1.concat(str2,str3,str4);
+                  }
+         }
+
+           function cekjumlah433(){
+              var txt1 = document.getElementById('433').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              var nilainya=0;
+              if (txt1<=5 || txt1>=21){
+                nilainya=1;
+              } else if (txt1>5 && txt1<11){
+                nilainya=((txt1-3)/2);
+              } else if (txt1>=11 && txt1<=13) {
+                nilainya=4;
+              } else {
+                nilainya=((71-3*txt1)/8);
+              }
+              var hasilnya=nilainya.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('433nilai').value = hasilnya;
+                  }
+        }
+
+
+        function cekjumlah434(){
+              var txt1 = document.getElementById('434').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('434nilai').value = desimalnya;
+                  }
+        }
+
+         function cekjumlah435(){
+              var txt1 = document.getElementById('435c1').value;
+              var txt2 = document.getElementById('435c2').value;
+              var result = (parseFloat(txt2) / parseFloat(txt1)*100);
+
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              var hitung=0;
+              
+              if (result>1) {
+                hitung=0;
+              }else {
+                hitung=result;
+              }
+
+              if (result>=95/100) {
+                nilainya = 4;
+              }else if ( result>60/100) {
+                nilainya = (((80*result)-48)/7);
+              } else {
+                    nilainya=0;
+              }
+              
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi = '.concat(txt1);
+              var str2 = ' / '.concat(txt2);
+              var str3 = ' = '.concat(desimalnya);
+              if (!isNaN(result)) {
+                     document.getElementById('435rasio').value = desimalnya;
+                     document.getElementById('435nilai').value = hasilnya;
+                     document.getElementById('435info').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah441(){
+              var txt1 = document.getElementById('4411').value;
+              var txt2 = document.getElementById('4412').value;
+              var result = (parseFloat(txt1) / (parseFloat(txt1) + parseFloat(txt2))*100);
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (result>=10*100) {
+                nilainya = 4;
+              }else if ( result<50/100) {
+                nilainya = ((10*(50/100-result)));
+              } else {
+                    nilainya=0;
+              }
+              
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi = '.concat(txt1);
+              var str2 = ' / '.concat(txt2);
+              var str3 = ' = '.concat(desimalnya);
+              if (!isNaN(result)) {
+                     document.getElementById('441rasio').value = desimalnya;
+                     document.getElementById('441nilai').value = hasilnya;
+                     document.getElementById('441info').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah442a(){
+              var txt1 = document.getElementById('442a').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('442anilai').value = desimalnya;
+                  }
+        }
+
+         function cekjumlah451(){
+              var txt1 = document.getElementById('451').value;
+              var result = (parseFloat(txt1));
+              var nilainya = result.toFixed(2);
+              var nilainya=0;
+              if (result>=12) {
+                nilainya=4;
+              } else {
+                nilainya=((1+result)/4);
+              }
+
+              if (!isNaN(result)) {
+                     document.getElementById('451nilai').value = nilainya;
+                  }
+        }
+
+        function cekjumlah454(){
+              var txt1 = document.getElementById('454').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('454nilai').value = desimalnya;
+                  }
+        }
+
+         function cekjumlah455(){
+             var txt1 = document.getElementById('455c1').value;
+             var txt2 = document.getElementById('455c2').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('455nilai').value = desimalnya;
+                  }
+        }
+
+         function cekjumlah461a(){
+              var txt1 = document.getElementById('461a1').value;
+              var txt2 = document.getElementById('461a2').value;
+              var txt3 = document.getElementById('461a3').value;
+              
+              var result = ((parseFloat(txt1) + parseFloat(txt2) + parseFloat(txt3) + parseFloat(txt4)));
+              var dihitung= (((4*(parseFloat(txt1))) + (3*(parseFloat(txt2))) + (2*(parseFloat(txt3))/4)));
+            
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (result>=4) {
+                nilainya = 4;
+              } else  {
+                nilainya= dihitung;
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Presentase Mahasiswa yang DO atau mengundurkan diri = '.concat(pembagi);
+              var str2 = ' / '.concat(txt1);
+              var str3 = ' = '.concat(desimalnya);
+              if (!isNaN(result)) {
+                     document.getElementById('461arasio').value = desimalnya;
+                     document.getElementById('461anilai').value = hasilnya;
+                     document.getElementById('461ainfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah461b(){
+              var txt1 = document.getElementById('461b').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('461bnilai').value = desimalnya;
+                  }
+        }
+
+         function cekjumlah461c(){
+              var txt1 = document.getElementById('461c1').value;
+              var txt2 = document.getElementById('461c2').value;
+              var txt3 = document.getElementById('461c3').value;
+              var txt4 = document.getElementById('461c4').value;
+              var nilai1 = (parseFloat(txt1)).toFixed(2);
+              var nilai2 = (parseFloat(txt2)).toFixed(2);
+              var nilai3 = (parseFloat(txt3)).toFixed(2);
+              var nilai4 = (parseFloat(txt4)).toFixed(2);
+              var result = ((parseFloat(nilai1) + parseFloat(nilai2) + parseFloat(nilai3) + parseFloat(nilai4)));
+              var dihitung= ((4*(parseFloat(nilai1)) + (3*(parseFloat(nilai2))) + (2*(parseFloat(nilai3))) + ((parseFloat(nilai4))/4)));
+
+            if (result>=4) {
+                nilainya = 4;
+              } else {
+                nilainya= dihitung;
+              }
+              var hsl = (parseFloat(dihitung)/4);
+              var hasilnya = nilainya.toFixed(2);
+              var info1 = (parseFloat(txt1));
+              var info2 = (parseFloat(txt2));
+              var info3 = (parseFloat(txt3));
+              var info4 = (parseFloat(txt4));
+              var hasilinfo1 = info1.toFixed(2);
+              var hasilinfo2 = info2.toFixed(2);
+              var hasilinfo3 = info3.toFixed(2);
+              var hasilinfo4 = info4.toFixed(2);
+              var str1 = 'Pendapat pengguna terhadap kualitas alumni. Respon sangat baik = '.concat(hasilinfo1);
+              var str2 = ' .Respon baik '.concat(hasilinfo2);
+              var str3 = ' .Respon cukup '.concat(hasilinfo3);
+              var str4 = ' .Respon kurang '.concat(hasilinfo4);
+              if (!isNaN(result)) {
+                     document.getElementById('461crasio').value = hsl;
+                     document.getElementById('461cnilai').value = hasilnya;
+                     document.getElementById('461cinfo').value = str1.concat(str2,str3,str4);
+                  }
+ 
+        }
+               
+         function cekjumlah462(){
+              var txt1 = document.getElementById('462').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('462nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah511a(){
+              var txt1 = document.getElementById('511a').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('511anilai').value = desimalnya;
+                  }
+        }
+
+
+
+         function cekjumlah511b(){
+              var txt1 = document.getElementById('511b').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('511bnilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah512a(){
+              var txt1 = document.getElementById('512a').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('512anilai').value = desimalnya;
+                  }
+        }
+
+         function cekjumlah512b(){
+              var txt1 = document.getElementById('512b1').value;
+              var txt2 = document.getElementById('512b2').value;
+              var result1 =((parseFloat(txt1) / parseFloat(txt2))*100);
+              var result2= (parseFloat(txt2) / parseFloat(txt1));
+              var desimalnya1 = result1.toFixed(2);
+              var desimalnya2 = result2.toFixed(2);
+              var nilainya1 = 0;
+              var nilainya2 = 0;
+              if (desimalnya1>=50) {
+                nilainya1 = 4;
+              }else {
+                nilainya1= (8*desimalnya1);
+              }
+            
+              var hasilnya1 = nilainya1.toFixed(2);
+              var hasilnya2 = nilainya2.toFixed(2);
+              var str1 = 'Presentase kelulusan tepat waktu (KWT) = '.concat(txt2);
+              var str2 = ' / '.concat(txt1);
+              var str3 = ' = '.concat(desimalnya1);
+              if (!isNaN(result1)) {
+                     document.getElementById('512brasio').value = desimalnya1;
+                     document.getElementById('512bnilai').value = hasilnya1;
+                     document.getElementById('512binfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+
+         function cekjumlah512c(){
+              var txt1 = document.getElementById('512c1').value;
+              var txt2 = document.getElementById('512c2').value;
+              var result1 =((parseFloat(txt1) / parseFloat(txt2))*100);
+              var result2= (parseFloat(txt2) / parseFloat(txt1));
+              var desimalnya1 = result1.toFixed(2);
+              var desimalnya2 = result2.toFixed(2);
+              var nilainya1 = 0;
+              var nilainya2 = 0;
+              if (txt1>txt2) {
+                nilainya1 = 0;
+              }else {
+                nilainya1= desimalnya1;
+              }
+
+              if (nilainya1<=55/100){
+                nilainya2=0;
+              } else if(nilainya1<95/100){
+                nilainya2=(10*(nilainya1-55/100));
+              } else {
+                nilainya2=4;
+              }
+              var hasilnya1 = nilainya1.toFixed(2);
+              var hasilnya2 = nilainya2.toFixed(2);
+              var str1 = 'Presentase kelulusan tepat waktu (KWT) = '.concat(txt2);
+              var str2 = ' / '.concat(txt1);
+              var str3 = ' = '.concat(desimalnya1);
+              if (!isNaN(result1)) {
+                     document.getElementById('512crasio').value = hasilnya1;
+                     document.getElementById('512cnilai').value = hasilnya2;
+                     document.getElementById('512cinfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+         function cekjumlah514(){
+              var txt1 = document.getElementById('514').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('514nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah52a(){
+              var txt1 = document.getElementById('52a').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('52anilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah52b(){
+              var txt1 = document.getElementById('52b').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('52bnilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah531b(){
+              var txt1 = document.getElementById('531b').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('531bnilai').value = desimalnya;
+                  }
+        }
+
+         function cekjumlah532(){
+              var txt1 = document.getElementById('532').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('532nilai').value = desimalnya;
+                  }
+        }
+
+         function cekjumlah541a(){
+              var txt1 = document.getElementById('541a1').value;
+              var txt2 = document.getElementById('541a2').value;
+              var result1 =(parseFloat(txt1) / parseFloat(txt2));
+              var result2= (parseFloat(txt2) / parseFloat(txt1));
+              var desimalnya1 = result1.toFixed(2);
+              var desimalnya2 = result2.toFixed(2);
+              var nilainya1 = 0;
+              var nilainya2 = 0;
+
+              if (desimalnya1=0){
+                nilainya1=0;
+              } else if (desimalnya1<=20){
+                nilainya1=4;
+              } else if (desimalnya1<60){
+                nilainya1=((60-(desimalnya1)/10));
+              } else {
+                nilainya1=0;
+              }    
+
+              var hasilnya1 = nilainya1.toFixed(2);
+              var hasilnya2 = nilainya2.toFixed(2);
+              var str1 = 'Presentase kelulusan tepat waktu (KWT) = '.concat(txt2);
+              var str2 = ' / '.concat(txt1);
+              var str3 = ' = '.concat(desimalnya1);
+              if (!isNaN(result1)) {
+                     document.getElementById('541arasio').value = desimalnya2;
+                     document.getElementById('541anilai').value = hasilnya1;
+                     document.getElementById('541ainfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+
+          function cekjumlah541b(){
+              var txt1 = document.getElementById('541b').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('541bnilai').value = desimalnya;
+                  }
+        }
+
+        // function cekjumlah541c(){
+        //       var txt1 = document.getElementById('541c').value;
+        //       var result = (parseFloat(txt1));
+        //       var nilainya = result.toFixed(2);
+        //       var nilainya=0;
+
+        //       if (result=){
+        //         nilainya=0;
+        //      }else if (result<3) {
+        //         nilainya=(result+1);
+        //      } else {
+        //         nilainya=4;
+        //      }
+        //      var desimalnya=nilainya.toFixed(2);
+        //       if (!isNaN(result)) {
+        //              document.getElementById('541cnilai').value = desimalnya;
+        //           }
+        // }
+        
+          function cekjumlah542(){
+              var txt1 = document.getElementById('542').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('542nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah551a(){
+              var txt1 = document.getElementById('551a').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)){
+                     document.getElementById('551anilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah551b(){
+              var txt1 = document.getElementById('551b1').value;
+              var txt2 = document.getElementById('551b2').value;
+              var result = ((parseFloat(txt1) + parseFloat(txt2)));
+             
+              var nilai1= (parseFloat(txt1).toFixed(2));
+              var nilai2= (parseFloat(txt2).toFixed(2));
+              var htg = (parseFloat(nilai2) / (parseFloat(nilai1)));
+              var hitung=0;
+              var nilainya=0;
+              var htg1 =(5-(parseFloat(hitung/4)));
+
+              if ( nilai1==0 || nilai2==0) {
+                hitung=0;
+              } else {
+                hitung = htg;
+              }
+            
+              if (hitung=0) {
+                nilainya=0;
+              } else if (hitung<=4) {
+                nilainya=4;
+              } else if (hitung<20) {
+                nilainya=htg1;
+              } else {
+                nilainya=0;
+              }
+              var rasio = hitung.toFixed(2);
+              var desimalnya = nilainya.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('551bnilai').value = desimalnya;
+                     document.getElementById('551brasio').value = rasio;
+
+                  }
+        }
+
+         function cekjumlah551c(){
+              var txt1 = document.getElementById('551c').value;
+              var result = (parseFloat(txt1));
+              var nilainya = result.toFixed(2);
+              var hitung= ((parseFloat(txt1)/2));
+              var nilainya=0;
+              if (hitung>=8){
+                nilainya=4;
+             }else{
+                nilainya=hitung;
+             }
+             var desimalnya=nilainya.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('551cnilai').value = desimalnya;
+                  }
+        }
+
+
+        function cekjumlah551d(){
+              var txt1 = document.getElementById('551d').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('551dnilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah56(){
+              var txt1 = document.getElementById('56').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('56nilai').value = desimalnya;
+                  }
+        }
+
+
+        function cekjumlah571(){
+              var txt1 = document.getElementById('571').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('571nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah572(){
+              var txt1 = document.getElementById('572').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('572nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah573(){
+              var txt1 = document.getElementById('573').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('573nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah573(){
+              var txt1 = document.getElementById('573').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('573nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah574(){
+              var txt1 = document.getElementById('574').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('574nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah575(){
+              var txt1 = document.getElementById('575').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('575nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah61(){
+              var txt1 = document.getElementById('61').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('61nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah632(){
+              var txt1 = document.getElementById('632').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('632nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah633(){
+              var txt1 = document.getElementById('633').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('633nilai').value = desimalnya;
+                  }
+        }
+
+
+         function cekjumlah641a(){
+              var txt1 = document.getElementById('641a').value;
+              var result = (parseFloat(txt1));
+              var skor = ((parseFloat(txt1)/100));
+              var nilainya =0;
+                 if (skor>=4) {
+                    nilainya=4;
+                 } else {
+                    nilainya=skor;
+                 }
+              var hitung=skor.toFixed(2);
+              var desimalnya=nilainya.toFixed(2);
+              
+              if (!isNaN(result)) {
+                     document.getElementById('641anilai').value = desimalnya;
+                     document.getElementById('641askor').value = hitung;
+                  }
+        }
+
+         function cekjumlah641b(){
+              var txt1 = document.getElementById('641b').value;
+              var result = (parseFloat(txt1));
+              var skor = ((parseFloat(txt1)/50));
+              var nilainya =0;
+                 if (skor>=4) {
+                    nilainya=4;
+                 } else {
+                    nilainya=skor;
+                 }
+              var hitung=skor.toFixed(2);
+              var desimalnya=nilainya.toFixed(2);
+              
+              if (!isNaN(result)) {
+                     document.getElementById('641bnilai').value = desimalnya;
+                     document.getElementById('641bskor').value = hitung;
+                  }
+        }
+           function cekjumlah641c(){
+              var txt1 = document.getElementById('641c').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('641cnilai').value = desimalnya;
+                  }
+        }
+
+         function cekjumlah641d(){
+              var txt1 = document.getElementById('641d').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('641dnilai').value = desimalnya;
+                  }
+        }
+
+          function cekjumlah641e(){
+              var txt1 = document.getElementById('641e').value;
+              var result = (parseFloat(txt1));
+              var nilainya = result.toFixed(2);
+              var hitung= (4*(parseFloat(txt1)/9));
+              var nilainya=0;
+              if (hitung>4){
+                nilainya=4;
+             }else{
+                nilainya=hitung;
+             }
+             var desimalnya=nilainya.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('641enilai').value = desimalnya;
+                  }
+        }
+
+         function cekjumlah642(){
+              var txt1 = document.getElementById('642').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('642nilai').value = desimalnya;
+                  }
+        }
+         function cekjumlah643(){
+              var txt1 = document.getElementById('643').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('643nilai').value = desimalnya;
+                  }
+        }
+         function cekjumlah651(){
+              var txt1 = document.getElementById('651').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('651nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah652(){
+              var txt1 = document.getElementById('652c1').value;
+              var txt2 = document.getElementById('652c2').value;
+              var txt3 = document.getElementById('652c3').value;
+              var txt4 = document.getElementById('652c4').value;
+              var nilai1 = (parseFloat(txt1)).toFixed(2);
+              var nilai2 = (parseFloat(txt2)).toFixed(2);
+              var nilai3 = (parseFloat(txt3)).toFixed(2);
+              var nilai4 = (parseFloat(txt4)).toFixed(2);
+              var result = ((parseFloat(nilai1) + parseFloat(nilai2) + parseFloat(nilai3) + parseFloat(nilai4)));
+              var dihitung= ((parseFloat(nilai1)) + (2*(parseFloat(nilai2))) + (3*(parseFloat(nilai3))) + ((4*(parseFloat(nilai4))/11)));
+            if (result>11) {
+                nilainya = 0;
+              }else {
+                nilainya= dihitung;
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var info1 = (parseFloat(txt1)/100);
+              var info2 = (parseFloat(txt2)/100);
+              var info3 = (parseFloat(txt3)/100);
+              var info4 = (parseFloat(txt4)/100);
+              var hasilinfo1 = info1.toFixed(2);
+              var hasilinfo2 = info2.toFixed(2);
+              var hasilinfo3 = info3.toFixed(2);
+              var hasilinfo4 = info4.toFixed(2);
+              var str1 = 'Pendapat pengguna terhadap kualitas alumni. Respon sangat baik = '.concat(hasilinfo1);
+              var str2 = ' .Respon baik '.concat(hasilinfo2);
+              var str3 = ' .Respon cukup '.concat(hasilinfo3);
+              var str4 = ' .Respon kurang '.concat(hasilinfo4);
+              if (!isNaN(result)) {
+                     document.getElementById('652rasio').value = nilainya;
+                     document.getElementById('652nilai').value = nilainya;
+                     document.getElementById('652info').value = str1.concat(str2,str3,str4);
+                  }
+              }
+
+
+        function cekjumlah714(){
+              var txt1 = document.getElementById('714').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('714nilai').value = desimalnya;
+                  }
+        }
+
+
+
+        function cekjumlah722(){
+              var txt1 = document.getElementById('722').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('722nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah731(){
+              var txt1 = document.getElementById('731').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('731nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah732(){
+              var txt1 = document.getElementById('732').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('732nilai').value = desimalnya;
+                  }
+        }
 
   function infoPamong(){
     swal({

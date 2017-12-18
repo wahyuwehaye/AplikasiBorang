@@ -166,7 +166,7 @@ class C_penilaian extends CI_Controller {
         $this->db->insert_batch('hitungf1', $result);
             
         // $this->session->set_flashdata('notif', '<p style="color:green;font-weight:bold;">'.$total_post.' data berhasil di simpan!</p>');
-        redirect('isian/'.$direct);
+        redirect('isian/'.$post['id_buku'][0]);
     }
 
 	public function store(){

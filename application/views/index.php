@@ -177,8 +177,8 @@
                                             <th>#</th>
                                             <th>Nama Fakultas</th>
                                             <th>Nama Borang</th>
-                                            <th>Jenis Borang</th>
-                                            <th width="35%">Progress</th>
+                                            <th width="11%">Jenis Borang</th>
+                                            <th width="30%">Progress</th>
                                         </tr>
                                     </thead>
                                     <tbody>

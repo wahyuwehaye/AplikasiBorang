@@ -58,6 +58,7 @@ $route['register'] = 'Home/register';
 $route['pages'] = 'Home/pages';
 $route['changelogs'] = 'Home/changelogs';
 $route['fakultas'] = 'C_fakultas';
+$route['pengaturan'] = 'C_pengaturan';
 $route['prodi/:num'] = 'C_prodi';
 $route['borang/:num'] = 'C_borang';
 $route['penilaian'] = 'C_penilaian';
