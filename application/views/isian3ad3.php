@@ -4427,25 +4427,25 @@
                                     <tr style="height: 26px;">
                                         <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">No</th>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
-                                        <p><strong>Nama Dosen Tetap</strong></p>
+                                        <p><strong>Nama Dosen Tetap(a)</strong></p>
                                         </td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
-                                        <p><strong>&nbsp;</strong><strong>NIDN**</strong></p>
+                                        <p><strong>&nbsp;</strong><strong>NIDN(b)</strong></p>
                                         </td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
                                         <p><strong>Tgl. Lahir</strong></p>
                                         </td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
-                                        <p><strong>Jabatan Akademik***</strong></p>
+                                        <p><strong>Jabatan Akademik</strong></p>
                                         </td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
-                                        <p><strong>Gelar Akademik</strong></p>
+                                        <p><strong>Sertifikat Dosen</strong></p>
                                         </td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
-                                        <p><strong>Pendidikan S1, S2, S3&nbsp; dan Asal PT*</strong></p>
+                                        <p><strong>Pendidikan S1, S2, S3&nbsp; dan Asal PT(c)</strong></p>
                                         </td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
-                                        <p><strong>Bidang Keahlian untuk Setiap Jenjang Pendidikan</strong></p>
+                                        <p><strong>Bidang Keahlian untuk Setiap Jenjang Pendidikan(d)</strong></p>
                                         </td>
                                         <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;">Pengaturan</th>
                                     </tr>
@@ -4508,7 +4508,7 @@
                         <h2 class="card-inside-title">Data dosen tetap yang bidang keahliannya sesuai dengan bidang PS:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
-                                        <b>Nama Dosen Tetap</b>
+                                        <b>Nama Dosen Tetap(a)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4519,7 +4519,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>NIDN**</b>
+                                        <b>NIDN(b)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4541,7 +4541,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jabatan Akademik***</b>
+                                        <b>Jabatan Akademik</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4552,7 +4552,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Gelar Akademik</b>
+                                        <b>Sertifikat Dosen (Ada / Tidak)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4563,7 +4563,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Pendidikan S1, S2, S3  dan Asal PT*</b>
+                                        <b>Pendidikan S1, S2, S3  dan Asal PT(c)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4574,7 +4574,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Bidang Keahlian untuk Setiap Jenjang Pendidikan</b>
+                                        <b>Bidang Keahlian untuk Setiap Jenjang Pendidikan(d)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4596,9 +4596,10 @@
                                             </textarea>
                                         </div>
                                     </div>
-                                    <p>* Lampirkan fotokopi ijazah.</p>
-                                    <p>** NIDN : Nomor Induk Dosen Nasional</p>
-                                    <p>*** Dosen yang telah memperoleh sertifikat dosen agar diberi tanda (***) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(a) Dosen yang telah memperoleh sertifikat kompetensi/profesi agar diberi tanda (*) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(b) NIDN : Nomor Induk Dosen Nasional.</p>
+                                    <p>(c) Lampirkan fotokopi ijazah.</p>
+                                    <p>(d) Melalui sertifikasi atau keahlian yang diakui secara luas oleh masyarakat.</p>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -4612,7 +4613,7 @@
                         <h2 class="card-inside-title">Data dosen tetap yang bidang keahliannya sesuai dengan bidang PS:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
-                                        <b>Nama Dosen Tetap</b>
+                                        <b>Nama Dosen Tetap(a)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4623,7 +4624,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>NIDN**</b>
+                                        <b>NIDN(b)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4645,7 +4646,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jabatan Akademik***</b>
+                                        <b>Jabatan Akademik</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4656,7 +4657,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Gelar Akademik</b>
+                                        <b>Sertifikat Dosen (Ada / Tidak)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4667,7 +4668,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Pendidikan S1, S2, S3  dan Asal PT*</b>
+                                        <b>Pendidikan S1, S2, S3  dan Asal PT(c)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4678,7 +4679,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Bidang Keahlian untuk Setiap Jenjang Pendidikan</b>
+                                        <b>Bidang Keahlian untuk Setiap Jenjang Pendidikan(d)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4700,9 +4701,10 @@
                                             </textarea>
                                         </div>
                                     </div>
-                                    <p>* Lampirkan fotokopi ijazah.</p>
-                                    <p>** NIDN : Nomor Induk Dosen Nasional</p>
-                                    <p>*** Dosen yang telah memperoleh sertifikat dosen agar diberi tanda (***) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(a) Dosen yang telah memperoleh sertifikat kompetensi/profesi agar diberi tanda (*) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(b) NIDN : Nomor Induk Dosen Nasional.</p>
+                                    <p>(c) Lampirkan fotokopi ijazah.</p>
+                                    <p>(d) Melalui sertifikasi atau keahlian yang diakui secara luas oleh masyarakat.</p>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -4816,7 +4818,7 @@
                         <h2 class="card-inside-title">Data dosen tetap yang bidang keahliannya di luar bidang PS: </h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
-                                        <b>Nama Dosen Tetap</b>
+                                        <b>Nama Dosen Tetap(a)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4827,7 +4829,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>NIDN**</b>
+                                        <b>NIDN(b)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4849,7 +4851,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jabatan Akademik***</b>
+                                        <b>Jabatan Akademik</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4860,7 +4862,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Gelar Akademik</b>
+                                        <b>Sertifikat Dosen (Ada / Tidak)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4871,7 +4873,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Pendidikan S1, S2, S3  dan Asal PT*</b>
+                                        <b>Pendidikan S1, S2, S3  dan Asal PT(c)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4882,7 +4884,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Bidang Keahlian untuk Setiap Jenjang Pendidikan</b>
+                                        <b>Bidang Keahlian untuk Setiap Jenjang Pendidikan(d)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4904,9 +4906,10 @@
                                             </textarea>
                                         </div>
                                     </div>
-                                    <p>* Lampirkan fotokopi ijazah.</p>
-                                    <p>** NIDN : Nomor Induk Dosen Nasional</p>
-                                    <p>*** Dosen yang telah memperoleh sertifikat dosen agar diberi tanda (***) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(a) Dosen yang telah memperoleh sertifikat kompetensi/profesi agar diberi tanda (*) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(b) NIDN : Nomor Induk Dosen Nasional.</p>
+                                    <p>(c) Lampirkan fotokopi ijazah.</p>
+                                    <p>(d) Melalui sertifikasi atau keahlian yang diakui secara luas oleh masyarakat.</p>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -4920,7 +4923,7 @@
                         <h2 class="card-inside-title">Data dosen tetap yang bidang keahliannya di luar bidang PS: </h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
-                                        <b>Nama Dosen Tetap</b>
+                                        <b>Nama Dosen Tetap(a)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4931,7 +4934,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>NIDN**</b>
+                                        <b>NIDN(b)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4953,7 +4956,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jabatan Akademik***</b>
+                                        <b>Jabatan Akademik</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4964,7 +4967,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Gelar Akademik</b>
+                                        <b>Sertifikat Dosen (Ada / Tidak)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4975,7 +4978,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Pendidikan S1, S2, S3  dan Asal PT*</b>
+                                        <b>Pendidikan S1, S2, S3  dan Asal PT(c)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -4986,7 +4989,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Bidang Keahlian untuk Setiap Jenjang Pendidikan</b>
+                                        <b>Bidang Keahlian untuk Setiap Jenjang Pendidikan(d)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -5008,9 +5011,10 @@
                                             </textarea>
                                         </div>
                                     </div>
-                                    <p>* Lampirkan fotokopi ijazah.</p>
-                                    <p>** NIDN : Nomor Induk Dosen Nasional</p>
-                                    <p>*** Dosen yang telah memperoleh sertifikat dosen agar diberi tanda (***) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(a) Dosen yang telah memperoleh sertifikat kompetensi/profesi agar diberi tanda (*) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(b) NIDN : Nomor Induk Dosen Nasional.</p>
+                                    <p>(c) Lampirkan fotokopi ijazah.</p>
+                                    <p>(d) Melalui sertifikasi atau keahlian yang diakui secara luas oleh masyarakat.</p>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -6112,10 +6116,10 @@
                                     <tr style="height: 26px;">
                                         <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">No</th>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
-                                        <p><strong>Nama Dosen Tidak Tetap</strong></p>
+                                        <p><strong>Nama Dosen Tidak Tetap(a)</strong></p>
                                         </td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
-                                        <p><strong>&nbsp;</strong><strong>NIDN**</strong></p>
+                                        <p><strong>&nbsp;</strong><strong>NIDN(b)</strong></p>
                                         </td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
                                         <p><strong>Tgl. Lahir</strong></p>
@@ -6124,10 +6128,10 @@
                                         <p><strong>Jabatan Akademik***</strong></p>
                                         </td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
-                                        <p><strong>Gelar Akademik</strong></p>
+                                        <p><strong>Sertifikat Dosen (Ada / Tidak)</strong></p>
                                         </td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
-                                        <p><strong>Pendidikan S1, S2, S3&nbsp; dan Asal PT*</strong></p>
+                                        <p><strong>Pendidikan S1, S2, S3&nbsp; dan Asal PT(c)</strong></p>
                                         </td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
                                         <p><strong>Bidang Keahlian untuk Setiap Jenjang Pendidikan</strong></p>
@@ -6193,7 +6197,7 @@
                         <h2 class="card-inside-title">Tuliskan data dosen tidak tetap pada PS dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
-                                        <b>Nama Dosen Tidak Tetap</b>
+                                        <b>Nama Dosen Tidak Tetap(a)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6204,7 +6208,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>NIDN**</b>
+                                        <b>NIDN(b)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6226,7 +6230,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jabatan Akademik***</b>
+                                        <b>Jabatan Akademik</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6237,7 +6241,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Gelar Akademik</b>
+                                        <b>Sertifikat Dosen (Ada / Tidak)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6248,7 +6252,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Pendidikan S1, S2, S3  dan Asal PT*</b>
+                                        <b>Pendidikan S1, S2, S3  dan Asal PT(c)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6281,9 +6285,9 @@
                                             </textarea>
                                         </div>
                                     </div>
-                                    <p>* Lampirkan fotokopi ijazah.</p>
-                                    <p>** NIDN : Nomor Induk Dosen Nasional</p>
-                                    <p>*** Dosen yang telah memperoleh sertifikat dosen agar diberi tanda (***) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(a) Dosen yang telah memperoleh sertifikat kompetensi/profesi agar diberi tanda (*) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(b) NIDN : Nomor Induk Dosen Nasional.</p>
+                                    <p>(c) Lampirkan fotokopi ijazah.</p>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -6298,7 +6302,7 @@
                         <h2 class="card-inside-title">Tuliskan data dosen tidak tetap pada PS dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
-                                        <b>Nama Dosen Tidak Tetap</b>
+                                        <b>Nama Dosen Tidak Tetap(a)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6309,7 +6313,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>NIDN**</b>
+                                        <b>NIDN(b)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6331,7 +6335,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jabatan Akademik***</b>
+                                        <b>Jabatan Akademik</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6342,7 +6346,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Gelar Akademik</b>
+                                        <b>Sertifikat Dosen (Ada / Tidak)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6353,7 +6357,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Pendidikan S1, S2, S3  dan Asal PT*</b>
+                                        <b>Pendidikan S1, S2, S3  dan Asal PT(c)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6386,9 +6390,9 @@
                                             </textarea>
                                         </div>
                                     </div>
-                                    <p>* Lampirkan fotokopi ijazah.</p>
-                                    <p>** NIDN : Nomor Induk Dosen Nasional</p>
-                                    <p>*** Dosen yang telah memperoleh sertifikat dosen agar diberi tanda (***) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(a) Dosen yang telah memperoleh sertifikat kompetensi/profesi agar diberi tanda (*) dan fotokopi sertifikatnya agar dilampirkan.</p>
+                                    <p>(b) NIDN : Nomor Induk Dosen Nasional.</p>
+                                    <p>(c) Lampirkan fotokopi ijazah.</p>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -8987,7 +8991,7 @@
                         </div>
                         
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Jelaskan upaya yang telah dilakukan PS dalam meningkatkan kualifikasi dan kompetensi tenaga kependidikan, dalam hal pemberian kesempatan belajar/pelatihan, pemberian fasilitas termasuk dana, dan jenjang karir.</h2>
+                        <h2 class="card-inside-title">Jelaskan upaya yang telah dilakukan PS dalam meningkatkan kualifikasi dan kompetensi tenaga kependidikan.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -9007,7 +9011,7 @@
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi462">
                         <input type="hidden" name="id_butir462" id="id_butir462" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Jelaskan upaya yang telah dilakukan PS dalam meningkatkan kualifikasi dan kompetensi tenaga kependidikan, dalam hal pemberian kesempatan belajar/pelatihan, pemberian fasilitas termasuk dana, dan jenjang karir.</h2>
+                        <h2 class="card-inside-title">Jelaskan upaya yang telah dilakukan PS dalam meningkatkan kualifikasi dan kompetensi tenaga kependidikan.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
