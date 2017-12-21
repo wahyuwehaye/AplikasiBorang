@@ -20,8 +20,11 @@ class C_dokumen extends CI_Controller {
 	 */
 
 	 public function __construct(){
-	     parent::__construct();
-	     $this->load->library('session');
+	    parent::__construct();
+	    $this->load->library('session');
+		$this->load->model('M_borang');
+		$this->load->model('M_butir');
+		$this->load->model('M_dokumen');
     }
 
 
@@ -29,9 +32,6 @@ class C_dokumen extends CI_Controller {
 	{
 		if(isset($_SESSION['logged_in']))
 		{
-			$this->load->model('M_borang');
-			$this->load->model('M_butir');
-			$this->load->model('M_dokumen');
 			$this->load->library('form_validation');
 
 			$id=$this->uri->segment(2, 0);
@@ -48,9 +48,206 @@ class C_dokumen extends CI_Controller {
 		}else{
 			redirect('Home/pages');
 		}
-
-
 	}
+
+	// FOR BUKTI YANG HARUS DISIAPKAN
+	public function findbukti(){
+		$id=$_POST['id'];
+		$this->load->model('M_dokumen');
+		$data=$this->M_dokumen->findbukti('id',$id);
+		echo json_encode($data);
+	}
+
+	public function uploadbukti()
+	{
+		
+		$data = array(
+				'status' => 'Sudak OK',
+				'created_at' => date('Y-m-d H:i:s'),
+				'updated_at' => date('Y-m-d H:i:s'),
+				'filename' => $this->input->post('filename'),
+			);
+
+		// if(!empty($_FILES['filename']['name']))
+		// {
+		// 	$upload = $this->_do_upload();
+		// 	$data['filename'] = $upload;
+		// }
+
+		$insert = $this->M_dokumen->savebukti($data);
+
+		echo json_encode(array("status" => TRUE));
+	}
+
+	public function updatebukti()
+	{
+		$data = array(
+				'status' => 'Sudak OK',
+				'created_at' => date('Y-m-d H:i:s'),
+				'updated_at' => date('Y-m-d H:i:s'),
+				// 'filename' => $this->input->post('filename'),
+			);
+
+		// if($this->input->post('remove_filename')) // if remove filename checked
+		// {
+		// 	if(file_exists('bukti/'.$this->input->post('remove_filename')) && $this->input->post('remove_filename'))
+		// 		unlink('bukti/'.$this->input->post('remove_filename'));
+		// 	$data['filename'] = '';
+		// }
+
+		if(!empty($_FILES['filename']['name']))
+		{
+			$upload = $this->_do_upload();
+			
+			//delete file
+			$buktfile = $this->M_dokumen->get_by_id($this->input->post('idbukti'));
+			if(file_exists('bukti/'.$buktfile->filename) && $buktfile->filename)
+				unlink('bukti/'.$buktfile->filename);
+
+			$data['filename'] = $upload;
+		}
+
+		$this->M_dokumen->updatebukti(array('id' => $this->input->post('idbukti')), $data);
+
+		$data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Sudah Mengupload File dengan nama : ". $_FILES['filename']['name']." dengan id Borang = ".$this->input->post('idbukti')." dan id butir = ".$_POST['direct'],
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+        $this->db->insert('log', $data);
+
+		redirect('/uploadbukti/'.$_POST['direct']);
+		echo json_encode(array("status" => TRUE));
+	}
+
+	public function updatebuktidariisian(){
+		$data = array(
+				'status' => 'Sudak OK',
+				'created_at' => date('Y-m-d H:i:s'),
+				'updated_at' => date('Y-m-d H:i:s'),
+				// 'filename' => $this->input->post('filename'),
+			);
+
+		// if($this->input->post('remove_filename')) // if remove filename checked
+		// {
+		// 	if(file_exists('bukti/'.$this->input->post('remove_filename')) && $this->input->post('remove_filename'))
+		// 		unlink('bukti/'.$this->input->post('remove_filename'));
+		// 	$data['filename'] = '';
+		// }
+
+		if(!empty($_FILES['filename']['name']))
+		{
+			$upload = $this->_do_upload();
+			
+			//delete file
+			$buktfile = $this->M_dokumen->get_by_id($this->input->post('idbukti'));
+			if(file_exists('bukti/'.$buktfile->filename) && $buktfile->filename)
+				unlink('bukti/'.$buktfile->filename);
+
+			$data['filename'] = $upload;
+		}
+
+		$this->M_dokumen->updatebukti(array('id' => $this->input->post('idbukti')), $data);
+
+		$data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Sudah Mengupload File dengan nama : ". $_FILES['filename']['name']." dengan id Borang = ".$this->input->post('idbukti')." dan id butir = ".$_POST['direct'],
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+        $this->db->insert('log', $data);
+
+		redirect('/isian/'.$_POST['direct']);
+		echo json_encode(array("status" => TRUE));
+	}
+
+	public function deletebukti($id,$butir)
+	{
+		$data = array(
+				'status' => '',
+				'created_at' => date('Y-m-d H:i:s'),
+				'updated_at' => date('Y-m-d H:i:s'),
+			);
+
+		//delete file
+		$buktfile = $this->M_dokumen->get_by_id($id);
+		if(file_exists('bukti/'.$buktfile->filename) && $buktfile->filename)
+			unlink('bukti/'.$buktfile->filename);
+		$namafilelama = $buktfile->filename;
+		$data['filename'] = '';
+		
+		$this->M_dokumen->updatebukti(array('id' => $id), $data);
+
+		$data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Sudah Menghapus File dengan nama : ". $namafilelama." dengan id Borang = ".$id." dan id butir = ".$butir,
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+        $this->db->insert('log', $data);
+        redirect('/uploadbukti/'.$butir);
+		echo json_encode(array("status" => TRUE));
+	}
+
+	public function deletebuktidariisian($id,$butir)
+	{
+		$data = array(
+				'status' => '',
+				'created_at' => date('Y-m-d H:i:s'),
+				'updated_at' => date('Y-m-d H:i:s'),
+			);
+
+		//delete file
+		$buktfile = $this->M_dokumen->get_by_id($id);
+		if(file_exists('bukti/'.$buktfile->filename) && $buktfile->filename)
+			unlink('bukti/'.$buktfile->filename);
+		$namafilelama = $buktfile->filename;
+		$data['filename'] = '';
+		
+		$this->M_dokumen->updatebukti(array('id' => $id), $data);
+
+		$data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Sudah Menghapus File dengan nama : ". $namafilelama." dengan id Borang = ".$id." dan id butir = ".$butir,
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+        $this->db->insert('log', $data);
+        redirect('/isian/'.$butir);
+		echo json_encode(array("status" => TRUE));
+	}
+
+	public function downloadbukti($id,$butir){
+		$buktfile = $this->M_dokumen->get_by_id($id);
+		$namafilelama = $buktfile->filename;
+		$data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Sudah Mendownload File dengan nama : ". $namafilelama." dengan id Borang = ".$id." dan id butir = ".$butir,
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+        $this->db->insert('log', $data);
+		echo json_encode(array("status" => TRUE));
+	}
+
+	private function _do_upload()
+	{
+		$config['upload_path']          = 'bukti/';
+        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt';
+        $config['max_size']             = 0; //set max size allowed in Kilobyte
+        $config['max_width']            = 0; // set max width image allowed
+        $config['max_height']           = 0; // set max height allowed
+        $config['file_name']            = $_FILES['filename']['name']; //just milisecond timestamp fot unique name
+
+        $this->load->library('upload', $config);
+
+        if(!$this->upload->do_upload('filename')) //upload and validate
+        {
+            $data['inputerror'][] = 'filename';
+			$data['error_string'][] = 'Upload error: '.$this->upload->display_errors('',''); //show ajax error
+			$data['status'] = FALSE;
+			echo json_encode($data);
+			exit();
+		}
+		return $this->upload->data('file_name');
+	}
+	// TUTUP BUKTI DISIAPKAN
 
 	public function store(){
 		//load needed library,helper,model
@@ -109,8 +306,8 @@ class C_dokumen extends CI_Controller {
 		$this->load->model('M_dokumen');
 		$uploadisi = $this->M_dokumen->get_by_id_hapus($id);
 		for ($i=0; $i<count($uploadisi); $i++){
-			if(file_exists('uploads/dokumen/'.$uploadisi->filename) && $uploadisi->filename)
-      		unlink('uploads/dokumen/'.$uploadisi->filename);
+			if(file_exists('bukti/'.$uploadisi->filename) && $uploadisi->filename)
+      		unlink('bukti/'.$uploadisi->filename);
 		}
 		$result=$this->M_dokumen->delete('id',$id);
 		if($result > 0){

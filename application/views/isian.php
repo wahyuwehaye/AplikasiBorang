@@ -18038,51 +18038,98 @@
                         </ul>
                     </div>
                     <div class="body">
-                        <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <table id="borang" <?php
+                                if($_SESSION['role']=="Admin"){
+                                    echo 'class="table table-bordered table-striped table-hover dataTable js-exportable"';
+                                }elseif (($_SESSION['role']=="Kaprodi") || ($_SESSION['role']=="Assessor")) {
+                                    echo 'class="table table-bordered table-striped table-hover js-basic-example dataTable"';
+                                }
+                            ?>
+                        >
                             <thead>
                                 <tr>
-                                    <th>Nama Dokumen</th>
-                                    <th>Pemilik Dokumen</th>
-                                    <th>Softcopy</th>
-                                    <th>Keterangan</th>
-                                    <th>Tanggal Upload</th>
+                                    <th width="40%">Bukti yang harus disiapkan</th>
+                                    <th width="30%">Nama File</th>
+                                    <th width="10%">Status</th>
+                                    <th width="10%">Tanggal Upload</th>
                                     <th width="10%">Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Nama Dokumen</th>
-                                    <th>Pemilik Dokumen</th>
-                                    <th>Softcopy</th>
-                                    <th>Keterangan</th>
-                                    <th>Tanggal Upload</th>
+                                    <th width="25%">Bukti yang harus disiapkan</th>
+                                    <th width="20%">Nama File</th>
+                                    <th width="10%">Status</th>
+                                    <th width="10%">Tanggal Upload</th>
                                     <th width="10%">Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <?php
+                                <!-- <?php
                                     for($i=0;$i<count($datadokumen);$i++){
                                  ?>
                                 <tr>
-                                    <td><?php echo $datadokumen[$i]['nama'] ?> </td>
-                                    <td><?php echo $datadokumen[$i]['pemilik'] ?> </td>
+                                    <td><?php echo $datadokumen[$i]['dokumen'] ?> </td>
                                     <td><?php echo $datadokumen[$i]['filename'] ?> </td>
-                                    <td><?php echo $datadokumen[$i]['ket'] ?> </td>
+                                    <td><?php echo $datadokumen[$i]['status'] ?> </td>
                                     <td><?php echo $datadokumen[$i]['created_at'] ?> </td>
                                     <td>
-                                        <div class="js-sweetalert">
+                                        <div class="js-sweetalert"> -->
                                             <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/datadokumen/<?php echo $datadokumen[$i]['id']; ?>" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
                                             <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $datadokumen[$i]['id']; ?>" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
+                                            <!-- <a type="button" onclick="uploadbukti(<?php echo $butir[$i]['butir'] ?>)" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload Dokumen" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#dokumen11a" data-placement="top" title="Lihat" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">pageview</i></a>&nbsp;
                                             <a id="del" onclick="deledok(<?php echo $datadokumen[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroy/'.$datadokumen[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
-                                <?php } ?>
+                                <?php } ?> -->
+                                <?php
+                                    $getlistbukti =$CI->db->query('select * from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[0]['butir'].'" order by id ASC');
+                                    foreach ($getlistbukti->result() as $bar){
+                                        if (($bar->filename)=="") {
+                                            $filename = "Belum di Upload";
+                                            $status = "Belum";
+                                            $tanggal = "Tidak Diketahui";
+                                            $warnanya = "danger";
+                                        }else{
+                                            $filename = $bar->filename;
+                                            $status = $bar->status;
+                                            $tanggal = $bar->created_at;
+                                            $warnanya = "success";
+                                        }
+                                        ?>
+                                <tr>
+                                    <td class='<?php echo($warnanya) ?>'><?php echo $bar->dokumen ?> </td>
+                                    <td class='<?php echo($warnanya) ?>'><?php echo $filename ?> </td>
+                                    <td class='<?php echo($warnanya) ?>'><?php echo $status ?> </td>
+                                    <td class='<?php echo($warnanya) ?>'><?php echo $tanggal ?> </td>
+                                    <td class='<?php echo($warnanya) ?>'>
+                                        <div class="js-sweetalert">
+                                    <?php
+                                        if (($bar->filename)=="") {
+                                    ?>
+                                        <a type="button" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="modal" data-target="#uploadbukti" data-placement="top" title="Upload Dokumen" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
+                                    <?php
+                                        }else{
+                                    ?>
+                                        <a target="_blank" href="<?php echo base_url();?>bukti/<?php echo $bar->filename; ?>" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Download Dokumen" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">file_download</i></a>&nbsp;
+                                        <a id="del" onclick="deletebukti(<?php echo $bar->id; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_dokumen/deletebukti/'.$bar->id); ?>" data-placement="top" title="Delete Dokumen" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">delete_forever</i></a>
+                                    <?php
+                                        }
+                                    ?>
+                                        <!-- <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#dokumen11a" data-placement="top" title="Lihat" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">pageview</i></a>&nbsp; -->
+                                        <!-- <a id="del" onclick="deledok(<?php echo $bar->id ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroy/'.$bar->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="glyphicon glyphicon-trash"></i></a> -->
+                                        </div>
+                                    </td>
+                                </tr>
+                                        <?php
+                                    }
+                                ?>
                             </tbody>
                         </table>
                         </div>
-                        <div class="header">
+                        <!-- <div class="header">
                             <h2 class="card-inside-title">Tambah Dokumen pendukung yang terkait pada butir <?php echo $butir[0]['butir'] ?></h2>
                         </div>
                         <div class="body">
@@ -18139,7 +18186,7 @@
                         </div>
                         <div class="body">
                             <button type="submit" onclick="reloadaja()" class="btn btn-block btn-primary waves-effect">SIMPAN</button>
-                        </div>
+                        </div> -->
                 </div>
             </div>
         </div>
@@ -18264,7 +18311,7 @@
                     // echo form_open('c_borang/store');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id_borang" id="id_borang"value="<?php echo $buku[0]['id']?>">
+                        <input type="hidden" name="id_borang" id="id_borang" value="<?php echo $buku[0]['id']?>">
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
@@ -18368,6 +18415,69 @@
                 </div>
             </div>
         </div>
+
+        <!-- UPLOAD BUKTI DOKUMEN -->
+        <div class="modal fade" id="uploadbukti" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Upload bukti yang harus disiapkan</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open_multipart('C_dokumen/updatebuktidariisian', $attributes);
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="idbukti" id="idbukti" value="">
+                        <input type="hidden" name="direct" id="direct"value="<?php echo $this->uri->segment(2, 0);?>">
+                        <div class="col-sm-12">
+                            <label for="buktibutir">Butir</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" readonly class="form-control" id="buktibutir" name="buktibutir">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <label class="form-label">Aspek Penilaian</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea class="form-control" readonly name="aspek" id="aspek" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <label class="form-label">Nama file yang harus disiapkan</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea class="form-control" readonly name="dokumen" id="dokumen" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <label class="form-label">Upload Bukti</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="file" class="form-control" name="filename" id="filename">
+                                    <!-- <input type="text" class="form-control" id="filename" name="filename"> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- TUTUP UPLOAD BUKTI DOKUMEN -->
 
 
         <!-- Molda Update Tabel 311 -->
@@ -26226,6 +26336,27 @@
 
     });
 
+    $('#uploadbukti').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_dokumen/findbukti";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#idbukti').val(buku[0]['id']);
+              $('#buktibutir').val(buku[0]['butir']);
+              $('#aspek').val(buku[0]['aspek']);
+              $('#dokumen').val(buku[0]['dokumen']);
+          });
+
+    });
+
     $('#update311').on('shown.bs.modal', function (event) {
         //$(".fakpro").hide();
         // $( "#updateAccModal #jenisBorang" ).change(function() {
@@ -27889,6 +28020,30 @@ function printContent(el){
         });
   }
 
+  function deletebukti(x){
+    var borang = "<?php echo $this->uri->segment(2, 0)?>";
+    var delete_url = "<?php echo base_url(); ?>C_dokumen/deletebuktidariisian/"+x+"/"+borang;
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                window.location.href = delete_url;
+
+            } else {
+                swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+        });
+  }
+
   function errorinput(){
     isi1 = document.getElementById("k3_311").value;
     isi2 = document.getElementById("k4_311").value;
@@ -27899,6 +28054,16 @@ function printContent(el){
         swal("Error", "Inputan anda Salah", "error");
     }
   }
+
+  function uploadbukti(x) {
+    var borang = "<?php echo $this->uri->segment(2, 0)?>";
+    var upload_url = "<?php echo base_url(); ?>index.php/C_uploadisi/uploadbukti/"+x+"/"+borang;
+    swal({
+        title: "Bukti yang harus disiapkan!",
+        text: "Bukti yang harus disiapkan dengan id = "+x,
+        imageUrl: "<?php echo base_url(); ?>assets/images/thumbs-up.png"
+    });
+}
 
   function sum() {
               var txtFirstNumberValue = document.getElementById('txt1').value;

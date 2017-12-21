@@ -55,7 +55,6 @@
                                 <?php
                                     for($i=0;$i<count($butir);$i++){
                                  ?>
-                                <tr>
                                     <?php
                                         $CI =& get_instance();
                                         // cek sudah terisi atau belum
@@ -80,7 +79,46 @@
                                         }else{
                                             $skor=0;
                                         }
+
+                                        // cek jumlah dokumen
+                                        $querycekdoku=$CI->db->query('SELECT COUNT(id) as cekdoku FROM dokumenpendukung WHERE id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'"');
+                                        $cekdoku=$querycekdoku->result_array()[0]['cekdoku'];
+                                        $cekdokunya=($cekdoku!=0)?($cekdoku):0;
+
                                     ?>
+                                    <?php
+                                    if ($cekdokunya==0) {
+                                    ?>
+                                <tr>
+                                    <td rowspan="<?php echo($cekdokunya) ?>" class='<?php echo($warnanya) ?>'><?php echo $butir[$i]['butir'] ?> </td>
+                                    <td rowspan="<?php echo($cekdokunya) ?>" class='<?php echo($warnanya) ?>'><?php
+                                    if ($isinya!==0) {
+                                        echo "Sudah Terisi";
+                                    }else{
+                                        echo "Belum Terisi";
+                                    }
+                                     ?></td>
+                                    <td rowspan="<?php echo($cekdokunya) ?>" class='<?php echo($warnanya) ?>'> - </td>
+                                    <td rowspan="<?php echo($cekdokunya) ?>" class='<?php echo($warnanya) ?>'> - </td>
+                                    <td class='<?php echo($warnanya) ?>'> - </td>
+                                    <td class='<?php echo($warnanya) ?>'> - </td>
+                                    <td rowspan="<?php echo($cekdokunya) ?>" class='<?php echo($warnanya) ?>'><?php echo $skor; ?></td>
+                                </tr>
+                                    <?php
+                                    }else if ($cekdokunya>1) {
+                                        $getlistbukti =$CI->db->query('select dokumen, status, filename from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'"');
+                                        foreach ($getlistbukti->result() as $bar){
+                                            if (($bar->filename)=="") {
+                                                $filename = "Belum di Upload";
+                                                $status = "Belum";
+                                                $warnanyaa = "danger";
+                                            }else{
+                                                $filename = $bar->filename;
+                                                $status = $bar->status;
+                                                $warnanyaa = "success";
+                                            }
+                                            ?>
+                                <tr>
                                     <td class='<?php echo($warnanya) ?>'><?php echo $butir[$i]['butir'] ?> </td>
                                     <td class='<?php echo($warnanya) ?>'><?php
                                     if ($isinya!==0) {
@@ -91,10 +129,16 @@
                                      ?></td>
                                     <td class='<?php echo($warnanya) ?>'> - </td>
                                     <td class='<?php echo($warnanya) ?>'> - </td>
-                                    <td class='<?php echo($warnanya) ?>'> - </td>
-                                    <td class='<?php echo($warnanya) ?>'> - </td>
+                                    <td class='<?php echo($warnanyaa) ?>'> <?php echo $bar->dokumen ?> </td>
+                                    <td class='<?php echo($warnanyaa) ?>'> <?php echo $status ?> </td>
                                     <td class='<?php echo($warnanya) ?>'><?php echo $skor; ?></td>
+                                            <?php
+                                        }
+                                    ?>
                                 </tr>
+                                    <?php
+                                    }
+                                    ?>
                                 <?php } ?>
                             </tbody>
                         </table>

@@ -1,7 +1,7 @@
 <?php
 
 class M_dokumen extends CI_Model {
-    var $table = 'dokumen';
+    var $table = 'dokumenpendukung';
 
         public function __construct()
         {
@@ -20,6 +20,47 @@ class M_dokumen extends CI_Model {
 				//$query = 'select * from dokumen where flag="view"';
                 return $query->result_array();
         }
+
+        // START BUKTI
+        public function savebukti($data){
+            $this->db->insert($this->table, $data);
+            return $this->db->insert_id();
+        }
+
+        function count_filtered()
+        {
+            $this->_get_datatables_query();
+            $query = $this->db->get();
+            return $query->num_rows();
+        }
+
+        public function count_all()
+        {
+            $this->db->from($this->table);
+            return $this->db->count_all_results();
+        }
+
+        public function get_by_id($id)
+        {
+            $this->db->from($this->table);
+            $this->db->where('id',$id);
+            $query = $this->db->get();
+
+            return $query->row();
+        }
+
+        public function updatebukti($where, $data)
+        {
+            $this->db->update($this->table, $data, $where);
+            return $this->db->affected_rows();
+        }
+
+        public function delete_by_id($id)
+        {
+            $this->db->where('id', $id);
+            $this->db->delete($this->table);
+        }
+        // END BUKTI
 
 		public function ambilExcel($id)
         {
@@ -105,6 +146,11 @@ class M_dokumen extends CI_Model {
 
         public function find($column,$id){
               $query = $this->db->get_where('dokumen', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findbukti($column,$id){
+              $query = $this->db->get_where('dokumenpendukung', array($column => $id));
               return $query->result_array();
         }
 

@@ -1368,6 +1368,12 @@ class M_uploadisi extends CI_Model {
             $query = $this->db->get_where('document_version', array($column => $id));
               return $query->result_array();
         }
+
+        public function findbuktiupload($column,$id){
+              // $query = $this->db->get_where('isian_1kolom', array($column => $id));
+            $query = $this->db->get_where('dokumen', array($column => $id));
+              return $query->result_array();
+        }
 // TUTUP QUERY FIND ISIAN
 
 // QUERY DELETE ISIAN

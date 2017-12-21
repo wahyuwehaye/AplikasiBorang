@@ -29,19 +29,44 @@
                         </button> -->
                         <?php
                         if($_SESSION['role']=="Admin"){
+                            $butird3 = stripos(($getdata[0]['namaprodi']), 'D3');
+                            $butirs1 = stripos(($getdata[0]['namaprodi']), 'S1');
+                            $butirs2 = stripos(($getdata[0]['namaprodi']), 'S2');
                         ?>
                         <h2>
                         Tabel Butir <?php echo (ucwords($getdata[0]['namaprodi'])); ?> &nbsp;
                         <?php
                         if (count($butir)>0) {
-                        ?>
+                            if ($butird3!==false) {
+                                ?>
                         <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>&nbsp;
                         <button type="button" data-color="light-blue" class="btn bg-red waves-effect btn-xs" onclick="deleteallbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Hapus Semua Butir Borang" href="javascript:void(0)"><i class="material-icons">delete</i></button>
-                        <?php
+                                <?php
+                            }elseif ($butirs1!==false) {
+                                 ?>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>&nbsp;
+                        <button type="button" data-color="light-blue" class="btn bg-red waves-effect btn-xs" onclick="deleteallbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Hapus Semua Butir Borang" href="javascript:void(0)"><i class="material-icons">delete</i></button>
+                                <?php
+                            }elseif ($butirs2!==false) {
+                                 ?>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>&nbsp;
+                        <button type="button" data-color="light-blue" class="btn bg-red waves-effect btn-xs" onclick="deleteallbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Hapus Semua Butir Borang" href="javascript:void(0)"><i class="material-icons">delete</i></button>
+                                <?php
+                            }
                         }else{
-                        ?>
+                            if ($butird3!==false) {
+                                ?>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                                <?php
+                            }elseif ($butirs1!==false) {
+                                 ?>
                         <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
-                        <?php
+                                <?php
+                            }elseif ($butirs2!==false) {
+                                 ?>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                                <?php
+                            }
                         }
                         ?>
                         </h2>
@@ -127,16 +152,24 @@
                                         }else{
                                             $skor=0;
                                         }
+
+                                        // cek sudah upload semua
+                                        $getlistbukti =$CI->db->query('select COUNT(id) as cekfilebukti from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'" and filename = ""');
+                                        $cekfilebukti=$getlistbukti->result_array()[0]['cekfilebukti'];
+                                        $cekfilenya=($cekfilebukti!=0)?($cekfilebukti):0;
                                     ?>
                                         <div class="js-sweetalert">
                                             <?php 
                                                 $jenisd3 = stripos(($getdata[0]['namaprodi']), 'D3');
                                                 $jeniss1 = stripos(($getdata[0]['namaprodi']), 'S1');
+                                                $jeniss2 = stripos(($getdata[0]['namaprodi']), 'S2');
                                                 if ($jenisd3 !== false) {
                                             ?>
-                                                   <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian3ad3/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; 
-                                            <?php } elseif ($jeniss1) { ?>
-                                            <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
+                                                    <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian3ad3/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; 
+                                            <?php } elseif ($jeniss1 !== false) { ?>
+                                                    <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
+                                            <?php } elseif ($jeniss2 !== false) { ?>
+                                                    <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
                                             <?php } ?>
 
                                             <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>dokumen/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
@@ -152,7 +185,18 @@
                                             <a type="button" onclick="sudahterisi()" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Sudah Terisi" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">done</i></a>&nbsp;
                                                 <?php
                                             }
+
+                                            if ($cekfilenya!==0) {
                                             ?>
+                                                <a type="button" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Bukti yang harus disiapkan" href="<?php echo base_url();?>uploadbukti/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
+                                            <?php
+                                            }else{
+                                            ?>
+                                                <a type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Bukti yang harus disiapkan" href="<?php echo base_url();?>uploadbukti/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
+                                            <?php
+                                            }
+                                            ?>
+                                            
                                             <a type="button" onclick="sudahdinilai()" data-color="light-blue" class="btn bg-amber waves-effect btn-sm" data-toggle="tooltip" data-placement="top" title="Nilai" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><span class="badge"><?php echo $skor; ?></span></a>&nbsp;
                                         </div>
                                     </td>
