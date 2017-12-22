@@ -374,7 +374,7 @@
                     <li class="<?php echo ($active_menu=="pengaturan") ? "active" :""; ?>">
                         <a href="<?php echo base_url();?>pengaturan">
                             <i class="material-icons">build</i>
-                            <span>Penilaian</span>
+                            <span>Pengaturan</span>
                         </a>
                     </li>
                     <li class="<?php echo ($active_menu=="histori") ? "active" :""; ?>">

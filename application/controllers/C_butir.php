@@ -100,8 +100,13 @@ class C_butir extends CI_Controller {
 
 	}
 
-	public function buatbutir($id,$borang){
-		$this->M_butir->buatbutir($id);
+	public function buatbutir3AS1($id,$borang){
+		$this->M_butir->buatbutir3AS1($id);
+		redirect('butir/'.$borang);
+	}
+
+	public function buatbutir3BS1($id,$borang){
+		$this->M_butir->buatbutir3BS1($id);
 		redirect('butir/'.$borang);
 	}
 

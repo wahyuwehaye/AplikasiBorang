@@ -105,8 +105,9 @@
                                     <td rowspan="<?php echo($cekdokunya) ?>" class='<?php echo($warnanya) ?>'><?php echo $skor; ?></td>
                                 </tr>
                                     <?php
-                                    }else if ($cekdokunya>1) {
-                                        $getlistbukti =$CI->db->query('select dokumen, status, filename from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'"');
+                                    }
+                                    else if ($cekdokunya>1) {
+                                        $getlistbukti =$CI->db->query('select * from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'"');
                                         foreach ($getlistbukti->result() as $bar){
                                             if (($bar->filename)=="") {
                                                 $filename = "Belum di Upload";

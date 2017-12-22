@@ -95,7 +95,7 @@
                                 <?php } ?> -->
                                 <?php
                                     $CI =& get_instance();
-                                    $getlistbukti =$CI->db->query('select * from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[0]['butir'].'" order by id ASC');
+                                    $getlistbukti =$CI->db->query('select * from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[0]['butir'].'" and not dokumen="" order by id ASC');
                                     foreach ($getlistbukti->result() as $bar){
                                         if (($bar->filename)=="") {
                                             $filename = "Belum di Upload";

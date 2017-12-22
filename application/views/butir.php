@@ -30,14 +30,16 @@
                         <?php
                         if($_SESSION['role']=="Admin"){
                             $butird3 = stripos(($getdata[0]['namaprodi']), 'D3');
+                            $butird4 = stripos(($getdata[0]['namaprodi']), 'D4');
                             $butirs1 = stripos(($getdata[0]['namaprodi']), 'S1');
                             $butirs2 = stripos(($getdata[0]['namaprodi']), 'S2');
+                            $butirfak = stripos(($getdata[0]['namaprodi']), 'Fakultas');
                         ?>
                         <h2>
                         Tabel Butir <?php echo (ucwords($getdata[0]['namaprodi'])); ?> &nbsp;
                         <?php
                         if (count($butir)>0) {
-                            if ($butird3!==false) {
+                            if (($butird3!==false) || ($butird4!==false)) {
                                 ?>
                         <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>&nbsp;
                         <button type="button" data-color="light-blue" class="btn bg-red waves-effect btn-xs" onclick="deleteallbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Hapus Semua Butir Borang" href="javascript:void(0)"><i class="material-icons">delete</i></button>
@@ -54,13 +56,17 @@
                                 <?php
                             }
                         }else{
-                            if ($butird3!==false) {
+                            if (($butird3!==false) || ($butird4!==false)) {
                                 ?>
                         <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
                                 <?php
+                            }elseif ($butirfak!==false) {
+                                 ?>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3BS1(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                                <?php
                             }elseif ($butirs1!==false) {
                                  ?>
-                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3AS1(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
                                 <?php
                             }elseif ($butirs2!==false) {
                                  ?>
@@ -154,7 +160,7 @@
                                         }
 
                                         // cek sudah upload semua
-                                        $getlistbukti =$CI->db->query('select COUNT(id) as cekfilebukti from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'" and filename = ""');
+                                        $getlistbukti =$CI->db->query('select COUNT(id) as cekfilebukti from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'" and filename = "" and not dokumen=""');
                                         $cekfilebukti=$getlistbukti->result_array()[0]['cekfilebukti'];
                                         $cekfilenya=($cekfilebukti!=0)?($cekfilebukti):0;
                                     ?>
@@ -275,7 +281,7 @@
                         <div class="col-sm-12">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <textarea class="form-control" name="keterangan" rows="4"></textarea>
+                                    <textarea class="form-control" name="keterangan" rows="4">Nilai 4 - </textarea>
                                     <label class="form-label">Keterangan</label>
                                 </div>
                             </div>
@@ -548,9 +554,33 @@
         });
   }
 
-  function buatbutir(x){
+  function buatbutir3BS1(x){
     var borang = "<?php echo $buku[0]['id']?>";
-    var delete_url = "<?php echo base_url(); ?>index.php/C_butir/buatbutir/"+x+"/"+borang;
+    var delete_url = "<?php echo base_url(); ?>index.php/C_butir/buatbutir3BS1/"+x+"/"+borang;
+        swal({
+            title: "Membuat Butir Borang Baru?",
+            text: "Butir Borang Akan Terbuat Otomatis dari Standar 1 - 7",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, create it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                swal("Sukses!", "Butir Borang Sudah Terbuat", "success");
+                window.location.href = delete_url;
+
+            } else {
+                swal("Cancelled!", "Butir Borang Tidak Terbuat :)", "error");
+            }
+        });
+  }
+
+  function buatbutir3AS1(x){
+    var borang = "<?php echo $buku[0]['id']?>";
+    var delete_url = "<?php echo base_url(); ?>index.php/C_butir/buatbutir3AS1/"+x+"/"+borang;
         swal({
             title: "Membuat Butir Borang Baru?",
             text: "Butir Borang Akan Terbuat Otomatis dari Standar 1 - 7",
