@@ -56,9 +56,13 @@
                                 <?php
                             }
                         }else{
-                            if (($butird3!==false) || ($butird4!==false)) {
+                            if(($butird3 !== false) && ($butirfak !== false)){
                                 ?>
-                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                                <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3BD3(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                                <?php
+                            } elseif (($butird3!==false) || ($butird4!==false)) {
+                                ?>
+                                <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3AD3(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
                                 <?php
                             }elseif ($butirfak!==false) {
                                  ?>
@@ -581,6 +585,52 @@
   function buatbutir3AS1(x){
     var borang = "<?php echo $buku[0]['id']?>";
     var delete_url = "<?php echo base_url(); ?>index.php/C_butir/buatbutir3AS1/"+x+"/"+borang;
+        swal({
+            title: "Membuat Butir Borang Baru?",
+            text: "Butir Borang Akan Terbuat Otomatis dari Standar 1 - 7",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, create it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                swal("Sukses!", "Butir Borang Sudah Terbuat", "success");
+                window.location.href = delete_url;
+
+            } else {
+                swal("Cancelled!", "Butir Borang Tidak Terbuat :)", "error");
+            }
+        });
+  }
+  function buatbutir3BD3(x){
+    var borang = "<?php echo $buku[0]['id']?>";
+    var delete_url = "<?php echo base_url(); ?>index.php/C_butir/buatbutir3BD3/"+x+"/"+borang;
+        swal({
+            title: "Membuat Butir Borang Baru?",
+            text: "Butir Borang Akan Terbuat Otomatis dari Standar 1 - 7",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, create it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                swal("Sukses!", "Butir Borang Sudah Terbuat", "success");
+                window.location.href = delete_url;
+
+            } else {
+                swal("Cancelled!", "Butir Borang Tidak Terbuat :)", "error");
+            }
+        });
+  }
+  function buatbutir3AD3(x){
+    var borang = "<?php echo $buku[0]['id']?>";
+    var delete_url = "<?php echo base_url(); ?>index.php/C_butir/buatbutir3AD3/"+x+"/"+borang;
         swal({
             title: "Membuat Butir Borang Baru?",
             text: "Butir Borang Akan Terbuat Otomatis dari Standar 1 - 7",

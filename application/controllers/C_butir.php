@@ -109,6 +109,14 @@ class C_butir extends CI_Controller {
 		$this->M_butir->buatbutir3BS1($id);
 		redirect('butir/'.$borang);
 	}
+	public function buatbutir3BD3($id,$borang){
+		$this->M_butir->buatbutir3BD3($id);
+		redirect('butir/'.$borang);
+	}
+	public function buatbutir3AD3($id,$borang){
+		$this->M_butir->buatbutir3AD3($id);
+		redirect('butir/'.$borang);
+	}
 
 	public function destroy($id,$borang){
 		// $id=$_POST['id'];

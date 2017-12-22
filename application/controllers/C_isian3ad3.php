@@ -965,10 +965,10 @@ class C_isian3ad3 extends CI_Controller {
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian3ad3');
-        $id=$_POST['531id_butir'];
+        $id=$_POST['id_butir531'];
         $this->M_isian3ad3->insert_isian531();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3/'.$_POST['531id_butir']);
+        redirect('isian3ad3/'.$_POST['id_butir531']);
   }
 
   public function ngisi532(){
