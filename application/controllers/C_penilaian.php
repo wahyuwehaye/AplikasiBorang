@@ -82,7 +82,6 @@ class C_penilaian extends CI_Controller {
         $data['buku']=$this->M_borang->find('id',$id);
         $data['butir']=$this->M_butir->find('id_borang',$id);
         $data['isian']=$this->M_uploadisi->find('id_butir',$id);
-        $data['f1']=$this->M_penilaian->get_f1();
         $data['dataisian']=$this->M_uploadisi->finduploadisi('id_butir',$id);
         $data['dataisianversion']=$this->M_uploadisi->finduploadisiversion('id_kolom',$id);
         $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
@@ -103,7 +102,6 @@ class C_penilaian extends CI_Controller {
         {
             $result[] = array(
             "id_buku"  => $post['id_buku'][$key],
-            "id_f1"  => $post['id_f1'][$key],
             "butir"  => $post['butir'][$key],
             "nama_asesor"  => $post['nama_asesor'][$key],
             "nilai1"  => $post['nilai1'][$key],
@@ -137,12 +135,12 @@ class C_penilaian extends CI_Controller {
         $total_post = count($post['id_buku']);
         $buku = $post['id_buku'];
         $direct=$_POST['direct'];
+        $load = $_POST['load'];
 
         foreach($post['id_buku'] AS $key => $val)
         {
             $result[] = array(
             "id_buku"  => $post['id_buku'][$key],
-            "id_f1"  => $post['id_f1'][$key],
             "butir"  => $post['butir'][$key],
             "nama_asesor"  => $post['nama_asesor'][$key],
             "nilai1"  => $post['nilai1'][$key],
@@ -166,7 +164,46 @@ class C_penilaian extends CI_Controller {
         $this->db->insert_batch('hitungf1', $result);
             
         // $this->session->set_flashdata('notif', '<p style="color:green;font-weight:bold;">'.$total_post.' data berhasil di simpan!</p>');
-        redirect('isian/'.$post['id_buku'][0]);
+        redirect($load.'/'.$post['id_buku'][0]);
+    }
+
+    public function savenilaiF3()
+    {
+        $post = $this->input->post();
+        $result = array();
+        $total_post = count($post['id_buku']);
+        $buku = $post['id_buku'];
+        $direct=$_POST['direct'];
+        $load = $_POST['load'];
+
+        foreach($post['id_buku'] AS $key => $val)
+        {
+            $result[] = array(
+            "id_buku"  => $post['id_buku'][$key],
+            "butir"  => $post['butir'][$key],
+            "nama_asesor"  => $post['nama_asesor'][$key],
+            "nilai1"  => $post['nilai1'][$key],
+            "nilai2"  => $post['nilai2'][$key],
+            "nilai3"  => $post['nilai3'][$key],
+            "nilai4"  => $post['nilai4'][$key],
+            "nilai5"  => $post['nilai5'][$key],
+            "nilai6"  => $post['nilai6'][$key],
+            "nilai7"  => $post['nilai7'][$key],
+            "nilai8"  => $post['nilai8'][$key],
+            "nilai9"  => $post['nilai9'][$key],
+            "nilai10"  => $post['nilai10'][$key],
+            "skorakhir"  => $post['skorakhir'][$key],
+            "masukan"  => $post['masukan'][$key],
+            "komentar"  => $post['komentar'][$key],
+            "created_at"  => $post['created_at'][$key],
+            "review_ke"  => $post['review_ke'][$key]
+            );
+        }
+        // $this->get_db->post_add($result);
+        $this->db->insert_batch('hitungf3', $result);
+            
+        // $this->session->set_flashdata('notif', '<p style="color:green;font-weight:bold;">'.$total_post.' data berhasil di simpan!</p>');
+        redirect($load.'/'.$post['id_buku'][0]);
     }
 
 	public function store(){

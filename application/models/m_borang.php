@@ -150,6 +150,10 @@ class M_borang extends CI_Model {
 
             $this->db->delete('borang', array($column => $id));
             $this->db->query('ALTER TABLE borang AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE Lampiran AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE dokumenpendukung AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE nilaif1 AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE butir AUTO_INCREMENT 1');
             return $this->db->affected_rows();
 
 

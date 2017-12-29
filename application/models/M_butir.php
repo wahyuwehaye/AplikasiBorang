@@ -318,9 +318,18 @@ class M_butir extends CI_Model {
 ('7.3.1', 'Kegiatan kerjasama dengan instansi di dalam negeri dalam tiga tahun terakhir.', '', '', '', NOW(), NOW(), ".$id."),
 ('7.3.2', 'Kegiatan kerjasama dengan instansi di luar negeri dalam tiga tahun terakhir.', '', '', '', NOW(), NOW(), ".$id.")");
 
+                // $this->db->query("INSERT INTO `lampiran` (`butir`, `keterangan`, `dokumen`, `id_borang`) VALUES
+                // ('-', 'Fotokopi SK pendirian PS', 'Fotokopi SK pendirian PS', ".$id."),
+                // ('-', 'Fotokopi SK izin operasional PS', 'Fotokopi SK izin operasional PS', ".$id."),
+                // ('4.3.1.a', 'Fotokopi ijazah dan sertifikat pendidik dosen tetap yang bidang keahliannya sesuai dengan PS.', 'Fotokopi ijazah dan sertifikat pendidik dosen tetap yang bidang keahliannya sesuai dengan PS.', ".$id."),
+                // ('4.3.2', 'Fotokopi ijazah dan sertifikat pendidik dosen tetap yang bidang keahliannya di luar bidang PS.', 'Fotokopi ijazah dan sertifikat pendidik dosen tetap yang bidang keahliannya di luar bidang PS.', ".$id."),
+                // ('4.4.1', 'Fotokopi ijazah dan sertifikat pendidik dosen tidak tetap.', 'Fotokopi ijazah dan sertifikat pendidik dosen tidak tetap.', ".$id."),
+                // ('5.3.2', 'Contoh soal ujian dalam satu tahun terakhir untuk lima mata kuliah keahlian berikut silabusnya.', 'Contoh soal ujian dalam satu tahun terakhir untuk lima mata kuliah keahlian berikut silabusnya.', ".$id."),
+                // ('7.1.4', 'Surat paten HaKI atau keterangan sejenis.', 'Surat paten HaKI atau keterangan sejenis', ".$id.")");
+
                 $data = array(
                         'user'=> $_SESSION['name'],
-                        'action' => "Berhasil Membuat Butir Borang Baru dan List Dokumen Pendukung dengan ID = ".$id,
+                        'action' => "Berhasil Membuat Butir Borang Prodi Sarjana Baru dan List Dokumen Pendukung dengan ID = ".$id,
                         'created_at'=> date('Y-m-d H:i:s')
                 );
                 $this->db->insert('log', $data);
@@ -374,9 +383,13 @@ class M_butir extends CI_Model {
 ('7.3.1', 'Kegiatan kerjasama dengan instansi di dalam negeri dalam tiga tahun terakhir\r\n\r\nCatatan;\r\nTingkat kecukupan bergantung pada jumlah dosen tetap Fakultas/Sekolah Tinggi\r\n', '', 'Nilai 4 - Ada kerjasama dengan institusi di dalam negeri, banyak dalam jumlah.  Semuanya  relevan dengan bidang keahlian PS.', NOW(), NOW(), ".$id."),
 ('7.3.2', 'Kegiatan kerjasama dengan instansi di luar negeri dalam tiga tahun terakhir.\r\n\r\n\r\nCatatan;\r\nTingkat kecukupan bergantung pada jumlah dosen tetap  Fakultas/Sekolah Tinggi\r\n', '', 'Nilai 4 - Ada kerjasama dengan institusi di luar negeri, banyak dalam jumlah.  Semuanya  relevan dengan bidang keahlian PS.', NOW(), NOW(), ".$id.")");
 
+            // $this->db->query("INSERT INTO `lampiran` (`butir`, `keterangan`, `dokumen`, `id_borang`) VALUES
+            //     ('-', 'Fotokopi SK pendirian Fakultas/Sekolah Tinggi', 'Fotokopi SK pendirian Fakultas/Sekolah Tinggi', ".$id."),
+            //     ('1.1.1', 'Dokumen Renstra dan Renop Fakultas/Sekolah Tinggi.', 'Dokumen Renstra dan Renop Fakultas/Sekolah Tinggi.', ".$id.")");
+
             $data = array(
                         'user'=> $_SESSION['name'],
-                        'action' => "Berhasil Membuat Butir Borang Baru dengan ID = ".$id,
+                        'action' => "Berhasil Membuat Butir Borang Fakultas Sarjana Baru dengan ID = ".$id,
                         'created_at'=> date('Y-m-d H:i:s')
                 );
                 $this->db->insert('log', $data);
@@ -434,7 +447,7 @@ class M_butir extends CI_Model {
     
     $data = array(
                         'user'=> $_SESSION['name'],
-                        'action' => "Berhasil Membuat Butir Borang Fakultas D3 dengan ID = ".$id,
+                        'action' => "Berhasil Membuat Butir Borang Fakultas Dimpoma dengan ID = ".$id,
                         'created_at'=> date('Y-m-d H:i:s')
                 );
                 $this->db->insert('log', $data);
@@ -549,12 +562,45 @@ class M_butir extends CI_Model {
         
         $data = array(
                         'user'=> $_SESSION['name'],
-                        'action' => "Berhasil Membuat Butir Borang Prodi D3 dengan ID = ".$id,
+                        'action' => "Berhasil Membuat Butir Borang Prodi Diploma dengan ID = ".$id,
                         'created_at'=> date('Y-m-d H:i:s')
                 );
                 $this->db->insert('log', $data);
                 return $this->db->affected_rows();
 
+        }
+
+        public function buatlampiran3AS1($id){
+            $this->db->query("INSERT INTO `lampiran` (`butir`, `keterangan`, `dokumen`, `id_borang`) VALUES
+                ('-', 'Fotokopi SK pendirian PS', 'Fotokopi SK pendirian PS', ".$id."),
+                ('-', 'Fotokopi SK izin operasional PS', 'Fotokopi SK izin operasional PS', ".$id."),
+                ('4.3.1.a', 'Fotokopi ijazah dan sertifikat pendidik dosen tetap yang bidang keahliannya sesuai dengan PS.', 'Fotokopi ijazah dan sertifikat pendidik dosen tetap yang bidang keahliannya sesuai dengan PS.', ".$id."),
+                ('4.3.2', 'Fotokopi ijazah dan sertifikat pendidik dosen tetap yang bidang keahliannya di luar bidang PS.', 'Fotokopi ijazah dan sertifikat pendidik dosen tetap yang bidang keahliannya di luar bidang PS.', ".$id."),
+                ('4.4.1', 'Fotokopi ijazah dan sertifikat pendidik dosen tidak tetap.', 'Fotokopi ijazah dan sertifikat pendidik dosen tidak tetap.', ".$id."),
+                ('5.3.2', 'Contoh soal ujian dalam satu tahun terakhir untuk lima mata kuliah keahlian berikut silabusnya.', 'Contoh soal ujian dalam satu tahun terakhir untuk lima mata kuliah keahlian berikut silabusnya.', ".$id."),
+                ('7.1.4', 'Surat paten HaKI atau keterangan sejenis.', 'Surat paten HaKI atau keterangan sejenis', ".$id.")");
+        
+        $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Berhasil Membuat Lampiran Borang Prodi Sarjana dengan ID = ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+                $this->db->insert('log', $data);
+                return $this->db->affected_rows();
+        }
+
+        public function buatlampiran3BS1($id){
+            $this->db->query("INSERT INTO `lampiran` (`butir`, `keterangan`, `dokumen`, `id_borang`) VALUES
+                ('-', 'Fotokopi SK pendirian Fakultas/Sekolah Tinggi', 'Fotokopi SK pendirian Fakultas/Sekolah Tinggi', ".$id."),
+                ('1.1.1', 'Dokumen Renstra dan Renop Fakultas/Sekolah Tinggi.', 'Dokumen Renstra dan Renop Fakultas/Sekolah Tinggi.', ".$id.")");
+        
+        $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Berhasil Membuat Lampiran Borang Fakultas Sarjana dengan ID = ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+                $this->db->insert('log', $data);
+                return $this->db->affected_rows();
         }
 
         public function update_entry()
@@ -586,6 +632,26 @@ class M_butir extends CI_Model {
 
         }
 
+        public function findprodi($column,$id){
+            return $this->db->select("*")
+              ->from('prodi')
+              ->where($column, $id)
+              ->order_by('id', 'DESC')
+              ->get()
+              ->result_array();
+
+        }
+
+        public function findlampiran($column,$id){
+            return $this->db->select("*")
+              ->from('lampiran')
+              ->where($column, $id)
+              ->order_by('id', 'ASC')
+              ->get()
+              ->result_array();
+
+        }
+
         public function findresume($column,$id){
             return $this->db->select("*")
               ->from('butir')
@@ -608,7 +674,7 @@ class M_butir extends CI_Model {
         }
 
         public function join3tabel($id){
-            return $this->db->select("fakultas.id as idfakultas, fakultas.nama as namafakultas, prodi.id as idprodi, prodi.id_fakultas as idfakpro, prodi.nama as namaprodi, borang.id as idborang")
+            return $this->db->select("fakultas.id as idfakultas, fakultas.nama as namafakultas, prodi.id as idprodi, prodi.id_fakultas as idfakpro, prodi.nama as namaprodi, borang.id as idborang, borang.id_prodi as idprodiborang")
               ->from('fakultas')
               ->join('prodi','prodi.id_fakultas=fakultas.id')
               ->join('borang','borang.id_prodi=prodi.id')

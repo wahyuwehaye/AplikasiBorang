@@ -4,8 +4,6 @@
             <div class="col-sm-4">
             <h2>
                 MENGELOLA ISIAN BUTIR <?php echo strtoupper(($buku[0]['jenis']));?>
-                <!-- <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small> -->
-                <!-- <small><?php echo ucfirst($buku[0]['jenis'])." ".$buku[0]['fakpro']." - ".$buku[0]['tahun']." - Buku : ".$buku[0]['buku']; ?></small> -->
                 <small><?php echo strtoupper($buku[0]['fakpro']." ".$getdata[0]['namafakultas']); ?></small>
             </h2>
             </div>
@@ -28,22 +26,6 @@
                     <h2>
                         DETAIL BUTIR 
                     </h2>
-                        <!-- <button type="button" class="btn btn-success btn-circle waves-effect waves-circle waves-float">
-                            <i class="material-icons">add</i>
-                        </button> -->
-                        <!-- <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button> -->
-                        <ul class="header-dropdown m-r--5">
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">more_vert</i>
-                                </a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="javascript:void(0);">Action</a></li>
-                                    <li><a href="javascript:void(0);">Another action</a></li>
-                                    <li><a href="javascript:void(0);">Something else here</a></li>
-                                </ul>
-                            </li>
-                        </ul>
                     </div>
                     <div class="body">
                         <table id="borang" 
@@ -57,9 +39,8 @@
                         >
                             <thead>
                                 <tr>
-                                    <th>Butir</th>
-                                    <th>Baku Mutu</th>
-                                    <!-- <th>Penjelasan</th> -->
+                                    <th width="5%">Butir</th>
+                                    <th width="30%">Baku Mutu</th>
                                     <th>Keterangan</th>
                                     <th width="18%">Action</th>
                                 </tr>
@@ -68,21 +49,12 @@
                                 <tr>
                                     <th width="5%">Butir</th>
                                     <th width="30%">Baku Mutu</th>
-                                    <!-- <th>Penjelasan</th> -->
                                     <th>Keterangan</th>
-                                    <!-- <?php
-                                    if($_SESSION['role']=="Admin"){
-                                    ?>
-                                    <th width="10%">Action</th>
-                                    <?php
-                                    }
-                                    ?> -->
                                     <th width="18%">Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
                                 <?php
-                                    // foreach ($butir as $key) {
                                     for($i=0;$i<count($butir);$i++){
                                  ?>
                                     <?php
@@ -93,12 +65,12 @@
                                         $isinya=($cekisi!=0)?($cekisi):0;
 
                                         // cek nilainya
-                                        $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
+                                        $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf3 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
                                         $cekskor=$queryceknilai->result_array()[0]['cekskor'];
                                         $cekskornya=($cekskor!=0)?($cekskor):0;
                                         if ($cekskornya!==0) {
                                             // ambil nilainya
-                                            $querygetnilai=$CI->db->query('SELECT skorakhir, review_ke FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].') order by id desc');
+                                            $querygetnilai=$CI->db->query('SELECT skorakhir, review_ke FROM hitungf3 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].') order by id desc');
                                             $getnilai=$querygetnilai->result_array()[0]['skorakhir'];
                                             $getjumlahreview=$querygetnilai->result_array()[0]['review_ke'];
                                             $skor=($getnilai!=0)?($getnilai):0;
@@ -107,13 +79,8 @@
                                         }
                                     ?>
                                 <tr>
-                                    <!-- <td><?php echo $key->butir ?> </td>
-                                    <td><?php echo $key->bakumutu ?> </td>
-                                    <td><?php echo $key->penjelasan ?> </td>
-                                    <td><?php echo $key->keterangan ?> </td> -->
                                     <td><?php echo $butir[$i]['butir'] ?> </td>
                                     <td><?php echo $butir[$i]['bakumutu'] ?> </td>
-                                    <!-- <td><?php echo $butir[$i]['penjelasan'] ?> </td> -->
                                     <td><?php echo $butir[$i]['keterangan'] ?> </td>
                                     <td>
                                         <div class="js-sweetalert">
@@ -156,22 +123,6 @@
                     <h2>
                         ISIAN BUTIR 
                     </h2>
-                        <!-- <button type="button" class="btn btn-success btn-circle waves-effect waves-circle waves-float">
-                            <i class="material-icons">add</i>
-                        </button> -->
-                        <!-- <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button> -->
-                        <ul class="header-dropdown m-r--5">
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">more_vert</i>
-                                </a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="javascript:void(0);">Action</a></li>
-                                    <li><a href="javascript:void(0);">Another action</a></li>
-                                    <li><a href="javascript:void(0);">Something else here</a></li>
-                                </ul>
-                            </li>
-                        </ul>
                     </div>
                     <div class="body">
                     <?php
@@ -180,46 +131,36 @@
                     $id_bor = $buku[0]['id'];
                     $isiannya = $this->uri->segment(2, 0);
                     $getbutir = '';
-                    $getid434 = '';
-                    $querycaributir = $CI->db->query('select id, butir from butir where id="'.$isiannya.'" and id_borang = "'.$id_bor.'"');
+                    $querycaributir = $CI->db->query('select butir from butir where id="'.$isiannya.'" and id_borang = "'.$id_bor.'"');
                     foreach ($querycaributir->result() as $row){
                         $getbutir = $row->butir;
-                        $getid434 = $row->id;
                         break;
                     }
-                        if ($getbutir=='1.1.a') {
+                        if ($getbutir=='1.1.1') {
                             if (count($dataisian)>0) {
                                 for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian11">
-                        <input type="hidden" name="id11" id="id11" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir11" id="id_butir11" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian111">
+                        <input type="hidden" name="id111" id="id111" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian4kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian4kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        
-                        <h2 class="card-inside-title">Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_11" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
+                        <div class="col-md-4"></div>
+                        <h2 class="card-inside-title">Visi, misi, tujuan, dan sasaran serta strategi pencapaian Fakultas/Sekolah Tinggi</h2>
+                    </br>
                         <h2 class="card-inside-title">Visi</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom2_11" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
+                                            <textarea name="kolom1_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -229,7 +170,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom3_11" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
+                                            <textarea name="kolom2_111" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -239,86 +180,28 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom4_11" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
+                                            <textarea name="kolom3_111" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <input type="hidden" name="version_no11" id="version_no11" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at11" id="created_at11" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no111" id="version_no111" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at111" id="created_at111" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
-                        <?php } ?>
-
-                        <!-- <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
-                            <thead>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Mekanisme Penyusunan</th>
-                                    <th>Visi</th>
-                                    <th>Misi</th>
-                                    <th>Tujuan</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Mekanisme Penyusunan</th>
-                                    <th>Visi</th>
-                                    <th>Misi</th>
-                                    <th>Tujuan</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <?php
-                                    // foreach ($dataisian as $key) {
-                                    for($i=0;$i<count($dataisian);$i++){
-                                 ?>
-                                <tr>
-                                    <td><?php echo $dataisian[$i]['id_butir'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom1'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom2'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom3'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom4'] ?> </td>
-                                    <td><a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a>&nbsp; </td>
-                                    <td>
-                                        <div class="js-sweetalert">
-                                            <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/dataisian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a>&nbsp;
-                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateIsian1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-                                            <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian4kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table> -->
-                        <?php
+                        <?php }
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi11">
-                        <input type="hidden" name="id_butir11" id="id_butir11" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_11" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi111">
+                        <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Visi, misi, tujuan, dan sasaran serta strategi pencapaian Fakultas/Sekolah Tinggi</h2>
+                    </br>
                         <h2 class="card-inside-title">Visi</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom2_11" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -328,7 +211,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom3_11" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom2_111" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -338,7 +221,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom4_11" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom3_111" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -347,89 +230,49 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='1.1.b') {
+                        }elseif ($getbutir=='1.1.2') {
                             if (count($dataisian)>0) {
                             
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian11b">
-                        <input type="hidden" name="id11b" id="id11b" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir11b" id="id_butir11b" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian112">
+                        <input type="hidden" name="id1112" id="id1112" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir112" id="id_butir112" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Sasaran dan Strategi Pencapaiannya</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_11b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom1_112" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <input type="hidden" name="version_no11b" id="version_no11b" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at11b" id="created_at11b" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no112" id="version_no112" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at112" id="created_at112" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
-                        <?php } ?>
-                        <!-- <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
-                            <thead>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Sasaran dan Strategi Pencapaiannya</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Sasaran dan Strategi Pencapaiannya</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <?php
-                                    // foreach ($dataisian as $key) {
-                                    for($i=0;$i<count($dataisian);$i++){
-                                 ?>
-                                <tr>
-                                    <td><?php echo $dataisian[$i]['id_butir'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom1'] ?> </td>
-                                    <td><a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a>&nbsp; </td>
-                                    <td>
-                                        <div class="js-sweetalert"> -->
-                                            <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/dataisian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a>&nbsp;
-                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateIsian2" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-                                            <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table> -->
-                        <?php
+                        <?php } 
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi11b">
-                        <input type="hidden" name="id_butir11b" id="id_butir11b" value="<?php echo $isiannya; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi112">
+                        <input type="hidden" name="id_butir112" id="id_butir112" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sasaran dan Strategi Pencapaiannya</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_11b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_112" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -442,21 +285,22 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian12">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian12">
                         <input type="hidden" name="id12" id="id12" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir12" id="id_butir12" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Sosialisasi&nbsp;
                         <button type="button" onclick="infoSosialisasi()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Uraikan upaya penyebaran/sosialisasi visi, misi dan tujuan program studi serta pemahaman sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan.</h2>
+                        <h2 class="card-inside-title">Uraikan upaya penyebaran/sosialisasi,  serta tingkat pemahaman sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan tentang visi, misi dan tujuan Fakultas/Sekolah Tinggi</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -470,54 +314,14 @@
                         <input type="hidden" name="created_at12" id="created_at12" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
-                        <?php } ?>
-                        <!-- <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
-                            <thead>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Sosialisasi</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Sosialisasi</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <?php
-                                    // foreach ($dataisian as $key) {
-                                    for($i=0;$i<count($dataisian);$i++){
-                                 ?>
-                                <tr>
-                                    <td><?php echo $dataisian[$i]['id_butir'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom1'] ?> </td>
-                                    <td><a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a>&nbsp; </td>
-                                    <td>
-                                        <div class="js-sweetalert"> -->
-                                            <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/dataisian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a>&nbsp;
-                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateIsian3" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-                                            <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table> -->
-                        <?php
+                        <?php } 
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi12">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi12">
                         <input type="hidden" name="id_butir12" id="id_butir12" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sosialisasi&nbsp;
                         <button type="button" onclick="infoSosialisasi()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Uraikan upaya penyebaran/sosialisasi visi, misi dan tujuan program studi serta pemahaman sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan.</h2>
+                        <h2 class="card-inside-title">Uraikan upaya penyebaran/sosialisasi,  serta tingkat pemahaman sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan tentang visi, misi dan tujuan Fakultas/Sekolah Tinggi</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -535,22 +339,22 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian21">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian21">
                         <input type="hidden" name="id21" id="id21" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir21" id="id_butir21" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Sistem Tata Pamong&nbsp;
+                        <div class="col-md-4"></div>
+                        <h2 class="card-inside-title">Tata Pamong&nbsp;
                         <button type="button" onclick="infoPamong()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Sistem tata pamong berjalan secara efektif melalui mekanisme yang disepakati bersama, serta dapat memelihara dan mengakomodasi semua unsur, fungsi, dan peran dalam program studi. Tata pamong didukung dengan budaya organisasi yang dicerminkan dengan ada dan tegaknya aturan, tatacara pemilihan pimpinan, etika dosen, etika mahasiswa, etika tenaga kependidikan, sistem penghargaan dan sanksi serta pedoman dan prosedur pelayanan (administrasi, perpustakaan, laboratorium, dan studio). Sistem tata pamong (input, proses, output dan outcome serta lingkungan eksternal yang menjamin terlaksananya tata pamong yang baik) harus diformulasikan, disosialisasikan, dilaksanakan,  dipantau dan dievaluasi dengan peraturan dan prosedur yang jelas. </h2>
-                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang kredibel, transparan, akuntabel, bertanggung jawab dan adil.</h2>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Fakultas/Sekolah Tinggi untuk memilih pemimpin dan membangun sistem tata pamong yang kredibel, akuntabel, transparan, bertanggung jawab dan adil.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -567,12 +371,11 @@
                         <?php }
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi21">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi21">
                         <input type="hidden" name="id_butir21" id="id_butir21" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sistem Tata Pamong&nbsp;
                         <button type="button" onclick="infoPamong()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Sistem tata pamong berjalan secara efektif melalui mekanisme yang disepakati bersama, serta dapat memelihara dan mengakomodasi semua unsur, fungsi, dan peran dalam program studi. Tata pamong didukung dengan budaya organisasi yang dicerminkan dengan ada dan tegaknya aturan, tatacara pemilihan pimpinan, etika dosen, etika mahasiswa, etika tenaga kependidikan, sistem penghargaan dan sanksi serta pedoman dan prosedur pelayanan (administrasi, perpustakaan, laboratorium, dan studio). Sistem tata pamong (input, proses, output dan outcome serta lingkungan eksternal yang menjamin terlaksananya tata pamong yang baik) harus diformulasikan, disosialisasikan, dilaksanakan,  dipantau dan dievaluasi dengan peraturan dan prosedur yang jelas. </h2>
-                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang kredibel, transparan, akuntabel, bertanggung jawab dan adil.</h2>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Fakultas/Sekolah Tinggi untuk memilih pemimpin dan membangun sistem tata pamong yang kredibel, akuntabel, transparan, bertanggung jawab dan adil.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -586,150 +389,64 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='2.2') {
-                            if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian22">
-                        <input type="hidden" name="id22" id="id22" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir22" id="id_butir22" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
-                        </div>
-                        <h2 class="card-inside-title">Kepemimpinan&nbsp;
-                        <button type="button" onclick="infoKepemimpinan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat.
-                        Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistik, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi. Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.  Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.  Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.  Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.
-                        </h2>
-                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan dalam Program Studi.</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_22" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan operasional.</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom2_22" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan organisasi.</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom3_22" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan publik.</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom4_22" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="version_no22" id="version_no22" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at22" id="created_at22" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
-                        </form>
-                        <?php }
-                                }else{
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi22">
-                        <input type="hidden" name="id_butir22" id="id_butir22" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Kepemimpinan&nbsp;
-                        <button type="button" onclick="infoKepemimpinan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat.
-                        Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistik, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi. Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.  Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.  Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.  Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.
-                        </h2>
-                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan dalam Program Studi.</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_22" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan operasional.</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom2_22" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan organisasi.</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom3_22" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan publik.</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom4_22" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
-                            <?php
-                                }
                         }elseif ($getbutir=='2.3') {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian23">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian23">
                         <input type="hidden" name="id23" id="id23" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir23" id="id_butir23" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Sistem Pengelolaan&nbsp;
-                        <button type="button" onclick="infoPengelolaan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Sistem pengelolaan fungsional dan operasional program studi mencakup planning, organizing, staffing, leading, controlling dalam kegiatan  internal maupun eksternal.</h2>
-                        <h2 class="card-inside-title">Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</h2>
+                        <div class="col-md-4"></div>
+                        <h2 class="card-inside-title">Kepemimpinan&nbsp;
+                        <button type="button" onclick="infoKepemimpinan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <h2 class="card-inside-title">Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat.
+                        Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistis, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi. Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.  Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.  Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.  Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.
+                        </h2>
+                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan dalam Fakultas/Sekolah Tinggi.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <textarea name="kolom1_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan operasional.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_23" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan organisasi.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_23" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan publik.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_23" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -741,17 +458,103 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi23">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi23">
                         <input type="hidden" name="id_butir23" id="id_butir23" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Sistem Pengelolaan&nbsp;
-                        <button type="button" onclick="infoPengelolaan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                         <h2 class="card-inside-title">Sistem pengelolaan fungsional dan operasional program studi mencakup planning, organizing, staffing, leading, controlling dalam kegiatan  internal maupun eksternal.</h2>
-                        <h2 class="card-inside-title">Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</h2>
+                        <h2 class="card-inside-title">Kepemimpinan&nbsp;
+                        <button type="button" onclick="infoKepemimpinan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <h2 class="card-inside-title">Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat.
+                        Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistis, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi. Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.  Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.  Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.  Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.
+                        </h2>
+                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan dalam Fakultas/Sekolah Tinggi.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <textarea name="kolom1_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan operasional.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_23" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan organisasi.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_23" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan publik.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_23" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        }elseif ($getbutir=='2.2') {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian22">
+                        <input type="hidden" name="id22" id="id22" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir22" id="id_butir22" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <h2 class="card-inside-title">Struktur Organisasi, Koordinasi dan Cara Kerja Fakultas/Sekolah Tinggi&nbsp;
+                        <button type="button" onclick="infoPengelolaan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <h2 class="card-inside-title">Gambarkan struktur organisasi  Fakultas/Sekolah Tinggi serta tugas/fungsi dari tiap unit yang ada</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_22" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no22" id="version_no22" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at22" id="created_at22" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi22">
+                        <input type="hidden" name="id_butir22" id="id_butir22" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Struktur Organisasi, Koordinasi dan Cara Kerja Fakultas/Sekolah Tinggi&nbsp;
+                        <button type="button" onclick="infoPengelolaan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
+                        <h2 class="card-inside-title">Gambarkan struktur organisasi  Fakultas/Sekolah Tinggi serta tugas/fungsi dari tiap unit yang ada</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_22" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -764,21 +567,23 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian24">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian24">
                         <input type="hidden" name="id24" id="id24" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir24" id="id_butir24" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Penjaminan Mutu&nbsp;
+                        <div class="col-md-4"></div>
+                        <h2 class="card-inside-title">Sistem Pengelolaan&nbsp;
                         <button type="button" onclick="infoMutu()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Bagaimanakah pelaksanaan penjaminan mutu pada Program Studi? Jelaskan.</h2>
+                        <h2 class="card-inside-title">Sistem pengelolaan fungsional dan operasional program studi mencakup planning, organizing, staffing, leading, controlling, serta operasi internal dan eksternal.</h2>
+                        <h2 class="card-inside-title">Jelaskan sistem pengelolaan Fakultas/Sekolah Tinggi serta ketersediaan Renstra dan Renop.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -795,11 +600,12 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi24">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi24">
                         <input type="hidden" name="id_butir24" id="id_butir24" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Penjaminan Mutu&nbsp;
+                        <h2 class="card-inside-title">Sistem Pengelolaan&nbsp;
                         <button type="button" onclick="infoMutu()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Bagaimanakah pelaksanaan penjaminan mutu pada Program Studi? Jelaskan.</h2>
+                        <h2 class="card-inside-title">Sistem pengelolaan fungsional dan operasional program studi mencakup planning, organizing, staffing, leading, controlling, serta operasi internal dan eksternal.</h2>
+                        <h2 class="card-inside-title">Jelaskan sistem pengelolaan Fakultas/Sekolah Tinggi serta ketersediaan Renstra dan Renop.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -813,336 +619,57 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='2.5') {
+                        }elseif (($getbutir=='2.5.1') || ($getbutir=='2.5.2')) {
+                            $getidbutir = '';
+                            $querycariidbutir = $CI->db->query('select * from butir where butir="2.5.1" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir->result() as $row){
+                                $getidbutir = $row->id;
+                                break;
+                            }
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian25">
-                        <input type="hidden" name="id25" id="id25" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir25" id="id_butir25" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian251">
+                        <input type="hidden" name="id251" id="id251" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir251" id="id_butir251" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <input type="hidden" name="251id_butir" id="251id_butir" value="<?php echo $getidbutir; ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian12kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian12kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Umpan Balik&nbsp;
-                        <button type="button" onclick="infoUmpan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Apakah program studi telah melakukan kajian tentang proses pembelajaran melalui umpan balik dari dosen, mahasiswa, alumni, dan pengguna lulusan mengenai harapan dan persepsi mereka?  Jika Ya, jelaskan isi umpan balik dan tindak lanjutnya.</h2>
-                        <input type="hidden" name="kolom1_25" value="<?php echo $dataisian[$i]['kolom1'] ?>" />
-                        <h2 class="card-inside-title">Isi Umpan Balik Dari Dosen :</h2>
+                        <div class="col-md-4"></div>
+                        <h2 class="card-inside-title">Sistem Penjaminan Mutu Fakultas/Sekolah Tinggi</h2>
+                        <h2 class="card-inside-title">Jelaskan sistem penjaminan mutu dalam Fakultas/Sekolah Tinggi.  Jelaskan pula standar mutu yang digunakan</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom2_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
+                                            <textarea name="kolom1_251" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <h2 class="card-inside-title">Tindak Lanjut Dari Dosen :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom3_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="kolom4_25" value="<?php echo $dataisian[$i]['kolom4'] ?>" />
-                        <h2 class="card-inside-title">Isi Umpan Balik Dari Mahasiswa :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom5_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom5'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Tindak Lanjut Dari Mahasiswa :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom6_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom6'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="kolom7_25" value="<?php echo $dataisian[$i]['kolom7'] ?>" />
-                        <h2 class="card-inside-title">Isi Umpan Balik Dari Alumni :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom8_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom8'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Tindak Lanjut Dari Alumni :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom9_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom9'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="kolom10_25" value="<?php echo $dataisian[$i]['kolom10'] ?>" />
-                        <h2 class="card-inside-title">Isi Umpan Balik Dari Pengguna Lulusan :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom11_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom11'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Tindak Lanjut Dari Pengguna Lulusan :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom12_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom12'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="version_no25" id="version_no25" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at25" id="created_at25" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no251" id="version_no251" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at251" id="created_at251" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi25">
-                        <input type="hidden" name="id_butir25" id="id_butir25" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Umpan Balik&nbsp;
-                        <button type="button" onclick="infoUmpan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Apakah program studi telah melakukan kajian tentang proses pembelajaran melalui umpan balik dari dosen, mahasiswa, alumni, dan pengguna lulusan mengenai harapan dan persepsi mereka?  Jika Ya, jelaskan isi umpan balik dan tindak lanjutnya.</h2>
-                        <input type="hidden" name="kolom1_25" value="Dosen" />
-                        <h2 class="card-inside-title">Isi Umpan Balik Dari Dosen :</h2>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi251">
+                        <input type="hidden" name="id_butir251" id="id_butir251" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Sistem Penjaminan Mutu Fakultas/Sekolah Tinggi</h2>
+                        <h2 class="card-inside-title">Jelaskan sistem penjaminan mutu dalam Fakultas/Sekolah Tinggi.  Jelaskan pula standar mutu yang digunakan</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom2_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Tindak Lanjut Dari Dosen :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom3_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="kolom4_25" value="Mahasiswa" />
-                        <h2 class="card-inside-title">Isi Umpan Balik Dari Mahasiswa :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom5_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Tindak Lanjut Dari Mahasiswa :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom6_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="kolom7_25" value="Alumni" />
-                        <h2 class="card-inside-title">Isi Umpan Balik Dari Alumni :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom8_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Tindak Lanjut Dari Alumni :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom9_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="kolom10_25" value="Pengguna Lulusan" />
-                        <h2 class="card-inside-title">Isi Umpan Balik Dari Pengguna Lulusan :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom11_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Tindak Lanjut Dari Pengguna Lulusan :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom12_25" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
-                            <?php
-                                }
-                        }elseif ($getbutir=='2.6') {
-                            if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian26">
-                        <input type="hidden" name="id26" id="id26" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir26" id="id_butir26" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian5kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
-                        </div>
-                        <h2 class="card-inside-title">Keberlanjutan&nbsp;
-                        <button type="button" onclick="infoKeberlanjutan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Jelaskan upaya untuk menjamin keberlanjutan (sustainability) program studi ini, khususnya dalam hal:</h2>
-                        <h2 class="card-inside-title">Upaya untuk peningkatan animo calon mahasiswa :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Upaya peningkatan mutu manajemen :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom2_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Upaya untuk peningkatan mutu lulusan :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom3_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Upaya untuk pelaksanaan dan hasil kerjasama kemitraan :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom4_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Upaya dan prestasi memperoleh dana hibah kompetitif :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom5_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom5'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="version_no26" id="version_no26" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at26" id="created_at26" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
-                        </form>
-                        <?php }
-                                }else{
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi26">
-                        <input type="hidden" name="id_butir26" id="id_butir26" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Keberlanjutan&nbsp;
-                        <button type="button" onclick="infoKeberlanjutan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Jelaskan upaya untuk menjamin keberlanjutan (sustainability) program studi ini, khususnya dalam hal:</h2>
-                        <h2 class="card-inside-title">Upaya untuk peningkatan animo calon mahasiswa :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Upaya peningkatan mutu manajemen :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom2_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Upaya untuk peningkatan mutu lulusan :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom3_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Upaya untuk pelaksanaan dan hasil kerjasama kemitraan :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom4_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Upaya dan prestasi memperoleh dana hibah kompetitif :</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom5_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_251" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1162,7 +689,7 @@
                             // for($i=0;$i<count($dataisian);$i++){
                             
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi311">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi311">
                         <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
@@ -1528,7 +1055,7 @@
                     // }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi311">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi311">
                         <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
@@ -1744,7 +1271,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi312">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi312">
                         <input type="hidden" name="id_butir312" id="id_butir312" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
         <!-- Tabel Edit -->
@@ -1973,7 +1500,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi312">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi312">
                         <input type="hidden" name="id_butir312" id="id_butir312" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
                         <h2 class="card-inside-title">Tuliskan data mahasiswa non-reguler(2) dalam lima tahun terakhir dengan mengikuti format berikut:</h2>
@@ -2088,7 +1615,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi313">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi313">
                         <input type="hidden" name="id_butir313" id="id_butir313" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
         <!-- Tabel Edit -->
@@ -2201,7 +1728,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi313">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi313">
                         <input type="hidden" name="id_butir313" id="id_butir313" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sebutkan pencapaian prestasi/reputasi mahasiswa dalam tiga tahun terakhir di bidang akademik dan non-akademik (misalnya prestasi dalam penelitian dan lomba karya ilmiah, olahraga, dan seni). </h2>
                         <div class="row clearfix">
@@ -2259,17 +1786,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian314">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian314">
                         <input type="hidden" name="id314" id="id314" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir314" id="id_butir314" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Tuliskan data jumlah mahasiswa reguler tujuh tahun terakhir dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
@@ -2288,7 +1815,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi314">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi314">
                         <input type="hidden" name="id_butir314" id="id_butir314" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Tuliskan data jumlah mahasiswa reguler tujuh tahun terakhir dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
@@ -2584,17 +2111,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian32">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian32">
                         <input type="hidden" name="id32" id="id32" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir32" id="id_butir32" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian12kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian12kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <div class="col-md-4">
                         </div>
@@ -2702,7 +2229,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi32">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi32">
                         <input type="hidden" name="id_butir32" id="id_butir32" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Layanan kepada Mahasiswa  </h2>
                         <h2 class="card-inside-title">Lengkapilah tabel berikut untuk setiap jenis pelayanan kepada mahasiswa PS.</h2>
@@ -2809,17 +2336,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian331a">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian331a">
                         <input type="hidden" name="id331a" id="id331a" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir331a" id="id_butir331a" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         
                         <h2 class="card-inside-title">Evaluasi Lulusan</h2>
@@ -2845,7 +2372,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi331a">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi331a">
                         <input type="hidden" name="id_butir331a" id="id_butir331a" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Evaluasi Lulusan</h2>
                         <h2 class="card-inside-title">Adakah studi pelacakan (tracer study) untuk mendapatkan hasil evaluasi kinerja lulusan dengan pihak pengguna?</h2>
@@ -2882,7 +2409,7 @@
                             // for($i=0;$i<count($dataisian);$i++){
                             
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi331b">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi331b">
                         <input type="hidden" name="331id_butir" id="331id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir331b" id="id_butir331b" value="<?php echo $getidbutir331b; ?>" />
                         <h2 class="card-inside-title">Hasil studi pelacakan dirangkum dalam tabel berikut:</h2>
@@ -3531,7 +3058,7 @@
                     // }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi331b">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi331b">
                         <input type="hidden" name="331id_butir" id="331id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir331b" id="id_butir331b" value="<?php echo $getidbutir331b; ?>" />
                         <h2 class="card-inside-title">Hasil studi pelacakan dirangkum dalam tabel berikut:</h2>
@@ -4001,17 +3528,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian332">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian332">
                         <input type="hidden" name="id332" id="id332" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir332" id="id_butir332" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Rata-rata waktu tunggu lulusan untuk memperoleh pekerjaan yang pertama = … bulan (Jelaskan bagaimana data ini diperoleh)</h2>
@@ -4031,7 +3558,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi332">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi332">
                         <input type="hidden" name="id_butir332" id="id_butir332" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Rata-rata waktu tunggu lulusan untuk memperoleh pekerjaan yang pertama = … bulan (Jelaskan bagaimana data ini diperoleh)</h2>
@@ -4053,17 +3580,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian333">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian333">
                         <input type="hidden" name="id333" id="id333" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir333" id="id_butir333" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Persentase lulusan yang bekerja pada bidang yang sesuai dengan keahliannya = … % (Jelaskan bagaimana data ini diperoleh)</h2>
@@ -4083,7 +3610,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi333">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi333">
                         <input type="hidden" name="id_butir333" id="id_butir333" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Persentase lulusan yang bekerja pada bidang yang sesuai dengan keahliannya = … % (Jelaskan bagaimana data ini diperoleh)</h2>
@@ -4106,17 +3633,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian341">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian341">
                         <input type="hidden" name="id341" id="id341" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir341" id="id_butir341" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         
                         <h2 class="card-inside-title">Himpunan Alumni&nbsp;
@@ -4179,7 +3706,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi341">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi341">
                         <input type="hidden" name="id_butir341" id="id_butir341" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Himpunan Alumni&nbsp;
                         <button type="button" onclick="info341()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -4242,17 +3769,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian342">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian342">
                         <input type="hidden" name="id342" id="id342" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir342" id="id_butir342" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Himpunan Alumni&nbsp;
                         <button type="button" onclick="info342()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -4314,7 +3841,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi342">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi342">
                         <input type="hidden" name="id_butir342" id="id_butir342" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Himpunan Alumni&nbsp;
                         <button type="button" onclick="info342()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -4377,17 +3904,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian41">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian41">
                         <input type="hidden" name="id41" id="id41" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir41" id="id_butir41" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         
                         <h2 class="card-inside-title">Sistem Seleksi dan Pengembangan&nbsp;
@@ -4450,7 +3977,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi41">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi41">
                         <input type="hidden" name="id_butir41" id="id_butir41" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sistem Seleksi dan Pengembangan&nbsp;
                         <button type="button" onclick="info41()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -4510,27 +4037,20 @@
                             <?php
                                 }
                         }elseif (($getbutir=='4.2.1') || ($getbutir=='4.2.2')) {
-                            $getidbutir421 = '';
-                            $querycariidbutir431 = $CI->db->query('select * from butir where butir="4.2.1" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir431->result() as $row){
-                                $getidbutir421 = $row->id;
-                                break;
-                            }
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian421">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian421">
                         <input type="hidden" name="id421" id="id421" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="421id_butir" id="421id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir421" id="id_butir421" value="<?php echo $getidbutir421; ?>" />
+                        <input type="hidden" name="id_butir421" id="id_butir421" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         
                         <h2 class="card-inside-title">Monitoring dan Evaluasi&nbsp;
@@ -4552,7 +4072,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi421">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi421">
                         <input type="hidden" name="id_butir421" id="id_butir421" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Monitoring dan Evaluasi&nbsp;
                         <button type="button" onclick="info421()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -4579,7 +4099,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi431">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi431">
                         <input type="hidden" name="431id_butir" id="431id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir431" id="id_butir431" value="<?php echo $getidbutir431; ?>" />
                         <h2 class="card-inside-title">Dosen Tetap </h2>
@@ -4775,7 +4295,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi431">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi431">
                         <input type="hidden" name="431id_butir" id="431id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir431" id="id_butir431" value="<?php echo $getidbutir431; ?>" />
                         <h2 class="card-inside-title">Data dosen tetap yang bidang keahliannya sesuai dengan bidang PS:</h2>
@@ -4887,7 +4407,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi432">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi432">
                         <input type="hidden" name="432id_butir" id="432id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir432" id="id_butir432" value="<?php echo $getidbutir432; ?>" />
                         <h2 class="card-inside-title">Dosen Tetap </h2>
@@ -5083,7 +4603,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi432">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi432">
                         <input type="hidden" name="432id_butir" id="432id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir432" id="id_butir432" value="<?php echo $getidbutir432; ?>" />
                         <h2 class="card-inside-title">Data dosen tetap yang bidang keahliannya di luar bidang PS: </h2>
@@ -5189,7 +4709,7 @@
                         }elseif ($getbutir=='4.3.3') {
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi433">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi433">
                         <input type="hidden" name="id_butir433" id="id_butir433" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Dosen Tetap </h2>
         <!-- Tabel Edit -->
@@ -5455,7 +4975,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi433">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi433">
                         <input type="hidden" name="id_butir433" id="id_butir433" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Aktivitas dosen tetap yang bidang bidang keahliannya sesuai dengan PS dinyatakan dalam sks rata-rata per semester pada satu tahun akademik terakhir, diisi dengan perhitungan sesuai SK Dirjen DIKTI no. 48 tahun 1983 (12 sks setara dengan 36 jam kerja per minggu)</h2>
                         <div class="row clearfix">
@@ -5593,16 +5113,16 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='4.3.4 & 4.3.5') && ($getid434 == $isiannya)) {
+                        }elseif ($getbutir=='4.3.4') {
                             $getidbutir434 = '';
-                            $querycariidbutir434 = $CI->db->query('select * from butir where butir="4.3.4 & 4.3.5" and id_borang = "'.$id_bor.'"');
+                            $querycariidbutir434 = $CI->db->query('select * from butir where butir="4.3.4" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir434->result() as $row){
                                 $getidbutir434 = $row->id;
                                 break;
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi434">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi434">
                         <input type="hidden" name="434id_butir" id="434id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir434" id="id_butir434" value="<?php echo $getidbutir434; ?>" />
                         <h2 class="card-inside-title">Dosen Tetap </h2>
@@ -5824,7 +5344,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi434">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi434">
                         <input type="hidden" name="434id_butir" id="434id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir434" id="id_butir434" value="<?php echo $getidbutir434; ?>" />
                         <h2 class="card-inside-title">Tuliskan data aktivitas mengajar dosen tetap yang bidang keahliannya sesuai dengan PS,  dalam satu tahun akademik terakhir di PS ini dengan mengikuti format tabel berikut:</h2>
@@ -5924,16 +5444,16 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='4.3.4 & 4.3.5') && ($getid434 == $isiannya)) {
+                        }elseif ($getbutir=='4.3.5') {
                             $getidbutir435 = '';
-                            $querycariidbutir435 = $CI->db->query('select * from butir where butir="4.3.4 & 4.3.5" and id_borang = "'.$id_bor.'"');
+                            $querycariidbutir435 = $CI->db->query('select * from butir where butir="4.3.5" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir435->result() as $row){
                                 $getidbutir435 = $row->id;
                                 break;
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi435">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi435">
                         <input type="hidden" name="435id_butir" id="435id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir435" id="id_butir435" value="<?php echo $getidbutir435; ?>" />
                         <h2 class="card-inside-title">Dosen Tetap </h2>
@@ -6155,7 +5675,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi435">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi435">
                         <input type="hidden" name="435id_butir" id="435id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir435" id="id_butir435" value="<?php echo $getidbutir435; ?>" />
                         <h2 class="card-inside-title">Tuliskan data aktivitas mengajar dosen tetap yang bidang keahliannya di luar PS,  dalam satu tahun akademik terakhir di PS ini dengan mengikuti format tabel berikut:</h2>
@@ -6264,7 +5784,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi441">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi441">
                         <input type="hidden" name="441id_butir" id="441id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir441" id="id_butir441" value="<?php echo $getidbutir441; ?>" />
                         <h2 class="card-inside-title">Dosen Tidak Tetap</h2>
@@ -6460,7 +5980,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi441">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi441">
                         <input type="hidden" name="441id_butir" id="441id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir441" id="id_butir441" value="<?php echo $getidbutir441; ?>" />
                         <h2 class="card-inside-title">Dosen Tidak Tetap</h2>
@@ -6573,7 +6093,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi442">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi442">
                         <input type="hidden" name="442id_butir" id="442id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir442" id="id_butir442" value="<?php echo $getidbutir442; ?>" />
                         <h2 class="card-inside-title">Dosen Tidak Tetap </h2>
@@ -6795,7 +6315,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi442">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi442">
                         <input type="hidden" name="442id_butir" id="442id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir442" id="id_butir442" value="<?php echo $getidbutir442; ?>" />
                         <h2 class="card-inside-title">Tuliskan data aktivitas mengajar dosen tidak tetap pada satu tahun terakhir di PS ini dengan mengikuti format tabel berikut:</h2>
@@ -6904,7 +6424,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi451">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi451">
                         <input type="hidden" name="451id_butir" id="451id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir451" id="id_butir451" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2>
@@ -7026,7 +6546,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi451">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi451">
                         <input type="hidden" name="451id_butir" id="451id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir451" id="id_butir451" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2>
@@ -7092,7 +6612,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi452">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi452">
                         <input type="hidden" name="452id_butir" id="452id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir452" id="id_butir452" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2>
@@ -7266,7 +6786,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi452">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi452">
                         <input type="hidden" name="452id_butir" id="452id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir452" id="id_butir452" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2>
@@ -7364,7 +6884,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi453">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi453">
                         <input type="hidden" name="453id_butir" id="453id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir453" id="id_butir453" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2>
@@ -7537,7 +7057,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi453">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi453">
                         <input type="hidden" name="453id_butir" id="453id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir453" id="id_butir453" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2>
@@ -7629,7 +7149,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi454">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi454">
                         <input type="hidden" name="454id_butir" id="454id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir454" id="id_butir454" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2>
@@ -7768,7 +7288,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi454">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi454">
                         <input type="hidden" name="454id_butir" id="454id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir454" id="id_butir454" value="<?php echo $getidbutir454; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2>
@@ -7846,7 +7366,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi455">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi455">
                         <input type="hidden" name="455id_butir" id="455id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir455" id="id_butir455" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2>
@@ -7984,7 +7504,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi455">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi455">
                         <input type="hidden" name="455id_butir" id="455id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir455" id="id_butir455" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2>
@@ -8062,7 +7582,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi461">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi461">
                         <input type="hidden" name="id_butir461" id="id_butir461" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="461id_butir" id="461id_butir" value="<?php echo $getidbutir331; ?>" />
                         <h2 class="card-inside-title">Tenaga kependidikan</h2>
@@ -8690,7 +8210,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi461">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi461">
                         <input type="hidden" name="id_butir461" id="id_butir461" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="461id_butir" id="461id_butir" value="<?php echo $getidbutir331; ?>" />
                         <h2 class="card-inside-title">Tenaga kependidikan</h2>
@@ -9142,17 +8662,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian462">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian462">
                         <input type="hidden" name="id462" id="id462" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir462" id="id_butir462" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
@@ -9173,7 +8693,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi462">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi462">
                         <input type="hidden" name="id_butir462" id="id_butir462" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Jelaskan upaya yang telah dilakukan PS dalam meningkatkan kualifikasi dan kompetensi tenaga kependidikan, dalam hal pemberian kesempatan belajar/pelatihan, pemberian fasilitas termasuk dana, dan jenjang karir.</h2>
@@ -9202,7 +8722,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian511">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian511">
                         <input type="hidden" name="id511" id="id511" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir511" id="id_butir511" value="<?php echo $getidbutir331 ?>" />
                         <input type="hidden" name="id_butir511a" id="id_butir511a" value="<?php echo $isiannya ?>" />
@@ -9210,10 +8730,10 @@
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Kurikulum</h2>
                         <h2 class="card-inside-title">Kurikulum pendidikan tinggi adalah seperangkat rencana dan pengaturan mengenai isi, bahan kajian, maupun bahan pelajaran serta cara penyampaiannya, dan penilaian yang digunakan sebagai pedoman penyelenggaraan kegiatan pembelajaran di perguruan tinggi.</h2>
@@ -9269,7 +8789,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi511">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi511">
                         <input type="hidden" name="id_butir511" id="id_butir511" value="<?php echo $getidbutir331; ?>" />
                         <input type="hidden" name="id_butir511a" id="id_butir511a" value="<?php echo $isiannya ?>" />
                         <h2 class="card-inside-title">Kurikulum</h2>
@@ -9332,7 +8852,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi512b">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi512b">
                         <input type="hidden" name="512bid_butir" id="512bid_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir512b" id="id_butir512b" value="<?php echo $getidbutir512b; ?>" />
                         <h2 class="card-inside-title">Struktur Kurikulum</h2>
@@ -9463,7 +8983,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi512b">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi512b">
                         <input type="hidden" name="512bid_butir" id="512bid_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir512b" id="id_butir512b" value="<?php echo $getidbutir512b; ?>" />
                         <h2 class="card-inside-title">Jumlah sks PS (minimum untuk kelulusan) </h2>
@@ -9535,17 +9055,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian512a">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian512a">
                         <input type="hidden" name="id512a" id="id512a" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir512a" id="id_butir512a" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Struktur Kurikulum</h2>
@@ -9565,7 +9085,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi512a">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi512a">
                         <input type="hidden" name="id_butir512a" id="id_butir512a" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Struktur Kurikulum</h2>
@@ -9588,7 +9108,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi512c">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi512c">
                         <input type="hidden" name="id_butir512c" id="id_butir512c" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Struktur Kurikulum</h2>
         <!-- Tabel Edit -->
@@ -9898,7 +9418,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi512c">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi512c">
                         <input type="hidden" name="id_butir512c" id="id_butir512c" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Struktur Kurikulum</h2>
                         <h2 class="card-inside-title">Tuliskan struktur kurikulum berdasarkan urutan mata kuliah (MK) semester demi semester, dengan mengikuti format tabel berikut:</h2>
@@ -10070,7 +9590,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi513">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi513">
                         <input type="hidden" name="513id_butir" id="513id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir513" id="id_butir513" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Struktur Kurikulum</h2> -->
@@ -10251,7 +9771,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi513">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi513">
                         <input type="hidden" name="513id_butir" id="513id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir513" id="id_butir513" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Tuliskan mata kuliah pilihan <b>yang dilaksanakan</b> dalam tiga tahun terakhir, pada tabel berikut:</h2>
@@ -10353,7 +9873,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi514">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi514">
                         <input type="hidden" name="514id_butir" id="514id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir514" id="id_butir514" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2> -->
@@ -10502,7 +10022,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi514">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi514">
                         <input type="hidden" name="514id_butir" id="514id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir514" id="id_butir514" value="<?php echo $getidbutir514; ?>" />
                         <!-- <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2> -->
@@ -10579,17 +10099,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian52a">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian52a">
                         <input type="hidden" name="id52a" id="id52a" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir52a" id="id_butir52a" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Peninjauan Kurikulum dalam 5 Tahun Terakhir</h2>
                         <h2 class="card-inside-title">Jelaskan mekanisme peninjauan kurikulum dan pihak-pihak yang dilibatkan dalam proses peninjauan tersebut.</h2>
@@ -10609,7 +10129,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi52a">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi52a">
                         <input type="hidden" name="id_butir52a" id="id_butir52a" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Peninjauan Kurikulum dalam 5 Tahun Terakhir</h2>
                         <h2 class="card-inside-title">Jelaskan mekanisme peninjauan kurikulum dan pihak-pihak yang dilibatkan dalam proses peninjauan tersebut.</h2>
@@ -10637,7 +10157,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi52b">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi52b">
                         <input type="hidden" name="52bid_butir" id="52bid_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir52b" id="id_butir52b" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Peninjauan Kurikulum dalam 5 Tahun Terakhir </h2>
@@ -10844,7 +10364,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi52b">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi52b">
                         <input type="hidden" name="52bid_butir" id="52bid_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir52b" id="id_butir52b" value="<?php echo $getidbutir52b; ?>" />
                         <!-- <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2> -->
@@ -10957,7 +10477,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian531">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian531">
                         <input type="hidden" name="id531" id="id531" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir531" id="id_butir531" value="<?php echo $getidbutir331 ?>" />
                         <input type="hidden" name="531id_butir" id="531id_butir" value="<?php echo $isiannya; ?>" />
@@ -10965,10 +10485,10 @@
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <!-- <h2 class="card-inside-title">Pelaksanaan Proses Pembelajaran</h2>
                         <h2 class="card-inside-title">Sistem pembelajaran dibangun berdasarkan perencanaan yang relevan dengan tujuan, ranah belajar dan hierarkinya.</h2>
@@ -10993,7 +10513,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi531">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi531">
                         <input type="hidden" name="id_butir531" id="id_butir531" value="<?php echo $getidbutir331; ?>" />
                         <input type="hidden" name="531id_butir" id="531id_butir" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Pelaksanaan Proses Pembelajaran</h2>
@@ -11022,17 +10542,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian532">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian532">
                         <input type="hidden" name="id532" id="id532" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir532" id="id_butir532" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Lampirkan contoh soal ujian dalam 1 tahun terakhir untuk 5 mata kuliah keahlian berikut silabusnya.</h2>
@@ -11052,7 +10572,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi532">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi532">
                         <input type="hidden" name="id_butir532" id="id_butir532" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Lampirkan contoh soal ujian dalam 1 tahun terakhir untuk 5 mata kuliah keahlian berikut silabusnya.</h2>
@@ -11080,7 +10600,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi541">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi541">
                         <input type="hidden" name="541id_butir" id="541id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir541" id="id_butir541" value="<?php echo $getidbutir541; ?>" />
                         <h2 class="card-inside-title">Sistem Pembimbingan Akademik </h2>
@@ -11215,7 +10735,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi541">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi541">
                         <input type="hidden" name="541id_butir" id="541id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir541" id="id_butir541" value="<?php echo $getidbutir541; ?>" />
                         <h2 class="card-inside-title">Sistem Pembimbingan Akademik </h2>
@@ -11283,7 +10803,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi542">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi542">
                         <input type="hidden" name="542id_butir" id="542id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir542" id="id_butir542" value="<?php echo $getidbutir542; ?>" />
                         <h2 class="card-inside-title">Dosen Tetap </h2>
@@ -11455,7 +10975,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi542">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi542">
                         <input type="hidden" name="542id_butir" id="542id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir542" id="id_butir542" value="<?php echo $getidbutir542; ?>" />
                         <h2 class="card-inside-title">Jelaskan proses pembimbingan akademik  yang diterapkan pada Program Studi ini dalam hal-hal berikut:</h2>
@@ -11534,17 +11054,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian551a">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian551a">
                         <input type="hidden" name="id551a" id="id551a" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir551a" id="id_butir551a" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Jelaskan pelaksanaan pembimbingan Tugas Akhir atau Skripsi yang diterapkan pada PS ini.  </h2>
                         <h2 class="card-inside-title">• Ketersediaan panduan pembimbingan tugas akhir (Beri tanda  pada pilihan yang sesuai):</h2>
@@ -11571,7 +11091,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi551a">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi551a">
                         <input type="hidden" name="id_butir551a" id="id_butir551a" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan pelaksanaan pembimbingan Tugas Akhir atau Skripsi yang diterapkan pada PS ini.  </h2>
                         <h2 class="card-inside-title">• Ketersediaan panduan pembimbingan tugas akhir (Beri tanda  pada pilihan yang sesuai):</h2>
@@ -11601,17 +11121,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian551a">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian551a">
                         <input type="hidden" name="id551b" id="id551b" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir551b" id="id_butir551b" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Pembimbingan Tugas Akhir / Skripsi</h2>
                         <h2 class="card-inside-title">Jelaskan pelaksanaan pembimbingan Tugas Akhir atau Skripsi yang diterapkan pada PS ini.</h2>
@@ -11631,7 +11151,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi551b">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi551b">
                         <input type="hidden" name="id_butir551b" id="id_butir551b" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Pembimbingan Tugas Akhir / Skripsi</h2>
                         <h2 class="card-inside-title">Jelaskan pelaksanaan pembimbingan Tugas Akhir atau Skripsi yang diterapkan pada PS ini.</h2>
@@ -11658,17 +11178,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian551c">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian551c">
                         <input type="hidden" name="id551c" id="id551c" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir551c" id="id_butir551c" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Pembimbingan Tugas Akhir / Skripsi</h2>
                         <h2 class="card-inside-title">Jelaskan pelaksanaan pembimbingan Tugas Akhir atau Skripsi yang diterapkan pada PS ini.</h2>
@@ -11688,7 +11208,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi551c">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi551c">
                         <input type="hidden" name="id_butir551c" id="id_butir551c" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Pembimbingan Tugas Akhir / Skripsi</h2>
                         <h2 class="card-inside-title">Jelaskan pelaksanaan pembimbingan Tugas Akhir atau Skripsi yang diterapkan pada PS ini.</h2>
@@ -11720,7 +11240,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi551d">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi551d">
                         <input type="hidden" name="551did_butir" id="551did_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir551d" id="id_butir551d" value="<?php echo $getidbutir551d; ?>" />
                         <h2 class="card-inside-title">Dosen Tetap </h2>
@@ -11821,7 +11341,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi551d">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi551d">
                         <input type="hidden" name="551did_butir" id="551did_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir551d" id="id_butir551d" value="<?php echo $getidbutir551d; ?>" />
                         <h2 class="card-inside-title">• Tuliskan nama-nama dosen yang menjadi pembimbing tugas akhir atau skripsi, dan jumlah mahasiswa yang bimbingan dengan mengikuti format tabel berikut: </h2>
@@ -11872,17 +11392,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian552">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian552">
                         <input type="hidden" name="id552" id="id552" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir552" id="id_butir552" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Rata-rata lama penyelesaian tugas akhir/skripsi pada tiga tahun terakhir </h2>
@@ -11902,7 +11422,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi552">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi552">
                         <input type="hidden" name="id_butir552" id="id_butir552" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Rata-rata lama penyelesaian tugas akhir/skripsi pada tiga tahun terakhir </h2>
@@ -11930,7 +11450,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi56">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi56">
                         <input type="hidden" name="56id_butir" id="56id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir56" id="id_butir56" value="<?php echo $getidbutir56; ?>" />
                         <h2 class="card-inside-title">Upaya Perbaikan Pembelajaran</h2>
@@ -12029,7 +11549,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi56">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi56">
                         <input type="hidden" name="56id_butir" id="56id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir56" id="id_butir56" value="<?php echo $getidbutir56; ?>" />
                         <h2 class="card-inside-title">Upaya Perbaikan Pembelajaran</h2>
@@ -12080,17 +11600,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian571">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian571">
                         <input type="hidden" name="id571" id="id571" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir571" id="id_butir571" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
                         <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
@@ -12111,7 +11631,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi571">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi571">
                         <input type="hidden" name="id_butir571" id="id_butir571" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
                         <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
@@ -12135,17 +11655,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian572">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian572">
                         <input type="hidden" name="id572" id="id572" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir572" id="id_butir572" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
                         <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
@@ -12166,7 +11686,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi572">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi572">
                         <input type="hidden" name="id_butir572" id="id_butir572" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
                         <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
@@ -12190,17 +11710,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian573">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian573">
                         <input type="hidden" name="id573" id="id573" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir573" id="id_butir573" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
                         <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
@@ -12221,7 +11741,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi573">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi573">
                         <input type="hidden" name="id_butir573" id="id_butir573" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
                         <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
@@ -12245,17 +11765,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian574">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian574">
                         <input type="hidden" name="id574" id="id574" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir574" id="id_butir574" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
                         <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
@@ -12276,7 +11796,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi574">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi574">
                         <input type="hidden" name="id_butir574" id="id_butir574" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
                         <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
@@ -12300,17 +11820,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian575">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian575">
                         <input type="hidden" name="id575" id="id575" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir575" id="id_butir575" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
                         <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
@@ -12331,7 +11851,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi575">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi575">
                         <input type="hidden" name="id_butir575" id="id_butir575" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
                         <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
@@ -12355,17 +11875,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian61">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian61">
                         <input type="hidden" name="id61" id="id61" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir61" id="id_butir61" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Pengelolaan Dana</h2>
                         <h2 class="card-inside-title">Keterlibatan aktif program studi harus tercerminkan dalam dokumen tentang proses perencanaan, pengelolaan dan pelaporan serta pertanggungjawaban penggunaan dana kepada pemangku kepentingan melalui mekanisme yang transparan dan akuntabel.</h2>
@@ -12386,7 +11906,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi61">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi61">
                         <input type="hidden" name="id_butir61" id="id_butir61" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Pengelolaan Dana</h2>
                         <h2 class="card-inside-title">Keterlibatan aktif program studi harus tercerminkan dalam dokumen tentang proses perencanaan, pengelolaan dan pelaporan serta pertanggungjawaban penggunaan dana kepada pemangku kepentingan melalui mekanisme yang transparan dan akuntabel.</h2>
@@ -12410,17 +11930,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian621">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian621">
                         <input type="hidden" name="id621" id="id621" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir621" id="id_butir621" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Perolehan dan Alokasi Dana</h2>
                         <h2 class="card-inside-title">Tuliskan realisasi perolehan dan alokasi dana (termasuk hibah) dalam juta rupiah termasuk gaji,  selama tiga tahun terakhir, pada tabel berikut:</h2>
@@ -12440,7 +11960,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi621">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi621">
                         <input type="hidden" name="id_butir621" id="id_butir621" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Perolehan dan Alokasi Dana</h2>
                         <h2 class="card-inside-title">Tuliskan realisasi perolehan dan alokasi dana (termasuk hibah) dalam juta rupiah termasuk gaji,  selama tiga tahun terakhir, pada tabel berikut:</h2>
@@ -12869,7 +12389,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi622">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi622">
                         <input type="hidden" name="622id_butir" id="622id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir622" id="id_butir622" value="<?php echo $getidbutir622; ?>" />
                         <h2 class="card-inside-title">Perolehan dan Alokasi Dana</h2>
@@ -13013,7 +12533,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi622">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi622">
                         <input type="hidden" name="622id_butir" id="622id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir622" id="id_butir622" value="<?php echo $getidbutir622; ?>" />
                         <h2 class="card-inside-title">Tuliskan dana untuk kegiatan penelitian pada tiga tahun terakhir yang melibatkan dosen yang bidang keahliannya sesuai dengan program studi, dengan mengikuti format tabel berikut:</h2>
@@ -13091,7 +12611,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi623">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi623">
                         <input type="hidden" name="623id_butir" id="623id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir623" id="id_butir623" value="<?php echo $getidbutir623; ?>" />
                         <h2 class="card-inside-title">Tuliskan dana yang diperoleh dari/untuk kegiatan pelayanan/pengabdian kepada masyarakat pada tiga tahun terakhir dengan mengikuti format tabel berikut: </h2>
@@ -13227,7 +12747,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi623">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi623">
                         <input type="hidden" name="623id_butir" id="623id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir623" id="id_butir623" value="<?php echo $getidbutir623; ?>" />
                         <h2 class="card-inside-title">Tuliskan dana untuk kegiatan penelitian pada tiga tahun terakhir yang melibatkan dosen yang bidang keahliannya sesuai dengan program studi, dengan mengikuti format tabel berikut:</h2>
@@ -13305,7 +12825,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi631">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi631">
                         <input type="hidden" name="631id_butir" id="631id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir631" id="id_butir631" value="<?php echo $getidbutir631; ?>" />
                         <h2 class="card-inside-title">Prasarana</h2>
@@ -13517,7 +13037,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi631">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi631">
                         <input type="hidden" name="631id_butir" id="631id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir631" id="id_butir631" value="<?php echo $getidbutir631; ?>" />
                         <h2 class="card-inside-title">Prasarana</h2>
@@ -13634,7 +13154,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi632">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi632">
                         <input type="hidden" name="id_butir632" id="id_butir632" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sarana dan Prasarana</h2>
         <!-- Tabel Edit -->
@@ -13849,7 +13369,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi632">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi632">
                         <input type="hidden" name="id_butir632" id="id_butir632" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sarana dan Prasarana</h2>
                         <h2 class="card-inside-title">Tuliskan data prasarana (kantor, ruang kelas, ruang laboratorium, studio, ruang perpustakaan, kebun percobaan, dsb. kecuali  ruang dosen) yang dipergunakan PS dalam proses belajar mengajar dengan  mengikuti format tabel berikut:</h2>
@@ -13981,7 +13501,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi633">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi633">
                         <input type="hidden" name="id_butir633" id="id_butir633" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sarana dan Prasarana</h2>
         <!-- Tabel Edit -->
@@ -14196,7 +13716,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi633">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi633">
                         <input type="hidden" name="id_butir633" id="id_butir633" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sarana dan Prasarana</h2>
                         <h2 class="card-inside-title">Tuliskan data prasarana lain yang menunjang (misalnya tempat olah raga, ruang bersama, ruang himpunan mahasiswa, poliklinik) dengan mengikuti format tabel berikut:</h2>
@@ -14333,7 +13853,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi641a">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi641a">
                         <input type="hidden" name="641aid_butir" id="641aid_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir641a" id="id_butir641a" value="<?php echo $getidbutir641a; ?>" />
                         <h2 class="card-inside-title">Pustaka (buku teks, karya ilmiah, dan jurnal; termasuk juga dalam bentuk CD-ROM dan media lainnya)</h2>
@@ -14434,7 +13954,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi641a">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi641a">
                         <input type="hidden" name="641aid_butir" id="641aid_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir641a" id="id_butir641a" value="<?php echo $getidbutir641a; ?>" />
                         <h2 class="card-inside-title">Sarana Pelaksanaan Kegiatan Akademik</h2>
@@ -14496,7 +14016,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi641c">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi641c">
                         <input type="hidden" name="641cid_butir" id="641cid_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir641c" id="id_butir641c" value="<?php echo $getidbutir641c; ?>" />
                         <h2 class="card-inside-title">Sarana Pelaksanaan Kegiatan Akademik</h2>
@@ -14605,7 +14125,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi641c">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi641c">
                         <input type="hidden" name="641cid_butir" id="641cid_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir641c" id="id_butir641c" value="<?php echo $getidbutir641c; ?>" />
                         <h2 class="card-inside-title">Sarana Pelaksanaan Kegiatan Akademik</h2>
@@ -14667,17 +14187,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian642">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian642">
                         <input type="hidden" name="id642" id="id642" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir642" id="id_butir642" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Sebutkan sumber-sumber pustaka di lembaga lain (lembaga perpustakaan/ sumber dari internet beserta  alamat website) yang biasa diakses/dimanfaatkan oleh dosen dan mahasiswa program studi ini.</h2>
@@ -14697,7 +14217,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi642">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi642">
                         <input type="hidden" name="id_butir642" id="id_butir642" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Sebutkan sumber-sumber pustaka di lembaga lain (lembaga perpustakaan/ sumber dari internet beserta  alamat website) yang biasa diakses/dimanfaatkan oleh dosen dan mahasiswa program studi ini.</h2>
@@ -14725,7 +14245,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi643">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi643">
                         <input type="hidden" name="id_butir643" id="id_butir643" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sarana dan Prasarana</h2>
         <!-- Tabel Edit -->
@@ -14940,7 +14460,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi643">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi643">
                         <input type="hidden" name="id_butir643" id="id_butir643" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sarana dan Prasarana</h2>
                         <h2 class="card-inside-title">Tuliskan peralatan utama yang digunakan di laboratorium (tempat praktikum, bengkel, studio, ruang simulasi, rumah sakit, puskesmas/balai kesehatan, green house, lahan untuk pertanian, dan sejenisnya) yang dipergunakan dalam proses pembelajaran di jurusan/fakultas dengan  mengikuti format tabel berikut:</h2>
@@ -15073,17 +14593,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian651">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian651">
                         <input type="hidden" name="id651" id="id651" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir651" id="id_butir651" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Sistem Informasi</h2>
                         <h2 class="card-inside-title">Jelaskan sistem informasi dan fasilitas yang digunakan oleh program studi untuk proses pembelajaran (hardware, software, e-learning, perpustakaan, dll.).</h2>
@@ -15103,7 +14623,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi651">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi651">
                         <input type="hidden" name="id_butir651" id="id_butir651" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sistem Informasi</h2>
                         <h2 class="card-inside-title">Jelaskan sistem informasi dan fasilitas yang digunakan oleh program studi untuk proses pembelajaran (hardware, software, e-learning, perpustakaan, dll.).</h2>
@@ -15131,7 +14651,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi652">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi652">
                         <input type="hidden" name="652id_butir" id="652id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir652" id="id_butir652" value="<?php echo $getidbutir652; ?>" />
                         <h2 class="card-inside-title">Sistem Informasi</h2>
@@ -15617,7 +15137,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi652">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi652">
                         <input type="hidden" name="652id_butir" id="652id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir652" id="id_butir652" value="<?php echo $getidbutir652; ?>" />
                         <h2>Sistem Informasi</h2>
@@ -15901,7 +15421,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi711">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi711">
                         <input type="hidden" name="711id_butir" id="711id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir711" id="id_butir711" value="<?php echo $getidbutir711; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
@@ -16214,7 +15734,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi711">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi711">
                         <input type="hidden" name="711id_butir" id="711id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir711" id="id_butir711" value="<?php echo $getidbutir711; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
@@ -16429,17 +15949,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian712">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian712">
                         <input type="hidden" name="id712" id="id712" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir712" id="id_butir712" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Adakah mahasiswa tugas akhir yang dilibatkan dalam penelitian dosen dalam tiga tahun terakhir?</h2>
@@ -16465,7 +15985,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi712">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi712">
                         <input type="hidden" name="id_butir712" id="id_butir712" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Adakah mahasiswa tugas akhir yang dilibatkan dalam penelitian dosen dalam tiga tahun terakhir?</h2>
@@ -16499,7 +16019,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi713">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi713">
                         <input type="hidden" name="713id_butir" id="713id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir713" id="id_butir713" value="<?php echo $getidbutir713; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
@@ -16711,7 +16231,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi713">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi713">
                         <input type="hidden" name="713id_butir" id="713id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir713" id="id_butir713" value="<?php echo $getidbutir713; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
@@ -16831,7 +16351,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi714">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi714">
                         <input type="hidden" name="714id_butir" id="714id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir714" id="id_butir714" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
@@ -16902,7 +16422,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi714">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi714">
                         <input type="hidden" name="714id_butir" id="714id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir714" id="id_butir714" value="<?php echo $getidbutir714; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
@@ -16936,7 +16456,7 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi721">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi721">
                         <input type="hidden" name="721id_butir" id="721id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir721" id="id_butir721" value="<?php echo $getidbutir721; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
@@ -17249,7 +16769,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi721">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi721">
                         <input type="hidden" name="721id_butir" id="721id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir721" id="id_butir721" value="<?php echo $getidbutir721; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
@@ -17464,17 +16984,17 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian722">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian722">
                         <input type="hidden" name="id722" id="id722" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir722" id="id_butir722" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Adakah mahasiswa yang dilibatkan dalam kegiatan pelayanan/pengabdian kepada masyarakat dalam tiga tahun terakhir?</h2>
                         <div class="demo-checkbox">
@@ -17500,7 +17020,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi722">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi722">
                         <input type="hidden" name="id_butir722" id="id_butir722" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Adakah mahasiswa yang dilibatkan dalam kegiatan pelayanan/pengabdian kepada masyarakat dalam tiga tahun terakhir?</h2>
                         <div class="demo-checkbox">
@@ -17529,7 +17049,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi731">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi731">
                         <input type="hidden" name="id_butir731" id="id_butir731" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Kegiatan Kerjasama dengan Instansi Lain </h2>
         <!-- Tabel Edit -->
@@ -17692,7 +17212,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi731">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi731">
                         <input type="hidden" name="id_butir731" id="id_butir731" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Kegiatan Kerjasama dengan Instansi Lain </h2>
                         <h2 class="card-inside-title">Tuliskan instansi dalam negeri yang menjalin kerjasama* yang terkait dengan program studi/jurusan dalam tiga tahun terakhir.</h2>
@@ -17770,7 +17290,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi732">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi732">
                         <input type="hidden" name="id_butir732" id="id_butir732" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Kegiatan Kerjasama dengan Instansi Lain </h2>
         <!-- Tabel Edit -->
@@ -17933,7 +17453,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi732">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi732">
                         <input type="hidden" name="id_butir732" id="id_butir732" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Kegiatan Kerjasama dengan Instansi Lain </h2>
                         <h2 class="card-inside-title">Tuliskan instansi dalam negeri yang menjalin kerjasama* yang terkait dengan program studi/jurusan dalam tiga tahun terakhir.</h2>
@@ -18090,7 +17610,7 @@
                                             <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $datadokumen[$i]['id']; ?>" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
                                             <!-- <a type="button" onclick="uploadbukti(<?php echo $butir[$i]['butir'] ?>)" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload Dokumen" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#dokumen11a" data-placement="top" title="Lihat" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">pageview</i></a>&nbsp;
-                                            <a id="del" onclick="deledok(<?php echo $datadokumen[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroy/'.$datadokumen[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            <a id="del" onclick="deledok(<?php echo $datadokumen[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroy/'.$datadokumen[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -18132,7 +17652,7 @@
                                         }
                                     ?>
                                         <!-- <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#dokumen11a" data-placement="top" title="Lihat" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">pageview</i></a>&nbsp; -->
-                                        <!-- <a id="del" onclick="deledok(<?php echo $bar->id ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroy/'.$bar->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="glyphicon glyphicon-trash"></i></a> -->
+                                        <!-- <a id="del" onclick="deledok(<?php echo $bar->id ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroy/'.$bar->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="glyphicon glyphicon-trash"></i></a> -->
                                         </div>
                                     </td>
                                 </tr>
@@ -18147,8 +17667,8 @@
                             <h2 class="card-inside-title">Tambah Dokumen pendukung yang terkait pada butir <?php echo $butir[0]['butir'] ?></h2>
                         </div>
                         <div class="body">
-                            <form action="<?php echo base_url()?>C_isian/dokumen11" id="frmFileUpload" class="dropzone form-horizontal" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id_butir11" id="id_butir11" value="<?php echo $this->uri->segment(2, 0); ?>" />
+                            <form action="<?php echo base_url()?>C_isian3bs1/dokumen11" id="frmFileUpload" class="dropzone form-horizontal" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $this->uri->segment(2, 0); ?>" />
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label for="nama">Nama Dokumen</label>
@@ -18228,7 +17748,7 @@
             </div>
         </div>
 
-        <!-- MODALS View Book -->
+        <!-- MODALS Lihat Buku -->
         <div class="modal fade" id="viewBook" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -18507,7 +18027,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updatetabel311', $attributes);
+                    echo form_open('C_isian3bs1/updatetabel311', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -18722,7 +18242,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian312', $attributes);
+                    echo form_open('C_isian3bs1/updateisian312', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -18839,7 +18359,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian313', $attributes);
+                    echo form_open('C_isian3bs1/updateisian313', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -18903,7 +18423,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian331b', $attributes);
+                    echo form_open('C_isian3bs1/updateisian331b', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -19375,7 +18895,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian431', $attributes);
+                    echo form_open('C_isian3bs1/updateisian431', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -19484,7 +19004,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian432', $attributes);
+                    echo form_open('C_isian3bs1/updateisian432', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -19593,7 +19113,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian433', $attributes);
+                    echo form_open('C_isian3bs1/updateisian433', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -19729,7 +19249,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian434', $attributes);
+                    echo form_open('C_isian3bs1/updateisian434', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -19838,7 +19358,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian435', $attributes);
+                    echo form_open('C_isian3bs1/updateisian435', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -19947,7 +19467,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian441', $attributes);
+                    echo form_open('C_isian3bs1/updateisian441', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -20056,7 +19576,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian442', $attributes);
+                    echo form_open('C_isian3bs1/updateisian442', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -20165,7 +19685,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian451', $attributes);
+                    echo form_open('C_isian3bs1/updateisian451', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -20231,7 +19751,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian452', $attributes);
+                    echo form_open('C_isian3bs1/updateisian452', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -20329,7 +19849,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian453', $attributes);
+                    echo form_open('C_isian3bs1/updateisian453', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -20420,7 +19940,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian454', $attributes);
+                    echo form_open('C_isian3bs1/updateisian454', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -20496,7 +20016,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian455', $attributes);
+                    echo form_open('C_isian3bs1/updateisian455', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -20572,7 +20092,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian461', $attributes);
+                    echo form_open('C_isian3bs1/updateisian461', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -20913,7 +20433,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian512b', $attributes);
+                    echo form_open('C_isian3bs1/updateisian512b', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -20980,7 +20500,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian512c', $attributes);
+                    echo form_open('C_isian3bs1/updateisian512c', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -21206,7 +20726,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian513', $attributes);
+                    echo form_open('C_isian3bs1/updateisian513', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -21309,7 +20829,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian514', $attributes);
+                    echo form_open('C_isian3bs1/updateisian514', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -21388,7 +20908,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian52b', $attributes);
+                    echo form_open('C_isian3bs1/updateisian52b', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -21512,7 +21032,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian541', $attributes);
+                    echo form_open('C_isian3bs1/updateisian541', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -21577,7 +21097,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian542', $attributes);
+                    echo form_open('C_isian3bs1/updateisian542', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -21675,7 +21195,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian551d', $attributes);
+                    echo form_open('C_isian3bs1/updateisian551d', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -21729,7 +21249,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian56', $attributes);
+                    echo form_open('C_isian3bs1/updateisian56', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -21797,7 +21317,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian622', $attributes);
+                    echo form_open('C_isian3bs1/updateisian622', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -21873,7 +21393,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian623', $attributes);
+                    echo form_open('C_isian3bs1/updateisian623', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -21949,7 +21469,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian631', $attributes);
+                    echo form_open('C_isian3bs1/updateisian631', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -22083,7 +21603,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian632', $attributes);
+                    echo form_open('C_isian3bs1/updateisian632', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -22221,7 +21741,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian633', $attributes);
+                    echo form_open('C_isian3bs1/updateisian633', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -22359,7 +21879,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian641a', $attributes);
+                    echo form_open('C_isian3bs1/updateisian641a', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -22433,7 +21953,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian641c', $attributes);
+                    echo form_open('C_isian3bs1/updateisian641c', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -22512,7 +22032,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian643', $attributes);
+                    echo form_open('C_isian3bs1/updateisian643', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -22650,7 +22170,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian652', $attributes);
+                    echo form_open('C_isian3bs1/updateisian652', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -22946,7 +22466,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian711', $attributes);
+                    echo form_open('C_isian3bs1/updateisian711', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23178,7 +22698,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian713', $attributes);
+                    echo form_open('C_isian3bs1/updateisian713', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23296,7 +22816,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian714', $attributes);
+                    echo form_open('C_isian3bs1/updateisian714', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23342,7 +22862,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian721', $attributes);
+                    echo form_open('C_isian3bs1/updateisian721', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23575,7 +23095,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian731', $attributes);
+                    echo form_open('C_isian3bs1/updateisian731', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23671,7 +23191,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian732', $attributes);
+                    echo form_open('C_isian3bs1/updateisian732', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23768,7 +23288,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian4kolom', $attributes);
+                    echo form_open('C_isian3bs1/updateisian4kolom', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23834,7 +23354,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian1kolom', $attributes);
+                    echo form_open('C_isian3bs1/updateisian1kolom', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23877,7 +23397,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian1nkolom', $attributes);
+                    echo form_open('C_isian3bs1/updateisian1nkolom', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23947,10 +23467,10 @@
             </div>
         <!-- Tutup modal dokumen pendukung -->
 
-        <!-- BUKA MODAL NILAI 1.1.A -->
-        <div class="modal fade" id="nilai11a" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL NILAI 1.1.1 -->
+        <div class="modal fade" id="nilai111" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF1");?>
+            <?=form_open("C_penilaian/savenilaiF3");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -23960,14 +23480,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf1');
+                $this->db->from('hitungf3');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -24017,25 +23537,25 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kejelasan (1 - 4) </td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="11a1" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="11a1" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kerealistikan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="11a2" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="11a2" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor keterkaitan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="11a3" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="11a3" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor keterlibatan pemangku kepentingan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai4[]" id="11a4" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai4[]" id="11a4" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
@@ -24065,10 +23585,10 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL NILAI 1.1.A -->
+        <!-- TUTUP MODAL NILAI 1.1.1 -->
 
-        <!-- BUKA MODAL VIEW NILAI 1.1.A -->
-        <div class="modal fade" id="viewnilai11a" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL VIEW NILAI 1.1.1 -->
+        <div class="modal fade" id="viewnilai111" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -24107,25 +23627,25 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kejelasan (1 - 4) </td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="view11a1" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view11a1" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kerealistikan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="view11a2" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view11a2" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor keterkaitan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="view11a3" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="view11a3" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor keterlibatan pemangku kepentingan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai4[]" id="view11a4" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai4[]" id="view11a4" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
@@ -24149,12 +23669,12 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL VIEW NILAI 1.1.A -->
+        <!-- TUTUP MODAL VIEW NILAI 1.1.1 -->
 
-        <!-- BUKA MODAL NILAI 1.1.B -->
-        <div class="modal fade" id="nilai11b" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL NILAI 1.1.2 -->
+        <div class="modal fade" id="nilai112" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF1");?>
+            <?=form_open("C_penilaian/savenilaiF3");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -24164,14 +23684,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf1');
+                $this->db->from('hitungf3');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -24207,40 +23727,55 @@
                                         <th width="5%" rowspan="7" scope="row">2</th>
                                         <td width="5%" rowspan="7"><?php echo $butir[0]['butir'] ?></td>
                                         <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
-                                        <td></td>
-                                        <td></td>
                                         <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
-                                        <input type='hidden' name='direct' value="<?php echo $bukunya;?>">
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
                                         <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="25%" rowspan="5"><textarea rows="12" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="112" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah112()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">Skor kejelasan tahapan waktu dan kerealistikan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="11b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">Skor kelengkapan dokumen (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="11b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td>1</td>
+                                        <td width="45%">Strategi pencapaian sasaran: (1) tanpa adanya tahapan waktu yang jelas, (2) didukung dokumen yang kurang lengkap.</td>
+                                        <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">Skor akhir</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="11bskor" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td>2</td>
+                                        <td width="45%">Strategi pencapaian sasaran: (1) dengan tahapan waktu yang jelas, dan cukup realistik, (2) didukung dokumen yang cukup lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Strategi pencapaian sasaran: (1) dengan tahapan waktu yang jelas, dan realistik, (2) didukung dokumen yang  lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Strategi pencapaian sasaran:(1) dengan tahapan waktu yang jelas dan sangat realistik, (2) didukung dokumen yang sangat lengkap.</td>
+                                        <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="11bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="112nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
                                     <input type='hidden' name='nilai4[]' value="0">
                                     <input type='hidden' name='nilai5[]' value="0">
                                     <input type='hidden' name='nilai6[]' value="0">
@@ -24248,9 +23783,6 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
-                                    <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
-                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -24262,10 +23794,10 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL NILAI 1.1.B -->
+        <!-- TUTUP MODAL NILAI 1.1.2 -->
 
-        <!-- BUKA MODAL VIEW NILAI 1.1.B -->
-        <div class="modal fade" id="viewnilai11b" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL VIEW NILAI 1.1.2 -->
+        <div class="modal fade" id="viewnilai112" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -24298,30 +23830,51 @@
                                         <th width="5%" rowspan="7" scope="row">2</th>
                                         <td width="5%" rowspan="7"><?php echo $butir[0]['butir'] ?></td>
                                         <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="5"><textarea rows="12" name="komentar[]" id="view11bkomentar" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Skor kejelasan tahapan waktu dan kerealistikan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="view11b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view112" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah112()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="viewkomentar112" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">Skor kelengkapan dokumen (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="view11b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">Skor akhir</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="view11bskorakhir" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td>1</td>
+                                        <td width="45%">Strategi pencapaian sasaran: (1) tanpa adanya tahapan waktu yang jelas, (2) didukung dokumen yang kurang lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Strategi pencapaian sasaran: (1) dengan tahapan waktu yang jelas, dan cukup realistik, (2) didukung dokumen yang cukup lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Strategi pencapaian sasaran: (1) dengan tahapan waktu yang jelas, dan realistik, (2) didukung dokumen yang  lengkap.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Strategi pencapaian sasaran:(1) dengan tahapan waktu yang jelas dan sangat realistik, (2) didukung dokumen yang sangat lengkap.</td>
+                                        <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view11bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view112nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                 </tbody>
@@ -24334,12 +23887,12 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL VIEW NILAI 1.1.B -->
+        <!-- TUTUP MODAL VIEW NILAI 1.1.2 -->
 
         <!-- BUKA MODAL NILAI 1.2 -->
         <div class="modal fade" id="nilai12" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF1");?>
+            <?=form_open("C_penilaian/savenilaiF3");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -24349,14 +23902,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf1');
+                $this->db->from('hitungf3');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -24448,9 +24001,6 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
-                                    <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
-                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -24560,7 +24110,7 @@
         <!-- BUKA MODAL NILAI 2.1 -->
         <div class="modal fade" id="nilai21" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF1");?>
+            <?=form_open("C_penilaian/savenilaiF3");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -24570,14 +24120,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf1');
+                $this->db->from('hitungf3');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -24633,25 +24183,25 @@
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Program studi memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 aspek tsb di atas.</td>
+                                        <td width="45%">Fakultas memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 aspek berikut: kredibel, transparan,akuntabel,bertanggung jawab,adil.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Ada tata pamong yang  menjamin penyelenggaraan program studi, namun hanya memenuhi 3 dari 5 aspek tsb di atas.</td>
+                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara cukup konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi  3 dari 5 aspek berikut: kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 aspek tsb di atas.</td>
+                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 aspek berikut: kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 5 aspek tsb di atas.</td>
+                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi 5 aspek berikut:kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -24669,9 +24219,6 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
-                                    <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
-                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -24739,25 +24286,25 @@
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Program studi memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 aspek tsb di atas.</td>
+                                        <td width="45%">Fakultas memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 aspek berikut: kredibel, transparan,akuntabel,bertanggung jawab,adil.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Ada tata pamong yang  menjamin penyelenggaraan program studi, namun hanya memenuhi 3 dari 5 aspek tsb di atas.</td>
+                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara cukup konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi  3 dari 5 aspek berikut: kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 aspek tsb di atas.</td>
+                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 aspek berikut: kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 5 aspek tsb di atas.</td>
+                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi 5 aspek berikut:kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -24781,7 +24328,7 @@
         <!-- BUKA MODAL NILAI 2.2 -->
         <div class="modal fade" id="nilai22" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF1");?>
+            <?=form_open("C_penilaian/savenilaiF3");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -24791,14 +24338,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf1');
+                $this->db->from('hitungf3');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -24854,25 +24401,25 @@
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Kepemimpinan program studi lemah dalam karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="45%">Struktur organisasi kurang mampu menggerakkan fungsi lembaga.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam salah satu dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara cukup efisien (misalnya struktur ”terlalu gemuk”).</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam dua dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara efisien.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Kepemimpinan program studi memiliki karakteristik yang kuat dalam: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara sangat efisien.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -24890,9 +24437,6 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
-                                    <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
-                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -24960,25 +24504,25 @@
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Kepemimpinan program studi lemah dalam karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="45%">Struktur organisasi kurang mampu menggerakkan fungsi lembaga.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam salah satu dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara cukup efisien (misalnya struktur ”terlalu gemuk”).</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam dua dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara efisien.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Kepemimpinan program studi memiliki karakteristik yang kuat dalam: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
+                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara sangat efisien.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -25002,7 +24546,7 @@
         <!-- BUKA MODAL NILAI 2.3 -->
         <div class="modal fade" id="nilai23" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF1");?>
+            <?=form_open("C_penilaian/savenilaiF3");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -25012,14 +24556,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf1');
+                $this->db->from('hitungf3');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -25074,32 +24618,26 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td>0</td>
-                                        <td width="45%">Tidak ada sistem pengelolaan.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
                                         <td>1</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan tidak sesuai dengan SOP.</td>
+                                        <td width="45%">Kepemimpinan Fakultas lemah dalam karakteristik berikut: (1) kepemim-pinan operasional, (2) kepemim-pinan organisasi, (3) kepemim-pinan publik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan hanya sebagian sesuai dengan SOP dan dokumen kurang lengkap.</td>
+                                        <td width="45%">Kepemimpinan Fakultas memiliki karakter kepemimpinan yang kuat dalam salah satu dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan dengan cukup baik, sesuai dengan SOP, namun dokumen kurang lengkap.</td>
+                                        <td width="45%">Kepemimpinan Fakultas memiliki karakter kepemimpinan yang kuat dalam dua dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi berjalan sesuai dengan SOP, yang didukung dokumen yang lengkap.</td>
+                                        <td width="45%">Kepemimpinan Fakultas memiliki karakteristik yang kuat dalam: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -25117,9 +24655,6 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
-                                    <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
-                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -25186,32 +24721,26 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td>0</td>
-                                        <td width="45%">Tidak ada sistem pengelolaan.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
                                         <td>1</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan tidak sesuai dengan SOP.</td>
+                                        <td width="45%">Kepemimpinan Fakultas lemah dalam karakteristik berikut: (1) kepemim-pinan operasional, (2) kepemim-pinan organisasi, (3) kepemim-pinan publik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan hanya sebagian sesuai dengan SOP dan dokumen kurang lengkap.</td>
+                                        <td width="45%">Kepemimpinan Fakultas memiliki karakter kepemimpinan yang kuat dalam salah satu dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan dengan cukup baik, sesuai dengan SOP, namun dokumen kurang lengkap.</td>
+                                        <td width="45%">Kepemimpinan Fakultas memiliki karakter kepemimpinan yang kuat dalam dua dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi berjalan sesuai dengan SOP, yang didukung dokumen yang lengkap.</td>
+                                        <td width="45%">Kepemimpinan Fakultas memiliki karakteristik yang kuat dalam: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -25235,7 +24764,7 @@
         <!-- BUKA MODAL NILAI 2.4 -->
         <div class="modal fade" id="nilai24" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF1");?>
+            <?=form_open("C_penilaian/savenilaiF3");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -25245,14 +24774,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf1');
+                $this->db->from('hitungf3');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -25308,31 +24837,31 @@
                                     </tr>
                                     <tr>
                                         <td>0</td>
-                                        <td width="45%">Tidak ada sistem penjaminan mutu.</td>
+                                        <td width="45%">Tidak ada sistem pengelolaan.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Ada sistem penjaminan mutu, tetapi tidak berfungsi.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan tidak sesuai dengan SOP.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Sistem penjaminan mutu berfungsi sebagian namun  tidak ada umpan balik dan dokumen kurang lengkap.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan hanya sebagian sesuai dengan SOP dan dokumen kurang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, umpan balik tersedia tetapi tidak ada tindak lanjut.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan dengan cukup baik, sesuai dengan SOP, namun dokumen kurang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, ada  umpan balik dan tindak lanjutnya, yang didukung dokumen yang lengkap.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi berjalan sesuai dengan SOP, yang didukung dokumen yang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -25350,9 +24879,6 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
-                                    <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
-                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -25420,37 +24946,37 @@
                                     </tr>
                                     <tr>
                                         <td>0</td>
-                                        <td width="45%">Tidak ada sistem penjaminan mutu.</td>
+                                        <td width="45%">Tidak ada sistem pengelolaan.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Ada sistem penjaminan mutu, tetapi tidak berfungsi.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan tidak sesuai dengan SOP.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Sistem penjaminan mutu berfungsi sebagian namun  tidak ada umpan balik dan dokumen kurang lengkap.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan hanya sebagian sesuai dengan SOP dan dokumen kurang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, umpan balik tersedia tetapi tidak ada tindak lanjut.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan dengan cukup baik, sesuai dengan SOP, namun dokumen kurang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, ada  umpan balik dan tindak lanjutnya, yang didukung dokumen yang lengkap.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi berjalan sesuai dengan SOP, yang didukung dokumen yang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view24nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                 </tbody>
@@ -25465,10 +24991,10 @@
         </div>
         <!-- TUTUP MODAL VIEW NILAI 2.4 -->
 
-        <!-- BUKA MODAL NILAI 2.5 -->
-        <div class="modal fade" id="nilai25" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL NILAI 2.5.1 -->
+        <div class="modal fade" id="nilai251" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF1");?>
+            <?=form_open("C_penilaian/savenilaiF3");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -25478,14 +25004,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf1');
+                $this->db->from('hitungf3');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -25528,7 +25054,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="251" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah251()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -25541,37 +25067,37 @@
                                     </tr>
                                     <tr>
                                         <td>0</td>
-                                        <td width="45%">Tidak ada umpan balik.</td>
+                                        <td width="45%">Tidak memiliki unit pelaksana penjaminan mutu.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan tidak ada tindak lanjut.</td>
+                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat, namun belum melakukan sosialisasi.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan ada tindak lanjut secara insidental.</td>
+                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang baru dalam tahap sosialisasi  sistem penjaminan mutu.  </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara insidental.</td>
+                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang aktif mensosialisasikan sistem penjaminan mutu dan mulai menerapkannya.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara berkelanjutan.</td>
+                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang telah sepenuhnya melakukan proses penjaminan mutu.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><div id="nilai251"><input type="text" required name="skorakhir[]" id="251nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -25583,9 +25109,6 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
-                                    <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
-                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -25597,10 +25120,10 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL NILAI 2.5 -->
+        <!-- TUTUP MODAL NILAI 2.5.1 -->
 
-        <!-- BUKA MODAL VIEW NILAI 2.5 -->
-        <div class="modal fade" id="viewnilai25" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL VIEW NILAI 2.5.1 -->
+        <div class="modal fade" id="viewnilai251" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -25640,10 +25163,10 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="view25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view251" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah251()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
-                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar25" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar251" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor Matriks</td>
@@ -25653,37 +25176,37 @@
                                     </tr>
                                     <tr>
                                         <td>0</td>
-                                        <td width="45%">Tidak ada umpan balik.</td>
+                                        <td width="45%">Tidak memiliki unit pelaksana penjaminan mutu.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan tidak ada tindak lanjut.</td>
+                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat, namun belum melakukan sosialisasi.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan ada tindak lanjut secara insidental.</td>
+                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang baru dalam tahap sosialisasi  sistem penjaminan mutu.  </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara insidental.</td>
+                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang aktif mensosialisasikan sistem penjaminan mutu dan mulai menerapkannya.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara berkelanjutan.</td>
+                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang telah sepenuhnya melakukan proses penjaminan mutu.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai25"><input type="text" required name="skorakhir[]" id="view25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai251"><input type="text" required name="skorakhir[]" id="view251nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                 </tbody>
@@ -25696,12 +25219,12 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL VIEW NILAI 2.5 -->
+        <!-- TUTUP MODAL VIEW NILAI 2.5.1 -->
 
-        <!-- BUKA MODAL NILAI 2.6 -->
-        <div class="modal fade" id="nilai26" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL NILAI 2.5.2 -->
+        <div class="modal fade" id="nilai252" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF1");?>
+            <?=form_open("C_penilaian/savenilaiF3");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -25711,14 +25234,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf1');
+                $this->db->from('hitungf3');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -25761,7 +25284,7 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="26" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah26()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="252" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah252()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                         <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
@@ -25774,37 +25297,37 @@
                                     </tr>
                                     <tr>
                                         <td>0</td>
-                                        <td width="45%">Tidak ada usaha.</td>
+                                        <td width="45%">Tidak memiliki standar mutu.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Ada bukti hanya 1 usaha yang dilakukan.</td>
+                                        <td width="45%">Tersedia standar mutu yang lengkap, namun belum dilaksanakan.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Ada bukti hanya sebagian kecil usaha (2-3) yang dilakukan.</td>
+                                        <td width="45%">Tersedia standar mutu yang lengkap dan dilaksanakan dengan cukup baik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Ada bukti sebagian usaha ( > 3) dilakukan.</td>
+                                        <td width="45%">Tersedia standar mutu yang lengkap dan dilaksanakan dengan baik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Ada bukti semua usaha dilakukan berikut hasilnya.</td>
+                                        <td width="45%">Tersedia standar mutu yang  lengkap dan dilaksanakan dengan sangat baik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai26"><input type="text" required name="skorakhir[]" id="26nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai252"><input type="text" required name="skorakhir[]" id="252nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                     <input type='hidden' name='nilai2[]' value="0">
@@ -25816,9 +25339,6 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
-                                    <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
-                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -25830,10 +25350,10 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL NILAI 2.6 -->
+        <!-- TUTUP MODAL NILAI 2.5.2 -->
 
-        <!-- BUKA MODAL VIEW NILAI 2.6 -->
-        <div class="modal fade" id="viewnilai26" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL VIEW NILAI 2.5.2 -->
+        <div class="modal fade" id="viewnilai252" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -25873,10 +25393,10 @@
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="view26" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah26()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view252" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah252()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
-                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar26" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar252" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor Matriks</td>
@@ -25886,37 +25406,37 @@
                                     </tr>
                                     <tr>
                                         <td>0</td>
-                                        <td width="45%">Tidak ada usaha.</td>
+                                        <td width="45%">Tidak memiliki standar mutu.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Ada bukti hanya 1 usaha yang dilakukan.</td>
+                                        <td width="45%">Tersedia standar mutu yang lengkap, namun belum dilaksanakan.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Ada bukti hanya sebagian kecil usaha (2-3) yang dilakukan.</td>
+                                        <td width="45%">Tersedia standar mutu yang lengkap dan dilaksanakan dengan cukup baik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Ada bukti sebagian usaha ( > 3) dilakukan.</td>
+                                        <td width="45%">Tersedia standar mutu yang lengkap dan dilaksanakan dengan baik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Ada bukti semua usaha dilakukan berikut hasilnya.</td>
+                                        <td width="45%">Tersedia standar mutu yang  lengkap dan dilaksanakan dengan sangat baik.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai26"><input type="text" required name="skorakhir[]" id="view26nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td width="10%"><div id="nilai252"><input type="text" required name="skorakhir[]" id="view252nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
                                         <td></td>
                                     </tr>
                                 </tbody>
@@ -25929,7 +25449,7 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL VIEW NILAI 2.6 -->
+        <!-- TUTUP MODAL VIEW NILAI 2.5.1 -->
 
     </div>
 </section>
@@ -26387,7 +25907,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26422,7 +25942,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26449,7 +25969,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26472,7 +25992,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26534,7 +26054,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26561,7 +26081,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26588,7 +26108,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26617,7 +26137,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26644,7 +26164,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26671,7 +26191,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26698,7 +26218,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26725,7 +26245,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26748,7 +26268,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26774,7 +26294,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26799,7 +26319,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26823,7 +26343,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26847,7 +26367,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26897,7 +26417,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26920,7 +26440,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26951,7 +26471,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -26977,7 +26497,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27001,7 +26521,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27029,7 +26549,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27052,7 +26572,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27082,7 +26602,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27104,7 +26624,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27127,7 +26647,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27151,7 +26671,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27175,7 +26695,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27207,7 +26727,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27235,7 +26755,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27263,7 +26783,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27286,7 +26806,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27310,7 +26830,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27338,7 +26858,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27380,7 +26900,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27420,7 +26940,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27447,7 +26967,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27468,7 +26988,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27508,7 +27028,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27533,7 +27053,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -27570,7 +27090,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findisian";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findisian";
         $.ajax({
             method: "POST",
             url: link,
@@ -27608,7 +27128,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findisian";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findisian";
         $.ajax({
             method: "POST",
             url: link,
@@ -27644,7 +27164,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findisian";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findisian";
         $.ajax({
             method: "POST",
             url: link,
@@ -27684,11 +27204,11 @@
 
     });
 
-    $('#viewnilai11a').on('shown.bs.modal', function (event) {
+    $('#viewnilai111').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -27705,15 +27225,14 @@
               $('#view11askorakhir').val(buku[0]['nilai5']);
               $('#view11anilai').val(buku[0]['skorakhir']);
           });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
-    $('#viewnilai11b').on('shown.bs.modal', function (event) {
+    $('#viewnilai112').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -27722,13 +27241,11 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#viewkomentar11b').val(buku[0]['komentar']);
-              $('#view11b1').val(buku[0]['nilai1']);
-              $('#view11b2').val(buku[0]['nilai2']);
-              $('#view11bskorakhir').val(buku[0]['nilai3']);
-              $('#view11bnilai').val(buku[0]['skorakhir']);
+              $('#viewkomentar112').val(buku[0]['komentar']);
+              $('#view112').val(buku[0]['nilai1']);
+              $('#view112skorakhir').val(buku[0]['nilai2']);
+              $('#view112nilai').val(buku[0]['skorakhir']);
           });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
@@ -27736,7 +27253,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -27750,7 +27267,6 @@
               $('#view12skorakhir').val(buku[0]['nilai2']);
               $('#view12nilai').val(buku[0]['skorakhir']);
           });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
@@ -27758,7 +27274,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -27772,7 +27288,6 @@
               $('#view21skorakhir').val(buku[0]['nilai2']);
               $('#view21nilai').val(buku[0]['skorakhir']);
           });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
@@ -27780,7 +27295,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -27794,7 +27309,6 @@
               $('#view22skorakhir').val(buku[0]['nilai2']);
               $('#view22nilai').val(buku[0]['skorakhir']);
           });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
@@ -27802,7 +27316,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -27816,7 +27330,6 @@
               $('#view23skorakhir').val(buku[0]['nilai2']);
               $('#view23nilai').val(buku[0]['skorakhir']);
           });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
@@ -27824,7 +27337,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -27838,15 +27351,14 @@
               $('#view24skorakhir').val(buku[0]['nilai2']);
               $('#view24nilai').val(buku[0]['skorakhir']);
           });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
-    $('#viewnilai25').on('shown.bs.modal', function (event) {
+    $('#viewnilai251').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -27855,20 +27367,19 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#viewkomentar25').val(buku[0]['komentar']);
-              $('#view25').val(buku[0]['nilai1']);
-              $('#view25skorakhir').val(buku[0]['nilai2']);
-              $('#view25nilai').val(buku[0]['skorakhir']);
+              $('#viewkomentar251').val(buku[0]['komentar']);
+              $('#view251').val(buku[0]['nilai1']);
+              $('#view251skorakhir').val(buku[0]['nilai2']);
+              $('#view251nilai').val(buku[0]['skorakhir']);
           });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
-    $('#viewnilai26').on('shown.bs.modal', function (event) {
+    $('#viewnilai252').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -27877,37 +27388,13 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#viewkomentar26').val(buku[0]['komentar']);
-              $('#view26').val(buku[0]['nilai1']);
-              $('#view26skorakhir').val(buku[0]['nilai2']);
-              $('#view26nilai').val(buku[0]['skorakhir']);
+              $('#viewkomentar252').val(buku[0]['komentar']);
+              $('#view252').val(buku[0]['nilai1']);
+              $('#view252skorakhir').val(buku[0]['nilai2']);
+              $('#view252nilai').val(buku[0]['skorakhir']);
           });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
-
-    // $('#del').click(function() {
-    //     var delete_url = $(this).attr('data-url');
-    //     swal({
-    //         title: "Are you sure?",
-    //         text: "You will not be able to recover this imaginary file!",
-    //         type: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#DD6B55",
-    //         confirmButtonText: "Yes, delete it!",
-    //         cancelButtonText: "No, cancel plx!",
-    //         closeOnConfirm: false,
-    //         closeOnCancel: false
-    //     }, function (isConfirm) {
-    //         if (isConfirm) {
-    //             swal("Deleted!", "Your imaginary file has been deleted.", "success");
-    //             location.reload();
-    //             window.location.href = delete_url;
-    //         } else {
-    //             swal("Cancelled", "Your imaginary file is safe :)", "error");
-    //         }
-    //     });
-    // });
 
 
 
@@ -27951,7 +27438,7 @@ function printContent(el){
 
   function deledok(x){
     var butir = "<?php echo $this->uri->segment(2, 0)?>";
-    var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroydok/"+x+"/"+butir;
+    var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bs1/destroydok/"+x+"/"+butir;
         swal({
             title: "Are you sure?",
             text: "You will not be able to recover this imaginary file!",
@@ -27975,7 +27462,7 @@ function printContent(el){
 
   function deletabelbutir(x){
     var butir = "<?php echo $this->uri->segment(2, 0)?>";
-    var delete_url = "<?php echo base_url(); ?>index.php/C_isian/deletabelbutir/"+x+"/"+butir;
+    var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bs1/deletabelbutir/"+x+"/"+butir;
         swal({
             title: "Are you sure?",
             text: "You will not be able to recover this imaginary file!",
@@ -28000,17 +27487,17 @@ function printContent(el){
   function deleisi(x){
     var borang = "<?php echo $this->uri->segment(2, 0)?>";
     if ((borang==1)) {
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolom/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bs1/destroyisian4kolom/"+x+"/"+borang;
     } else if ((borang==2) || (borang==3) || (borang==4) || (borang==5) || (borang==6) || (borang==7) || (borang==24) || (borang==25) || (borang==26) || (borang==27) || (borang==28)){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian1kolom/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bs1/destroyisian1kolom/"+x+"/"+borang;
     } else if (borang==8){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian12kolom/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bs1/destroyisian12kolom/"+x+"/"+borang;
     } else if (borang==9){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian5kolom/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bs1/destroyisian5kolom/"+x+"/"+borang;
     }else if(borang==15){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolomsatupersatu/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bs1/destroyisian4kolomsatupersatu/"+x+"/"+borang;
     }else{
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian1kolom/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bs1/destroyisian1kolom/"+x+"/"+borang;
     }
     
         swal({
@@ -28064,8 +27551,8 @@ function printContent(el){
     nil1 = parseInt(isi1);
     nil2 = parseInt(isi2);
     hasil = nil1 + nil2;
-    if (nil2 > nil1) {
-        swal("Error", "Jumlah Mahasiswa Baru Reguler Bukan Transfer Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi", "error");
+    if (nil2 >= nil1) {
+        swal("Error", "Inputan anda Salah", "error");
     }
   }
 
@@ -28088,7 +27575,7 @@ function printContent(el){
               }
         }
 
-        function cekjumlah11a(){
+        function cekjumlah111(){
               var txt1 = document.getElementById('11a1').value;
               var txt2 = document.getElementById('11a2').value;
               var txt3 = document.getElementById('11a3').value;
@@ -28101,15 +27588,13 @@ function printContent(el){
                   }
         }
 
-        function cekjumlah11b(){
-              var txt1 = document.getElementById('11b1').value;
-              var txt2 = document.getElementById('11b2').value;
-              var result = ((parseFloat(txt1) + parseFloat(txt2))/2);
+        function cekjumlah112(){
+              var txt1 = document.getElementById('112').value;
+              var result = ((parseFloat(txt1)));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('11bskor').value = desimalnya;
-                     document.getElementById('11bnilai').value = desimalnya;
-                  }
+                     document.getElementById('112nilai').value = desimalnya;
+              }
         }
 
         function cekjumlah12(){
@@ -28148,30 +27633,30 @@ function printContent(el){
               }
         }
 
-        function cekjumlah25(){
-              var txt1 = document.getElementById('25').value;
+        function cekjumlah24(){
+              var txt1 = document.getElementById('24').value;
               var result = ((parseFloat(txt1)));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('25nilai').value = desimalnya;
+                     document.getElementById('24nilai').value = desimalnya;
               }
         }
 
-        function cekjumlah25(){
-              var txt1 = document.getElementById('25').value;
+        function cekjumlah251(){
+              var txt1 = document.getElementById('251').value;
               var result = ((parseFloat(txt1)));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('25nilai').value = desimalnya;
+                     document.getElementById('251nilai').value = desimalnya;
               }
         }
 
-        function cekjumlah26(){
-              var txt1 = document.getElementById('26').value;
+        function cekjumlah252(){
+              var txt1 = document.getElementById('252').value;
               var result = ((parseFloat(txt1)));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('26nilai').value = desimalnya;
+                     document.getElementById('252nilai').value = desimalnya;
               }
         }
 
@@ -29417,8 +28902,8 @@ function printContent(el){
 
   function infoPamong(){
     swal({
-        title: "Info <small>dari </small>Sistem Tata Pamong",
-        text: "Sistem tata pamong berjalan secara efektif melalui mekanisme yang disepakati bersama, serta dapat memelihara dan mengakomodasi semua unsur, fungsi, dan peran dalam program studi. Tata pamong didukung dengan budaya organisasi yang dicerminkan dengan ada dan tegaknya aturan, tatacara pemilihan pimpinan, etika dosen, etika mahasiswa, etika tenaga kependidikan, sistem penghargaan dan sanksi serta pedoman dan prosedur pelayanan (administrasi, perpustakaan, laboratorium, dan studio). Sistem tata pamong (input, proses, output dan outcome serta lingkungan eksternal yang menjamin terlaksananya tata pamong yang baik) harus diformulasikan, disosialisasikan, dilaksanakan,  dipantau dan dievaluasi dengan peraturan dan prosedur yang jelas.</br></br> <b>Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang kredibel, transparan, akuntabel, bertanggung jawab dan adil.</b>",
+        title: "Info <small>dari </small>Tata Pamong",
+        text: "Tata pamong adalah suatu sistem yang dapat menjadikan kepemimpinan, sistem pengelolaan dan penjaminan mutu berjalan secara efektif di dalam universitas/institusi yang mengelola program studi.  Hal-hal yang menjadi fokus di dalam tata pamong termasuk bagaimana kebijakan dan strategi disusun sedemikian rupa sehingga memungkinkan terpilihnya pemimpin dan pengelola yang kredibel dan sistem penyelenggaraan program studi secara kredibel, transparan, akuntabel, bertanggung jawab dan menerapkan prinsip-prinsip keadilan. Organisasi dan sistem tata pamong yang baik (good governance) mencerminkan kredibilitas, transparansi, akuntabilitas, tanggungjawab dan keadilan Fakultas/Sekolah Tinggi dalam mengelola program studi. </b>",
         html: true
     });
   }
@@ -29434,23 +28919,23 @@ function printContent(el){
   function infoKepemimpinan(){
     swal({
         title: "Info <small>dari </small>Kepemimpinan",
-        text: "Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat. Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistik, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi. Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.  Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.  Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.  Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.</br></br> <b>Jelaskan pola kepemimpinan dalam Program Studi.</b>",
+        text: "Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat. Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistis, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi. Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.  Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.  Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.  Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.</b>",
         html: true
     });
   }
 
   function infoPengelolaan(){
     swal({
-        title: "Info <small>dari </small>Sistem Pengelolaan",
-        text: "Sistem pengelolaan fungsional dan operasional program studi mencakup planning, organizing, staffing, leading, controlling dalam kegiatan  internal maupun eksternal.</br></br><b>Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</b>",
+        title: "Info <small>dari </small>Struktur Organisasi, Koordinasi dan Cara Kerja Fakultas/Sekolah Tinggi",
+        text: "Gambarkan struktur organisasi  Fakultas/Sekolah Tinggi serta tugas/fungsi dari tiap unit yang ada</b>",
         html: true
     });
   }
 
   function infoMutu(){
     swal({
-        title: "Info <small>dari </small>Penjaminan Mutu",
-        text: "<b>Bagaimanakah pelaksanaan penjaminan mutu pada Program Studi? Jelaskan.</b>",
+        title: "Info <small>dari </small>Sistem Pengelolaan",
+        text: "<b>Sistem pengelolaan fungsional dan operasional program studi mencakup planning, organizing, staffing, leading, controlling, serta operasi internal dan eksternal.</b>",
         html: true
     });
   }

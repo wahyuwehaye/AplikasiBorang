@@ -53,10 +53,43 @@
                             </thead>
                             <tbody>
                                 <?php
+                                $CI =& get_instance();
+                                // get list dokumen pendukung
+                                $getlistlamirpmin =$CI->db->query('select * from lampiran where id_borang in (SELECT id from borang where id_prodi = "'.$getdata[0]['idprodiborang'].'") and butir="-"');
+                                foreach ($getlistlamirpmin->result() as $barlamp){
+                                        // cek jumlah lampiran dgn butir -
+                                        $queryceklampirmin=$CI->db->query('SELECT COUNT(id) as ceklampmin FROM lampiran WHERE id_borang in (SELECT id from borang where id_prodi = "'.$getdata[0]['idprodiborang'].'") and butir="-"');
+                                        $ceklampmin=$queryceklampirmin->result_array()[0]['ceklampmin'];
+                                        $ceklampirmin=($ceklampmin!=0)?($ceklampmin):0;
+
+                                        if (($barlamp->dokumen)=="") {
+                                                $lampiranpertmin = "Tidak Ada";
+                                                $statuslampmin = "Tida Ada";
+                                                $warnalampmin = "danger";
+                                        }elseif (($barlamp->filename)=="") {
+                                                $lampiranpertmin = $barlamp->dokumen;
+                                                $statuslampmin = "Belum";
+                                                $warnalampmin = "danger";
+                                        }else{
+                                                $lampiranpertmin = $barlamp->dokumen;
+                                                $statuslampmin = $barlamp->status;
+                                                $warnalampmin = "success";
+                                            }
+                                    ?>
+                                <tr>
+                                    <td class='<?php echo($warnalampmin) ?>'> - </td>
+                                    <td class='<?php echo($warnalampmin) ?>'> - </td>
+                                    <td class='<?php echo($warnalampmin) ?>'> <?php echo $lampiranpertmin; ?> </td>
+                                    <td class='<?php echo($warnalampmin) ?>'> <?php echo $statuslampmin; ?> </td>
+                                    <td class='<?php echo($warnalampmin) ?>'> - </td>
+                                    <td class='<?php echo($warnalampmin) ?>'> - </td>
+                                    <td class='<?php echo($warnalampmin) ?>'> - </td>
+                                </tr>
+                                    <?php
+                                }
                                     for($i=0;$i<count($butir);$i++){
                                  ?>
                                     <?php
-                                        $CI =& get_instance();
                                         // cek sudah terisi atau belum
                                         $queryCekisi=$CI->db->query('SELECT COUNT(id) as cekisi FROM isian_16kolom WHERE id_butir IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
                                         $cekisi=$queryCekisi->result_array()[0]['cekisi'];
@@ -80,63 +113,134 @@
                                             $skor=0;
                                         }
 
+                                        $rowspannya = 0;
+
                                         // cek jumlah dokumen
                                         $querycekdoku=$CI->db->query('SELECT COUNT(id) as cekdoku FROM dokumenpendukung WHERE id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'"');
                                         $cekdoku=$querycekdoku->result_array()[0]['cekdoku'];
                                         $cekdokunya=($cekdoku!=0)?($cekdoku):0;
+                                        // ambil data pertama
+                                        $querydokupertama=$CI->db->query('SELECT * FROM dokumenpendukung WHERE id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'" order by id ASC limit 1');
+                                        $jumdoknya = $querydokupertama->result_array();
+                                        if (count($jumdoknya) > 0) {
+                                            $dokupertama=$querydokupertama->result_array()[0]['id'];
+                                            if (($querydokupertama->result_array()[0]['dokumen'])=="") {
+                                                    $dokumenpertama = "Tidak Ada";
+                                                    $statuspertama = "Tida Ada";
+                                                    $warnadok = "danger";
+                                                }elseif (($querydokupertama->result_array()[0]['filename'])=="") {
+                                                    $dokumenpertama = $querydokupertama->result_array()[0]['dokumen'];
+                                                    $statuspertama = "Belum";
+                                                    $warnadok = "danger";
+                                                }else{
+                                                    $dokumenpertama = $querydokupertama->result_array()[0]['dokumen'];
+                                                    $statuspertama = $querydokupertama->result_array()[0]['status'];
+                                                    $warnadok = "success";
+                                                }
+                                        }else{
+                                            $dokumenpertama = "Tidak Ada";
+                                            $statuspertama = "Tida Ada";
+                                            $warnadok = "danger";
+                                            $dokupertama = "";
+                                        }
+                                        
 
-                                    ?>
-                                    <?php
-                                    if ($cekdokunya==0) {
+                                        // cek jumlah lampiran
+                                        // $queryceklampir=$CI->db->query('SELECT COUNT(id) as ceklampir FROM lampiran WHERE id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'"');
+                                        $queryceklampir=$CI->db->query('SELECT COUNT(id) as ceklampir FROM lampiran WHERE id_borang in (SELECT id from borang where id_prodi = "'.$getdata[0]['idprodiborang'].'") and butir="'.$butir[$i]['butir'].'"');
+                                        $ceklampir=$queryceklampir->result_array()[0]['ceklampir'];
+                                        $ceklampirnya=($ceklampir!=0)?($ceklampir):0;
+                                        // ambil data lampiran
+                                        // $querylampiran=$CI->db->query('SELECT * FROM lampiran WHERE id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'"');
+                                        $querylampiran=$CI->db->query('SELECT * FROM lampiran WHERE id_borang in (SELECT id from borang where id_prodi = "'.$getdata[0]['idprodiborang'].'") and butir="'.$butir[$i]['butir'].'"');
+                                        $doklampir=$querylampiran->result_array();
+                                        if (count($doklampir) < 1) {
+                                                $lampiranpert = "Tidak Ada";
+                                                $statuslamp = "Tida Ada";
+                                                $warnalamp = "danger";
+                                        }elseif (($querylampiran->result_array()[0]['filename'])=="") {
+                                                $lampiranpert = $querylampiran->result_array()[0]['dokumen'];
+                                                $statuslamp = "Belum";
+                                                $warnalamp = "danger";
+                                        }else{
+                                                $lampiranpert = $querylampiran->result_array()[0]['dokumen'];
+                                                $statuslamp = $querylampiran->result_array()[0]['status'];
+                                                $warnalamp = "success";
+                                            }
+
+                                        if ($cekdokunya > $ceklampirnya) {
+                                            $rowspannya = $cekdokunya;
+                                        }else{
+                                            $rowspannya = $ceklampirnya;
+                                        }
+
+                                    if ($rowspannya==0) {
                                     ?>
                                 <tr>
-                                    <td rowspan="<?php echo($cekdokunya) ?>" class='<?php echo($warnanya) ?>'><?php echo $butir[$i]['butir'] ?> </td>
-                                    <td rowspan="<?php echo($cekdokunya) ?>" class='<?php echo($warnanya) ?>'><?php
+                                    <td rowspan="<?php echo($rowspannya) ?>" class='<?php echo($warnanya) ?>'><?php echo $butir[$i]['butir'] ?> </td>
+                                    <td rowspan="<?php echo($rowspannya) ?>" class='<?php echo($warnanya) ?>'><?php
                                     if ($isinya!==0) {
                                         echo "Sudah Terisi";
                                     }else{
                                         echo "Belum Terisi";
                                     }
                                      ?></td>
-                                    <td rowspan="<?php echo($cekdokunya) ?>" class='<?php echo($warnanya) ?>'> - </td>
-                                    <td rowspan="<?php echo($cekdokunya) ?>" class='<?php echo($warnanya) ?>'> - </td>
-                                    <td class='<?php echo($warnanya) ?>'> - </td>
-                                    <td class='<?php echo($warnanya) ?>'> - </td>
-                                    <td rowspan="<?php echo($cekdokunya) ?>" class='<?php echo($warnanya) ?>'><?php echo $skor; ?></td>
+                                    <td rowspan="<?php echo($rowspannya) ?>" class='<?php echo($warnanya) ?>'> <?php echo $lampiranpert; ?> </td>
+                                    <td rowspan="<?php echo($rowspannya) ?>" class='<?php echo($warnanya) ?>'> <?php echo $statuslamp; ?> </td>
+                                    <td class='<?php echo($warnanya) ?>'> <?php echo $dokumenpertama; ?> </td>
+                                    <td class='<?php echo($warnanya) ?>'> <?php echo $statuspertama; ?> </td>
+                                    <td rowspan="<?php echo($rowspannya) ?>" class='<?php echo($warnanya) ?>'><?php echo $skor; ?></td>
                                 </tr>
                                     <?php
                                     }
-                                    else if ($cekdokunya>1) {
-                                        $getlistbukti =$CI->db->query('select * from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'"');
-                                        foreach ($getlistbukti->result() as $bar){
-                                            if (($bar->filename)=="") {
+                                    else if ($rowspannya>=1) {
+                                        // get list dokumen pendukung
+                                        $getlistbukti =$CI->db->query('select * from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'" and not id="'.$dokupertama.'"');
+                                        // get list lampiran
+                                        // $getlistlampiran =$CI->db->query('select * from lampiran where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'"');
+                                        $getlistlampiran =$CI->db->query('select * from lampiran where id_borang in (SELECT id from borang where id_prodi = "'.$getdata[0]['idprodiborang'].'") and butir="'.$butir[$i]['butir'].'" or butir="-"');
+                                            ?>
+                                <tr>
+                                    <td rowspan="<?php echo($rowspannya) ?>" class='<?php echo($warnanya) ?>'><?php echo $butir[$i]['butir'] ?> </td>
+                                    <td rowspan="<?php echo($rowspannya) ?>" class='<?php echo($warnanya) ?>'><?php
+                                    if ($isinya!==0) {
+                                        echo "Sudah Terisi";
+                                    }else{
+                                        echo "Belum Terisi";
+                                    }
+                                     ?></td>
+                                    <td rowspan="<?php echo($rowspannya) ?>" class='<?php echo($warnalamp) ?>'> <?php echo $lampiranpert; ?> </td>
+                                    <td rowspan="<?php echo($rowspannya) ?>" class='<?php echo($warnalamp) ?>'> <?php echo $statuslamp; ?> </td>
+                                    <td class='<?php echo($warnadok) ?>'> <?php echo $dokumenpertama; ?> </td>
+                                    <td class='<?php echo($warnadok) ?>'> <?php echo $statuspertama; ?> </td>
+                                    <td rowspan="<?php echo($rowspannya) ?>" class='<?php echo($warnanya) ?>'><?php echo $skor; ?></td>
+                                </tr>
+                                <?php
+                                foreach ($getlistbukti->result() as $bar){
+                                            if (($bar->dokumen)=="") {
+                                                $dokumen = "Tidak Ada";
+                                                $filename = "Tidak Ada";
+                                                $status = "Tida Ada";
+                                                $warnanyaa = "warning";
+                                            }elseif (($bar->filename)=="") {
+                                                $dokumen = $bar->dokumen;
                                                 $filename = "Belum di Upload";
                                                 $status = "Belum";
                                                 $warnanyaa = "danger";
                                             }else{
+                                                $dokumen = $bar->dokumen;
                                                 $filename = $bar->filename;
                                                 $status = $bar->status;
                                                 $warnanyaa = "success";
                                             }
-                                            ?>
+                                ?>
                                 <tr>
-                                    <td class='<?php echo($warnanya) ?>'><?php echo $butir[$i]['butir'] ?> </td>
-                                    <td class='<?php echo($warnanya) ?>'><?php
-                                    if ($isinya!==0) {
-                                        echo "Sudah Terisi";
-                                    }else{
-                                        echo "Belum Terisi";
-                                    }
-                                     ?></td>
-                                    <td class='<?php echo($warnanya) ?>'> - </td>
-                                    <td class='<?php echo($warnanya) ?>'> - </td>
-                                    <td class='<?php echo($warnanyaa) ?>'> <?php echo $bar->dokumen ?> </td>
+                                    <td class='<?php echo($warnanyaa) ?>'> <?php echo $dokumen ?> </td>
                                     <td class='<?php echo($warnanyaa) ?>'> <?php echo $status ?> </td>
-                                    <td class='<?php echo($warnanya) ?>'><?php echo $skor; ?></td>
+                                </tr>
                                             <?php
                                         }
                                     ?>
-                                </tr>
                                     <?php
                                     }
                                     ?>

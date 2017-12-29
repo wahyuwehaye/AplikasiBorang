@@ -28,43 +28,31 @@
                             <i class="material-icons">add</i>
                         </button> -->
                         <?php
+                        $butird3 = stripos(($getdata[0]['namaprodi']), 'D3');
+                        $butird4 = stripos(($getdata[0]['namaprodi']), 'D4');
+                        $butirs1 = stripos(($getdata[0]['namaprodi']), 'S1');
+                        $butirs2 = stripos(($getdata[0]['namaprodi']), 'S2');
+                        $butirfak = stripos(($getdata[0]['namaprodi']), 'Fakultas');
                         if($_SESSION['role']=="Admin"){
-                            $butird3 = stripos(($getdata[0]['namaprodi']), 'D3');
-                            $butird4 = stripos(($getdata[0]['namaprodi']), 'D4');
-                            $butirs1 = stripos(($getdata[0]['namaprodi']), 'S1');
-                            $butirs2 = stripos(($getdata[0]['namaprodi']), 'S2');
-                            $butirfak = stripos(($getdata[0]['namaprodi']), 'Fakultas');
                         ?>
                         <h2>
                         Tabel Butir <?php echo (ucwords($getdata[0]['namaprodi'])); ?> &nbsp;
                         <?php
                         if (count($butir)>0) {
-                            if (($butird3!==false) || ($butird4!==false)) {
                                 ?>
                         <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>&nbsp;
                         <button type="button" data-color="light-blue" class="btn bg-red waves-effect btn-xs" onclick="deleteallbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Hapus Semua Butir Borang" href="javascript:void(0)"><i class="material-icons">delete</i></button>
                                 <?php
-                            }elseif ($butirs1!==false) {
-                                 ?>
-                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>&nbsp;
-                        <button type="button" data-color="light-blue" class="btn bg-red waves-effect btn-xs" onclick="deleteallbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Hapus Semua Butir Borang" href="javascript:void(0)"><i class="material-icons">delete</i></button>
-                                <?php
-                            }elseif ($butirs2!==false) {
-                                 ?>
-                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>&nbsp;
-                        <button type="button" data-color="light-blue" class="btn bg-red waves-effect btn-xs" onclick="deleteallbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Hapus Semua Butir Borang" href="javascript:void(0)"><i class="material-icons">delete</i></button>
-                                <?php
-                            }
                         }else{
                             if(($butird3 !== false) && ($butirfak !== false)){
                                 ?>
-                                <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3BD3(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3BD3(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
                                 <?php
                             } elseif (($butird3!==false) || ($butird4!==false)) {
                                 ?>
-                                <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3AD3(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3AD3(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
                                 <?php
-                            }elseif ($butirfak!==false) {
+                            }elseif (($butirs1!==false) && ($butirfak!==false)) {
                                  ?>
                         <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3BS1(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
                                 <?php
@@ -74,7 +62,7 @@
                                 <?php
                             }elseif ($butirs2!==false) {
                                  ?>
-                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
                                 <?php
                             }
                         }
@@ -150,17 +138,33 @@
                                         $cekisi=$queryCekisi->result_array()[0]['cekisi'];
                                         $isinya=($cekisi!=0)?($cekisi):0;
 
-                                        // cek nilainya
-                                        $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
-                                        $cekskor=$queryceknilai->result_array()[0]['cekskor'];
-                                        $cekskornya=($cekskor!=0)?($cekskor):0;
-                                        if ($cekskornya!==0) {
-                                            // ambil nilainya
-                                            $querygetnilai=$CI->db->query('SELECT skorakhir FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].') order by id desc');
-                                            $getnilai=$querygetnilai->result_array()[0]['skorakhir'];
-                                            $skor=($getnilai!=0)?($getnilai):0;
+                                        // cek dulu apakah masuk ke F1 atau F3
+                                        if($butirfak !== false){
+                                            // cek nilainya
+                                            $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf3 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
+                                            $cekskor=$queryceknilai->result_array()[0]['cekskor'];
+                                            $cekskornya=($cekskor!=0)?($cekskor):0;
+                                            if ($cekskornya!==0) {
+                                                // ambil nilainya
+                                                $querygetnilai=$CI->db->query('SELECT skorakhir FROM hitungf3 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].') order by id desc');
+                                                $getnilai=$querygetnilai->result_array()[0]['skorakhir'];
+                                                $skor=($getnilai!=0)?($getnilai):0;
+                                            }else{
+                                                $skor=0;
+                                            }
                                         }else{
-                                            $skor=0;
+                                            // cek nilainya
+                                            $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
+                                            $cekskor=$queryceknilai->result_array()[0]['cekskor'];
+                                            $cekskornya=($cekskor!=0)?($cekskor):0;
+                                            if ($cekskornya!==0) {
+                                                // ambil nilainya
+                                                $querygetnilai=$CI->db->query('SELECT skorakhir FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].') order by id desc');
+                                                $getnilai=$querygetnilai->result_array()[0]['skorakhir'];
+                                                $skor=($getnilai!=0)?($getnilai):0;
+                                            }else{
+                                                $skor=0;
+                                            }
                                         }
 
                                         // cek sudah upload semua
@@ -173,9 +177,12 @@
                                                 $jenisd3 = stripos(($getdata[0]['namaprodi']), 'D3');
                                                 $jeniss1 = stripos(($getdata[0]['namaprodi']), 'S1');
                                                 $jeniss2 = stripos(($getdata[0]['namaprodi']), 'S2');
+                                                $jenisfak = stripos(($getdata[0]['namaprodi']), 'Fakultas');
                                                 if ($jenisd3 !== false) {
                                             ?>
                                                     <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian3ad3/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; 
+                                            <?php } elseif (($jeniss1!==false) && ($jenisfak!==false)) { ?>
+                                                    <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian3bs1/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
                                             <?php } elseif ($jeniss1 !== false) { ?>
                                                     <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
                                             <?php } elseif ($jeniss2 !== false) { ?>

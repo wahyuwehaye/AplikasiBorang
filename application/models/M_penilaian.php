@@ -20,15 +20,6 @@ class M_penilaian extends CI_Model {
               ->result();
         }
 
-        public function get_f1()
-        {
-            return $this->db->select("*")
-            ->from('f1')
-            ->order_by('id', 'ASC')
-            ->get()
-            ->result_array();
-        }
-
         public function insert_entry()
         {
                 $data = array(

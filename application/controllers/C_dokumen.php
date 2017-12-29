@@ -50,11 +50,18 @@ class C_dokumen extends CI_Controller {
 		}
 	}
 
-	// FOR BUKTI YANG HARUS DISIAPKAN
+	// FOR BUKTI DAN LAMPIRAN YANG HARUS DISIAPKAN
 	public function findbukti(){
 		$id=$_POST['id'];
 		$this->load->model('M_dokumen');
 		$data=$this->M_dokumen->findbukti('id',$id);
+		echo json_encode($data);
+	}
+
+	public function findlampiran(){
+		$id=$_POST['id'];
+		$this->load->model('M_dokumen');
+		$data=$this->M_dokumen->findlampiran('id',$id);
 		echo json_encode($data);
 	}
 
@@ -160,6 +167,47 @@ class C_dokumen extends CI_Controller {
 		echo json_encode(array("status" => TRUE));
 	}
 
+	public function updatelampiran()
+	{
+		$data = array(
+				'status' => 'Sudak OK',
+				'created_at' => date('Y-m-d H:i:s'),
+				'updated_at' => date('Y-m-d H:i:s'),
+				// 'filename' => $this->input->post('filename'),
+			);
+
+		// if($this->input->post('remove_filename')) // if remove filename checked
+		// {
+		// 	if(file_exists('bukti/'.$this->input->post('remove_filename')) && $this->input->post('remove_filename'))
+		// 		unlink('bukti/'.$this->input->post('remove_filename'));
+		// 	$data['filename'] = '';
+		// }
+
+		if(!empty($_FILES['filename']['name']))
+		{
+			$upload = $this->_do_uploadlampiran();
+			
+			//delete file
+			$buktfile = $this->M_dokumen->get_by_id($this->input->post('idlampiran'));
+			if(file_exists('lampiran/'.$buktfile->filename) && $buktfile->filename)
+				unlink('lampiran/'.$buktfile->filename);
+
+			$data['filename'] = $upload;
+		}
+
+		$this->M_dokumen->updatelampiran(array('id' => $this->input->post('idlampiran')), $data);
+
+		$data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Sudah Mengupload File Lampiran dengan nama : ". $_FILES['filename']['name']." dengan id Borang = ".$this->input->post('idlampiran')." dan id butir = ".$_POST['direct'],
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+        $this->db->insert('log', $data);
+
+		redirect('/lampiran/'.$_POST['direct']);
+		echo json_encode(array("status" => TRUE));
+	}
+
 	public function deletebukti($id,$butir)
 	{
 		$data = array(
@@ -214,6 +262,33 @@ class C_dokumen extends CI_Controller {
 		echo json_encode(array("status" => TRUE));
 	}
 
+	public function deletelampiran($id,$butir)
+	{
+		$data = array(
+				'status' => '',
+				'created_at' => date('Y-m-d H:i:s'),
+				'updated_at' => date('Y-m-d H:i:s'),
+			);
+
+		//delete file
+		$buktfile = $this->M_dokumen->get_by_id_lampiran($id);
+		if(file_exists('lampiran/'.$buktfile->filename) && $buktfile->filename)
+			unlink('lampiran/'.$buktfile->filename);
+		$namafilelama = $buktfile->filename;
+		$data['filename'] = '';
+		
+		$this->M_dokumen->updatelampiran(array('id' => $id), $data);
+
+		$data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Sudah Menghapus File Lampiran dengan nama : ". $namafilelama." dengan id Borang = ".$id." dan id butir = ".$butir,
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+        $this->db->insert('log', $data);
+        redirect('/lampiran/'.$butir);
+		echo json_encode(array("status" => TRUE));
+	}
+
 	public function downloadbukti($id,$butir){
 		$buktfile = $this->M_dokumen->get_by_id($id);
 		$namafilelama = $buktfile->filename;
@@ -229,7 +304,29 @@ class C_dokumen extends CI_Controller {
 	private function _do_upload()
 	{
 		$config['upload_path']          = 'bukti/';
-        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt';
+        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
+        $config['max_size']             = 0; //set max size allowed in Kilobyte
+        $config['max_width']            = 0; // set max width image allowed
+        $config['max_height']           = 0; // set max height allowed
+        $config['file_name']            = $_FILES['filename']['name']; //just milisecond timestamp fot unique name
+
+        $this->load->library('upload', $config);
+
+        if(!$this->upload->do_upload('filename')) //upload and validate
+        {
+            $data['inputerror'][] = 'filename';
+			$data['error_string'][] = 'Upload error: '.$this->upload->display_errors('',''); //show ajax error
+			$data['status'] = FALSE;
+			echo json_encode($data);
+			exit();
+		}
+		return $this->upload->data('file_name');
+	}
+
+	private function _do_uploadlampiran()
+	{
+		$config['upload_path']          = 'lampiran/';
+        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
         $config['max_size']             = 0; //set max size allowed in Kilobyte
         $config['max_width']            = 0; // set max width image allowed
         $config['max_height']           = 0; // set max height allowed

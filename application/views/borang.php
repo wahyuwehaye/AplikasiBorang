@@ -102,8 +102,31 @@
                                     <td>
                                         <div class="js-sweetalert">
                                             <!-- <a type="button" data-color="purple" class="btn bg-teal waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Input dari Excel" href="<?php echo base_url();?>uploadexcel/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">input</i></a>&nbsp; -->
-                                            <a type="button" data-color="purple" class="btn bg-purple waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Detail" href="<?php echo base_url();?>butir/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">description</i></a>&nbsp;
+                                            <?php
+                                            $borangg = stripos(($key->jenis), 'Borang');
+                                            $evdir = stripos(($key->jenis), 'Evaluasi Diri');
+                                            $excel = stripos(($key->jenis), 'Excel');
+                                            $lampiran = stripos(($key->jenis), 'Lampiran');
+                                            if ($borangg !== false) {
+                                            ?>
+                                            <a type="button" data-color="purple" class="btn bg-purple waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Detail Borang" href="<?php echo base_url();?>butir/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">description</i></a>&nbsp;
                                             <a type="button" data-color="amber" class="btn bg-amber waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Resume Borang" href="<?php echo base_url();?>resume/<?php echo $key->id; ?>"><i class="material-icons">pageview</i></a>&nbsp;
+                                            <?php
+                                            }elseif ($evdir !== false) {
+                                            ?>
+                                            <a type="button" data-color="purple" class="btn bg-purple waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Detail Evaluasi Diri" href="<?php echo base_url();?>evdir/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">description</i></a>&nbsp;
+                                            <?php
+                                            }elseif ($excel !== false) {
+                                            ?>
+                                            <a type="button" data-color="purple" class="btn bg-purple waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Detail Excel" href="<?php echo base_url();?>excel/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">description</i></a>&nbsp;
+                                            <?php
+                                            }elseif ($lampiran !== false) {
+                                            ?>
+                                            <a type="button" data-color="purple" class="btn bg-purple waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Detail Lampiran" href="<?php echo base_url();?>lampiran/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">description</i></a>&nbsp;
+                                            <?php
+                                            }
+                                            ?>
+                                            <!-- <a type="button" data-color="amber" class="btn bg-amber waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Resume Borang" href="<?php echo base_url();?>resume/<?php echo $key->id; ?>"><i class="material-icons">pageview</i></a>&nbsp; -->
                                             <a onclick="downloadborang()" type="button" data-color="blue-grey" class="btn bg-blue-grey waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Download Borang"><i class="material-icons">file_download</i></a>&nbsp;
                                             <a onclick="nilaiborang()" type="button" data-color="yellow" class="btn bg-yellow waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Nilai"><i class="material-icons">grade</i></a>&nbsp;
                                             <?php

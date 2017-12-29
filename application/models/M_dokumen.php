@@ -2,6 +2,7 @@
 
 class M_dokumen extends CI_Model {
     var $table = 'dokumenpendukung';
+    var $table1 = 'lampiran';
 
         public function __construct()
         {
@@ -49,9 +50,24 @@ class M_dokumen extends CI_Model {
             return $query->row();
         }
 
+        public function get_by_id_lampiran($id)
+        {
+            $this->db->from($this->table1);
+            $this->db->where('id',$id);
+            $query = $this->db->get();
+
+            return $query->row();
+        }
+
         public function updatebukti($where, $data)
         {
             $this->db->update($this->table, $data, $where);
+            return $this->db->affected_rows();
+        }
+
+        public function updatelampiran($where, $data)
+        {
+            $this->db->update($this->table1, $data, $where);
             return $this->db->affected_rows();
         }
 
@@ -151,6 +167,11 @@ class M_dokumen extends CI_Model {
 
         public function findbukti($column,$id){
               $query = $this->db->get_where('dokumenpendukung', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findlampiran($column,$id){
+              $query = $this->db->get_where('lampiran', array($column => $id));
               return $query->result_array();
         }
 

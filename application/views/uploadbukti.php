@@ -16,7 +16,7 @@
                 <li><a href="<?php echo base_url();?>prodi/<?php echo $getdata[0]['idfakultas']; ?>"> Kelola Borang</a></li>
                 <li><a href="<?php echo base_url();?>borang/<?php echo $getdata[0]['idprodi']; ?>"> Kelola Jenis Borang</a></li>
                 <li><a href="<?php echo base_url();?>butir/<?php echo $getdata[0]['idborang']; ?>"> Kelola Butir Borang</a></li>
-                <li class="active"><i class="material-icons">text_format</i> Isian Butir</li>
+                <li class="active"><i class="material-icons">file_download</i> Dokumen Borang</li>
             </ol>
             </div>
         </div>
@@ -57,6 +57,7 @@
                         >
                             <thead>
                                 <tr>
+                                    <th width="3%">No</th>
                                     <th width="40%">Bukti yang harus disiapkan</th>
                                     <th width="30%">Nama File</th>
                                     <th width="10%">Status</th>
@@ -66,6 +67,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th width="3%">No</th>
                                     <th width="25%">Bukti yang harus disiapkan</th>
                                     <th width="20%">Nama File</th>
                                     <th width="10%">Status</th>
@@ -95,6 +97,7 @@
                                 <?php } ?> -->
                                 <?php
                                     $CI =& get_instance();
+                                    $list=1;
                                     $getlistbukti =$CI->db->query('select * from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[0]['butir'].'" and not dokumen="" order by id ASC');
                                     foreach ($getlistbukti->result() as $bar){
                                         if (($bar->filename)=="") {
@@ -110,6 +113,7 @@
                                         }
                                         ?>
                                 <tr>
+                                    <td class='<?php echo($warnanya) ?>'><?php echo $list ?> </td>
                                     <td class='<?php echo($warnanya) ?>'><?php echo $bar->dokumen ?> </td>
                                     <td class='<?php echo($warnanya) ?>'><?php echo $filename ?> </td>
                                     <td class='<?php echo($warnanya) ?>'><?php echo $status ?> </td>
@@ -135,6 +139,7 @@
                                     </td>
                                 </tr>
                                         <?php
+                                    $list=$list+1;
                                     }
                                 ?>
                             </tbody>
