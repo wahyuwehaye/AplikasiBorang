@@ -186,13 +186,13 @@
                         $getidbutir = $row->id;
                         break;
                     }
-                        if ($getbutir=='1.1.a') {
+                        if ($getbutir=='1.1.1') {
                             if (count($dataisian)>0) {
                                 for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian11">
-                        <input type="hidden" name="id11" id="id11" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir11" id="id_butir11" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian111">
+                        <input type="hidden" name="id111" id="id111" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
@@ -208,7 +208,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_11" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom1_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +218,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom2_11" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
+                                            <textarea name="kolom2_111" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -228,7 +228,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom3_11" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
+                                            <textarea name="kolom3_111" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -238,76 +238,26 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom4_11" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
+                                            <textarea name="kolom4_111" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <input type="hidden" name="version_no11" id="version_no11" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at11" id="created_at11" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no111" id="version_no111" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at111" id="created_at111" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
-                        <?php } ?>
-
-                        <!-- <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
-                            <thead>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Mekanisme Penyusunan</th>
-                                    <th>Visi</th>
-                                    <th>Misi</th>
-                                    <th>Tujuan</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Mekanisme Penyusunan</th>
-                                    <th>Visi</th>
-                                    <th>Misi</th>
-                                    <th>Tujuan</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <?php
-                                    // foreach ($dataisian as $key) {
-                                    for($i=0;$i<count($dataisian);$i++){
-                                 ?>
-                                <tr>
-                                    <td><?php echo $dataisian[$i]['id_butir'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom1'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom2'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom3'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom4'] ?> </td>
-                                    <td><a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a>&nbsp; </td>
-                                    <td>
-                                        <div class="js-sweetalert">
-                                            <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/dataisian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a>&nbsp;
-                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateIsian1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-                                            <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian4kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table> -->
-                        <?php
+                        <?php } 
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi11">
-                        <input type="hidden" name="id_butir11" id="id_butir11" value="<?php echo $isiannya; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi111">
+                        <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_11" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -317,7 +267,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom2_11" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom2_111" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -327,7 +277,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom3_11" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom3_111" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -337,7 +287,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom4_11" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom4_111" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -346,14 +296,14 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='1.1.b') {
+                        }elseif ($getbutir=='1.1.2') {
                             if (count($dataisian)>0) {
                             
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian11b">
-                        <input type="hidden" name="id11b" id="id11b" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir11b" id="id_butir11b" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian112">
+                        <input type="hidden" name="id112" id="id112" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir112" id="id_butir112" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
@@ -369,7 +319,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_11b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom1_112" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -378,57 +328,17 @@
                         <input type="hidden" name="created_at11b" id="created_at11b" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
-                        <?php } ?>
-                        <!-- <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
-                            <thead>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Sasaran dan Strategi Pencapaiannya</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Sasaran dan Strategi Pencapaiannya</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <?php
-                                    // foreach ($dataisian as $key) {
-                                    for($i=0;$i<count($dataisian);$i++){
-                                 ?>
-                                <tr>
-                                    <td><?php echo $dataisian[$i]['id_butir'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom1'] ?> </td>
-                                    <td><a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a>&nbsp; </td>
-                                    <td>
-                                        <div class="js-sweetalert"> -->
-                                            <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/dataisian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a>&nbsp;
-                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateIsian2" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-                                            <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table> -->
-                        <?php
+                        <?php } 
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi11b">
-                        <input type="hidden" name="id_butir11b" id="id_butir11b" value="<?php echo $isiannya; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi112">
+                        <input type="hidden" name="id_butir112" id="id_butir112" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sasaran dan Strategi Pencapaiannya</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_11b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_112" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -469,47 +379,7 @@
                         <input type="hidden" name="created_at12" id="created_at12" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
-                        <?php } ?>
-                        <!-- <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
-                            <thead>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Sosialisasi</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Sosialisasi</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <?php
-                                    // foreach ($dataisian as $key) {
-                                    for($i=0;$i<count($dataisian);$i++){
-                                 ?>
-                                <tr>
-                                    <td><?php echo $dataisian[$i]['id_butir'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom1'] ?> </td>
-                                    <td><a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a>&nbsp; </td>
-                                    <td>
-                                        <div class="js-sweetalert"> -->
-                                            <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/dataisian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a>&nbsp;
-                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateIsian3" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-                                            <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table> -->
-                        <?php
+                        <?php } 
                                 }else{
                         ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi12">
@@ -1190,9 +1060,9 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='3.1.1.a') || ($getbutir=='3.1.1.b') || ($getbutir=='3.1.1.c') || ($getbutir=='3.1.1.d')) {
+                        }elseif (($getbutir=='3.1.1.1') || ($getbutir=='3.1.1.2') || ($getbutir=='3.1.1.3') || ($getbutir=='3.1.1.4')) {
                             $getidbutir = '';
-                            $querycariidbutir = $CI->db->query('select * from butir where butir="3.1.1.a" and id_borang = "'.$id_bor.'"');
+                            $querycariidbutir = $CI->db->query('select * from butir where butir="3.1.1.1" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir->result() as $row){
                                 $getidbutir = $row->id;
                                 break;
@@ -1408,7 +1278,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <b>Transfer(2)</b>
+                                        <b>Transfer(3)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1433,7 +1303,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <b>Transfer(2)</b>
+                                        <b>Transfer(3)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1458,7 +1328,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <b>Transfer(2)</b>
+                                        <b>Transfer(3)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1555,7 +1425,8 @@
                                     <p>Min: IPK Minimum; Rat:IPK Rata-rata; Mak:IPK Maksimum</p>
                                     <p>Catatan:</p>
                                     <p>(1)&nbsp; Mahasiswa <strong>program reguler</strong> adalah mahasiswa yang mengikuti program pendidikan secara penuh waktu (baik kelas pagi, siang, sore, malam, dan di seluruh kampus).</p>
-                                    <p>(2)&nbsp; Mahasiswa <strong>transfer</strong> adalah mahasiswa yang masuk ke program studi dengan mentransfer mata kuliah yang telah diperolehnya dari PS lain, baik dari dalam PT maupun luar PT.</p>
+                                    <p>(2)&nbsp; Mahasiswa <strong>program non-reguler</strong> adalah mahasiswa yang mengikuti program pendidikan secara paruh waktu.</p>
+                                    <p>(3)&nbsp; Mahasiswa <strong>transfer</strong> adalah mahasiswa yang masuk ke program studi dengan mentransfer mata kuliah yang telah diperolehnya dari PS lain, baik dari dalam PT maupun luar PT.</p>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -1623,7 +1494,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <b>Transfer(2)</b>
+                                        <b>Transfer(3)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1648,7 +1519,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <b>Transfer(2)</b>
+                                        <b>Transfer(3)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1673,7 +1544,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <b>Transfer(2)</b>
+                                        <b>Transfer(3)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1770,7 +1641,8 @@
                                     <p>Min: IPK Minimum; Rat:IPK Rata-rata; Mak:IPK Maksimum</p>
                                     <p>Catatan:</p>
                                     <p>(1)&nbsp; Mahasiswa <strong>program reguler</strong> adalah mahasiswa yang mengikuti program pendidikan secara penuh waktu (baik kelas pagi, siang, sore, malam, dan di seluruh kampus).</p>
-                                    <p>(2)&nbsp; Mahasiswa <strong>transfer</strong> adalah mahasiswa yang masuk ke program studi dengan mentransfer mata kuliah yang telah diperolehnya dari PS lain, baik dari dalam PT maupun luar PT.</p>
+                                    <p>(2)&nbsp; Mahasiswa <strong>program non-reguler</strong> adalah mahasiswa yang mengikuti program pendidikan secara paruh waktu.</p>
+                                    <p>(3)&nbsp; Mahasiswa <strong>transfer</strong> adalah mahasiswa yang masuk ke program studi dengan mentransfer mata kuliah yang telah diperolehnya dari PS lain, baik dari dalam PT maupun luar PT.</p>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -1782,7 +1654,7 @@
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi312">
-                        <input type="hidden" name="id_butir313" id="id_butir312" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir312" id="id_butir312" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -1866,7 +1738,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Prestasi yang di Capai</b>
+                                        <b>Prestasi yang Dicapai</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1921,7 +1793,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Prestasi yang di Capai</b>
+                                        <b>Prestasi yang Dicapai</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1948,7 +1820,7 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='3.1.3') {
+                        }elseif (($getbutir=='3.1.3.1') || ($getbutir=='3.1.3.2')) {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -2598,7 +2470,7 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='3.2') {
+                        }elseif (($getbutir=='3.2.1') || ($getbutir=='3.2.2')) {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -2823,18 +2695,12 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='3.3.1.a') || ($getbutir=='3.3.1.b') || ($getbutir=='3.3.1.c') || ($getbutir=='3.3.2') || ($getbutir=='3.3.3')) {
-                            $getidbutir = '';
-                            $querycariidbutir = $CI->db->query('select * from butir where butir="3.3.1.a" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir->result() as $row){
-                                $getidbutir = $row->id;
-                                break;
-                            }
+                        }elseif ($getbutir=='3.3') {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian331a">
-                        <input type="hidden" name="id331a" id="id331a" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian33">
+                        <input type="hidden" name="id33" id="id33" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir33" id="id_butir33" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
@@ -2845,8 +2711,6 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian12kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <div class="col-md-4">
-                        </div>
                         <h2 class="card-inside-title">Jelaskan usaha-usaha program studi/jurusan mencarikan tempat kerja bagi lulusannya dalam hal:</h2>
                         <div class="col-md-12">
                             <b>Jenis Upaya</b>
@@ -2855,7 +2719,7 @@
                                     <i class="material-icons">dialpad</i>
                                 </span>
                             <div class="form-line">
-                             <input type="text" class="form-control" name="kolom1_331a" value="<?php echo $dataisian[$i]['kolom1'] ?>" placeholder="Tuliskan disini">
+                             <input type="text" class="form-control" name="kolom1_33" value="<?php echo $dataisian[$i]['kolom1'] ?>" placeholder="Tuliskan disini">
                             </div>
                         </div>
                         </div>
@@ -2863,7 +2727,7 @@
                             <b>Keterangan (Jelaskan lembaga, waktu pelaksanaan, pihak yang diundang, atau bentuk kerjasama)</b>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea name="kolom2_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
+                                    <textarea name="kolom2_33" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -2874,7 +2738,7 @@
                                     <i class="material-icons">dialpad</i>
                                 </span>
                             <div class="form-line">
-                             <input type="text" class="form-control" name="kolom3_331a" value="<?php echo $dataisian[$i]['kolom3'] ?>" placeholder="Tuliskan disini">
+                             <input type="text" class="form-control" name="kolom3_33" value="<?php echo $dataisian[$i]['kolom3'] ?>" placeholder="Tuliskan disini">
                             </div>
                         </div>
                         </div>
@@ -2882,7 +2746,7 @@
                             <b>Keterangan (Jelaskan lembaga, waktu pelaksanaan, pihak yang diundang, atau bentuk kerjasama)</b>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea name="kolom4_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
+                                    <textarea name="kolom4_33" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -2893,7 +2757,7 @@
                                     <i class="material-icons">dialpad</i>
                                 </span>
                             <div class="form-line">
-                             <input type="text" class="form-control" name="kolom5_331a" value="<?php echo $dataisian[$i]['kolom5'] ?>" placeholder="Tuliskan disini">
+                             <input type="text" class="form-control" name="kolom5_33" value="<?php echo $dataisian[$i]['kolom5'] ?>" placeholder="Tuliskan disini">
                             </div>
                         </div>
                         </div>
@@ -2901,7 +2765,7 @@
                             <b>Keterangan (Jelaskan lembaga, waktu pelaksanaan, pihak yang diundang, atau bentuk kerjasama)</b>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea name="kolom6_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom6'] ?></textarea>
+                                    <textarea name="kolom6_33" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom6'] ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -2912,7 +2776,7 @@
                                     <i class="material-icons">dialpad</i>
                                 </span>
                             <div class="form-line">
-                             <input type="text" class="form-control" name="kolom7_331a" value="<?php echo $dataisian[$i]['kolom7'] ?>" placeholder="Tuliskan disini">
+                             <input type="text" class="form-control" name="kolom7_33" value="<?php echo $dataisian[$i]['kolom7'] ?>" placeholder="Tuliskan disini">
                             </div>
                         </div>
                         </div>
@@ -2920,7 +2784,7 @@
                             <b>Keterangan (Jelaskan lembaga, waktu pelaksanaan, pihak yang diundang, atau bentuk kerjasama)</b>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea name="kolom8_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom8'] ?></textarea>
+                                    <textarea name="kolom8_33" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom8'] ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -2931,7 +2795,7 @@
                                     <i class="material-icons">dialpad</i>
                                 </span>
                             <div class="form-line">
-                             <input type="text" class="form-control" name="kolom9_331a" value="<?php echo $dataisian[$i]['kolom7'] ?>" placeholder="Tuliskan disini">
+                             <input type="text" class="form-control" name="kolom9_33" value="<?php echo $dataisian[$i]['kolom7'] ?>" placeholder="Tuliskan disini">
                             </div>
                         </div>
                         </div>
@@ -2939,19 +2803,19 @@
                             <b>Keterangan (Jelaskan lembaga, waktu pelaksanaan, pihak yang diundang, atau bentuk kerjasama)</b>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea name="kolom10_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom8'] ?></textarea>
+                                    <textarea name="kolom10_33" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom8'] ?></textarea>
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="version_no331a" id="version_no331a" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at331a" id="created_at331a" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no33" id="version_no33" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at33" id="created_at33" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi331a">
-                        <input type="hidden" name="id_butir331a" id="id_butir331a" value="<?php echo $isiannya; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi33">
+                        <input type="hidden" name="id_butir33" id="id_butir33" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan usaha-usaha program studi/jurusan mencarikan tempat kerja bagi lulusannya dalam hal:</h2>
                         <div class="col-md-12">
                             <b>Jenis Upaya</b>
@@ -2960,7 +2824,7 @@
                                     <i class="material-icons">dialpad</i>
                                 </span>
                             <div class="form-line">
-                             <input type="text" class="form-control" name="kolom1_331a" value="Memberikan informasi tentang kesempatan bekerja di berbagai instansi pemerintah/ swasta kepada mahasiswa/ lulusan." placeholder="Tuliskan disini">
+                             <input type="text" class="form-control" name="kolom1_33" value="Memberikan informasi tentang kesempatan bekerja di berbagai instansi pemerintah/ swasta kepada mahasiswa/ lulusan." placeholder="Tuliskan disini">
                             </div>
                         </div>
                         </div>
@@ -2968,7 +2832,7 @@
                             <b>Keterangan (Jelaskan lembaga, waktu pelaksanaan, pihak yang diundang, atau bentuk kerjasama)</b>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea name="kolom2_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                    <textarea name="kolom2_33" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -2979,7 +2843,7 @@
                                     <i class="material-icons">dialpad</i>
                                 </span>
                             <div class="form-line">
-                             <input type="text" class="form-control" name="kolom3_331a" value="Membentuk wadah untuk mengumpulkan informasi tentang kesempatan kerja dan membantu lulusan memperoleh pekerjaan (job placement center)." placeholder="Tuliskan disini">
+                             <input type="text" class="form-control" name="kolom3_33" value="Membentuk wadah untuk mengumpulkan informasi tentang kesempatan kerja dan membantu lulusan memperoleh pekerjaan (job placement center)." placeholder="Tuliskan disini">
                             </div>
                         </div>
                         </div>
@@ -2987,7 +2851,7 @@
                             <b>Keterangan (Jelaskan lembaga, waktu pelaksanaan, pihak yang diundang, atau bentuk kerjasama)</b>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea name="kolom4_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                    <textarea name="kolom4_33" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -2998,7 +2862,7 @@
                                     <i class="material-icons">dialpad</i>
                                 </span>
                             <div class="form-line">
-                             <input type="text" class="form-control" name="kolom5_331a" value="Mengundang pihak yang memerlukan tenaga lulusan ke kampus untuk memberi penjelasan tentang kesempatan kerja." placeholder="Tuliskan disini">
+                             <input type="text" class="form-control" name="kolom5_33" value="Mengundang pihak yang memerlukan tenaga lulusan ke kampus untuk memberi penjelasan tentang kesempatan kerja." placeholder="Tuliskan disini">
                             </div>
                         </div>
                         </div>
@@ -3006,7 +2870,7 @@
                             <b>Keterangan (Jelaskan lembaga, waktu pelaksanaan, pihak yang diundang, atau bentuk kerjasama)</b>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea name="kolom6_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                    <textarea name="kolom6_33" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -3017,7 +2881,7 @@
                                     <i class="material-icons">dialpad</i>
                                 </span>
                             <div class="form-line">
-                             <input type="text" class="form-control" name="kolom7_331a" value="Menawarkan kepada pihak-pihak yang dianggap memerlukan tenaga lulusan." placeholder="Tuliskan disini">
+                             <input type="text" class="form-control" name="kolom7_33" value="Menawarkan kepada pihak-pihak yang dianggap memerlukan tenaga lulusan." placeholder="Tuliskan disini">
                             </div>
                         </div>
                         </div>
@@ -3025,7 +2889,7 @@
                             <b>Keterangan (Jelaskan lembaga, waktu pelaksanaan, pihak yang diundang, atau bentuk kerjasama)</b>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea name="kolom8_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                    <textarea name="kolom8_33" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -3036,7 +2900,7 @@
                                     <i class="material-icons">dialpad</i>
                                 </span>
                             <div class="form-line">
-                             <input type="text" class="form-control" name="kolom9_331a" value="Kerja sama antara program studi/ jurusan dengan pihak pengguna lulusan." placeholder="Tuliskan disini">
+                             <input type="text" class="form-control" name="kolom9_33" value="Kerja sama antara program studi/ jurusan dengan pihak pengguna lulusan." placeholder="Tuliskan disini">
                             </div>
                         </div>
                         </div>
@@ -3044,7 +2908,7 @@
                             <b>Keterangan (Jelaskan lembaga, waktu pelaksanaan, pihak yang diundang, atau bentuk kerjasama)</b>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <textarea name="kolom10_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                    <textarea name="kolom10_33" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -3052,7 +2916,7 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='3.4.1') {
+                        }elseif ($getbutir=='3.4.1.1') {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -3118,20 +2982,20 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='3.4.2') {
-                            $getidbutir342b = '';
-                            $querycariidbutir342 = $CI->db->query('select * from butir where butir="3.4.2" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir342->result() as $row){
-                                $getidbutir342 = $row->id;
+                        }elseif (($getbutir=='3.4.1.2') || ($getbutir=='3.4.1.3')) {
+                            $getidbutir3412 = '';
+                            $querycariidbutir3412 = $CI->db->query('select * from butir where butir="3.4.1.2" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir3412->result() as $row){
+                                $getidbutir3412 = $row->id;
                                 break;
                             }
                             if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
+                            // for($i=0;$i<count($dataisian);$i++){
+                            
                             ?>
-
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi342">
-                        <input type="hidden" name="id_butir342" id="id_butir342" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir342" id="id_butir342" value="<?php echo $getidbutir342; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi3412">
+                        <input type="hidden" name="id_butir3412" id="id_butir3412" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir3412" id="id_butir3412" value="<?php echo $getidbutir3412; ?>" />
                         <h2 class="card-inside-title">Hasil studi pelacakan dirangkum dalam tabel berikut:</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -3201,7 +3065,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom6'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update342" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update3412" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -3216,7 +3080,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom12'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update342" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update3412" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -3231,7 +3095,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom18'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update342" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update3412" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -3246,7 +3110,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom24'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update342" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update3412" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -3261,7 +3125,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom30'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update342" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update3412" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -3276,7 +3140,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom36'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update342" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update3412" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -3291,7 +3155,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom42'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update342" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update3412" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -3317,7 +3181,7 @@
                             <!-- nomor 1 -->
                                     <div class="col-md-12">
                                         <b>Integritas (etika dan moral)</b>
-                                        <input type="hidden" name="kolom1_342" value="Integritas (etika dan moral)" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom1_3412" value="Integritas (etika dan moral)" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -3329,7 +3193,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3340,7 +3204,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3351,7 +3215,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3362,7 +3226,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom5_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3373,14 +3237,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom6_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom6_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                             <!-- nomor 2 -->
                                     <div class="col-md-12">
                                         <b>Keahlian berdasarkan bidang ilmu (profesionalisme)</b>
-                                        <input type="hidden" name="kolom7_342" value="Keahlian berdasarkan bidang ilmu (profesionalisme)" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom7_3412" value="Keahlian berdasarkan bidang ilmu (profesionalisme)" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -3392,7 +3256,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom8_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom8_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3403,7 +3267,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom9_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom9_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3414,7 +3278,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom10_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom10_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3425,7 +3289,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom11_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom11_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3436,14 +3300,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom12_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 3 -->
                                     <div class="col-md-12">
                                         <b>Bahasa Inggris</b>
-                                        <input type="hidden" name="kolom13_342" value="Bahasa Inggris" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom13_3412" value="Bahasa Inggris" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -3455,7 +3319,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom14_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom14_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3466,7 +3330,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom15_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom15_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3477,7 +3341,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom16_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom16_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3488,7 +3352,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom17_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom17_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3499,14 +3363,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom18_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom18_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 4 -->
                                     <div class="col-md-12">
                                         <b>Penggunaan Teknologi Informasi</b>
-                                        <input type="hidden" name="kolom19_342" value="Penggunaan Teknologi Informasi" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom19_3412" value="Penggunaan Teknologi Informasi" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -3518,7 +3382,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom20_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom20_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3529,7 +3393,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom21_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom21_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3540,7 +3404,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom22_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom22_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3551,7 +3415,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom23_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom23_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3562,14 +3426,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom24_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom24_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 5 -->
                                     <div class="col-md-12">
                                         <b>Komunikasi</b>
-                                        <input type="hidden" name="kolom25_342" value="Komunikasi" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom25_3412" value="Komunikasi" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -3581,7 +3445,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom26_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom26_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3592,7 +3456,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom27_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom27_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3603,7 +3467,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom28_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom28_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3614,7 +3478,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom29_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom29_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3625,14 +3489,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom30_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom30_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 6 -->
                                     <div class="col-md-12">
                                         <b>Kerjasama tim</b>
-                                        <input type="hidden" name="kolom31_342" value="Kerjasama tim" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom31_3412" value="Kerjasama tim" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -3644,7 +3508,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom32_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom32_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3655,7 +3519,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom33_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom33_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3666,7 +3530,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom34_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom34_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3677,7 +3541,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom35_342"  class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom35_3412"  class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3688,14 +3552,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom36_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom36_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 7 -->
                                     <div class="col-md-12">
                                         <b>Pengembangan diri</b>
-                                        <input type="hidden" name="kolom37_342" value="Pengembangan diri" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom37_3412" value="Pengembangan diri" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -3707,7 +3571,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom38_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom38_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3718,7 +3582,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom39_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom39_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3729,7 +3593,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom40_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom40_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3740,7 +3604,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom41_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom41_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3751,7 +3615,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom42_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom42_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3762,7 +3626,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom43_342" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom43_3412" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                             </textarea>
                                         </div>
                                     </div>
@@ -3773,20 +3637,21 @@
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
                         <!-- PEMBATAS UPDATE BAWAH DAN TAMABAH ATAS -->
+                        
                         <?php 
-                            }
+                    // }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi342">
-                        <input type="hidden" name="id_butir342" id="id_butir342" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir342" id="id_butir342" value="<?php echo $getidbutir342; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi3412">
+                        <input type="hidden" name="id_butir3412" id="id_butir3412" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir3412" id="id_butir3412" value="<?php echo $getidbutir3412; ?>" />
                         <h2 class="card-inside-title">Hasil studi pelacakan dirangkum dalam tabel berikut:</h2>
                         <h2 class="card-inside-title">Nyatakan angka persentasenya(*)  pada kolom yang sesuai.</h2>
                         <div class="row clearfix">
                         <!-- nomor 1 -->
                                     <div class="col-md-12">
                                         <b>Integritas (etika dan moral)</b>
-                                        <input type="hidden" name="kolom1_331b" value="Integritas (etika dan moral)" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom1_3412" value="Integritas (etika dan moral)" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -3798,7 +3663,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3809,7 +3674,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3820,7 +3685,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3831,7 +3696,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom5_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3842,14 +3707,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom6_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom6_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                             <!-- nomor 2 -->
                                     <div class="col-md-12">
                                         <b>Keahlian berdasarkan bidang ilmu (profesionalisme)</b>
-                                        <input type="hidden" name="kolom7_342" value="Keahlian berdasarkan bidang ilmu (profesionalisme)" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom7_3412" value="Keahlian berdasarkan bidang ilmu (profesionalisme)" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -3861,7 +3726,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom8_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom8_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3872,7 +3737,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom9_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom9_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3883,7 +3748,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom10_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom10_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3894,7 +3759,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom11_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom11_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3905,14 +3770,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom12_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 3 -->
                                     <div class="col-md-12">
                                         <b>Bahasa Inggris</b>
-                                        <input type="hidden" name="kolom13_342" value="Bahasa Inggris" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom13_3412" value="Bahasa Inggris" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -3924,7 +3789,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom14_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom14_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3935,7 +3800,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom15_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom15_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3946,7 +3811,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom16_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom16_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3957,7 +3822,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom17_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom17_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3968,14 +3833,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom18_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom18_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 4 -->
                                     <div class="col-md-12">
                                         <b>Penggunaan Teknologi Informasi</b>
-                                        <input type="hidden" name="kolom19_342" value="Penggunaan Teknologi Informasi" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom19_3412" value="Penggunaan Teknologi Informasi" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -3987,7 +3852,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom20_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom20_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -3998,7 +3863,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom21_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom21_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4009,7 +3874,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom22_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom22_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4020,7 +3885,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom23_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom23_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4031,14 +3896,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom24_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom24_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 5 -->
                                     <div class="col-md-12">
                                         <b>Komunikasi</b>
-                                        <input type="hidden" name="kolom25_342" value="Komunikasi" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom25_3412" value="Komunikasi" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -4050,7 +3915,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom26_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom26_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4061,7 +3926,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom27_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom27_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4072,7 +3937,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom28_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom28_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4083,7 +3948,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom29_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom29_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4094,14 +3959,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom30_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom30_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 6 -->
                                     <div class="col-md-12">
                                         <b>Kerjasama tim</b>
-                                        <input type="hidden" name="kolom31_342" value="Kerjasama tim" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom31_3412" value="Kerjasama tim" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -4113,7 +3978,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom32_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom32_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4124,7 +3989,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom33_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom33_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4135,7 +4000,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom34_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom34_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4146,7 +4011,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom35_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom35_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4157,14 +4022,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom36_342b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom36_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 7 -->
                                     <div class="col-md-12">
                                         <b>Pengembangan diri</b>
-                                        <input type="hidden" name="kolom37_342" value="Pengembangan diri" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom37_3412" value="Pengembangan diri" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -4176,7 +4041,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom38_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom38_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4187,7 +4052,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom39_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom39_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4198,7 +4063,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom40_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom40_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4209,7 +4074,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom41_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom41_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4220,7 +4085,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom42_342" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom42_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -4231,12 +4096,395 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom43_342" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom43_3412" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                             </textarea>
                                         </div>
                                     </div>
                                     <p>Catatan :  Sediakan dokumen pendukung pada saat asesmen lapangan</p>
                                         <p>(*) persentase tanggapan pihak pengguna = [(jumlah tanggapan pada peringkat) : (jumlah tanggapan yang ada)] x 100</p>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        } elseif ($getbutir=='3.4.2') {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian342">
+                        <input type="hidden" name="id342" id="id342" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir342" id="id_butir342" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div>
+                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
+                        <h2 class="card-inside-title">Jelaskan keahlian/kemampuan yang merupakan keunggulan lulusan program  studi ini.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_342" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no342" id="version_no342" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at342" id="created_at342" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi342">
+                        <input type="hidden" name="id_butir342" id="id_butir342" value="<?php echo $isiannya; ?>" />
+                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
+                        <h2 class="card-inside-title">Jelaskan keahlian/kemampuan yang merupakan keunggulan lulusan program  studi ini.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_342" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        } elseif ($getbutir=='3.4.3') {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian343">
+                        <input type="hidden" name="id343" id="id343" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir343" id="id_butir343" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div>
+                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
+                        <h2 class="card-inside-title">Rata-rata waktu tunggu lulusan lima tahun terakhir untuk memperoleh pekerjaan yang pertama = … bulan.  Jelaskan bagaimana data ini diperoleh.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_343" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no343" id="version_no343" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at343" id="created_at343" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi343">
+                        <input type="hidden" name="id_butir343" id="id_butir343" value="<?php echo $isiannya; ?>" />
+                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
+                        <h2 class="card-inside-title">Rata-rata waktu tunggu lulusan lima tahun terakhir untuk memperoleh pekerjaan yang pertama = … bulan.  Jelaskan bagaimana data ini diperoleh.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_343" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        } elseif ($getbutir=='3.4.4') {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian344">
+                        <input type="hidden" name="id344" id="id344" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir344" id="id_butir344" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div>
+                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
+                        <h2 class="card-inside-title">Persentase lulusan lima tahun terakhir yang bekerja pada bidang yang sesuai dengan keahliannya = …%.  Jelaskan bagaimana data ini diperoleh.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_344" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no344" id="version_no344" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at344" id="created_at344" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi344">
+                        <input type="hidden" name="id_butir344" id="id_butir344" value="<?php echo $isiannya; ?>" />
+                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
+                        <h2 class="card-inside-title">Persentase lulusan lima tahun terakhir yang bekerja pada bidang yang sesuai dengan keahliannya = …%.  Jelaskan bagaimana data ini diperoleh.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_344" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        }elseif ($getbutir=='3.4.5') {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi345">
+                        <input type="hidden" name="id_butir345" id="id_butir345" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir345" id="id_butir345" value="<?php echo $getidbutir; ?>" />
+                        <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
+        <!-- Tabel Edit -->
+                        <div class="header">
+                            <h2>
+                                Edit Tabel Butir <?php echo $butir[0]['butir'] ?>
+                                <small><?php echo $butir[0]['bakumutu'] ?></small>
+                            </h2>
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table table-bordered table-striped dataTable ">
+                                <thead>
+                                    <tr style="height: 26px;">
+                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">No</th>
+                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;">
+                                        <p><strong>Tahun</strong></p>
+                                        </th>
+                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;">
+                                        <p><strong>Jumlah Lulusan yang Diwisuda pada</strong></p>
+                                        </th>
+                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;">
+                                        <p><strong>Nama Lembaga (Instansi/Industri) </strong></p>
+                                        </th>
+                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;">
+                                        <p><strong>Jumlah Lulusan yang Dipesan dan Diterima</strong></p>
+                                        </th>
+                                        <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Pengaturan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(2)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(3)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(4)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
+                                    </tr>
+                                    <?php 
+                                        $jum1 = 0;
+                                        $jum2 = 0;
+                                        $jum3 = 0;
+                                        // $tsnya = array('TS-4','TS-3','TS-2','TS-1','TS');
+                                        $tsnya = array('TS','TS-1','TS-2','TS-3','TS-4');
+                                        $nil = 0;
+                                        $diloop = count($dataisian);
+                                    for($i=0;$i<count($dataisian);$i++){
+                                        $jum1 = $jum1 + $dataisian[$i]['kolom1'];
+                                        //$jum2 = $jum2 + $dataisian[$i]['kolom2'];
+                                        $jum3 = $jum3 + $dataisian[$i]['kolom3'];
+                                        $diloop = $diloop - 1;
+                                        $nil = $nil + 1;
+                                    ?>
+                                    <tr style="height: 13px;">
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?>&nbsp;</td>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $tsnya[$diloop] ?></th>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom1'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom2'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom3'] ?>&nbsp;</td>
+                                        <td style="width: 53px; text-align: center; height: 13px;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update345" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                     } ?>
+                                    <tr style="height: 13px;">
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil+1 ?>&nbsp;</td>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">Total</th>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum1;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum2;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum3;?>&nbsp;</td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">Pengaturan</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+        <!-- Tutup Tabel Edit -->
+                        <h2 class="card-inside-title">Sebutkan lembaga (instansi/industri) yang memesan lulusan untuk bekerja di lembaga  tersebut dalam lima tahun terakhir.</h2>
+                        <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <b>Jumlah Lulusan yang Diwisuda pada</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_345" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Nama Lembaga (Instansi/Industri)</b>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <textarea name="kolom2_345" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                        <p>1. </p>
+                                        <p>2. </p>
+                                        <p>Dst. </p>
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Lulusan yang Dipesan dan Diterima</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_345" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi345">
+                        <input type="hidden" name="id_butir345" id="id_butir345" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Sebutkan lembaga (instansi/industri) yang memesan lulusan untuk bekerja di lembaga  tersebut dalam lima tahun terakhir.</h2>
+                        <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <b>Jumlah Lulusan yang Diwisuda pada</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_345" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Nama Lembaga (Instansi/Industri)</b>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <textarea name="kolom2_345" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                        <p>1. </p>
+                                        <p>2. </p>
+                                        <p>Dst. </p>
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Lulusan yang Dipesan dan Diterima</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_345" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        } elseif ($getbutir=='3.5') {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian35">
+                        <input type="hidden" name="id35" id="id35" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir35" id="id_butir35" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div>
+                        <h2 class="card-inside-title">Partisipasi Alumni</h2>
+                        <h2 class="card-inside-title">Jelaskan program kegiatan alumni selama lima tahun terakhir dan hasilnya untuk mendukung kemajuan program studi, misalnya dalam hal: sumbangan dana, sumbangan fasilitas, masukan untuk perbaikan proses pembelajaran, dan pengembangan jejaring.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_35" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no35" id="version_no35" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at35" id="created_at35" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi35">
+                        <input type="hidden" name="id_butir35" id="id_butir35" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Partisipasi Alumni</h2>
+                        <h2 class="card-inside-title">Jelaskan program kegiatan alumni selama lima tahun terakhir dan hasilnya untuk mendukung kemajuan program studi, misalnya dalam hal: sumbangan dana, sumbangan fasilitas, masukan untuk perbaikan proses pembelajaran, dan pengembangan jejaring.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_35" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            </textarea>
+                                        </div>
+                                    </div>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -4380,6 +4628,12 @@
                             <?php
                                 }
                         }elseif (($getbutir=='4.2.1') || ($getbutir=='4.2.2')) {
+                            $getidbutir711 = '';
+                            $querycariidbutir711 = $CI->db->query('select * from butir where butir="7.1.1" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir711->result() as $row){
+                                $getidbutir711 = $row->id;
+                                break;
+                            }
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -4433,9 +4687,9 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='4.3.1.a') || ($getbutir=='4.3.1.b') || ($getbutir=='4.3.1.c') || ($getbutir=='4.3.1.d')) {
+                        }elseif (($getbutir=='4.3.1.1') || ($getbutir=='4.3.1.2') || ($getbutir=='4.3.1.3')) {
                             $getidbutir431 = '';
-                            $querycariidbutir431 = $CI->db->query('select * from butir where butir="4.3.1.a" and id_borang = "'.$id_bor.'"');
+                            $querycariidbutir431 = $CI->db->query('select * from butir where butir="4.3.1.1" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir431->result() as $row){
                                 $getidbutir431 = $row->id;
                                 break;
@@ -4743,9 +4997,9 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='4.3.2') {
+                        }elseif (($getbutir=='4.3.2.1') || ($getbutir=='4.3.2.2')) {
                             $getidbutir432 = '';
-                            $querycariidbutir432 = $CI->db->query('select * from butir where butir="4.3.2" and id_borang = "'.$id_bor.'"');
+                            $querycariidbutir432 = $CI->db->query('select * from butir where butir="4.3.2.1" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir432->result() as $row){
                                 $getidbutir432 = $row->id;
                                 break;
@@ -6432,9 +6686,9 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='4.4.2.a') || ($getbutir=='4.4.2.b')) {
+                        }elseif (($getbutir=='4.4.2.1') || ($getbutir=='4.4.2.2')) {
                             $getidbutir442 = '';
-                            $querycariidbutir442 = $CI->db->query('select * from butir where butir="4.4.2.a" and id_borang = "'.$id_bor.'"');
+                            $querycariidbutir442 = $CI->db->query('select * from butir where butir="4.4.2.1" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir442->result() as $row){
                                 $getidbutir442 = $row->id;
                                 break;
@@ -7920,9 +8174,9 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='4.6.1.a') || ($getbutir=='4.6.1.b') || ($getbutir=='4.6.1.c')) {
+                        }elseif (($getbutir=='4.6.1.1') || ($getbutir=='4.6.1.2') || ($getbutir=='4.6.1.3')) {
                             $getidbutir331 = '';
-                            $querycariidbutir331 = $CI->db->query('select * from butir where butir="4.6.1.a" and id_borang = "'.$id_bor.'"');
+                            $querycariidbutir331 = $CI->db->query('select * from butir where butir="4.6.1.1" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir331->result() as $row){
                                 $getidbutir331 = $row->id;
                                 break;
@@ -9060,11 +9314,11 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='5.1.1.a') || ($getbutir=='5.1.1.b')) {
-                            $getidbutir331 = '';
-                            $querycariidbutir331 = $CI->db->query('select * from butir where butir="5.1.1.a" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir331->result() as $row){
-                                $getidbutir331 = $row->id;
+                        }elseif (($getbutir=='5.1.1.1') || ($getbutir=='5.1.1.2')) {
+                            $getidbutir511 = '';
+                            $querycariidbutir511 = $CI->db->query('select * from butir where butir="5.1.1.1" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir511->result() as $row){
+                                $getidbutir511 = $row->id;
                                 break;
                             }
                             if (count($dataisian)>0) {
@@ -9072,8 +9326,8 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian511">
                         <input type="hidden" name="id511" id="id511" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir511" id="id_butir511" value="<?php echo $getidbutir331 ?>" />
-                        <input type="hidden" name="id_butir511a" id="id_butir511a" value="<?php echo $isiannya ?>" />
+                        <input type="hidden" name="id_butir511" id="id_butir511" value="<?php echo $getidbutir511 ?>" />
+                        <input type="hidden" name="id_butir511" id="id_butir511" value="<?php echo $isiannya ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
@@ -9138,8 +9392,8 @@
                                 }else{
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi511">
-                        <input type="hidden" name="id_butir511" id="id_butir511" value="<?php echo $getidbutir331; ?>" />
-                        <input type="hidden" name="id_butir511a" id="id_butir511a" value="<?php echo $isiannya ?>" />
+                        <input type="hidden" name="id_butir511" id="id_butir511" value="<?php echo $getidbutir511; ?>" />
+                        <input type="hidden" name="id_butir511" id="id_butir511" value="<?php echo $isiannya ?>" />
                         <h2 class="card-inside-title">Kurikulum</h2>
                         <h2 class="card-inside-title">Kurikulum pendidikan tinggi adalah seperangkat rencana dan pengaturan mengenai isi, bahan kajian, maupun bahan pelajaran serta cara penyampaiannya, dan penilaian yang digunakan sebagai pedoman penyelenggaraan kegiatan pembelajaran di perguruan tinggi.</h2>
                         <h2 class="card-inside-title">Kurikulum seharusnya memuat standar kompetensi lulusan yang terstruktur dalam kompetensi utama, pendukung dan lainnya yang mendukung  tercapainya tujuan, terlaksananya misi, dan terwujudnya visi program studi. Kurikulum memuat mata kuliah/modul/blok yang mendukung pencapaian kompetensi lulusan dan memberikan keleluasaan pada mahasiswa untuk memperluas wawasan dan memperdalam keahlian sesuai dengan minatnya, serta dilengkapi dengan deskripsi mata kuliah/modul/blok, silabus, rencana pembelajaran dan evaluasi.</h2>
@@ -9191,18 +9445,18 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='5.1.2.a') || ($getbutir=='5.1.2.b') || ($getbutir=='5.1.2.c')) {
-                            $getidbutir512c = '';
-                            $querycariidbutir512c = $CI->db->query('select * from butir where butir="5.1.2.c" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir512c->result() as $row){
-                                $getidbutir512c = $row->id;
+                        }elseif (($getbutir=='5.1.2.1.1') || ($getbutir=='5.1.2.1.2') || ($getbutir=='5.1.2.1.3') || ($getbutir=='5.1.2.1.4')) {
+                            $getidbutir512a = '';
+                            $querycariidbutir512a = $CI->db->query('select * from butir where butir="5.1.2.1" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir512a->result() as $row){
+                                $getidbutir512a = $row->id;
                                 break;
                             }
                             if (count($dataisian)>0) {
                                 //for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi512c">
-                        <input type="hidden" name="id_butir512c" id="id_butir512c" value="<?php echo $isiannya; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi512a">
+                        <input type="hidden" name="id_butir512a" id="id_butir512a" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Struktur Kurikulum</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -9214,7 +9468,7 @@
                         <div class="body table-responsive">
                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                 <thead>
-                                    <tr style="height: 21px;">
+                                    <tr style="height: 21px; text-align: center;">
                                         <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 33px;" rowspan="2">
                                         <p><strong>Smt</strong></p>
                                         </th>
@@ -9224,17 +9478,17 @@
                                         <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 33px;" rowspan="2">
                                         <p><strong>Nama Mata Kuliah*</strong></p>
                                         </th>
-                                        <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 33px;" rowspan="2">
+                                        <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 33px;" colspan="2">
                                         <p><strong>Bobot sks</strong></p>
                                         </th>
                                         <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 21px;" colspan="2">
-                                        <p><strong>sks MK dalam Kurikulum</strong></p>
+                                        <p><strong>Beri Tanda √ Pada Kolom yang Sesuai</strong></p>
                                         </th>
                                         <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 33px;" rowspan="2">
-                                        <p><strong>Bobot Tugas*** </strong></p>
+                                        <p><strong>Bobot Tugas** </strong></p>
                                         </th>
                                         <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 21px;" colspan="3">
-                                        <p><strong>Kelengkapan****</strong></p>
+                                        <p><strong>Kelengkapan***</strong></p>
                                         </th>
                                         <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 33px;" rowspan="2">
                                         <p><strong>Unit/ Jur/ Fak Penyelenggara</strong></p>
@@ -9243,10 +9497,16 @@
                                     </tr>
                                     <tr style="height: 12px;">
                                         <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 12px;">
-                                        <p><strong>Inti**</strong></p>
+                                        <p><strong>Kuliah</strong></p>
                                         </th>
                                         <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 12px;">
-                                        <p><strong>Insti-tusional</strong></p>
+                                        <p><strong>Praktikum/ Praktek</strong></p>
+                                        </th>
+                                        <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 12px;">
+                                        <p><strong>Inti*</strong></p>
+                                        </th>
+                                        <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 12px;">
+                                        <p><strong>Institusional</strong></p>
                                         </th>
                                         <th style="width: 64px; background-color: #c9c9c9; text-align: center; height: 12px;">
                                         <p><strong>Deskripsi</strong></p>
@@ -9291,6 +9551,8 @@
                                         </td>
                                         <td style="width: 126.4px; text-align: center; height: 38px;">
                                         <p><strong>(11)</strong></p>
+                                        <td style="width: 126.4px; text-align: center; height: 38px;">
+                                        <p><strong>(12)</strong></p>
                                         </td>
                                         <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
                                     </tr>
@@ -9317,9 +9579,10 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom9'] ?>&nbsp;</td>
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom10'] ?>&nbsp;</td>
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom11'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom12'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update512c" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update512a" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -9330,7 +9593,8 @@
                                         <td style="width: 52px; text-align: center; height: 13px;">Total sks</td>
                                         <th scope="row" style="width: 52px; text-align: center; height: 13px;"></th>
                                         <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum1;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php //echo $jum1;?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
                                         <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
                                         <td style="width: 52px; text-align: center; height: 13px;">&nbsp;</td>
                                         <td style="width: 52px; text-align: center; background-color: #b0abab; height: 13px;">&nbsp;</td>
@@ -9344,7 +9608,8 @@
                             </table>
                         </div>
         <!-- Tutup Tabel Edit -->
-                        <h2 class="card-inside-title">Tuliskan struktur kurikulum berdasarkan urutan mata kuliah (MK) semester demi semester, dengan mengikuti format tabel berikut:</h2>
+                        <h2 class="card-inside-title">Struktur Kurikulum</h2>
+                        <h2 class="card-inside-title">Jumlah SKS minimum untuk kelulusan PS : .... SKS.  Tuliskan struktur kurikulum berdasarkan urutan mata kuliah (MK) semester demi semester, dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
                                         <b>Semester</b>
@@ -9353,7 +9618,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom1_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9364,115 +9629,97 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Nama Mata Kuliah*</b>
+                                        <b>Nama Mata Kuliah</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Bobot sks </b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom4_512c" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>sks MK dalam Kurikulum</b>
+                                        <b>Bobot SKS untuk</b>
                                     </div>
                                     <div class="col-md-6">
-                                        <b>Inti**</b>
+                                        <b>Kuliah</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <b>Institusional</b>
+                                        <b>Praktikum/Praktek</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom6_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom5_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <!-- <b>Bobot Tugas*** </b> -->
+                                        <b>Beri Tanda √ Pada Kolom yang Sesuai</b>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom7_512c" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada" name="kolom7_512c" value="√" class="filled-in" />
-                                                <label for="tidakada">Bobot Tugas***</label>
+                                                <input type="checkbox" id="cb1" name="kolom6_512a" value="√" class="filled-in" />
+                                                <label for="cb1"><b>Inti*</b></label>
                                             </div>
-                                            <!-- <div class="demo-checkbox">
-                                                    <input type="checkbox" id="tidakada" class="filled-in" />
-                                                    <label for="tidakada">Tidak Ada</label></br>
-                                                    <input type="checkbox" id="ada" class="filled-in" checked />
-                                                    <label for="ada">Ada</label>
-                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="cb2" name="kolom7_512a" value="√" class="filled-in" />
+                                                <label for="cb2"><b>Institusional</b></label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Kelengkapan****</b>
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="cb3" name="kolom8_512a" value="√" class="filled-in" />
+                                                <label for="cb3"><b>Bobot Tugas**</b></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kelengkapan***</b>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <b>Deskripsi</b> -->
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom8_512c" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada1" name="kolom8_512c" value="√" class="filled-in" />
-                                                <label for="tidakada1">Deskripsi</label>
+                                                <input type="checkbox" id="cb4" name="kolom9_512a" value="√" class="filled-in" />
+                                                <label for="cb4"><b>Deskripsi</b></label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <b>Silabus</b> -->
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom9_512c" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada2" name="kolom9_512c" value="√" class="filled-in" />
-                                                <label for="tidakada2">Silabus</label>
+                                                <input type="checkbox" id="cb5" name="kolom10_512a" value="√" class="filled-in" />
+                                                <label for="cb5"><b>Silabus</b></label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <b>SAP</b> -->
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom10_512c" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada3" name="kolom10_512c" value="√" class="filled-in" />
-                                                <label for="tidakada3">SAP</label>
+                                                <input type="checkbox" id="cb6" name="kolom11_512a" value="√" class="filled-in" />
+                                                <label for="cb6"><b>SAP</b></label>
                                             </div>
                                         </div>
                                     </div>
@@ -9483,7 +9730,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom11_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9493,17 +9740,16 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom12_512c" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom13_512a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                        <b>*  Tuliskan mata kuliah pilihan sebagai mata kuliah pilihan I, mata kuliah pilihan II, dst. (nama-nama mata kuliah pilihan yang dilaksanakan dicantumkan dalam tabel 5.1.3.)</b></br>
-                                        <b>**   Menurut rujukan peer group / SK Mendiknas 045/2002 (ps. 3 ayat 2e)</b></br>
-                                        <b>*** isi dengan "√" pada mata kuliah yang dalam penentuan nilai akhirnya memberikan bobot pada tugas-tugas (praktikum/praktek, PR atau makalah) ≥ 20%.</b></br>
-                                        <b>****isi dengan "√" pada mata kuliah yang dilengkapi dengan deskripsi, silabus, dan atau SAP.  Sediakan dokumen pada saat asesmen lapangan.</b></br>
+                                        <b>*   Menurut rujukan peer group / SK Mendiknas 045/2002 (ps. 3 ayat 2e)</b></br>
+                                        <b>** isi dengan "√" pada mata kuliah yang dalam penentuan nilai akhirnya memberikan bobot pada tugas-tugas (praktikum/praktek, PR atau makalah) ≥ 20%.</b></br>
+                                        <b>***isi dengan "√" pada mata kuliah yang dilengkapi dengan deskripsi, silabus, dan atau SAP.  Sediakan dokumen pada saat asesmen lapangan.</b></br>
                                     </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -9511,10 +9757,10 @@
                             <?php 
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi512c">
-                        <input type="hidden" name="id_butir512c" id="id_butir512c" value="<?php echo $isiannya; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi512a">
+                        <input type="hidden" name="id_butir512a" id="id_butir512a" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Struktur Kurikulum</h2>
-                        <h2 class="card-inside-title">Tuliskan struktur kurikulum berdasarkan urutan mata kuliah (MK) semester demi semester, dengan mengikuti format tabel berikut:</h2>
+                        <h2 class="card-inside-title">Jumlah SKS minimum untuk kelulusan PS : .... SKS.  Tuliskan struktur kurikulum berdasarkan urutan mata kuliah (MK) semester demi semester, dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
                                         <b>Semester</b>
@@ -9523,7 +9769,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom1_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9534,109 +9780,97 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Nama Mata Kuliah*</b>
+                                        <b>Nama Mata Kuliah</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Bobot sks </b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom4_512c" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>sks MK dalam Kurikulum</b>
+                                        <b>Bobot SKS untuk</b>
                                     </div>
                                     <div class="col-md-6">
-                                        <b>Inti**</b>
+                                        <b>Kuliah</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <b>Institusional</b>
+                                        <b>Praktikum/Praktek</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom6_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom5_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <!-- <b>Bobot Tugas*** </b> -->
+                                        <b>Beri Tanda √ Pada Kolom yang Sesuai</b>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom7_512c" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada" name="kolom7_512c" value="√" class="filled-in" />
-                                                <label for="tidakada">Bobot Tugas***</label>
+                                                <input type="checkbox" id="cb1" name="kolom6_512a" value="√" class="filled-in" />
+                                                <label for="cb1"><b>Inti*</b></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="cb2" name="kolom7_512a" value="√" class="filled-in" />
+                                                <label for="cb2"><b>Institusional</b></label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Kelengkapan****</b>
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="cb3" name="kolom8_512a" value="√" class="filled-in" />
+                                                <label for="cb3"><b>Bobot Tugas**</b></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kelengkapan***</b>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <b>Deskripsi</b> -->
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom8_512c" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada1" name="kolom8_512c" value="√" class="filled-in" />
-                                                <label for="tidakada1">Deskripsi</label>
+                                                <input type="checkbox" id="cb4" name="kolom9_512a" value="√" class="filled-in" />
+                                                <label for="cb4"><b>Deskripsi</b></label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <b>Silabus</b> -->
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom9_512c" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada2" name="kolom9_512c" value="√" class="filled-in" />
-                                                <label for="tidakada2">Silabus</label>
+                                                <input type="checkbox" id="cb5" name="kolom10_512a" value="√" class="filled-in" />
+                                                <label for="cb5"><b>Silabus</b></label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <b>SAP</b> -->
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom10_512c" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada3" name="kolom10_512c" value="√" class="filled-in" />
-                                                <label for="tidakada3">SAP</label>
+                                                <input type="checkbox" id="cb6" name="kolom11_512a" value="√" class="filled-in" />
+                                                <label for="cb6"><b>SAP</b></label>
                                             </div>
                                         </div>
                                     </div>
@@ -9647,7 +9881,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom11_512c" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_512a" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9657,71 +9891,248 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom12_512c" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom13_512a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                        <b>*  Tuliskan mata kuliah pilihan sebagai mata kuliah pilihan I, mata kuliah pilihan II, dst. (nama-nama mata kuliah pilihan yang dilaksanakan dicantumkan dalam tabel 5.1.3.)</b></br>
-                                        <b>**   Menurut rujukan peer group / SK Mendiknas 045/2002 (ps. 3 ayat 2e)</b></br>
-                                        <b>*** isi dengan "√" pada mata kuliah yang dalam penentuan nilai akhirnya memberikan bobot pada tugas-tugas (praktikum/praktek, PR atau makalah) ≥ 20%.</b></br>
-                                        <b>****isi dengan "√" pada mata kuliah yang dilengkapi dengan deskripsi, silabus, dan atau SAP.  Sediakan dokumen pada saat asesmen lapangan.</b></br>
+                                        <b>*   Menurut rujukan peer group / SK Mendiknas 045/2002 (ps. 3 ayat 2e)</b></br>
+                                        <b>** isi dengan "√" pada mata kuliah yang dalam penentuan nilai akhirnya memberikan bobot pada tugas-tugas (praktikum/praktek, PR atau makalah) ≥ 20%.</b></br>
+                                        <b>***isi dengan "√" pada mata kuliah yang dilengkapi dengan deskripsi, silabus, dan atau SAP.  Sediakan dokumen pada saat asesmen lapangan.</b></br>
                                     </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='5.1.2.d') {
+                        }elseif ($getbutir=='5.1.2.2') {
+                            $getidbutir5122 = '';
+                            $querycariidbutir5122 = $CI->db->query('select * from butir where butir="5.1.2.2" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir5122->result() as $row){
+                                $getidbutir5122 = $row->id;
+                                break;
+                            }
                             if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian512a">
-                        <input type="hidden" name="id512a" id="id512a" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir512a" id="id_butir512a" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi5122">
+                        <input type="hidden" name="5122id_butir" id="5122id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir5122" id="id_butir5122" value="<?php echo $isiannya; ?>" />
+                        <!-- <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2> -->
+        <!-- Tabel Edit -->
+                        <div class="header">
+                            <h2>
+                                Edit Tabel Butir <?php echo $butir[0]['butir'] ?>
+                                <small><?php echo $butir[0]['bakumutu'] ?></small>
+                            </h2>
                         </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        <div class="body table-responsive">
+                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                <thead>
+                                    <tr style="height: 26px;">
+                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">No</th>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;" rowspan="2">
+                                        <p><strong>Nama Praktikum/Praktek</strong></p>
+                                        </td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;" colspan="2">
+                                        <p><strong>&nbsp;</strong><strong>Isi Praktikum/Praktek</strong></p>
+                                        </td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;" rowspan="2">
+                                        <p><strong>Tempat/Lokasi Praktikum/Praktek</strong></p>
+                                        </td>
+                                        <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Pengaturan</th>
+                                    </tr>
+                                    <tr style="height: 26px;">
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
+                                        <p><strong>Judul/Modul</strong></p>
+                                        </td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
+                                        <p><strong>&nbsp;</strong><strong>Jam Pelaksanaan </strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
+                                        <td style="width: 139.6px; height: 35.8px; text-align: center;">
+                                        <p><strong>(2)</strong></p>
+                                        </td>
+                                        <td style="width: 85.2px; height: 35.8px; text-align: center;">
+                                        <p><strong>(3)</strong></p>
+                                        </td>
+                                        <td style="width: 85.2px; height: 35.8px; text-align: center;">
+                                        <p><strong>(4)</strong></p>
+                                        </td>
+                                        <td style="width: 134.8px; height: 35.8px; text-align: center;">
+                                        <p><strong>(5)</strong></p>
+                                        </td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $nil = 0;
+                                        $diloop = count($dataisian);
+                                    for($i=0;$i<count($dataisian);$i++){
+                                        $diloop = $diloop - 1;
+                                        $nil = $nil + 1;
+                                    ?>
+                                    <tr style="height: 13px;">
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?></th>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom1'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom2'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom3'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom4'] ?>&nbsp;</td>
+                                        <td style="width: 53px; text-align: center; height: 13px;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update5122" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                     } ?>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
-                        </div>
-                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Struktur Kurikulum</h2>
+        <!-- Tutup Tabel Edit -->
+                        <h2 class="card-inside-title">Tuliskan substansi praktikum/praktek yang mandiri ataupun yang merupakan bagian dari mata kuliah tertentu, dengan mengikuti format di bawah ini:</h2>
                         <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_512a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                    <div class="col-md-12">
+                                        <b>Nama Praktikum/Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="version_no512a" id="version_no512a" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at512a" id="created_at512a" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
-                        </form>
-                        <?php }
-                                }else{
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi512a">
-                        <input type="hidden" name="id_butir512a" id="id_butir512a" value="<?php echo $isiannya; ?>" />
-                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Struktur Kurikulum</h2>
-                        <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <b>Isi Praktikum/Praktek</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Judul/Modul</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jam Pelaksanaan </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tempat/Lokasi Praktikum/Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Isian / Catatan :</b>
+                                    </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_512a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    
+                                            <textarea name="kolom5_5122" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                    <p>Catatan:</p>
                                             </textarea>
                                         </div>
                                     </div>
                                 </div>
+                                    <div class="col-md-12">
+                                        <h2 class="card-inside-title">* Sediakan dokumen pendukung pada saat asesmen lapangan.</h2>
+                                    </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                        <?php
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi5122">
+                        <input type="hidden" name="5122id_butir" id="5122id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir5122" id="id_butir5122" value="<?php echo $getidbutir5122; ?>" />
+                        <!-- <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2> -->
+                        <h2 class="card-inside-title">Tuliskan substansi praktikum/praktek yang mandiri ataupun yang merupakan bagian dari mata kuliah tertentu, dengan mengikuti format di bawah ini:</h2>
+                        <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <b>Nama Praktikum/Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Isi Praktikum/Praktek</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Judul/Modul</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jam Pelaksanaan </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tempat/Lokasi Praktikum/Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Isian / Catatan :</b>
+                                    </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom5_5122" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                    <p>Catatan:</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="col-md-12">
+                                        <h2 class="card-inside-title">* Sediakan dokumen pendukung pada saat asesmen lapangan.</h2>
+                                    </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
@@ -10029,19 +10440,13 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='5.2.a') || ($getbutir=='5.2.b')) {
-                            $getidbutir52a = '';
-                            $querycariidbutir52a = $CI->db->query('select * from butir where butir="5.2.a" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir52a->result() as $row){
-                                $getidbutir514 = $row->id;
-                                break;
-                            }
+                        }elseif ($getbutir=='5.2.1') {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian52a">
-                        <input type="hidden" name="id52a" id="id52a" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir52a" id="id_butir52a" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian521">
+                        <input type="hidden" name="id521" id="id521" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir521" id="id_butir521" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
@@ -10051,63 +10456,154 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Pembimbingan Tugas Akhir / Skripsi</h2>
-                        <h2 class="card-inside-title">Jelaskan pelaksanaan pembimbingan Tugas Akhir atau Skripsi yang diterapkan pada PS ini.</h2>
+                        <h2 class="card-inside-title">Peninjauan Kurikulum dalam 5 Tahun Terakhir</h2>
+                        <h2 class="card-inside-title">Jelaskan mekanisme peninjauan kurikulum dan pihak-pihak yang dilibatkan dalam proses peninjauan tersebut.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_52a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom1_521" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <input type="hidden" name="version_no551c" id="version_no52a" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at551c" id="created_at52a" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no521" id="version_no521" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at521" id="created_at521" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi52a">
-                        <input type="hidden" name="id_butir52a" id="id_butir52a" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Berapa waktu yang disediakan untuk pelaksanaan real proses belajar mengajar yang diselenggarakan oleh program studi : </h2>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi521">
+                        <input type="hidden" name="id_butir521" id="id_butir521" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Peninjauan Kurikulum dalam 5 Tahun Terakhir</h2>
+                        <h2 class="card-inside-title">Jelaskan mekanisme peninjauan kurikulum dan pihak-pihak yang dilibatkan dalam proses peninjauan tersebut.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_52a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    <p>&nbsp;</p>
-                                    <ul>
-                                    <li>Teori&nbsp;: .... jam per paket program</li>
-                                    <li>Praktek&nbsp;: .... jam per paket program</li>
-                                    <li>Praktikum&nbsp;: .... jam per paket program</li>
-                                    <li>Praktek Kerja Lapangan&nbsp;: .... jam per paket program</li>
-                                    </ul>
-                                    <p>&nbsp;</p>
+                                            <textarea name="kolom1_521" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                    
                                             </textarea>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <h2 class="card-inside-title">Catatan:</h2>
-                                    <h2 class="card-inside-title">Satu paket program DIV = 4 tahun</h2>
-                                    <h2 class="card-inside-title">Satu paket program DIII = 3 tahun</h2>
-                                    <h2 class="card-inside-title">Satu paket program DII = 2 tahun</h2>
-                                    <h2 class="card-inside-title">Satu paket program DI = 1 tahun</h2>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='5.3.1.a') || ($getbutir=='5.3.1.b')) {
-                            $getidbutir531 = '';
-                            $querycariidbutir531 = $CI->db->query('select * from butir where butir="5.3.1.a" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir531->result() as $row){
-                                $getidbutir531 = $row->id;
-                                break;
-                            }
+                        }elseif ($getbutir=='5.2.2') {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian522">
+                        <input type="hidden" name="id522" id="id522" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir522" id="id_butir522" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div>
+                        <h2 class="card-inside-title">Berapa waktu yang disediakan untuk pelaksanaan real proses belajar mengajar yang diselenggarakan oleh program studi : </h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_522" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <p>Catatan: Satu paket program DIV = 4 tahun, satu paket program DIII = 3 tahun,</p>
+                                    <p>satu paket program DII = 2 tahun, satu paket program DI = 1 tahun.</p>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no522" id="version_no522" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at522" id="created_at522" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi522">
+                        <input type="hidden" name="id_butir522" id="id_butir522" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Berapa waktu yang disediakan untuk pelaksanaan real proses belajar mengajar yang diselenggarakan oleh program studi : </h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_522" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                        <p>•   Teori: .... jam per paket program </p>
+                                        <p>•   Praktek: .... jam per paket program </p>
+                                        <p>•   Praktikum: .... jam per paket program </p>
+                                        <p>•   Praktek Kerja Lapangan: .... hari per paket program </p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <p>Catatan: Satu paket program DIV = 4 tahun, satu paket program DIII = 3 tahun,</p>
+                                    <p>satu paket program DII = 2 tahun, satu paket program DI = 1 tahun.</p>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        }elseif ($getbutir=='5.2.3') {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian523">
+                        <input type="hidden" name="id523" id="id523" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir523" id="id_butir523" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div>
+                        <h2 class="card-inside-title">Berapa waktu yang disediakan untuk pelaksanaan real proses belajar mengajar yang diselenggarakan oleh program studi : </h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_523" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no523" id="version_no523" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at523" id="created_at523" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi523">
+                        <input type="hidden" name="id_butir523" id="id_butir523" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Lampirkan contoh soal ujian dalam 1 tahun terakhir untuk 5 mata kuliah keahlian berikut silabusnya.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_523" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        }elseif ($getbutir=='5.3.1') {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -10123,13 +10619,14 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Lampirkan contoh soal ujian dalam 1 tahun terakhir untuk 5 mata kuliah keahlian berikut silabusnya.</h2>
+                        <h2 class="card-inside-title">Peninjauan kurikulum dalam 5 tahun terakhir</h2>
+                        <h2 class="card-inside-title">Jelaskan mekanisme peninjauan kurikulum dan pihak-pihak yang dilibatkan dalam proses peninjauan tersebut.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_531" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom1_531" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -10143,14 +10640,13 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi531">
                         <input type="hidden" name="id_butir531" id="id_butir531" value="<?php echo $isiannya; ?>" />
-                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Lampirkan contoh soal ujian dalam 1 tahun terakhir untuk 5 mata kuliah keahlian berikut silabusnya.</h2>
+                        <h2 class="card-inside-title">Peninjauan kurikulum dalam 5 tahun terakhir</h2>
+                        <h2 class="card-inside-title">Jelaskan mekanisme peninjauan kurikulum dan pihak-pihak yang dilibatkan dalam proses peninjauan tersebut.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <textarea name="kolom1_531" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    
                                             </textarea>
                                         </div>
                                     </div>
@@ -10161,61 +10657,327 @@
                             <?php
                                 }
                         }elseif ($getbutir=='5.3.2') {
+                            $getidbutir532 = '';
+                            $querycariidbutir532 = $CI->db->query('select * from butir where butir="5.3.2" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir532->result() as $row){
+                                $getidbutir532 = $row->id;
+                                break;
+                            }
                             if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian532">
-                        <input type="hidden" name="id532" id="id532" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir532" id="id_butir532" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi532">
+                        <input type="hidden" name="532id_butir" id="532id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir532" id="id_butir532" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Peninjauan Kurikulum dalam 5 Tahun Terakhir </h2>
+        <!-- Tabel Edit -->
+                        <div class="header">
+                            <h2>
+                                Edit Tabel Butir <?php echo $butir[0]['butir'] ?>
+                                <small><?php echo $butir[0]['bakumutu'] ?></small>
+                            </h2>
                         </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        <div class="body table-responsive">
+                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                <thead>
+                                    <tr style="height: 26px;">
+                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">No</th>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;" rowspan="2">
+                                        <p><strong>No. MK</strong></p>
+                                        </td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;" rowspan="2">
+                                        <p><strong>Nama MK</strong></p>
+                                        </td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;" rowspan="2">
+                                        <p><strong>MK Baru/Lama/Hapus</strong></p>
+                                        </td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;" colspan="2">
+                                        <p><strong>&nbsp;</strong><strong>Perubahan pada</strong></p>
+                                        </td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;" rowspan="2">
+                                        <p><strong>Alasan Peninjauan</strong></p>
+                                        </td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;" rowspan="2">
+                                        <p><strong>Atas Usulan/ Masukan  dari</strong></p>
+                                        </td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;" rowspan="2">
+                                        <p><strong>Berlaku mulai Sem./Th.</strong></p>
+                                        </td>
+                                        <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Pengaturan</th>
+                                    </tr>
+                                    <tr style="height: 26px;">
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
+                                        <p><strong>Silabus/SAP</strong></p>
+                                        </td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">
+                                        <p><strong>&nbsp;</strong><strong>Buku Ajar</strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
+                                        <td style="width: 139.6px; height: 35.8px; text-align: center;">
+                                        <p><strong>(2)</strong></p>
+                                        </td>
+                                        <td style="width: 85.2px; height: 35.8px; text-align: center;">
+                                        <p><strong>(3)</strong></p>
+                                        </td>
+                                        <td style="width: 85.2px; height: 35.8px; text-align: center;">
+                                        <p><strong>(4)</strong></p>
+                                        </td>
+                                        <td style="width: 134.8px; height: 35.8px; text-align: center;">
+                                        <p><strong>(5)</strong></p>
+                                        </td>
+                                        <td style="width: 139.6px; height: 35.8px; text-align: center;">
+                                        <p><strong>(6)</strong></p>
+                                        </td>
+                                        <td style="width: 85.2px; height: 35.8px; text-align: center;">
+                                        <p><strong>(7)</strong></p>
+                                        </td>
+                                        <td style="width: 85.2px; height: 35.8px; text-align: center;">
+                                        <p><strong>(8)</strong></p>
+                                        </td>
+                                        <td style="width: 134.8px; height: 35.8px; text-align: center;">
+                                        <p><strong>(9)</strong></p>
+                                        </td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $nil = 0;
+                                        $diloop = count($dataisian);
+                                    for($i=0;$i<count($dataisian);$i++){
+                                        $diloop = $diloop - 1;
+                                        $nil = $nil + 1;
+                                    ?>
+                                    <tr style="height: 13px;">
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?></th>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom1'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom2'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom3'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom4'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom5'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom6'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom7'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom8'] ?>&nbsp;</td>
+                                        <td style="width: 53px; text-align: center; height: 13px;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update532" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                     } ?>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
-                        </div>
-                        <h2 class="card-inside-title">Peninjauan kurikulum dalam 5 tahun terakhir</h2>
-                        <h2 class="card-inside-title">Jelaskan mekanisme peninjauan kurikulum dan pihak-pihak yang dilibatkan dalam proses peninjauan tersebut.</h2>
+        <!-- Tutup Tabel Edit -->
+                        <h2 class="card-inside-title">Tuliskan hasil peninjauan tersebut, mengikuti format tabel berikut.</h2>
                         <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_532" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                    <div class="col-md-12">
+                                        <b>No. MK</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-12">
+                                        <b>Nama MK</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>MK Baru/Lama/Hapus</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Perubahan pada</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Silabus/SAP</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Buku Ajar </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Alasan Peninjauan</b>
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom6_532" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <textarea name="kolom6_532" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Atas Usulan/ Masukan  dari</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom7_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Berlaku mulai Sem./Th.</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
                         </div>
-                        <input type="hidden" name="version_no532" id="version_no532" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at532" id="created_at532" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
-                        <?php }
+                        <?php
                                 }else{
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi532">
-                        <input type="hidden" name="id_butir532" id="id_butir532" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Peninjauan kurikulum dalam 5 tahun terakhir</h2>
-                        <h2 class="card-inside-title">Jelaskan mekanisme peninjauan kurikulum dan pihak-pihak yang dilibatkan dalam proses peninjauan tersebut.</h2>
+                        <input type="hidden" name="532id_butir" id="532id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir532" id="id_butir532" value="<?php echo $getidbutir532; ?>" />
+                        <!-- <h2 class="card-inside-title">Upaya Peningkatan Sumber Daya Manusia (SDM) dalam tiga tahun terakhir</h2> -->
+                        <h2 class="card-inside-title">Tuliskan hasil peninjauan tersebut, mengikuti format tabel berikut.</h2>
                         <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_532" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    
-                                            </textarea>
+                                    <div class="col-md-12">
+                                        <b>No. MK</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-12">
+                                        <b>Nama MK</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>MK Baru/Lama/Hapus</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Perubahan pada</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Silabus/SAP</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Buku Ajar </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Alasan Peninjauan</b>
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom6_532" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <textarea name="kolom6_532" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Atas Usulan/ Masukan  dari</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom7_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Berlaku mulai Sem./Th.</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_532" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='5.4.1.a') || ($getbutir=='5.4.1.b') || ($getbutir=='5.4.1.c')) {
+                        }elseif (($getbutir=='5.4.1.1') || ($getbutir=='5.4.1.2')) {
                             $getidbutir541 = '';
-                            $querycariidbutir541 = $CI->db->query('select * from butir where butir="5.4.1.a" and id_borang = "'.$id_bor.'"');
+                            $querycariidbutir541 = $CI->db->query('select * from butir where butir="5.4.1.1" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir541->result() as $row){
                                 $getidbutir541 = $row->id;
                                 break;
@@ -10261,13 +11023,13 @@
                                     <?php
                                         $nil = 0;
                                         $jum1 = 0;
-                                        $jum2 = 0;
+                                        // $jum2 = 0;
                                         $diloop = count($dataisian);
                                     for($i=0;$i<count($dataisian);$i++){
                                         $diloop = $diloop - 1;
                                         $nil = $nil + 1;
                                         $jum1 = $jum1 + $dataisian[$diloop]['kolom2'];
-                                        $jum2 = $jum1 / count($dataisian);
+                                        // $jum2 = $jum1 / count($dataisian);
                                     ?>
                                     <tr style="height: 13px;">
                                         <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?></th>
@@ -10290,13 +11052,13 @@
                                         <td style="width: 245.2px; height: 35.8px; text-align: center; background-color: #9c9c9c;"></td>
                                         <td style="width: 52px; text-align: center; height: 13px;">#</td>
                                     </tr>
-                                    <tr>
+<!--                                     <tr>
                                         <th scope="row" style="width: 52px; text-align: center; height: 13px;">Rata-rata banyaknya pertemuan per mahasiswa per semester </th>
                                         <td style="width: 139.6px; height: 35.8px; text-align: center;"></td>
                                         <td style="width: 175.6px; height: 35.8px; text-align: center;"></td>
                                         <td style="width: 245.2px; height: 35.8px; text-align: center; "><?php echo $jum2 ?></td>
                                         <td style="width: 52px; text-align: center; height: 13px;">#</td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -10416,9 +11178,9 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='5.4.2') {
+                        }elseif (($getbutir=='5.4.2.1') || ($getbutir=='5.4.2.2')) {
                             $getidbutir542 = '';
-                            $querycariidbutir542 = $CI->db->query('select * from butir where butir="5.4.2" and id_borang = "'.$id_bor.'"');
+                            $querycariidbutir542 = $CI->db->query('select * from butir where butir="5.4.2.1" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir542->result() as $row){
                                 $getidbutir542 = $row->id;
                                 break;
@@ -10672,13 +11434,13 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='5.5.1.d') {
+                        }elseif ($getbutir=='5.5.1') {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian551a">
-                        <input type="hidden" name="id551a" id="id551a" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir551a" id="id_butir551a" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian551">
+                        <input type="hidden" name="id551" id="id551" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir551" id="id_butir551" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
@@ -10688,47 +11450,31 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Jelaskan pelaksanaan pembimbingan Tugas Akhir atau Skripsi yang diterapkan pada PS ini.  </h2>
-                        <h2 class="card-inside-title">• Ketersediaan panduan pembimbingan tugas akhir (Beri tanda  pada pilihan yang sesuai):</h2>
-                        <div class="demo-checkbox">
-                                <input type="checkbox" id="ya" class="filled-in" checked />
-                                <label for="ya">Ya</label></br>
-                                <input type="checkbox" id="tidak" class="filled-in" />
-                                <label for="tidak">Tidak</label>
-                        </div>
-                        <h2 class="card-inside-title">Jika Ya, jelaskan cara sosialisasi dan pelaksanaannya.</h2>
+                        <h2 class="card-inside-title">Jelaskan bentuk karya/tugas akhir mahasiswa program diploma.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_551a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom1_551" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <input type="hidden" name="version_no551a" id="version_no551a" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at551a" id="created_at551a" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no551" id="version_no551" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at551" id="created_at551" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi551a">
-                        <input type="hidden" name="id_butir551a" id="id_butir551a" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Jelaskan pelaksanaan pembimbingan Tugas Akhir atau Skripsi yang diterapkan pada PS ini.  </h2>
-                        <h2 class="card-inside-title">• Ketersediaan panduan pembimbingan tugas akhir (Beri tanda  pada pilihan yang sesuai):</h2>
-                        <div class="demo-checkbox">
-                                <input type="checkbox" id="ya" class="filled-in" />
-                                <label for="ya">Ya</label></br>
-                                <input type="checkbox" id="tidak" class="filled-in" />
-                                <label for="tidak">Tidak</label>
-                        </div>
-                        <h2 class="card-inside-title">Jika Ya, jelaskan cara sosialisasi dan pelaksanaannya.</h2>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi551">
+                        <input type="hidden" name="id_butir551" id="id_butir551" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Jelaskan bentuk karya/tugas akhir mahasiswa program diploma.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_551a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom1_551" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     
                                             </textarea>
                                         </div>
@@ -10739,13 +11485,65 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='5.5.1.a') {
+                        }elseif ($getbutir=='5.5.2.1') {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian551a">
-                        <input type="hidden" name="id551b" id="id551b" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir551b" id="id_butir551b" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian5521">
+                        <input type="hidden" name="id5521" id="id5521" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir5521" id="id_butir5521" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div>
+                        <h2 class="card-inside-title">Pelaksanaan pembimbingan karya/tugas akhir.</h2>
+                        <h2 class="card-inside-title">Jelaskan bentuk dan pelaksanaan pembimbingan karya/tugas akhir yang diterapkan pada PS ini, termasuk informasi tentang ketersediaan panduan karya/tugas akhir.  Jelaskan pula cara sosialisasi dan pelaksanaannya.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_5521" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <input type="hidden" name="version_no5521" id="version_no5521" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at5521" id="created_at5521" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        </form>
+                        <?php }
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi5521">
+                        <input type="hidden" name="id_butir5521" id="id_butir5521" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Pelaksanaan pembimbingan karya/tugas akhir.</h2>
+                        <h2 class="card-inside-title">Jelaskan bentuk dan pelaksanaan pembimbingan karya/tugas akhir yang diterapkan pada PS ini, termasuk informasi tentang ketersediaan panduan karya/tugas akhir.  Jelaskan pula cara sosialisasi dan pelaksanaannya.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_5521" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        }elseif ($getbutir=='5.5.2.2') {
+                            if (count($dataisian)>0) {
+                            for($i=0;$i<count($dataisian);$i++){
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian5522">
+                        <input type="hidden" name="id5522" id="id5522" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir5522" id="id_butir5522" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
@@ -10761,32 +11559,28 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_551b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom1_5522" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <input type="hidden" name="version_no551b" id="version_no551b" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at551b" id="created_at551b" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no5522" id="version_no5522" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at5522" id="created_at5522" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi551b">
-                        <input type="hidden" name="id_butir551b" id="id_butir551b" value="<?php echo $isiannya; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi5522">
+                        <input type="hidden" name="id_butir5522" id="id_butir5522" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Pembimbingan Tugas Akhir / Skripsi</h2>
                         <h2 class="card-inside-title">Jelaskan pelaksanaan pembimbingan Tugas Akhir atau Skripsi yang diterapkan pada PS ini.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_551b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    <p>&nbsp;</p>
-                                    <ul>
-                                    <li>Rata-rata banyaknya mahasiswa per dosen pembimbing tugas akhir (TA) &hellip;&hellip;. mahasiswa/dosen TA.</li>
-                                    </ul>
-                                    <p>&nbsp;</p>
+                                            <textarea name="kolom1_5522" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <p>Rata-rata banyaknya mahasiswa per dosen pembimbing karya/tugas akhir (TA) ____ . mahasiswa/dosen TA.</p>
                                             </textarea>
                                         </div>
                                     </div>
@@ -10796,13 +11590,13 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='5.5.1.b') {
+                        }elseif ($getbutir=='5.5.2.3') {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian551c">
-                        <input type="hidden" name="id551c" id="id551c" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir551c" id="id_butir551c" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian5523">
+                        <input type="hidden" name="id5523" id="id5523" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir5523" id="id_butir5523" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
@@ -10818,32 +11612,28 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_551c" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom1_5523" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <input type="hidden" name="version_no551c" id="version_no551c" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at551c" id="created_at551c" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no5523" id="version_no5523" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at5523" id="created_at5523" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi551c">
-                        <input type="hidden" name="id_butir551c" id="id_butir551c" value="<?php echo $isiannya; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi5523">
+                        <input type="hidden" name="id_butir5523" id="id_butir5523" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Pembimbingan Tugas Akhir / Skripsi</h2>
                         <h2 class="card-inside-title">Jelaskan pelaksanaan pembimbingan Tugas Akhir atau Skripsi yang diterapkan pada PS ini.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_551c" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    <p>&nbsp;</p>
-                                    <ul>
-                                    <li>Rata-rata jumlah pertemuan dosen-mahasiswa untuk menyelesaikan tugas akhir&nbsp;: .... kali mulai dari saat mengambil TA hingga menyelesaikan TA.</li>
-                                    </ul>
-                                    <p>&nbsp;</p>
+                                            <textarea name="kolom1_5523" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <p>Rata-rata jumlah pertemuan dosen-mahasiswa untuk menyelesaikan tugas akhir&nbsp;: .... kali mulai dari saat mengambil TA hingga menyelesaikan TA.</p>
                                             </textarea>
                                         </div>
                                     </div>
@@ -10853,18 +11643,18 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='5.5.1.c') {
-                            $getidbutir551d = '';
-                            $querycariidbutir551d = $CI->db->query('select * from butir where butir="5.5.1.c" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir551d->result() as $row){
-                                $getidbutir551d = $row->id;
+                        }elseif ($getbutir=='5.5.2.4') {
+                            $getidbutir5524 = '';
+                            $querycariidbutir5524 = $CI->db->query('select * from butir where butir="5.5.2.4" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir5524->result() as $row){
+                                $getidbutir5524 = $row->id;
                                 break;
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi551d">
-                        <input type="hidden" name="551did_butir" id="551did_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir551d" id="id_butir551d" value="<?php echo $getidbutir551d; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi5524">
+                        <input type="hidden" name="5524id_butir" id="5524id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir5524" id="id_butir5524" value="<?php echo $getidbutir5524; ?>" />
                         <h2 class="card-inside-title">Dosen Tetap </h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -10907,7 +11697,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom2'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update551d" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update5524" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -10927,7 +11717,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_551d" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom1_5524" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -10938,7 +11728,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_551d" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom2_5524" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -10948,7 +11738,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom8_551d" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom3_5524" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
@@ -10963,9 +11753,9 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi551d">
-                        <input type="hidden" name="551did_butir" id="551did_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir551d" id="id_butir551d" value="<?php echo $getidbutir551d; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi5524">
+                        <input type="hidden" name="5524id_butir" id="5524id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir5524" id="id_butir5524" value="<?php echo $getidbutir5524; ?>" />
                         <h2 class="card-inside-title">• Tuliskan nama-nama dosen yang menjadi pembimbing tugas akhir atau skripsi, dan jumlah mahasiswa yang bimbingan dengan mengikuti format tabel berikut: </h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
@@ -10975,7 +11765,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_551d" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom1_5524" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -10986,7 +11776,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_551d" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom2_5524" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -10996,7 +11786,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom3_551d" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom3_5524" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
@@ -11005,59 +11795,6 @@
                                     <div class="col-md-12">
                                         <h2 class="card-inside-title">Catatan :</h2>
                                     </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
-                            <?php
-                                }
-                        }elseif ($getbutir=='5.5.2') {
-                            if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian552">
-                        <input type="hidden" name="id552" id="id552" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir552" id="id_butir552" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
-                        </div>
-                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Rata-rata lama penyelesaian tugas akhir/skripsi pada tiga tahun terakhir </h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_552" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="version_no552" id="version_no552" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at552" id="created_at552" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
-                        </form>
-                        <?php }
-                                }else{
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi552">
-                        <input type="hidden" name="id_butir552" id="id_butir552" value="<?php echo $isiannya; ?>" />
-                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Rata-rata lama penyelesaian tugas akhir/skripsi pada tiga tahun terakhir </h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_552" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    <p>Rata-rata lama penyelesaian tugas akhir/skripsi pada tiga tahun terakhir&nbsp;:&nbsp; ... bulan. (Menurut kurikulum tugas akhir direncanakan ... semester).</p>
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
@@ -11234,9 +11971,8 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
-                        <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
-                        <h2 class="card-inside-title">Kebijakan tentang suasana akademik (otonomi keilmuan, kebebasan akademik, kebebasan mimbar akademik).</h2>
+                        <h2 class="card-inside-title">Peningkatan Suasana Akademik</h2>
+                        <h2 class="card-inside-title">Jelaskan kebijakan tentang suasana akademik (otonomi keilmuan, kebebasan akademik, kebebasan mimbar akademik) serta ketersediaan dokumen pendukungnya.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -11255,9 +11991,8 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi571">
                         <input type="hidden" name="id_butir571" id="id_butir571" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
-                        <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
-                        <h2 class="card-inside-title">Kebijakan tentang suasana akademik (otonomi keilmuan, kebebasan akademik, kebebasan mimbar akademik).</h2>
+                        <h2 class="card-inside-title">Peningkatan Suasana Akademik</h2>
+                        <h2 class="card-inside-title">Jelaskan kebijakan tentang suasana akademik (otonomi keilmuan, kebebasan akademik, kebebasan mimbar akademik) serta ketersediaan dokumen pendukungnya.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -11289,9 +12024,8 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
-                        <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
-                        <h2 class="card-inside-title">Ketersediaan dan jenis prasarana, sarana dan dana yang memungkinkan terciptanya interaksi akademik antara sivitas akademika.</h2>
+                        <h2 class="card-inside-title">Peningkatan Suasana Akademik</h2>
+                        <h2 class="card-inside-title">Jelaskan ketersediaan dan jenis prasarana, sarana dan dana yang memungkinkan terciptanya interaksi akademik antara sivitas akademika, serta status kepemilikan prasarana dan sarana.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -11310,9 +12044,8 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi572">
                         <input type="hidden" name="id_butir572" id="id_butir572" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
-                        <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
-                        <h2 class="card-inside-title">Ketersediaan dan jenis prasarana, sarana dan dana yang memungkinkan terciptanya interaksi akademik antara sivitas akademika.</h2>
+                        <h2 class="card-inside-title">Peningkatan Suasana Akademik</h2>
+                        <h2 class="card-inside-title">Jelaskan ketersediaan dan jenis prasarana, sarana dan dana yang memungkinkan terciptanya interaksi akademik antara sivitas akademika, serta status kepemilikan prasarana dan sarana.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -11344,9 +12077,8 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
-                        <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
-                        <h2 class="card-inside-title">Program dan kegiatan di dalam dan di luar proses pembelajaran, yang dilaksanakan baik di dalam maupun di luar kelas,  untuk menciptakan suasana akademik yang kondusif (misalnya seminar, simposium, lokakarya, bedah buku, penelitian bersama, pengenalan kehidupan kampus, dan temu dosen-mahasiswa-alumni).</h2>
+                        <h2 class="card-inside-title">Peningkatan Suasana Akademik</h2>
+                        <h2 class="card-inside-title">Jelaskan program dan kegiatan di dalam dan di luar proses pembelajaran, yang dilaksanakan baik di dalam maupun di luar kelas,  untuk menciptakan suasana akademik yang kondusif (misalnya seminar, simposium, lokakarya, bedah buku, penelitian bersama, pengenalan kehidupan kampus, dan temu dosen-mahasiswa-alumni) serta hasil yang diperoleh.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -11365,9 +12097,8 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi573">
                         <input type="hidden" name="id_butir573" id="id_butir573" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
-                        <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
-                        <h2 class="card-inside-title">Program dan kegiatan di dalam dan di luar proses pembelajaran, yang dilaksanakan baik di dalam maupun di luar kelas,  untuk menciptakan suasana akademik yang kondusif (misalnya seminar, simposium, lokakarya, bedah buku, penelitian bersama, pengenalan kehidupan kampus, dan temu dosen-mahasiswa-alumni).</h2>
+                        <h2 class="card-inside-title">Peningkatan Suasana Akademik</h2>
+                        <h2 class="card-inside-title">Jelaskan program dan kegiatan di dalam dan di luar proses pembelajaran, yang dilaksanakan baik di dalam maupun di luar kelas,  untuk menciptakan suasana akademik yang kondusif (misalnya seminar, simposium, lokakarya, bedah buku, penelitian bersama, pengenalan kehidupan kampus, dan temu dosen-mahasiswa-alumni) serta hasil yang diperoleh.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -11399,9 +12130,8 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
-                        <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
-                        <h2 class="card-inside-title">Interaksi akademik antara dosen-mahasiswa, antar mahasiswa, serta antar dosen.</h2>
+                        <h2 class="card-inside-title">Peningkatan Suasana Akademik</h2>
+                        <h2 class="card-inside-title">Jelaskan interaksi akademik antara dosen-mahasiswa, antar mahasiswa, serta antar dosen serta hasilnya.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -11420,9 +12150,8 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi574">
                         <input type="hidden" name="id_butir574" id="id_butir574" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
-                        <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
-                        <h2 class="card-inside-title">Interaksi akademik antara dosen-mahasiswa, antar mahasiswa, serta antar dosen.</h2>
+                        <h2 class="card-inside-title">Peningkatan Suasana Akademik</h2>
+                        <h2 class="card-inside-title">Jelaskan interaksi akademik antara dosen-mahasiswa, antar mahasiswa, serta antar dosen serta hasilnya.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -11438,13 +12167,13 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='5.7.5') {
+                        }elseif ($getbutir=='5.8') {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian575">
-                        <input type="hidden" name="id575" id="id575" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir575" id="id_butir575" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian58">
+                        <input type="hidden" name="id58" id="id58" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir58" id="id_butir58" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
@@ -11454,39 +12183,214 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
-                        <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
-                        <h2 class="card-inside-title">Pengembangan perilaku kecendekiawanan.</h2>
+                        <h2 class="card-inside-title">Pembekalan Etika Profesi</h2>
+                        <h2 class="card-inside-title">Apakah lulusan program studi ini dibekali dengan etika profesi sebelum mereka lulus ? Pilih yang sesuai</h2>
+                        <div class="demo-radio-button">
+                                <input type="radio" id="rb1" name="kolom1_58" <?php echo ($dataisian[$i]['kolom1']=='Ya')?'checked':'' ?> class="filled-in" value="Ya" />
+                                <label for="rb1">Ya</label></br>
+                                <input type="radio" id="rb2" name="kolom1_58" <?php echo ($dataisian[$i]['kolom1']=='Tidak')?'checked':'' ?> class="filled-in" value="Tidak" />
+                                <label for="rb2">Tidak</label>
+                        </div>
+                        <h2 class="card-inside-title">Bila Ya, jelaskan bentuk pembekalan tersebut.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_575" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom2_58" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <input type="hidden" name="version_no575" id="version_no575" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at575" id="created_at575" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no58" id="version_no58" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at58" id="created_at58" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi575">
-                        <input type="hidden" name="id_butir575" id="id_butir575" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Upaya Peningkatan Suasana Akademik</h2>
-                        <h2 class="card-inside-title">Berikan gambaran yang jelas mengenai upaya dan kegiatan untuk menciptakan suasana akademik yang kondusif di lingkungan PS, khususnya mengenai hal-hal berikut:</h2>
-                        <h2 class="card-inside-title">Pengembangan perilaku kecendekiawanan.</h2>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi58">
+                        <input type="hidden" name="id_butir58" id="id_butir58" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Pembekalan Etika Profesi</h2>
+                        <h2 class="card-inside-title">Apakah lulusan program studi ini dibekali dengan etika profesi sebelum mereka lulus ? Pilih yang sesuai</h2>
+                        <div class="demo-radio-button">
+                                <input type="radio" id="rb1" name="kolom1_58" class="filled-in" value="Ya" />
+                                <label for="rb1">Ya</label></br>
+                                <input type="radio" id="rb2" name="kolom1_58" class="filled-in" value="Tidak" />
+                                <label for="rb2">Tidak</label>
+                        </div>
+                        <h2 class="card-inside-title">Bila Ya, jelaskan bentuk pembekalan tersebut.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_575" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom2_58" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     
                                             </textarea>
                                         </div>
                                     </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                            <?php
+                                }
+                        }elseif ($getbutir=='5.9') {
+                            $getidbutir59 = '';
+                            $querycariidbutir59 = $CI->db->query('select * from butir where butir="5.9" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir59->result() as $row){
+                                $getidbutir59 = $row->id;
+                                break;
+                            }
+                            if (count($dataisian)>0) {
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi59">
+                        <input type="hidden" name="59id_butir" id="59id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir59" id="id_butir59" value="<?php echo $getidbutir59; ?>" />
+                        <h2 class="card-inside-title">Dosen Tetap </h2>
+        <!-- Tabel Edit -->
+                        <div class="header">
+                            <h2>
+                                Edit Tabel Butir <?php echo $butir[0]['butir'] ?>
+                                <small><?php echo $butir[0]['bakumutu'] ?></small>
+                            </h2>
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                <thead>
+                                    <tr style="height: 26px;">
+                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">No</th>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center; vertical-align: middle;">
+                                        <p><strong>Nama Peralatan</strong></p>
+                                        </td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center; vertical-align: middle;">
+                                        <p><strong>&nbsp;</strong><strong>Fungsi</strong></p>
+                                        </td>
+                                        <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;">Pengaturan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
+                                        <td style="width: 139.6px; height: 35.8px; text-align: center;">(2)</td>
+                                        <td style="width: 85.2px; height: 35.8px; text-align: center;">(3)</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
+                                    </tr>
+                                    <?php
+                                        $nil = 0;
+                                        $diloop = count($dataisian);
+                                    for($i=0;$i<count($dataisian);$i++){
+                                        $diloop = $diloop - 1;
+                                        $nil = $nil + 1;
+                                    ?>
+                                    <tr style="height: 13px;">
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?></th>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom3'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom4'] ?>&nbsp;</td>
+                                        <td style="width: 53px; text-align: center; height: 13px;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update59" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                     } ?>
+                                </tbody>
+                            </table>
+                        </div>
+        <!-- Tutup Tabel Edit -->
+                        <h2 class="card-inside-title">Keselamatan Kerja</h2>
+                        <h2 class="card-inside-title">Upaya program studi untuk menumbuhkan budaya keselamatan kerja dalam kegiatan praktikum/praktek.</h2>
+                        <b>a. Apakah telah memiliki pedoman sistem keselamatan kerja praktikum/praktek </b>
+                        <div class="demo-radio-button">
+                                <input type="radio" id="rb1" name="kolom1_59" class="filled-in" value="Ya" />
+                                <label for="rb1">Ya</label></br>
+                                <input type="radio" id="rb2" name="kolom1_59" class="filled-in" value="Tidak" />
+                                <label for="rb2">Tidak</label>
+                        </div>
+                        <br>
+                        <b>b. Apakah sistem keselamatan kerja telah dilaksanakan dengan semestinya berdasarkan pedoman keselamatan kerja yang dimaksud pada pertanyaan 5.8.a di atas</b>
+                        <div class="demo-radio-button">
+                                <input type="radio" id="rb3" name="kolom2_59" class="filled-in" value="Ya" />
+                                <label for="rb3">Ya</label></br>
+                                <input type="radio" id="rb4" name="kolom2_59" class="filled-in" value="Tidak" />
+                                <label for="rb4">Tidak</label>
+                        </div>
+                        <br>
+                        <b>c. Tuliskan daftar peralatan dan bahan-bahan yang dipergunakan dalam sistem keselamatan kerja dimaksud</b>
+                        <div class="row clearfix">
+                                <div class="col-md-12">
+                                        <b>Nama Peralatan/ Bahan </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_59" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Fungsi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_59" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
+                        <?php
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi59">
+                        <input type="hidden" name="59id_butir" id="59id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir59" id="id_butir59" value="<?php echo $getidbutir59; ?>" />
+                        <h2 class="card-inside-title">Keselamatan Kerja</h2>
+                        <h2 class="card-inside-title">Upaya program studi untuk menumbuhkan budaya keselamatan kerja dalam kegiatan praktikum/praktek.</h2>
+                        <b>a. Apakah telah memiliki pedoman sistem keselamatan kerja praktikum/praktek </b>
+                        <div class="demo-radio-button">
+                                <input type="radio" id="rb1" name="kolom1_59" class="filled-in" value="Ya" />
+                                <label for="rb1">Ya</label></br>
+                                <input type="radio" id="rb2" name="kolom1_59" class="filled-in" value="Tidak" />
+                                <label for="rb2">Tidak</label>
+                        </div>
+                        <br>
+                        <b>b. Apakah sistem keselamatan kerja telah dilaksanakan dengan semestinya berdasarkan pedoman keselamatan kerja yang dimaksud pada pertanyaan 5.8.a di atas</b>
+                        <div class="demo-radio-button">
+                                <input type="radio" id="rb3" name="kolom2_59" class="filled-in" value="Ya" />
+                                <label for="rb3">Ya</label></br>
+                                <input type="radio" id="rb4" name="kolom2_59" class="filled-in" value="Tidak" />
+                                <label for="rb4">Tidak</label>
+                        </div>
+                        <br>
+                        <b>c. Tuliskan daftar peralatan dan bahan-bahan yang dipergunakan dalam sistem keselamatan kerja dimaksud</b>
+                        <div class="row clearfix">
+                                <div class="col-md-12">
+                                        <b>Nama Peralatan/ Bahan </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_59" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Fungsi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_59" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -11548,7 +12452,13 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='6.2.1') {
+                        }elseif (($getbutir=='6.2.1.1') || ($getbutir=='6.2.1.2')) {
+                            $getidbutir621 = '';
+                            $querycariidbutir621 = $CI->db->query('select * from butir where butir="6.2.1.1" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir621->result() as $row){
+                                $getidbutir621 = $row->id;
+                                break;
+                            }
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -11635,7 +12545,7 @@
                                     </tr>
                                     <tr style="height: 35px;">
                                     <td style="width: 201.6px; height: 105px; text-align: left;" rowspan="3">
-                                    <p>PT sendiri</p>
+                                    <p>Usaha sendiri</p>
                                     </td>
                                     <td style="width: 310.4px; height: 35px; text-align: center;">
                                     <p>&nbsp;</p>
@@ -11680,7 +12590,7 @@
                                     </tr>
                                     <tr style="height: 35px;">
                                     <td style="width: 201.6px; height: 105px; text-align: left;" rowspan="3">
-                                    <p>Yayasan</p>
+                                    <p>Mahasiswa</p>
                                     </td>
                                     <td style="width: 310.4px; height: 35px; text-align: center;">
                                     <p>&nbsp;</p>
@@ -11725,7 +12635,7 @@
                                     </tr>
                                     <tr style="height: 35px;">
                                     <td style="width: 201.6px; height: 105px; text-align: left;" rowspan="3">
-                                    <p>Diknas</p>
+                                    <p>Pemerintah</p>
                                     </td>
                                     <td style="width: 310.4px; height: 35px; text-align: center;">
                                     <p>&nbsp;</p>
@@ -11840,7 +12750,7 @@
                                     <p><strong>Jenis Penggunaan</strong></p>
                                     </td>
                                     <td style="width: 89.6px; height: 15px; background-color: #c9c9c9; text-align: center;" colspan="3">
-                                    <p><strong>Persentase Dana </strong></p>
+                                    <p><strong>Jumlah Dana (Juta Rupiah) </strong></p>
                                     </td>
                                     </tr>
                                     <tr style="height: 2.8px;">
@@ -11910,7 +12820,7 @@
                                     <p>3</p>
                                     </td>
                                     <td style="width: 317.6px; height: 38px; text-align: left;">
-                                    <p>Pengabdian kepada Masyarakat</p>
+                                    <p>Pelayanan/Pengabdian kepada Masyarakat</p>
                                     </td>
                                     <td style="width: 217.6px; text-align: center; height: 38px;">
                                     <p>&nbsp;</p>
@@ -11919,6 +12829,20 @@
                                     <p>&nbsp;</p>
                                     </td>
                                     <td style="width: 205.6px; text-align: center; height: 38px;">
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr style="height: 36px;">
+                                    <td style="width: 517.6px; height: 36px; text-align: left;" colspan="2">
+                                    <p>Jumlah Dana Operasional</p>
+                                    </td>
+                                    <td style="width: 168.8px; height: 36px; text-align: center;">
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td style="width: 178.4px; height: 36px; text-align: center;">
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td style="width: 179.2px; height: 36px; text-align: center;">
                                     <p>&nbsp;</p>
                                     </td>
                                     </tr>
@@ -11973,20 +12897,45 @@
                                     <p>&nbsp;</p>
                                     </td>
                                     </tr>
-                                    <tr style="height: 38px;">
-                                    <td style="width: 89.6px; text-align: center; height: 38px;">
+                                    <tr style="height: 36px;">
+                                    <td style="width: 517.6px; height: 36px; text-align: left;" colspan="2">
+                                    <p>Jumlah dana untuk investasi</p>
+                                    </td>
+                                    <td style="width: 168.8px; height: 36px; text-align: center;">
                                     <p>&nbsp;</p>
                                     </td>
-                                    <td style="width: 317.6px; height: 38px; text-align: left;">
-                                    <p>Lain-lain</p>
-                                    </td>
-                                    <td style="width: 217.6px; text-align: center; height: 38px;">
+                                    <td style="width: 178.4px; height: 36px; text-align: center;">
                                     <p>&nbsp;</p>
                                     </td>
-                                    <td style="width: 204.8px; text-align: center; height: 38px;">
+                                    <td style="width: 179.2px; height: 36px; text-align: center;">
                                     <p>&nbsp;</p>
                                     </td>
-                                    <td style="width: 205.6px; text-align: center; height: 38px;">
+                                    </tr>
+                                    <tr style="height: 36px;">
+                                    <td style="width: 517.6px; height: 36px; text-align: left;" colspan="2">
+                                    <p>Jumlah dana (operasional + investasi)</p>
+                                    </td>
+                                    <td style="width: 168.8px; height: 36px; text-align: center;">
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td style="width: 178.4px; height: 36px; text-align: center;">
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td style="width: 179.2px; height: 36px; text-align: center;">
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr style="height: 36px;">
+                                    <td style="width: 517.6px; height: 36px; text-align: left;" colspan="2">
+                                    <p>Jumlah mahasiswa aktif (<i>student body</i>)</p>
+                                    </td>
+                                    <td style="width: 168.8px; height: 36px; text-align: center;">
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td style="width: 178.4px; height: 36px; text-align: center;">
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td style="width: 179.2px; height: 36px; text-align: center;">
                                     <p>&nbsp;</p>
                                     </td>
                                     </tr>
@@ -12081,11 +13030,14 @@
                                         <td style="width: 85.2px; height: 35.8px; text-align: center;"></td>
                                         <td style="width: 125.2px; height: 35.8px; text-align: center;"></td>
                                         <td style="width: 175.6px; height: 35.8px; text-align: center;"><?php echo $jum1 ?></td>
-                                        <td style="width: 245.2px; height: 35.8px; text-align: center;"></td>
+                                        <!-- <td style="width: 245.2px; height: 35.8px; text-align: center;"></td> -->
                                         <td style="width: 52px; text-align: center; height: 13px;">#</td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <p>
+                            * Di luar dana penelitian/penulisan skripsi, tesis, dan disertasi sebagai bagian dari studi lanjut.  Kontrak penelitian disiapkan untuk asesmen lapangan.
+                            </p>
                         </div>
         <!-- Tutup Tabel Edit -->
                         <h2 class="card-inside-title">Tuliskan dana untuk kegiatan penelitian pada tiga tahun terakhir yang melibatkan dosen yang bidang keahliannya sesuai dengan program studi, dengan mengikuti format tabel berikut:</h2>
@@ -12124,7 +13076,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jumlah Dana* dalam Juta Rupiah)</b>
+                                        <b>Jumlah Dana* (dalam Juta Rupiah)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -12194,7 +13146,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jumlah Dana* dalam Juta Rupiah)</b>
+                                        <b>Jumlah Dana* (dalam Juta Rupiah)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -12252,7 +13204,7 @@
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Tahun</td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Judul Kegiatan Pelayanan/Pengabdian kepada Masyarakat</td>
                                         <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Sumber dan Jenis Dana</td>
-                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Jumlah Dana* (dalam Juta Rupiah)</td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Jumlah Dana (dalam Juta Rupiah)</td>
                                         <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;">Pengaturan</th>
                                     </tr>
                                 </thead>
@@ -12338,7 +13290,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jumlah Dana* dalam Juta Rupiah)</b>
+                                        <b>Jumlah Dana (dalam Juta Rupiah)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -12408,7 +13360,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jumlah Dana* dalam Juta Rupiah)</b>
+                                        <b>Jumlah Dana (dalam Juta Rupiah)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -12549,6 +13501,120 @@
                             </table>
                         </div>
         <!-- Tutup Tabel Edit -->
+                        <!-- <h2 class="card-inside-title">Tuliskan data ruang kerja dosen tetap yang bidang keahliannya sesuai dengan PS dengan mengikuti format tabel berikut:</h2>
+                        <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <b>Satu ruang untuk lebih dari 4 dosen</b>
+                                                <input type="hidden" name="kolom1_631" value="Satu ruang untuk lebih dari 4 dosen" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Ruang</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Luas (m2)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Satu ruang untuk 3 - 4 dosen</b>
+                                                <input type="hidden" name="kolom4_631" value="Satu ruang untuk 3 - 4 dosen" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Ruang</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Luas (m2)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom6_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div><div class="col-md-12">
+                                        <b>Satu ruang untuk 2 dosen</b>
+                                                <input type="hidden" name="kolom7_631" value="Satu ruang untuk 2 dosen" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Ruang</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Luas (m2)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom9_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div><div class="col-md-12">
+                                        <b>Satu ruang untuk 1 dosen (bukan ruangan pimpinan jurusan/ direktorat/fakultas/PT)</b>
+                                                <input type="hidden" name="kolom10_631" value="Satu ruang untuk 1 dosen (bukan pejabat struktural)" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Ruang</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom11_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Luas (m2)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom12_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button> -->
+                        </form>
+                        <?php
+                                }else{
+                            ?>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi631">
+                        <input type="hidden" name="631id_butir" id="631id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir631" id="id_butir631" value="<?php echo $getidbutir631; ?>" />
+                        <h2 class="card-inside-title">Prasarana</h2>
                         <h2 class="card-inside-title">Tuliskan data ruang kerja dosen tetap yang bidang keahliannya sesuai dengan PS dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
@@ -12628,121 +13694,7 @@
                                             </div>
                                         </div>
                                     </div><div class="col-md-12">
-                                        <b>Satu ruang untuk 1 dosen (bukan pejabat struktural)</b>
-                                                <input type="hidden" name="kolom10_631" value="Satu ruang untuk 1 dosen (bukan pejabat struktural)" class="form-control" placeholder="Tuliskan disini">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Jumlah Ruang</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom11_631" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Jumlah Luas (m2)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom12_631" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
-                        <?php
-                                }else{
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi631">
-                        <input type="hidden" name="631id_butir" id="631id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir631" id="id_butir631" value="<?php echo $getidbutir631; ?>" />
-                        <h2 class="card-inside-title">Prasarana</h2>
-                        <h2 class="card-inside-title">PrasaranaTuliskan data ruang kerja dosen tetap yang bidang keahliannya sesuai dengan PS dengan mengikuti format tabel berikut:</h2>
-                        <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <b>Satu ruang untuk lebih dari 4 dosen</b>
-                                                <input type="hidden" name="kolom1_631" value="Satu ruang untuk lebih dari 4 dosen" class="form-control" placeholder="Tuliskan disini">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Jumlah Ruang</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_631" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Jumlah Luas (m2)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_631" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Satu ruang untuk 3 - 4 dosen</b>
-                                                <input type="hidden" name="kolom4_631" value="Satu ruang untuk 3 - 4 dosen" class="form-control" placeholder="Tuliskan disini">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Jumlah Ruang</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom5_631" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Jumlah Luas (m2)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom6_631" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div><div class="col-md-12">
-                                        <b>Satu ruang untuk 2 dosen</b>
-                                                <input type="hidden" name="kolom7_631" value="Satu ruang untuk 2 dosen" class="form-control" placeholder="Tuliskan disini">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Jumlah Ruang</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom8_631" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Jumlah Luas (m2)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom9_631" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div><div class="col-md-12">
-                                        <b>Satu ruang untuk 1 dosen (bukan pejabat struktural)</b>
+                                        <b>Satu ruang untuk 1 dosen (bukan ruangan pimpinan jurusan/ direktorat/fakultas/PT)</b>
                                                 <input type="hidden" name="kolom10_631" value="Satu ruang untuk 1 dosen (bukan pejabat struktural)" class="form-control" placeholder="Tuliskan disini">
                                     </div>
                                     <div class="col-md-6">
@@ -12832,13 +13784,14 @@
                                         $nil = 0;
                                         $diloop = count($dataisian);
                                     for($i=0;$i<count($dataisian);$i++){
-                                        $jum1 = $jum1 + $dataisian[$i]['kolom1'];
-                                        $jum2 = $jum2 + $dataisian[$i]['kolom2'];
-                                        $jum3 = $jum3 + $dataisian[$i]['kolom3'];
-                                        $jum4 = $jum4 + $dataisian[$i]['kolom4'];
-                                        $jum5 = $jum5 + $dataisian[$i]['kolom5'];
-                                        $jum6 = $jum6 + $dataisian[$i]['kolom6'];
-                                        $jum7 = $jum7 + $dataisian[$i]['kolom7'];
+                                        // $jum1 = $jum1 + $dataisian[$i]['kolom1'];
+                                        // $jum2 = $jum2 + $dataisian[$i]['kolom2'];
+                                        // $jum3 = $jum3 + $dataisian[$i]['kolom3'];
+                                        // $jum4 = $jum4 + $dataisian[$i]['kolom4'];
+                                        // $jum5 = $jum5 + $dataisian[$i]['kolom5'];
+                                        // $jum6 = $jum6 + $dataisian[$i]['kolom6'];
+                                        // $jum7 = $jum7 + $dataisian[$i]['kolom7'];
+                                        // $jum8 = $jum8 + $dataisian[$i]['kolom8'];
                                         $diloop = $diloop - 1;
                                         $nil = $nil + 1;
                                     ?>
@@ -13179,13 +14132,13 @@
                                         $nil = 0;
                                         $diloop = count($dataisian);
                                     for($i=0;$i<count($dataisian);$i++){
-                                        $jum1 = $jum1 + $dataisian[$i]['kolom1'];
-                                        $jum2 = $jum2 + $dataisian[$i]['kolom2'];
-                                        $jum3 = $jum3 + $dataisian[$i]['kolom3'];
-                                        $jum4 = $jum4 + $dataisian[$i]['kolom4'];
-                                        $jum5 = $jum5 + $dataisian[$i]['kolom5'];
-                                        $jum6 = $jum6 + $dataisian[$i]['kolom6'];
-                                        $jum7 = $jum7 + $dataisian[$i]['kolom7'];
+                                        // $jum1 = $jum1 + $dataisian[$i]['kolom1'];
+                                        // $jum2 = $jum2 + $dataisian[$i]['kolom2'];
+                                        // $jum3 = $jum3 + $dataisian[$i]['kolom3'];
+                                        // $jum4 = $jum4 + $dataisian[$i]['kolom4'];
+                                        // $jum5 = $jum5 + $dataisian[$i]['kolom5'];
+                                        // $jum6 = $jum6 + $dataisian[$i]['kolom6'];
+                                        // $jum7 = $jum7 + $dataisian[$i]['kolom7'];
                                         $diloop = $diloop - 1;
                                         $nil = $nil + 1;
                                     ?>
@@ -13466,18 +14419,18 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='6.4.1.a') || ($getbutir=='6.4.1.b')) {
-                            $getidbutir641a = '';
-                            $querycariidbutir641a = $CI->db->query('select * from butir where butir="6.4.1.a" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir641a->result() as $row){
-                                $getidbutir641a = $row->id;
+                        }elseif (($getbutir=='6.4.1.1') || ($getbutir=='6.4.1.2') || ($getbutir=='6.4.1.3') || ($getbutir=='6.4.1.4') || ($getbutir=='6.4.1.5') || ($getbutir=='6.4.1.6')) {
+                            $getidbutir641 = '';
+                            $querycariidbutir641 = $CI->db->query('select * from butir where butir="6.4.1.1" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir641->result() as $row){
+                                $getidbutir641 = $row->id;
                                 break;
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi641a">
-                        <input type="hidden" name="641aid_butir" id="641aid_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir641a" id="id_butir641a" value="<?php echo $getidbutir641a; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi641">
+                        <input type="hidden" name="641id_butir" id="641id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir641" id="id_butir641" value="<?php echo $getidbutir641; ?>" />
                         <h2 class="card-inside-title">Pustaka (buku teks, karya ilmiah, dan jurnal; termasuk juga dalam bentuk CD-ROM dan media lainnya)</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -13515,7 +14468,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom3'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update641a" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update641" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -13535,15 +14488,15 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom1_641a" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <select class="form-control show-tick" name="kolom1_641a">
+                                                <!-- <input type="text" name="kolom1_641" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <select class="form-control show-tick" name="kolom1_641">
                                                     <option value="">-- Please select --</option>
-                                                    <option value="Buku teks ">Buku teks </option>
-                                                    <option value="Jurnal nasional yang terakreditasi">Jurnal nasional yang terakreditasi</option>
-                                                    <option value="Jurnal internasional">Jurnal internasional</option>
-                                                    <option value="Prosiding">Prosiding</option>
-                                                    <option value="Skripsi/Tesis ">Skripsi/Tesis </option>
-                                                    <option value="Disertasi">Disertasi</option>
+                                                    <option value="Buku teks dan handbook">Buku teks handbook</option>
+                                                    <option value="Modul praktikum/praktek">Modul praktikum/praktek</option>
+                                                    <option value="Jurnal yang terakreditasi oleh lembaga resmi (Dikti. LIPI, dll).">Jurnal yang terakreditasi oleh lembaga resmi (Dikti. LIPI, dll).</option>
+                                                    <option value="Jurnal internasional*">Jurnal internasional*</option>
+                                                    <option value="Majalah ilmiah">Majalah ilmiah</option>
+                                                    <option value="Skripsi/Tesis">Prosiding</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -13555,7 +14508,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_641a" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom2_641" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -13566,7 +14519,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_641a" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom3_641" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -13576,9 +14529,9 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi641a">
-                        <input type="hidden" name="641aid_butir" id="641aid_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir641a" id="id_butir641a" value="<?php echo $getidbutir641a; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi641">
+                        <input type="hidden" name="641id_butir" id="641id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir641" id="id_butir641" value="<?php echo $getidbutir641; ?>" />
                         <h2 class="card-inside-title">Sarana Pelaksanaan Kegiatan Akademik</h2>
                         <h2 class="card-inside-title">Pustaka (buku teks, karya ilmiah, dan jurnal; termasuk juga dalam bentuk CD-ROM dan media lainnya)</h2>
                         <div class="row clearfix">
@@ -13588,16 +14541,16 @@
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
-                                            <div class="form-line">
-                                                <!-- <input type="text" name="kolom1_641a" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <select class="form-control show-tick" name="kolom1_641a">
+                                            <div class="form-line no-line">
+                                                <!-- <input type="text" name="kolom1_641" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <select class="col-md-12" name="kolom1_641">
                                                     <option value="">-- Please select --</option>
-                                                    <option value="Buku teks ">Buku teks </option>
-                                                    <option value="Jurnal nasional yang terakreditasi">Jurnal nasional yang terakreditasi</option>
-                                                    <option value="Jurnal internasional">Jurnal internasional</option>
-                                                    <option value="Prosiding">Prosiding</option>
-                                                    <option value="Skripsi/Tesis ">Skripsi/Tesis </option>
-                                                    <option value="Disertasi">Disertasi</option>
+                                                    <option value="Buku teks dan handbook">Buku teks handbook</option>
+                                                    <option value="Modul praktikum/praktek">Modul praktikum/praktek</option>
+                                                    <option value="Jurnal yang terakreditasi oleh lembaga resmi (Dikti. LIPI, dll).">Jurnal yang terakreditasi oleh lembaga resmi (Dikti. LIPI, dll).</option>
+                                                    <option value="Jurnal internasional*">Jurnal internasional*</option>
+                                                    <option value="Majalah ilmiah">Majalah ilmiah</option>
+                                                    <option value="Skripsi/Tesis">Prosiding</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -13609,7 +14562,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_641a" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom2_641" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -13620,185 +14573,10 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_641a" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom3_641" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
-                                    </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
-                            <?php
-                                }
-                        }elseif (($getbutir=='6.4.1.c') || ($getbutir=='6.4.1.d') || ($getbutir=='6.4.1.e')) {
-                            $getidbutir641c = '';
-                            $querycariidbutir641c = $CI->db->query('select * from butir where butir="6.4.1.c" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir641c->result() as $row){
-                                $getidbutir641c = $row->id;
-                                break;
-                            }
-                            if (count($dataisian)>0) {
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi641c">
-                        <input type="hidden" name="641cid_butir" id="641cid_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir641c" id="id_butir641c" value="<?php echo $getidbutir641c; ?>" />
-                        <h2 class="card-inside-title">Sarana Pelaksanaan Kegiatan Akademik</h2>
-        <!-- Tabel Edit -->
-                        <div class="header">
-                            <h2>
-                                Edit Tabel Butir <?php echo $butir[0]['butir'] ?>
-                                <small><?php echo $butir[0]['bakumutu'] ?></small></br>
-                                <small>Tabel 2.  Jurnal yang tersedia/yang diterima secara teratur (lengkap), terbitan 3 tahun terakhir</small>
-                            </h2>
-                        </div>
-                        <div class="body table-responsive">
-                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                                <thead>
-                                    <tr style="height: 26px;">
-                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Jenis</td>
-                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Nama Jurnal</td>
-                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Rincian Tahun dan Nomor</td>
-                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Jumlah</td>
-                                        <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;">Pengaturan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th style="width: 52px; text-align: center; height: 13px;">(1)</th>
-                                        <td style="width: 139.6px; height: 35.8px; text-align: center;">(2)</td>
-                                        <td style="width: 85.2px; height: 35.8px; text-align: center;">(3)</td>
-                                        <td style="width: 85.2px; height: 35.8px; text-align: center;">(4)</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
-                                    </tr>
-                                    <?php
-                                        $diloop = count($dataisian);
-                                    for($i=0;$i<count($dataisian);$i++){
-                                        $diloop = $diloop - 1;
-                                    ?>
-                                    <tr style="height: 13px;">
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom1'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom2'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom3'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom4'] ?>&nbsp;</td>
-                                        <td style="width: 53px; text-align: center; height: 13px;">
-                                            <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update641c" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-                                                <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                     } ?>
-                                </tbody>
-                            </table>
-                        </div>
-        <!-- Tutup Tabel Edit -->
-                        <h2 class="card-inside-title">Isikan jurnal/prosiding seminar yang tersedia/yang diterima secara teratur (lengkap), terbitan 3 tahun terakhir dengan mengikuti format tabel 2 berikut:</h2>
-                        <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <b>Jenis</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_641c" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Nama Jurnal</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_641c" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Rincian Tahun dan Nomor</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_641c" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom4_641c" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Catatan * = termasuk e-journal.</b>
-                                    </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
-                        <?php
-                                }else{
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi641c">
-                        <input type="hidden" name="641cid_butir" id="641cid_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir641c" id="id_butir641c" value="<?php echo $getidbutir641c; ?>" />
-                        <h2 class="card-inside-title">Sarana Pelaksanaan Kegiatan Akademik</h2>
-                        <h2 class="card-inside-title">Isikan jurnal/prosiding seminar yang tersedia/yang diterima secara teratur (lengkap), terbitan 3 tahun terakhir dengan mengikuti format tabel 2 berikut:</h2>
-                        <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <b>Jenis</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_641c" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Nama Jurnal</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_641c" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Rincian Tahun dan Nomor</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_641c" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom4_641c" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Catatan * = termasuk e-journal.</b>
+                                    <p> Catatan * = termasuk e-journal.</p>
                                     </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -13822,7 +14600,7 @@
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Sebutkan sumber-sumber pustaka di lembaga lain (lembaga perpustakaan/ sumber dari internet beserta  alamat website) yang biasa diakses/dimanfaatkan oleh dosen dan mahasiswa program studi ini.</h2>
+                        <h2 class="card-inside-title">Sebutkan sumber-sumber pustaka di lembaga lain (lembaga perpustakaan lainnya) yang biasa diakses/dimanfaatkan oleh dosen dan mahasiswa program studi ini.  Jika ada kerjasama, bukti agar disiapkan saat asesmen lapangan.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -13842,7 +14620,7 @@
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi642">
                         <input type="hidden" name="id_butir642" id="id_butir642" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Sebutkan sumber-sumber pustaka di lembaga lain (lembaga perpustakaan/ sumber dari internet beserta  alamat website) yang biasa diakses/dimanfaatkan oleh dosen dan mahasiswa program studi ini.</h2>
+                        <h2 class="card-inside-title">Sebutkan sumber-sumber pustaka di lembaga lain (lembaga perpustakaan lainnya) yang biasa diakses/dimanfaatkan oleh dosen dan mahasiswa program studi ini.  Jika ada kerjasama, bukti agar disiapkan saat asesmen lapangan.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -13885,6 +14663,7 @@
                                         <th style="width: 84.4px; background-color: #ababab; text-align: center;" rowspan="2">Nama Laboratorium</th>
                                         <th style="width: 84.4px; background-color: #ababab; text-align: center;" rowspan="2">Jenis Peralatan Utama</th>
                                         <th style="width: 84.4px; background-color: #ababab; text-align: center;" rowspan="2">Jumlah Unit</th>
+                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;" rowspan="2">Rasio Alat:Mhs per Kegiatan Praktikum/ Praktek</th>
                                         <th style="width: 84.4px; background-color: #ababab; text-align: center;" colspan="2">Kepemilikan</th>
                                         <th style="width: 84.4px; background-color: #ababab; text-align: center;" colspan="2">Kondisi</th>
                                         <th style="width: 84.4px; background-color: #ababab; text-align: center;" rowspan="2">Rata-rata Waktu Penggunaan (jam/minggu)</th>
@@ -13908,6 +14687,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><strong>(7)</strong></td>
                                         <td style="width: 52px; text-align: center; height: 13px;"><strong>(8)</strong></td>
                                         <td style="width: 52px; text-align: center; height: 13px;"><strong>(9)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(10)</strong></td>
                                         <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
                                     </tr>
                                     <?php 
@@ -13923,13 +14703,13 @@
                                         $nil = 0;
                                         $diloop = count($dataisian);
                                     for($i=0;$i<count($dataisian);$i++){
-                                        $jum1 = $jum1 + $dataisian[$i]['kolom1'];
-                                        $jum2 = $jum2 + $dataisian[$i]['kolom2'];
-                                        $jum3 = $jum3 + $dataisian[$i]['kolom3'];
-                                        $jum4 = $jum4 + $dataisian[$i]['kolom4'];
-                                        $jum5 = $jum5 + $dataisian[$i]['kolom5'];
-                                        $jum6 = $jum6 + $dataisian[$i]['kolom6'];
-                                        $jum7 = $jum7 + $dataisian[$i]['kolom7'];
+                                        // $jum1 = $jum1 + $dataisian[$i]['kolom1'];
+                                        // $jum2 = $jum2 + $dataisian[$i]['kolom2'];
+                                        // $jum3 = $jum3 + $dataisian[$i]['kolom3'];
+                                        // $jum4 = $jum4 + $dataisian[$i]['kolom4'];
+                                        // $jum5 = $jum5 + $dataisian[$i]['kolom5'];
+                                        // $jum6 = $jum6 + $dataisian[$i]['kolom6'];
+                                        // $jum7 = $jum7 + $dataisian[$i]['kolom7'];
                                         $diloop = $diloop - 1;
                                         $nil = $nil + 1;
                                     ?>
@@ -13943,6 +14723,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom6'] ?>&nbsp;</td>
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom7'] ?>&nbsp;</td>
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom8'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom9'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
                                                 <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update643" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
@@ -13992,17 +14773,24 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
+                                        <b>Rasio Alat:Mhs per Kegiatan Praktikum/ Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_643" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
                                         <b>Kepemilikan</b>
                                     </div>
                                     <div class="col-md-6">
                                         <b>SD</b>
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom4_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6321" name="kolom4_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6321" name="kolom5_643" value="√" class="filled-in" />
                                                 <label for="tidakada6321">SD</label>
                                             </div>
                                         </div>
@@ -14010,12 +14798,8 @@
                                     <div class="col-md-6">
                                         <b>SW</b>
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom5_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6322" name="kolom5_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6322" name="kolom6_643" value="√" class="filled-in" />
                                                 <label for="tidakada6322">SW</label>
                                             </div>
                                         </div>
@@ -14026,12 +14810,8 @@
                                     <div class="col-md-6">
                                         <b>Terawat</b>
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom6_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6323" name="kolom6_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6323" name="kolom7_643" value="√" class="filled-in" />
                                                 <label for="tidakada6323">Terawat</label>
                                             </div>
                                         </div>
@@ -14039,12 +14819,8 @@
                                     <div class="col-md-6">
                                         <b>Tidak Terawat</b>
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom7_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6324" name="kolom7_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6324" name="kolom8_643" value="√" class="filled-in" />
                                                 <label for="tidakada6324">Tidak Terawat</label>
                                             </div>
                                         </div>
@@ -14056,7 +14832,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom8_643" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom9_643" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -14070,7 +14846,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom9_643" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom10_643" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
@@ -14121,17 +14897,24 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
+                                        <b>Rasio Alat:Mhs per Kegiatan Praktikum/ Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_643" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
                                         <b>Kepemilikan</b>
                                     </div>
                                     <div class="col-md-6">
                                         <b>SD</b>
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom4_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6321" name="kolom4_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6321" name="kolom5_643" value="√" class="filled-in" />
                                                 <label for="tidakada6321">SD</label>
                                             </div>
                                         </div>
@@ -14139,12 +14922,8 @@
                                     <div class="col-md-6">
                                         <b>SW</b>
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom5_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6322" name="kolom5_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6322" name="kolom6_643" value="√" class="filled-in" />
                                                 <label for="tidakada6322">SW</label>
                                             </div>
                                         </div>
@@ -14155,12 +14934,8 @@
                                     <div class="col-md-6">
                                         <b>Terawat</b>
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom6_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6323" name="kolom6_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6323" name="kolom7_643" value="√" class="filled-in" />
                                                 <label for="tidakada6323">Terawat</label>
                                             </div>
                                         </div>
@@ -14168,12 +14943,8 @@
                                     <div class="col-md-6">
                                         <b>Tidak Terawat</b>
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom7_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6324" name="kolom7_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6324" name="kolom8_643" value="√" class="filled-in" />
                                                 <label for="tidakada6324">Tidak Terawat</label>
                                             </div>
                                         </div>
@@ -14185,13 +14956,13 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom8_643" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom9_643" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <b>Keterangan:</b>
-                                        <b>SD = Milik PT/fakultas/jurusan sendiri; SW = Sewa/Kontrak/Kerjasama</b>
+                                        <b>SD = Milik PT/fakultas/jurusan sendiri; SW = Sewa/Kontrak/Kerjasama.</b>
                                     </div>
                                     <div class="col-md-12">
                                         <b>Isian / Catatan :</b>
@@ -14199,7 +14970,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom9_643" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom10_643" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
@@ -14228,7 +14999,7 @@
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Sistem Informasi</h2>
-                        <h2 class="card-inside-title">Jelaskan sistem informasi dan fasilitas yang digunakan oleh program studi untuk proses pembelajaran (hardware, software, e-learning, perpustakaan, dll.).</h2>
+                        <h2 class="card-inside-title">Jelaskan sistem informasi dan fasilitas yang digunakan oleh program studi untuk proses pembelajaran (hardware, software, e-learning, akses on-line ke perpustakaan, dll.).</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -14248,7 +15019,7 @@
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi651">
                         <input type="hidden" name="id_butir651" id="id_butir651" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sistem Informasi</h2>
-                        <h2 class="card-inside-title">Jelaskan sistem informasi dan fasilitas yang digunakan oleh program studi untuk proses pembelajaran (hardware, software, e-learning, perpustakaan, dll.).</h2>
+                        <h2 class="card-inside-title">Jelaskan sistem informasi dan fasilitas yang digunakan oleh program studi untuk proses pembelajaran (hardware, software, e-learning, akses on-line ke perpustakaan, dll.).</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -14493,7 +15264,7 @@
                                         <b>Jenis Data</b>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Mahasiswa</b>
+                                        <b>1. Mahasiswa</b>
                                             <div class="form-line">
                                                 <input type="hidden" name="kolom1_652" class="form-control" value="Mahasiswa" placeholder="Tuliskan disini">
                                             </div>
@@ -14775,7 +15546,9 @@
                                             </div>
                                     </div>
                                     <div class="col-md-12">
+                                <div class="form-line">
                                         <b>Sistem Pengelolaan Data</b>
+                                </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="demo-radio-button">
@@ -15568,82 +16341,17 @@
                             <?php
                                 }
                         }elseif ($getbutir=='7.1.2') {
-                            if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian712">
-                        <input type="hidden" name="id712" id="id712" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir712" id="id_butir712" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
-                        </div>
-                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Adakah mahasiswa tugas akhir yang dilibatkan dalam penelitian dosen dalam tiga tahun terakhir?</h2>
-                        <div class="demo-checkbox">
-                                <input type="checkbox" id="tidakada" class="filled-in" />
-                                <label for="tidakada">Tidak Ada</label></br>
-                                <input type="checkbox" id="ada" class="filled-in" checked />
-                                <label for="ada">Ada</label>
-                        </div>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_712" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <input type="hidden" name="version_no712" id="version_no712" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at712" id="created_at712" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
-                        </form>
-                        <?php }
-                                }else{
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi712">
-                        <input type="hidden" name="id_butir712" id="id_butir712" value="<?php echo $isiannya; ?>" />
-                        <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
-                        <h2 class="card-inside-title">Adakah mahasiswa tugas akhir yang dilibatkan dalam penelitian dosen dalam tiga tahun terakhir?</h2>
-                        <div class="demo-checkbox">
-                                <input type="checkbox" id="tidakada" class="filled-in" />
-                                <label for="tidakada">Tidak Ada</label></br>
-                                <input type="checkbox" id="ada" class="filled-in" />
-                                <label for="ada">Ada</label>
-                        </div>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_712" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    <p>Jika ada, banyaknya mahasiswa PS yang ikut serta dalam penelitian dosen adalah&nbsp; ... orang, dari ... mahasiswa yang melakukan tugas akhir melalui skripsi.</p>
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
-                            <?php
-                                }
-                        }elseif ($getbutir=='7.1.3') {
-                            $getidbutir713 = '';
-                            $querycariidbutir713 = $CI->db->query('select * from butir where butir="7.1.3" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir713->result() as $row){
-                                $getidbutir713 = $row->id;
+                            $getidbutir712 = '';
+                            $querycariidbutir712 = $CI->db->query('select * from butir where butir="7.1.2" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir712->result() as $row){
+                                $getidbutir712 = $row->id;
                                 break;
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi713">
-                        <input type="hidden" name="713id_butir" id="713id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir713" id="id_butir713" value="<?php echo $getidbutir713; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi712">
+                        <input type="hidden" name="712id_butir" id="712id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir712" id="id_butir712" value="<?php echo $getidbutir712; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -15683,10 +16391,10 @@
                                         <p><strong>Lokal</strong></p>
                                         </td>
                                         <td style="width: 58.4px; background-color: #c9c9c9; text-align: center;">
-                                        <p><strong>Nasio-nal</strong></p>
+                                        <p><strong>Nasional</strong></p>
                                         </td>
                                         <td style="width: 58.4px; background-color: #c9c9c9; text-align: center;">
-                                        <p><strong>Interna-sional</strong></p>
+                                        <p><strong>Internasional</strong></p>
                                         </td>
                                     </tr>
                                 </thead>
@@ -15734,7 +16442,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom7'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update713" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update712" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -15754,7 +16462,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_713" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom1_712" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -15765,7 +16473,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_713" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom2_712" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -15776,7 +16484,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_713" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom3_712" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -15787,7 +16495,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_713" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom4_712" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -15795,40 +16503,25 @@
                                         <b>Tingkat* </b>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <b>Lokal</b> -->
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom5_713" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <input type="checkbox" id="tidakada3q" name="kolom5_713" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada3q" name="kolom5_712" value="√" class="filled-in" />
                                                 <label for="tidakada3q">Lokal</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <b>Nasional</b>
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom6_713" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <input type="checkbox" id="tidakada3e" name="kolom6_713" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada3e" name="kolom6_712" value="√" class="filled-in" />
                                                 <label for="tidakada3e">Nasional</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <b>Interna-sional</b> -->
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom7_713" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <input type="checkbox" id="tidakada3d" name="kolom7_713" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada3d" name="kolom7_712" value="√" class="filled-in" />
                                                 <label for="tidakada3d">Internasional</label>
                                             </div>
                                         </div>
@@ -15841,7 +16534,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom8_713" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom8_712" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
@@ -15853,9 +16546,9 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi713">
-                        <input type="hidden" name="713id_butir" id="713id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir713" id="id_butir713" value="<?php echo $getidbutir713; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi712">
+                        <input type="hidden" name="712id_butir" id="712id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir712" id="id_butir712" value="<?php echo $getidbutir712; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
                         <h2 class="card-inside-title">Tuliskan judul artikel ilmiah/karya ilmiah/karya seni/buku yang dihasilkan selama tiga tahun terakhir oleh dosen tetap yang bidang keahliannya sesuai dengan PS dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
@@ -15866,7 +16559,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_713" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom1_712" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -15877,7 +16570,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_713" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom2_712" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -15888,7 +16581,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_713" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom3_712" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -15899,7 +16592,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_713" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom4_712" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -15907,53 +16600,36 @@
                                         <b>Tingkat* </b>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <b>Lokal</b> -->
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom5_713" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <input type="checkbox" id="tidakada3y" name="kolom5_713" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada3y" name="kolom5_712" value="√" class="filled-in" />
                                                 <label for="tidakada3y">Lokal</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <b>Nasional</b>
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom6_713" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <input type="checkbox" id="tidakada3u" name="kolom6_713" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada3u" name="kolom6_712" value="√" class="filled-in" />
                                                 <label for="tidakada3u">Nasional</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <b>Interna-sional</b> -->
                                         <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom7_713" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <input type="checkbox" id="tidakada3i" name="kolom7_713" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada3i" name="kolom7_712" value="√" class="filled-in" />
                                                 <label for="tidakada3i">Internasional</label>
                                             </div>
                                         </div>
                                     </div>
-                                    
                                     <div class="col-md-12">
-                                        <b>Isian / Catatan :</b></br>
-                                        <b>Catatan: * = Tuliskan banyaknya dosen pada sel yang sesuai</b>
+                                        <b>Catatan * = beri tanda √ pada kolom yang sesuai. Untuk jurnal ilmiah tingkat nasional, yang dimaksud adalah jurnal yang telah terakreditasi oleh Dikti.  Jika tidak terakreditasi Dikti, digolongkan jurnal tingkat lokal.</b>
                                     </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom8_713" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom8_712" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
@@ -15964,18 +16640,18 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='7.1.4') {
-                            $getidbutir714 = '';
-                            $querycariidbutir714 = $CI->db->query('select * from butir where butir="7.1.4" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir714->result() as $row){
-                                $getidbutir714 = $row->id;
+                        }elseif ($getbutir=='7.1.3') {
+                            $getidbutir713 = '';
+                            $querycariidbutir713 = $CI->db->query('select * from butir where butir="7.1.3" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir713->result() as $row){
+                                $getidbutir713 = $row->id;
                                 break;
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi714">
-                        <input type="hidden" name="714id_butir" id="714id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir714" id="id_butir714" value="<?php echo $isiannya; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi713">
+                        <input type="hidden" name="713id_butir" id="713id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir713" id="id_butir713" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -15989,7 +16665,8 @@
                                 <thead>
                                     <tr style="height: 26px;">
                                         <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">No</th>
-                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Karya*</td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Paten/HaKI</td>
+                                        <td style="width: 55.6px; height: 60px; background-color: #9c9c9c; text-align: center;">Karya yang Mendapat Pengakuan/Penghargaan dari Lembaga Wilayah/Nasional/Internasional</td>
                                         <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;">Pengaturan</th>
                                     </tr>
                                 </thead>
@@ -15997,6 +16674,7 @@
                                     <tr>
                                         <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
                                         <td style="width: 139.6px; height: 35.8px; text-align: center;">(2)</td>
+                                        <td style="width: 139.6px; height: 35.8px; text-align: center;">(3)</td>
                                         <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
                                     </tr>
                                     <?php
@@ -16009,9 +16687,10 @@
                                     <tr style="height: 13px;">
                                         <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?></th>
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom1'] ?>&nbsp;</td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom2'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update714" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update713" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -16022,16 +16701,27 @@
                             </table>
                         </div>
         <!-- Tutup Tabel Edit -->
-                        <h2 class="card-inside-title">Sebutkan karya dosen dan atau mahasiswa Program Studi yang telah memperoleh/sedang memproses perlindungan Hak atas Kekayaan Intelektual (HaKI) selama tiga tahun terakhir.</h2>
+                        <h2 class="card-inside-title">Sebutkan karya dosen dan atau mahasiswa program studi yang telah memperoleh Hak atas Kekayaan Intelektual (Paten/HaKI) atau karya yang mendapat pengakuan/penghargaan dari lembaga nasional/ internasional selama tiga tahun terakhir.</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
-                                        <b>Karya*</b>
+                                        <b>Paten/HaKI</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_714" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom1_713" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Karya yang Mendapat Pengakuan/Penghargaan dari Lembaga Wilayah/Nasional/Internasional</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_713" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -16044,20 +16734,31 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi714">
-                        <input type="hidden" name="714id_butir" id="714id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir714" id="id_butir714" value="<?php echo $getidbutir714; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi713">
+                        <input type="hidden" name="713id_butir" id="713id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir713" id="id_butir713" value="<?php echo $getidbutir713; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
-                        <h2 class="card-inside-title">Sebutkan karya dosen dan atau mahasiswa Program Studi yang telah memperoleh/sedang memproses perlindungan Hak atas Kekayaan Intelektual (HaKI) selama tiga tahun terakhir.</h2>
+                        <h2 class="card-inside-title">Sebutkan karya dosen dan atau mahasiswa program studi yang telah memperoleh Hak atas Kekayaan Intelektual (Paten/HaKI) atau karya yang mendapat pengakuan/penghargaan dari lembaga nasional/ internasional selama tiga tahun terakhir.</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
-                                        <b>Karya*</b>
+                                        <b>Paten/HaKI</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_714" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom1_713" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Karya yang Mendapat Pengakuan/Penghargaan dari Lembaga Wilayah/Nasional/Internasional</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_713" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -17223,7 +17924,7 @@
                                     <td>
                                         <div class="js-sweetalert">
                                             <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/datadokumen/<?php echo $datadokumen[$i]['id']; ?>" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $datadokumen[$i]['id']; ?>" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
+                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian3ad3/<?php echo $datadokumen[$i]['id']; ?>" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#dokumen11a" data-placement="top" title="Lihat" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">pageview</i></a>&nbsp;
                                             <a id="del" onclick="deledok(<?php echo $datadokumen[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroy/'.$datadokumen[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                         </div>
@@ -17864,8 +18565,126 @@
         </div>
         <!-- Tutup Modal Update 313 -->
 
-        <!-- Molda Update Tabel 331b -->
-        <div class="modal fade" id="update331b" tabindex="-1" role="dialog">
+
+        <!-- Molda Update Tabel 312 -->
+            <div class="modal fade" id="update312" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                        </div>
+                        <div class="modal-body">
+                    <!-- form start -->
+                    <?php
+                        //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                        //   echo form_open('c_borang/update', $attributes);
+                        $attributes = array('id' => 'myform');
+                        echo form_open('C_isian3ad3/updateisian312', $attributes);
+                        // echo form_open('c_borang/update');
+                    ?>
+                        <div class="row clearfix">
+                            <input type="hidden" name="id312" id="id312" />
+                            <input type="hidden" name="id_butir312tabel" id="id_butir312tabel" />
+                            <div class="col-md-12">
+                                            <b>Daya Tampung</b>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">dialpad</i>
+                                                </span>
+                                                <div class="form-line">
+                                                    <input type="text" name="kolom1_312" id="kolom1_312" class="form-control" placeholder="Ex: 500">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <b>Jumlah Calon Mahasiswa Reguler :</b>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <b>Ikut Seleksi</b>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">dialpad</i>
+                                                </span>
+                                                <div class="form-line">
+                                                    <input type="text" name="kolom2_312" id="kolom2_312" class="form-control" placeholder="Ex: 500">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <b>Lulus Seleksi</b>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">dialpad</i>
+                                                </span>
+                                                <div class="form-line">
+                                                    <input type="text" name="kolom3_312" id="kolom3_312" class="form-control" placeholder="Ex: 500">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <b>Jumlah Mahasiswa Baru :</b>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <b>Reguler Bukan Transfer</b>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">dialpad</i>
+                                                </span>
+                                                <div class="form-line">
+                                                    <input type="text" name="kolom4_312" id="kolom4_312" class="form-control" placeholder="Ex: 500">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <b>Transfer(3)</b>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">dialpad</i>
+                                                </span>
+                                                <div class="form-line">
+                                                    <input type="text" name="kolom5_312" id="kolom5_312" class="form-control" placeholder="Ex: 500">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <b>Jumlah Total Mahasiswa :</b>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <b>Reguler Bukan Transfer</b>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">dialpad</i>
+                                                </span>
+                                                <div class="form-line">
+                                                    <input type="text" name="kolom6_312" id="kolom6_312" class="form-control" placeholder="Ex: 500">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <b>Transfer(3)</b>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">dialpad</i>
+                                                </span>
+                                                <div class="form-line">
+                                                    <input type="text" name="kolom7_312" id="kolom7_312" class="form-control" placeholder="Ex: 500">
+                                                </div>
+                                            </div>
+                                        </div>
+                        </div>
+                    </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Tutup Modal Update 312 -->
+
+        <!-- Molda Update Tabel 3412 -->
+        <div class="modal fade" id="update3412" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -17877,16 +18696,16 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3ad3/updateisian331b', $attributes);
+                    echo form_open('C_isian3ad3/updateisian3412', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id331b" id="id331b" />
-                        <input type="hidden" name="331id_butir" id="331id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir331btabel" id="id_butir331btabel" />
+                        <input type="hidden" name="id3412" id="id3412" />
+                        <input type="hidden" name="id_butir3412" id="id_butir3412" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir3412tabel" id="id_butir3412tabel" />
                         <div class="col-md-12">
                                         <b>Integritas (etika dan moral)</b>
-                                        <input type="hidden" name="kolom1_331b" id="kolom1_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom1_3412" id="kolom1_3412" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -17898,7 +18717,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_331b" id="kolom2_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_3412" id="kolom2_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -17909,7 +18728,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_331b" id="kolom3_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_3412" id="kolom3_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -17920,7 +18739,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_331b" id="kolom4_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_3412" id="kolom4_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -17931,7 +18750,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_331b" id="kolom5_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom5_3412" id="kolom5_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -17942,14 +18761,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom6_331b" id="kolom6_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom6_3412" id="kolom6_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                             <!-- nomor 2 -->
                                     <div class="col-md-12">
                                         <b>Keahlian berdasarkan bidang ilmu (profesionalisme)</b>
-                                        <input type="hidden" name="kolom7_331b" id="kolom7_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom7_3412" id="kolom7_3412" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -17961,7 +18780,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom8_331b" id="kolom8_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom8_3412" id="kolom8_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -17972,7 +18791,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom9_331b" id="kolom9_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom9_3412" id="kolom9_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -17983,7 +18802,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom10_331b" id="kolom10_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom10_3412" id="kolom10_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -17994,7 +18813,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom11_331b" id="kolom11_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom11_3412" id="kolom11_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18005,14 +18824,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom12_331b" id="kolom12_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_3412" id="kolom12_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 3 -->
                                     <div class="col-md-12">
                                         <b>Bahasa Inggris</b>
-                                        <input type="hidden" name="kolom13_331b" id="kolom13_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom13_3412" id="kolom13_3412" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -18024,7 +18843,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom14_331b" id="kolom14_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom14_3412" id="kolom14_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18035,7 +18854,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom15_331b" id="kolom15_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom15_3412" id="kolom15_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18046,7 +18865,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom16_331b" id="kolom16_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom16_3412" id="kolom16_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18057,7 +18876,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom17_331b" id="kolom17_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom17_3412" id="kolom17_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18068,14 +18887,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom18_331b" id="kolom18_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom18_3412" id="kolom18_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 4 -->
                                     <div class="col-md-12">
                                         <b>Penggunaan Teknologi Informasi</b>
-                                        <input type="hidden" name="kolom19_331b" id="kolom19_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom19_3412" id="kolom19_3412" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -18087,7 +18906,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom20_331b" id="kolom20_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom20_3412" id="kolom20_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18098,7 +18917,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom21_331b" id="kolom21_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom21_3412" id="kolom21_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18109,7 +18928,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom22_331b" id="kolom22_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom22_3412" id="kolom22_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18120,7 +18939,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom23_331b" id="kolom23_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom23_3412" id="kolom23_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18131,14 +18950,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom24_331b" id="kolom24_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom24_3412" id="kolom24_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 5 -->
                                     <div class="col-md-12">
                                         <b>Komunikasi</b>
-                                        <input type="hidden" name="kolom25_331b" id="kolom25_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom25_3412" id="kolom25_3412" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -18150,7 +18969,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom26_331b" id="kolom26_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom26_3412" id="kolom26_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18161,7 +18980,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom27_331b" id="kolom27_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom27_3412" id="kolom27_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18172,7 +18991,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom28_331b" id="kolom28_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom28_3412" id="kolom28_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18183,7 +19002,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom29_331b" id="kolom29_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom29_3412" id="kolom29_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18194,14 +19013,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom30_331b" id="kolom30_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom30_3412" id="kolom30_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 6 -->
                                     <div class="col-md-12">
                                         <b>Komunikasi</b>
-                                        <input type="hidden" name="kolom31_331b" id="kolom31_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom31_3412" id="kolom31_3412" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -18213,7 +19032,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom32_331b" id="kolom32_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom32_3412" id="kolom32_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18224,7 +19043,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom33_331b" id="kolom33_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom33_3412" id="kolom33_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18235,7 +19054,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom34_331b" id="kolom34_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom34_3412" id="kolom34_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18246,7 +19065,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom35_331b" id="kolom35_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom35_3412" id="kolom35_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18257,14 +19076,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom36_331b" id="kolom36_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom36_3412" id="kolom36_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 7 -->
                                     <div class="col-md-12">
                                         <b>Pengembangan diri</b>
-                                        <input type="hidden" name="kolom37_331b" id="kolom37_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom37_3412" id="kolom37_3412" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -18276,7 +19095,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom38_331b" id="kolom38_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom38_3412" id="kolom38_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18287,7 +19106,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom39_331b" id="kolom39_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom39_3412" id="kolom39_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18298,7 +19117,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom40_331b" id="kolom40_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom40_3412" id="kolom40_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18309,7 +19128,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom41_331b" id="kolom41_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom41_3412" id="kolom41_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18320,7 +19139,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom42_331b" id="kolom42_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom42_3412" id="kolom42_3412" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -18334,7 +19153,7 @@
                 </div>
             </div>
         </div>
-        <!-- Tutup Modal Update 331b -->
+        <!-- Tutup Modal Update 3412 -->
 
         <!-- Molda Update Tabel 431 -->
         <div class="modal fade" id="update431" tabindex="-1" role="dialog">
@@ -19874,6 +20693,161 @@
         </div>
         <!-- Tutup Modal Update 461 -->
 
+        <!-- Molda Update Tabel 512a -->
+        <div class="modal fade" id="update512a" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian3ad3/updateisian512a', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id512a" id="id512a" />
+                        <input type="hidden" name="id_butir512a" id="id_butir512a" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir512atabel" id="id_butir512atabel" />
+                                    <div class="col-md-12">
+                                        <b>Semester</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_512a" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kode MK</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_512a" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Nama Mata Kuliah</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_512a" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Bobot SKS untuk</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Kuliah</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_512a" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Praktikum/Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_512a" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Beri Tanda √ Pada Kolom yang Sesuai</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="cb11" name="kolom6_512a" value="√" class="filled-in" />
+                                                <label for="cb11"><b>Inti*</b></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="cb12" name="kolom7_512a" value="√" class="filled-in" />
+                                                <label for="cb12"><b>Institusional</b></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="cb13" name="kolom8_512a" value="√" class="filled-in" />
+                                                <label for="cb13"><b>Bobot Tugas**</b></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kelengkapan***</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="cb14" name="kolom9_512a" value="√" class="filled-in" />
+                                                <label for="cb14"><b>Deskripsi</b></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="cb15" name="kolom10_512a" value="√" class="filled-in" />
+                                                <label for="cb15"><b>Silabus</b></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="cb16" name="kolom11_512a" value="√" class="filled-in" />
+                                                <label for="cb16"><b>SAP</b></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Unit/ Jur/ Fak Penyelenggara</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom12_512a" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 512a -->
+
         <!-- Molda Update Tabel 512b -->
         <div class="modal fade" id="update512b" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
@@ -19940,6 +20914,85 @@
             </div>
         </div>
         <!-- Tutup Modal Update 512b -->
+
+        <!-- Molda Update Tabel 5122 -->
+        <div class="modal fade" id="update5122" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian3ad3/updateisian5122', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id5122" id="id5122" />
+                        <input type="hidden" name="5122id_butir" id="5122id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir5122tabel" id="id_butir5122tabel" />
+                                    <div class="col-md-12">
+                                        <b>Nama Praktikum/Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_5122" id="kolom1_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Isi Praktikum/Praktek</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Judul/Modul</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_5122" id="kolom2_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jam Pelaksanaan </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_5122" id="kolom3_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tempat/Lokasi Praktikum/Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_5122" id="kolom4_5122" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 5122 -->
 
         <!-- Molda Update Tabel 512c -->
         <div class="modal fade" id="update512c" tabindex="-1" role="dialog">
@@ -20349,8 +21402,8 @@
         </div>
         <!-- Tutup Modal Update 514 -->
 
-        <!-- Molda Update Tabel 52b -->
-        <div class="modal fade" id="update52b" tabindex="-1" role="dialog">
+        <!-- Molda Update Tabel 532 -->
+        <div class="modal fade" id="update532" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -20362,13 +21415,13 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3ad3/updateisian52b', $attributes);
+                    echo form_open('C_isian3ad3/updateisian532', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id52b" id="id52b" />
-                        <input type="hidden" name="52bid_butir" id="52bid_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir52btabel" id="id_butir52btabel" />
+                        <input type="hidden" name="id532" id="id532" />
+                        <input type="hidden" name="532id_butir" id="532id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir532tabel" id="id_butir532tabel" />
                                     <div class="col-md-12">
                                         <b>No. MK</b>
                                         <div class="input-group">
@@ -20376,7 +21429,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_52b" id="kolom1_52b" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom1_532" id="kolom1_532" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -20387,7 +21440,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_52b" id="kolom2_52b" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom2_532" id="kolom2_532" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -20398,7 +21451,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_52b" id="kolom3_52b" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom3_532" id="kolom3_532" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -20412,7 +21465,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_52b" id="kolom4_52b" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom4_532" id="kolom4_532" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -20423,7 +21476,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_52b" id="kolom5_52b" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom5_532" id="kolom5_532" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -20434,8 +21487,8 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span> -->
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom6_52b" id="kolom6_52b" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <textarea name="kolom6_52b" id="kolom6_52b" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                                <!-- <input type="text" name="kolom6_532" id="kolom6_532" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <textarea name="kolom6_532" id="kolom6_532" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -20446,7 +21499,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom7_52b" id="kolom7_52b" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom7_532" id="kolom7_532" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -20457,7 +21510,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom8_52b" id="kolom8_52b" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom8_532" id="kolom8_532" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -20471,7 +21524,7 @@
                 </div>
             </div>
         </div>
-        <!-- Tutup Modal Update 52b -->
+        <!-- Tutup Modal Update 532 -->
 
         <!-- Molda Update Tabel 541 -->
         <div class="modal fade" id="update541" tabindex="-1" role="dialog">
@@ -20636,8 +21689,8 @@
         </div>
         <!-- Tutup Modal Update 542 -->
 
-        <!-- Molda Update Tabel 551d -->
-        <div class="modal fade" id="update551d" tabindex="-1" role="dialog">
+        <!-- Molda Update Tabel 5524 -->
+        <div class="modal fade" id="update5524" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -20649,13 +21702,13 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3ad3/updateisian551d', $attributes);
+                    echo form_open('C_isian3ad3/updateisian5524', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id551d" id="id551d" />
-                        <input type="hidden" name="551did_butir" id="551did_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir551dtabel" id="id_butir551dtabel" />
+                        <input type="hidden" name="id5524" id="id5524" />
+                        <input type="hidden" name="5524id_butir" id="5524id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir5524tabel" id="id_butir5524tabel" />
                                     <div class="col-md-12">
                                         <b>Nama Dosen Pembimbing </b>
                                         <div class="input-group">
@@ -20663,7 +21716,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_551d" id="kolom1_551d" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom1_5524" id="kolom1_5524" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -20674,7 +21727,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_551d" id="kolom2_551d" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom2_5524" id="kolom2_5524" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -20688,7 +21741,7 @@
                 </div>
             </div>
         </div>
-        <!-- Tutup Modal Update 551d -->
+        <!-- Tutup Modal Update 5524 -->
 
         <!-- Molda Update Tabel 56 -->
         <div class="modal fade" id="update56" tabindex="-1" role="dialog">
@@ -20757,6 +21810,79 @@
             </div>
         </div>
         <!-- Tutup Modal Update 56 -->
+
+        <!-- Molda Update Tabel 59 -->
+        <div class="modal fade" id="update59" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian3ad3/updateisian59', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id59" id="id59" />
+                        <input type="hidden" name="59id_butir" id="59id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir59tabel" id="id_butir59tabel" />
+                        <b>a. Apakah telah memiliki pedoman sistem keselamatan kerja praktikum/praktek </b>
+                        <div class="demo-radio-button">
+                                <input type="radio" id="rb10" id="kolom1_59" name="kolom1_59" class="filled-in" value="Ya" />
+                                <label for="rb10">Ya</label></br>
+                                <input type="radio" id="rb20" id="kolom1_59" name="kolom1_59" class="filled-in" value="Tidak" />
+                                <label for="rb20">Tidak</label>
+                        </div>
+                        <br>
+                        <b>b. Apakah sistem keselamatan kerja telah dilaksanakan dengan semestinya berdasarkan pedoman keselamatan kerja yang dimaksud pada pertanyaan 5.8.a di atas</b>
+                        <div class="demo-radio-button">
+                                <input type="radio" id="rb30" id="kolom2_59" name="kolom2_59" class="filled-in" value="Ya" />
+                                <label for="rb30">Ya</label></br>
+                                <input type="radio" id="rb40" id="kolom2_59" name="kolom2_59" class="filled-in" value="Tidak" />
+                                <label for="rb40">Tidak</label>
+                        </div>
+                        <br>
+                        <b>c. Tuliskan daftar peralatan dan bahan-bahan yang dipergunakan dalam sistem keselamatan kerja dimaksud</b>
+                        <div class="row clearfix">
+                                <div class="col-md-12">
+                                        <b>Nama Peralatan/ Bahan </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" id="kolom3_59" name="kolom3_59" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Fungsi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" id="kolom4_59" name="kolom4_59" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 59 -->
 
         <!-- Molda Update Tabel 622 -->
         <div class="modal fade" id="update622" tabindex="-1" role="dialog">
@@ -21320,8 +22446,8 @@
         </div>
         <!-- Tutup Modal Update 633 -->
 
-        <!-- Molda Update Tabel 641a -->
-        <div class="modal fade" id="update641a" tabindex="-1" role="dialog">
+        <!-- Molda Update Tabel 641 -->
+        <div class="modal fade" id="update641" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -21333,13 +22459,13 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3ad3/updateisian641a', $attributes);
+                    echo form_open('C_isian3ad3/updateisian641', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id641a" id="id641a" />
-                        <input type="hidden" name="641aid_butir" id="641aid_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir641atabel" id="id_butir641atabel" />
+                        <input type="hidden" name="id641" id="id641" />
+                        <input type="hidden" name="641id_butir" id="641id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir641tabel" id="id_butir641tabel" />
                                     <div class="col-md-12">
                                         <b>Jenis Pustaka</b>
                                         <div class="input-group">
@@ -21347,15 +22473,15 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <!-- <input type="text" name="kolom1_641a" id="kolom1_641a" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <select class="form-control show-tick" name="kolom1_641a">
+                                                <!-- <input type="text" name="kolom1_641" id="kolom1_641" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <select class="col-md-12" name="kolom1_641">
                                                     <option value="">-- Please select --</option>
-                                                    <option value="Buku teks ">Buku teks </option>
-                                                    <option value="Jurnal nasional yang terakreditasi">Jurnal nasional yang terakreditasi</option>
-                                                    <option value="Jurnal internasional">Jurnal internasional</option>
-                                                    <option value="Prosiding">Prosiding</option>
-                                                    <option value="Skripsi/Tesis ">Skripsi/Tesis </option>
-                                                    <option value="Disertasi">Disertasi</option>
+                                                    <option value="Buku teks dan handbook">Buku teks handbook</option>
+                                                    <option value="Modul praktikum/praktek">Modul praktikum/praktek</option>
+                                                    <option value="Jurnal yang terakreditasi oleh lembaga resmi (Dikti. LIPI, dll).">Jurnal yang terakreditasi oleh lembaga resmi (Dikti. LIPI, dll).</option>
+                                                    <option value="Jurnal internasional*">Jurnal internasional*</option>
+                                                    <option value="Majalah ilmiah">Majalah ilmiah</option>
+                                                    <option value="Skripsi/Tesis">Prosiding</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -21367,7 +22493,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_641a" id="kolom2_641a" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom2_641" id="kolom2_641" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -21378,7 +22504,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_641a" id="kolom3_641a" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom3_641" id="kolom3_641" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -21392,7 +22518,7 @@
                 </div>
             </div>
         </div>
-        <!-- Tutup Modal Update 641a -->
+        <!-- Tutup Modal Update 641 -->
 
         <!-- Molda Update Tabel 641c -->
         <div class="modal fade" id="update641c" tabindex="-1" role="dialog">
@@ -21527,6 +22653,17 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
+                                        <b>Rasio Alat:Mhs per Kegiatan Praktikum/ Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_643" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
                                         <b>Kepemilikan</b>
                                     </div>
                                     <div class="col-md-6">
@@ -21537,7 +22674,7 @@
                                             </span> -->
                                             <div class="form-line">
                                                 <!-- <input type="text" name="kolom4_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6321e" name="kolom4_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6321e" name="kolom5_643" value="√" class="filled-in" />
                                                 <label for="tidakada6321e">SD</label>
                                             </div>
                                         </div>
@@ -21550,7 +22687,7 @@
                                             </span> -->
                                             <div class="form-line">
                                                 <!-- <input type="text" name="kolom5_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6322e" name="kolom5_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6322e" name="kolom6_643" value="√" class="filled-in" />
                                                 <label for="tidakada6322e">SW</label>
                                             </div>
                                         </div>
@@ -21566,7 +22703,7 @@
                                             </span> -->
                                             <div class="form-line">
                                                 <!-- <input type="text" name="kolom6_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6323e" name="kolom6_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6323e" name="kolom7_643" value="√" class="filled-in" />
                                                 <label for="tidakada6323e">Terawat</label>
                                             </div>
                                         </div>
@@ -21579,7 +22716,7 @@
                                             </span> -->
                                             <div class="form-line">
                                                 <!-- <input type="text" name="kolom7_632" class="form-control" placeholder="Ex: 500"> -->
-                                                <input type="checkbox" id="tidakada6324e" name="kolom7_643" value="√" class="filled-in" />
+                                                <input type="checkbox" id="tidakada6324e" name="kolom8_643" value="√" class="filled-in" />
                                                 <label for="tidakada6324e">Tidak Terawat</label>
                                             </div>
                                         </div>
@@ -21591,7 +22728,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom8_643" id="kolom8_643" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom9_643" id="kolom9_643" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -22139,6 +23276,109 @@
         </div>
         <!-- Tutup Modal Update 711 -->
 
+        <!-- Molda Update Tabel 712 -->
+        <div class="modal fade" id="update712" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian3ad3/updateisian712', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id712" id="id712" />
+                        <input type="hidden" name="712id_butir" id="712id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir712tabel" id="id_butir712tabel" />
+                                    <div class="col-md-12">
+                                        <b>Judul</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_712" id="kolom1_712" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Nama-nama Dosen</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_712" id="kolom2_712" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Dihasilkan/ Dipublikasikan pada</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_712" id="kolom3_712" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>TahunPenyajian/Publikasi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_712" id="kolom4_712" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tingkat* </b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="tidakada3r" name="kolom5_712" value="√" class="filled-in" />
+                                                <label for="tidakada3r">Lokal</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="tidakada3rw" name="kolom6_712" value="√" class="filled-in" />
+                                                <label for="tidakada3rw">Nasional</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <input type="checkbox" id="tidakada3rd" name="kolom7_712" value="√" class="filled-in" />
+                                                <label for="tidakada3rd">Internasional</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 712 -->
+
         <!-- Molda Update Tabel 713 -->
         <div class="modal fade" id="update713" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
@@ -22160,7 +23400,7 @@
                         <input type="hidden" name="713id_butir" id="713id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir713tabel" id="id_butir713tabel" />
                                     <div class="col-md-12">
-                                        <b>Judul</b>
+                                        <b>Paten/HaKI</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -22171,120 +23411,13 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Nama-nama Dosen</b>
+                                        <b>Karya yang Mendapat Pengakuan/Penghargaan dari Lembaga Wilayah/Nasional/Internasional</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
                                                 <input type="text" name="kolom2_713" id="kolom2_713" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Dihasilkan/ Dipublikasikan pada</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_713" id="kolom3_713" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>TahunPenyajian/Publikasi</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom4_713" id="kolom4_713" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Tingkat* </b>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!-- <b>Lokal</b> -->
-                                        <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
-                                            <div class="form-line">
-                                                <!-- <input type="text" name="kolom5_713" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <input type="checkbox" id="tidakada3r" name="kolom5_713" value="√" class="filled-in" />
-                                                <label for="tidakada3r">Lokal</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>Nasional</b>
-                                        <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
-                                            <div class="form-line">
-                                                <!-- <input type="text" name="kolom6_713" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <input type="checkbox" id="tidakada3rw" name="kolom6_713" value="√" class="filled-in" />
-                                                <label for="tidakada3rw">Nasional</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <!-- <b>Interna-sional</b> -->
-                                        <div class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span> -->
-                                            <div class="form-line">
-                                                <!-- <input type="text" name="kolom7_713" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <input type="checkbox" id="tidakada3rd" name="kolom7_713" value="√" class="filled-in" />
-                                                <label for="tidakada3rd">Internasional</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                    </div>
-                </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Tutup Modal Update 713 -->
-
-        <!-- Molda Update Tabel 714 -->
-        <div class="modal fade" id="update714" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
-                    </div>
-                    <div class="modal-body">
-                <!-- form start -->
-                <?php
-                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
-                    //   echo form_open('c_borang/update', $attributes);
-                    $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3ad3/updateisian714', $attributes);
-                    // echo form_open('c_borang/update');
-                ?>
-                    <div class="row clearfix">
-                        <input type="hidden" name="id714" id="id714" />
-                        <input type="hidden" name="714id_butir" id="714id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir714tabel" id="id_butir714tabel" />
-                                    <div class="col-md-12">
-                                        <b>Karya*</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_714" id="kolom1_714" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -22301,7 +23434,7 @@
                 </div>
             </div>
         </div>
-        <!-- Tutup Modal Update 714 -->
+        <!-- Tutup Modal Update 713 -->
 
         <!-- Molda Update Tabel 721 -->
         <div class="modal fade" id="update721" tabindex="-1" role="dialog">
@@ -25421,7 +26554,7 @@
 
     });
 
-    $('#update331b').on('shown.bs.modal', function (event) {
+    $('#update3412').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
@@ -25434,50 +26567,50 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#id331b').val(buku[0]['id']);
-              $('#id_butir331btabel').val(buku[0]['id_butir']);
-              $('#kolom1_331b').val(buku[0]['kolom1']);
-              $('#kolom2_331b').val(buku[0]['kolom2']);
-              $('#kolom3_331b').val(buku[0]['kolom3']);
-              $('#kolom4_331b').val(buku[0]['kolom4']);
-              $('#kolom5_331b').val(buku[0]['kolom5']);
-              $('#kolom6_331b').val(buku[0]['kolom6']);
-              $('#kolom7_331b').val(buku[0]['kolom7']);
-              $('#kolom8_331b').val(buku[0]['kolom8']);
-              $('#kolom9_331b').val(buku[0]['kolom9']);
-              $('#kolom10_331b').val(buku[0]['kolom10']);
-              $('#kolom11_331b').val(buku[0]['kolom11']);
-              $('#kolom12_331b').val(buku[0]['kolom12']);
-              $('#kolom13_331b').val(buku[0]['kolom13']);
-              $('#kolom14_331b').val(buku[0]['kolom14']);
-              $('#kolom15_331b').val(buku[0]['kolom15']);
-              $('#kolom16_331b').val(buku[0]['kolom16']);
-              $('#kolom17_331b').val(buku[0]['kolom17']);
-              $('#kolom18_331b').val(buku[0]['kolom18']);
-              $('#kolom19_331b').val(buku[0]['kolom19']);
-              $('#kolom20_331b').val(buku[0]['kolom20']);
-              $('#kolom21_331b').val(buku[0]['kolom21']);
-              $('#kolom22_331b').val(buku[0]['kolom22']);
-              $('#kolom23_331b').val(buku[0]['kolom23']);
-              $('#kolom24_331b').val(buku[0]['kolom24']);
-              $('#kolom25_331b').val(buku[0]['kolom25']);
-              $('#kolom26_331b').val(buku[0]['kolom26']);
-              $('#kolom27_331b').val(buku[0]['kolom27']);
-              $('#kolom28_331b').val(buku[0]['kolom28']);
-              $('#kolom29_331b').val(buku[0]['kolom29']);
-              $('#kolom30_331b').val(buku[0]['kolom30']);
-              $('#kolom31_331b').val(buku[0]['kolom31']);
-              $('#kolom32_331b').val(buku[0]['kolom32']);
-              $('#kolom33_331b').val(buku[0]['kolom33']);
-              $('#kolom34_331b').val(buku[0]['kolom34']);
-              $('#kolom35_331b').val(buku[0]['kolom35']);
-              $('#kolom36_331b').val(buku[0]['kolom36']);
-              $('#kolom37_331b').val(buku[0]['kolom37']);
-              $('#kolom38_331b').val(buku[0]['kolom38']);
-              $('#kolom39_331b').val(buku[0]['kolom39']);
-              $('#kolom40_331b').val(buku[0]['kolom40']);
-              $('#kolom41_331b').val(buku[0]['kolom41']);
-              $('#kolom42_331b').val(buku[0]['kolom42']);
+              $('#id3412').val(buku[0]['id']);
+              $('#id_butir3412tabel').val(buku[0]['id_butir']);
+              $('#kolom1_3412').val(buku[0]['kolom1']);
+              $('#kolom2_3412').val(buku[0]['kolom2']);
+              $('#kolom3_3412').val(buku[0]['kolom3']);
+              $('#kolom4_3412').val(buku[0]['kolom4']);
+              $('#kolom5_3412').val(buku[0]['kolom5']);
+              $('#kolom6_3412').val(buku[0]['kolom6']);
+              $('#kolom7_3412').val(buku[0]['kolom7']);
+              $('#kolom8_3412').val(buku[0]['kolom8']);
+              $('#kolom9_3412').val(buku[0]['kolom9']);
+              $('#kolom10_3412').val(buku[0]['kolom10']);
+              $('#kolom11_3412').val(buku[0]['kolom11']);
+              $('#kolom12_3412').val(buku[0]['kolom12']);
+              $('#kolom13_3412').val(buku[0]['kolom13']);
+              $('#kolom14_3412').val(buku[0]['kolom14']);
+              $('#kolom15_3412').val(buku[0]['kolom15']);
+              $('#kolom16_3412').val(buku[0]['kolom16']);
+              $('#kolom17_3412').val(buku[0]['kolom17']);
+              $('#kolom18_3412').val(buku[0]['kolom18']);
+              $('#kolom19_3412').val(buku[0]['kolom19']);
+              $('#kolom20_3412').val(buku[0]['kolom20']);
+              $('#kolom21_3412').val(buku[0]['kolom21']);
+              $('#kolom22_3412').val(buku[0]['kolom22']);
+              $('#kolom23_3412').val(buku[0]['kolom23']);
+              $('#kolom24_3412').val(buku[0]['kolom24']);
+              $('#kolom25_3412').val(buku[0]['kolom25']);
+              $('#kolom26_3412').val(buku[0]['kolom26']);
+              $('#kolom27_3412').val(buku[0]['kolom27']);
+              $('#kolom28_3412').val(buku[0]['kolom28']);
+              $('#kolom29_3412').val(buku[0]['kolom29']);
+              $('#kolom30_3412').val(buku[0]['kolom30']);
+              $('#kolom31_3412').val(buku[0]['kolom31']);
+              $('#kolom32_3412').val(buku[0]['kolom32']);
+              $('#kolom33_3412').val(buku[0]['kolom33']);
+              $('#kolom34_3412').val(buku[0]['kolom34']);
+              $('#kolom35_3412').val(buku[0]['kolom35']);
+              $('#kolom36_3412').val(buku[0]['kolom36']);
+              $('#kolom37_3412').val(buku[0]['kolom37']);
+              $('#kolom38_3412').val(buku[0]['kolom38']);
+              $('#kolom39_3412').val(buku[0]['kolom39']);
+              $('#kolom40_3412').val(buku[0]['kolom40']);
+              $('#kolom41_3412').val(buku[0]['kolom41']);
+              $('#kolom42_3412').val(buku[0]['kolom42']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -25846,6 +26979,38 @@
 
     });
 
+    $('#update512a').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id512a').val(buku[0]['id']);
+              $('#id_butir512atabel').val(buku[0]['id_butir']);
+              $('#kolom1_512a').val(buku[0]['kolom1']);
+              $('#kolom2_512a').val(buku[0]['kolom2']);
+              $('#kolom3_512a').val(buku[0]['kolom3']);
+              $('#kolom4_512a').val(buku[0]['kolom4']);
+              $('#kolom5_512a').val(buku[0]['kolom5']);
+              $('#kolom6_512a').val(buku[0]['kolom6']);
+              $('#kolom7_512a').val(buku[0]['kolom7']);
+              $('#kolom8_512a').val(buku[0]['kolom8']);
+              $('#kolom9_512a').val(buku[0]['kolom9']);
+              $('#kolom10_512a').val(buku[0]['kolom10']);
+              $('#kolom11_512a').val(buku[0]['kolom11']);
+              $('#kolom12_512a').val(buku[0]['kolom12']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
     $('#update512b').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
@@ -25864,6 +27029,30 @@
               $('#kolom1_512b').val(buku[0]['kolom2']);
               $('#kolom2_512b').val(buku[0]['kolom3']);
               $('#kolom3_512b').val(buku[0]['kolom4']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#update5122').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id5122').val(buku[0]['id']);
+              $('#id_butir5122tabel').val(buku[0]['id_butir']);
+              $('#kolom1_5122').val(buku[0]['kolom1']);
+              $('#kolom2_5122').val(buku[0]['kolom2']);
+              $('#kolom3_5122').val(buku[0]['kolom3']);
+              $('#kolom4_5122').val(buku[0]['kolom4']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -25950,7 +27139,7 @@
 
     });
 
-    $('#update52b').on('shown.bs.modal', function (event) {
+    $('#update532').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
@@ -25963,16 +27152,16 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#id52b').val(buku[0]['id']);
-              $('#id_butir52btabel').val(buku[0]['id_butir']);
-              $('#kolom1_52b').val(buku[0]['kolom1']);
-              $('#kolom2_52b').val(buku[0]['kolom2']);
-              $('#kolom3_52b').val(buku[0]['kolom3']);
-              $('#kolom4_52b').val(buku[0]['kolom4']);
-              $('#kolom5_52b').val(buku[0]['kolom5']);
-              $('#kolom6_52b').val(buku[0]['kolom6']);
-              $('#kolom7_52b').val(buku[0]['kolom7']);
-              $('#kolom8_52b').val(buku[0]['kolom8']);
+              $('#id532').val(buku[0]['id']);
+              $('#id_butir532tabel').val(buku[0]['id_butir']);
+              $('#kolom1_532').val(buku[0]['kolom1']);
+              $('#kolom2_532').val(buku[0]['kolom2']);
+              $('#kolom3_532').val(buku[0]['kolom3']);
+              $('#kolom4_532').val(buku[0]['kolom4']);
+              $('#kolom5_532').val(buku[0]['kolom5']);
+              $('#kolom6_532').val(buku[0]['kolom6']);
+              $('#kolom7_532').val(buku[0]['kolom7']);
+              $('#kolom8_532').val(buku[0]['kolom8']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -26031,7 +27220,7 @@
 
     });
 
-    $('#update551d').on('shown.bs.modal', function (event) {
+    $('#update5524').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
@@ -26044,10 +27233,10 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#id551d').val(buku[0]['id']);
-              $('#id_butir551dtabel').val(buku[0]['id_butir']);
-              $('#kolom1_551d').val(buku[0]['kolom1']);
-              $('#kolom2_551d').val(buku[0]['kolom2']);
+              $('#id5524').val(buku[0]['id']);
+              $('#id_butir5524tabel').val(buku[0]['id_butir']);
+              $('#kolom1_5524').val(buku[0]['kolom1']);
+              $('#kolom2_5524').val(buku[0]['kolom2']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -26071,6 +27260,30 @@
               $('#kolom1_56').val(buku[0]['kolom1']);
               $('#kolom2_56').val(buku[0]['kolom2']);
               $('#kolom3_56').val(buku[0]['kolom3']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#update59').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id59').val(buku[0]['id']);
+              $('#id_butir59tabel').val(buku[0]['id_butir']);
+              $('#kolom1_59').val(buku[0]['kolom1']);
+              $('#kolom2_59').val(buku[0]['kolom2']);
+              $('#kolom3_59').val(buku[0]['kolom3']);
+              $('#kolom4_59').val(buku[0]['kolom4']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -26212,7 +27425,7 @@
 
     });
 
-     $('#update641a').on('shown.bs.modal', function (event) {
+    $('#update641').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
@@ -26225,11 +27438,11 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#id641a').val(buku[0]['id']);
-              $('#id_butir641atabel').val(buku[0]['id_butir']);
-              $('#kolom1_641a').val(buku[0]['kolom1']);
-              $('#kolom2_641a').val(buku[0]['kolom2']);
-              $('#kolom3_641a').val(buku[0]['kolom3']);
+              $('#id641').val(buku[0]['id']);
+              $('#id_butir641tabel').val(buku[0]['id_butir']);
+              $('#kolom1_641').val(buku[0]['kolom1']);
+              $('#kolom2_641').val(buku[0]['kolom2']);
+              $('#kolom3_641').val(buku[0]['kolom3']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -26282,6 +27495,7 @@
               $('#kolom6_643').val(buku[0]['kolom6']);
               $('#kolom7_643').val(buku[0]['kolom7']);
               $('#kolom8_643').val(buku[0]['kolom8']);
+              $('#kolom9_643').val(buku[0]['kolom9']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -26369,7 +27583,34 @@
 
     });
 
-     $('#update713').on('shown.bs.modal', function (event) {
+    $('#update712').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id712').val(buku[0]['id']);
+              $('#id_butir712tabel').val(buku[0]['id_butir']);
+              $('#kolom1_712').val(buku[0]['kolom1']);
+              $('#kolom2_712').val(buku[0]['kolom2']);
+              $('#kolom3_712').val(buku[0]['kolom3']);
+              $('#kolom4_712').val(buku[0]['kolom4']);
+              $('#kolom5_712').val(buku[0]['kolom5']);
+              $('#kolom6_712').val(buku[0]['kolom6']);
+              $('#kolom7_712').val(buku[0]['kolom7']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#update713').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
@@ -26386,32 +27627,6 @@
               $('#id_butir713tabel').val(buku[0]['id_butir']);
               $('#kolom1_713').val(buku[0]['kolom1']);
               $('#kolom2_713').val(buku[0]['kolom2']);
-              $('#kolom3_713').val(buku[0]['kolom3']);
-              $('#kolom4_713').val(buku[0]['kolom4']);
-              $('#kolom5_713').val(buku[0]['kolom5']);
-              $('#kolom6_713').val(buku[0]['kolom6']);
-              $('#kolom7_713').val(buku[0]['kolom7']);
-          });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
-
-    });
-
-    $('#update714').on('shown.bs.modal', function (event) {
-        //ajax call to get isian Borang Informatin from database
-        var button = $(event.relatedTarget)
-        var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
-        $.ajax({
-            method: "POST",
-            url: link,
-            cache: false,
-            data: { id: recipient }
-          })
-          .done(function( msg ) {
-              var buku = JSON.parse(msg);
-              $('#id714').val(buku[0]['id']);
-              $('#id_butir714tabel').val(buku[0]['id_butir']);
-              $('#kolom1_714').val(buku[0]['kolom1']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -27272,12 +28487,12 @@ function printContent(el){
                   }
         }
 
-        function cekjumlah331a(){
-              var txt1 = document.getElementById('331a').value;
+        function cekjumlah33(){
+              var txt1 = document.getElementById('33').value;
               var result = (parseFloat(txt1));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('331anilai').value = desimalnya;
+                     document.getElementById('33nilai').value = desimalnya;
                   }
         }
 
@@ -27384,12 +28599,12 @@ function printContent(el){
         }
 
            
-            function cekjumlah342(){
-              var txt1 = document.getElementById('342').value;
+            function cekjumlah3412(){
+              var txt1 = document.getElementById('3412').value;
               var result = (parseFloat(txt1));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('342nilai').value = desimalnya;
+                     document.getElementById('3412nilai').value = desimalnya;
                   }
         }
 
@@ -27892,21 +29107,30 @@ function printContent(el){
                   }
         }
 
-        function cekjumlah52a(){
-              var txt1 = document.getElementById('52a').value;
+        function cekjumlah521(){
+              var txt1 = document.getElementById('521').value;
               var result = (parseFloat(txt1));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('52anilai').value = desimalnya;
+                     document.getElementById('521nilai').value = desimalnya;
                   }
         }
 
-        function cekjumlah52b(){
-              var txt1 = document.getElementById('52b').value;
+        function cekjumlah522(){
+              var txt1 = document.getElementById('522').value;
               var result = (parseFloat(txt1));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('52bnilai').value = desimalnya;
+                     document.getElementById('522nilai').value = desimalnya;
+                  }
+        }
+
+        function cekjumlah523(){
+              var txt1 = document.getElementById('523').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('523nilai').value = desimalnya;
                   }
         }
 
@@ -28061,12 +29285,12 @@ function printContent(el){
         }
 
 
-        function cekjumlah551d(){
-              var txt1 = document.getElementById('551d').value;
+        function cekjumlah5524(){
+              var txt1 = document.getElementById('5524').value;
               var result = (parseFloat(txt1));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('551dnilai').value = desimalnya;
+                     document.getElementById('5524nilai').value = desimalnya;
                   }
         }
 
@@ -28162,8 +29386,8 @@ function printContent(el){
         }
 
 
-         function cekjumlah641a(){
-              var txt1 = document.getElementById('641a').value;
+        function cekjumlah641(){
+              var txt1 = document.getElementById('641').value;
               var result = (parseFloat(txt1));
               var skor = ((parseFloat(txt1)/100));
               var nilainya =0;
@@ -28176,8 +29400,8 @@ function printContent(el){
               var desimalnya=nilainya.toFixed(2);
               
               if (!isNaN(result)) {
-                     document.getElementById('641anilai').value = desimalnya;
-                     document.getElementById('641askor').value = hitung;
+                     document.getElementById('641nilai').value = desimalnya;
+                     document.getElementById('641skor').value = hitung;
                   }
         }
 
@@ -28406,7 +29630,7 @@ function printContent(el){
     });
   }
 
-  function info342(){
+  function info3412(){
     swal({
         title: "Info <small>dari </small>Himpunan Alumni",
         text: "Jelaskan apakah lulusan program studi memiliki himpunan alumni.  Jika memiliki, jelaskan aktivitas dan hasil kegiatan dari himpunan alumni untuk kemajuan program studi dalam kegiatan non akademik, meliputi sumbangan dana, sumbangan fasilitas, keterlibatan dalam kegiatan, pengembangan jejaring, dan penyediaan fasilitas.</b>",
