@@ -1426,7 +1426,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_311" id="k2_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_311" id="k2_311" onkeyup="errorinputikutseleksi()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -1526,7 +1526,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom10_311" id="k10_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom10_311" id="k10_311" class="form-control" placeholder="Ex: 2.75 (Penulisan Angka Menggunakan (.) Titik">
                                             </div>
                                         </div>
                                     </div>
@@ -1537,7 +1537,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom11_311" id="k11_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom11_311" id="k11_311" class="form-control" placeholder="Ex: 3.00 (Penulisan Angka Menggunakan (.) Titik">
                                             </div>
                                         </div>
                                     </div>
@@ -1548,7 +1548,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text"  name="kolom12_311" id="k12_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text"  name="kolom12_311" id="k12_311" class="form-control" placeholder="Ex: 3.50 (Penulisan Angka Menggunakan (.) Titik">
                                             </div>
                                         </div>
                                     </div>
@@ -1556,7 +1556,7 @@
                                         <b>Presentase Lulusan Reguler dengan IPK :</b>
                                     </div>
                                     <div class="col-md-3">
-                                        <b>< 2,75</b>
+                                        <b>< 2.75</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1567,7 +1567,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <b>2,75 - 3,50</b>
+                                        <b>2.75 - 3.50</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1578,7 +1578,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <b>> 3,50</b>
+                                        <b>> 3.50</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -29418,11 +29418,29 @@ function printContent(el){
   function errorinput(){
     isi1 = document.getElementById("k3_311").value;
     isi2 = document.getElementById("k4_311").value;
+    isi3 = document.getElementById("k2_311").value;
+    nil1 = parseInt(isi1);
+    nil2 = parseInt(isi2);
+    nil3 = parseInt(isi3);
+    hasil = nil1 + nil2;
+    hasil1 = nil3 + nil1;
+    if (nil2 > nil1) {
+        swal("Error", "Jumlah Mahasiswa Baru Reguler Bukan Transfer Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi", "error");
+    }
+
+    if (nil1 > nil3) {
+        swal("Error", "Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Ikut Seleksi", "error");
+    }
+  }
+
+  function errorinputikutseleksi(){
+    isi1 = document.getElementById("k2_311").value;
+    isi2 = document.getElementById("k3_311").value;
     nil1 = parseInt(isi1);
     nil2 = parseInt(isi2);
     hasil = nil1 + nil2;
     if (nil2 > nil1) {
-        swal("Error", "Jumlah Mahasiswa Baru Reguler Bukan Transfer Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi", "error");
+        swal("Error", "Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Ikut Seleksi", "error");
     }
   }
 
