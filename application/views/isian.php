@@ -14401,7 +14401,7 @@
                                             </span>
                                             <div class="form-line">
                                                 <!-- <input type="text" name="kolom1_641a" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <select class="form-control show-tick" name="kolom1_641a">
+                                                <select name="kolom1_641a">
                                                     <option value="">-- Please select --</option>
                                                     <option value="Buku teks ">Buku teks </option>
                                                     <option value="Jurnal nasional yang terakreditasi">Jurnal nasional yang terakreditasi</option>
@@ -14455,7 +14455,7 @@
                                             </span>
                                             <div class="form-line">
                                                 <!-- <input type="text" name="kolom1_641a" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <select class="form-control show-tick" name="kolom1_641a">
+                                                <select name="kolom1_641a">
                                                     <option value="">-- Please select --</option>
                                                     <option value="Buku teks ">Buku teks </option>
                                                     <option value="Jurnal nasional yang terakreditasi">Jurnal nasional yang terakreditasi</option>
@@ -22381,7 +22381,7 @@
                                             </span>
                                             <div class="form-line">
                                                 <!-- <input type="text" name="kolom1_641a" id="kolom1_641a" class="form-control" placeholder="Tuliskan disini"> -->
-                                                <select class="form-control show-tick" name="kolom1_641a">
+                                                <select name="kolom1_641a">
                                                     <option value="">-- Please select --</option>
                                                     <option value="Buku teks ">Buku teks </option>
                                                     <option value="Jurnal nasional yang terakreditasi">Jurnal nasional yang terakreditasi</option>
