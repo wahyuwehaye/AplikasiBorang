@@ -2936,16 +2936,16 @@
                         <h2 class="card-inside-title">Evaluasi Lulusan</h2>
                         <h2 class="card-inside-title">Adakah studi pelacakan (tracer study) untuk mendapatkan hasil evaluasi kinerja lulusan dengan pihak pengguna?</h2>
                         <div class="demo-checkbox">
-                                <input type="checkbox" id="tidakada" class="filled-in" />
-                                <label for="tidakada">Tidak Ada</label></br>
-                                <input type="checkbox" id="ada" class="filled-in" checked />
-                                <label for="ada">Ada</label>
+                                <input type="radio" id="rb1" name="kolom1_341" <?php echo ($dataisian[$i]['kolom1']=='Ya')?'checked':'' ?> class="filled-in" value="Ya" />
+                                <label for="rb1">Ya</label></br>
+                                <input type="radio" id="rb2" name="kolom1_341" <?php echo ($dataisian[$i]['kolom1']=='Tidak')?'checked':'' ?> class="filled-in" value="Tidak" />
+                                <label for="rb2">Tidak</label>
                         </div>
                         <h2 class="card-inside-title">Jika ada, uraikan metode, proses dan mekanisme kegiatan studi pelacakan tersebut.  Jelaskan pula bentuk tindak lanjut dari hasil kegiatan ini.</h2>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_341" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom2_341" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -2961,17 +2961,17 @@
                         <h2 class="card-inside-title">Evaluasi Lulusan</h2>
                         <h2 class="card-inside-title">Adakah studi pelacakan (tracer study) untuk mendapatkan hasil evaluasi kinerja lulusan dengan pihak pengguna?</h2>
                         <div class="demo-checkbox">
-                                <input type="checkbox" id="tidakada" class="filled-in" />
-                                <label for="tidakada">Tidak Ada</label></br>
-                                <input type="checkbox" id="ada" class="filled-in" />
-                                <label for="ada">Ada</label>
+                                <input type="radio" id="rb1" name="kolom1_341" class="filled-in" value="Ya" />
+                                <label for="rb1">Ya</label></br>
+                                <input type="radio" id="rb2" name="kolom1_341" class="filled-in" value="Tidak" />
+                                <label for="rb2">Tidak</label>
                             </div>
                         <h2 class="card-inside-title">Jika ada, uraikan metode, proses dan mekanisme kegiatan studi pelacakan tersebut.  Jelaskan pula bentuk tindak lanjut dari hasil kegiatan ini.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_341" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom2_341" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     
                                             </textarea>
                                         </div>
@@ -4270,7 +4270,6 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi345">
                         <input type="hidden" name="id_butir345" id="id_butir345" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir345" id="id_butir345" value="<?php echo $getidbutir; ?>" />
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -4369,11 +4368,10 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <textarea name="kolom2_345" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                        <p>1. </p>
-                                        <p>2. </p>
-                                        <p>Dst. </p>
-                                                </textarea>
+                                                <textarea name="kolom2_345" rows="4" class="form-control no-resize" placeholder="1.
+2.
+dst.
+                                                "></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -4415,11 +4413,10 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <textarea name="kolom2_345" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                        <p>1. </p>
-                                        <p>2. </p>
-                                        <p>Dst. </p>
-                                                </textarea>
+                                                <textarea name="kolom2_345" rows="4" class="form-control no-resize" placeholder="1.
+2.
+dst.
+                                                "></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -9446,17 +9443,17 @@
                             <?php
                                 }
                         }elseif (($getbutir=='5.1.2.1.1') || ($getbutir=='5.1.2.1.2') || ($getbutir=='5.1.2.1.3') || ($getbutir=='5.1.2.1.4')) {
-                            $getidbutir512a = '';
-                            $querycariidbutir512a = $CI->db->query('select * from butir where butir="5.1.2.1" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir512a->result() as $row){
-                                $getidbutir512a = $row->id;
+                            $getidbutir5121 = '';
+                            $querycariidbutir5121 = $CI->db->query('select * from butir where butir="5.1.2.1" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir5121->result() as $row){
+                                $getidbutir5121 = $row->id;
                                 break;
                             }
                             if (count($dataisian)>0) {
                                 //for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi512a">
-                        <input type="hidden" name="id_butir512a" id="id_butir512a" value="<?php echo $isiannya; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi5121">
+                        <input type="hidden" name="id_butir5121" id="id_butir5121" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Struktur Kurikulum</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -9582,7 +9579,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom12'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update512a" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update5121" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -9618,7 +9615,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom1_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9629,7 +9626,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9640,7 +9637,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9654,7 +9651,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9665,7 +9662,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom5_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9675,7 +9672,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb1" name="kolom6_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb1" name="kolom6_5121" value="√" class="filled-in" />
                                                 <label for="cb1"><b>Inti*</b></label>
                                             </div>
                                         </div>
@@ -9683,7 +9680,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb2" name="kolom7_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb2" name="kolom7_5121" value="√" class="filled-in" />
                                                 <label for="cb2"><b>Institusional</b></label>
                                             </div>
                                         </div>
@@ -9691,7 +9688,7 @@
                                     <div class="col-md-12">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb3" name="kolom8_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb3" name="kolom8_5121" value="√" class="filled-in" />
                                                 <label for="cb3"><b>Bobot Tugas**</b></label>
                                             </div>
                                         </div>
@@ -9702,7 +9699,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb4" name="kolom9_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb4" name="kolom9_5121" value="√" class="filled-in" />
                                                 <label for="cb4"><b>Deskripsi</b></label>
                                             </div>
                                         </div>
@@ -9710,7 +9707,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb5" name="kolom10_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb5" name="kolom10_5121" value="√" class="filled-in" />
                                                 <label for="cb5"><b>Silabus</b></label>
                                             </div>
                                         </div>
@@ -9718,7 +9715,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb6" name="kolom11_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb6" name="kolom11_5121" value="√" class="filled-in" />
                                                 <label for="cb6"><b>SAP</b></label>
                                             </div>
                                         </div>
@@ -9730,7 +9727,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom12_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9740,7 +9737,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom13_512a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom13_5121" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
@@ -9757,8 +9754,8 @@
                             <?php 
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi512a">
-                        <input type="hidden" name="id_butir512a" id="id_butir512a" value="<?php echo $isiannya; ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi5121">
+                        <input type="hidden" name="id_butir5121" id="id_butir5121" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Struktur Kurikulum</h2>
                         <h2 class="card-inside-title">Jumlah SKS minimum untuk kelulusan PS : .... SKS.  Tuliskan struktur kurikulum berdasarkan urutan mata kuliah (MK) semester demi semester, dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
@@ -9769,7 +9766,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom1_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9780,7 +9777,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9791,7 +9788,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9805,7 +9802,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9816,7 +9813,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom5_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9826,7 +9823,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb1" name="kolom6_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb1" name="kolom6_5121" value="√" class="filled-in" />
                                                 <label for="cb1"><b>Inti*</b></label>
                                             </div>
                                         </div>
@@ -9834,7 +9831,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb2" name="kolom7_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb2" name="kolom7_5121" value="√" class="filled-in" />
                                                 <label for="cb2"><b>Institusional</b></label>
                                             </div>
                                         </div>
@@ -9842,7 +9839,7 @@
                                     <div class="col-md-12">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb3" name="kolom8_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb3" name="kolom8_5121" value="√" class="filled-in" />
                                                 <label for="cb3"><b>Bobot Tugas**</b></label>
                                             </div>
                                         </div>
@@ -9853,7 +9850,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb4" name="kolom9_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb4" name="kolom9_5121" value="√" class="filled-in" />
                                                 <label for="cb4"><b>Deskripsi</b></label>
                                             </div>
                                         </div>
@@ -9861,7 +9858,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb5" name="kolom10_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb5" name="kolom10_5121" value="√" class="filled-in" />
                                                 <label for="cb5"><b>Silabus</b></label>
                                             </div>
                                         </div>
@@ -9869,7 +9866,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb6" name="kolom11_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb6" name="kolom11_5121" value="√" class="filled-in" />
                                                 <label for="cb6"><b>SAP</b></label>
                                             </div>
                                         </div>
@@ -9881,7 +9878,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom12_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -9891,7 +9888,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom13_512a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom13_5121" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
@@ -19155,6 +19152,70 @@
         </div>
         <!-- Tutup Modal Update 3412 -->
 
+        <!-- Molda Update Tabel 345 -->
+        <div class="modal fade" id="update345" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian3ad3/updateisian345', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id345" id="id345" />
+                        <input type="hidden" name="id_butir345tabel" id="id_butir345tabel" />
+                                    <div class="col-md-12">
+                                        <b>Jumlah Lulusan yang Diwisuda pada</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_345" id="kolom1_345" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Nama Lembaga (Instansi/Industri)</b>
+                                        <div class="input-group">
+                                            <div class="form-line">
+                                                <textarea name="kolom2_345" id="kolom2_345" rows="4" class="form-control no-resize" placeholder="1.
+2.
+dst.
+                                                "></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Lulusan yang Dipesan dan Diterima</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_345" id="kolom3_345" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 345 -->
+
         <!-- Molda Update Tabel 431 -->
         <div class="modal fade" id="update431" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
@@ -20693,8 +20754,8 @@
         </div>
         <!-- Tutup Modal Update 461 -->
 
-        <!-- Molda Update Tabel 512a -->
-        <div class="modal fade" id="update512a" tabindex="-1" role="dialog">
+        <!-- Molda Update Tabel 5121 -->
+        <div class="modal fade" id="update5121" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -20706,13 +20767,13 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3ad3/updateisian512a', $attributes);
+                    echo form_open('C_isian3ad3/updateisian5121', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id512a" id="id512a" />
-                        <input type="hidden" name="id_butir512a" id="id_butir512a" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir512atabel" id="id_butir512atabel" />
+                        <input type="hidden" name="id5121" id="id5121" />
+                        <input type="hidden" name="id_butir5121" id="id_butir5121" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir5121tabel" id="id_butir5121tabel" />
                                     <div class="col-md-12">
                                         <b>Semester</b>
                                         <div class="input-group">
@@ -20720,7 +20781,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom1_5121" id="kolom1_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -20731,7 +20792,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_5121" id="kolom2_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -20742,7 +20803,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_5121" id="kolom3_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -20756,7 +20817,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_5121" id="kolom4_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -20767,7 +20828,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom5_5121" id="kolom5_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -20777,7 +20838,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb11" name="kolom6_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb11" name="kolom6_5121" id="kolom6_5121" value="√" class="filled-in" />
                                                 <label for="cb11"><b>Inti*</b></label>
                                             </div>
                                         </div>
@@ -20785,7 +20846,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb12" name="kolom7_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb12" name="kolom7_5121" id="kolom7_5121" value="√" class="filled-in" />
                                                 <label for="cb12"><b>Institusional</b></label>
                                             </div>
                                         </div>
@@ -20793,7 +20854,7 @@
                                     <div class="col-md-12">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb13" name="kolom8_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb13" name="kolom8_5121" id="kolom8_5121" value="√" class="filled-in" />
                                                 <label for="cb13"><b>Bobot Tugas**</b></label>
                                             </div>
                                         </div>
@@ -20804,7 +20865,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb14" name="kolom9_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb14" name="kolom9_5121" id="kolom9_5121" value="√" class="filled-in" />
                                                 <label for="cb14"><b>Deskripsi</b></label>
                                             </div>
                                         </div>
@@ -20812,7 +20873,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb15" name="kolom10_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb15" name="kolom10_5121" id="kolom10_5121" value="√" class="filled-in" />
                                                 <label for="cb15"><b>Silabus</b></label>
                                             </div>
                                         </div>
@@ -20820,7 +20881,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="checkbox" id="cb16" name="kolom11_512a" value="√" class="filled-in" />
+                                                <input type="checkbox" id="cb16" name="kolom11_5121" id="kolom11_5121" value="√" class="filled-in" />
                                                 <label for="cb16"><b>SAP</b></label>
                                             </div>
                                         </div>
@@ -20832,7 +20893,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom12_512a" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_5121" id="kolom12_5121" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -20846,7 +20907,7 @@
                 </div>
             </div>
         </div>
-        <!-- Tutup Modal Update 512a -->
+        <!-- Tutup Modal Update 5121 -->
 
         <!-- Molda Update Tabel 512b -->
         <div class="modal fade" id="update512b" tabindex="-1" role="dialog">
@@ -26616,6 +26677,29 @@
 
     });
 
+    $('#update345').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id345').val(buku[0]['id']);
+              $('#id_butir345tabel').val(buku[0]['id_butir']);
+              $('#kolom1_345').val(buku[0]['kolom1']);
+              $('#kolom2_345').val(buku[0]['kolom2']);
+              $('#kolom3_345').val(buku[0]['kolom3']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
     $('#update431').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
@@ -26979,7 +27063,7 @@
 
     });
 
-    $('#update512a').on('shown.bs.modal', function (event) {
+    $('#update5121').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
@@ -26992,20 +27076,20 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#id512a').val(buku[0]['id']);
-              $('#id_butir512atabel').val(buku[0]['id_butir']);
-              $('#kolom1_512a').val(buku[0]['kolom1']);
-              $('#kolom2_512a').val(buku[0]['kolom2']);
-              $('#kolom3_512a').val(buku[0]['kolom3']);
-              $('#kolom4_512a').val(buku[0]['kolom4']);
-              $('#kolom5_512a').val(buku[0]['kolom5']);
-              $('#kolom6_512a').val(buku[0]['kolom6']);
-              $('#kolom7_512a').val(buku[0]['kolom7']);
-              $('#kolom8_512a').val(buku[0]['kolom8']);
-              $('#kolom9_512a').val(buku[0]['kolom9']);
-              $('#kolom10_512a').val(buku[0]['kolom10']);
-              $('#kolom11_512a').val(buku[0]['kolom11']);
-              $('#kolom12_512a').val(buku[0]['kolom12']);
+              $('#id5121').val(buku[0]['id']);
+              $('#id_butir5121tabel').val(buku[0]['id_butir']);
+              $('#kolom1_5121').val(buku[0]['kolom1']);
+              $('#kolom2_5121').val(buku[0]['kolom2']);
+              $('#kolom3_5121').val(buku[0]['kolom3']);
+              $('#kolom4_5121').val(buku[0]['kolom4']);
+              $('#kolom5_5121').val(buku[0]['kolom5']);
+              $('#kolom6_5121').val(buku[0]['kolom6']);
+              $('#kolom7_5121').val(buku[0]['kolom7']);
+              $('#kolom8_5121').val(buku[0]['kolom8']);
+              $('#kolom9_5121').val(buku[0]['kolom9']);
+              $('#kolom10_5121').val(buku[0]['kolom10']);
+              $('#kolom11_5121').val(buku[0]['kolom11']);
+              $('#kolom12_5121').val(buku[0]['kolom12']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -29027,12 +29111,12 @@ function printContent(el){
                   }
         }
 
-        function cekjumlah512a(){
-              var txt1 = document.getElementById('512a').value;
+        function cekjumlah5121(){
+              var txt1 = document.getElementById('5121').value;
               var result = (parseFloat(txt1));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('512anilai').value = desimalnya;
+                     document.getElementById('5121nilai').value = desimalnya;
                   }
         }
 
