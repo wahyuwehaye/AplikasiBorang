@@ -726,10 +726,10 @@ class C_isian extends CI_Controller {
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian');
-        $id=$_POST['id_butir434'];
+        $id=$_POST['434id_butir'];
         $this->M_isian->insert_isian434();
         $_SESSION['suksesinput'] = '';
-        redirect('isian/'.$_POST['id_butir434']);
+        redirect('isian/'.$_POST['434id_butir']);
   }
 
   public function ngisi435(){
@@ -738,10 +738,10 @@ class C_isian extends CI_Controller {
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian');
-        $id=$_POST['id_butir435'];
+        $id=$_POST['435id_butir'];
         $this->M_isian->insert_isian435();
         $_SESSION['suksesinput'] = '';
-        redirect('isian/'.$_POST['id_butir435']);
+        redirect('isian/'.$_POST['435id_butir']);
   }
 
   public function ngisi441(){

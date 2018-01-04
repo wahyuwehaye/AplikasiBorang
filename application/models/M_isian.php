@@ -1152,7 +1152,7 @@ class M_isian extends CI_Model {
         public function insert_isian434()
         {
                 $data = array(
-                        'id_butir' => $this->input->post('id_butir434'),
+                        'id_butir' => $this->input->post('434id_butir'),
                         'kolom1' => $this->input->post('kolom1_434'),
                         'kolom2' => $this->input->post('kolom2_434'),
                         'kolom3' => $this->input->post('kolom3_434'),
@@ -1170,7 +1170,7 @@ class M_isian extends CI_Model {
                 $this->db->insert('isian_16kolom', $data);
 
                 $data = array(
-                        'id_kolom' => $this->input->post('id_butir434'),
+                        'id_kolom' => $this->input->post('434id_butir'),
                         'kolom1' => $this->input->post('kolom1_434'),
                         'kolom2' => $this->input->post('kolom2_434'),
                         'kolom3' => $this->input->post('kolom3_434'),
@@ -1190,7 +1190,7 @@ class M_isian extends CI_Model {
 
                 $data = array(
                         'user'=> $_SESSION['name'],
-                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir434'),
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('434id_butir'),
                         'created_at'=> date('Y-m-d H:i:s')
                 );
 
@@ -1200,7 +1200,7 @@ class M_isian extends CI_Model {
         public function insert_isian435()
         {
                 $data = array(
-                        'id_butir' => $this->input->post('id_butir435'),
+                        'id_butir' => $this->input->post('435id_butir'),
                         'kolom1' => $this->input->post('kolom1_435'),
                         'kolom2' => $this->input->post('kolom2_435'),
                         'kolom3' => $this->input->post('kolom3_435'),
@@ -1218,7 +1218,7 @@ class M_isian extends CI_Model {
                 $this->db->insert('isian_16kolom', $data);
 
                 $data = array(
-                        'id_kolom' => $this->input->post('id_butir435'),
+                        'id_kolom' => $this->input->post('435id_butir'),
                         'kolom1' => $this->input->post('kolom1_435'),
                         'kolom2' => $this->input->post('kolom2_435'),
                         'kolom3' => $this->input->post('kolom3_435'),
@@ -1238,7 +1238,7 @@ class M_isian extends CI_Model {
 
                 $data = array(
                         'user'=> $_SESSION['name'],
-                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir435'),
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('435id_butir'),
                         'created_at'=> date('Y-m-d H:i:s')
                 );
 

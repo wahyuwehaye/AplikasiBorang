@@ -1526,7 +1526,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom10_311" id="k10_311" class="form-control" placeholder="Ex: 2.75 (Penulisan Angka Menggunakan (.) Titik">
+                                                <input type="text" name="kolom10_311" id="k10_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 2.75 (Penulisan Angka Menggunakan (.) Titik">
                                             </div>
                                         </div>
                                     </div>
@@ -1537,7 +1537,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom11_311" id="k11_311" class="form-control" placeholder="Ex: 3.00 (Penulisan Angka Menggunakan (.) Titik">
+                                                <input type="text" name="kolom11_311" id="k11_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 3.00 (Penulisan Angka Menggunakan (.) Titik">
                                             </div>
                                         </div>
                                     </div>
@@ -1548,7 +1548,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text"  name="kolom12_311" id="k12_311" class="form-control" placeholder="Ex: 3.50 (Penulisan Angka Menggunakan (.) Titik">
+                                                <input type="text"  name="kolom12_311" id="k12_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 3.50 (Penulisan Angka Menggunakan (.) Titik">
                                             </div>
                                         </div>
                                     </div>
@@ -1562,7 +1562,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom13_311" id="k13_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom13_311" id="k13_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -1573,7 +1573,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom14_311" id="k14_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom14_311" id="k14_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -1584,7 +1584,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom15_311" id="k15_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom15_311" id="k15_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -5680,7 +5680,7 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='4.3.4 & 4.3.5') && ($getid434 == $isiannya)) {
+                        }elseif (($getbutir=='4.3.4 & 4.3.5') && ($getid434 % 2 == 0)) {
                             $getidbutir434 = '';
                             $querycariidbutir434 = $CI->db->query('select * from butir where butir="4.3.4 & 4.3.5" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir434->result() as $row){
@@ -6011,7 +6011,7 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='4.3.4 & 4.3.5') && ($getid434 == $isiannya)) {
+                        }elseif (($getbutir=='4.3.4 & 4.3.5') && ($getid434 % 2 !== 0)) {
                             $getidbutir435 = '';
                             $querycariidbutir435 = $CI->db->query('select * from butir where butir="4.3.4 & 4.3.5" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir435->result() as $row){
@@ -11246,7 +11246,7 @@
                             </table>
                         </div>
         <!-- Tutup Tabel Edit -->
-                        <h2 class="card-inside-title">Tuliskan data aktivitas mengajar dosen tetap yang bidang keahliannya sesuai dengan PS,  dalam satu tahun akademik terakhir di PS ini dengan mengikuti format tabel berikut:</h2>
+                        <h2 class="card-inside-title">Tuliskan nama dosen pembimbing akademik dan jumlah mahasiswa yang dibimbingnya dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
                                         <b>Nama Dosen Pembimbing Akademik</b>
@@ -29416,9 +29416,9 @@ function printContent(el){
   }
 
   function errorinput(){
-    isi1 = document.getElementById("k3_311").value;
-    isi2 = document.getElementById("k4_311").value;
-    isi3 = document.getElementById("k2_311").value;
+    isi1 = document.getElementById('k3_311').value;
+    isi2 = document.getElementById('k4_311').value;
+    isi3 = document.getElementById('k2_311').value;
     nil1 = parseInt(isi1);
     nil2 = parseInt(isi2);
     nil3 = parseInt(isi3);
@@ -29434,13 +29434,48 @@ function printContent(el){
   }
 
   function errorinputikutseleksi(){
-    isi1 = document.getElementById("k2_311").value;
-    isi2 = document.getElementById("k3_311").value;
+    isi1 = document.getElementById('k2_31').value;
+    isi2 = document.getElementById('k3_31').value;
     nil1 = parseInt(isi1);
     nil2 = parseInt(isi2);
     hasil = nil1 + nil2;
     if (nil2 > nil1) {
         swal("Error", "Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Ikut Seleksi", "error");
+    }
+  }
+
+  function errorinputkoma(){
+    isi1 = document.getElementById('k10_311').value;
+    isi2 = document.getElementById('k11_311').value;
+    isi3 = document.getElementById('k12_311').value;
+    isi4 = document.getElementById('k13_311').value;
+    isi5 = document.getElementById('k14_311').value;
+    isi6 = document.getElementById('k15_311').value;
+    nil1 = parseFloat(isi1);
+    nil2 = parseFloat(isi2);
+    nil3 = parseFloat(isi3);
+    nil4 = parseFloat(isi4);
+    nil5 = parseFloat(isi5);
+    nil6 = parseFloat(isi6);
+    desimal1 = nil1.toFixed(2);
+    desimal2 = nil2.toFixed(2);
+    desimal3 = nil3.toFixed(2);
+    desimal4 = nil4.toFixed(2);
+    desimal5 = nil5.toFixed(2);
+    desimal6 = nil6.toFixed(2);
+    cek1 = isi1.search(',');
+    cek2 = isi2.search(',');
+    cek3 = isi3.search(',');
+    if ((cek1 > 0) || (cek2 > 0) || (cek3 > 0)) {
+        swal("Error", "Tidak Boleh Memasukkan Koma", "error");
+    }
+
+    if ((desimal1 > 2.75) && (desimal4 > 0)) {
+        swal("Error", "Persentase Lulusan Reguler dengan IPK < 2.75 tidak sesuai dengan Minimal IPK Lulusan Reguler", "error");
+    }
+
+    if ((desimal3 < 3.50) && (desimal6 > 0)) {
+        swal("Error", "Persentase Lulusan Reguler dengan IPK > 3.50 tidak sesuai dengan Maksimal IPK Lulusan Reguler", "error");
     }
   }
 
