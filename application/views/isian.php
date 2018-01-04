@@ -13697,13 +13697,13 @@
                                         $nil = 0;
                                         $diloop = count($dataisian);
                                     for($i=0;$i<count($dataisian);$i++){
-                                        $jum1 = $jum1 + $dataisian[$i]['kolom1'];
-                                        $jum2 = $jum2 + $dataisian[$i]['kolom2'];
-                                        $jum3 = $jum3 + $dataisian[$i]['kolom3'];
-                                        $jum4 = $jum4 + $dataisian[$i]['kolom4'];
-                                        $jum5 = $jum5 + $dataisian[$i]['kolom5'];
-                                        $jum6 = $jum6 + $dataisian[$i]['kolom6'];
-                                        $jum7 = $jum7 + $dataisian[$i]['kolom7'];
+                                        // $jum1 = $jum1 + $dataisian[$i]['kolom1'];
+                                        // $jum2 = $jum2 + $dataisian[$i]['kolom2'];
+                                        // $jum3 = $jum3 + $dataisian[$i]['kolom3'];
+                                        // $jum4 = $jum4 + $dataisian[$i]['kolom4'];
+                                        // $jum5 = $jum5 + $dataisian[$i]['kolom5'];
+                                        // $jum6 = $jum6 + $dataisian[$i]['kolom6'];
+                                        // $jum7 = $jum7 + $dataisian[$i]['kolom7'];
                                         $diloop = $diloop - 1;
                                         $nil = $nil + 1;
                                     ?>
