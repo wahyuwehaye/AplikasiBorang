@@ -678,589 +678,64 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='3.1.1.a') || ($getbutir=='3.1.1.b') || ($getbutir=='3.1.1.c') || ($getbutir=='3.1.1.d')) {
+                        }elseif ($getbutir=='3.1.1') {
                             $getidbutir = '';
-                            $querycariidbutir = $CI->db->query('select * from butir where butir="3.1.1.a" and id_borang = "'.$id_bor.'"');
+                            $querycariidbutir = $CI->db->query('select * from butir where butir="3.1.1" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir->result() as $row){
                                 $getidbutir = $row->id;
                                 break;
                             }
                             if (count($dataisian)>0) {
-                            // for($i=0;$i<count($dataisian);$i++){
-                            
+                            for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi311">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian311">
+                        <input type="hidden" name="id311" id="id311" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
-                        <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
-        <!-- Tabel Edit -->
-                        <div class="header">
-                            <h2>
-                                Edit Tabel Butir <?php echo $butir[0]['butir'] ?>
-                                <small><?php echo $butir[0]['bakumutu'] ?></small>
-                            </h2>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
-                        <div class="body table-responsive">
-                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                                <thead>
-                                    <tr style="height: 26px;">
-                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">No</th>
-                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Tahun Akademik</th>
-                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Daya Tampung</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Calon Mahasiswa Reguler</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Mahasiswa Baru</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Total Mahasiswa</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2">Jumlah Lulusan</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="3">IPK Lulusan Reguler</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="3">Presentase Lulusan Reguler dengan IPK :</th>
-                                        <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Pengaturan</th>
-                                    </tr>
-                                    <tr style="height: 26px;">
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Ikut Seleksi</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Lulus Seleksi</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler Bukan Transfer</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler Bukan Transfer</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Reguler bukan Transfer</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Transfer</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Min</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Rat</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">Mak</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">&lt; 2,75</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">2,75-3,00</th>
-                                        <th style="width: 52px; height: 26px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">&gt; 3,50</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
-                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(2)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(3)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(4)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(5)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(6)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(7)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(8)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(9)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(10)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(11)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(12)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(13)</strong></td>
-                                        <td style="width: 53px; text-align: center; height: 13px;"><strong>(14)</strong></td>
-                                        <td style="width: 53px; text-align: center; height: 13px;"><strong>(15)</strong></td>
-                                        <td style="width: 53px; text-align: center; height: 13px;"><strong>(16)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
-                                    </tr>
-                                    <?php 
-                                        $jum1 = 0;
-                                        $jum2 = 0;
-                                        $jum3 = 0;
-                                        $jum4 = 0;
-                                        $jum5 = 0;
-                                        $jum6 = 0;
-                                        $jum7 = 0;
-                                        $jum8 = 0;
-                                        $jum9 = 0;
-                                        $jum10 = 0;
-                                        $jum11 = 0;
-                                        $jum12 = 0;
-                                        $jum13 = 0;
-                                        $jum14 = 0;
-                                        $jum15 = 0;
-                                        // $tsnya = array('TS-4','TS-3','TS-2','TS-1','TS');
-                                        $tsnya = array('TS','TS-1','TS-2','TS-3','TS-4');
-                                        $nil = 0;
-                                        $diloop = count($dataisian);
-                                    for($i=0;$i<count($dataisian);$i++){
-                                        $jum1 = $jum1 + $dataisian[$i]['kolom1'];
-                                        $jum2 = $jum2 + $dataisian[$i]['kolom2'];
-                                        $jum3 = $jum3 + $dataisian[$i]['kolom3'];
-                                        $jum4 = $jum4 + $dataisian[$i]['kolom4'];
-                                        $jum5 = $jum5 + $dataisian[$i]['kolom5'];
-                                        $jum6 = $jum6 + $dataisian[$i]['kolom6'];
-                                        $jum7 = $jum7 + $dataisian[$i]['kolom7'];
-                                        $jum8 = $jum8 + $dataisian[$i]['kolom8'];
-                                        $jum9 = $jum9 + $dataisian[$i]['kolom9'];
-                                        $jum10 = ($jum10 + $dataisian[$i]['kolom10']);
-                                        $jum11 = ($jum11 + $dataisian[$i]['kolom11']);
-                                        $jum12 = ($jum12 + $dataisian[$i]['kolom12']);
-                                        $jum13 = ($jum13 + $dataisian[$i]['kolom13']);
-                                        $jum14 = ($jum14 + $dataisian[$i]['kolom14']);
-                                        $jum15 = ($jum15 + $dataisian[$i]['kolom15']);
-                                        $diloop = $diloop - 1;
-                                        $nil = $nil + 1;
-                                    ?>
-                                    <tr style="height: 13px;">
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?>&nbsp;</td>
-                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $tsnya[$diloop] ?></th>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom1'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom2'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom3'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom4'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom5'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom6'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom7'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom8'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom9'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom10'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom11'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom12'] ?>&nbsp;</td>
-                                        <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom13'] ?>&nbsp;</td>
-                                        <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom14'] ?>&nbsp;</td>
-                                        <td style="width: 53px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom15'] ?>&nbsp;</td>
-                                        <td style="width: 53px; text-align: center; height: 13px;">
-                                            <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update311" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-                                                <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                     } ?>
-                                    <tr style="height: 13px;">
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil+1 ?>&nbsp;</td>
-                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">Jumlah</th>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum1;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum2;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum3;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum4;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum5;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum6;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum7;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum8;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum9;?>&nbsp;</td>
-                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum10/$nil;?>&nbsp;</td>
-                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum11/$nil;?>&nbsp;</td>
-                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum12/$nil;?>&nbsp;</td>
-                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum13/$nil;?> %&nbsp;</td>
-                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum14/$nil;?> %&nbsp;</td>
-                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum15/$nil;?> %&nbsp;</td>
-                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">Pengaturan</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
-        <!-- Tutup Tabel Edit -->
-                        <h2 class="card-inside-title">Tuliskan data seluruh mahasiswa reguler(1) dan lulusannya dalam lima tahun terakhir dengan mengikuti format berikut:</h2>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian12kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <h2 class="card-inside-title">Sistem Rekrutmen dan Seleksi Calon Mahasiswa Baru dan Efektivitasnya</h2>
+                        <h2 class="card-inside-title">Kebijakan sistem rekrutmen dan seleksi calon mahasiswa (mencakup mutu prestasi dan reputasi akademik serta bakat pada jenjang pendidikan sebelumnya, equitas wilayah, kemampuan ekonomi dan jender).</h2>
+                        <h2 class="card-inside-title">Efektivitas implementasi sistem rekrutmen dan seleksi calon mahasiswa untuk menghasilkan calon mahasiswa yang bermutu diukur dari jumlah peminat, proporsi pendaftar terhadap daya tampung dan proporsi yang diterima dan yang registrasi.</h2>
+                        <h2 class="card-inside-title">Jelaskan sistem rekrutmen dan seleksi calon mahasiswa baru yang diterapkan pada Fakultas/Sekolah Tinggi ini, serta efektivitasnya.</h2>
                         <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <b>Daya Tampung</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_311" id="k1_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Calon Mahasiswa Reguler :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Ikut Seleksi</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_311" id="k2_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Lulus Seleksi</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_311" id="k3_311" onkeyup="errorinput()" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Mahasiswa Baru :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom4_311" id="k4_311" onkeyup="errorinput()" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom5_311" id="k5_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Total Mahasiswa :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom6_311" id="k6_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom7_311" id="k7_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Lulusan :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom8_311" id="k8_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom9_311" id="k9_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>IPK Lulusan Reguler :</b>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>Minimal</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom10_311" id="k10_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>Rata-rata</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom11_311" id="k11_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>Maksimal</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text"  name="kolom12_311" id="k12_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Presentase Lulusan Reguler dengan IPK :</b>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>< 2,75</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom13_311" id="k13_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>2,75 - 3,50</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom14_311" id="k14_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>> 3,50</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom15_311" id="k15_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Isian / Catatan :</b>
-                                    </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom16_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                            </textarea>
+                                            <textarea name="kolom1_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
-                                    <p>Catatan:</p>
-                                    <p>TS:Tahun akademik penuh terakhir saat pengisian borang</p>
-                                    <p>Min: IPK Minimum; Rat:IPK Rata-rata; Mak:IPK Maksimum</p>
-                                    <p>Catatan:</p>
-                                    <p>(1)&nbsp; Mahasiswa <strong>program reguler</strong> adalah mahasiswa yang mengikuti program pendidikan secara penuh waktu (baik kelas pagi, siang, sore, malam, dan di seluruh kampus).</p>
-                                    <p>(2)&nbsp; Mahasiswa <strong>program non-reguler</strong> adalah mahasiswa yang mengikuti program pendidikan secara paruh waktu.</p>
-                                    <p>(3)&nbsp; Mahasiswa <strong>transfer</strong> adalah mahasiswa yang masuk ke program studi dengan mentransfer mata kuliah yang telah diperolehnya dari PS lain, baik dari dalam PT maupun luar PT.</p>
                                 </div>
                         </div>
+                        <input type="hidden" name="version_no311" id="version_no311" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at311" id="created_at311" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
-                        <!-- PEMBATAS UPDATE BAWAH DAN TAMABAH ATAS -->
-                        
-                        <?php 
-                    // }
+                        <?php }
                                 }else{
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi311">
                         <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
-                        <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
-                        <h2 class="card-inside-title">Tuliskan data seluruh mahasiswa reguler(1) dan lulusannya dalam lima tahun terakhir dengan mengikuti format berikut:</h2>
+                        <h2 class="card-inside-title">Sistem Rekrutmen dan Seleksi Calon Mahasiswa Baru dan Efektivitasnya</h2>
+                        <h2 class="card-inside-title">Kebijakan sistem rekrutmen dan seleksi calon mahasiswa (mencakup mutu prestasi dan reputasi akademik serta bakat pada jenjang pendidikan sebelumnya, equitas wilayah, kemampuan ekonomi dan jender).</h2>
+                        <h2 class="card-inside-title">Efektivitas implementasi sistem rekrutmen dan seleksi calon mahasiswa untuk menghasilkan calon mahasiswa yang bermutu diukur dari jumlah peminat, proporsi pendaftar terhadap daya tampung dan proporsi yang diterima dan yang registrasi.</h2>
+                        <h2 class="card-inside-title">Jelaskan sistem rekrutmen dan seleksi calon mahasiswa baru yang diterapkan pada Fakultas/Sekolah Tinggi ini, serta efektivitasnya.</h2>
                         <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <b>Daya Tampung</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Calon Mahasiswa Reguler :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Ikut Seleksi</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Lulus Seleksi</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Mahasiswa Baru :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom4_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom5_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Total Mahasiswa :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom6_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom7_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Lulusan :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom8_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom9_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>IPK Lulusan Reguler :</b>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>Minimal</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom10_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>Rata-rata</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom11_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>Maksimal</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text"  name="kolom12_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Presentase Lulusan Reguler dengan IPK :</b>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>< 2,75</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom13_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>2,75 - 3,50</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom14_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>> 3,50</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom15_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Isian / Catatan :</b>
-                                    </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom16_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                            </textarea>
+                                            <textarea name="kolom1_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
-                                    <p>Catatan:</p>
-                                    <p>TS:Tahun akademik penuh terakhir saat pengisian borang</p>
-                                    <p>Min: IPK Minimum; Rat:IPK Rata-rata; Mak:IPK Maksimum</p>
-                                    <p>Catatan:</p>
-                                    <p>(1)&nbsp; Mahasiswa <strong>program reguler</strong> adalah mahasiswa yang mengikuti program pendidikan secara penuh waktu (baik kelas pagi, siang, sore, malam, dan di seluruh kampus).</p>
-                                    <p>(2)&nbsp; Mahasiswa <strong>program non-reguler</strong> adalah mahasiswa yang mengikuti program pendidikan secara paruh waktu.</p>
-                                    <p>(3)&nbsp; Mahasiswa <strong>transfer</strong> adalah mahasiswa yang masuk ke program studi dengan mentransfer mata kuliah yang telah diperolehnya dari PS lain, baik dari dalam PT maupun luar PT.</p>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -1273,7 +748,7 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi312">
                         <input type="hidden" name="id_butir312" id="id_butir312" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
+                        <h2 class="card-inside-title">Mahasiswa</h2>
         <!-- Tabel Edit -->
                         <div class="header">
                             <h2>
@@ -1282,60 +757,34 @@
                             </h2>
                         </div>
                         <div class="body table-responsive">
-                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <!-- <table class="table table-bordered table-striped table-hover dataTable js-exportable"> -->
+                            <table class="table table-bordered table-striped table-hover">
                                 <thead>
-                                    <tr style="height: 26px;">
-                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">No</th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;" rowspan="2">
-                                        <p><strong>Tahun Akademik</strong></p>
-                                        </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;" rowspan="2">
-                                        <p><strong>Daya Tampung</strong></p>
-                                        </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;" colspan="2">
-                                        <p><strong>Jumlah Calon Mahasiswa&nbsp; </strong></p>
-                                        </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;" colspan="2">
-                                        <p><strong>Jumlah Mahasiswa Baru </strong></p>
-                                        </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;" colspan="2">
-                                        <p><strong>Jumlah Total Mahasiswa</strong></p></th>
-                                        <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Pengaturan</th>
+                                    <tr style="height: 35.2px;">
+                                        <td style="width: 37.6px; height: 94.2px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2"><p><strong>No.</strong></p></td>
+                                        <td style="width: 204px; height: 94.2px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="2" rowspan="2"><p><strong>Hal</strong></p></td>
+                                        <td style="width: 240.8px; height: 35.2px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="4"><p><strong>Jumlah Mahasiswa pada PS:</strong></p></td>
+                                        <td style="width: 104px; height: 94.2px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2"><p><strong>Total Mahasiswa</strong></p>
+                                        <p><strong>pada Fakultas</strong></p></td>
                                     </tr>
-                                    <tr style="height: 26px;">
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;">
-                                        <p><strong>Ikut Seleksi</strong></p>
-                                        </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;">
-                                        <p><strong>Lulus Seleksi</strong></p>
-                                        </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;">
-                                        <p><strong>Non-Reguler</strong></p>
-                                        </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;">
-                                        <p><strong>Transfer<sup>(3)</sup></strong></p>
-                                        </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;">
-                                        <p><strong>Non-Reguler</strong></p>
-                                        </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;">
-                                        <p><strong>Transfer<sup>(3)</sup></strong></p>
-                                        </th>
+                                    <tr style="height: 59px;">
+                                        <td style="width: 55.2px; height: 59px; background-color: #a8a8a8; text-align: center; vertical-align: middle;"><p><strong>PS-1&nbsp;</strong></p><p><strong> </strong></p></td>
+                                        <td style="width: 60px; height: 59px; background-color: #a8a8a8; text-align: center; vertical-align: middle;"><p><strong>PS-2</strong></p><p><strong> </strong></p></td>
+                                        <td style="width: 55.2px; height: 59px; background-color: #a8a8a8; text-align: center; vertical-align: middle;"><p><strong>PS-3</strong></p><p><strong> </strong></p></td>
+                                        <td style="width: 53.6px; height: 59px; background-color: #a8a8a8; text-align: center; vertical-align: middle;"><p><strong>PS-4</strong></p><p><strong> </strong></p></td>
+                                    </tr>
+                                    <tr style="height: 35px;">
+                                        <td style="width: 37.6px; height: 35px; background-color: #a8a8a8; text-align: center;"><p><strong>(1)</strong></p></td>
+                                        <td style="width: 76.8px; height: 35px; background-color: #a8a8a8; text-align: center;"><p><strong>(2)</strong></p></td>
+                                        <td style="width: 121.6px; height: 35px; background-color: #a8a8a8; text-align: center;"><p><strong>(3)</strong></p></td>
+                                        <td style="width: 55.2px; height: 35px; background-color: #a8a8a8; text-align: center;"><p><strong>(4)</strong></p></td>
+                                        <td style="width: 60px; height: 35px; background-color: #a8a8a8; text-align: center;"><p><strong>(5)</strong></p></td>
+                                        <td style="width: 55.2px; height: 35px; background-color: #a8a8a8; text-align: center;"><p><strong>(6)</strong></p></td>
+                                        <td style="width: 53.6px; height: 35px; background-color: #a8a8a8; text-align: center;"><p><strong>(7)</strong></p></td>
+                                        <td style="width: 104px; height: 35px; background-color: #a8a8a8; text-align: center;"><p><strong>(8)</strong></p></td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
-                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(2)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(3)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(4)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(5)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(6)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(7)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(8)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
-                                    </tr>
                                     <?php 
                                         $jum1 = 0;
                                         $jum2 = 0;
@@ -1343,61 +792,193 @@
                                         $jum4 = 0;
                                         $jum5 = 0;
                                         $jum6 = 0;
-                                        $jum7 = 0;
-                                        // $tsnya = array('TS-4','TS-3','TS-2','TS-1','TS');
-                                        $tsnya = array('TS','TS-1','TS-2','TS-3','TS-4');
+                                        $id1 = 0;
+                                        $id2 = 0;
+                                        $id3 = 0;
+                                        $id4 = 0;
                                         $nil = 0;
                                         $diloop = count($dataisian);
-                                    for($i=0;$i<count($dataisian);$i++){
-                                        $jum1 = $jum1 + $dataisian[$i]['kolom1'];
-                                        $jum2 = $jum2 + $dataisian[$i]['kolom2'];
-                                        $jum3 = $jum3 + $dataisian[$i]['kolom3'];
-                                        $jum4 = $jum4 + $dataisian[$i]['kolom4'];
-                                        $jum5 = $jum5 + $dataisian[$i]['kolom5'];
-                                        $jum6 = $jum6 + $dataisian[$i]['kolom6'];
-                                        $jum7 = $jum7 + $dataisian[$i]['kolom7'];
+                                        $sisacol = 4 - count($dataisian);
                                         $diloop = $diloop - 1;
                                         $nil = $nil + 1;
                                     ?>
-                                    <tr style="height: 13px;">
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?>&nbsp;</td>
-                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $tsnya[$diloop] ?></th>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom1'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom2'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom3'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom4'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom5'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom6'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom7'] ?>&nbsp;</td>
-                                        <td style="width: 53px; text-align: center; height: 13px;">
-                                            <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update312" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-                                                <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                                            </div>
-                                        </td>
+                                    <tr style="height: 48px;">
+                                        <td style="width: 52px; text-align: center; height: 13px;" rowspan="3"><p>1</p></td>
+                                        <td style="width: 76.8px; height: 131px; text-align: center;" rowspan="3"><p>Program reguler</p></td>
+                                        <td style="width: 121.6px; height: 48px; text-align: center;"><p>1. Mhs. baru bukan transfer</p></td>
+                                        <?php
+                                        for($a=0;$a<count($dataisian);$a++){
+                                            $jum1 = $jum1 + $dataisian[$a]['kolom1'];
+                                            if (!empty($dataisian[0]['id'])){
+                                                $id1 = $dataisian[0]['id'];
+                                            }else{
+                                                $id1 = 0;
+                                            }
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p><?php echo $dataisian[$a]['kolom1'] ?></p></td>
+                                        <?php }?>
+                                        <?php
+                                        for($b=0;$b<$sisacol;$b++){
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p>&nbsp;</p></td>
+                                        <?php }?>
+                                        <td style="width: 104px; height: 35px; text-align: center;"><p><?php echo $jum1; ?></p></td>
                                     </tr>
-                                    <?php
-                                     } ?>
-                                    <tr style="height: 13px;">
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $nil+1 ?>&nbsp;</td>
-                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">Jumlah</th>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum1;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum2;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum3;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum4;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum5;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum6;?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum7;?>&nbsp;</td>
-                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">Pengaturan</td>
+                                    <tr style="height: 35px;">
+                                        <td style="width: 121.6px; height: 35px; text-align: center;"><p>2. Mhs. baru transfer</p></td>
+                                        <?php
+                                        for($c=0;$c<count($dataisian);$c++){
+                                            $jum2 = $jum2 + $dataisian[$c]['kolom2'];
+                                            if (!empty($dataisian[1]['id'])){
+                                                $id2 = $dataisian[1]['id'];
+                                            }else{
+                                                $id2 = 0;
+                                            }
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p><?php echo $dataisian[$c]['kolom2'] ?></p></td>
+                                        <?php }?>
+                                        <?php
+                                        for($d=0;$d<$sisacol;$d++){
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p>&nbsp;</p></td>
+                                        <?php }?>
+                                        <td style="width: 104px; height: 35px; text-align: center;"><p><?php echo $jum2; ?></p></td>
+                                    </tr>
+                                    <tr style="height: 48px;">
+                                        <td style="width: 121.6px; height: 48px; text-align: center;"><p>3. Total mhs. regular (<em>Student Body</em>)</p></td>
+                                        <?php
+                                        for($e=0;$e<count($dataisian);$e++){
+                                            $jum3 = $jum3 + $dataisian[$e]['kolom3'];
+                                            if (!empty($dataisian[2]['id'])){
+                                                $id3 = $dataisian[2]['id'];
+                                            }else{
+                                                $id3 = 0;
+                                            }
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p><?php echo $dataisian[$e]['kolom3'] ?></p></td>
+                                        <?php }?>
+                                        <?php
+                                        for($f=0;$f<$sisacol;$f++){
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p>&nbsp;</p></td>
+                                        <?php }?>
+                                        <td style="width: 104px; height: 35px; text-align: center;"><p><?php echo $jum3; ?></p></td>
+                                    </tr>
+                                    <tr style="height: 48px;">
+                                        <td style="width: 37.6px; height: 145px; text-align: center;" rowspan="3"><p>2</p></td>
+                                        <td style="width: 76.8px; height: 145px; text-align: center;" rowspan="3"><p>Program non-reguler</p></td>
+                                        <td style="width: 121.6px; height: 48px; text-align: center;"><p>1. Mhs. baru bukan transfer</p></td>
+                                        <?php
+                                        for($g=0;$g<count($dataisian);$g++){
+                                            $jum4 = $jum4 + $dataisian[$g]['kolom4'];
+                                            if (!empty($dataisian[3]['id'])){
+                                                $id4 = $dataisian[3]['id'];
+                                            }else{
+                                                $id4 = 0;
+                                            }
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p><?php echo $dataisian[$g]['kolom4'] ?></p></td>
+                                        <?php }?>
+                                        <?php
+                                        for($h=0;$h<$sisacol;$h++){
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p>&nbsp;</p></td>
+                                        <?php }?>
+                                        <td style="width: 104px; height: 35px; text-align: center;"><p><?php echo $jum4; ?></p></td>
+                                    </tr>
+                                    <tr style="height: 35px;">
+                                        <td style="width: 121.6px; height: 35px; text-align: center;"><p>2. Mhs. baru transfer</p></td>
+                                        <?php
+                                        for($i=0;$i<count($dataisian);$i++){
+                                            $jum5 = $jum5 + $dataisian[$i]['kolom5'];
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p><?php echo $dataisian[$i]['kolom5'] ?></p></td>
+                                        <?php }?>
+                                        <?php
+                                        for($j=0;$j<$sisacol;$j++){
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p>&nbsp;</p></td>
+                                        <?php }?>
+                                        <td style="width: 104px; height: 35px; text-align: center;"><p><?php echo $jum5; ?></p></td>
+                                    </tr>
+                                    <tr style="height: 62px;">
+                                        <td style="width: 121.6px; height: 62px; text-align: center;"><p>3. Total mhs. non-reguler (<em>Student Body</em>)</p></td>
+                                        <?php
+                                        for($j=0;$j<count($dataisian);$j++){
+                                            $jum6 = $jum6 + $dataisian[$j]['kolom6'];
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p><?php echo $dataisian[$j]['kolom6'] ?></p></td>
+                                        <?php }?>
+                                        <?php
+                                        for($k=0;$k<$sisacol;$k++){
+                                        ?>
+                                        <td style="width: 55.2px; height: 48px; text-align: center;"><p>&nbsp;</p></td>
+                                        <?php }?>
+                                        <td style="width: 104px; height: 35px; text-align: center;"><p><?php echo $jum6; ?></p></td>
+                                    </tr>
+                                    <tr style="height: 35.2px;">
+                                        <td style="width: 55.2px; height: 48px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" colspan="3"><p><strong>Pengaturan</strong></p></td>
+                                        <td style="width: 55.2px; height: 48px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">
+                                            <?php
+                                            if ($id1!==0) {
+                                            ?>
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update312" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $id1; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $id1; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$id1); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $id1; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                            <?php
+                                            }
+                                            ?>
+                                        </td>
+                                        <td style="width: 55.2px; height: 48px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">
+                                            <?php
+                                            if ($id2!==0) {
+                                            ?>
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update312" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $id2; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $id2; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$id2); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $id2; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                            <?php
+                                            }
+                                            ?>
+                                        </td>
+                                        <td style="width: 55.2px; height: 48px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">
+                                            <?php
+                                            if ($id3!==0) {
+                                            ?>
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update312" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $id3; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $id3; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$id3); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $id3; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                            <?php
+                                            }
+                                            ?>
+                                        </td>
+                                        <td style="width: 55.2px; height: 48px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">
+                                            <?php
+                                            if ($id4!==0) {
+                                            ?>
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update312" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $id4; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $id4; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$id4); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $id4; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                            <?php
+                                            }
+                                            ?>
+                                        </td>
+                                        <td style="width: 55.2px; height: 48px; background-color: #a8a8a8; text-align: center; vertical-align: middle;"><p><strong>#</strong></p></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
         <!-- Tutup Tabel Edit -->
-                        <h2 class="card-inside-title">Tuliskan data seluruh mahasiswa reguler(1) dan lulusannya dalam lima tahun terakhir dengan mengikuti format berikut:</h2>
+                        <h2 class="card-inside-title">Tuliskan data mahasiswa reguler dan mahasiswa transfer untuk masing-masing program studi S1 pada TS (tahun akademik penuh yang terakhir) di Fakultas/Sekolah Tinggi sesuai dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
-                                        <b>Daya Tampung</b>
+                                        <b>Program reguler :</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru bukan transfer</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1407,11 +988,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Calon Mahasiswa :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Ikut Seleksi</b>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru transfer </b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1421,8 +999,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Lulus Seleksi</b>
+                                    <div class="col-md-4">
+                                        <b>Total mhs. regular (Student Body)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1433,10 +1011,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jumlah Mahasiswa Baru :</b>
+                                        <b>Program non-reguler </b>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Non-Reguler</b>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru bukan transfer</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1446,8 +1024,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru transfer </b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1457,11 +1035,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Total Mahasiswa :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Non-Reguler</b>
+                                    <div class="col-md-4">
+                                        <b>Total mhs. non-reguler (Student Body)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1471,28 +1046,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom7_312" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-md-12">
                                         <b>Isian / Catatan :</b>
                                     </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom8_312" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom7_312" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-md-12">
+                                        <p>Catatan: </p>
+                                        <p>(1)  Mahasiswa program reguler adalah mahasiswa yang mengikuti program pendidikan secara penuh waktu (baik kelas pagi, siang, sore, malam, dan di seluruh kampus). </p>
+                                        <p>(2)  Mahasiswa program non-reguler adalah mahasiswa yang mengikuti program pendidikan secara paruh waktu. </p>
+                                        <p>(3)  Mahasiswa transfer adalah mahasiswa yang masuk ke program studi dengan mentransfer mata kuliah yang telah diperolehnya dari PS lain, baik dari dalam PT maupun luar PT.</p>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -1502,11 +1072,14 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi312">
                         <input type="hidden" name="id_butir312" id="id_butir312" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
-                        <h2 class="card-inside-title">Tuliskan data mahasiswa non-reguler(2) dalam lima tahun terakhir dengan mengikuti format berikut:</h2>
+                        <h2 class="card-inside-title">Mahasiswa</h2>
+                        <h2 class="card-inside-title">Tuliskan data mahasiswa reguler dan mahasiswa transfer untuk masing-masing program studi S1 pada TS (tahun akademik penuh yang terakhir) di Fakultas/Sekolah Tinggi sesuai dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
-                                        <b>Daya Tampung</b>
+                                        <b>Program reguler :</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru bukan transfer</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1516,11 +1089,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Calon Mahasiswa :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Ikut Seleksi</b>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru transfer </b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1530,8 +1100,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Lulus Seleksi</b>
+                                    <div class="col-md-4">
+                                        <b>Total mhs. regular (Student Body)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1542,10 +1112,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jumlah Mahasiswa Baru :</b>
+                                        <b>Program non-reguler </b>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Non-Reguler</b>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru bukan transfer</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1555,8 +1125,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru transfer </b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1566,11 +1136,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Total Mahasiswa :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Non-Reguler</b>
+                                    <div class="col-md-4">
+                                        <b>Total mhs. non-reguler (Student Body)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -1580,31 +1147,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom7_312" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Lulusan :</b>
-                                    </div>
                                     <div class="col-md-12">
                                         <b>Isian / Catatan :</b>
                                     </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom8_312" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom7_312" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     <p>Catatan:</p>
                                             </textarea>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-md-12">
+                                        <p>Catatan: </p>
+                                        <p>(1)  Mahasiswa program reguler adalah mahasiswa yang mengikuti program pendidikan secara penuh waktu (baik kelas pagi, siang, sore, malam, dan di seluruh kampus). </p>
+                                        <p>(2)  Mahasiswa program non-reguler adalah mahasiswa yang mengikuti program pendidikan secara paruh waktu. </p>
+                                        <p>(3)  Mahasiswa transfer adalah mahasiswa yang masuk ke program studi dengan mentransfer mata kuliah yang telah diperolehnya dari PS lain, baik dari dalam PT maupun luar PT.</p>
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
@@ -1612,168 +1171,54 @@
                             <?php
                                 }
                         }elseif ($getbutir=='3.1.3') {
+                            $getidbutir = '';
+                            $querycariidbutir = $CI->db->query('select * from butir where butir="3.1.3" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir->result() as $row){
+                                $getidbutir = $row->id;
+                                break;
+                            }
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi313">
-                        <input type="hidden" name="id_butir313" id="id_butir313" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
-        <!-- Tabel Edit -->
-                        <div class="header">
-                            <h2>
-                                Edit Tabel Butir <?php echo $butir[0]['butir'] ?>
-                                <small><?php echo $butir[0]['bakumutu'] ?></small>
-                            </h2>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3bs1/updateisian313">
+                        <input type="hidden" name="id313" id="id313" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir313" id="id_butir313" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <input type="hidden" name="313id_butir" id="313id_butir" value="<?php echo $getidbutir; ?>" />
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
-                        <div class="body table-responsive">
-                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                                <thead>
-                                    <tr style="height: 26px;">
-                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;">No</th>
-                                        <th style="width: 50px; background-color: #9e9e9e; text-align: center;">
-                                        <p><strong>Nama Kegiatan dan Waktu Penyelenggaraan</strong></p>
-                                        </th>
-                                        <th style="width: 50px; background-color: #9e9e9e; text-align: center;">
-                                        <p><strong>Tingkat (Lokal, Wilayah, Nasional, atau Internasional)</strong></p>
-                                        </th>
-                                        <th style="width: 50px; background-color: #9e9e9e; text-align: center;">
-                                        <p><strong>Prestasi yang Dicapai</strong></p>
-                                        </th>
-                                        <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;">Pengaturan</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(2)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(3)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>(4)</strong></td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        $nil = 0;
-                                        $diloop = count($dataisian);
-                                    for($i=0;$i<count($dataisian);$i++){
-                                        $diloop = $diloop - 1;
-                                        $nil = $nil + 1;
-                                    ?>
-                                    <tr style="height: 13px;">
-                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?></th>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom1'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom2'] ?>&nbsp;</td>
-                                        <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom3'] ?>&nbsp;</td>
-                                        <td style="width: 53px; text-align: center; height: 13px;">
-                                            <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update313" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-                                                <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                     } ?>
-                                </tbody>
-                            </table>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
-        <!-- Tutup Tabel Edit -->
-                        <h2 class="card-inside-title">Sebutkan pencapaian prestasi/reputasi mahasiswa dalam tiga tahun terakhir di bidang akademik dan non-akademik (misalnya prestasi dalam penelitian dan lomba karya ilmiah, olahraga, dan seni).</h2>
+                        <div class="col-md-4">
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bs1/destroyisian12kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <h2 class="card-inside-title">Uraikan alasan/pertimbangan Fakultas/Sekolah Tinggi dalam menerima mahasiswa transfer.  Jelaskan pula alasan mahasiswa melakukan  transfer.</h2>
                         <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <b>Nama Kegiatan dan Waktu Penyelenggaraan</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_313" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Tingkat (Lokal, Wilayah, Nasional, atau Internasional)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_313" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Prestasi yang di Capai</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_313" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Isian / Catatan :</b>
-                                    </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom4_313" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    <p>Catatan:</p>
-                                            </textarea>
+                                            <textarea name="kolom1_313" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        <input type="hidden" name="version_no313" id="version_no313" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at313" id="created_at313" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
                         <?php }
                                 }else{
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bs1/ngisi313">
                         <input type="hidden" name="id_butir313" id="id_butir313" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Sebutkan pencapaian prestasi/reputasi mahasiswa dalam tiga tahun terakhir di bidang akademik dan non-akademik (misalnya prestasi dalam penelitian dan lomba karya ilmiah, olahraga, dan seni). </h2>
+                        <h2 class="card-inside-title">Uraikan alasan/pertimbangan Fakultas/Sekolah Tinggi dalam menerima mahasiswa transfer.  Jelaskan pula alasan mahasiswa melakukan  transfer.</h2>
                         <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <b>Nama Kegiatan dan Waktu Penyelenggaraan</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_313" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Tingkat (Lokal, Wilayah, Nasional, atau Internasional)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_313" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Prestasi yang di Capai</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_313" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Isian / Catatan :</b>
-                                    </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom4_313" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    <p>Catatan:</p>
-                                            </textarea>
+                                            <textarea name="kolom1_313" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -18013,222 +17458,6 @@
         </div>
         <!-- TUTUP UPLOAD BUKTI DOKUMEN -->
 
-
-        <!-- Molda Update Tabel 311 -->
-        <div class="modal fade" id="update311" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
-                    </div>
-                    <div class="modal-body">
-                <!-- form start -->
-                <?php
-                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
-                    //   echo form_open('c_borang/update', $attributes);
-                    $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bs1/updatetabel311', $attributes);
-                    // echo form_open('c_borang/update');
-                ?>
-                    <div class="row clearfix">
-                        <input type="hidden" name="id311" id="id311" />
-                        <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir311tabel" id="id_butir311tabel" />
-                        <div class="col-md-12">
-                                        <b>Daya Tampung</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_311" id="kolom1_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Calon Mahasiswa Reguler :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Ikut Seleksi</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_311" id="kolom2_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Lulus Seleksi</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_311" id="kolom3_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Mahasiswa Baru :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom4_311" id="kolom4_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom5_311" id="kolom5_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Total Mahasiswa :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom6_311" id="kolom6_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom7_311" id="kolom7_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Lulusan :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom8_311" id="kolom8_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom9_311" id="kolom9_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>IPK Lulusan Reguler :</b>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>Minimal</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom10_311" id="kolom10_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>Rata-rata</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom11_311" id="kolom11_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>Maksimal</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text"  name="kolom12_311" id="kolom12_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Presentase Lulusan Reguler dengan IPK :</b>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>< 2,75</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom13_311" id="kolom13_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>2,75 - 3,50</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom14_311" id="kolom14_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>> 3,50</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom15_311" id="kolom15_311" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                    </div>
-                </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Tutup Modal Update 311 -->
-
         <!-- Molda Update Tabel 312 -->
         <div class="modal fade" id="update312" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
@@ -18248,8 +17477,11 @@
                     <div class="row clearfix">
                         <input type="hidden" name="id312" id="id312" />
                         <input type="hidden" name="id_butir312tabel" id="id_butir312tabel" />
-                        <div class="col-md-12">
-                                        <b>Daya Tampung</b>
+                                    <div class="col-md-12">
+                                        <b>Program reguler :</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru bukan transfer</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -18259,11 +17491,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Calon Mahasiswa Reguler :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Ikut Seleksi</b>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru transfer </b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -18273,8 +17502,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Lulus Seleksi</b>
+                                    <div class="col-md-4">
+                                        <b>Total mhs. regular (Student Body)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -18285,10 +17514,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jumlah Mahasiswa Baru :</b>
+                                        <b>Program non-reguler </b>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru bukan transfer</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -18298,8 +17527,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
+                                    <div class="col-md-4">
+                                        <b>Mhs. baru transfer </b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -18309,28 +17538,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Total Mahasiswa :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
+                                    <div class="col-md-4">
+                                        <b>Total mhs. non-reguler (Student Body)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
                                                 <input type="text" name="kolom6_312" id="kolom6_312" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom7_312" id="kolom7_312" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -23274,156 +22489,6 @@
         </div>
         <!-- Tutup Modal Update 732 -->
 
-        <!-- modals isian 1 -->
-
-        <div class="modal fade" id="updateIsian1" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="defaultModalLabel">Update Isian</h1>
-                    </div>
-                    <div class="modal-body">
-                <!-- form start -->
-                <?php
-                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
-                    //   echo form_open('c_borang/update', $attributes);
-                    $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bs1/updateisian4kolom', $attributes);
-                    // echo form_open('c_borang/update');
-                ?>
-                    <div class="row clearfix">
-                        <input type="hidden" name="id" id="id" value="">
-                        <input type="hidden" name="id_butir" id="id_butir" value="">
-                        <div class="col-sm-12">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <textarea class="form-control" name="kolom1" id="kolom1" rows="4"></textarea>
-                                    <label class="form-label">Mekanisme Penyusunan</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <textarea class="form-control" name="kolom2" id="kolom2" rows="4"></textarea>
-                                    <label class="form-label">Visi</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <textarea class="form-control" name="kolom3" id="kolom3" rows="4"></textarea>
-                                    <label class="form-label">Misi</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <textarea class="form-control" name="kolom4" id="kolom4" rows="4"></textarea>
-                                    <label class="form-label">Tujuan</label>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="hidden" name="version_no" id="version_no">
-                    </div>
-                </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- tutup modal isian 1 -->
-
-        <!-- modals isian 2 -->
-
-        <div class="modal fade" id="updateIsian2" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="defaultModalLabel">Update Isian</h1>
-                    </div>
-                    <div class="modal-body">
-                <!-- form start -->
-                <?php
-                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
-                    //   echo form_open('c_borang/update', $attributes);
-                    $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bs1/updateisian1kolom', $attributes);
-                    // echo form_open('c_borang/update');
-                ?>
-                    <div class="row clearfix">
-                        <input type="hidden" name="id1" id="id1" value="">
-                        <input type="hidden" name="id_butir1" id="id_butir1" value="">
-                        <div class="col-sm-12">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <textarea class="form-control" name="kolom11" id="kolom11" rows="4"></textarea>
-                                    <label class="form-label">Sasaran dan Strategi Pencapaiannya</label>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="hidden" name="version_no1" id="version_no1">
-                        <input type="hidden" name="created_at1" id="created_at1">
-                    </div>
-                </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- tutup modal isian 2 -->
-
-        <!-- modals isian 3 -->
-
-        <div class="modal fade" id="updateIsian3" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="defaultModalLabel">Update Isian</h1>
-                    </div>
-                    <div class="modal-body">
-                <!-- form start -->
-                <?php
-                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
-                    //   echo form_open('c_borang/update', $attributes);
-                    $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bs1/updateisian1nkolom', $attributes);
-                    // echo form_open('c_borang/update');
-                ?>
-                    <div class="row clearfix">
-                        <input type="hidden" name="id" id="id" value="">
-                        <input type="hidden" name="id_butir" id="id_butir" value="">
-                        <div class="col-sm-12">
-                            <div class="form-group form-float">
-                                <div class="form-line">
-                                    <textarea class="form-control" name="kolom21" id="kolom21" rows="4"></textarea>
-                                    <label class="form-label">Sosialisasi</label>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="hidden" name="version_no" id="version_no">
-                    </div>
-                </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- tutup modal isian 3 -->
 
         <div class="modal fade" id="hapusBorang" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -25449,7 +24514,635 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL VIEW NILAI 2.5.1 -->
+        <!-- TUTUP MODAL VIEW NILAI 2.5.2 -->
+
+        <!-- BUKA MODAL NILAI 3.1.1 -->
+        <div class="modal fade" id="nilai311" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF3");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf3');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row">10</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="311" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak tersedia  dokumen tentang penerimaan mahasiswa baru.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">(Tidak ada skor 1)</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Tersedia dokumen tentang penerimaan mahasiswa baru, namun pelaksanaannya kurang  konsisten.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">(Tidak ada skor 3)</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Tersedia dokumen lengkap tentang penerimaan mahasiswa baru dan dilaksanakan secara konsisten. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai311"><input type="text" required name="skorakhir[]" id="311nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.1 -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.1 -->
+        <div class="modal fade" id="viewnilai311" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row">10</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view311" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar311" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak tersedia  dokumen tentang penerimaan mahasiswa baru.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">(Tidak ada skor 1)</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Tersedia dokumen tentang penerimaan mahasiswa baru, namun pelaksanaannya kurang  konsisten.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">(Tidak ada skor 3)</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Tersedia dokumen lengkap tentang penerimaan mahasiswa baru dan dilaksanakan secara konsisten. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai311"><input type="text" required name="skorakhir[]" id="view311nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.1 -->
+
+        <!-- BUKA MODAL NILAI 312 -->
+        <div class="modal fade" id="nilai312" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF3");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf3');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">11</th>
+                                        <td width="5%"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="312info" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TMBT</td>
+                                        <td colspan="2">Total mahasiswa baru transfer</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="3121" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="komentar312" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TMB</td>
+                                        <td colspan="2">Total mahasiswa baru bukan transfer</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="3122" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>RM</td>
+                                        <td colspan="2">RM=TMBT/TMB</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="312rasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="312nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 312 -->
+
+        <!-- BUKA MODAL VIEW NILAI 312 -->
+        <div class="modal fade" id="viewnilai312" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">11</th>
+                                        <td width="5%"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="view312info" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TMBT</td>
+                                        <td colspan="2">Total mahasiswa baru transfer</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view3121" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="viewkomentar312" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TMB</td>
+                                        <td colspan="2">Total mahasiswa baru bukan transfer</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view3122" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>RM</td>
+                                        <td colspan="2">RM=TMBT/TMB</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="view312rasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view312nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 312 -->
+
+        <!-- BUKA MODAL NILAI 3.1.3 -->
+        <div class="modal fade" id="nilai313" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF3");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row">12</th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="313" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah313()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="12" name="komentar[]" id="komentar313" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Menerima mahasiswa transfer tanpa seleksi.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan, proses dilakukan secara kurang ketat dan baik, mutu mahasiswa kurang baik.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan, proses dilakukan secara ketat dan baik, mahasiswa yang diterima kurang bermutu.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan,proses dilakukan secara ketat dan baik, mahasiswa yang diterima bermutu akademik tinggi.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="313nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.3 -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.3 -->
+        <div class="modal fade" id="viewnilai313" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row">15</th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view313" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah313()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="12" name="komentar[]" id="viewkomentar313" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Menerima mahasiswa transfer tanpa seleksi.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan, proses dilakukan secara kurang ketat dan baik, mutu mahasiswa kurang baik.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan, proses dilakukan secara ketat dan baik, mahasiswa yang diterima kurang bermutu.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan,proses dilakukan secara ketat dan baik, mahasiswa yang diterima bermutu akademik tinggi.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view313nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.3 -->
 
     </div>
 </section>
@@ -25891,53 +25584,6 @@
 
     });
 
-    $('#update311').on('shown.bs.modal', function (event) {
-        //$(".fakpro").hide();
-        // $( "#updateAccModal #jenisBorang" ).change(function() {
-        //   var selectedValue = $(this).val();
-        //   if(selectedValue!='universitas'){
-        //     $(".fakpro").show();
-        //   }else{
-        //     $(".fakpro").hide();
-        //     $("#fakpro").val("");
-        //   }
-        // });
-
-
-        //ajax call to get isian Borang Informatin from database
-        var button = $(event.relatedTarget)
-        var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findUpdateTbl";
-        $.ajax({
-            method: "POST",
-            url: link,
-            cache: false,
-            data: { id: recipient }
-          })
-          .done(function( msg ) {
-              var buku = JSON.parse(msg);
-              $('#id311').val(buku[0]['id']);
-              $('#id_butir311tabel').val(buku[0]['id_butir']);
-              $('#kolom1_311').val(buku[0]['kolom1']);
-              $('#kolom2_311').val(buku[0]['kolom2']);
-              $('#kolom3_311').val(buku[0]['kolom3']);
-              $('#kolom4_311').val(buku[0]['kolom4']);
-              $('#kolom5_311').val(buku[0]['kolom5']);
-              $('#kolom6_311').val(buku[0]['kolom6']);
-              $('#kolom7_311').val(buku[0]['kolom7']);
-              $('#kolom8_311').val(buku[0]['kolom8']);
-              $('#kolom9_311').val(buku[0]['kolom9']);
-              $('#kolom10_311').val(buku[0]['kolom10']);
-              $('#kolom11_311').val(buku[0]['kolom11']);
-              $('#kolom12_311').val(buku[0]['kolom12']);
-              $('#kolom13_311').val(buku[0]['kolom13']);
-              $('#kolom14_311').val(buku[0]['kolom14']);
-              $('#kolom15_311').val(buku[0]['kolom15']);
-          });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
-
-    });
-
     $('#update312').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
@@ -25959,7 +25605,6 @@
               $('#kolom4_312').val(buku[0]['kolom4']);
               $('#kolom5_312').val(buku[0]['kolom5']);
               $('#kolom6_312').val(buku[0]['kolom6']);
-              $('#kolom7_312').val(buku[0]['kolom7']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -27396,6 +27041,71 @@
 
     });
 
+    $('#viewnilai311').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar311').val(buku[0]['komentar']);
+              $('#view311').val(buku[0]['nilai1']);
+              $('#view311skorakhir').val(buku[0]['nilai2']);
+              $('#view311nilai').val(buku[0]['skorakhir']);
+          });
+
+    });
+
+    $('#viewnilai312').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar312').val(buku[0]['komentar']);
+              $('#view312info').val(buku[0]['masukan']);
+              $('#view3121').val(buku[0]['nilai1']);
+              $('#view3122').val(buku[0]['nilai2']);
+              $('#view312rasio').val(buku[0]['nilai3']);
+              $('#view312nilai').val(buku[0]['skorakhir']);
+          });
+
+    });
+
+    $('#viewnilai313').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian3bs1/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar313').val(buku[0]['komentar']);
+              $('#view313info').val(buku[0]['masukan']);
+              $('#view313').val(buku[0]['nilai1']);
+              $('#view313nilai').val(buku[0]['skorakhir']);
+          });
+
+    });
+
 
 
   });
@@ -27545,17 +27255,6 @@ function printContent(el){
         });
   }
 
-  function errorinput(){
-    isi1 = document.getElementById("k3_311").value;
-    isi2 = document.getElementById("k4_311").value;
-    nil1 = parseInt(isi1);
-    nil2 = parseInt(isi2);
-    hasil = nil1 + nil2;
-    if (nil2 >= nil1) {
-        swal("Error", "Inputan anda Salah", "error");
-    }
-  }
-
   function uploadbukti(x) {
     var borang = "<?php echo $this->uri->segment(2, 0)?>";
     var upload_url = "<?php echo base_url(); ?>index.php/C_uploadisi/uploadbukti/"+x+"/"+borang;
@@ -27660,53 +27359,18 @@ function printContent(el){
               }
         }
 
-        function cekjumlah311a(){
-              var txt1 = document.getElementById('311a1').value;
-              var txt2 = document.getElementById('311a2').value;
-              var result = (parseFloat(txt1) / parseFloat(txt2));
+        function cekjumlah311(){
+              var txt1 = document.getElementById('311').value;
+              var result = ((parseFloat(txt1)));
               var desimalnya = result.toFixed(2);
-              var nilainya = 0;
-              if (result>=4) {
-                nilainya = 4;
-              }else {
-                nilainya = ((3+desimalnya)/2);
-              }
-              var hasilnya = nilainya.toFixed(2);
-              var str1 = 'Jumlah calon yang ikut seleksi = '.concat(txt1);
-              var str2 = ', daya tampung PS = '.concat(txt2);
-              var str3 = ', Rasio Calon Mahasiswa yang ikut seleksi terhadap daya tampung = '.concat(desimalnya);
               if (!isNaN(result)) {
-                     document.getElementById('311arasio').value = desimalnya;
-                     document.getElementById('311anilai').value = hasilnya;
-                     document.getElementById('311ainfo').value = str1.concat(str2,str3);
-                  }
+                     document.getElementById('311nilai').value = desimalnya;
+              }
         }
 
-        function cekjumlah311b(){
-              var txt1 = document.getElementById('311b1').value;
-              var txt2 = document.getElementById('311b2').value;
-              var result = (parseFloat(txt1) / parseFloat(txt2));
-              var desimalnya = result.toFixed(2);
-              var nilainya = 0;
-              if (result>=95) {
-                nilainya = 4;
-              }else {
-                nilainya = ((40*desimalnya-10)/7);
-              }
-              var hasilnya = nilainya.toFixed(2);
-              var str1 = 'Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi = '.concat(txt1);
-              var str2 = ' / '.concat(txt2);
-              var str3 = ' = '.concat(desimalnya);
-              if (!isNaN(result)) {
-                     document.getElementById('311brasio').value = desimalnya;
-                     document.getElementById('311bnilai').value = hasilnya;
-                     document.getElementById('311binfo').value = str1.concat(str2,str3);
-                  }
-        }
-
-        function cekjumlah311c(){
-              var txt1 = document.getElementById('311c1').value;
-              var txt2 = document.getElementById('311c2').value;
+        function cekjumlah312(){
+              var txt1 = document.getElementById('3121').value;
+              var txt2 = document.getElementById('3122').value;
               var result = (parseFloat(txt1) / parseFloat(txt2));
               var desimalnya = result.toFixed(2);
               var nilainya = 0;
@@ -27720,37 +27384,9 @@ function printContent(el){
               var str2 = ' / '.concat(txt2);
               var str3 = ' = '.concat(desimalnya);
               if (!isNaN(result)) {
-                     document.getElementById('311crasio').value = desimalnya;
-                     document.getElementById('311cnilai').value = hasilnya;
-                     document.getElementById('311cinfo').value = str1.concat(str2,str3);
-                  }
-        }
-
-        function cekjumlah311d(){
-              var txt1 = document.getElementById('311d1').value;
-              var txt2 = document.getElementById('311d2').value;
-              var result = (parseFloat(txt1) / parseFloat(txt2));
-              var desimalnya = result.toFixed(2);
-              var nilainya = 0;
-              if (desimalnya>=0) {
-                nilainya = 4;
-              }else {
-                nilainya = 4;
-              }
-              var hasilnya = nilainya.toFixed(2);
-              var str1 = 'rata-rata IPK Makasiswa = '.concat(txt1);
-              if (!isNaN(result)) {
-                     document.getElementById('311dnilai').value = hasilnya;
-                     document.getElementById('311dinfo').value = str1;
-                  }
-        }
-
-        function cekjumlah312(){
-              var txt1 = document.getElementById('312').value;
-              var result = (parseFloat(txt1));
-              var desimalnya = result.toFixed(2);
-              if (!isNaN(result)) {
-                     document.getElementById('312nilai').value = desimalnya;
+                     document.getElementById('312rasio').value = desimalnya;
+                     document.getElementById('312nilai').value = hasilnya;
+                     document.getElementById('312info').value = str1.concat(str2,str3);
                   }
         }
 

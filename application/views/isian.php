@@ -203,7 +203,7 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian4kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
@@ -364,7 +364,7 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Sasaran dan Strategi Pencapaiannya</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
@@ -454,6 +454,7 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Sosialisasi&nbsp;
                         <button type="button" onclick="infoSosialisasi()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Uraikan upaya penyebaran/sosialisasi visi, misi dan tujuan program studi serta pemahaman sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan.</h2>
@@ -547,6 +548,7 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Sistem Tata Pamong&nbsp;
                         <button type="button" onclick="infoPamong()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Sistem tata pamong berjalan secara efektif melalui mekanisme yang disepakati bersama, serta dapat memelihara dan mengakomodasi semua unsur, fungsi, dan peran dalam program studi. Tata pamong didukung dengan budaya organisasi yang dicerminkan dengan ada dan tegaknya aturan, tatacara pemilihan pimpinan, etika dosen, etika mahasiswa, etika tenaga kependidikan, sistem penghargaan dan sanksi serta pedoman dan prosedur pelayanan (administrasi, perpustakaan, laboratorium, dan studio). Sistem tata pamong (input, proses, output dan outcome serta lingkungan eksternal yang menjamin terlaksananya tata pamong yang baik) harus diformulasikan, disosialisasikan, dilaksanakan,  dipantau dan dievaluasi dengan peraturan dan prosedur yang jelas. </h2>
@@ -602,6 +604,7 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Kepemimpinan&nbsp;
                         <button type="button" onclick="infoKepemimpinan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat.
@@ -721,6 +724,7 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Sistem Pengelolaan&nbsp;
                         <button type="button" onclick="infoPengelolaan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Sistem pengelolaan fungsional dan operasional program studi mencakup planning, organizing, staffing, leading, controlling dalam kegiatan  internal maupun eksternal.</h2>
@@ -776,6 +780,7 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Penjaminan Mutu&nbsp;
                         <button type="button" onclick="infoMutu()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Bagaimanakah pelaksanaan penjaminan mutu pada Program Studi? Jelaskan.</h2>
@@ -829,6 +834,7 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian12kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Umpan Balik&nbsp;
                         <button type="button" onclick="infoUmpan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Apakah program studi telah melakukan kajian tentang proses pembelajaran melalui umpan balik dari dosen, mahasiswa, alumni, dan pengguna lulusan mengenai harapan dan persepsi mereka?  Jika Ya, jelaskan isi umpan balik dan tindak lanjutnya.</h2>
@@ -1032,6 +1038,7 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian5kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Keberlanjutan&nbsp;
                         <button type="button" onclick="infoKeberlanjutan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Jelaskan upaya untuk menjamin keberlanjutan (sustainability) program studi ini, khususnya dalam hal:</h2>
@@ -1759,19 +1766,19 @@
                                 <thead>
                                     <tr style="height: 26px;">
                                         <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">No</th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;" rowspan="2">
+                                        <th style="width: 52px; height: 52px; background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">
                                         <p><strong>Tahun Akademik</strong></p>
                                         </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;" rowspan="2">
+                                        <th style="width: 84.4px; background-color: #ababab; text-align: center; vertical-align: middle;" rowspan="2">
                                         <p><strong>Daya Tampung</strong></p>
                                         </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;" colspan="2">
+                                        <th style="width: 84.4px; background-color: #ababab; text-align: center; vertical-align: middle;" colspan="2">
                                         <p><strong>Jumlah Calon Mahasiswa&nbsp; </strong></p>
                                         </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;" colspan="2">
+                                        <th style="width: 84.4px; background-color: #ababab; text-align: center; vertical-align: middle;" colspan="2">
                                         <p><strong>Jumlah Mahasiswa Baru </strong></p>
                                         </th>
-                                        <th style="width: 84.4px; background-color: #ababab; text-align: center;" colspan="2">
+                                        <th style="width: 84.4px; background-color: #ababab; text-align: center; vertical-align: middle;" colspan="2">
                                         <p><strong>Jumlah Total Mahasiswa</strong></p></th>
                                         <th width="14%" style="background-color: #a8a8a8; text-align: center; vertical-align: middle;" rowspan="2">Pengaturan</th>
                                     </tr>
@@ -25931,6 +25938,1142 @@
         </div>
         <!-- TUTUP MODAL VIEW NILAI 2.6 -->
 
+        <!-- BUKA MODAL NILAI 3.1.1.a -->
+        <div class="modal fade" id="nilai311a" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">10</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="311ainfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 3 (Jumlah yang ikut seleksi))</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="311a1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 2 (Daya tampung PS)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="311a2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Rasio = (jumlah kolom 3)/(jumlah kolom 2)</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="311arasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311anilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.1.a -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.1.a -->
+        <div class="modal fade" id="viewnilai311a" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">10</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="view311ainfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 3 (Jumlah yang ikut seleksi))</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view311a1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="viewkomentar311a" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 2 (Daya tampung PS)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view311a2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Rasio = (jumlah kolom 3)/(jumlah kolom 2)</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="view311arasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view311anilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.1.a -->
+
+        <!-- BUKA MODAL NILAI 3.1.1.b -->
+        <div class="modal fade" id="nilai311b" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">11</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="311binfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 5 (Jumlah mhs baru reguler yang melakukan registrasi)</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="311b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 4 (Jumlah calon mhs yang lulus seleksi)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="311b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Rasio=(jumlah kolom 5)/jumlah kolom 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="311brasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.1.b -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.1.b -->
+        <div class="modal fade" id="viewnilai311b" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">11</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="view311binfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 5 (Jumlah mhs baru reguler yang melakukan registrasi)</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view311b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="viewkomentar311b" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 4 (Jumlah calon mhs yang lulus seleksi)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view311b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Rasio=(jumlah kolom 5)/jumlah kolom 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="view311brasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view311bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.1.b -->
+
+        <!-- BUKA MODAL NILAI 3.1.1.c -->
+        <div class="modal fade" id="nilai311c" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">12</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="311cinfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">TMBT = total mahasiswa baru transfer untuk program S1 reguler dan S1 non-reguler</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="311c1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">TMB = total mahasiswa baru bukan transfer untuk program S1 reguler dan S1 non-reguler</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="311c2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">RM = TMBT/TMB</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="311crasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311cnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.1.c -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.1.c -->
+        <div class="modal fade" id="viewnilai311c" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">12</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="view311cinfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">TMBT = total mahasiswa baru transfer untuk program S1 reguler dan S1 non-reguler</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view311c1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="viewkomentar311c" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">TMB = total mahasiswa baru bukan transfer untuk program S1 reguler dan S1 non-reguler</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view311c2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">RM = TMBT/TMB</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="view311crasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view311cnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.1.c -->
+
+        <!-- BUKA MODAL NILAI 3.1.1.d -->
+        <div class="modal fade" id="nilai311d" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="4" scope="row">13</th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="311d1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
+                                        <td></td>
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="311dinfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">IPK (Isi angka 0 jika belum ada lulusan)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="311d2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="3"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311dnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.1.d -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.1.d -->
+        <div class="modal fade" id="viewnilai311d" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="4" scope="row">13</th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view311d1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
+                                        <td></td>
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="view311dinfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">IPK (Isi angka 0 jika belum ada lulusan)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view311d2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="3"><textarea rows="8" name="komentar[]" id="viewkomentar311d" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view311dnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.1.d -->
+
+        <!-- BUKA MODAL NILAI 3.1.2 -->
+        <div class="modal fade" id="nilai312" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row">14</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="312" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen sangat berat, melebihi 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen relatif berat, yaitu lebih dari 17 s.d. 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 15  s.d. 17 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 13  s.d. 15 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban mendekati ideal, yaitu kurang atau sama dengan 13 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="312nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.2 -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.2 -->
+        <div class="modal fade" id="viewnilai312" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row">14</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view312" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar312" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen sangat berat, melebihi 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen relatif berat, yaitu lebih dari 17 s.d. 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 15  s.d. 17 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 13  s.d. 15 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban mendekati ideal, yaitu kurang atau sama dengan 13 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view312nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.2 -->
+
+        <!-- BUKA MODAL NILAI 3.1.3 -->
+        <div class="modal fade" id="nilai313" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row">15</th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="313" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah313()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="12" name="komentar[]" id="komentar313" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Tidak ada bukti penghargaan. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat lokal PT.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat wilayah.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat nasional atau internasional.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="313nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.3 -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.3 -->
+        <div class="modal fade" id="viewnilai313" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row">15</th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view313" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah313()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="7"><textarea rows="12" name="komentar[]" id="viewkomentar313" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Tidak ada bukti penghargaan. </td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat lokal PT.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat wilayah.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat nasional atau internasional.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view313nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.3 -->
+
     </div>
 </section>
 
@@ -27886,6 +29029,140 @@
 
     });
 
+    $('#viewnilai311a').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar311a').val(buku[0]['komentar']);
+              $('#view311ainfo').val(buku[0]['masukan']);
+              $('#view311a1').val(buku[0]['nilai1']);
+              $('#view311a2').val(buku[0]['nilai2']);
+              $('#view311arasio').val(buku[0]['nilai3']);
+              $('#view311anilai').val(buku[0]['skorakhir']);
+          });
+
+    });
+
+    $('#viewnilai311b').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar311b').val(buku[0]['komentar']);
+              $('#view311binfo').val(buku[0]['masukan']);
+              $('#view311b1').val(buku[0]['nilai1']);
+              $('#view311b2').val(buku[0]['nilai2']);
+              $('#view311brasio').val(buku[0]['nilai3']);
+              $('#view311bnilai').val(buku[0]['skorakhir']);
+          });
+
+    });
+
+    $('#viewnilai311c').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar311c').val(buku[0]['komentar']);
+              $('#view311cinfo').val(buku[0]['masukan']);
+              $('#view311c1').val(buku[0]['nilai1']);
+              $('#view311c2').val(buku[0]['nilai2']);
+              $('#view311crasio').val(buku[0]['nilai3']);
+              $('#view311cnilai').val(buku[0]['skorakhir']);
+          });
+
+    });
+
+    $('#viewnilai311d').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar311d').val(buku[0]['komentar']);
+              $('#view311dinfo').val(buku[0]['masukan']);
+              $('#view311d1').val(buku[0]['nilai1']);
+              $('#view311d2').val(buku[0]['nilai2']);
+              $('#view311drasio').val(buku[0]['nilai3']);
+              $('#view311dnilai').val(buku[0]['skorakhir']);
+          });
+
+    });
+
+    $('#viewnilai312').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar312').val(buku[0]['komentar']);
+              $('#view312info').val(buku[0]['masukan']);
+              $('#view312').val(buku[0]['nilai1']);
+              $('#view312nilai').val(buku[0]['skorakhir']);
+          });
+
+    });
+
+    $('#viewnilai313').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar313').val(buku[0]['komentar']);
+              $('#view313info').val(buku[0]['masukan']);
+              $('#view313').val(buku[0]['nilai1']);
+              $('#view313nilai').val(buku[0]['skorakhir']);
+          });
+
+    });
+
     // $('#del').click(function() {
     //     var delete_url = $(this).attr('data-url');
     //     swal({
@@ -28148,12 +29425,12 @@ function printContent(el){
               }
         }
 
-        function cekjumlah25(){
-              var txt1 = document.getElementById('25').value;
+        function cekjumlah24(){
+              var txt1 = document.getElementById('24').value;
               var result = ((parseFloat(txt1)));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('25nilai').value = desimalnya;
+                     document.getElementById('24nilai').value = desimalnya;
               }
         }
 

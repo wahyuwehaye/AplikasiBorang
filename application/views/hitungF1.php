@@ -73,14 +73,14 @@
             <!-- BUTIR 1.1.a -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[0]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[0]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[0]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[0]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
                                         <td></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[0]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[0]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[0]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -133,14 +133,14 @@
             <!-- BUTIR 1.1.b -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="5" scope="row"><?php echo $f1[1]['id'] ?></th>
-                                        <td width="5%" rowspan="5"><?php echo $f1[1]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[1]['aspek'] ?></td>
+                                        <th width="5%" rowspan="5" scope="row"><?php echo $butir[1]['id'] ?></th>
+                                        <td width="5%" rowspan="5"><?php echo $butir[1]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[1]['bakumutu'] ?></td>
                                         <td></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[1]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[1]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[1]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[1]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -183,12 +183,12 @@
             <!-- BUTIR 1.2 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[2]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[2]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[2]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[2]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[2]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[2]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[2]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[2]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[2]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[2]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -249,12 +249,12 @@
             <!-- BUTIR 2.1 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[3]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[3]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[3]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[3]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[3]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[3]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[3]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[3]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[3]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[3]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -272,25 +272,25 @@
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Program studi memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 aspek tsb di atas.</td>
+                                        <td width="45%">Program studi memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 bakumutu tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Ada tata pamong yang  menjamin penyelenggaraan program studi, namun hanya memenuhi 3 dari 5 aspek tsb di atas.</td>
+                                        <td width="45%">Ada tata pamong yang  menjamin penyelenggaraan program studi, namun hanya memenuhi 3 dari 5 bakumutu tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 aspek tsb di atas.</td>
+                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 bakumutu tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 5 aspek tsb di atas.</td>
+                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 5 bakumutu tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -315,12 +315,12 @@
             <!-- BUTIR 2.2 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[4]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[4]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[4]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[4]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[4]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[4]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[4]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[4]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[4]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[4]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -381,12 +381,12 @@
             <!-- BUTIR 2.3 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[5]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[5]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[5]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[5]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[5]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[5]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[5]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[5]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[5]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[5]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -453,12 +453,12 @@
             <!-- BUTIR 2.4 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[6]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[6]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[6]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[6]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[6]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[6]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[6]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[6]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[6]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[6]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -525,12 +525,12 @@
             <!-- BUTIR 2.5 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[7]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[7]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[7]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[7]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[7]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[7]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[7]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[7]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[7]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[7]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -597,12 +597,12 @@
             <!-- BUTIR 2.6 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[8]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[8]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[8]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[8]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[8]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[8]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[8]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[8]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[8]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[8]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -669,14 +669,14 @@
             <!-- BUTIR 3.1.1.a -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="6" scope="row"><?php echo $f1[9]['id'] ?></th>
-                                        <td width="5%" rowspan="6"><?php echo $f1[9]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[9]['aspek'] ?></td>
+                                        <th width="5%" rowspan="6" scope="row"><?php echo $butir[9]['id'] ?></th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[9]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[9]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[9]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[9]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[9]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[9]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -717,14 +717,14 @@
             <!-- BUTIR 3.1.1.b -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="6" scope="row"><?php echo $f1[10]['id'] ?></th>
-                                        <td width="5%" rowspan="6"><?php echo $f1[10]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[10]['aspek'] ?></td>
+                                        <th width="5%" rowspan="6" scope="row"><?php echo $butir[10]['id'] ?></th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[10]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[10]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[10]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[10]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[10]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[10]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -765,14 +765,14 @@
             <!-- BUTIR 3.1.1.c -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="6" scope="row"><?php echo $f1[11]['id'] ?></th>
-                                        <td width="5%" rowspan="6"><?php echo $f1[11]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[11]['aspek'] ?></td>
+                                        <th width="5%" rowspan="6" scope="row"><?php echo $butir[11]['id'] ?></th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[11]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[11]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[11]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[11]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[11]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[11]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -813,12 +813,11 @@
             <!-- BUTIR 3.1.1.d -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[12]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[12]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[12]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[0]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[12]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[12]['butir'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -852,12 +851,12 @@
             <!-- BUTIR 3.1.2 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[13]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[13]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[13]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[13]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[13]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[13]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[13]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[13]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[13]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[13]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -924,12 +923,12 @@
             <!-- BUTIR 3.1.3 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[14]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[14]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[14]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[14]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[14]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[14]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[14]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[14]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[14]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[14]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -990,14 +989,14 @@
             <!-- BUTIR 3.1.4.a -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="6" scope="row"><?php echo $f1[15]['id'] ?></th>
-                                        <td width="5%" rowspan="6"><?php echo $f1[15]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[15]['aspek'] ?></td>
+                                        <th width="5%" rowspan="6" scope="row"><?php echo $butir[15]['id'] ?></th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[15]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[15]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[15]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[15]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[15]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[15]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -1040,14 +1039,14 @@
             <!-- BUTIR 3.1.4.b -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="6" scope="row"><?php echo $f1[16]['id'] ?></th>
-                                        <td width="5%" rowspan="6"><?php echo $f1[16]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[16]['aspek'] ?></td>
+                                        <th width="5%" rowspan="6" scope="row"><?php echo $butir[16]['id'] ?></th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[16]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[16]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[16]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[16]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[16]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[16]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -1095,12 +1094,12 @@
             <!-- BUTIR 3.2.1 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[17]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[17]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[17]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[17]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[17]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[17]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[17]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[17]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[17]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[17]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -1167,12 +1166,12 @@
             <!-- BUTIR 3.2.2 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[18]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[18]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[18]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[18]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[18]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[18]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[18]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[18]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[18]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[18]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -1213,12 +1212,12 @@
             <!-- BUTIR 3.3.1.a -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[19]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[19]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[19]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[19]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[19]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[19]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[19]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[19]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[19]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[19]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -1285,12 +1284,12 @@
             <!-- BUTIR 3.3.1.b -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[20]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[20]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[20]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[20]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[20]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[20]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[20]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[20]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[20]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[20]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -1357,14 +1356,14 @@
             <!-- BUTIR 3.3.1.C -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[21]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[21]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[21]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[21]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[21]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[21]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[21]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[21]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[21]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[21]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -1417,12 +1416,12 @@
             <!-- Butir 3.3.2 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[22]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[22]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[22]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[22]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[22]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[22]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[22]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[22]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[22]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[22]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -1452,12 +1451,12 @@
             <!-- Butir 3.3.3 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[23]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[23]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[23]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[23]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[23]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[23]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[23]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[23]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[23]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[23]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -1488,12 +1487,12 @@
         <!--Butir 3.4.1 -->
                             <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[24]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[24]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[24]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[24]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[24]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[24]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[24]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[24]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[24]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[24]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -1561,12 +1560,12 @@
      <!--Butir 3.4.2 -->
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[25]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[25]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[25]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[25]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[25]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[25]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[25]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[25]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[25]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[25]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -1628,12 +1627,12 @@
                  <!--Butir 4.1 -->
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[26]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[26]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[26]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[26]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[26]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[26]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[26]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[26]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[26]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[26]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -1695,12 +1694,12 @@
                  <!--Butir 4.2.1 -->
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[27]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[27]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[27]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[27]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[27]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[27]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[27]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[27]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[27]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[27]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -1762,12 +1761,12 @@
                 <!--Butir 4.2.2 -->
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[28]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[28]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[28]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[28]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[28]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[28]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[28]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[28]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[28]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[28]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -1831,14 +1830,14 @@
                       <tbody > 
 
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[29]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[29]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[29]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[29]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[29]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[29]['bakumutu'] ?></td>
                                         <td></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[29]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[29]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[29]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[29]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -1894,14 +1893,14 @@
                   <!--Butir 4.3.1b -->         
                        <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="6" scope="row"><?php echo $f1[30]['id'] ?></th>
-                                        <td width="5%" rowspan="6"><?php echo $f1[30]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[30]['aspek'] ?></td>
+                                        <th width="5%" rowspan="6" scope="row"><?php echo $butir[30]['id'] ?></th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[30]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[30]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[30]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[30]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[30]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[30]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -1946,14 +1945,14 @@
                               <!--Butir 4.3.1c -->         
                        <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="6" scope="row"><?php echo $f1[31]['id'] ?></th>
-                                        <td width="5%" rowspan="6"><?php echo $f1[31]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[31]['aspek'] ?></td>
+                                        <th width="5%" rowspan="6" scope="row"><?php echo $butir[31]['id'] ?></th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[31]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[31]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[31]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[31]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[31]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[31]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -1997,14 +1996,14 @@
             <!--Butir 4.3.1d -->         
                        <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="6" scope="row"><?php echo $f1[32]['id'] ?></th>
-                                        <td width="5%" rowspan="6"><?php echo $f1[32]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[32]['aspek'] ?></td>
+                                        <th width="5%" rowspan="6" scope="row"><?php echo $butir[32]['id'] ?></th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[32]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[32]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[32]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[32]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[32]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[32]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -2064,14 +2063,14 @@
                         <tbody> 
 
                                     <tr>
-                                        <th width="5%" rowspan="11" scope="row"><?php echo $f1[33]['id'] ?></th>
-                                        <td width="5%" rowspan="11"><?php echo $f1[33]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[33]['aspek'] ?></td>
+                                        <th width="5%" rowspan="11" scope="row"><?php echo $butir[33]['id'] ?></th>
+                                        <td width="5%" rowspan="11"><?php echo $butir[33]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[33]['bakumutu'] ?></td>
                                         <td></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[33]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[33]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[33]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[33]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -2140,12 +2139,12 @@
              <!-- Butir 4.3.3 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[34]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[34]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[34]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[34]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[34]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[34]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[34]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[34]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[34]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[34]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -2176,12 +2175,12 @@
  <!-- BUTIR 4.3.4 & 4.3.5-->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[35]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[35]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[35]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[35]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[35]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[35]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[35]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[35]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[35]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[35]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -2244,14 +2243,14 @@
 
                             <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[36]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[36]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[36]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[36]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[36]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[36]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[36]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[36]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[36]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[36]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -2296,14 +2295,14 @@
 
                                <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[37]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[37]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[37]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[37]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[37]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[37]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[37]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[37]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[37]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[37]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -2346,12 +2345,12 @@
       <!-- BUTIR 4.4.2a-->                  
                      <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[38]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[38]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[38]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[38]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[38]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[38]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[38]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[38]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[38]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[38]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -2421,14 +2420,14 @@
 
                                <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[39]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[39]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[39]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[39]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[39]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[39]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[39]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[39]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[39]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[39]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -2477,12 +2476,12 @@
             <!-- Butir 4.5.1 -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[40]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[40]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[40]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[40]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[40]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[40]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[40]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[40]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[40]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[40]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -2513,14 +2512,14 @@
             <!--Butir 4.5.2 -->         
                        <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[41]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[41]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[41]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[41]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[41]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[41]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[41]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[41]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[41]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[41]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -2571,14 +2570,14 @@
                  <tbody > 
 
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[42]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[42]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[42]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[42]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[42]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[42]['bakumutu'] ?></td>
                                         <td></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[42]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[42]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[42]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[42]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -2627,12 +2626,12 @@
                 <!--Butir 4.5.4 -->    
                                  <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[43]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[43]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[43]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[43]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[43]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[43]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[43]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[43]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[43]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[43]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -2699,12 +2698,12 @@
                 <!--Butir 4.5.5 -->   
                          <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[44]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[44]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[44]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[44]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[44]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[44]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[44]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[44]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[44]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[44]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -2779,14 +2778,14 @@
                 <!--Butir 4.6.1a -->    
                          <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="6" scope="row"><?php echo $f1[45]['id'] ?></th>
-                                        <td width="5%" rowspan="6"><?php echo $f1[45]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[45]['aspek'] ?></td>
+                                        <th width="5%" rowspan="6" scope="row"><?php echo $butir[45]['id'] ?></th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[45]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[45]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[45]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[45]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[45]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[45]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -2836,12 +2835,12 @@
                 <!--Butir 4.6.1b --> 
                          <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[46]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[46]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[46]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[46]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[46]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[46]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[46]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[46]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[46]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[46]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -2904,14 +2903,14 @@
                 <!--Butir 4.6.1c -->   
                          <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[47]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[47]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[47]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[47]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[47]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[47]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[47]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[47]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[47]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[47]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -2965,12 +2964,12 @@
                 <!--Butir 4.6.2 -->  
                              <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[48]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[48]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[48]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[48]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[48]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[48]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[48]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[48]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[48]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[48]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -3033,12 +3032,12 @@
                 <!--Butir 5.1.1a -->  
                          <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[49]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[49]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[49]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[49]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[49]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[49]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[49]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[49]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[49]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[49]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -3107,12 +3106,12 @@
                 <!--Butir 5.1.1b --> 
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[50]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[50]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[50]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[50]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[50]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[50]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[50]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[50]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[50]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[50]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -3181,12 +3180,12 @@
                 <!--Butir 5.1.2a -->  
                     <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[51]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[51]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[51]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[51]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[51]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[51]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[51]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[51]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[51]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[51]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -3256,14 +3255,14 @@
 
                                <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[52]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[52]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[52]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[52]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[52]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[52]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[52]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[52]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[52]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[52]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -3307,14 +3306,14 @@
 
                                <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[53]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[53]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[53]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[53]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[53]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[53]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[53]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[53]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[53]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[53]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -3358,14 +3357,14 @@
 
                                <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[54]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[54]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[54]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[54]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[54]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[54]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[54]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[54]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[54]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[54]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -3407,12 +3406,12 @@
                 <!--Butir 5.1.4 -->   
                               <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[55]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[55]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[55]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[55]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[55]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[55]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[55]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[55]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[55]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[55]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -3475,12 +3474,12 @@
                 <!--Butir 5.2a -->  
                        <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[56]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[56]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[56]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[56]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[56]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[56]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[56]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[56]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[56]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[56]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -3549,12 +3548,12 @@
                 <!--Butir 5.2b -->
                           <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[57]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[57]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[57]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[57]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[57]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[57]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[57]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[57]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[57]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[57]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -3623,12 +3622,12 @@
                 <!--Butir 5.3.1a --> 
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[58]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[58]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[58]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[58]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[58]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[58]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[58]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[58]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[58]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[58]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -3638,7 +3637,7 @@
                                         <td width="25%" rowspan="4"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">Jumlah skor untuk tiga aspek (Rentang 3 - 12)</td>
+                                        <td colspan="2">Jumlah skor untuk tiga bakumutu (Rentang 3 - 12)</td>
                                         <td width="10%"><input type="text" required name="nilai1[]" id="331c2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah331c()"></td>
                                       
                                     </tr>
@@ -3667,12 +3666,12 @@
                 <!--Butir 5.3.1b --> 
                  <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[59]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[59]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[59]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[59]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[59]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[59]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[59]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[59]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[59]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[59]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -3741,12 +3740,12 @@
                 <!--Butir 5.3.2 -->   
                          <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[60]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[60]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[60]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[60]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[60]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[60]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[60]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[60]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[60]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[60]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -3815,14 +3814,14 @@
                 <!--Butir 5.4.1a -->    
                             <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[61]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[61]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[61]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[61]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[61]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[61]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[61]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[61]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[61]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[61]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -3864,12 +3863,12 @@
                 <!--Butir 5.4.1b -->
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[62]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[62]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[62]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[62]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[62]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[62]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[62]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[62]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[62]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[62]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -3938,12 +3937,12 @@
                 <!--Butir 5.4.1c -->   
                             <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[63]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[63]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[63]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[63]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[63]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[63]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[63]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[63]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[63]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[63]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -3974,12 +3973,12 @@
                 <!--Butir 5.4.2 -->   
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[64]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[64]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[64]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[64]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[64]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[64]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[64]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[64]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[64]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[64]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -4048,12 +4047,12 @@
                 <!--Butir 5.5.1a -->  
                             <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[65]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[65]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[65]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[65]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[65]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[65]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[65]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[65]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[65]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[65]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -4122,14 +4121,14 @@
                 <!--Butir 5.5.1b --> 
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[66]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[66]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[66]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[66]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[66]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[66]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[66]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[66]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[66]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[66]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -4171,12 +4170,12 @@
                 <!--Butir 5.5.1c -->  
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[67]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[67]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[67]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[67]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[67]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[67]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[67]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[67]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[67]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[67]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -4206,12 +4205,12 @@
                 <!--Butir 5.5.1d -->    
                        <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[68]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[68]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[68]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[68]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[68]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[68]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[68]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[68]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[68]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[68]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -4293,14 +4292,14 @@
                 <!--Butir 5.5.2 -->     
                     <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[69]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[69]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[69]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[69]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[69]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[69]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[69]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[69]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[69]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[69]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -4349,12 +4348,12 @@
                 <!--Butir 5.6 -->      
                              <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[70]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[70]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[70]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[70]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[70]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[70]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[70]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[70]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[70]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[70]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -4423,12 +4422,12 @@
                 <!--Butir 5.7.1 -->  
                           <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[71]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[71]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[71]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[71]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[71]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[71]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[71]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[71]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[71]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[71]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -4491,12 +4490,12 @@
                 <!--Butir 5.7.2 -->
                           <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[72]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[72]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[72]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[72]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[72]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[72]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[72]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[72]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[72]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[72]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -4559,12 +4558,12 @@
                 <!--Butir 5.7.3 -->  
                               <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[73]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[73]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[73]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[73]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[73]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[73]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[73]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[73]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[73]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[73]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -4628,12 +4627,12 @@
                 <!--Butir 5.7.4 -->  
                               <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[74]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[74]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[74]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[74]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[74]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[74]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[74]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[74]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[74]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[74]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -4696,12 +4695,12 @@
                 <!--Butir 5.7.5 -->   
                                   <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[75]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[75]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[75]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[75]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[75]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[75]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[75]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[75]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[75]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[75]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -4765,12 +4764,12 @@
                 <!--Butir 6.1-->  
                               <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[76]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[76]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[76]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[76]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[76]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[76]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[76]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[76]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[76]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[76]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -4839,14 +4838,14 @@
                 <!--Butir 6.2.1 -->   
                              <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[77]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[77]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[77]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[77]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[77]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[77]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[77]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[77]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[77]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[77]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -4900,14 +4899,14 @@
                 <!--Butir 6.2.2 -->
                             <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[78]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[78]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[78]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[78]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[78]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[78]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[78]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[78]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[78]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[78]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -4949,14 +4948,14 @@
                 <!--Butir 6.2.3 -->  
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row"><?php echo $f1[79]['id'] ?></th>
-                                        <td width="5%" rowspan="7"><?php echo $f1[79]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[79]['aspek'] ?></td>
+                                        <th width="5%" rowspan="7" scope="row"><?php echo $butir[79]['id'] ?></th>
+                                        <td width="5%" rowspan="7"><?php echo $butir[79]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[79]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[79]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[79]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[79]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[79]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -4998,14 +4997,14 @@
                 <!--Butir 6.3.1 -->   
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="12" scope="row"><?php echo $f1[80]['id'] ?></th>
-                                        <td width="5%" rowspan="12"><?php echo $f1[80]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[80]['aspek'] ?></td>
+                                        <th width="5%" rowspan="12" scope="row"><?php echo $butir[80]['id'] ?></th>
+                                        <td width="5%" rowspan="12"><?php echo $butir[80]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[80]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[80]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[80]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[80]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[80]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -5081,12 +5080,12 @@
                 <!--Butir 6.3.2-->  
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[81]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[81]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[81]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[81]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[81]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[81]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[81]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[81]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[81]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[81]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -5154,12 +5153,12 @@
                 <!--Butir 6.3.3 -->     
                       <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[82]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[82]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[82]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[82]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[82]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[82]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[82]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[82]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[82]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[82]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -5228,12 +5227,12 @@
                 <!--Butir 6.4.1a -->    
                              <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[83]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[83]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[83]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[83]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[83]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[83]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[83]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[83]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[83]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[83]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -5268,12 +5267,12 @@
                 <!--Butir 6.4.1b-->   
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[84]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[84]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[84]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[84]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[84]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[84]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[84]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[84]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[84]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[84]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -5308,12 +5307,12 @@
                 <!--Butir 6.4.1c--> 
                       <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[85]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[85]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[85]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[85]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[85]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[85]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[85]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[85]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[85]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[85]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -5382,12 +5381,12 @@
                 <!--Butir 6.4.1d--> 
                         <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[86]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[86]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[86]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[86]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[86]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[86]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[86]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[86]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[86]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[86]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -5444,12 +5443,12 @@
                 <!--Butir 6.4.1e -->
                             <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $f1[87]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $f1[87]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[87]['aspek'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[87]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[87]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[87]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[87]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[87]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[87]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[87]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -5480,12 +5479,12 @@
                 <!--Butir 6.4.2 -->  
                                  <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[88]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[88]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[88]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[88]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[88]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[88]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[88]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[88]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[88]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[88]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -5547,12 +5546,12 @@
                 <!--Butir 6.4.3 -->  
                             <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[89]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[89]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[89]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[89]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[89]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[89]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[89]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[89]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[89]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[89]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -5620,12 +5619,12 @@
                 <!--Butir 6.5.1-->     
                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[90]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[90]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[90]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[90]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[90]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[90]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[90]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[90]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[90]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[90]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -5686,14 +5685,14 @@
                                 </tbody>  
                 <!--Butir 6.5.2-->   
                                 <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[91]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[91]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[91]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[91]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[91]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[91]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[91]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[91]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[91]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[91]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -5747,14 +5746,14 @@
                 <!--Butir 7.1.1 --> 
                         <tbody> 
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[92]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[92]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[92]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[92]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[92]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[92]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[92]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[92]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[92]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[92]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -5810,14 +5809,14 @@
                 <!--Butir 7.1.2 -->
                              <tbody> 
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[93]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[93]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[93]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[93]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[93]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[93]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[93]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[93]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[93]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[93]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -5862,14 +5861,14 @@
                 <!--Butir 7.1.3 --> 
                                <tbody> 
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[94]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[94]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[94]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[94]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[94]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[94]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[94]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[94]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[94]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[94]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -5923,14 +5922,14 @@
                 <!--Butir 7.1.4 -->
                          <tbody> 
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[95]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[95]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[95]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[95]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[95]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[95]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[95]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[95]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[95]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[95]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -5982,14 +5981,14 @@
                 <!--Butir 7.2.1 -->    
                         <tbody> 
                                     <tr>
-                                        <th width="5%" rowspan="8" scope="row"><?php echo $f1[96]['id'] ?></th>
-                                        <td width="5%" rowspan="8"><?php echo $f1[96]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[96]['aspek'] ?></td>
+                                        <th width="5%" rowspan="8" scope="row"><?php echo $butir[96]['id'] ?></th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[96]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[96]['bakumutu'] ?></td>
                                         <td width="10%"></td>
                                         <td></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[96]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[96]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[96]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[96]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
@@ -6047,12 +6046,12 @@
                 <!--Butir 7.2.2 -->
                             <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[97]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[97]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[97]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[97]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[97]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[97]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[97]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[97]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[97]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[97]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -6121,12 +6120,12 @@
                 <!--Butir 7.3.1 --> 
                              <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[98]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[98]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[98]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[98]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[98]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[98]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[98]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[98]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[98]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[98]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
@@ -6188,12 +6187,12 @@
                 <!--Butir 7.3.2 -->
                          <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="9" scope="row"><?php echo $f1[99]['id'] ?></th>
-                                        <td width="5%" rowspan="9"><?php echo $f1[99]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $f1[99]['aspek'] ?></td>
+                                        <th width="5%" rowspan="9" scope="row"><?php echo $butir[99]['id'] ?></th>
+                                        <td width="5%" rowspan="9"><?php echo $butir[99]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[99]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='id_f1[]' value="<?php echo $f1[99]['id'];?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $f1[99]['butir'];?>">
+                                        <input type='hidden' name='id_f1[]' value="<?php echo $butir[99]['id'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[99]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
