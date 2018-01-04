@@ -13312,9 +13312,9 @@
                             }
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi631">
+                        <!-- <form method="POST" action="<?php echo base_url()?>C_isian/ngisi631">
                         <input type="hidden" name="631id_butir" id="631id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir631" id="id_butir631" value="<?php echo $getidbutir631; ?>" />
+                        <input type="hidden" name="id_butir631" id="id_butir631" value="<?php echo $getidbutir631; ?>" /> -->
                         <h2 class="card-inside-title">Prasarana</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -13414,7 +13414,7 @@
                             </table>
                         </div>
         <!-- Tutup Tabel Edit -->
-                        <h2 class="card-inside-title">Tuliskan data ruang kerja dosen tetap yang bidang keahliannya sesuai dengan PS dengan mengikuti format tabel berikut:</h2>
+                        <!-- <h2 class="card-inside-title">Tuliskan data ruang kerja dosen tetap yang bidang keahliannya sesuai dengan PS dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
                                         <b>Satu ruang untuk lebih dari 4 dosen</b>
@@ -13520,7 +13520,7 @@
                                     </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
+                        </form> -->
                         <?php
                                 }else{
                             ?>
