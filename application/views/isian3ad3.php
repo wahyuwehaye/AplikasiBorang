@@ -1900,8 +1900,6 @@
                                         <p><strong>TS</strong></p>
                                         </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
                                         <tr style="height: 35px;">
                                         <td style="width: 102px; text-align: center; height: 35px;">
                                         <p><strong>(1)</strong></p>
@@ -1934,6 +1932,8 @@
                                         <p><strong>(10)</strong></p>
                                         </td>
                                         </tr>
+                                    </thead>
+                                    <tbody>
                                         <tr style="height: 35px;">
                                         <td style="width: 50px; text-align: center;">
                                         <p>1. </p>
@@ -17348,18 +17348,18 @@ dst.
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <h2 class="card-inside-title">Adakah mahasiswa yang dilibatkan dalam kegiatan pelayanan/pengabdian kepada masyarakat dalam tiga tahun terakhir?</h2>
-                        <div class="demo-checkbox">
-                                <input type="checkbox" id="tidakada" class="filled-in" />
-                                <label for="tidakada">Tidak Ada</label></br>
-                                <input type="checkbox" id="ada" class="filled-in" checked />
-                                <label for="ada">Ada</label>
+                        <div class="demo-radio-button">
+                                <input type="radio" id="rb1" name="kolom1_722" <?php echo ($dataisian[$i]['kolom1']=='Ya')?'checked':'' ?> class="filled-in" value="Ya" />
+                                <label for="rb1">Ya</label></br>
+                                <input type="radio" id="rb2" name="kolom1_722" <?php echo ($dataisian[$i]['kolom1']=='Tidak')?'checked':'' ?> class="filled-in" value="Tidak" />
+                                <label for="rb2">Tidak</label>
                         </div>
                         <h2 class="card-inside-title">Jika Ya, jelaskan tingkat partisipasi dan bentuk keterlibatan mahasiswa dalam kegiatan pelayanan/pengabdian kepada masyarakat.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_722" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom2_722" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -17374,18 +17374,18 @@ dst.
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi722">
                         <input type="hidden" name="id_butir722" id="id_butir722" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Adakah mahasiswa yang dilibatkan dalam kegiatan pelayanan/pengabdian kepada masyarakat dalam tiga tahun terakhir?</h2>
-                        <div class="demo-checkbox">
-                                <input type="checkbox" id="tidakada" class="filled-in" />
-                                <label for="tidakada">Tidak Ada</label></br>
-                                <input type="checkbox" id="ada" class="filled-in" />
-                                <label for="ada">Ada</label>
+                        <div class="demo-radio-button">
+                                <input type="radio" id="rb1" name="kolom1_722" class="filled-in" value="Ya" />
+                                <label for="rb1">Ya</label></br>
+                                <input type="radio" id="rb2" name="kolom1_722" class="filled-in" value="Tidak" />
+                                <label for="rb2">Tidak</label>
                         </div>
                         <h2 class="card-inside-title">Jika Ya, jelaskan tingkat partisipasi dan bentuk keterlibatan mahasiswa dalam kegiatan pelayanan/pengabdian kepada masyarakat.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_722" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            <textarea name="kolom2_722" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                     
                                             </textarea>
                                         </div>
