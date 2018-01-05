@@ -180,10 +180,11 @@
                     $id_bor = $buku[0]['id'];
                     $isiannya = $this->uri->segment(2, 0);
                     $getbutir = '';
-                    $querycaributir = $CI->db->query('select id,butir from butir where id="'.$isiannya.'" and id_borang = "'.$id_bor.'"');
+                    $getid434 = '';
+                    $querycaributir = $CI->db->query('select id, butir from butir where id="'.$isiannya.'" and id_borang = "'.$id_bor.'"');
                     foreach ($querycaributir->result() as $row){
                         $getbutir = $row->butir;
-                        $getidbutir = $row->id;
+                        $getid434 = $row->id;
                         break;
                     }
                         if ($getbutir=='1.1.1') {
@@ -1858,284 +1859,315 @@
                         <h2 class="card-inside-title">Tuliskan data jumlah mahasiswa reguler tujuh tahun terakhir dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_313" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    <table style="margin-left: auto; margin-right: auto; height: 383px; width: 1083px;" border="1" cellspacing="0" cellpadding="0">
+                                <div class="body table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable" id="table313">
+                                    <thead>
+                                        <tr style="height: 35px;">
+                                        <td style="width: 50px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2">
+                                        <p><strong>No</strong></p>
+                                        </td>
+                                        <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2">
+                                        <p><strong>Tahun Masuk</strong></p>
+                                        </td>
+                                        <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 35px;" colspan="7">
+                                        <p><strong>Jumlah Mahasiswa Reguler per Angkatan pada Tahun*</strong></p>
+                                        </td>
+                                        <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2">
+                                        <p><strong>Jumlah Lulusan s.d. TS</strong></p>
+                                        <p><strong>(dari Mahasiswa Reguler)</strong></p>
+                                        </td>
+                                        </tr>
+                                        <tr style="height: 4px;">
+                                        <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
+                                        <p><strong>TS-6</strong></p>
+                                        </td>
+                                        <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
+                                        <p><strong>TS-5</strong></p>
+                                        </td>
+                                        <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
+                                        <p><strong>TS-4</strong></p>
+                                        </td>
+                                        <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
+                                        <p><strong>TS-3</strong></p>
+                                        </td>
+                                        <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
+                                        <p><strong>TS-2</strong></p>
+                                        </td>
+                                        <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
+                                        <p><strong>TS-1</strong></p>
+                                        </td>
+                                        <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
+                                        <p><strong>TS</strong></p>
+                                        </td>
+                                        </tr>
+                                    </thead>
                                     <tbody>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2">
-                                    <p><strong>Tahun Masuk</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 35px;" colspan="7">
-                                    <p><strong>Jumlah Mahasiswa Reguler per Angkatan pada Tahun*</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2">
-                                    <p><strong>Jumlah Lulusan s.d. TS</strong></p>
-                                    <p><strong>(dari Mahasiswa Reguler)</strong></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 4px;">
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-6</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-5</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-4</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-3</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-2</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-1</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS</strong></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 102px; text-align: center; height: 35px;">
-                                    <p><strong>(1)</strong></p>
-                                    </td>
-                                    <td style="width: 92px; text-align: center; height: 35px;">
-                                    <p><strong>(1)</strong></p>
-                                    </td>
-                                    <td style="width: 92px; text-align: center; height: 35px;">
-                                    <p><strong>(2)</strong></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 35px;">
-                                    <p><strong>(3)</strong></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 35px;">
-                                    <p><strong>(4)</strong></p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 35px;">
-                                    <p><strong>(5)</strong></p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 35px;">
-                                    <p><strong>(6)</strong></p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 35px;">
-                                    <p><strong>(7)</strong></p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 35px;">
-                                    <p><strong>(8)</strong></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 102px; text-align: center; height: 35px;">
-                                    <p>TS-6</p>
-                                    </td>
-                                    <td style="width: 92px; text-align: center; height: 35px;">
-                                    <p><em>(a)=</em></p>
-                                    </td>
-                                    <td style="width: 92px; text-align: center; height: 35px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 35px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 35px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 35px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 35px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 35px;">
-                                    <p><em>(b)=</em></p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 35px;">
-                                    <p><em>(c)=</em></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS-5</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; text-align: center; height: 36px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 36px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS-4</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 36px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 36px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS-3</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 36px;">
-                                    <p><em>(d) =</em></p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p><em>(e) =</em></p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 36px;">
-                                    <p><em>(f) =</em></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS-2</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS-1</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    </tbody>
-                                    </table>
-                                    <p><br />* Tidak memasukkan mahasiswa transfer.</p>
+                                        <tr style="height: 35px;">
+                                        <td style="width: 102px; text-align: center; height: 35px;">
+                                        <p><strong>(1)</strong></p>
+                                        </td>
+                                        <td style="width: 92px; text-align: center; height: 35px;">
+                                        <p><strong>(2)</strong></p>
+                                        </td>
+                                        <td style="width: 92px; text-align: center; height: 35px;">
+                                        <p><strong>(3)</strong></p>
+                                        </td>
+                                        <td style="width: 93px; text-align: center; height: 35px;">
+                                        <p><strong>(4)</strong></p>
+                                        </td>
+                                        <td style="width: 93px; text-align: center; height: 35px;">
+                                        <p><strong>(5)</strong></p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 35px;">
+                                        <p><strong>(6)</strong></p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 35px;">
+                                        <p><strong>(7)</strong></p>
+                                        </td>
+                                        <td style="width: 109px; text-align: center; height: 35px;">
+                                        <p><strong>(8)</strong></p>
+                                        </td>
+                                        <td style="width: 281px; text-align: center; height: 35px;">
+                                        <p><strong>(9)</strong></p>
+                                        </td>
+                                        <td style="width: 281px; text-align: center; height: 35px;">
+                                        <p><strong>(10)</strong></p>
+                                        </td>
+                                        </tr>
+                                        <tr style="height: 35px;">
+                                        <td style="width: 50px; text-align: center;">
+                                        <p>1. </p>
+                                        </td>
+                                        <td style="width: 102px; text-align: center; height: 35px;">
+                                        <p>TS-6</p>
+                                        </td>
+                                        <td style="width: 92px; text-align: center; height: 35px;">
+                                        <p><em>(a)=</em></p>
+                                        </td>
+                                        <td style="width: 92px; text-align: center; height: 35px;">
+                                        <p><em>&nbsp;</em></p>
+                                        </td>
+                                        <td style="width: 93px; text-align: center; height: 35px;">
+                                        <p><em>&nbsp;</em></p>
+                                        </td>
+                                        <td style="width: 93px; text-align: center; height: 35px;">
+                                        <p><em>&nbsp;</em></p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 35px;">
+                                        <p><em>&nbsp;</em></p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 35px;">
+                                        <p><em>&nbsp;</em></p>
+                                        </td>
+                                        <td style="width: 109px; text-align: center; height: 35px;">
+                                        <p><em>(b)=</em></p>
+                                        </td>
+                                        <td style="width: 281px; text-align: center; height: 35px;">
+                                        <p><em>(c)=</em></p>
+                                        </td>
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                        <td style="width: 50px; text-align: center;">
+                                        <p>2. </p>
+                                        </td>
+                                        <td style="width: 102px; text-align: center; height: 36px;">
+                                        <p>TS-5</p>
+                                        </td>
+                                        <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 92px; text-align: center; height: 36px;">
+                                        <p><em>&nbsp;</em></p>
+                                        </td>
+                                        <td style="width: 93px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 93px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 109px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 281px; text-align: center; height: 36px;">
+                                        <p><em>&nbsp;</em></p>
+                                        </td>
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                        <td style="width: 50px; text-align: center;">
+                                        <p>3. </p>
+                                        </td>
+                                        <td style="width: 102px; text-align: center; height: 36px;">
+                                        <p>TS-4</p>
+                                        </td>
+                                        <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 93px; text-align: center; height: 36px;">
+                                        <p><em>&nbsp;</em></p>
+                                        </td>
+                                        <td style="width: 93px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 109px; text-align: center; height: 36px;">
+                                        <p><em>&nbsp;</em></p>
+                                        </td>
+                                        <td style="width: 281px; text-align: center; height: 36px;">
+                                        <p><em>&nbsp;</em></p>
+                                        </td>
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                        <td style="width: 50px; text-align: center;">
+                                        <p>4. </p>
+                                        </td>
+                                        <td style="width: 102px; text-align: center; height: 36px;">
+                                        <p>TS-3</p>
+                                        </td>
+                                        <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 93px; text-align: center; height: 36px;">
+                                        <p><em>(d) =</em></p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 109px; text-align: center; height: 36px;">
+                                        <p><em>(e) =</em></p>
+                                        </td>
+                                        <td style="width: 281px; text-align: center; height: 36px;">
+                                        <p><em>(f) =</em></p>
+                                        </td>
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                        <td style="width: 50px; text-align: center;">
+                                        <p>5. </p>
+                                        </td>
+                                        <td style="width: 102px; text-align: center; height: 36px;">
+                                        <p>TS-2</p>
+                                        </td>
+                                        <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 109px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 281px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                        <td style="width: 50px; text-align: center;">
+                                        <p>6. </p>
+                                        </td>
+                                        <td style="width: 102px; text-align: center; height: 36px;">
+                                        <p>TS-1</p>
+                                        </td>
+                                        <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 100px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 109px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                        <td style="width: 50px; text-align: center;">
+                                        <p>7. </p>
+                                        </td>
+                                        <td style="width: 102px; text-align: center; height: 36px;">
+                                        <p>TS</p>
+                                        </td>
+                                        <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 109px; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                                <p><br />* Tidak memasukkan mahasiswa transfer.</p>
                                     <p>Catatan&nbsp;: huruf-huruf a, b, c, d, e dan f harus tetap tercantum pada tabel di atas.</p>
                                     <p>&nbsp;</p>
                                     <p>&nbsp;</p>
+                            </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom1_313" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                             </textarea>
                                         </div>
                                     </div>
@@ -5711,10 +5743,9 @@ dst.
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='4.3.4 & 4.3.5') && $id=$butir[0]['id']) { //Manggil 4.3.4
+                        }elseif (($getbutir=='4.3.4 & 4.3.5') && ($getid434 % 2 == 0)) {
                             $getidbutir434 = '';
-                            $querycariidbutir434 = $CI->db->query('select * from butir where id=34');
-                            // $querycariidbutir434 = $CI->db->query('select * from butir where butir="4.3.4" and id_borang = "'.$id_bor.'"');
+                            $querycariidbutir434 = $CI->db->query('select * from butir where butir="4.3.4 & 4.3.5" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir434->result() as $row){
                                 $getidbutir434 = $row->id;
                                 break;
@@ -6043,9 +6074,9 @@ dst.
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='4.3.5') && $id=35) { //Manggil 4.3.5
+                        }elseif (($getbutir=='4.3.4 & 4.3.5') && ($getid434 % 2 !== 0)) {
                             $getidbutir435 = '';
-                            $querycariidbutir435 = $CI->db->query('select * from butir where id=35');
+                            $querycariidbutir435 = $CI->db->query('select * from butir where butir="4.3.4 & 4.3.5" and id_borang = "'.$id_bor.'"');
                             foreach ($querycariidbutir435->result() as $row){
                                 $getidbutir435 = $row->id;
                                 break;
@@ -26207,6 +26238,7 @@ dst.
 ?>
 
 <script>
+
   function toTitleCase(str)
   {
       return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
