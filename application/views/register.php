@@ -79,14 +79,22 @@
                         <span class="input-group-addon">
                             <i class="material-icons">accessibility</i>
                         </span>
-                        <div class="form-line">
+                        <!-- <div class="form-line">
                             <input name="role" type="radio" id="radio_30" value="Assessor" class="with-gap radio-col-red" />
                             <label for="radio_30">Assessor</label>
                             <input name="role" type="radio" id="radio_35" value="Kaprodi" class="with-gap radio-col-blue" />
                             <label for="radio_35">Kaprodi</label>
                             <input name="role" type="radio" id="radio_39" value="Admin" class="with-gap radio-col-green" />
                             <label for="radio_39">Admin</label>
-                        </div>
+                        </div> -->
+                        <select name="role" class="form-control show-tick">
+                                        <option value="">-- Please select --</option>
+                                        <option value="Assessor">Assessor</option>
+                                        <option value="Kaprodi">Kaprodi</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Admisi">Admisi</option>
+                                        <option value="Kemahasiswaan">Kemahasiswaan</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-pink">

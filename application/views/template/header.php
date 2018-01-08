@@ -357,7 +357,7 @@
                         </a>
                     </li>
                     <?php
-                    if($_SESSION['role']=="Admin"){
+                    if(($_SESSION['role']=="Admin")){
                         ?>
                     <li class="<?php echo ($active_menu=="borang") ? "active" :""; ?>">
                         <a href="<?php echo base_url();?>fakultas">
@@ -399,6 +399,27 @@
                         <a href="<?php echo base_url();?>penilaian">
                             <i class="material-icons">assignment_turned_in</i>
                             <span>Penilaian</span>
+                        </a>
+                    </li>
+                        <?php
+                    }else if (($_SESSION['role']=="Admisi") || ($_SESSION['role']=="Kemahasiswaan")) {
+                        ?>
+                    <li class="<?php echo ($active_menu=="isiandata") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>unit">
+                            <i class="material-icons">dialpad</i>
+                            <span>Isian Data</span>
+                        </a>
+                    </li>
+                    <li class="<?php echo ($active_menu=="editdata") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>unitedit">
+                            <i class="material-icons">mode_edit</i>
+                            <span>Edit Data</span>
+                        </a>
+                    </li>
+                    <li class="<?php echo ($active_menu=="upload") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>uploadunit">
+                            <i class="material-icons">file_upload</i>
+                            <span>Upload Dokumen</span>
                         </a>
                     </li>
                         <?php
@@ -693,6 +714,12 @@
                             </li>
                         </ul>
                     </li> -->
+                    <li class="<?php echo ($active_menu=="laporan") ? "active" :""; ?>">
+                        <a href="<?php echo base_url();?>laporan">
+                            <i class="material-icons">playlist_add_check</i>
+                            <span>Lihat Laporan</span>
+                        </a>
+                    </li>
                     <li class="<?php echo ($active_menu=="changelogs") ? "active" :""; ?>">
                         <a href="<?php echo base_url();?>changelogs">
                             <i class="material-icons">update</i>

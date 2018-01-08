@@ -6234,7 +6234,7 @@ class M_isian extends CI_Model {
 
         public function update_isian713()
         {
-            $last_version = $this->input->post('version_no712');
+            $last_version = $this->input->post('version_no713');
             $new_version = $last_version + 1;
                  $data = array(
                         'kolom1' => $this->input->post('kolom1_713'),

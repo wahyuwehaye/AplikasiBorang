@@ -30,6 +30,13 @@ class M_borang extends CI_Model {
               ->result();
         }
 
+        function getfakultas() {
+             $this->db->select('*');
+             $this->db->from('fakultas');
+             $query = $this->db->get();
+             return $query->result();
+        }
+
         public function insert_entry()
         {
                 $data = array(

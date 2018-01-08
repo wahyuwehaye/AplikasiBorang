@@ -75,6 +75,13 @@ class Home extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function laporan(){
+		$data['active_menu']='laporan';
+		$this->load->view('template/header',$data);
+		$this->load->view('laporan');
+		// $this->load->view('template/footer');
+	}
+
 	// public function borang(){
 	// 	$data['active_menu']='borang';
 	// 	$this->load->view('template/header',$data);
