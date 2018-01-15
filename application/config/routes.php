@@ -79,6 +79,7 @@ $route['isian/:num'] = 'C_isian';
 $route['isian3bs1/:num'] = 'C_isian3bs1';
 $route['uploadbukti/:num'] = 'C_isian/uploadbukti';
 $route['isian3ad3/:num'] = 'C_isian3ad3';
+$route['isian3bd3/:num'] = 'C_isian3bd3';
 $route['uploadisi/:num'] = 'C_uploadisi';
 $route['uploaddokumen/:num'] = 'C_uploadisi';
 $route['viewbookbutir/:num'] = 'C_isian/viewbookbutir';

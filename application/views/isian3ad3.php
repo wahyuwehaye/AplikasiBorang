@@ -419,7 +419,7 @@
                         </div>
                         <h2 class="card-inside-title">Sistem Tata Pamong&nbsp;
                         <button type="button" onclick="infoPamong()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Sistem tata pamong berjalan secara efektif melalui mekanisme yang disepakati bersama, serta dapat memelihara dan mengakomodasi semua unsur, fungsi, dan peran dalam program studi. Tata pamong didukung dengan budaya organisasi yang dicerminkan dengan ada dan tegaknya aturan, tatacara pemilihan pimpinan, etika dosen, etika mahasiswa, etika tenaga kependidikan, sistem penghargaan dan sanksi serta pedoman dan prosedur pelayanan (administrasi, perpustakaan, laboratorium, dan studio). Sistem tata pamong (input, proses, output dan outcome serta lingkungan eksternal yang menjamin terlaksananya tata pamong yang baik) harus diformulasikan, disosialisasikan, dilaksanakan,  dipantau dan dievaluasi dengan peraturan dan prosedur yang jelas. </h2>
+                        <h2 class="card-inside-title" style="text-align: justify;">Sistem tata pamong berjalan secara efektif melalui mekanisme yang disepakati bersama, serta dapat memelihara dan mengakomodasi semua unsur, fungsi, dan peran dalam program studi. Tata pamong didukung dengan budaya organisasi yang dicerminkan dengan ada dan tegaknya aturan, tatacara pemilihan pimpinan, etika dosen, etika mahasiswa, etika tenaga kependidikan, sistem penghargaan dan sanksi serta pedoman dan prosedur pelayanan (administrasi, perpustakaan, laboratorium, dan studio). Sistem tata pamong (input, proses, output dan outcome serta lingkungan eksternal yang menjamin terlaksananya tata pamong yang baik) harus diformulasikan, disosialisasikan, dilaksanakan,  dipantau dan dievaluasi dengan peraturan dan prosedur yang jelas. </h2>
                         <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang kredibel, transparan, akuntabel, bertanggung jawab dan adil.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
@@ -3003,9 +3003,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom2_341" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    
-                                            </textarea>
+                                            <textarea name="kolom2_341" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -18250,7 +18248,7 @@ dst.
         </div>
 
 
-        <!-- Molda Update Tabel 311 -->
+        <!-- Modal Update Tabel 311 -->
         <div class="modal fade" id="update311" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -18465,7 +18463,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 311 -->
 
-        <!-- Molda Update Tabel 312 -->
+        <!-- Modal Update Tabel 312 -->
         <div class="modal fade" id="update312" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -18529,7 +18527,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 312 -->
 
-        <!-- Molda Update Tabel 313 -->
+        <!-- Modal Update Tabel 313 -->
         <div class="modal fade" id="update313" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -18594,7 +18592,7 @@ dst.
         <!-- Tutup Modal Update 313 -->
 
 
-        <!-- Molda Update Tabel 312 -->
+        <!-- Modal Update Tabel 312 -->
             <div class="modal fade" id="update312" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -18711,7 +18709,7 @@ dst.
             </div>
             <!-- Tutup Modal Update 312 -->
 
-        <!-- Molda Update Tabel 3412 -->
+        <!-- Modal Update Tabel 3412 -->
         <div class="modal fade" id="update3412" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -19183,7 +19181,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 3412 -->
 
-        <!-- Molda Update Tabel 345 -->
+        <!-- Modal Update Tabel 345 -->
         <div class="modal fade" id="update345" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -19247,7 +19245,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 345 -->
 
-        <!-- Molda Update Tabel 431 -->
+        <!-- Modal Update Tabel 431 -->
         <div class="modal fade" id="update431" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -19356,7 +19354,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 431 -->
 
-        <!-- Molda Update Tabel 432 -->
+        <!-- Modal Update Tabel 432 -->
         <div class="modal fade" id="update432" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -19465,7 +19463,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 432 -->
 
-        <!-- Molda Update Tabel 433 -->
+        <!-- Modal Update Tabel 433 -->
         <div class="modal fade" id="update433" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -19601,7 +19599,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 433 -->
 
-        <!-- Molda Update Tabel 434 -->
+        <!-- Modal Update Tabel 434 -->
         <div class="modal fade" id="update434" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -19710,7 +19708,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 434 -->
 
-        <!-- Molda Update Tabel 435 -->
+        <!-- Modal Update Tabel 435 -->
         <div class="modal fade" id="update435" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -19819,7 +19817,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 435 -->
 
-        <!-- Molda Update Tabel 441 -->
+        <!-- Modal Update Tabel 441 -->
         <div class="modal fade" id="update441" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -19928,7 +19926,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 441 -->
 
-        <!-- Molda Update Tabel 442 -->
+        <!-- Modal Update Tabel 442 -->
         <div class="modal fade" id="update442" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -20037,7 +20035,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 442 -->
 
-        <!-- Molda Update Tabel 451 -->
+        <!-- Modal Update Tabel 451 -->
         <div class="modal fade" id="update451" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -20103,7 +20101,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 451 -->
 
-        <!-- Molda Update Tabel 452 -->
+        <!-- Modal Update Tabel 452 -->
         <div class="modal fade" id="update452" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -20201,7 +20199,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 452 -->
 
-        <!-- Molda Update Tabel 453 -->
+        <!-- Modal Update Tabel 453 -->
         <div class="modal fade" id="update453" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -20292,7 +20290,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 453 -->
 
-        <!-- Molda Update Tabel 454 -->
+        <!-- Modal Update Tabel 454 -->
         <div class="modal fade" id="update454" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -20368,7 +20366,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 454 -->
 
-        <!-- Molda Update Tabel 455 -->
+        <!-- Modal Update Tabel 455 -->
         <div class="modal fade" id="update455" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -20444,7 +20442,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 455 -->
 
-        <!-- Molda Update Tabel 461 -->
+        <!-- Modal Update Tabel 461 -->
         <div class="modal fade" id="update461" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -20785,7 +20783,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 461 -->
 
-        <!-- Molda Update Tabel 5121 -->
+        <!-- Modal Update Tabel 5121 -->
         <div class="modal fade" id="update5121" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -20940,7 +20938,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 5121 -->
 
-        <!-- Molda Update Tabel 512b -->
+        <!-- Modal Update Tabel 512b -->
         <div class="modal fade" id="update512b" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -21007,7 +21005,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 512b -->
 
-        <!-- Molda Update Tabel 5122 -->
+        <!-- Modal Update Tabel 5122 -->
         <div class="modal fade" id="update5122" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -21086,7 +21084,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 5122 -->
 
-        <!-- Molda Update Tabel 512c -->
+        <!-- Modal Update Tabel 512c -->
         <div class="modal fade" id="update512c" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -21312,7 +21310,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 512c -->
 
-        <!-- Molda Update Tabel 513 -->
+        <!-- Modal Update Tabel 513 -->
         <div class="modal fade" id="update513" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -21415,7 +21413,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 513 -->
 
-        <!-- Molda Update Tabel 514 -->
+        <!-- Modal Update Tabel 514 -->
         <div class="modal fade" id="update514" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -21494,7 +21492,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 514 -->
 
-        <!-- Molda Update Tabel 532 -->
+        <!-- Modal Update Tabel 532 -->
         <div class="modal fade" id="update532" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -21618,7 +21616,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 532 -->
 
-        <!-- Molda Update Tabel 541 -->
+        <!-- Modal Update Tabel 541 -->
         <div class="modal fade" id="update541" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -21683,7 +21681,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 541 -->
 
-        <!-- Molda Update Tabel 542 -->
+        <!-- Modal Update Tabel 542 -->
         <div class="modal fade" id="update542" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -21781,7 +21779,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 542 -->
 
-        <!-- Molda Update Tabel 5524 -->
+        <!-- Modal Update Tabel 5524 -->
         <div class="modal fade" id="update5524" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -21835,7 +21833,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 5524 -->
 
-        <!-- Molda Update Tabel 56 -->
+        <!-- Modal Update Tabel 56 -->
         <div class="modal fade" id="update56" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -21903,7 +21901,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 56 -->
 
-        <!-- Molda Update Tabel 59 -->
+        <!-- Modal Update Tabel 59 -->
         <div class="modal fade" id="update59" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -21976,7 +21974,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 59 -->
 
-        <!-- Molda Update Tabel 622 -->
+        <!-- Modal Update Tabel 622 -->
         <div class="modal fade" id="update622" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -22052,7 +22050,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 622 -->
 
-        <!-- Molda Update Tabel 623 -->
+        <!-- Modal Update Tabel 623 -->
         <div class="modal fade" id="update623" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -22128,7 +22126,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 623 -->
 
-        <!-- Molda Update Tabel 631 -->
+        <!-- Modal Update Tabel 631 -->
         <div class="modal fade" id="update631" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -22262,7 +22260,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 631 -->
 
-        <!-- Molda Update Tabel 632 -->
+        <!-- Modal Update Tabel 632 -->
         <div class="modal fade" id="update632" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -22400,7 +22398,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 632 -->
 
-        <!-- Molda Update Tabel 633 -->
+        <!-- Modal Update Tabel 633 -->
         <div class="modal fade" id="update633" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -22538,7 +22536,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 633 -->
 
-        <!-- Molda Update Tabel 641 -->
+        <!-- Modal Update Tabel 641 -->
         <div class="modal fade" id="update641" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -22612,7 +22610,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 641 -->
 
-        <!-- Molda Update Tabel 641c -->
+        <!-- Modal Update Tabel 641c -->
         <div class="modal fade" id="update641c" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -22691,7 +22689,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 641c -->
 
-        <!-- Molda Update Tabel 643 -->
+        <!-- Modal Update Tabel 643 -->
         <div class="modal fade" id="update643" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -22840,7 +22838,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 643 -->
 
-        <!-- Molda Update Tabel 652 -->
+        <!-- Modal Update Tabel 652 -->
         <div class="modal fade" id="update652" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -23136,7 +23134,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 652 -->
 
-        <!-- Molda Update Tabel 711 -->
+        <!-- Modal Update Tabel 711 -->
         <div class="modal fade" id="update711" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -23368,7 +23366,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 711 -->
 
-        <!-- Molda Update Tabel 712 -->
+        <!-- Modal Update Tabel 712 -->
         <div class="modal fade" id="update712" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -23471,7 +23469,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 712 -->
 
-        <!-- Molda Update Tabel 713 -->
+        <!-- Modal Update Tabel 713 -->
         <div class="modal fade" id="update713" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -23528,7 +23526,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 713 -->
 
-        <!-- Molda Update Tabel 721 -->
+        <!-- Modal Update Tabel 721 -->
         <div class="modal fade" id="update721" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -23761,7 +23759,7 @@ dst.
         <!-- Tutup Modal Update 721 -->
 
 
-        <!-- Molda Update Tabel 731 -->
+        <!-- Modal Update Tabel 731 -->
         <div class="modal fade" id="update731" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -23857,7 +23855,7 @@ dst.
         </div>
         <!-- Tutup Modal Update 731 -->
 
-        <!-- Molda Update Tabel 732 -->
+        <!-- Modal Update Tabel 732 -->
         <div class="modal fade" id="update732" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
