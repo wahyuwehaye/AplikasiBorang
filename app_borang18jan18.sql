@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 29 Des 2017 pada 08.41
+-- Generation Time: 18 Jan 2018 pada 02.51
 -- Versi Server: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -185,7 +185,11 @@ INSERT INTO `borang` (`id`, `id_prodi`, `jenis`, `fakpro`, `tahun`, `buku`, `cre
 (157, 3, 'Borang 3B', 'Borang S1 Fakultas Teknik Elektro', 2017, 'Borang', '2017-12-27 03:13:38', '0000-00-00 00:00:00'),
 (158, 3, 'Excel 3B', 'Borang S1 Fakultas Teknik Elektro', 2017, 'Borang', '2017-12-27 03:13:38', '0000-00-00 00:00:00'),
 (159, 3, 'Evaluasi Diri 3B', 'Borang S1 Fakultas Teknik Elektro', 2017, 'Borang', '2017-12-27 03:13:38', '0000-00-00 00:00:00'),
-(160, 3, 'Lampiran 3B', 'Borang S1 Fakultas Teknik Elektro', 2017, 'Borang', '2017-12-27 03:13:38', '0000-00-00 00:00:00');
+(160, 3, 'Lampiran 3B', 'Borang S1 Fakultas Teknik Elektro', 2017, 'Borang', '2017-12-27 03:13:38', '0000-00-00 00:00:00'),
+(161, 7, 'Borang 3A', 'Borang S1 Teknik Telekomunikasi', 2018, 'Borang', '2018-01-07 20:38:21', '0000-00-00 00:00:00'),
+(162, 7, 'Excel 3A', 'Borang S1 Teknik Telekomunikasi', 2018, 'Borang', '2018-01-07 20:38:21', '0000-00-00 00:00:00'),
+(163, 7, 'Evaluasi Diri 3A', 'Borang S1 Teknik Telekomunikasi', 2018, 'Borang', '2018-01-07 20:38:21', '0000-00-00 00:00:00'),
+(164, 7, 'Lampiran 3A', 'Borang S1 Teknik Telekomunikasi', 2018, 'Borang', '2018-01-07 20:38:21', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -2284,7 +2288,136 @@ INSERT INTO `butir` (`id`, `butir`, `bakumutu`, `penjelasan`, `keterangan`, `cre
 (2988, '7.2.1.b', 'Besar dana PkM', '', 'Nilai 4 - Jika RDPKM ≥ 1.5 juta, maka skor = 4.', '2017-12-27 09:13:42', '2017-12-27 09:13:42', 157),
 (2989, '7.2.2', 'Upaya pengembangan', '', 'Nilai 4 - Ada upaya dan sangat efektif meningkatkan jumlah kegiatan PkM dan dananya.', '2017-12-27 09:13:42', '2017-12-27 09:13:42', 157),
 (2990, '7.3.1', 'Kegiatan kerjasama dengan instansi di dalam negeri dalam tiga tahun terakhir\r\n\r\nCatatan;\r\nTingkat kecukupan bergantung pada jumlah dosen tetap Fakultas/Sekolah Tinggi\r\n', '', 'Nilai 4 - Ada kerjasama dengan institusi di dalam negeri, banyak dalam jumlah.  Semuanya  relevan dengan bidang keahlian PS.', '2017-12-27 09:13:42', '2017-12-27 09:13:42', 157),
-(2991, '7.3.2', 'Kegiatan kerjasama dengan instansi di luar negeri dalam tiga tahun terakhir.\r\n\r\n\r\nCatatan;\r\nTingkat kecukupan bergantung pada jumlah dosen tetap  Fakultas/Sekolah Tinggi\r\n', '', 'Nilai 4 - Ada kerjasama dengan institusi di luar negeri, banyak dalam jumlah.  Semuanya  relevan dengan bidang keahlian PS.', '2017-12-27 09:13:42', '2017-12-27 09:13:42', 157);
+(2991, '7.3.2', 'Kegiatan kerjasama dengan instansi di luar negeri dalam tiga tahun terakhir.\r\n\r\n\r\nCatatan;\r\nTingkat kecukupan bergantung pada jumlah dosen tetap  Fakultas/Sekolah Tinggi\r\n', '', 'Nilai 4 - Ada kerjasama dengan institusi di luar negeri, banyak dalam jumlah.  Semuanya  relevan dengan bidang keahlian PS.', '2017-12-27 09:13:42', '2017-12-27 09:13:42', 157),
+(2992, '1.1.a', 'Kejelasan dan kerealistikan visi, misi, tujuan, dan sasaran Program Studi', '', 'Nilai 4 - Memiliki visi, misi, tujuan, dan sasaran yang sangat jelas dan sangat realistik', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(2993, '1.1.b', 'Strategi Pencapaian sasaran dengan rentang waktu yang jelas dan didukung oleh dokumen', '', 'Nilai 4 - \r\nStrategi pencapaian sasaran :\r\n(1) dengan tahapan waktu yang jelas dan sangat realistik\r\n(2) didukung dokumen yang sangat lengkap', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(2994, '1.2', 'Sosialisasi yang efektif tercermin dari tingkat pemahaman pihak terkait', '', 'Nilai 4 - Dipahami dengan baik oleh seluruh sivitas akademika dan tenaga kependidikan', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(2995, '2.1', 'Tata Pamong menjamin terwujudnya visi, terlaksanakannya misi, tercapainya tujuan, berhasilnya strategi yang digunakan secara kredibel, transparan, akuntabel, bertanggung jawab, dan adil', '', 'Nilai 4 - Program studi memiliki tata pamong yang memungkinkan terlaksananya secara konsisten prinsip tata pamong, dan menjamin penyelenggaraan program studi yang memenuhi 5 aspek berikut : (1) kredibel, (2) transparan, (3) akuntabel, (4) bertanggung jawab dan (5) adil', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(2996, '2.2', 'Karekteristik kepemimpinan yang efektiif', '', 'Nilai 4 - Kepemimpinan program studi memiliki karakteristik yang kuat dalam : (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(2997, '2.3', 'Sistem Pengelolaan fungsional dan opeerasional program studi mencakup: planning, organizing, staffing, leading, controlling yang efektif dilaksanakan', '', 'Nilai 4 - Sistem pengelolaan fungsional dan operasional program studi berjalan sesuai dengan SOP, yang didukung dokumen yang lengkap', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(2998, '2.4', 'Pelaksanaan penjaminan mutu di program studi\r\n\r\nPelaksanaannya antara lain dengan adanya: kelompok dosen bidang ilmu yang menilai mutu soal ujian, silabus, dan tugas akhir, serta penguji luar (external examiner) ', '', 'Nilai 4 - Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, ada  umpan balik dan tindak lanjutnya, yang didukung dokumen yang lengkap', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(2999, '2.5', 'Penjaringan umpan balik  dan tindak lanjutnya.\r\nSumber umpan balik antara lain dari: (1) dosen, (2) mahasiswa, (3) alumni, (4) pengguna lulusan.\r\n\r\nUmpan balik digunakan untuk perbaikan kurikulum, pelaksanaan proses pembelajaran, dan peningkatan kegiatan program studi', '', 'Nilai 4 - Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara berkelanjutan', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3000, '2.6', 'Upaya-upaya yang telah dilakukan penyelenggara program studi untuk menjamin keberlanjutan (sustainability) program studi ini antara lain mencakup:\r\na. Upaya untuk peningkatan animo calon mahasiswa\r\nb. Upaya peningkatan mutu manajemen\r\nc. Upaya untuk peningkatan mutu lulusan\r\nd. Upaya untuk pelaksanaan dan hasil kerjasama kemitraan\r\ne. Upaya dan prestasi dalam memperoleh dana hibah kompetitif', '', 'Nilai 4 - Ada bukti semua usaha dilakukan berikut hasilnya.\r\n', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3001, '3.1.1.a', 'Rasio calon mahasiswa yang ikut seleksi : daya tampung', '', 'Nilai 4 - Jika rasio ≥ 5, \r\nmaka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3002, '3.1.1.b', 'Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi', '', 'Nilai 4 - Jika rasio ≥ 95%, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3003, '3.1.1.c', 'Rasio mahasiswa baru transfer terhadap mahasiswa baru bukan transfer', '', 'Nilai 4 - Jika RM ≤ 0.25, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3004, '3.1.1.d', 'Rata-rata Indeks Prestasi Kumulatif (IPK) selama lima tahun terakhir', '', 'Nilai 4 - Jika IPK ≥ 3, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3005, '3.1.2', 'Penerimaan mahasiswa non-reguler selayaknya tidak membuat beban dosen sangat berat, jauh melebihi beban ideal  (sekitar 12 sks)', '', 'Nilai 4 - Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban mendekati ideal, yaitu kurang atau sama dengan 13 sks ', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3006, '3.1.3', 'Penghargaan atas prestasi mahasiswa di bidang nalar, bakat dan minat', '', 'Nilai 4 - Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat nasional atau internasional', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3007, '3.1.4.a', 'Persentase kelulusan tepat waktu (KTW)', '', 'Nilai 4 - Jika KTW ≥ 50%, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3008, '3.1.4.b', 'Persentase mahasiswa yang DO atau mengundurkan diri (MDO).', '', 'Nilai 4 - Jika MDO ≤  6%, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3009, '3.2.1', 'Mahasiswa memiliki akses untuk mendapatkan pelayanan mahasiswa yang dapat dimanfaatkan untuk membina dan mengembangkan penalaran, minat, bakat, seni, dan kesejahteraan.  \r\n\r\nJenis pelayanan kepada mahasiswa antara lain:\r\n1.  Bimbingan dan konseling\r\n2.  Minat dan bakat (ekstra kurikuler)\r\n3.  Pembinaan soft skill\r\n4.  Layanan beasiswa\r\n5.  Layanan kesehatan', '', 'Nilai 4 - Ada semua (5 jenis) pelayanan mahasiswa yang dapat diakses.. ', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3010, '3.2.2', 'Kualitas layanan kepada mahasiswa\r\nUntuk setiap jenis pelayanan, pemberian skor sebagai berikut:\r\n\r\n4 : sangat baik\r\n3 : baik\r\n2: cukup\r\n1: kurang\r\n0: sangat kurang', '', 'Skor = SL', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3011, '3.3.1.a', 'Upaya pelacakan dan perekaman data lulusan', '', 'Nilai 4 - Ada upaya yang intensif untuk melacak  lulusan dan datanya terekam secara komprehensif', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3012, '3.3.1.b', 'Penggunaan hasil pelacakan untuk perbaikan: \r\n(1) proses pembelajaran, \r\n(2) penggalangan dana, \r\n(3) informasi pekerjaan, \r\n(4) membangun jejaring.', '', 'Nilai 4 - Hasil pelacakan untuk perbaikan  4 item.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3013, '3.3.1.c', 'Pendapat pengguna (employer) lulusan terhadap kualitas alumni.\r\nAda 7 jenis kompetensi.\r\nSkor akhir = [4 x (a) + 3 x (b) + 2 x (c) + (d)] / 7', '', 'Nilai 4 - Skor = Skor akhir', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3014, '3.3.2', 'Profil masa tunggu kerja pertama\r\n\r\nRMT = rata-rata masa tunggu lulusan memperoleh pekerjaan yang pertama', '', 'Nilai 4 - Jika RMT ≤ 3 bulan, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3015, '3.3.3', ' Profil kesesuaian bidang kerja dengan bidang studi\r\n\r\nPBS = persentase kesesuaian bidang kerja dengan bidang studi (keahlian) lulusan', '', 'Nilai 4 - Jika PBS ≥ 80%, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3016, '3.4.1', 'Partisipasi alumni dalam mendukung pengembangan akademik program studi dalam bentuk: \r\n(1) Sumbangan dana\r\n(2) Sumbangan fasilitas\r\n(3) Keterlibatan dalam kegiatan akademik\r\n(4) Pengembangan jejaring\r\n(5) Penyediaan fasilitas untuk kegiatan akademik', '', 'Nilai 4 - Semua bentuk partisipasi dilakukan oleh alumni.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3017, '3.4.2', 'Partisipasi lulusan dan alumni dalam mendukung pengembangan non-akademik program studi dalam bentuk: \r\n(1) Sumbangan dana\r\n(2) Sumbangan fasilitas\r\n(3) Keterlibatan dalam kegiatan non akademik\r\n(4) Pengembangan jejaring \r\n(5) Penyediaan fasilitas untuk kegiatan non akademik', '', 'Nilai 4 - Semua bentuk partisipasi dilakukan oleh alumni', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3018, '4.1', 'Pedoman tertulis tentang sistem seleksi, perekrutan, penempatan, pengembangan, retensi, dan pemberhentian dosen dan tenaga kependidikan', '', 'Nilai 4 - Ada pedoman tertulis yang lengkap; dan ada bukti dilaksanakan secara konsisten', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3019, '4.2.1', 'Pedoman tertulis tentang sistem monitoring dan evaluasi, serta rekam jejak kinerja dosen dan tenaga kependidikan', '', 'Nilai 4 - Ada pedoman tertulis yang lengkap; dan ada bukti dilaksanakan secara konsisten', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3020, '4.2.2', 'Pelaksanaan monitoring dan evaluasi kinerja dosen di bidang  pendidikan, penelitian, pelayanan/pengabdian kepada masyarakat', '', 'Nilai 4 - Ada bukti tentang kinerja dosen di bidang  \r\n(1) pendidikan\r\n(2) penelitian \r\n(3) pelayanan/ pengabdian kepada masyarakat yang terdokumentasi dengan baik.  \r\n', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3021, '4.3.1.a', 'Dosen tetap berpendidikan (terakhir) S2 dan S3 yang bidang keahliannya sesuai dengan kompetensi PS \r\nKD1 = Persentase dosen tetap berpendidikan (terakhir) S2 dan S3 yang bidang keahliannya sesuai dengan kompetensi PS', '', 'Nilai - Jika KD1 ≥ 90%, maka skor = 4\r\n', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3022, '4.3.1.b', 'Dosen tetap yang berpendidikan S3 yang bidang keahliannya sesuai dengan kompetensi PS\r\nKD2 = Persentase dosen tetap yang berpendidikan S3 yang bidang keahliannya sesuai dengan kompetensi PS', '', 'Nilai 4 - Jika KD2 ≥ 40%, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3023, '4.3.1.c', 'Dosen tetap yang memiliki jabatan lektor kepala dan guru besar yang bidang keahliannya sesuai dengan kompetensi PS\r\nKD3 = Persentase Dosen tetap yang memiliki jabatan lektor kepala dan guru besar yang bidang keahliannya sesuai dengan kompetensi PS', '', 'Nilai 4 - Jika KD3 ≥ 40%, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3024, '4.3.1.d', 'Dosen yang memiliki Sertifikat Pendidik Profesional\r\nKD4 = Persentase dosen yang memiliki Sertifikat Pendidik Profesional', '', 'Nilai - Jika KD4 ≥ 40%, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3025, '4.3.2', 'Rasio mahasiswa terhadap dosen tetap yang bidang keahliannya sesuai dengan bidang PS (RMD)\r\n\r\nCatatan: \r\n- Jumlah mahasiswa reguler diambil dari tabel 3.1.1., yaitu jumlah dari kolom (7) dan kolom (8) pada baris TS.\r\n- Jumlah mahasiswa non-reguler diambil dari tabel 3.1.2, yaitu jumlah dari kolom (7) dan kolom (8) pada baris TS\r\n- Jumlah dosen tetap diambil dari tabel 4.3.1.', '', 'Nilai 4 - Jika 27 ≤ RMD ≤ 33, maka skor = 4.\r\nNilai 4 - Jika 17 ≤ RMD ≤ 23, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3026, '4.3.3', 'Rata-rata beban dosen per semester, atau rata-rata FTE (Fulltime Teaching Equivalent)  \r\n\r\nRFTE = rata-rata FTE', '', 'Nilai 4 - Jika 11 ≤ RFTE ≤  13 sks, maka skor = 4.\r\n', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3027, '4.3.4 & 4.3.5', 'Kesesuaian keahlian (pendidikan terakhir) dosen dengan mata kuliah yang diajarkannya', '', 'Nilai 4 - Semua mata kuliah diajar oleh dosen yang sesuai keahliannya', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3028, '4.3.4 & 4.3.5', 'Tingkat kehadiran dosen tetap dalam mengajar\r\nPKDT = Persentase kehadiran dosen tetap dalam perkuliahan (terhadap jumlah kehadiran yang direncanakan)', '', 'Nilai 4 - Jika PKDT ≥ 95%, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3029, '4.4.1', 'Persentase jumlah dosen tidak tetap, terhadap jumlah seluruh dosen (= PDTT)', '', 'Nilai 4 - Jika PDTT ≤ 10%, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3030, '4.4.2.a', 'Kesesuaian keahlian dosen tidak tetap dengan mata kuliah yang diampu', '', 'Nilai 4 - Semua dosen tidak tetap mengajar mata kuliah yang sesuai keahliannya', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3031, '4.4.2.b', 'Pelaksanaan tugas/ tingkat kehadiran dosen tidak tetap dalam mengajar\r\n\r\nPKDTT = Persentase kehadiran dosen tidak tetap dalam perkuliahan (terhadap jumlah kehadiran yang direncanakan)', '', 'Nilai 4 - Jika PKDTT ≥ 95%, maka skor = 4.\r\n', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3032, '4.5.1', 'Kegiatan tenaga ahli/pakar (sebagai pembicara dalam seminar/pelatihan, pembicara tamu, dsb, dari luar PT sendiri (tidak termasuk dosen tidak tetap).\r\nJTAP = Jumlah tenaga ahli/pakar.\r\nCatatan: Tenaga ahli dari luar perguruan tinggi dengan tujuan untuk pengayaan pengetahuan dan bukan untuk mengisi kekurangan tenaga pengajar, tidak bekerja secara rutin', '', 'Nilai 4 - Jika JTAP  12 orang, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3033, '4.5.2', 'Peningkatan kemampuan dosen tetap melalui program tugas belajar dalam bidang yang sesuai dengan bidang PS.\r\n\r\nPerhitungan skor sebagai berikut:\r\nApabila dosen tetap berpendidikan (terakhir) S2 dan S3 yang bidang keahliannya sesuai dengan kompetensi PS > 90%\r\natau dosen tetap yang berpendidikan S3 yang bidang keahliannya sesuai dengan kompetensi PS > 40%, maka skor pada butir ini = 4.\r\n\r\nJika tidak, gunakan aturan di bawah:\r\nN2 = Jumlah dosen yang mengikuti tugas belajar jenjang S2 pada bidang keahlian yang sesuai dengan PS dalam kurun waktu tiga tahun terakhir.\r\nN3 = Jumlah dosen yang mengikuti tugas belajar jenjang S3 pada bidang keahlian yang sesuai dengan PS dalam kurun waktu tiga tahun terakhir\r\n\r\nSD  = (0.75 N2 + 1.25 N3)', '', 'Nilai 4 - Jika SD ≥ 4, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3034, '4.5.3', 'Kegiatan dosen tetap yang bidang keahliannya sesuai dengan PS dalam seminar ilmiah/ lokakarya/ penataran/ workshop/ pagelaran/ pameran/peragaan yang tidak hanya melibatkan dosen PT sendiri.', '', 'Nilai 4 - Jika SP ≥ 3, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3035, '4.5.4', 'Prestasi dalam mendapatkan penghargaan hibah, pendanaan program dan kegiatan akademik dari tingkat nasional dan internasional; besaran dan proporsi dana penelitian dari sumber institusi sendiri dan luar institusi. \r\nCatatan: selama tiga tahun terakhir', '', 'Nilai 4 - Mendapatkan penghargaan hibah, pendanaan program dan kegiatan akademik dari institusi internasional (disertai bukti)', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3036, '4.5.5', 'Reputasi dan keluasan jejaring dosen dalam bidang akademik dan profesi', '', 'Nilai 4 - Lebih dari 30%  dosen tetap menjadi anggota masyarakat bidang ilmu tingkat internasional', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3037, '4.6.1.a', 'Pustakawan dan kualifikasinya\r\n\r\nCatatan: nilai dihitung dengan rumus berikut:\r\n\r\nA = (4 X1 + 3 X2 + 2 X3)/4\r\n\r\nX1 = jumlah pustakawan yang berpendidikan S2 atau S3.\r\nX2 = jumlah pustakawan yang berpendidikan D4 atau S1.\r\nX3 = jumlah pustakawan yang berpendidikan D1, D2, atau D3.', '', 'Nilai 4 - Jika A ≥ 4, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3038, '4.6.1.b', 'Laboran, teknisi, operator, programer\r\n\r\nCatatan:\r\nAgar dibandingkan dengan kegiatan yang seharusnya dilakukan dalam PS yang bersangkutan.', '', 'Nilai 4 - Jumlah cukup dan sangat baik kegiatannya', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3039, '4.6.1.c', 'Tenaga administrasi\r\n\r\nCatatan: nilai dihitung dengan rumus berikut:\r\nD = (4 X1 + 3 X2 + 2 X3 + X4)/4\r\n\r\nMisalkan:\r\nX1 = jumlah tenaga administrasi yang berpendidikan D4 atau S1 ke atas.\r\nX2 = jumlah tenaga administrasi yang berpendidikan D3.\r\nX3 = jumlah tenaga administrasi  yang berpendidikan D1 atau D2\r\nX4 = jumlah tenaga administrasi yang berpendidikan SMU/SMK', '', 'Nilai 4 - Jika  D ≥ 4, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3040, '4.6.2', 'Upaya yang telah dilakukan PS dalam meningkatkan kualifikasi dan kompetensi tenaga kependidikan. \r\n\r\nUpaya peningkatan kualifikasi dan kompetensi dikaitkan dengan:\r\n1.Pemberian kesempatan belajar/pelatihan\r\n2.Pemberian fasilitas, termasuk dana\r\n3.Jenjang karir ', '', 'Nilai 4 - Upaya pengembangan telah dilakukan dengan sangat baik sehingga dapat meningkatkan kualifikasi dan kompetensi tenaga kependidikan', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3041, '5.1.1.a', 'Kompetisi lulusan\r\nKelengkapan dan perumusan kompetensi', '', 'NIlai 4 - Kurikulum memuat kompetensi lulusan secara lengkap (utama, pendukung, lainnya) yang terumuskan secara sangat jelas.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3042, '5.1.1.b', 'Orientasi dan kesesuaian dengan visi dan misi', '', 'Nilai 4 - Sesuai dengan visi-misi, sudah berorientasi  ke masa depan', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3043, '5.1.2.a', 'Struktur Kurikulum\r\nKesesuaian matakuliah dan urutannya dengan standar kompetensi \r\n\r\nCatatan:\r\nUntuk menilai kesesuaian mata kuliah dan urutannya, bila perlu asesor memperhatikan silabus/materi  mata kuliah', '', 'Nilai 4 - Sesuai dengan standar kompetensi, sudah berorientasi  ke masa depan', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3044, '5.1.2.b', 'Persentase mata kuliah  yang dalam penentuan nilai akhirnya memberikan bobot pada tugas-tugas (prektikum/praktek, PR atau makalah) ≥ 20%  PTGS\r\n\r\nCara penghitungan:\r\nJumlah mata kuliah  yang diberi tanda √ pada kolom (7) dibagi dengan jumlah total mata kuliah wajib dan pilihan', '', 'Nilai 4 -Jika PTGS ≥ 50%, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3045, '5.1.2.c', 'Mata kuliah dilengkapi dengan deskripsi mata kuliah, silabus dan SAP\r\nPDMK = Persentase mata kuliah yang memiliki deskripsi, silabus dan SAP.', '', 'Nilai - Jika PDMK ≥ 95%, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3046, '5.1.3', 'Fleksibilitas mata kuliah pilihan\r\n\r\nBMKP = Bobot mata kuliah pilihan dalam sks\r\nRMKP = Rasio sks mata kuliah pilihan yang disediakan/dilaksanakan terhadap sks mata kuliah pilihan yang harus diambil \r\n\r\nCatatan:\r\nBagi PS yang memiliki jalur pilihan/peminatan/konsentrasi,  matakuliah yang khas jalur pilihan/peminatan/ konsentrasi dianggap sebagai mata kuliah pilihan.', '', 'Nilai 4 - Jika BMKP ≥ 9 sks dan yang disediakan/ dilaksanakan ≥ 2 kali sks mata kuliah pilihan yang harus diambil, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3047, '5.1.4', 'Substansi praktikum dan pelaksanaan praktikum.\r\n\r\nCatatan:\r\nPeer group diharapkan menentukan modul-modul praktikum yang harus dilakukan, syarat minimal maupun yang lebih baik.', '', 'Pelaksanaan modul praktikum lebih dari cukup  (ditambah dengan demonstrasi di laboratorium ) di PT sendiri', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3048, '5.2.a', 'Pelaksanaan peninjauan kurikulum selama 5 tahun terakhir', '', 'Nilai 4 - Pengembangan dilakukan secara mandiri dengan melibatkan pemangku kepentingan internal dan eksternal dan memperhatikan visi, misi, dan umpan balik program studi', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3049, '5.2.b', 'Penyesuaian kurikulum dengan perkembangan Ipteks dan kebutuhan', '', 'Nilai 4 - Pembaharuan kurikulum dilakukan sesuai dengan perkembangan ilmu di bidangnya dan kebutuhan pemangku kepentingan', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3050, '5.3.1.a', 'Pelaksanaan pembelajaran memiliki mekanisme untuk memonitor, mengkaji, dan memperbaiki setiap semester tentang:\r\n(a) kehadiran mahasiswa\r\n(b) kehadiran dosen\r\n(c) materi kuliah', '', 'Nilai 4 - Skor = NA.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3051, '5.3.1.b', 'Mekanisme penyusunan materi perkuliahan', '', 'Nilai 4 - Materi kuliah disusun oleh kelompok dosen dalam satu bidang ilmu, dengan memperhatikan masukan dari dosen lain atau dari pengguna lulusan ', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3052, '5.3.2', 'Mutu soal ujian', '', 'Nilai 4 - Mutu soal ujian untuk lima mata kuliah yang diberikan semuanya bermutu baik, dan sesuai dengan GBPP/SAP', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3053, '5.4.1.a', 'Rata-rata banyaknya mahasiswa per dosen Pembimbing Akademik (PA) per semester (=RMPA)', '', 'Nilai 4 - Jika RMPA ≤ 20, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3054, '5.4.1.b', 'Pelaksanaan kegiatan pembimbingan akademik', '', 'Nilai 4 - Dilakukan oleh seluruh dosen PA dengan baik sesuai panduan tertulis', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3055, '5.4.1.c', 'Jumlah rata-rata pertemuan pembimbingan per mahasiswa per semester (= PP)', '', 'Nilai 4 - Jika PP ≥ 3.0 maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3056, '5.4.2', 'Efektivitas kegiatan perwalian', '', 'Nilai 4 - Sistem bimbingan akademik sangat efektif', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3057, '5.5.1.a', 'Ketersediaan panduan, sosialisasi,  dan penggunaan', '', 'Nilai 4 - Ada panduan tertulis yang disosialisasikan dan dilaksanakan dengan konsisten', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3058, '5.5.1.b', 'Rata-rata mahasiswa per dosen pembimbing tugas akhir (=RMTA)', '', 'Nilai 4 - Jika 0 < RMTA ≤ 4, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3059, '5.5.1.c', 'Rata-rata jumlah pertemuan/pembimbingan selama penyelesaian TA (=RBTA)', '', 'Nilai 4 - Jika RBTA ≥ 8, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3060, '5.5.1.d', 'Kualifikasi akademik dosen pembimbing tugas akhir', '', 'Nilai 4 - Seluruh dosen pembimbing berpendidikan minimal S2 dan sesuai dengan bidang keahliannya', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3061, '5.5.2', 'Rata-rata waktu penyelesaian penulisan tugas akhir (=RPTA)', '', 'Nilai 4 - Struktur kurikulum tugas akhir dijadwalkan selesai dalam satu semester: Jika RPTA ≤ 6 bulan, maka skor = 4. Struktur kurikulum tugas akhir dijadwalkan selesai dalam dua semester: Jika RPTA ≤ 12 bulan, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3062, '5.6', 'Upaya perbaikan sistem pembelajaran yang telah dilakukan selama tiga tahun terakhir berkaitan dengan: \r\na. Materi\r\nb. Metode pembelajaran\r\nc. Penggunaan teknologi pembelajaran\r\nd. Cara-cara evaluasi', '', 'Nilai 4 - Upaya perbaikan dilakukan untuk  semua dari yang seharusnya diperbaiki/ ditingkatkan', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3063, '5.7.1', 'Kebijakan tertulis tentang suasana akademik (otonomi keilmuan, kebebasan akademik, kebebasan mimbar akademik, kemitraan dosen-mahasiswa)', '', 'Nilai 4 - Kebijakan lengkap mencakup informasi tentang otonomi keilmuan, kebebasan akademik, kebebasan mimbar akademik, dan kemitraan dosen-mahasiswa, serta dilaksanakan secara konsisten', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3064, '5.7.2', 'Ketersediaan dan kelengkapan jenis prasarana, sarana serta dana yang memungkinkan terciptanya interaksi akademik antara sivitas akademika', '', 'Nilai 4 - Tersedia, milik sendiri,  sangat lengkap dan dana yang sangat memadai', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3065, '5.7.3', 'Interaksi akademik berupa program dan kegiatan akademik, selain perkuliahan dan tugas-tugas khusus, untuk menciptakan suasana akademik (seminar, simposium, lokakarya, bedah buku dll)', '', 'Nilai 4 - Kegiatan ilmiah yang terjadwal dilaksanakan setiap bulan', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3066, '5.7.4', 'Interaksi akademik antara dosen-mahasiswa, antar mahasiswa, serta antar dosen', '', 'Nilai 4 - Upaya baik dan hasilnya suasana kondusif untuk meningkatkan suasana akademik yang baik', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3067, '5.7.5', 'Pengembangan perilaku kecendekiawanan\r\n\r\nBentuk kegiatan antara lain dapat berupa:\r\n1. Kegiatan penanggulangan kemiskinan.\r\n2. Pelestarian lingkungan.\r\n3. Peningkatan kesejahteraan masyarakat.\r\n4. Kegiatan penanggulangan masalah  ekonomi, politik, sosial, budaya, dan lingkungan lainnya.', '', 'Nilai 4 - Kegiatan yang dilakukan sangat menunjang pengembangan perilaku kecendekiawanan', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3068, '6.1', 'Keterlibatan program studi dalam perencanaan target kinerja, perencanaan kegiatan/ kerja dan perencanaan alokasi dan pengelolaan dana.', '', 'Nilai 4 - Program studi secara otonom melaksanakan perencanaan alokasi  dan pengelolaan dana', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3069, '6.2.1', 'Penggunaan dana untuk operasional (pendidikan, penelitian, pengabdian pada masyarakat, termasuk gaji dan upah).\r\n\r\nJumlah dana operasional/mahasiswa/tahun (=DOM)', '', 'Nilai 4 - Jika DOM ≥ 18 juta, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3070, '6.2.2', 'Dana penelitian dalam tiga tahun terakhir.\r\n\r\nRata-rata dana penelitian/dosen tetap/tahun (=RPD)', '', 'Nilai 4 - Jika RPD ≥ 3 juta, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3071, '6.2.3', 'Dana yang diperoleh dalam rangka pelayanan/pengabdian kepada masyarakat dalam tiga  tahun terakhir \r\n(= RPKM).', '', 'Nilai 4 - Jika RPKM ≥ 1.5 juta, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3072, '6.3.1', 'Luas ruang kerja dosen.\r\n\r\nCatatan: Data diambil dari kolom 3, tabel 6.3.1.\r\nJika luas ruang rata-rata untuk dosen tetap (= jumlah luas ruang dosen tetap dibagi dengan jumlah dosen tetap) kurang dari 4 m2, maka skor pada subbutir ini = nol.  ', '', 'Nilai 4 - Nilai pada butir ini tidak hanya didasarkan pada perhitungan skor luas ruang dosen tetap saja, tetapi juga didasarkan pada kenyamanan,  sehingga dosen dapat melaksanakan kegiatan Tridharma PT dengan baik.  Untuk itu asesor diberikan kemungkinan untuk memberikan tambahan/pengurangan nilai maksimum sebesar 1.5.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3073, '6.3.2', 'Prasarana (kantor, ruang kelas, ruang laboratorium, studio, ruang perpustakaan, kebun percobaan, dsb. kecuali  ruang dosen) yang dipergunakan PS dalam proses pembelajaran.', '', 'Nilai 4 - Prasarana lengkap dan mutunya sangat baik untuk proses pembelajaran. ', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3074, '6.3.3', 'Prasarana lain yang menunjang (misalnya tempat olah raga, ruang bersama, ruang himpunan mahasiswa, poliklinik)', '', 'Nilai 4 - Prasarana penunjang lengkap dan mutunya sangat baik untuk memenuhi kebutuhan mahasiswa', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3075, '6.4.1.a', ' Bahan pustaka berupa buku teks', '', 'Nilai 4 - Skor = (Jumlah judul) / 100.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3076, '6.4.1.b', 'Bahan pustaka berupa disertasi/tesis/ skripsi/ tugas akhir', '', 'Nilai 4 - Skor = (Jumlah judul) / 50', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3077, '6.4.1.c', 'Bahan pustaka berupa jurnal ilmiah terakreditasi Dikti', '', 'Nilai 4 -  ≥ 3 judul jurnal, nomornya lengkap', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3078, '6.4.1.d', 'Bahan pustaka  berupa jurnal ilmiah internasional ', '', 'Nilai 4 -  ≥ 2 judul jurnal, nomornya lengkap', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3079, '6.4.1.e', 'Bahan pustaka berupa prosiding seminar dalam tiga tahun terakhir', '', 'Nilai 4 - Jika jumlah prosiding seminar ≥ 9, maka skor = 4', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3080, '6.4.2', 'Akses ke perpustakaan di luar PT atau sumber pustaka lainnya', '', 'Nilai 4 - Ada beberapa perpustakaan di luar PT yang dapat diakses dan sangat baik fasilitasnya \r\nAtau jika nilai rata-rata dari butir 6.4.1  3.\r\n', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3081, '6.4.3', 'Ketersediaan, akses dan pendayagunaan sarana utama di lab (tempat praktikum, bengkel, studio, ruang simulasi, rumah sakit, puskesmas/balai kesehatan, green house, lahan untuk pertanian, dan sejenisnya)', '', 'Nilai 4 - Sangat memadai, terawat dengan sangat baik, dan PS memiliki akses yang sangat baik (memiliki fleksibilitas dalam menggunakannya di luar kegiatan praktikum terjadwal).', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3082, '6.5.1', 'Sistem informasi dan fasilitas yang digunakan PS dalam proses pembelajaran (hardware, software, e-learning, perpustakaan, dll.)', '', 'Nilai 4 - Dengan komputer yang terhubung dengan jaringan luas/internet, software yang berlisensi dengan jumlah yang memadai. Tersedia fasilitas e-learning yang digunakan secara baik, dan akses on-line ke koleksi perpustakaan.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3083, '6.5.2', 'Aksesibilitas data dalam sistem informasi\r\n\r\nNilai butir ini didasarkan pada hasil penilaian 11 jenis data (lihat kolom 1 pada tabel butir 6.5.2) dengan cara berikut:\r\n\r\nSkor akhir = \r\n(jumlah total skor pada ke-11 jenis data) : 11\r\n\r\nSedang  untuk setiap jenis data, penilaian didasarkan atas aturan berikut:\r\n1: Data ditangani secara manual \r\n2: Data ditangani dengan komputer tanpa jaringan\r\n3: Data ditangani dengan komputer, serta dapat diakses melalui  jaringan lokal (LAN)\r\n4: Data ditangani dengan komputer, serta dapat diakses melalui jaringan luas (WAN)', '', 'Nilai 4 - Skor = Skor akhir', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3084, '7.1.1', 'Jumlah penelitian yang sesuai dengan bidang keilmuan PS, yang dilakukan oleh dosen tetap yang bidang keahliannya sama dengan PS, selama 3 tahun', '', 'Nilai 4 - Jika NK ≥ 2, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3085, '7.1.2', 'Keterlibatan mahasiswa yang melakukan tugas akhir dalam penelitian dosen\r\n\r\nCara penilaian dilakukan dengan menghitung sebagai berikut:\r\nPD =  Persentase mahasiswa yang melakukan tugas akhir dalam penelitian dosen', '', 'Nilai 4 - Jika PD ≥ 25%, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3086, '7.1.3', 'Jumlah artikel ilmiah yang dihasilkan oleh dosen tetap yang bidang keahliannya sama dengan PS, selama 3 tahun', '', 'Nilai 4 - Jika NK ≥ 6, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3087, '7.1.4', 'Karya-karya PS/institusi yang telah memperoleh perlindungan Hak atas Kekayaan Intelektual (HaKI) dalam tiga tahun terakhir', '', 'Nilai 4 - Dua atau lebih karya yang memperoleh HaKI', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3088, '7.2.1', 'Jumlah kegiatan pelayanan/pengabdian kepada masyarakat (PkM) yang dilakukan oleh dosen tetap yang bidang keahliannya sama dengan PS selama tiga tahun.', '', 'Nilai 4 - Jika NK ≥ 1, maka skor = 4.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3089, '7.2.2', ' Keterlibatan mahasiswa dalam kegiatan pelayanan/pengabdian kepada masyarakat', '', 'Nilai 4 - Mahasiswa terlibat penuh dan diberi tanggung jawab.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3090, '7.3.1', 'Kegiatan kerjasama dengan instansi di dalam negeri dalam tiga tahun terakhir\r\n\r\nCatatan;\r\nTingkat kecukupan bergantung pada jumlah dosen tetap PS.', '', 'Nilai 4 - Ada kerjasama dengan institusi di dalam negeri, banyak dalam jumlah.  Semuanya  relevan dengan bidang keahlian PS.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(3091, '7.3.2', 'Kegiatan kerjasama dengan instansi di luar negeri dalam tiga tahun terakhir.\r\n\r\nCatatan;\r\nTingkat kecukupan bergantung pada jumlah dosen tetap PS', '', 'Nilai 4 - Ada kerjasama dengan institusi di luar negeri, banyak dalam jumlah.  Semuanya  relevan dengan bidang keahlian PS.', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `butir_buku`
+--
+
+CREATE TABLE `butir_buku` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `butir` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `bakumutu` text COLLATE utf8_unicode_ci NOT NULL,
+  `penjelasan` text COLLATE utf8_unicode_ci NOT NULL,
+  `keterangan` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `id_borang` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data untuk tabel `butir_buku`
+--
+
+INSERT INTO `butir_buku` (`id`, `butir`, `bakumutu`, `penjelasan`, `keterangan`, `created_at`, `updated_at`, `id_borang`) VALUES
+(1, '1.1.1', 'Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan.', '', '1.	Visi Misi Universitas Telkom\r\n2.	Visi Misi Fakultas\r\n3.	Gambarkan alur penyusunan VMTS prodi\r\n4.	Jelaskan FGD VMTS Prodi\r\n5.	Buatkan tabel berisi pihak industri yang mengikuti FGD (No, Nama, Perusahaan, Jabatan di perusahaan) \r\n6.	Buatkan tabel berisi mahasiswa yang mengikuti FGD VMTS Prodi\r\n7.	Buatkan tabel berisi alumni yang mengikuti FGD VMTS prodi\r\n8.	dan pihak lainnya : pemerintah, komunitas, dll\r\n9.	Tampilkan Foto-foto FGD, daftar hadir FGD, serta notulensi FGD\r\n', '2018-01-15 21:54:39', '2018-01-15 22:01:04', 153),
+(2, '1.1.2', 'Visi ', '', 'Visi Prodi', '2018-01-15 21:56:04', '2018-01-16 00:23:40', 153),
+(3, '1.1.3', 'Misi', '', 'Misi Prodi', '2018-01-15 21:56:17', '2018-01-16 00:23:55', 153),
+(4, '1.1.4', 'Tujuan', '', 'Tujuan Prodi', '2018-01-15 21:56:26', '2018-01-16 00:24:11', 153),
+(5, '1.1.5', 'Sasaran dan Strategi Pencapaiannya', '', '1.	Sasaran Prodi \r\n2.	Strategi Pencapaian\r\n3.	Buat Tabel Sasaran, Stretegi Pencapaian, Indikator Keberhasilan\r\n4.	Buat Tabel Sasaran, Strategi Pencapaian, Target per tahun\r\n5.	Buat Tabel Sasaran, Indikator Keberhasilan, Target, dan pencapaian pertahun renstra\r\n', '2018-01-15 21:56:38', '2018-01-16 00:24:42', 153),
+(6, '1.2', 'Sosialisasi', '', 'Uraikan upaya penyebaran/sosialisasi visi, misi dan tujuan program studi serta pemahaman sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan.\r\n\r\n1.	Sosialisasi kepada dosen pada rapat prodi (pengampuan, prodi, rapat manajemen, workshop, seminar , website, banner dll)\r\n2.	Sosialisasi kepada mahasiswa ( orientasi mahasiswa baru, pada perkuliahan, kegiatan kemahasiswaan, website prodi,banner, dll)\r\n3.	Sosialisasi kepada alumni (website, kegiatan dengan alumni, dll)\r\n4.	 Sosialisasi kepada masyarakat (website, media-media, kegiatan-kegiatan pengabdian masyarakat/komunitas\r\n5.	 Hasil survey kepada dosen, staff  dan mahasiswa \r\n6.	Tunjukan peningkatan hasil yang dicapai dosen dan mahasiswa \r\n', '2018-01-15 21:56:59', '2018-01-16 00:44:51', 153);
 
 -- --------------------------------------------------------
 
@@ -2311,16 +2444,23 @@ CREATE TABLE `document_version` (
 
 CREATE TABLE `dokumen` (
   `id` int(10) UNSIGNED NOT NULL,
-  `id_butir` int(10) UNSIGNED NOT NULL,
+  `id_butir` int(10) NOT NULL,
   `nama` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `filename` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `ket` text COLLATE utf8_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `pemilik` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `version_no` int(22) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data untuk tabel `dokumen`
+--
+
+INSERT INTO `dokumen` (`id`, `id_butir`, `nama`, `filename`, `ket`, `pemilik`, `created_at`, `updated_at`) VALUES
+(2, 0, 'Laporan 1', 'Job_desk_spm_new2.pdf', '', 'Admisi Universitas Telkom', '2018-01-08 02:32:29', '2018-01-08 02:32:29'),
+(3, 0, 'Laporan MHS 1', 'Universitas_Telkom-12-Penyesuaian-April_2017_(1).pdf', '', 'Kemahasiswaan Universitas Telkom', '2018-01-08 02:33:40', '2018-01-08 02:33:40'),
+(4, 0, 'Laporan 2', 'WORKSHOP_TEKNIS_PENYUSUNAN_BORANG_AKREDITASI_SAPTO_WIL__JAWA_BARAT.pdf', '', 'Kemahasiswaan Universitas Telkom', '2018-01-08 04:06:49', '2018-01-08 04:06:49');
 
 -- --------------------------------------------------------
 
@@ -3015,7 +3155,7 @@ INSERT INTO `dokumenpendukung` (`id`, `butir`, `aspek`, `dokumen`, `filename`, `
 (833, '7.2.2', 'Keterlibatan mahasiswa dalam kegiatan pengabdian kepada masyarakat.', '', '', '', '2017-12-27 02:22:50', '2017-12-27 02:22:50', 13),
 (834, '7.3.1', 'Kegiatan kerjasama dengan instansi di dalam negeri dalam tiga tahun terakhir.', '', '', '', '2017-12-27 02:22:50', '2017-12-27 02:22:50', 13),
 (835, '7.3.2', 'Kegiatan kerjasama dengan instansi di luar negeri dalam tiga tahun terakhir.', '', '', '', '2017-12-27 02:22:50', '2017-12-27 02:22:50', 13),
-(836, '1.1.a', 'Kejelasan dan kerealistikan visi, misi, tujuan, dan sasaran program studi.', 'Notulen FGD diskusi dengan stakeholder external dan internal.', '', '', '2017-12-27 07:54:57', '2017-12-27 07:54:57', 153),
+(836, '1.1.a', 'Kejelasan dan kerealistikan visi, misi, tujuan, dan sasaran program studi.', 'Notulen FGD diskusi dengan stakeholder external dan internal.', '', '', '2018-01-15 20:06:17', '2018-01-15 20:06:17', 153),
 (837, '1.1.a', 'Kejelasan dan kerealistikan visi, misi, tujuan, dan sasaran program studi.', 'daftar hadir  FGD diskusi dengan stakeholder external dan internal', '', '', '2017-12-27 07:54:57', '2017-12-27 07:54:57', 153),
 (838, '1.1.a', 'Kejelasan dan kerealistikan visi, misi, tujuan, dan sasaran program studi.', 'Foto-foto FGD diskusi dengan stakeholder external dan internal', '', '', '2017-12-27 07:54:57', '2017-12-27 07:54:57', 153),
 (839, '1.1.b', 'Strategi pencapaian sasaran dengan rentang waktu yang jelas dan didukung oleh dokumen.', 'Renstra Prodi yang berlaku sekarang yang berisi VMTS dan sasaran serta strategi pencapaian sasaran dan indikator pencapaian sasaran.', '', '', '2017-12-27 07:54:57', '2017-12-27 07:54:57', 153),
@@ -3182,7 +3322,175 @@ INSERT INTO `dokumenpendukung` (`id`, `butir`, `aspek`, `dokumen`, `filename`, `
 (999, '7.2.1', 'Jumlah kegiatan Pengabdian kepada Masyarakat (PkM) yang dilakukan oleh dosen tetap yang bidang keahliannya sesuai dengan PS.', '', '', '', '2017-12-27 07:54:57', '2017-12-27 07:54:57', 153),
 (1000, '7.2.2', 'Keterlibatan mahasiswa dalam kegiatan pengabdian kepada masyarakat.', '', '', '', '2017-12-27 07:54:57', '2017-12-27 07:54:57', 153),
 (1001, '7.3.1', 'Kegiatan kerjasama dengan instansi di dalam negeri dalam tiga tahun terakhir.', '', '', '', '2017-12-27 07:54:57', '2017-12-27 07:54:57', 153),
-(1002, '7.3.2', 'Kegiatan kerjasama dengan instansi di luar negeri dalam tiga tahun terakhir.', '', '', '', '2017-12-27 07:54:57', '2017-12-27 07:54:57', 153);
+(1002, '7.3.2', 'Kegiatan kerjasama dengan instansi di luar negeri dalam tiga tahun terakhir.', '', '', '', '2017-12-27 07:54:57', '2017-12-27 07:54:57', 153),
+(1003, '1.1.a', 'Kejelasan dan kerealistikan visi, misi, tujuan, dan sasaran program studi.', 'Notulen FGD diskusi dengan stakeholder external dan internal.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1004, '1.1.a', 'Kejelasan dan kerealistikan visi, misi, tujuan, dan sasaran program studi.', 'daftar hadir  FGD diskusi dengan stakeholder external dan internal', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1005, '1.1.a', 'Kejelasan dan kerealistikan visi, misi, tujuan, dan sasaran program studi.', 'Foto-foto FGD diskusi dengan stakeholder external dan internal', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1006, '1.1.b', 'Strategi pencapaian sasaran dengan rentang waktu yang jelas dan didukung oleh dokumen.', 'Renstra Prodi yang berlaku sekarang yang berisi VMTS dan sasaran serta strategi pencapaian sasaran dan indikator pencapaian sasaran.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1007, '1.1.b', 'Strategi pencapaian sasaran dengan rentang waktu yang jelas dan didukung oleh dokumen.', 'Renop', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1008, '1.2', 'Sosialisasi visi-misi.  Sosialisasi yang efektif tercermin dari tingkat pemahaman seluruh pemangku kepentingan internal yaitu sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan.', 'bukti Foto-Foto sosialisasi visi dan misi.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1009, '1.2', 'Sosialisasi visi-misi.  Sosialisasi yang efektif tercermin dari tingkat pemahaman seluruh pemangku kepentingan internal yaitu sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan.', 'questioner pemahaman visi dan misi yang sudah diisi.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1010, '1.2', 'Sosialisasi visi-misi.  Sosialisasi yang efektif tercermin dari tingkat pemahaman seluruh pemangku kepentingan internal yaitu sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan.', 'hasil pengolahan questioner pemahaman visi dan misi.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1011, '2.1', 'Tata pamong menjamin terwujudnya visi, terlaksananya misi, tercapainya tujuan, berhasilnya strategi yang digunakan secara kredibel, transparan, akuntabel, bertanggung jawab, dan adil.', 'Bukti-bukti pemaparan di borang yang terkait dengan tata pamong kredibel', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1012, '2.1', 'Tata pamong menjamin terwujudnya visi, terlaksananya misi, tercapainya tujuan, berhasilnya strategi yang digunakan secara kredibel, transparan, akuntabel, bertanggung jawab, dan adil.', 'Bukti-bukti pemaparan di borang yang terkait dengan tata pamong transparan.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1013, '2.1', 'Tata pamong menjamin terwujudnya visi, terlaksananya misi, tercapainya tujuan, berhasilnya strategi yang digunakan secara kredibel, transparan, akuntabel, bertanggung jawab, dan adil.', 'Bukti-bukti pemaparan di borang yang terkait dengan tata pamong akuntabel', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1014, '2.1', 'Tata pamong menjamin terwujudnya visi, terlaksananya misi, tercapainya tujuan, berhasilnya strategi yang digunakan secara kredibel, transparan, akuntabel, bertanggung jawab, dan adil.', 'Bukti-bukti pemaparan di borang yang terkait dengan tata pamong bertanggung jawab', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1015, '2.1', 'Tata pamong menjamin terwujudnya visi, terlaksananya misi, tercapainya tujuan, berhasilnya strategi yang digunakan secara kredibel, transparan, akuntabel, bertanggung jawab, dan adil.', 'Bukti-bukti pemaparan di borang yang terkait dengan tata pamong adil', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1016, '2.2', 'Karakteristik kepemimpinan yang efektif (kepemimpinan operasional, kepemimpinan organisasi, kepemimpinan publik).', 'Bukti-bukti terkait pemaparan di borang yang terkait dengan kepemimpinan operasional.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1017, '2.2', 'Karakteristik kepemimpinan yang efektif (kepemimpinan operasional, kepemimpinan organisasi, kepemimpinan publik).', 'Bukti-bukti terkait pemaparan di borang yang terkait dengan kepemimpinan organisasi.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1018, '2.2', 'Karakteristik kepemimpinan yang efektif (kepemimpinan operasional, kepemimpinan organisasi, kepemimpinan publik).', 'Bukti-bukti terkait pemaparan di borang yang terkait dengan kepemimpinan publik', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1019, '2.3', 'Sistem pengelolaan fungsional dan operasional program studi mencakup: planning, organizing, staffing, leading, controlling yang efektif dilaksanakan.', 'Bukti-bukti pemaparan di borang yang terkait dengan planning', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1020, '2.3', 'Sistem pengelolaan fungsional dan operasional program studi mencakup: planning, organizing, staffing, leading, controlling yang efektif dilaksanakan.', 'Bukti-bukti pemaparan di borang yang terkait dengan organizing', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1021, '2.3', 'Sistem pengelolaan fungsional dan operasional program studi mencakup: planning, organizing, staffing, leading, controlling yang efektif dilaksanakan.', 'Bukti-bukti pemaparan di borang yang terkait dengan staffing', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1022, '2.3', 'Sistem pengelolaan fungsional dan operasional program studi mencakup: planning, organizing, staffing, leading, controlling yang efektif dilaksanakan.', 'Bukti-bukti pemaparan di borang yang terkait dengan leading', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1023, '2.3', 'Sistem pengelolaan fungsional dan operasional program studi mencakup: planning, organizing, staffing, leading, controlling yang efektif dilaksanakan.', 'Bukti-bukti pemaparan di borang yang terkait dengan controlling', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1024, '2.4', 'Pelaksanaan penjaminan mutu di program studi.', 'dokumen kebijakan mutu', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1025, '2.4', 'Pelaksanaan penjaminan mutu di program studi.', 'dokumen standar mutu', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1026, '2.4', 'Pelaksanaan penjaminan mutu di program studi.', 'dokumen manual mutu', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1027, '2.4', 'Pelaksanaan penjaminan mutu di program studi.', 'dokuman Instrukti Kerja', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1028, '2.4', 'Pelaksanaan penjaminan mutu di program studi.', 'Dokumen form IK.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1029, '2.4', 'Pelaksanaan penjaminan mutu di program studi.', 'hasil audit mutu', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1030, '2.4', 'Pelaksanaan penjaminan mutu di program studi.', 'dokumen terkait tindak lanjut dari temuan audit', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1031, '2.5', 'Penjaringan umpan balik  dan tindak lanjutnya.', 'questioner yang diisi mahasiswa terkait umpan balik.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1032, '2.5', 'Penjaringan umpan balik  dan tindak lanjutnya.', 'questioner yang diisi dosen terkait umpan balik', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1033, '2.5', 'Penjaringan umpan balik  dan tindak lanjutnya.', 'questioner yang diisi alumni terkait umpan balik', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1034, '2.5', 'Penjaringan umpan balik  dan tindak lanjutnya.', 'questioner yang diisi pengguna lulusan terkait umpan balik', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1035, '2.6', 'Upaya untuk menjamin keberlanjutan (sustainability) program studi.', 'Upaya untuk peningkatan animo calon mahasiswa', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1036, '2.6', 'Upaya untuk menjamin keberlanjutan (sustainability) program studi.', 'Upaya peningkatan mutu manajemen', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1037, '2.6', 'Upaya untuk menjamin keberlanjutan (sustainability) program studi.', 'Upaya untuk peningkatan mutu lulusan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1038, '2.6', 'Upaya untuk menjamin keberlanjutan (sustainability) program studi.', 'Upaya untuk pelaksanaan dan hasil kerjasama kemitraan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1039, '2.6', 'Upaya untuk menjamin keberlanjutan (sustainability) program studi.', 'Upaya dan prestasi dalam memperoleh dana hibah kompetitif', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1040, '3.1.1.a', 'Rasio calon mahasiswa yang ikut seleksi terhadap daya tampung.', 'SK tentang daya tampung prodi 5 tahun berakhir', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1041, '3.1.1.a', 'Rasio calon mahasiswa yang ikut seleksi terhadap daya tampung.', 'dokumen tentang data mahasiswa yang ikut seleksi 5 tahun terakhir', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1042, '3.1.1.b', 'Rasio mahasiswa baru reguler yang melakukan registrasi terhadap calon mahasiswa baru reguler yang lulus seleksi.', 'dokumen tentang mahasiswa yang melakukan pendaftaran ulang.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1043, '3.1.1.b', 'Rasio mahasiswa baru reguler yang melakukan registrasi terhadap calon mahasiswa baru reguler yang lulus seleksi.', 'dokumen dan data tentang daftar mahasiswa yang lulus seleksi.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1044, '3.1.1.c', 'Rasio mahasiswa baru transfer terhadap mahasiswa baru regular.', 'dokumen tentang kebijakan dan syarat penerimaan mahasiswa transfer.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1045, '3.1.1.c', 'Rasio mahasiswa baru transfer terhadap mahasiswa baru regular.', 'Dokumen tentang data-data mahasiswa transfer yang diterima', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1046, '3.1.1.d', 'Rata-rata Indeks Prestasi Kumulatif (IPK) selama lima tahun terakhir.', 'dokumen tentang data-data IPK 5 tahun terakhir.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1047, '3.1.2', 'Penerimaan mahasiswa non-reguler (selayaknya tidak membuat beban dosen sangat berat, jauh melebihi beban ideal sekitar 12 sks).', 'dokumen tentang kebijakan penerimaan mahasiswa non-reguler.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1048, '3.1.3', 'Penghargaan atas prestasi mahasiswa di bidang nalar, bakat dan minat.', 'Bukti (sertfikat, piala, medali, dan sebagainya) bahwa mahasiswa memenangkan suatu kejuaraan/kompetisi.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1049, '3.1.4.a', 'Persentase kelulusan tepat waktu.', 'SK yudisium yang berisi daftar mahasiswa-mahasiswa yang lulus tepat waktu.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1050, '3.1.4.b', 'Persentase mahasiswa yang DO atau mengundurkan diri.', 'Data mahasiswa aktif dari tahun ke tahun (7 tahun terakhir )', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1051, '3.2.1', 'Layanan dan kegiatan kemahasiswaan (ragam, jenis, dan aksesibilitasnya) yang dapat dimanfaatkan untuk membina dan mengembangkan penalaran, minat, bakat, seni, dan kesejahteraan.', 'Bukti (dokumen dan foto) tentang layana kegiatan kemahasiswaan yang terkait dengan Bimbingan dan konseling', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1052, '3.2.1', 'Layanan dan kegiatan kemahasiswaan (ragam, jenis, dan aksesibilitasnya) yang dapat dimanfaatkan untuk membina dan mengembangkan penalaran, minat, bakat, seni, dan kesejahteraan.', 'Bukti (dokumen dan foto) tentang layana kegiatan kemahasiswaan yang terkait dengan Minat dan bakat (ekstra kurikuler)', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1053, '3.2.1', 'Layanan dan kegiatan kemahasiswaan (ragam, jenis, dan aksesibilitasnya) yang dapat dimanfaatkan untuk membina dan mengembangkan penalaran, minat, bakat, seni, dan kesejahteraan.', 'Bukti (dokumen dan foto) tentang layana kegiatan kemahasiswaan yang terkait dengan Pembinaan soft skill', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1054, '3.2.1', 'Layanan dan kegiatan kemahasiswaan (ragam, jenis, dan aksesibilitasnya) yang dapat dimanfaatkan untuk membina dan mengembangkan penalaran, minat, bakat, seni, dan kesejahteraan.', 'Bukti (dokumen dan foto) tentang layana kegiatan kemahasiswaan yang terkait dengan Layanan beasiswa', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1055, '3.2.1', 'Layanan dan kegiatan kemahasiswaan (ragam, jenis, dan aksesibilitasnya) yang dapat dimanfaatkan untuk membina dan mengembangkan penalaran, minat, bakat, seni, dan kesejahteraan.', 'Bukti (dokumen dan foto) tentang layana kegiatan kemahasiswaan yang terkait dengan Layanan kesehatan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1056, '3.2.2', 'Kualitas layanan kepada mahasiswa.', 'Bukti (dokumen dan foto) tentang layana kegiatan kemahasiswaan yang terkait dengan Bimbingan dan konseling', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1057, '3.2.2', 'Kualitas layanan kepada mahasiswa.', 'Bukti (dokumen dan foto) tentang layana kegiatan kemahasiswaan yang terkait dengan Minat dan bakat (ekstra kurikuler)', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1058, '3.2.2', 'Kualitas layanan kepada mahasiswa.', 'Bukti (dokumen dan foto) tentang layana kegiatan kemahasiswaan yang terkait dengan Pembinaan soft skill', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161);
+INSERT INTO `dokumenpendukung` (`id`, `butir`, `aspek`, `dokumen`, `filename`, `status`, `created_at`, `updated_at`, `id_borang`) VALUES
+(1059, '3.2.2', 'Kualitas layanan kepada mahasiswa.', 'Bukti (dokumen dan foto) tentang layana kegiatan kemahasiswaan yang terkait dengan Layanan beasiswa', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1060, '3.2.2', 'Kualitas layanan kepada mahasiswa.', 'Bukti (dokumen dan foto) tentang layana kegiatan kemahasiswaan yang terkait dengan Layanan kesehatan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1061, '3.3.1.a', 'Upaya pelacakan dan perekaman data lulusan.', 'dokumen kebijakan tracer-study', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1062, '3.3.1.a', 'Upaya pelacakan dan perekaman data lulusan.', 'dokumen yang berisi data-data alumni', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1063, '3.3.1.a', 'Upaya pelacakan dan perekaman data lulusan.', 'dokumen yang berisi hasil survey pelacakan lulusan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1064, '3.3.1.b', 'Penggunaan hasil pelacakan untuk perbaikan: (1) proses pembelajaran, (2) penggalangan dana, (3) informasi pekerjaan, (4) membangun jejaring.', 'Bukti-bukti (dokumen, berita acara, foto) yang membuktikan bahwa hasil tracer study digunakan untuk proses pembelajaran', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1065, '3.3.1.b', 'Penggunaan hasil pelacakan untuk perbaikan: (1) proses pembelajaran, (2) penggalangan dana, (3) informasi pekerjaan, (4) membangun jejaring.', 'Bukti-bukti (dokumen, berita acara, foto) yang membuktikan bahwa hasil tracer study digunakan untuk penggalangan dana', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1066, '3.3.1.b', 'Penggunaan hasil pelacakan untuk perbaikan: (1) proses pembelajaran, (2) penggalangan dana, (3) informasi pekerjaan, (4) membangun jejaring.', 'Bukti-bukti (dokumen, berita acara, foto) yang membuktikan bahwa hasil tracer study digunakan untuk informasi pekerjaan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1067, '3.3.1.b', 'Penggunaan hasil pelacakan untuk perbaikan: (1) proses pembelajaran, (2) penggalangan dana, (3) informasi pekerjaan, (4) membangun jejaring.', 'Bukti-bukti (dokumen, berita acara, foto) yang membuktikan bahwa hasil tracer study digunakan untuk membangun jejaring', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1068, '3.3.1.c', 'Pendapat pengguna lulusan terhadap mutu alumni.', 'Dokumen hasil survey yang diisi pengguna lulusan (ada nama pengguna lulusan dan cap perusahaan atau kop surat perusahaan) tentang mutu alumni.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1069, '3.3.2', 'Profil masa tunggu kerja pertama (dalam bulan).', 'Hasil tracer-study yang berisi hasil survey masa tunggu kerja pertama untuk mahasiswa 3 angkatan.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1070, '3.3.3', 'Profil kesesuaian bidang kerja dengan bidang studi (keahlian) lulusan.', 'Hasil tracer-study yang berisi hasil survey kesesuaian bidang kerja dengan bidang studi (keahlian) lulusan.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1071, '3.4.1', 'Bentuk partisipasi lulusan dan alumni dalam mendukung pengembangan akademik program studi.', 'Bukti-bukti (dokumen, berita acara, foto) yang membuktikan bahwa alumni dalam bidang akademik menyumbang/terlibat untuk Sumbangan dana', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1072, '3.4.1', 'Bentuk partisipasi lulusan dan alumni dalam mendukung pengembangan akademik program studi.', 'Bukti-bukti (dokumen, berita acara, foto) yang membuktikan bahwa alumni dalam bidang akademik menyumbang/terlibat untuk Sumbangan fasilitas', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1073, '3.4.1', 'Bentuk partisipasi lulusan dan alumni dalam mendukung pengembangan akademik program studi.', 'Bukti-bukti (dokumen, berita acara, foto) yang membuktikan bahwa alumni dalam bidang akademik menyumbang/terlibat untuk Keterlibatan dalam kegiatan akademik', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1074, '3.4.1', 'Bentuk partisipasi lulusan dan alumni dalam mendukung pengembangan akademik program studi.', 'Bukti-bukti (dokumen, berita acara, foto) yang membuktikan bahwa alumni dalam bidang akademik menyumbang/terlibat untuk Pengembangan jejaring', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1075, '3.4.1', 'Bentuk partisipasi lulusan dan alumni dalam mendukung pengembangan akademik program studi.', 'Bukti-bukti (dokumen, berita acara, foto) yang membuktikan bahwa alumni dalam bidang akademik menyumbang/terlibat untuk Penyediaan fasilitas untuk kegiatan akademik', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1076, '3.4.2', 'Bentuk partisipasi lulusan dan alumni dalam mendukung pengembangan non-akademik program studi. ', 'Bukti-bukti (dokumen, berita acara, foto) yang  membuktikan bahwa alumni dalam bidang non-akademik menyumbang/terlibat untuk Sumbangan dana', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1077, '3.4.2', 'Bentuk partisipasi lulusan dan alumni dalam mendukung pengembangan non-akademik program studi. ', 'Bukti-bukti (dokumen, berita acara, foto) yang  membuktikan bahwa alumni dalam bidang non-akademik menyumbang/terlibat untuk Sumbangan fasilitas', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1078, '3.4.2', 'Bentuk partisipasi lulusan dan alumni dalam mendukung pengembangan non-akademik program studi. ', 'Bukti-bukti (dokumen, berita acara, foto) yang  membuktikan bahwa alumni dalam bidang non-akademik menyumbang/terlibat untuk Keterlibatan dalam kegiatan akademik', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1079, '3.4.2', 'Bentuk partisipasi lulusan dan alumni dalam mendukung pengembangan non-akademik program studi. ', 'Bukti-bukti (dokumen, berita acara, foto) yang  membuktikan bahwa alumni dalam bidang non-akademik menyumbang/terlibat untuk Pengembangan jejaring', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1080, '3.4.2', 'Bentuk partisipasi lulusan dan alumni dalam mendukung pengembangan non-akademik program studi. ', 'Bukti-bukti (dokumen, berita acara, foto) yang  membuktikan bahwa alumni dalam bidang non-akademik menyumbang/terlibat untuk Penyediaan fasilitas untuk kegiatan non-akademik', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1081, '4.1', 'Pedoman tertulis tentang sistem seleksi, perekrutan, penempatan, pengembangan, retensi, dan pemberhentian dosen dan tenaga kependidikan. ', 'Dokumen/peraturan/SK yang berisi tentang sistem seleksi', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1082, '4.1', 'Pedoman tertulis tentang sistem seleksi, perekrutan, penempatan, pengembangan, retensi, dan pemberhentian dosen dan tenaga kependidikan. ', 'Dokumen/peraturan/SK yang berisi tentang perekrutan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1083, '4.1', 'Pedoman tertulis tentang sistem seleksi, perekrutan, penempatan, pengembangan, retensi, dan pemberhentian dosen dan tenaga kependidikan. ', 'Dokumen/peraturan/SK yang berisi tentang penempatan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1084, '4.1', 'Pedoman tertulis tentang sistem seleksi, perekrutan, penempatan, pengembangan, retensi, dan pemberhentian dosen dan tenaga kependidikan. ', 'Dokumen/peraturan/SK yang berisi tentang pengembangan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1085, '4.1', 'Pedoman tertulis tentang sistem seleksi, perekrutan, penempatan, pengembangan, retensi, dan pemberhentian dosen dan tenaga kependidikan. ', 'Dokumen/peraturan/SK yang berisi tentang retensi', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1086, '4.1', 'Pedoman tertulis tentang sistem seleksi, perekrutan, penempatan, pengembangan, retensi, dan pemberhentian dosen dan tenaga kependidikan. ', 'Dokumen/peraturan/SK yang berisi tentang pemberhentian dosen dan tenaga kependidikan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1087, '4.2.1', 'Pedoman tertulis tentang sistem monitoring dan evaluasi, serta rekam jejak kinerja akademik dosen dan kinerja tenaga kependidikan. ', 'Dokumen/peraturan/SK tentang sistem monitoring dan evaluasi, serta rekam jejak kinerja akademik dosen dan kinerja tenaga kependidikan.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1088, '4.2.2', 'Pelaksanaan monitoring dan evaluasi kinerja dosen di bidang  pendidikan, penelitian, dan pengabdian kepada masyarakat.', 'Bukti pelaksanaan monev kinerja dosen di bidang pendidikan, penelitian, dan pengabdian kepada masyarakat.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1089, '4.3.1.a', 'Dosen tetap berpendidikan (terakhir) S2 dan S3 yang bidang keahliannya sesuai dengan kompetensi PS.', 'data-data seluruh dosen tetap sesuai PS beserta ijazah.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1090, '4.3.1.b', 'Dosen tetap yang berpendidikan S3 yang bidang keahliannya sesuai dengan kompetensi PS.', 'data-data seluruh dosen tetap sesuai PS yang bergelar S3 beserta ijazah.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1091, '4.3.1.c', 'Dosen tetap yang memiliki jabatan lektor kepala dan guru besar yang bidang keahliannya sesuai dengan kompetensi PS.', 'Data SK kenaikan jabatan lektor kepala dan guru besar semua dosen tetap sesuai PS', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1092, '4.3.1.d', 'Dosen yang memiliki Sertifikat Pendidik Profesional.', 'Data SK Serdos semua dosen tetap sesuai PS.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1093, '4.3.2', 'Rasio mahasiswa terhadap dosen tetap yang bidang keahliannya sesuai dengan bidang PS.', 'daftar dosen tetap', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1094, '4.3.2', 'Rasio mahasiswa terhadap dosen tetap yang bidang keahliannya sesuai dengan bidang PS.', 'daftar mahasiswa (student body) PS.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1095, '4.3.3', 'Rata-rata beban dosen per semester, atau rata-rata FTE (Fulltime Teaching Equivalent). ', 'Bukti SK beban dosen di bidang pengajaran, penelitian, pengabdian masyarakat dan manajemen (struktural).', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1096, '4.3.4 & 4.3.5', 'Kesesuaian keahlian (pendidikan terakhir) dosen dengan mata kuliah yang diajarkannya.', 'Jadwal mata kuliah beserta dosennya pada tahun TS.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1097, '4.3.4 & 4.3.5', 'Tingkat kehadiran dosen tetap dalam mengajar.', 'Rekap kehadiran mengajar seluruh dosen tetap sesuai PS', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1098, '4.3.4 & 4.3.5', 'Tingkat kehadiran dosen tetap dalam mengajar.', 'BAP (berita acara perkuliahan) yang didalamnya ada tanda tangan dosen setiap kehadiran.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1099, '4.4.1', 'Rasio jumlah dosen tidak tetap, terhadap jumlah seluruh dosen.', 'Daftar dan SK dosen tidak tetap.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1100, '4.4.2.a', 'Kesesuaian keahlian dosen tidak tetap dengan mata kuliah yang diampu.', 'Jadwal mata kuliah beserta dosennya di tahun TS.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1101, '4.4.2.b', 'Pelaksanaan tugas atau tingkat kehadiran dosen tidak tetap dalam mengajar.', 'Berita acara perkuliahan untuk semua dosen tidak tetap.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1102, '4.5.1', 'Kegiatan tenaga ahli/pakar sebagai pembicara dalam seminar/pelatihan, pembicara tamu, dsb, dari luar PT sendiri (tidak termasuk dosen tidak tetap).', 'Bukti (CV, surat undangan, materi yang disampaikan, foto, sertifikat) kegiatan tenaga ahli/pakar tersebut.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1103, '4.5.2', 'Peningkatan kemampuan dosen tetap melalui program tugas belajar dalam bidang yang sesuai dengan bidang PS.', 'SK tugas belajar dosen  dan kartu mahasiswa dosen yang tugas belajar studi lanjut.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1104, '4.5.3', 'Kegiatan dosen tetap yang bidang keahliannya sesuai dengan PS dalam seminar ilmiah/ lokakarya/ penataran/ workshop/ pagelaran/ pameran/peragaan yang tidak hanya melibatkan dosen PT sendiri.', 'Sertifikat pembicara atau peserta dari seluruh dosen tetap dalam seminar/workshop yang tidak hanya melibatkan dosen PT sendiri.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1105, '4.5.4', 'Prestasi dalam mendapatkan penghargaan hibah, pendanaan program dan kegiatan akademik dari tingkat nasional dan internasional; besaran dan proporsi dana penelitian dari sumber institusi sendiri dan luar institusi. ', 'Kontrak (pengajaran atau penelitian atau abdimas) antara perguruan tinggi dengan institusi luar pemberi hibah yang di dalamnya tercantum besaran dana hibahnya.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1106, '4.5.5', 'Reputasi dan keluasan jejaring dosen dalam bidang akademik dan profesi.', 'semua kartu anggota dosen tetap dari asosiasi profesi.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1107, '4.6.1.a', 'Pustakawan: jumlah dan kualifikasinya.', 'ijazah seluruh pustakawan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1108, '4.6.1.a', 'Pustakawan: jumlah dan kualifikasinya.', 'SK pengangkatan sebagai pustakawan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1109, '4.6.1.b', 'Laboran, analis, teknisi, operator: jumlah, kualifikasi, dan mutu kerjanya.', 'SK laboran', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1110, '4.6.1.b', 'Laboran, analis, teknisi, operator: jumlah, kualifikasi, dan mutu kerjanya.', 'ijazah laboran', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1111, '4.6.1.b', 'Laboran, analis, teknisi, operator: jumlah, kualifikasi, dan mutu kerjanya.', 'log-book', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1112, '4.6.1.b', 'Laboran, analis, teknisi, operator: jumlah, kualifikasi, dan mutu kerjanya.', 'daftar inventaris laboran', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1113, '4.6.1.b', 'Laboran, analis, teknisi, operator: jumlah, kualifikasi, dan mutu kerjanya.', 'jurnal kegiatan laboran dalam memeliharan laboratorium', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1114, '4.6.1.c', 'Tenaga administrasi: jumlah dan kualifikasinya.', 'Ijazah', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1115, '4.6.1.c', 'Tenaga administrasi: jumlah dan kualifikasinya.', 'SK pengangkatan sebagai tenaga adminisitrasi.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1116, '4.6.2', 'Upaya PS dalam meningkatkan kualifikasi dan kompetensi tenaga kependidikan.', 'Bukti-bukti terkait dengan pelatihan yang diadakan oleh PS terhadap tenaga kependidikan', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1117, '4.6.2', 'Upaya PS dalam meningkatkan kualifikasi dan kompetensi tenaga kependidikan.', 'Bukti-bukti terkait dengan bukti bahwa ada pos dana di RKA terkait dengan peningkatan kompetensi dosen', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1118, '4.6.2', 'Upaya PS dalam meningkatkan kualifikasi dan kompetensi tenaga kependidikan.', 'Bukti-bukti terkait dengan Jenjang karier dan pembinaan terhadap jenjang karier tenaga kependidikan.', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1119, '5.1.1.a', 'Struktur kurikulum (harus memuat standar kompetensi lulusan yang terstruktur dalam kompetensi utama, pendukung dan lainnya ).', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1120, '5.1.1.b', 'Orientasi dan kesesuaian kurikulum dengan visi dan misi PS.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1121, '5.1.2.a', 'Kesesuaian mata kuliah dengan standar kompetensi.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1122, '5.1.2.b', 'Persentase mata kuliah  yang dalam penentuan nilai akhirnya memberikan bobot pada tugas-tugas (PR atau makalah) ? 20%. ', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1123, '5.1.2.c', 'Matakuliah dilengkapi dengan deskripsi matakuliah, silabus dan SAP.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1124, '5.1.3', 'Fleksibilitas mata kuliah pilihan.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1125, '5.1.4', 'Substansi praktikum dan pelaksanaan praktikum.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1126, '5.2.a', 'Pelaksanaan peninjauan kurikulum selama 5 tahun terakhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1127, '5.2.b', 'Penyesuaian kurikulum dengan perkembangan Ipteks dan kebutuhan.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1128, '5.3.1.a', 'Pelaksanaan pembelajaran memiliki mekanisme untuk memonitor, mengkaji, dan memperbaiki secara periodik kegiatan perkuliahan (kehadiran dosen dan mahasiswa), penyusunan materi perkuliahan, serta penilaian hasil belajar.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1129, '5.3.1.b', 'Mekanisme penyusunan materi perkuliahan.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1130, '5.3.2', 'Mutu soal ujian.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1131, '5.4.1.a', 'Rata-rata banyaknya mahasiswa per dosen Pembimbing Akademik per semester.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1132, '5.4.1.b', 'Pelaksanaan kegiatan pembimbingan akademik.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1133, '5.4.1.c', 'Jumlah rata-rata pertemuan pembimbingan akademik per mahasiswa per semester.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1134, '5.4.2', 'Efektivitas kegiatan pembimbingan akademik.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1135, '5.5.1.a', 'Ketersediaan panduan, sosialisasi,  dan penggunaan.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1136, '5.5.1.b', 'Rata-rata mahasiswa per dosen pembimbing tugas akhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1137, '5.5.1.c', 'Rata-rata jumlah pertemuan/ pembimbingan selama penyelesaian TA.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1138, '5.5.1.d', 'Kualifikasi akademik dosen pembimbing tugas akhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1139, '5.5.2', 'Rata-rata waktu penyelesaian penulisan tugas akhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1140, '5.6', 'Upaya perbaikan sistem pembelajaran yang telah dilakukan selama tiga tahun terakhir. ', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1141, '5.7.1', 'Kebijakan tentang suasana akademik (otonomi keilmuan, kebebasan akademik, kebebasan mimbar akademik).', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1142, '5.7.2', 'Ketersediaan dan jenis prasarana, sarana dan dana yang memungkinkan terciptanya interaksi akademik antara sivitas akademika.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1143, '5.7.3', 'Program dan kegiatan akademik untuk menciptakan suasana akademik (seminar, simposium, lokakarya, bedah buku, penelitian bersama dll).', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1144, '5.7.4', 'Interaksi akademik antara dosen-mahasiswa.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1145, '5.7.5', 'Pengembangan perilaku kecendekiawanan.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1146, '6.1', 'Keterlibatan program studi dalam perencanaan target kinerja, perencanaan kegiatan/ kerja dan perencanaan/alokasi dan pengelolaan dana. ', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1147, '6.2.1', 'Besarnya dana (termasuk hibah) yang dikelola dalam tiga tahun terakhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1148, '6.2.2', 'Dana penelitian dalam tiga tahun terakhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1149, '6.2.3', 'Dana yang diperoleh dalam rangka pengabdian kepada masyarakat dalam tiga  tahun terakhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1150, '6.3.1', 'Luas ruang kerja dosen', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1151, '6.3.2', 'Prasarana (kantor, ruang kelas, ruang laboratorium, studio, ruang perpustakaan, kebun percobaan, dsb. kecuali  ruang dosen) yang dipergunakan PS dalam proses pembelajaran.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1152, '6.3.3', 'Prasarana lain yang menunjang (misalnya tempat olah raga, ruang bersama, ruang himpunan mahasiswa, poliklinik).', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1153, '6.4.1.a', 'Bahan pustaka yang berupa buku teks.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1154, '6.4.1.b', 'Bahan pustaka yang berupa disertasi/tesis/ skripsi/ tugas akhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1155, '6.4.1.c', 'Bahan pustaka yang berupa jurnal ilmiah terakreditasi Dikti.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1156, '6.4.1.d', 'Bahan pustaka yang berupa jurnal ilmiah internasional .', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1157, '6.4.1.e', 'Bahan pustaka yang berupa prosiding seminar dalam tiga tahun terakhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1158, '6.4.2', 'Akses ke perpustakaan di luar PT atau sumber pustaka lainnya.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1159, '6.4.3', 'Ketersediaan, akses dan pendayagunaan sarana utama di lab (tempat praktikum, bengkel, studio, ruang simulasi, rumah sakit, puskesmas/balai kesehatan, green house, lahan untuk pertanian, dan sejenisnya).', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1160, '6.5.1', 'Sistem informasi dan fasilitas yang digunakan PS dalam proses pembelajaran (hardware, software, e-learning, dan perpustakaan).', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1161, '6.5.2', 'Aksesibilitas data dalam sistem informasi.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1162, '7.1.1', 'Jumlah penelitian yang dilakukan oleh dosen tetap yang bidang keahliannya sesuai dengan PS per tahun, selama 3 tahun.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1163, '7.1.2', 'Keterlibatan mahasiswa yang melakukan tugas akhir dalam penelitian dosen.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1164, '7.1.3', 'Jumlah artikel ilmiah yang dihasilkan oleh dosen tetap yang bidang keahliannya sesuai dengan PS per tahun, selama tiga tahun.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1165, '7.1.4', 'Karya-karya PS/institusi yang telah memperoleh perlindungan Hak atas Kekayaan Intelektual (HaKI) dalam tiga tahun terakhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1166, '7.2.1', 'Jumlah kegiatan Pengabdian kepada Masyarakat (PkM) yang dilakukan oleh dosen tetap yang bidang keahliannya sesuai dengan PS.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1167, '7.2.2', 'Keterlibatan mahasiswa dalam kegiatan pengabdian kepada masyarakat.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1168, '7.3.1', 'Kegiatan kerjasama dengan instansi di dalam negeri dalam tiga tahun terakhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161),
+(1169, '7.3.2', 'Kegiatan kerjasama dengan instansi di luar negeri dalam tiga tahun terakhir.', '', '', '', '2018-01-08 02:38:26', '2018-01-08 02:38:26', 161);
 
 -- --------------------------------------------------------
 
@@ -3258,7 +3566,26 @@ INSERT INTO `hitungf1` (`id`, `id_buku`, `butir`, `nama_asesor`, `nilai1`, `nila
 (23, 2952, '2.2', 'Wahyu Saepuloh', '4.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', '', 'ssfscsdfdssdfsd', '2017-12-28 02:13:17', 2),
 (24, 2954, '2.4', 'Wahyu Saepuloh', '4.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', '', 'adsdasd', '2017-12-28 02:19:57', 1),
 (25, 2954, '2.4', 'Wahyu Saepuloh', '3.30', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.30', '', 'daad', '2017-12-28 03:31:43', 2),
-(26, 2849, '1.1.b', 'Wahyu Saepuloh', '4.00', '4.00', '4.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', '', 'asasa', '2017-12-28 21:05:59', 1);
+(26, 2849, '1.1.b', 'Wahyu Saepuloh', '4.00', '4.00', '4.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', '', 'asasa', '2017-12-28 21:05:59', 1),
+(27, 2857, '3.1.1.a', 'Wahyu Saepuloh', '4.00', '4.00', '1.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '15.50', 'Jumlah calon yang ikut seleksi = 4, daya tampung PS = 4, Rasio Calon Mahasiswa yang ikut seleksi terhadap daya tampung = 1.00', 'zxczxcxz', '2018-01-01 21:25:21', 1),
+(28, 2857, '3.1.1.a', 'Wahyu Saepuloh', '15017.00', '2380.00', '6.31', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', 'Jumlah calon yang ikut seleksi = 15017, daya tampung PS = 2380, Rasio Calon Mahasiswa yang ikut seleksi terhadap daya tampung = 6.31', 'sdvljsdvnl', '2018-01-01 21:25:39', 2),
+(29, 2858, '3.1.1.b', 'Wahyu Saepuloh', '2356.00', '2513.00', '0.94', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.94', 'Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi = 2356 / 2513 = 0.94', 'fdfdfsd', '2018-01-01 21:38:55', 1),
+(30, 2859, '3.1.1.c', 'Wahyu Saepuloh', '0.00', '1603.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', 'Rasio mahasiswa baru transfer terhadap mahasiswa baru bukan transfer = 0 / 1603 = 0.00', 'sdvfsdkvdslkvn', '2018-01-01 21:45:42', 1),
+(31, 2860, '3.1.1.d', 'Wahyu Saepuloh', '4.00', '4.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', 'rata-rata IPK Makasiswa = 4', 'askfbsdkjdsb', '2018-01-01 22:08:42', 1),
+(32, 2861, '3.1.2', 'Wahyu Saepuloh', '4.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', '', 'asdasasdsdaas', '2018-01-03 00:53:31', 1),
+(33, 2861, '3.1.2', 'Wahyu Saepuloh', '3.50', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.50', '', 'aaaaaaaaaaaaaaaaaaa', '2018-01-03 00:53:42', 2),
+(34, 2958, '3.1.2', 'Wahyu Saepuloh', '1.00', '4669.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', 'Rasio mahasiswa baru transfer terhadap mahasiswa baru bukan transfer = 1 / 4669 = 0.00', 'lnln', '2018-01-03 01:22:43', 1),
+(35, 2861, '3.1.2', 'Wahyu Saepuloh', '1.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '1.00', '', '1', '2018-01-03 01:35:51', 3),
+(36, 2862, '3.1.3', 'Wahyu Saepuloh', '3.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.00', '', 'dxasdsd', '2018-01-03 02:20:35', 1),
+(37, 2862, '3.1.3', 'Wahyu Saepuloh', '3.50', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.50', '', 'aaaaa', '2018-01-03 02:21:48', 2),
+(38, 2848, '1.1.a', 'Wahyu Saepuloh', '1.00', '2.00', '2.00', '2.00', '1.75', '0.00', '0.00', '0.00', '0.00', '0.00', '1.75', '', 'aaa', '2018-01-03 04:44:43', 1),
+(39, 2850, '1.2', 'Wahyu Saepuloh', '3.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.00', '', 'asdsds', '2018-01-03 04:46:47', 1),
+(40, 2851, '2.1', 'Wahyu Saepuloh', '3.45', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.45', '', 'SASAS', '2018-01-03 04:47:40', 1),
+(41, 2852, '2.2', 'Wahyu Saepuloh', '4.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', '', 'sfsfs', '2018-01-03 04:48:42', 1),
+(42, 2853, '2.3', 'Wahyu Saepuloh', '2.30', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '2.30', '', 'dsdsd', '2018-01-03 04:49:25', 1),
+(43, 2854, '2.4', 'Wahyu Saepuloh', '3.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.00', '', 'wwwww', '2018-01-03 04:51:13', 1),
+(44, 2855, '2.5', 'Wahyu Saepuloh', '4.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', '', 'aaaaaaaaaaaa', '2018-01-03 04:51:50', 1),
+(45, 2856, '2.6', 'Wahyu Saepuloh', '3.45', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.45', '', 'sssssssssssc', '2018-01-03 04:52:48', 1);
 
 -- --------------------------------------------------------
 
@@ -3330,7 +3657,16 @@ INSERT INTO `hitungf3` (`id`, `id_buku`, `butir`, `nama_asesor`, `nilai1`, `nila
 (7, 2952, '2.2', 'Wahyu Saepuloh', '3.50', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.50', '', 'dsadsds', '2017-12-28 22:18:03', 1),
 (8, 2953, '2.3', 'Wahyu Saepuloh', '2.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '2.00', '', 'ssdfsdvxcv', '2017-12-28 22:18:20', 1),
 (9, 2954, '2.4', 'Wahyu Saepuloh', '4.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', '', 'xcxvxcvxcv', '2017-12-28 22:18:40', 1),
-(10, 2955, '2.5.1', 'Wahyu Saepuloh', '4.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', '', 'zxvxcv', '2017-12-28 22:18:53', 1);
+(10, 2955, '2.5.1', 'Wahyu Saepuloh', '4.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', '', 'zxvxcv', '2017-12-28 22:18:53', 1),
+(11, 2956, '2.5.2', 'Wahyu Saepuloh', '3.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.00', '', 'gdfgfdgfd', '2018-01-01 19:42:48', 1),
+(12, 2957, '3.1.1', 'Wahyu Saepuloh', '3.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.00', '', 'sdsdsd', '2018-01-01 20:22:08', 1),
+(13, 2958, '3.1.2', 'Wahyu Saepuloh', '1.00', '4669.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', 'Rasio mahasiswa baru transfer terhadap mahasiswa baru bukan transfer = 1 / 4669 = 0.00', 'fsdfsdfsdfxcvx', '2018-01-03 01:27:23', 1),
+(14, 2958, '3.1.2', 'Wahyu Saepuloh', '5.00', '5555.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', 'Rasio mahasiswa baru transfer terhadap mahasiswa baru bukan transfer = 5 / 5555 = 0.00', 'klkmlkmlk', '2018-01-03 01:27:40', 2),
+(15, 2957, '3.1.1', 'Wahyu Saepuloh', '2.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '2.00', '', 'wwwww', '2018-01-03 01:34:03', 2),
+(16, 2958, '3.1.2', 'Wahyu Saepuloh', '5111.00', '5.00', '1022.20', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 'Rasio mahasiswa baru transfer terhadap mahasiswa baru bukan transfer = 5111 / 5 = 1022.20', 'qqqqqqqqq', '2018-01-03 01:34:23', 3),
+(17, 2958, '3.1.2', 'Wahyu Saepuloh', '2.00', '2.00', '1.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '4.00', 'Rasio mahasiswa baru transfer terhadap mahasiswa baru bukan transfer = 2 / 2 = 1.00', '2', '2018-01-03 01:36:44', 4),
+(18, 2959, '3.1.3', 'Wahyu Saepuloh', '2.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '2.00', '', 'dddd', '2018-01-03 03:05:57', 1),
+(19, 2959, '3.1.3', 'Wahyu Saepuloh', '3.40', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '3.40', '', '11qsaasa', '2018-01-03 04:43:01', 1);
 
 -- --------------------------------------------------------
 
@@ -3341,9 +3677,9 @@ INSERT INTO `hitungf3` (`id`, `id_buku`, `butir`, `nama_asesor`, `nilai1`, `nila
 CREATE TABLE `isian_16kolom` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_butir` int(10) UNSIGNED DEFAULT NULL,
-  `kolom1` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom2` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom3` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom1` text COLLATE utf8_unicode_ci,
+  `kolom2` text COLLATE utf8_unicode_ci,
+  `kolom3` text COLLATE utf8_unicode_ci,
   `kolom4` text COLLATE utf8_unicode_ci,
   `kolom5` text COLLATE utf8_unicode_ci,
   `kolom6` text COLLATE utf8_unicode_ci,
@@ -3351,18 +3687,18 @@ CREATE TABLE `isian_16kolom` (
   `kolom8` text COLLATE utf8_unicode_ci,
   `kolom9` text COLLATE utf8_unicode_ci,
   `kolom10` text COLLATE utf8_unicode_ci,
-  `kolom11` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom12` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom13` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom14` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom15` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom16` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom17` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom18` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom19` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom20` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom21` text COLLATE utf8_unicode_ci NOT NULL,
-  `kolom22` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom11` text COLLATE utf8_unicode_ci,
+  `kolom12` text COLLATE utf8_unicode_ci,
+  `kolom13` text COLLATE utf8_unicode_ci,
+  `kolom14` text COLLATE utf8_unicode_ci,
+  `kolom15` text COLLATE utf8_unicode_ci,
+  `kolom16` text COLLATE utf8_unicode_ci,
+  `kolom17` text COLLATE utf8_unicode_ci,
+  `kolom18` text COLLATE utf8_unicode_ci,
+  `kolom19` text COLLATE utf8_unicode_ci,
+  `kolom20` text COLLATE utf8_unicode_ci,
+  `kolom21` text COLLATE utf8_unicode_ci,
+  `kolom22` text COLLATE utf8_unicode_ci,
   `kolom23` text COLLATE utf8_unicode_ci NOT NULL,
   `kolom24` text COLLATE utf8_unicode_ci NOT NULL,
   `kolom25` text COLLATE utf8_unicode_ci NOT NULL,
@@ -3408,10 +3744,126 @@ INSERT INTO `isian_16kolom` (`id`, `id_butir`, `kolom1`, `kolom2`, `kolom3`, `ko
 (5, 2953, '<p>kjvbkj kjbkj</p>', '<p>kjbkj</p>', '<p>&nbsp;kjbnjk</p>', '<p>jkbnkjb</p>', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2017-12-28 01:49:00', '2017-12-28 02:11:07'),
 (6, 2952, '<p>scascascdas sadasda</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2017-12-28 02:11:39', '2017-12-28 02:13:17'),
 (7, 2954, '<p>asdasdc&nbsp; sdfsdfs dfsdfsdf</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 3, '2017-12-28 02:20:09', '2017-12-28 22:20:26'),
-(8, 2857, '45', '45', '45', '40', '4', '4', '4', '4', '4', '4', '4', '4', '4', '4', '4', '<p>4</p>', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2017-12-28 20:25:39', '2017-12-28 20:25:39'),
-(10, 2857, '5', '5', '5', '4', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2017-12-28 20:27:21', '2017-12-28 20:27:21'),
 (11, 2955, '<p>kjsdfkjbsdjkf sdfsdfsdf</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2017-12-28 22:19:12', '2017-12-28 22:28:00'),
-(12, 2875, '<p>dlfjsdnfkjsd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2017-12-28 22:33:17', '2017-12-28 22:33:17');
+(12, 2875, '<p>dlfjsdnfkjsd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2017-12-28 22:33:17', '2017-12-28 22:33:17'),
+(14, 2908, '<p>cdscdscds dvdsvdsv</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-01 20:47:59', '2018-01-01 20:48:08'),
+(15, 2957, '<p>ccccccccccccc ssssssssssssss</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-01 20:55:03', '2018-01-01 20:55:09'),
+(16, 2905, '41', '42', '4', '4', '4', '4', '4', '4', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-01 21:07:32', '2018-01-01 21:10:57'),
+(17, 2919, '<p>sasaasas scc ss</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-02 01:10:37', '2018-01-02 01:11:41'),
+(18, 2920, '<p>sssscccc dddd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-02 01:13:31', '2018-01-02 01:13:36'),
+(19, 2921, '<p>sdsd ddd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-02 01:13:49', '2018-01-02 01:13:53'),
+(20, 2922, '<p>dfdfcs ddd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-02 01:14:02', '2018-01-02 01:14:08'),
+(21, 2923, '<p>ssss dddd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-02 01:14:16', '2018-01-02 01:14:22'),
+(22, 2924, '<p>dddd qwwwwwwss</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 3, '2018-01-02 01:14:35', '2018-01-03 20:16:01'),
+(23, 2958, '7', '7', '7', '7', '7', '7', '<p>7Catatan:</p>', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 02:14:48', '2018-01-02 22:50:34'),
+(24, 2861, '4', '4', '4', '4', '4', '4', '4', '<p>4Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 02:15:29', '2018-01-02 02:15:29'),
+(30, 2958, '10', '11', '12', '13', '14', '15', '<p>Catatan:</p>', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 22:33:07', '2018-01-02 22:50:16'),
+(31, 2958, '1', '2', '3', '4', '5', '6', '<p>Catatan:</p>', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 22:51:40', '2018-01-02 22:51:40'),
+(32, 2959, '<p>sdsfdsfds ccccccccccccc gg</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 3, '2018-01-03 01:57:39', '2018-01-03 02:05:03'),
+(33, 2848, '<p>asas kjfbskfjbsdf dfgksdjbfdskjfbgds fsdjbfgds</p>', '<p>klk</p>', '<p>lnl</p>', '<p>inikah yang dinamakan ....</p>', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 3, '2018-01-03 04:45:04', '2018-01-08 21:06:30'),
+(34, 2849, '<p>sadsds</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:46:22', '2018-01-03 04:46:22'),
+(35, 2850, '<p>scscs</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:47:08', '2018-01-03 04:47:08'),
+(36, 2851, '<p>sdsdsd</p>', '<p>kjbkj</p>', '<p>kjbk</p>', '<p>kjbk</p>', '<p>kjb</p>', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-03 04:47:40', '2018-01-03 21:57:38'),
+(37, 2852, '<p>adadad</p>', '<p>sfdsfs</p>', '<p>sfsf</p>', '<p>sfsfsf</p>', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:48:41', '2018-01-03 04:48:41'),
+(38, 2853, '<p>adada</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:49:25', '2018-01-03 04:49:25'),
+(39, 2854, '<p>ssdsd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:50:07', '2018-01-03 04:50:07'),
+(40, 2855, 'Dosen', '<p>sfsfsvcvc dddddfddfdfd</p>', '<p>dfdf</p>', 'Mahasiswa', '<p>fdfd</p>', '<p>gdgd</p>', 'Alumni', '<p>gfdgf</p>', '<p>gfgfg</p>', 'Pengguna Lulusan', '<p>gfdgfq</p>', '<p>gfgf</p>', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-03 04:52:19', '2018-01-08 21:12:06'),
+(41, 2856, '<p>asaaa</p>', '<p>sds</p>', '<p>fdfd</p>', '<p>dvd</p>', '<p>bfbfq</p>', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:53:13', '2018-01-03 04:53:13'),
+(42, 2862, 'jbkj', 'jkbkj', 'kjbk', '<p>kbkCatatan:</p>', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:54:35', '2018-01-03 04:54:35'),
+(43, 2929, '1 ', '1 ', '1 ', NULL, '√', NULL, '√', '1 ', '<p>Catatan:</p>', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 21:15:39', '2018-01-03 21:16:24'),
+(44, 2931, 'Prosiding', 'sasa', 'asas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 21:41:12', '2018-01-03 21:41:12'),
+(45, 2931, 'Jurnal nasional yang terakreditasi', 'ada', 'dada', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 21:41:35', '2018-01-03 21:41:35'),
+(46, 2936, '<ol>\r\n<li>...</li>\r\n<li>...</li>\r\n<li>...</li>\r\n<li>dst</li>\r\n</ol>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 22:15:59', '2018-01-03 22:15:59'),
+(47, 2938, '<p>adada dss ffff</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-03 22:47:41', '2018-01-03 22:49:49'),
+(48, 2927, '4', '4', '4', '4', '<p>Catatan:</p>', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 01:04:44', '2018-01-04 01:04:44'),
+(49, 2883, '4', '4', '4', '4', '4', '4', '4', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 03:02:21', '2018-01-04 03:02:21'),
+(50, 2884, '5', '5', '5', '5', '5', '5', '5', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 03:25:27', '2018-01-04 03:25:27'),
+(51, 2883, '8', '8', '8', '8', '8', '8', '8', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 04:32:24', '2018-01-04 04:32:24'),
+(52, 2883, '9', '9', '9', '9', '9', '9', '9', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 04:32:42', '2018-01-04 04:32:42'),
+(53, 2884, '1', '1', '1', '1', '1', '1', '1', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 04:38:45', '2018-01-04 04:38:45'),
+(54, 2884, '2', '2', '2', '2', '2', '2', '2', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 04:43:24', '2018-01-04 04:43:24'),
+(55, 2857, '1', '1', '1', '1', '1', '2', '2', '2', '2', '2', '2', '2', '0', '2', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-07 04:39:20', '2018-01-07 04:39:58'),
+(56, 2857, '2', '2', '2', '2', '2', '1', '1', '1', '1', '1', '1', '1', '0', '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-07 04:39:35', '2018-01-07 04:42:26'),
+(57, 2857, '45', '45', '45', '45', '45', '45', '45', '45', '45', '45', '45', '45', '0', '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-08 03:12:51', '2018-01-08 20:27:36'),
+(62, 2893, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-10 22:35:52', '2018-01-10 22:35:52'),
+(63, 2893, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-10 22:43:03', '2018-01-10 22:43:03'),
+(64, 2893, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-10 22:46:54', '2018-01-10 22:46:54'),
+(73, 2863, '1', '1', '1', '1', '1', '1', '1', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 01:46:07', '2018-01-15 01:46:07'),
+(74, 2863, '2', '2', '2', '2', '2', '2', '2', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 01:48:14', '2018-01-15 01:48:14'),
+(77, 2863, '3', '3', '3', '3', '3', '3', '3', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 02:01:37', '2018-01-15 02:01:37'),
+(80, 2863, '4', '4', '4', '4', '4', '4', '4', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 03:16:18', '2018-01-15 03:16:18'),
+(81, 2863, '5', '5', '5', '5', '5', '5', '5', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 04:04:16', '2018-01-15 04:04:16');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `isian_16kolom_buku`
+--
+
+CREATE TABLE `isian_16kolom_buku` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_butir` int(10) UNSIGNED DEFAULT NULL,
+  `kolom1` text COLLATE utf8_unicode_ci,
+  `kolom2` text COLLATE utf8_unicode_ci,
+  `kolom3` text COLLATE utf8_unicode_ci,
+  `kolom4` text COLLATE utf8_unicode_ci,
+  `kolom5` text COLLATE utf8_unicode_ci,
+  `kolom6` text COLLATE utf8_unicode_ci,
+  `kolom7` text COLLATE utf8_unicode_ci,
+  `kolom8` text COLLATE utf8_unicode_ci,
+  `kolom9` text COLLATE utf8_unicode_ci,
+  `kolom10` text COLLATE utf8_unicode_ci,
+  `kolom11` text COLLATE utf8_unicode_ci,
+  `kolom12` text COLLATE utf8_unicode_ci,
+  `kolom13` text COLLATE utf8_unicode_ci,
+  `kolom14` text COLLATE utf8_unicode_ci,
+  `kolom15` text COLLATE utf8_unicode_ci,
+  `kolom16` text COLLATE utf8_unicode_ci,
+  `kolom17` text COLLATE utf8_unicode_ci,
+  `kolom18` text COLLATE utf8_unicode_ci,
+  `kolom19` text COLLATE utf8_unicode_ci,
+  `kolom20` text COLLATE utf8_unicode_ci,
+  `kolom21` text COLLATE utf8_unicode_ci,
+  `kolom22` text COLLATE utf8_unicode_ci,
+  `kolom23` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom24` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom25` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom26` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom27` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom28` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom29` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom30` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom31` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom32` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom33` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom34` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom35` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom36` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom37` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom38` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom39` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom40` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom41` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom42` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom43` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom44` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom45` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom46` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom47` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom48` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom49` text COLLATE utf8_unicode_ci NOT NULL,
+  `kolom50` text COLLATE utf8_unicode_ci NOT NULL,
+  `version_no` int(22) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data untuk tabel `isian_16kolom_buku`
+--
+
+INSERT INTO `isian_16kolom_buku` (`id`, `id_butir`, `kolom1`, `kolom2`, `kolom3`, `kolom4`, `kolom5`, `kolom6`, `kolom7`, `kolom8`, `kolom9`, `kolom10`, `kolom11`, `kolom12`, `kolom13`, `kolom14`, `kolom15`, `kolom16`, `kolom17`, `kolom18`, `kolom19`, `kolom20`, `kolom21`, `kolom22`, `kolom23`, `kolom24`, `kolom25`, `kolom26`, `kolom27`, `kolom28`, `kolom29`, `kolom30`, `kolom31`, `kolom32`, `kolom33`, `kolom34`, `kolom35`, `kolom36`, `kolom37`, `kolom38`, `kolom39`, `kolom40`, `kolom41`, `kolom42`, `kolom43`, `kolom44`, `kolom45`, `kolom46`, `kolom47`, `kolom48`, `kolom49`, `kolom50`, `version_no`, `created_at`, `updated_at`) VALUES
+(1, 1, '<p>Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue: Tuliskan &nbsp;Sejarah untuk mengawali deskripsi</strong></p>\r\n<p><strong>Clue : Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) program studi diturunkan dari VMTS Universitas Telkom dan Fakultas (Dokumen pendukung adalah renstra Universitas Telkom dan Fakultas&hellip;..),&nbsp; di level prodi ada Renop yang ada didalam renstra fakultas, gambarkan alur nya dengan menggunakan gambar, list semua pihak yang terlibat untuk penyusunan VMTS (Tim perumus, Industri, pemerintah, mahasiswa, alumni, dll)</strong></p>\r\n<p><strong>&nbsp;</strong></p>\r\n<p>Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) Program Studi mengacu kepada VMTS Universitas Telkom dan Fakultas &hellip;&hellip;&nbsp; yang tertuang dalam dokumen renstra Universitas, Renstra Fakultas ---<strong>Dst</strong></p>\r\n<p>&nbsp;</p>\r\n<p>Visi Universitas Telkom: Menjadi perguruan tinggi berkelas dunia yang berperan aktif dalam pengembangan ilmu pengetahuan dan seni berbasis teknologi informasi.</p>\r\n<p>Misi Universitas Telkom:</p>\r\n<ol>\r\n<li>Menyelenggarakan dan mengembangkan pendidikan berstandar internasional;</li>\r\n<li>Mengembangkan dan menyebarluaskan ilmu pengetahuan, teknologi, manajemen, dan seni yang diakui secara internasional;</li>\r\n<li>Memanfaatkan ilmu pengetahuan, teknologi, manajemen, dan seni, untuk kesejahteraan dan kemajuan peradaban bangsa.</li>\r\n</ol>\r\n<p>&nbsp;</p>\r\n<p>Visi Fakultas : &hellip;.</p>\r\n<p>&nbsp;</p>\r\n<p>Misi Fakultas: &hellip;..</p>\r\n<p>&nbsp;</p>\r\n<p>(Gambarkan mekanisme penyusunan dengan runtutan alur, gambar dibawah ini hanya contoh, semakin lengkap menggambarkan maka semakin baik)</p>\r\n<p>&nbsp;</p>\r\n<p style="padding-left: 270px;"><img src="/Screenshot_34.png" width="487" height="259" /></p>\r\n<p><strong>Clue : Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap dll (Sebutkan siapa saja tim perumus VMTS Prodi)</strong></p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Dilakukan FGD dengan narasumber : industri, pemerintah, komunitas, mahasiswa, alumni (sebutkan lainnya jika ada dan didukung dengan foto-foto FGD) pada tanggal&hellip;&hellip;.</strong></p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama Peserta, Instansi, Jabatan FGD dengan Industri</strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 122px; float: left;" border="1" width="676" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Nama</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Instansi</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Jabatan</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Pemerintah</strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 124px;" border="1" width="678" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>Nama</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>Instansi</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>Jabatan</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Mahasiswa </strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 124px;" border="1" width="584" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>Peserta</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>Kelas</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;sssss</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>ddd&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan &hellip;&hellip;. (sebutkan yang lainnya: seperti alumni, komunitas, dll)</strong></p>\r\n<p><strong>Clue : VMTS Prodi selanjutnya diusulkan ke rapat senat Fakultas dan senat Universitas</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;.</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 3, '2018-01-16 02:11:06', '2018-01-16 03:48:39');
 
 -- --------------------------------------------------------
 
@@ -3500,7 +3952,149 @@ INSERT INTO `isian_16kolom_version` (`id`, `id_kolom`, `kolom1`, `kolom2`, `kolo
 (16, 2955, '<p>kjsdfkjbsdjkf</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2017-12-28 22:19:12', '2017-12-28 22:19:12'),
 (17, 2954, '<p>asdasdc&nbsp; sdfsdfs dfsdfsdf</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 3, '2017-12-28 02:20:15', '2017-12-28 22:20:26'),
 (18, 2955, '<p>kjsdfkjbsdjkf sdfsdfsdf</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2017-12-28 22:19:12', '2017-12-28 22:28:00'),
-(19, 2875, '<p>dlfjsdnfkjsd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2017-12-28 22:33:17', '2017-12-28 22:33:17');
+(19, 2875, '<p>dlfjsdnfkjsd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2017-12-28 22:33:17', '2017-12-28 22:33:17'),
+(25, 2908, '<p>cdscdscds</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-01 20:47:59', '2018-01-01 20:47:59'),
+(26, NULL, '<p>cdscdscds dvdsvdsv</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-01 20:48:08'),
+(27, 2957, '<p>ccccccccccccc</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-01 20:55:03', '2018-01-01 20:55:03'),
+(28, 2957, '<p>ccccccccccccc ssssssssssssss</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-01 20:55:03', '2018-01-01 20:55:09'),
+(29, 2905, '4', '4', '4', '4', '4', '4', '4', '4', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-01 21:07:32', '2018-01-01 21:07:32'),
+(30, 2905, '41', '4', '4', '4', '4', '4', '4', '4', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-01 21:07:41'),
+(31, 2905, '41', '42', '4', '4', '4', '4', '4', '4', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-01 21:10:57'),
+(32, 2919, '<p>sasaasas</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 01:10:37', '2018-01-02 01:10:37'),
+(33, 2919, '<p>sasaasas scc</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-02 01:10:43'),
+(34, 2919, '<p>sasaasas scc ss</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '0000-00-00 00:00:00', '2018-01-02 01:11:41'),
+(35, 2920, '<p>sssscccc</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 01:13:31', '2018-01-02 01:13:31'),
+(36, 2920, '<p>sssscccc dddd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '0000-00-00 00:00:00', '2018-01-02 01:13:36'),
+(37, 2921, '<p>sdsd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 01:13:49', '2018-01-02 01:13:49'),
+(38, 2921, '<p>sdsd ddd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '0000-00-00 00:00:00', '2018-01-02 01:13:53'),
+(39, 2922, '<p>dfdfcs</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 01:14:03', '2018-01-02 01:14:03'),
+(40, 2922, '<p>dfdfcs ddd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '0000-00-00 00:00:00', '2018-01-02 01:14:08'),
+(41, 2923, '<p>ssss</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 01:14:16', '2018-01-02 01:14:16'),
+(42, 2923, '<p>ssss dddd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '0000-00-00 00:00:00', '2018-01-02 01:14:22'),
+(43, 2924, '<p>dddd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 01:14:35', '2018-01-02 01:14:35'),
+(44, 2924, '<p>dddd qwwwwww</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '0000-00-00 00:00:00', '2018-01-02 01:14:40'),
+(45, 2958, '7', '7', '7', '7', '7', '7', '<p>7Catatan:</p>', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 02:14:48', '2018-01-02 02:14:48'),
+(46, 2861, '4', '4', '4', '4', '4', '4', '4', '<p>4Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 02:15:30', '2018-01-02 02:15:30'),
+(47, 2958, '8', '8', '8', '8', '8', '8', '<p>Catatan:</p>', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 20:47:26', '2018-01-02 20:47:26'),
+(48, 2958, '6', '6', '6', '6', '6', '6', '<p>Catatan:</p>', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 21:36:52', '2018-01-02 21:36:52'),
+(49, 2958, '5', '5', '5', '5', '5', '5', '<p>Catatan:</p>', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 21:37:08', '2018-01-02 21:37:08'),
+(50, 2958, '4', '4', '4', '4', '4', '4', '<p>4Catatan:</p>', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 21:37:26', '2018-01-02 21:37:26'),
+(51, 2958, '3', '3', '3', '3', '3', '3', '<p>Catatan:</p>', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 21:37:54', '2018-01-02 21:37:54'),
+(52, 2958, '10', '10', '10', '10', '10', '10', '<p>Catatan:</p>', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 22:33:07', '2018-01-02 22:33:07'),
+(53, 2958, '101', '10', '10', '10', '10', '10', NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-02 22:33:34'),
+(54, 2958, '7', '7', '7', '7', '7', '71', NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-02 22:49:27'),
+(55, 2958, '101', '10', '10', '10', '10', '14', NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-02 22:49:48'),
+(56, 2958, '10', '11', '12', '13', '14', '15', NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-02 22:50:16'),
+(57, 2958, '7', '7', '7', '7', '7', '7', NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-02 22:50:34'),
+(58, 2958, '1', '2', '3', '4', '5', '6', '<p>Catatan:</p>', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-02 22:51:40', '2018-01-02 22:51:40'),
+(60, 2958, '<p>svsvvdvsvvs sdfvfdv</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-03 01:56:26'),
+(61, 2959, '<p>sdsfdsfds</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 01:57:39', '2018-01-03 01:57:39'),
+(62, 2959, '<p>sdsfdsfds ccccccccccccc</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '0000-00-00 00:00:00', '2018-01-03 01:57:45'),
+(63, 2959, '<p>sdsfdsfds ccccccccccccc gg</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 3, '0000-00-00 00:00:00', '2018-01-03 02:05:03'),
+(64, 2848, '<p>asas</p>', '<p>klk</p>', '<p>lnl</p>', '<p>lknl</p>', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:45:04', '2018-01-03 04:45:04'),
+(65, 2849, '<p>sadsds</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:46:22', '2018-01-03 04:46:22'),
+(66, 2850, '<p>scscs</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:47:08', '2018-01-03 04:47:08'),
+(67, 2851, '<p>sdsdsd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:47:40', '2018-01-03 04:47:40'),
+(68, 2852, '<p>adadad</p>', '<p>sfdsfs</p>', '<p>sfsf</p>', '<p>sfsfsf</p>', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:48:41', '2018-01-03 04:48:41'),
+(69, 2853, '<p>adada</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:49:25', '2018-01-03 04:49:25'),
+(70, 2854, '<p>ssdsd</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:50:07', '2018-01-03 04:50:07'),
+(71, 2855, 'Dosen', '<p>sfsfsvcvc</p>', '<p>dfdf</p>', 'Mahasiswa', '<p>fdfd</p>', '<p>gdgd</p>', 'Alumni', '<p>gfdgf</p>', '<p>gfgfg</p>', 'Pengguna Lulusan', '<p>gfdgfq</p>', '<p>gfgf</p>', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:52:20', '2018-01-03 04:52:20'),
+(72, 2856, '<p>asaaa</p>', '<p>sds</p>', '<p>fdfd</p>', '<p>dvd</p>', '<p>bfbfq</p>', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:53:13', '2018-01-03 04:53:13'),
+(73, 2862, 'jbkj', 'jkbkj', 'kjbk', '<p>kbkCatatan:</p>', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 04:54:35', '2018-01-03 04:54:35'),
+(74, 2924, '<p>dddd qwwwwwwss</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 3, '0000-00-00 00:00:00', '2018-01-03 20:16:01'),
+(75, 2928, 'Satu ruang untuk lebih dari 4 dosen', '4', '4', 'Satu ruang untuk 3 - 4 dosen', '4', '4', 'Satu ruang untuk 2 dosen', '4', '4', 'Satu ruang untuk 1 dosen (bukan pejabat struktural)', '4', '4', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 20:59:16', '2018-01-03 20:59:16'),
+(76, 2928, 'Satu ruang untuk lebih dari 4 dosen', '5', '5', 'Satu ruang untuk 3 - 4 dosen', '5', '5', 'Satu ruang untuk 2 dosen', '5', '5', 'Satu ruang untuk 1 dosen (bukan pejabat struktural)', '5', '5', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 20:59:32', '2018-01-03 20:59:32'),
+(77, 2928, 'Satu ruang untuk lebih dari 4 dosen', '23', '23', 'Satu ruang untuk 3 - 4 dosen', '23', '23', 'Satu ruang untuk 2 dosen', '23', '23', 'Satu ruang untuk 1 dosen (bukan pejabat struktural)', '23', '23', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 21:02:14', '2018-01-03 21:02:14'),
+(78, 2929, '4', '4', '4', '√', '√', '√', '√', '2', '<p>Catatan:</p>', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 21:12:31', '2018-01-03 21:12:31'),
+(79, 2929, '1', '1', '1', '√', NULL, '√', NULL, '1', '<p>Catatan:</p>', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 21:15:39', '2018-01-03 21:15:39'),
+(80, 2929, '1', '1', '1', '√', '√', '√', '√', '1', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-03 21:15:52'),
+(81, 2929, '1 ', '1 ', '1 ', NULL, NULL, NULL, NULL, '1 ', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-03 21:16:12'),
+(82, 2929, '1 ', '1 ', '1 ', NULL, '√', NULL, '√', '1 ', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-03 21:16:24'),
+(83, 2930, '12', '12', '12', '√', '√', NULL, '√', '12', '<p>Catatan:</p>', NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 21:19:20', '2018-01-03 21:19:20'),
+(84, 2931, 'Prosiding', 'sasa', 'asas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 21:41:12', '2018-01-03 21:41:12'),
+(85, 2931, 'Jurnal nasional yang terakreditasi', 'ada', 'dada', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 21:41:35', '2018-01-03 21:41:35'),
+(86, 2851, '<p>sdsdsd</p>', '<p>kjbkj</p>', '<p>kjbk</p>', '<p>kjbk</p>', '<p>kjb</p>', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-03 04:47:40', '2018-01-03 21:57:38'),
+(87, 2936, '<ol>\r\n<li>...</li>\r\n<li>...</li>\r\n<li>...</li>\r\n<li>dst</li>\r\n</ol>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 22:16:00', '2018-01-03 22:16:00'),
+(88, 2938, '<p>adada</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-03 22:47:41', '2018-01-03 22:47:41'),
+(89, 2938, '<p>adada dss</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-03 22:47:47'),
+(90, 2938, '<p>adada dss ffff</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '0000-00-00 00:00:00', '2018-01-03 22:49:49'),
+(91, 2927, '4', '4', '4', '4', '<p>Catatan:</p>', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 01:04:44', '2018-01-04 01:04:44'),
+(92, 2883, '4', '4', '4', '4', '4', '4', '4', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 03:02:21', '2018-01-04 03:02:21'),
+(93, 2883, '5', '5', '5', '5', '5', '5', '5', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 03:25:27', '2018-01-04 03:25:27'),
+(94, 2883, '8', '8', '8', '8', '8', '8', '8', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 04:32:24', '2018-01-04 04:32:24'),
+(95, 2883, '9', '9', '9', '9', '9', '9', '9', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 04:32:42', '2018-01-04 04:32:42'),
+(96, NULL, '1', '1', '1', '1', '1', '1', '1', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 04:38:45', '2018-01-04 04:38:45'),
+(97, 2884, '2', '2', '2', '2', '2', '2', '2', '<p>Catatan:</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 04:43:24', '2018-01-04 04:43:24'),
+(98, 2857, '45', '45', '45', '45', '45', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 20:54:55', '2018-01-04 20:54:55'),
+(99, 2857, '45', '45', '45', '45', '45', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 21:00:14', '2018-01-04 21:00:14'),
+(100, 2857, '1', '1', '1', '1', '1', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 21:47:50', '2018-01-04 21:47:50'),
+(101, 2857, '2', '2', '2', '2', '2', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 21:54:07', '2018-01-04 21:54:07'),
+(102, 2857, '', '', '', NULL, NULL, '1', '1', '1', '1', '1', '1', '1', '0', '1', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-04 22:28:54'),
+(103, 2857, '4', '4', '4', '4', '4', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-04 22:35:46'),
+(104, 2857, '6', '6', '6', '6', '6', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-04 22:36:14'),
+(105, 2857, '', '', '', NULL, NULL, '8', '8', '8', '8', '8', '8', '8', '0', '9', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-04 22:37:29'),
+(106, 2857, '', '', '', NULL, NULL, '9', '9', '9', '9', '9', '9', '9', '0', '8', '9', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-04 22:37:53', '2018-01-04 22:37:53'),
+(107, 2857, '', '', '', NULL, NULL, '56', '56', '56', '56', '2', '3', '4', '2', '5', '3', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-05 01:25:32', '2018-01-05 01:25:32'),
+(108, 2857, '23', '23', '23', '23', '23', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-05 01:26:09', '2018-01-05 01:26:09'),
+(109, 2857, '', '', '', NULL, NULL, '23', '23', '23', '23', '23', '23', '23', '0', '23', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-05 03:08:24'),
+(110, 2857, '58', '58', '58', '58', '58', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-05 03:09:18'),
+(111, 2857, '12', '12', '12', '12', '12', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-05 03:09:41'),
+(112, 2857, '10', '10', '10', '10', '10', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-05 03:11:43'),
+(113, 2857, '1', '1', '1', '1', '1', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-05 03:12:08', '2018-01-05 03:12:08'),
+(114, 2857, '2', '2', '2', '2', '2', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-05 03:12:14'),
+(115, 2857, '3', '3', '3', '3', '3', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-05 03:12:33'),
+(116, 2857, '4', '4', '4', '4', '4', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-05 03:25:53'),
+(117, 2857, '', '', '', NULL, NULL, '5', '5', '5', '5', '5', '5', '5', '0', '5', '5', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-05 03:26:28'),
+(118, 2857, '', '', '', NULL, NULL, '5', '5', '5', '5', '5', '5', '5', '0', '5', '5', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-05 03:27:10', '2018-01-05 03:27:10'),
+(119, 2857, '', '', '', NULL, NULL, '6', '6', '6', '6', '6', '6', '6', '0', '6', '6', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-05 03:28:26'),
+(120, 2857, '7', '7', '7', '7', '7', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-05 03:34:03'),
+(121, 2857, '11', '11', '11', '11', '11', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-07 04:34:29'),
+(122, 2857, '', '', '', NULL, NULL, '12', '12', '12', '12', '12', '12', '12', '0', '0', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-07 04:35:10'),
+(123, 2857, '8', '8', '8', '8', '8', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-07 04:35:56', '2018-01-07 04:35:56'),
+(124, 2857, '9', '9', '9', '9', '9', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-07 04:36:12', '2018-01-07 04:36:12'),
+(125, 2857, '', '', '', NULL, NULL, '3', '3', '3', '3', '3', '3', '3', '0', '3', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-07 04:36:57', '2018-01-07 04:36:57'),
+(126, 2857, '', '', '', NULL, NULL, '4', '4', '4', '4', '4', '4', '4', '0', '0', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-07 04:37:40'),
+(127, 2857, '1', '1', '1', '1', '1', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-07 04:39:20', '2018-01-07 04:39:20'),
+(128, 2857, '2', '2', '2', '2', '2', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-07 04:39:35', '2018-01-07 04:39:35'),
+(129, 2857, '', '', '', NULL, NULL, '2', '2', '2', '2', '2', '2', '2', '0', '2', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-07 04:39:58'),
+(130, 2857, '', '', '', NULL, NULL, '1', '1', '1', '1', '1', '1', '1', '0', '0', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-07 04:42:26'),
+(131, 2857, '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-07 21:46:57', '2018-01-07 21:46:57'),
+(132, 2857, '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-07 21:50:04', '2018-01-07 21:50:04'),
+(133, 2857, '3', '3', '3', '3', '3', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-07 21:55:33', '2018-01-07 21:55:33'),
+(134, 2857, '', '', '', NULL, NULL, '4', '4', '4', '4', '4', '4', '4', '0', '0', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-07 21:56:59'),
+(135, 2857, '6', '6', '6', '6', '6', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-08 01:41:32', '2018-01-08 01:41:32'),
+(136, 2857, '45', '45', '45', '45', '45', NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-08 03:12:51', '2018-01-08 03:12:51'),
+(137, 2848, '<p>asas kjfbskfjbsdf dfgksdjbfdskjfbgds fsdjbfgds</p>', '<p>klk</p>', '<p>lnl</p>', '<p>lknl</p>', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-03 04:45:04', '2018-01-08 03:20:24'),
+(138, 2857, '', '', '', NULL, NULL, '45', '45', '45', '45', '45', '45', '45', '0', '0', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '0000-00-00 00:00:00', '2018-01-08 20:27:36'),
+(139, 2848, '<p>asas kjfbskfjbsdf dfgksdjbfdskjfbgds fsdjbfgds</p>', '<p>klk</p>', '<p>lnl</p>', '<p>inikah yang dinamakan ....</p>', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 3, '2018-01-08 03:20:24', '2018-01-08 21:06:30'),
+(140, 2855, 'Dosen', '<p>sfsfsvcvc dddddfddfdfd</p>', '<p>dfdf</p>', 'Mahasiswa', '<p>fdfd</p>', '<p>gdgd</p>', 'Alumni', '<p>gfdgf</p>', '<p>gfgfg</p>', 'Pengguna Lulusan', '<p>gfdgfq</p>', '<p>gfgf</p>', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-03 04:52:19', '2018-01-08 21:12:06'),
+(141, 2863, '12', '12', '12', '12', '12', '12', '12', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-08 22:55:19', '2018-01-08 22:55:19'),
+(142, 2863, '11', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-09 03:11:29', '2018-01-09 03:11:29'),
+(143, 2864, '11', '11', '11', '11', '11', '11', '11', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-09 03:14:37', '2018-01-09 03:14:37'),
+(144, 2893, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-10 22:35:52', '2018-01-10 22:35:52'),
+(145, 2893, '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-10 22:43:03', '2018-01-10 22:43:03'),
+(146, 2893, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-10 22:46:54', '2018-01-10 22:46:54'),
+(147, 2864, '13', '13', '13', '13', '13', '13', '13', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-11 21:42:58', '2018-01-11 21:42:58'),
+(148, 2863, '14', '14', '14', '14', '14', '14', '14', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-11 22:30:33', '2018-01-11 22:30:33'),
+(149, 2863, '15', '15', '15', '15', '15', '15', '15', '<p>15</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 00:24:12', '2018-01-15 00:24:12'),
+(150, 2863, '16', '16', '16', '16', '16', '16', '16', '<p>16</p>', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 00:27:22', '2018-01-15 00:27:22'),
+(151, 2863, '16', '16', '16', '16', '16', '16', '16', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 00:28:32', '2018-01-15 00:28:32'),
+(152, 2863, '17', '17', '17', '17', '17', '17', '17', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 00:41:15', '2018-01-15 00:41:15'),
+(153, 2863, '18', '18', '18', '18', '18', '18', '18', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 01:24:27', '2018-01-15 01:24:27'),
+(154, 2863, '1', '1', '1', '1', '1', '1', '1', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 01:26:43', '2018-01-15 01:26:43'),
+(155, 2863, '1', '1', '1', '1', '1', '1', '1', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 01:46:07', '2018-01-15 01:46:07'),
+(156, 2863, '2', '2', '2', '2', '2', '2', '2', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 01:48:14', '2018-01-15 01:48:14'),
+(157, 2863, '3', '3', '3', '3', '3', '3', '3', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 01:51:03', '2018-01-15 01:51:03'),
+(158, 2863, '3', '3', '3', '3', '3', '3', '3', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 01:56:14', '2018-01-15 01:56:14'),
+(159, 2863, '3', '3', '3', '3', '3', '3', '3', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 02:01:38', '2018-01-15 02:01:38'),
+(160, 2863, '4', '4', '4', '4', '4', '4', '4', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 02:02:42', '2018-01-15 02:02:42'),
+(161, 2863, '4', '4', '4', '4', '4', '4', '4', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 02:22:04', '2018-01-15 02:22:04'),
+(162, 2863, '4', '4', '4', '4', '4', '4', '4', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 03:16:18', '2018-01-15 03:16:18'),
+(163, 2863, '5', '5', '5', '5', '5', '5', '5', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-15 04:04:16', '2018-01-15 04:04:16');
+INSERT INTO `isian_16kolom_version` (`id`, `id_kolom`, `kolom1`, `kolom2`, `kolom3`, `kolom4`, `kolom5`, `kolom6`, `kolom7`, `kolom8`, `kolom9`, `kolom10`, `kolom11`, `kolom12`, `kolom13`, `kolom14`, `kolom15`, `kolom16`, `kolom17`, `kolom18`, `kolom19`, `kolom20`, `kolom21`, `kolom22`, `kolom23`, `kolom24`, `kolom25`, `kolom26`, `kolom27`, `kolom28`, `kolom29`, `kolom30`, `kolom31`, `kolom32`, `kolom33`, `kolom34`, `kolom35`, `kolom36`, `kolom37`, `kolom38`, `kolom39`, `kolom40`, `kolom41`, `kolom42`, `kolom43`, `kolom44`, `kolom45`, `kolom46`, `kolom47`, `kolom48`, `kolom49`, `kolom50`, `version_no`, `created_at`, `updated_at`) VALUES
+(164, 1, '<p>Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue: Tuliskan Prolog untuk mengawali cerita</strong></p>\r\n<p>Universitas Telkom berdiri pada tanggal 14 Agustus 2013 yang merupakan gabungan dari empat institusi dibawah naungan Yayasan Pendidikan Telkom yaitu Institut Teknologi Telkom, Institut Manajemen Telkom, Sekolah Tinggi Seni Rupa dan Desain Indonesia Telkom, dan Politeknik Telkom. Setelah Universitas Telkom berdiri, maka dilakukan penyesuaian visi, misi, tujuan dan sasaran institusi dan Program Studi. Program studi &hellip;&hellip; merupakan bagian dari Fakultas&hellip;&hellip;&hellip;.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) program studi diturunkan dari VMTS Universitas Telkom dan Fakultas (Dokumen pendukung adalah renstra Universitas Telkom dan Fakultas&hellip;..),&nbsp; di level prodi ada Renop yang ada didalam renstra fakultas, gambarkan alur nya dengan menggunakan gambar, list semua pihak yang terlibat untuk penyusunan VMTS (Tim perumus, Industri, pemerintah, mahasiswa, alumni, dll)</strong></p>\r\n<p><strong>&nbsp;</strong></p>\r\n<p>Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) Program Studi mengacu kepada VMTS Universitas Telkom dan Fakultas &hellip;&hellip;&nbsp; yang tertuang dalam dokumen renstra Universitas, Renstra Fakultas</p>\r\n<p>&nbsp;</p>\r\n<p>Visi Universitas Telkom: Menjadi perguruan tinggi berkelas dunia yang berperan aktif dalam pengembangan ilmu pengetahuan dan seni berbasis teknologi informasi.</p>\r\n<p>Misi Universitas Telkom:</p>\r\n<ol>\r\n<li>Menyelenggarakan dan mengembangkan pendidikan berstandar internasional;</li>\r\n<li>Mengembangkan dan menyebarluaskan ilmu pengetahuan, teknologi, manajemen, dan seni yang diakui secara internasional;</li>\r\n<li>Memanfaatkan ilmu pengetahuan, teknologi, manajemen, dan seni, untuk kesejahteraan dan kemajuan peradaban bangsa.</li>\r\n</ol>\r\n<p>&nbsp;</p>\r\n<p>Visi Fakultas : &hellip;.</p>\r\n<p>&nbsp;</p>\r\n<p>Misi Fakultas: &hellip;..</p>\r\n<p>&nbsp;</p>\r\n<p>(Gambarkan mekanisme penyusunan dengan runtutan alur, gambar dibawah ini hanya contoh, semakin lengkap menggambarkan maka semakin baik)</p>\r\n<p>&nbsp;</p>\r\n<p style="padding-left: 270px;"><img src="blob:http://localhost/a8ef94db-c60a-4b05-94d2-b0be16dcc3ad" width="487" height="259" /></p>\r\n<p>Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap dll (Sebutkan siapa saja tim perumus VMTS Prodi)</p>\r\n<p>&nbsp;</p>\r\n<p>Dilakukan FGD dengan narasumber : industri, pemerintah, komunitas, mahasiswa, alumni (sebutkan lainnya jika ada dan didukung dengan foto-foto FGD) pada tanggal&hellip;&hellip;.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama Peserta, Instansi, Jabatan FGD dengan Industri</strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 122px; float: left;" border="1" width="676" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Nama</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Instansi</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Jabatan</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Pemerintah</strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 124px;" border="1" width="678" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>Nama</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>Instansi</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>Jabatan</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Mahasiswa </strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 124px;" border="1" width="584" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>Peserta</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>Kelas</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan &hellip;&hellip;. (sebutkan yang lainnya: seperti alumni, komunitas, dll)</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Berdasarkan hasil-hasil diskusi dan masukan semua pihak, maka selanjutnya disusun rumusan VMTS Prodi&hellip;&hellip;.. Universitas Telkom. Selanjutnya Ketua Program Studi (KaProdi) &hellip;.. Universitas Telkom melaporkan hasil rumusan visi, misi, tujuan dan sasaran melalui <strong>mekanisme rapat sidang Pimpinan Fakultas&hellip;.. dan Senat Fakultas &hellip;&hellip;. </strong>Pada tanggal&hellip;&hellip;. Kemudian di sahkan pada level universitas melalui Rapat senat Universitas.</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2018-01-16 02:11:06', '2018-01-16 02:11:06'),
+(165, 1, '<p>Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue: Tuliskan Prolog untuk mengawali cerita</strong></p>\r\n<p>Universitas Telkom berdiri pada tanggal 14 Agustus 2013 yang merupakan gabungan dari empat institusi dibawah naungan Yayasan Pendidikan Telkom yaitu Institut Teknologi Telkom, Institut Manajemen Telkom, Sekolah Tinggi Seni Rupa dan Desain Indonesia Telkom, dan Politeknik Telkom. Setelah Universitas Telkom berdiri, maka dilakukan penyesuaian visi, misi, tujuan dan sasaran institusi dan Program Studi. Program studi &hellip;&hellip; merupakan bagian dari Fakultas&hellip;&hellip;&hellip;.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) program studi diturunkan dari VMTS Universitas Telkom dan Fakultas (Dokumen pendukung adalah renstra Universitas Telkom dan Fakultas&hellip;..),&nbsp; di level prodi ada Renop yang ada didalam renstra fakultas, gambarkan alur nya dengan menggunakan gambar, list semua pihak yang terlibat untuk penyusunan VMTS (Tim perumus, Industri, pemerintah, mahasiswa, alumni, dll)</strong></p>\r\n<p><strong>&nbsp;</strong></p>\r\n<p>Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) Program Studi mengacu kepada VMTS Universitas Telkom dan Fakultas &hellip;&hellip;&nbsp; yang tertuang dalam dokumen renstra Universitas, Renstra Fakultas</p>\r\n<p>&nbsp;</p>\r\n<p>Visi Universitas Telkom: Menjadi perguruan tinggi berkelas dunia yang berperan aktif dalam pengembangan ilmu pengetahuan dan seni berbasis teknologi informasi.</p>\r\n<p>Misi Universitas Telkom:</p>\r\n<ol>\r\n<li>Menyelenggarakan dan mengembangkan pendidikan berstandar internasional;</li>\r\n<li>Mengembangkan dan menyebarluaskan ilmu pengetahuan, teknologi, manajemen, dan seni yang diakui secara internasional;</li>\r\n<li>Memanfaatkan ilmu pengetahuan, teknologi, manajemen, dan seni, untuk kesejahteraan dan kemajuan peradaban bangsa.</li>\r\n</ol>\r\n<p>&nbsp;</p>\r\n<p>Visi Fakultas : &hellip;.</p>\r\n<p>&nbsp;</p>\r\n<p>Misi Fakultas: &hellip;..</p>\r\n<p>&nbsp;</p>\r\n<p>(Gambarkan mekanisme penyusunan dengan runtutan alur, gambar dibawah ini hanya contoh, semakin lengkap menggambarkan maka semakin baik)</p>\r\n<p>&nbsp;</p>\r\n<p style="padding-left: 270px;"><img src="/Screenshot_34.png" width="487" height="259" /></p>\r\n<p>Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap dll (Sebutkan siapa saja tim perumus VMTS Prodi)</p>\r\n<p>&nbsp;</p>\r\n<p>Dilakukan FGD dengan narasumber : industri, pemerintah, komunitas, mahasiswa, alumni (sebutkan lainnya jika ada dan didukung dengan foto-foto FGD) pada tanggal&hellip;&hellip;.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama Peserta, Instansi, Jabatan FGD dengan Industri</strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 122px; float: left;" border="1" width="676" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Nama</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Instansi</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Jabatan</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Pemerintah</strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 124px;" border="1" width="678" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>Nama</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>Instansi</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>Jabatan</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Mahasiswa </strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 124px;" border="1" width="584" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>Peserta</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>Kelas</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan &hellip;&hellip;. (sebutkan yang lainnya: seperti alumni, komunitas, dll)</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Berdasarkan hasil-hasil diskusi dan masukan semua pihak, maka selanjutnya disusun rumusan VMTS Prodi&hellip;&hellip;.. Universitas Telkom. Selanjutnya Ketua Program Studi (KaProdi) &hellip;.. Universitas Telkom melaporkan hasil rumusan visi, misi, tujuan dan sasaran melalui <strong>mekanisme rapat sidang Pimpinan Fakultas&hellip;.. dan Senat Fakultas &hellip;&hellip;. </strong>Pada tanggal&hellip;&hellip;. Kemudian di sahkan pada level universitas melalui Rapat senat Universitas.</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2, '2018-01-16 02:11:06', '2018-01-16 02:22:03'),
+(166, 1, '<p>Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue: Tuliskan &nbsp;Sejarah untuk mengawali deskripsi</strong></p>\r\n<p><strong>Clue : Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) program studi diturunkan dari VMTS Universitas Telkom dan Fakultas (Dokumen pendukung adalah renstra Universitas Telkom dan Fakultas&hellip;..),&nbsp; di level prodi ada Renop yang ada didalam renstra fakultas, gambarkan alur nya dengan menggunakan gambar, list semua pihak yang terlibat untuk penyusunan VMTS (Tim perumus, Industri, pemerintah, mahasiswa, alumni, dll)</strong></p>\r\n<p><strong>&nbsp;</strong></p>\r\n<p>Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) Program Studi mengacu kepada VMTS Universitas Telkom dan Fakultas &hellip;&hellip;&nbsp; yang tertuang dalam dokumen renstra Universitas, Renstra Fakultas ---<strong>Dst</strong></p>\r\n<p>&nbsp;</p>\r\n<p>Visi Universitas Telkom: Menjadi perguruan tinggi berkelas dunia yang berperan aktif dalam pengembangan ilmu pengetahuan dan seni berbasis teknologi informasi.</p>\r\n<p>Misi Universitas Telkom:</p>\r\n<ol>\r\n<li>Menyelenggarakan dan mengembangkan pendidikan berstandar internasional;</li>\r\n<li>Mengembangkan dan menyebarluaskan ilmu pengetahuan, teknologi, manajemen, dan seni yang diakui secara internasional;</li>\r\n<li>Memanfaatkan ilmu pengetahuan, teknologi, manajemen, dan seni, untuk kesejahteraan dan kemajuan peradaban bangsa.</li>\r\n</ol>\r\n<p>&nbsp;</p>\r\n<p>Visi Fakultas : &hellip;.</p>\r\n<p>&nbsp;</p>\r\n<p>Misi Fakultas: &hellip;..</p>\r\n<p>&nbsp;</p>\r\n<p>(Gambarkan mekanisme penyusunan dengan runtutan alur, gambar dibawah ini hanya contoh, semakin lengkap menggambarkan maka semakin baik)</p>\r\n<p>&nbsp;</p>\r\n<p style="padding-left: 270px;"><img src="/Screenshot_34.png" width="487" height="259" /></p>\r\n<p><strong>Clue : Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap dll (Sebutkan siapa saja tim perumus VMTS Prodi)</strong></p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Dilakukan FGD dengan narasumber : industri, pemerintah, komunitas, mahasiswa, alumni (sebutkan lainnya jika ada dan didukung dengan foto-foto FGD) pada tanggal&hellip;&hellip;.</strong></p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama Peserta, Instansi, Jabatan FGD dengan Industri</strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 122px; float: left;" border="1" width="676" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Nama</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Instansi</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>Jabatan</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 164.4px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Pemerintah</strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 124px;" border="1" width="678" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>Nama</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>Instansi</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>Jabatan</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 56.8px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 268px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 167.2px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 160px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Mahasiswa </strong></p>\r\n<p>&nbsp;</p>\r\n<table style="height: 124px;" border="1" width="584" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>No</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>Peserta</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>Kelas</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>1</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;sssss</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>ddd&nbsp;</p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>2</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n<td style="width: 312.8px; text-align: center;">\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan &hellip;&hellip;. (sebutkan yang lainnya: seperti alumni, komunitas, dll)</strong></p>\r\n<p><strong>Clue : VMTS Prodi selanjutnya diusulkan ke rapat senat Fakultas dan senat Universitas</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;.</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 3, '2018-01-16 02:22:03', '2018-01-16 03:48:39');
 
 -- --------------------------------------------------------
 
@@ -3974,7 +4568,220 @@ INSERT INTO `log` (`id`, `user`, `action`, `created_at`, `updated_at`) VALUES
 (417, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2955', '2017-12-28 22:19:12', '0000-00-00 00:00:00'),
 (418, 'Wahyu Saepuloh', 'Mengubah Isian dari butir : 2954', '2017-12-28 22:20:27', '0000-00-00 00:00:00'),
 (419, 'Wahyu Saepuloh', 'Mengubah Isian dari butir : 2955', '2017-12-28 22:28:00', '0000-00-00 00:00:00'),
-(420, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2875', '2017-12-28 22:33:17', '0000-00-00 00:00:00');
+(420, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2875', '2017-12-28 22:33:17', '0000-00-00 00:00:00'),
+(421, 'Wahyu Saepuloh', 'Sudah Mengupload File dengan nama : Screenshot_11.png dengan id Borang = 836 dan id butir = 2848', '2017-12-29 03:07:58', '0000-00-00 00:00:00'),
+(422, 'Wahyu Saepuloh', 'Sudah Menghapus File dengan nama : Screenshot_11.png dengan id Borang = 836 dan id butir = 2848', '2017-12-29 03:08:15', '0000-00-00 00:00:00'),
+(423, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2957', '2018-01-01 20:22:23', '0000-00-00 00:00:00'),
+(424, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2957', '2018-01-01 20:27:14', '0000-00-00 00:00:00'),
+(425, 'Wahyu Saepuloh', 'menghapus Isian dengan id : 2957', '2018-01-01 20:33:59', '0000-00-00 00:00:00'),
+(426, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2957', '2018-01-01 20:34:07', '0000-00-00 00:00:00'),
+(427, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : ', '2018-01-01 20:37:08', '0000-00-00 00:00:00'),
+(428, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : ', '2018-01-01 20:41:50', '0000-00-00 00:00:00'),
+(429, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : ', '2018-01-01 20:43:39', '0000-00-00 00:00:00'),
+(430, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : ', '2018-01-01 20:46:05', '0000-00-00 00:00:00'),
+(431, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2908', '2018-01-01 20:47:59', '0000-00-00 00:00:00'),
+(432, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : ', '2018-01-01 20:48:08', '0000-00-00 00:00:00'),
+(433, 'Wahyu Saepuloh', 'menghapus Isian dengan id : 2957', '2018-01-01 20:53:26', '0000-00-00 00:00:00'),
+(434, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2957', '2018-01-01 20:53:30', '0000-00-00 00:00:00'),
+(435, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : ', '2018-01-01 20:53:36', '0000-00-00 00:00:00'),
+(436, 'Wahyu Saepuloh', 'menghapus Isian dengan id : 2957', '2018-01-01 20:54:59', '0000-00-00 00:00:00'),
+(437, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2957', '2018-01-01 20:55:03', '0000-00-00 00:00:00'),
+(438, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : ', '2018-01-01 20:55:09', '0000-00-00 00:00:00'),
+(439, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2905', '2018-01-01 21:07:33', '0000-00-00 00:00:00'),
+(440, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2905', '2018-01-01 21:07:41', '0000-00-00 00:00:00'),
+(441, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2905', '2018-01-01 21:10:57', '0000-00-00 00:00:00'),
+(442, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2919', '2018-01-02 01:10:37', '0000-00-00 00:00:00'),
+(443, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2919', '2018-01-02 01:10:43', '0000-00-00 00:00:00'),
+(444, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2919', '2018-01-02 01:11:41', '0000-00-00 00:00:00'),
+(445, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2920', '2018-01-02 01:13:31', '0000-00-00 00:00:00'),
+(446, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2920', '2018-01-02 01:13:36', '0000-00-00 00:00:00'),
+(447, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2921', '2018-01-02 01:13:49', '0000-00-00 00:00:00'),
+(448, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2921', '2018-01-02 01:13:53', '0000-00-00 00:00:00'),
+(449, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2922', '2018-01-02 01:14:03', '0000-00-00 00:00:00'),
+(450, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2922', '2018-01-02 01:14:08', '0000-00-00 00:00:00'),
+(451, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2923', '2018-01-02 01:14:16', '0000-00-00 00:00:00'),
+(452, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2923', '2018-01-02 01:14:22', '0000-00-00 00:00:00'),
+(453, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2924', '2018-01-02 01:14:35', '0000-00-00 00:00:00'),
+(454, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2924', '2018-01-02 01:14:40', '0000-00-00 00:00:00'),
+(455, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2958', '2018-01-02 02:14:48', '0000-00-00 00:00:00'),
+(456, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2861', '2018-01-02 02:15:30', '0000-00-00 00:00:00'),
+(457, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2958', '2018-01-02 20:47:26', '0000-00-00 00:00:00'),
+(458, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2958', '2018-01-02 21:36:52', '0000-00-00 00:00:00'),
+(459, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2958', '2018-01-02 21:37:08', '0000-00-00 00:00:00'),
+(460, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2958', '2018-01-02 21:37:26', '0000-00-00 00:00:00'),
+(461, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2958', '2018-01-02 21:37:54', '0000-00-00 00:00:00'),
+(462, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2958', '2018-01-02 22:33:07', '0000-00-00 00:00:00'),
+(463, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2958', '2018-01-02 22:33:34', '0000-00-00 00:00:00'),
+(464, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 29', '2018-01-02 22:33:50', '0000-00-00 00:00:00'),
+(465, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 28', '2018-01-02 22:34:04', '0000-00-00 00:00:00'),
+(466, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 27', '2018-01-02 22:34:09', '0000-00-00 00:00:00'),
+(467, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 25', '2018-01-02 22:34:18', '0000-00-00 00:00:00'),
+(468, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 26', '2018-01-02 22:49:12', '0000-00-00 00:00:00'),
+(469, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2958', '2018-01-02 22:49:27', '0000-00-00 00:00:00'),
+(470, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2958', '2018-01-02 22:49:48', '0000-00-00 00:00:00'),
+(471, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2958', '2018-01-02 22:50:16', '0000-00-00 00:00:00'),
+(472, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2958', '2018-01-02 22:50:34', '0000-00-00 00:00:00'),
+(473, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2958', '2018-01-02 22:51:40', '0000-00-00 00:00:00'),
+(474, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2959', '2018-01-03 01:56:19', '0000-00-00 00:00:00'),
+(475, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : ', '2018-01-03 01:56:26', '0000-00-00 00:00:00'),
+(476, 'Wahyu Saepuloh', 'menghapus Isian dengan id : 2959', '2018-01-03 01:57:35', '0000-00-00 00:00:00'),
+(477, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2959', '2018-01-03 01:57:39', '0000-00-00 00:00:00'),
+(478, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : ', '2018-01-03 01:57:45', '0000-00-00 00:00:00'),
+(479, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2959', '2018-01-03 02:05:03', '0000-00-00 00:00:00'),
+(480, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2848', '2018-01-03 04:45:04', '0000-00-00 00:00:00'),
+(481, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2849', '2018-01-03 04:46:22', '0000-00-00 00:00:00'),
+(482, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2850', '2018-01-03 04:47:08', '0000-00-00 00:00:00'),
+(483, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2851', '2018-01-03 04:47:40', '0000-00-00 00:00:00'),
+(484, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2852', '2018-01-03 04:48:41', '0000-00-00 00:00:00'),
+(485, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2853', '2018-01-03 04:49:25', '0000-00-00 00:00:00'),
+(486, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2854', '2018-01-03 04:50:08', '0000-00-00 00:00:00'),
+(487, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2855', '2018-01-03 04:52:20', '0000-00-00 00:00:00'),
+(488, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2856', '2018-01-03 04:53:13', '0000-00-00 00:00:00'),
+(489, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2862', '2018-01-03 04:54:35', '0000-00-00 00:00:00'),
+(490, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2924', '2018-01-03 20:16:01', '0000-00-00 00:00:00'),
+(491, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2928', '2018-01-03 20:59:16', '0000-00-00 00:00:00'),
+(492, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2928', '2018-01-03 20:59:32', '0000-00-00 00:00:00'),
+(493, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 44', '2018-01-03 20:59:45', '0000-00-00 00:00:00'),
+(494, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 43', '2018-01-03 21:02:03', '0000-00-00 00:00:00'),
+(495, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2928', '2018-01-03 21:02:14', '0000-00-00 00:00:00'),
+(496, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 43', '2018-01-03 21:02:24', '0000-00-00 00:00:00'),
+(497, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2929', '2018-01-03 21:12:31', '0000-00-00 00:00:00'),
+(498, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 43', '2018-01-03 21:15:26', '0000-00-00 00:00:00'),
+(499, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2929', '2018-01-03 21:15:39', '0000-00-00 00:00:00'),
+(500, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2929', '2018-01-03 21:15:52', '0000-00-00 00:00:00'),
+(501, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2929', '2018-01-03 21:16:12', '0000-00-00 00:00:00'),
+(502, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2929', '2018-01-03 21:16:24', '0000-00-00 00:00:00'),
+(503, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2930', '2018-01-03 21:19:20', '0000-00-00 00:00:00'),
+(504, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 44', '2018-01-03 21:27:57', '0000-00-00 00:00:00'),
+(505, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2931', '2018-01-03 21:41:12', '0000-00-00 00:00:00'),
+(506, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2931', '2018-01-03 21:41:35', '0000-00-00 00:00:00'),
+(507, 'Wahyu Saepuloh', 'Mengubah Isian dari butir : 2851', '2018-01-03 21:57:38', '0000-00-00 00:00:00'),
+(508, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2936', '2018-01-03 22:16:00', '0000-00-00 00:00:00'),
+(509, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2938', '2018-01-03 22:47:41', '0000-00-00 00:00:00'),
+(510, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2938', '2018-01-03 22:47:47', '0000-00-00 00:00:00'),
+(511, 'Wahyu Saepuloh', 'Mengubah Isian Tabel dari butir : 2938', '2018-01-03 22:49:49', '0000-00-00 00:00:00'),
+(512, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2927', '2018-01-04 01:04:44', '0000-00-00 00:00:00'),
+(513, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2883', '2018-01-04 03:02:21', '0000-00-00 00:00:00'),
+(514, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2883', '2018-01-04 03:25:27', '0000-00-00 00:00:00'),
+(515, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2883', '2018-01-04 04:32:24', '0000-00-00 00:00:00'),
+(516, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2883', '2018-01-04 04:32:42', '0000-00-00 00:00:00'),
+(517, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : ', '2018-01-04 04:38:45', '0000-00-00 00:00:00'),
+(518, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2884', '2018-01-04 04:43:24', '0000-00-00 00:00:00'),
+(519, 'Admisi Universitas Telkom', 'Berhasil menambah User Baru', '2018-01-04 20:32:50', '0000-00-00 00:00:00'),
+(520, 'Kemahasiswaan Universitas Telkom', 'Berhasil menambah User Baru', '2018-01-04 20:38:36', '0000-00-00 00:00:00'),
+(521, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-04 20:54:55', '0000-00-00 00:00:00'),
+(522, 'Admisi Universitas Telkom', 'menghapus Isian Butir dengan id : 57', '2018-01-04 20:55:29', '0000-00-00 00:00:00'),
+(523, 'Admisi Universitas Telkom', 'menghapus Isian Butir dengan id : 56', '2018-01-04 20:55:35', '0000-00-00 00:00:00'),
+(524, 'Admisi Universitas Telkom', 'menghapus Isian Butir dengan id : 55', '2018-01-04 20:55:40', '0000-00-00 00:00:00'),
+(525, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-04 21:00:14', '0000-00-00 00:00:00'),
+(526, 'Admisi Universitas Telkom', 'menghapus Isian Butir dengan id : 55', '2018-01-04 21:47:43', '0000-00-00 00:00:00'),
+(527, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-04 21:47:50', '0000-00-00 00:00:00'),
+(528, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-04 21:54:07', '0000-00-00 00:00:00'),
+(529, 'Kemahasiswaan Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-04 22:28:54', '0000-00-00 00:00:00'),
+(530, 'Admisi Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-04 22:35:46', '0000-00-00 00:00:00'),
+(531, 'Admisi Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-04 22:36:14', '0000-00-00 00:00:00'),
+(532, 'Kemahasiswaan Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-04 22:37:29', '0000-00-00 00:00:00'),
+(533, 'Kemahasiswaan Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-04 22:37:53', '0000-00-00 00:00:00'),
+(534, 'Kemahasiswaan Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-05 01:25:32', '0000-00-00 00:00:00'),
+(535, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-05 01:26:09', '0000-00-00 00:00:00'),
+(536, 'Kemahasiswaan Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-05 03:08:24', '0000-00-00 00:00:00'),
+(537, 'Kemahasiswaan Universitas Telkom', 'menghapus Isian Butir dengan id : 59', '2018-01-05 03:08:53', '0000-00-00 00:00:00'),
+(538, 'Admisi Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-05 03:09:18', '0000-00-00 00:00:00'),
+(539, 'Admisi Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-05 03:09:41', '0000-00-00 00:00:00'),
+(540, 'Admisi Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-05 03:11:43', '0000-00-00 00:00:00'),
+(541, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-05 03:12:08', '0000-00-00 00:00:00'),
+(542, 'Admisi Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-05 03:12:14', '0000-00-00 00:00:00'),
+(543, 'Admisi Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-05 03:12:33', '0000-00-00 00:00:00'),
+(544, 'Admisi Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-05 03:25:53', '0000-00-00 00:00:00'),
+(545, 'Kemahasiswaan Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-05 03:26:28', '0000-00-00 00:00:00'),
+(546, 'Kemahasiswaan Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-05 03:27:11', '0000-00-00 00:00:00'),
+(547, 'Kemahasiswaan Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-05 03:28:26', '0000-00-00 00:00:00'),
+(548, 'Admisi Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-05 03:34:03', '0000-00-00 00:00:00'),
+(549, 'Admisi Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-07 04:34:29', '0000-00-00 00:00:00'),
+(550, 'Kemahasiswaan Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-07 04:35:10', '0000-00-00 00:00:00'),
+(551, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-07 04:35:56', '0000-00-00 00:00:00'),
+(552, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-07 04:36:12', '0000-00-00 00:00:00'),
+(553, 'Kemahasiswaan Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-07 04:36:57', '0000-00-00 00:00:00'),
+(554, 'Kemahasiswaan Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-07 04:37:40', '0000-00-00 00:00:00'),
+(555, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 63', '2018-01-07 04:37:59', '0000-00-00 00:00:00'),
+(556, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 62', '2018-01-07 04:38:06', '0000-00-00 00:00:00'),
+(557, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 61', '2018-01-07 04:38:13', '0000-00-00 00:00:00'),
+(558, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 60', '2018-01-07 04:38:19', '0000-00-00 00:00:00'),
+(559, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 59', '2018-01-07 04:38:25', '0000-00-00 00:00:00'),
+(560, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 58', '2018-01-07 04:38:31', '0000-00-00 00:00:00'),
+(561, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 57', '2018-01-07 04:38:37', '0000-00-00 00:00:00'),
+(562, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 56', '2018-01-07 04:38:43', '0000-00-00 00:00:00'),
+(563, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 55', '2018-01-07 04:38:50', '0000-00-00 00:00:00'),
+(564, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 10', '2018-01-07 04:38:57', '0000-00-00 00:00:00'),
+(565, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 8', '2018-01-07 04:39:04', '0000-00-00 00:00:00'),
+(566, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-07 04:39:20', '0000-00-00 00:00:00'),
+(567, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-07 04:39:35', '0000-00-00 00:00:00'),
+(568, 'Kemahasiswaan Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-07 04:39:58', '0000-00-00 00:00:00'),
+(569, 'Kemahasiswaan Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-07 04:42:26', '0000-00-00 00:00:00'),
+(570, 'Wahyu Saepuloh', 'Menambah buku 4 buku borang 3A baru', '2018-01-07 20:38:21', '0000-00-00 00:00:00'),
+(571, 'Wahyu Saepuloh', 'Berhasil Membuat Butir Borang Prodi Sarjana Baru dan List Dokumen Pendukung dengan ID = 161', '2018-01-07 20:38:26', '0000-00-00 00:00:00'),
+(572, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-07 21:46:57', '0000-00-00 00:00:00'),
+(573, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 57', '2018-01-07 21:49:02', '0000-00-00 00:00:00'),
+(574, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-07 21:50:04', '0000-00-00 00:00:00'),
+(575, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 57', '2018-01-07 21:54:55', '0000-00-00 00:00:00'),
+(576, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-07 21:55:33', '0000-00-00 00:00:00'),
+(577, 'Kemahasiswaan Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-07 21:56:59', '0000-00-00 00:00:00'),
+(578, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 57', '2018-01-07 22:01:10', '0000-00-00 00:00:00'),
+(579, 'Kemahasiswaan Universitas Telkom', 'Sudah Mengupload File dengan nama : Job desk spm new.pdf', '2018-01-07 23:22:40', '0000-00-00 00:00:00'),
+(580, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-08 01:41:32', '0000-00-00 00:00:00'),
+(581, 'Admisi Universitas Telkom', 'Sudah Mengupload File dengan nama : Job desk spm new.pdf', '2018-01-08 02:32:29', '0000-00-00 00:00:00'),
+(582, 'Kemahasiswaan Universitas Telkom', 'Sudah Mengupload File dengan nama : Universitas Telkom-12-Penyesuaian-April 2017 (1).pdf', '2018-01-08 02:33:40', '0000-00-00 00:00:00'),
+(583, 'Wahyu Saepuloh', 'menghapus Isian Butir dengan id : 57', '2018-01-08 03:08:54', '0000-00-00 00:00:00'),
+(584, 'Admisi Universitas Telkom', 'Menambahkan Isian pada butir ke : 2857', '2018-01-08 03:12:51', '0000-00-00 00:00:00'),
+(585, 'Wahyu Saepuloh', 'Mengubah Isian dari butir : 2848', '2018-01-08 03:20:24', '0000-00-00 00:00:00'),
+(586, 'Kemahasiswaan Universitas Telkom', 'Sudah Mengupload File dengan nama : WORKSHOP TEKNIS PENYUSUNAN BORANG AKREDITASI SAPTO WIL. JAWA BARAT.pdf', '2018-01-08 04:06:49', '0000-00-00 00:00:00'),
+(587, 'Kemahasiswaan Universitas Telkom', 'Mengubah Isian Tabel dari butir : 2857', '2018-01-08 20:27:36', '0000-00-00 00:00:00'),
+(588, 'Wahyu Saepuloh', 'Mengubah Isian dari butir : 2848', '2018-01-08 21:06:30', '0000-00-00 00:00:00'),
+(589, 'Wahyu Saepuloh', 'Mengubah Isian dari butir : 2855', '2018-01-08 21:12:06', '0000-00-00 00:00:00'),
+(590, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-08 22:55:19', '0000-00-00 00:00:00'),
+(591, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-09 03:11:29', '0000-00-00 00:00:00'),
+(592, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2864', '2018-01-09 03:14:37', '0000-00-00 00:00:00'),
+(593, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2893', '2018-01-10 22:35:52', '0000-00-00 00:00:00'),
+(594, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2893', '2018-01-10 22:43:03', '0000-00-00 00:00:00'),
+(595, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2893', '2018-01-10 22:46:54', '0000-00-00 00:00:00'),
+(596, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2864', '2018-01-11 21:42:58', '0000-00-00 00:00:00'),
+(597, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-11 22:30:33', '0000-00-00 00:00:00'),
+(598, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 00:24:12', '0000-00-00 00:00:00'),
+(599, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 00:27:22', '0000-00-00 00:00:00'),
+(600, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 00:28:32', '0000-00-00 00:00:00'),
+(601, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 00:41:15', '0000-00-00 00:00:00'),
+(602, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 01:24:27', '0000-00-00 00:00:00'),
+(603, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 01:26:43', '0000-00-00 00:00:00'),
+(604, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 01:46:07', '0000-00-00 00:00:00'),
+(605, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 01:48:14', '0000-00-00 00:00:00'),
+(606, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 01:51:03', '0000-00-00 00:00:00'),
+(607, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 01:56:14', '0000-00-00 00:00:00'),
+(608, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 02:01:38', '0000-00-00 00:00:00'),
+(609, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 02:02:42', '0000-00-00 00:00:00'),
+(610, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 02:22:04', '0000-00-00 00:00:00'),
+(611, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 03:16:18', '0000-00-00 00:00:00'),
+(612, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 2863', '2018-01-15 04:04:16', '0000-00-00 00:00:00'),
+(613, 'Wahyu Saepuloh', 'Sudah Mengupload File dengan nama : spamlink #AyoImunisasiDifteri.docx dengan id Borang = 836 dan id butir = 2848', '2018-01-15 19:41:51', '0000-00-00 00:00:00'),
+(614, 'Wahyu Saepuloh', 'Sudah Menghapus File dengan nama : spamlink_AyoImunisasiDifteri.docx dengan id Borang = 836 dan id butir = 2848', '2018-01-15 19:46:34', '0000-00-00 00:00:00'),
+(615, 'Wahyu Saepuloh', 'Sudah Menghapus File dengan nama :  dengan id Borang = 836 dan id butir = 2848', '2018-01-15 20:06:17', '0000-00-00 00:00:00'),
+(616, 'Wahyu Saepuloh', 'Menambahkan Butir  1.1.1', '2018-01-15 21:54:39', '0000-00-00 00:00:00'),
+(617, 'Wahyu Saepuloh', 'Menambahkan Butir  1.1.2', '2018-01-15 21:56:04', '0000-00-00 00:00:00'),
+(618, 'Wahyu Saepuloh', 'Menambahkan Butir  1.1.3', '2018-01-15 21:56:17', '0000-00-00 00:00:00'),
+(619, 'Wahyu Saepuloh', 'Menambahkan Butir  1.1.4', '2018-01-15 21:56:26', '0000-00-00 00:00:00'),
+(620, 'Wahyu Saepuloh', 'Menambahkan Butir  1.1.5', '2018-01-15 21:56:38', '0000-00-00 00:00:00'),
+(621, 'Wahyu Saepuloh', 'Menambahkan Butir  1.2', '2018-01-15 21:56:59', '0000-00-00 00:00:00'),
+(622, 'Wahyu Saepuloh', 'Mengubah Butir : 1.1.1 dengan ID : 1', '2018-01-15 22:00:16', '0000-00-00 00:00:00'),
+(623, 'Wahyu Saepuloh', 'Mengubah Butir : 1.1.1 dengan ID : 1', '2018-01-15 22:01:04', '0000-00-00 00:00:00'),
+(624, 'Wahyu Saepuloh', 'Mengubah Butir : 1.1.2 dengan ID : 2', '2018-01-16 00:23:40', '0000-00-00 00:00:00'),
+(625, 'Wahyu Saepuloh', 'Mengubah Butir : 1.1.3 dengan ID : 3', '2018-01-16 00:23:55', '0000-00-00 00:00:00'),
+(626, 'Wahyu Saepuloh', 'Mengubah Butir : 1.1.4 dengan ID : 4', '2018-01-16 00:24:12', '0000-00-00 00:00:00'),
+(627, 'Wahyu Saepuloh', 'Mengubah Butir : 1.1.5 dengan ID : 5', '2018-01-16 00:24:42', '0000-00-00 00:00:00'),
+(628, 'Wahyu Saepuloh', 'Mengubah Butir : 1.2 dengan ID : 6', '2018-01-16 00:25:15', '0000-00-00 00:00:00'),
+(629, 'Wahyu Saepuloh', 'Mengubah Butir : 1.2 dengan ID : 6', '2018-01-16 00:36:49', '0000-00-00 00:00:00'),
+(630, 'Wahyu Saepuloh', 'Mengubah Butir : 1.2 dengan ID : 6', '2018-01-16 00:44:51', '0000-00-00 00:00:00'),
+(631, 'Wahyu Saepuloh', 'Menambahkan Isian pada butir ke : 1', '2018-01-16 02:11:06', '0000-00-00 00:00:00'),
+(632, 'Wahyu Saepuloh', 'Mengubah Isian dari butir : 1', '2018-01-16 02:22:03', '0000-00-00 00:00:00'),
+(633, 'Wahyu Saepuloh', 'Mengubah Isian dari butir : 1', '2018-01-16 03:48:39', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -4185,7 +4992,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Wahyu Saepuloh', 'wahyu', '8cbbdc3fff847eee79abadc7b693b60e', 'wehaye94@gmail.com', 'Admin', NULL, '2017-04-17 16:17:04', '0000-00-00 00:00:00'),
 (2, 'Wahyu Saepuloh', 'wehaye', '94404bab81894fb8fa6b1f10c8b2f84a', 'wsaepuloh94@gmail.com', 'Kaprodi', NULL, '2017-04-17 23:09:47', '0000-00-00 00:00:00'),
-(3, 'Dr. Rila Mandala', 'rila', 'd2b839137dad99b2235b2bfe1dc9d90a', 'drrila@gmail.com', 'Assessor', NULL, '2017-10-22 23:02:13', '0000-00-00 00:00:00');
+(3, 'Dr. Rila Mandala', 'rila', 'd2b839137dad99b2235b2bfe1dc9d90a', 'drrila@gmail.com', 'Assessor', NULL, '2017-10-22 23:02:13', '0000-00-00 00:00:00'),
+(4, 'Admisi Universitas Telkom', 'admisi', 'c5ca56f5986311d30363182d8538ca16', 'admisi@telkom.com', 'Admisi', NULL, '2018-01-04 20:32:50', '0000-00-00 00:00:00'),
+(5, 'Kemahasiswaan Universitas Telkom', 'kemahasiswaan', 'c8c116beb88fde7a38473945653ab21b', 'kemahasiswaan@telkom.com', 'Kemahasiswaan', NULL, '2018-01-04 20:38:36', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -4206,6 +5015,13 @@ ALTER TABLE `butir`
   ADD KEY `id_borang` (`id_borang`);
 
 --
+-- Indexes for table `butir_buku`
+--
+ALTER TABLE `butir_buku`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_borang` (`id_borang`);
+
+--
 -- Indexes for table `document_version`
 --
 ALTER TABLE `document_version`
@@ -4216,8 +5032,7 @@ ALTER TABLE `document_version`
 -- Indexes for table `dokumen`
 --
 ALTER TABLE `dokumen`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `dokumen_id_butir_foreign` (`id_butir`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `dokumenpendukung`
@@ -4259,6 +5074,13 @@ ALTER TABLE `hitungf3`
 ALTER TABLE `isian_16kolom`
   ADD PRIMARY KEY (`id`),
   ADD KEY `isian_16kolom_id_butir_foreign` (`id_butir`);
+
+--
+-- Indexes for table `isian_16kolom_buku`
+--
+ALTER TABLE `isian_16kolom_buku`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `isian_16kolom_buku_id_butir_foreign` (`id_butir`);
 
 --
 -- Indexes for table `isian_16kolom_version`
@@ -4357,12 +5179,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `borang`
 --
 ALTER TABLE `borang`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 --
 -- AUTO_INCREMENT for table `butir`
 --
 ALTER TABLE `butir`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2992;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3092;
+--
+-- AUTO_INCREMENT for table `butir_buku`
+--
+ALTER TABLE `butir_buku`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `document_version`
 --
@@ -4372,12 +5199,12 @@ ALTER TABLE `document_version`
 -- AUTO_INCREMENT for table `dokumen`
 --
 ALTER TABLE `dokumen`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `dokumenpendukung`
 --
 ALTER TABLE `dokumenpendukung`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1170;
 --
 -- AUTO_INCREMENT for table `fakultas`
 --
@@ -4387,7 +5214,7 @@ ALTER TABLE `fakultas`
 -- AUTO_INCREMENT for table `hitungf1`
 --
 ALTER TABLE `hitungf1`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `hitungf2`
 --
@@ -4397,17 +5224,22 @@ ALTER TABLE `hitungf2`
 -- AUTO_INCREMENT for table `hitungf3`
 --
 ALTER TABLE `hitungf3`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `isian_16kolom`
 --
 ALTER TABLE `isian_16kolom`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+--
+-- AUTO_INCREMENT for table `isian_16kolom_buku`
+--
+ALTER TABLE `isian_16kolom_buku`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `isian_16kolom_version`
 --
 ALTER TABLE `isian_16kolom_version`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 --
 -- AUTO_INCREMENT for table `lampiran`
 --
@@ -4417,7 +5249,7 @@ ALTER TABLE `lampiran`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=421;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=634;
 --
 -- AUTO_INCREMENT for table `nilaif1`
 --
@@ -4457,7 +5289,7 @@ ALTER TABLE `uploadisian_version`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
@@ -4475,10 +5307,10 @@ ALTER TABLE `butir`
   ADD CONSTRAINT `fk_id_borang` FOREIGN KEY (`id_borang`) REFERENCES `borang` (`id`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `dokumen`
+-- Ketidakleluasaan untuk tabel `butir_buku`
 --
-ALTER TABLE `dokumen`
-  ADD CONSTRAINT `fk_id_butir_foreign` FOREIGN KEY (`id_butir`) REFERENCES `butir` (`id`) ON DELETE CASCADE;
+ALTER TABLE `butir_buku`
+  ADD CONSTRAINT `fk_id_borang_buku` FOREIGN KEY (`id_borang`) REFERENCES `borang` (`id`) ON DELETE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `dokumenpendukung`
@@ -4509,6 +5341,12 @@ ALTER TABLE `hitungf3`
 --
 ALTER TABLE `isian_16kolom`
   ADD CONSTRAINT `fk_id_isian16kolom` FOREIGN KEY (`id_butir`) REFERENCES `butir` (`id`) ON DELETE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `isian_16kolom_buku`
+--
+ALTER TABLE `isian_16kolom_buku`
+  ADD CONSTRAINT `fk_id_isian_16kolom_buku` FOREIGN KEY (`id_butir`) REFERENCES `butir_buku` (`id`) ON DELETE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `lampiran`
