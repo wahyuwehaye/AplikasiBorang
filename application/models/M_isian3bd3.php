@@ -20,6 +20,17 @@ class M_isian3bd3 extends CI_Model {
               ->result_array();
         }
 
+        public function join3tabel_buku($id){
+            return $this->db->select("fakultas.id as idfakultas, fakultas.nama as namafakultas, prodi.id as idprodi, prodi.id_fakultas as idfakpro, prodi.nama as namaprodi, borang.id as idborang")
+              ->from('fakultas')
+              ->join('prodi','prodi.id_fakultas=fakultas.id')
+              ->join('borang','borang.id_prodi=prodi.id')
+              ->join('butir_buku','butir_buku.id_borang=borang.id')
+              ->where('butir_buku.id', $id)
+              ->get()
+              ->result_array();
+        }
+
 // QUERY INSERT ISIAN
         public function insert_isian111()
         {
@@ -2805,6 +2816,12 @@ class M_isian3bd3 extends CI_Model {
         public function findisian1kolom($column,$id){
               // $query = $this->db->get_where('isian_1kolom', array($column => $id));
             $query = $this->db->get_where('isian_16kolom', array($column => $id));
+              return $query->result_array();
+        }
+
+        public function findisian1kolom_buku($column,$id){
+              // $query = $this->db->get_where('isian_1kolom', array($column => $id));
+            $query = $this->db->get_where('isian_16kolom_buku', array($column => $id));
               return $query->result_array();
         }
 

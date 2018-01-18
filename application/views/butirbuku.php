@@ -139,7 +139,7 @@
                                     <!-- <td><?php echo $butir[$i]['keterangan'] ?> </td> -->
                                     <td><div class="form-group">
                                         <div class="form-line">
-                                            <textarea rows="8" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[$i]['keterangan'] ?>
+                                            <textarea rows="8" class="form-control no-resize" placeholder="Please type what you want..." readonly="true"><?php echo $butir[$i]['keterangan'] ?>
                                             </textarea>
                                         </div>
                                     </div></td>
@@ -194,9 +194,9 @@
                                                 $jenisfakd3 = stripos(($getdata[0]['namaprodi']), 'D3 Dan D4 Fakultas');
                                                 if ($jenisfakd3 !== false) {
                                             ?>
-                                                    <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian3bd3/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; 
+                                                    <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian_buku3bd3/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; 
                                             <?php } elseif ($jenisd3 !== false) { ?>
-                                                    <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian3ad3/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
+                                                    <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian_buku/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
                                             <?php } elseif (($jeniss1!==false) && ($jenisfak!==false)) { ?>
                                                     <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>isian3bs1/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp;
                                             <?php } elseif ($jeniss1 !== false) { ?>

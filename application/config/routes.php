@@ -78,6 +78,7 @@ $route['uploadexcel/:num'] = 'C_uploadexcel';
 $route['dokumen/:num'] = 'C_dokumen';
 $route['isian/:num'] = 'C_isian';
 $route['isian_buku/:num'] = 'C_isian/isian_buku';
+$route['isian_buku3bd3/:num'] = 'C_isian3bd3/isian_buku';
 $route['isian3bs1/:num'] = 'C_isian3bs1';
 $route['uploadbukti/:num'] = 'C_isian/uploadbukti';
 $route['isian3ad3/:num'] = 'C_isian3ad3';

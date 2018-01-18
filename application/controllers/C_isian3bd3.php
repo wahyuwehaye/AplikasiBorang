@@ -133,6 +133,34 @@ class C_isian3bd3 extends CI_Controller {
 
     }
 
+
+    public function isian_buku()
+    {
+        if(isset($_SESSION['logged_in']))
+        {
+
+            $id=$this->uri->segment(2, 0);
+            $data['active_menu']='borang';
+            $this->load->view('template/header',$data);
+            $data['butir']=$this->M_butir->find_buku('id',$id);
+            $data['buku']=$this->M_borang->find_buku('id',$data['butir'][0]['id_borang']);
+            $data['isian']=$this->M_isian3bd3->find('id_butir',$id);
+            $data['getdata']=$this->M_isian3bd3->join3tabel_buku($id);
+            $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
+            $data['dataisian']=$this->M_isian3bd3->findisian1kolom_buku('id_butir',$id);
+            $data['dataisianversion']=$this->M_isian3bd3->findisian1kolomversion('id_kolom',$id);
+            $data1['isian']=$this->M_isian3bd3->ambildata();
+            $data1['isian']=$this->M_isian3bd3->get_entire_data1($id);
+            $this->load->view('isian_buku3bd3',$data);
+            //$this->load->view('isian2',$data1);
+            // $this->load->view('footer');
+        }else{
+            redirect('Home/pages');
+        }
+
+
+    }
+
     public function viewbookbutir(){
         $this->load->model('M_borang');
         $this->load->model('M_butir');

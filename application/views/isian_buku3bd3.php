@@ -4,6 +4,8 @@
             <div class="col-sm-4">
             <h2>
                 MENGELOLA ISIAN BUTIR <?php echo strtoupper(($buku[0]['jenis']));?>
+                <!-- <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small> -->
+                <!-- <small><?php echo ucfirst($buku[0]['jenis'])." ".$buku[0]['fakpro']." - ".$buku[0]['tahun']." - Buku : ".$buku[0]['buku']; ?></small> -->
                 <small><?php echo strtoupper($buku[0]['fakpro']." ".$getdata[0]['namafakultas']); ?></small>
             </h2>
             </div>
@@ -26,6 +28,22 @@
                     <h2>
                         DETAIL BUTIR 
                     </h2>
+                        <!-- <button type="button" class="btn btn-success btn-circle waves-effect waves-circle waves-float">
+                            <i class="material-icons">add</i>
+                        </button> -->
+                        <!-- <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button> -->
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                     <div class="body">
                         <table id="borang" 
@@ -39,9 +57,10 @@
                         >
                             <thead>
                                 <tr>
-                                    <th width="5%">Butir</th>
-                                    <th width="30%">Baku Mutu</th>
-                                    <th>Keterangan</th>
+                                    <th>Butir</th>
+                                    <th>Baku Mutu</th>
+                                    <!-- <th>Penjelasan</th> -->
+                                    <th width="50%">Keterangan</th>
                                     <th width="18%">Action</th>
                                 </tr>
                             </thead>
@@ -49,28 +68,37 @@
                                 <tr>
                                     <th width="5%">Butir</th>
                                     <th width="30%">Baku Mutu</th>
-                                    <th>Keterangan</th>
+                                    <!-- <th>Penjelasan</th> -->
+                                    <th width="50%">Keterangan</th>
+                                    <!-- <?php
+                                    if($_SESSION['role']=="Admin"){
+                                    ?>
+                                    <th width="10%">Action</th>
+                                    <?php
+                                    }
+                                    ?> -->
                                     <th width="18%">Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
                                 <?php
+                                    // foreach ($butir as $key) {
                                     for($i=0;$i<count($butir);$i++){
                                  ?>
                                     <?php
                                         $CI =& get_instance();
                                         // cek sudah terisi atau belum
-                                        $queryCekisi=$CI->db->query('SELECT COUNT(id) as cekisi FROM isian_16kolom WHERE id_butir IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
+                                        $queryCekisi=$CI->db->query('SELECT COUNT(id) as cekisi FROM isian_16kolom WHERE id_butir IN (SELECT id from butir_buku WHERE id = '.$butir[$i]['id'].')');
                                         $cekisi=$queryCekisi->result_array()[0]['cekisi'];
                                         $isinya=($cekisi!=0)?($cekisi):0;
 
                                         // cek nilainya
-                                        $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf3 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
+                                        $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf1 WHERE id_buku IN (SELECT id from butir_buku WHERE id = '.$butir[$i]['id'].')');
                                         $cekskor=$queryceknilai->result_array()[0]['cekskor'];
                                         $cekskornya=($cekskor!=0)?($cekskor):0;
                                         if ($cekskornya!==0) {
                                             // ambil nilainya
-                                            $querygetnilai=$CI->db->query('SELECT skorakhir, review_ke FROM hitungf3 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].') order by id desc');
+                                            $querygetnilai=$CI->db->query('SELECT skorakhir, review_ke FROM hitungf1 WHERE id_buku IN (SELECT id from butir_buku WHERE id = '.$butir[$i]['id'].') order by id desc');
                                             $getnilai=$querygetnilai->result_array()[0]['skorakhir'];
                                             $getjumlahreview=$querygetnilai->result_array()[0]['review_ke'];
                                             $skor=($getnilai!=0)?($getnilai):0;
@@ -79,9 +107,20 @@
                                         }
                                     ?>
                                 <tr>
+                                    <!-- <td><?php echo $key->butir ?> </td>
+                                    <td><?php echo $key->bakumutu ?> </td>
+                                    <td><?php echo $key->penjelasan ?> </td>
+                                    <td><?php echo $key->keterangan ?> </td> -->
                                     <td><?php echo $butir[$i]['butir'] ?> </td>
                                     <td><?php echo $butir[$i]['bakumutu'] ?> </td>
-                                    <td><?php echo $butir[$i]['keterangan'] ?> </td>
+                                    <!-- <td><?php echo $butir[$i]['penjelasan'] ?> </td> -->
+                                    <!-- <td><?php echo $butir[$i]['keterangan'] ?> </td> -->
+                                    <td><div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="8" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[$i]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div></td>
                                     <td>
                                         <div class="js-sweetalert">
                                     <?php
@@ -123,6 +162,22 @@
                     <h2>
                         ISIAN BUTIR 
                     </h2>
+                        <!-- <button type="button" class="btn btn-success btn-circle waves-effect waves-circle waves-float">
+                            <i class="material-icons">add</i>
+                        </button> -->
+                        <!-- <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button> -->
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                     <div class="body">
                     <?php
@@ -131,30 +186,268 @@
                     $id_bor = $buku[0]['id'];
                     $isiannya = $this->uri->segment(2, 0);
                     $getbutir = '';
-                    $querycaributir = $CI->db->query('select butir from butir where id="'.$isiannya.'" and id_borang = "'.$id_bor.'"');
+                    $getid434 = '';
+                    $querycaributir = $CI->db->query('select id, butir from butir_buku where id="'.$isiannya.'" and id_borang = "'.$id_bor.'"');
                     foreach ($querycaributir->result() as $row){
                         $getbutir = $row->butir;
+                        $getid434 = $row->id;
                         break;
                     }
                         if ($getbutir=='1.1.1') {
+                        ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <!-- <button class="btn bg-cyan waves-effect m-b-15" data-parent="#accordion_1" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                BUTTON WITH data-target
+                            </button> -->
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <p>Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue: Tuliskan &nbsp;Sejarah untuk mengawali deskripsi</strong></p>
+                                                <p><strong>Clue : Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) program studi diturunkan dari VMTS Universitas Telkom dan Fakultas (Dokumen pendukung adalah renstra Universitas Telkom dan Fakultas&hellip;..),&nbsp; di level prodi ada Renop yang ada didalam renstra fakultas, gambarkan alur nya dengan menggunakan gambar, list semua pihak yang terlibat untuk penyusunan VMTS (Tim perumus, Industri, pemerintah, mahasiswa, alumni, dll)</strong></p>
+                                                <p><strong>&nbsp;</strong></p>
+                                                <p>Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) Program Studi mengacu kepada VMTS Universitas Telkom dan Fakultas &hellip;&hellip;&nbsp; yang tertuang dalam dokumen renstra Universitas, Renstra Fakultas ---<strong>Dst</strong></p>
+                                                <p>&nbsp;</p>
+                                                <p>Visi Universitas Telkom: Menjadi perguruan tinggi berkelas dunia yang berperan aktif dalam pengembangan ilmu pengetahuan dan seni berbasis teknologi informasi.</p>
+                                                <p>Misi Universitas Telkom:</p>
+                                                <ol>
+                                                <li>Menyelenggarakan dan mengembangkan pendidikan berstandar internasional;</li>
+                                                <li>Mengembangkan dan menyebarluaskan ilmu pengetahuan, teknologi, manajemen, dan seni yang diakui secara internasional;</li>
+                                                <li>Memanfaatkan ilmu pengetahuan, teknologi, manajemen, dan seni, untuk kesejahteraan dan kemajuan peradaban bangsa.</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                                <p>Visi Fakultas : &hellip;.</p>
+                                                <p>&nbsp;</p>
+                                                <p>Misi Fakultas: &hellip;..</p>
+                                                <p>&nbsp;</p>
+                                                <p>(Gambarkan mekanisme penyusunan dengan runtutan alur, gambar dibawah ini hanya contoh, semakin lengkap menggambarkan maka semakin baik)</p>
+                                                <p>&nbsp;</p>
+                                                <p style="padding-left: 270px;"><img src="/Screenshot_34.png" width="487" height="259" /></p>
+                                                <p><strong>Clue : Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap dll (Sebutkan siapa saja tim perumus VMTS Prodi)</strong></p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Dilakukan FGD dengan narasumber : industri, pemerintah, komunitas, mahasiswa, alumni (sebutkan lainnya jika ada dan didukung dengan foto-foto FGD) pada tanggal&hellip;&hellip;.</strong></p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama Peserta, Instansi, Jabatan FGD dengan Industri</strong></p>
+                                                <p>&nbsp;</p>
+                                                <table style="height: 122px; float: left;" border="1" width="676" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>Nama</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>Instansi</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>Jabatan</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Pemerintah</strong></p>
+                                                <p>&nbsp;</p>
+                                                <table style="height: 124px;" border="1" width="678" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="width: 56.8px; text-align: center;">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="width: 268px; text-align: center;">
+                                                <p>Nama</p>
+                                                </td>
+                                                <td style="width: 167.2px; text-align: center;">
+                                                <p>Instansi</p>
+                                                </td>
+                                                <td style="width: 160px; text-align: center;">
+                                                <p>Jabatan</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 56.8px; text-align: center;">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="width: 268px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 167.2px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 160px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 56.8px; text-align: center;">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="width: 268px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 167.2px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 160px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Mahasiswa </strong></p>
+                                                <p>&nbsp;</p>
+                                                <table style="height: 124px;" border="1" width="584" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>Peserta</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>Kelas</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>&nbsp;sssss</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>ddd&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan &hellip;&hellip;. (sebutkan yang lainnya: seperti alumni, komunitas, dll)</strong></p>
+                                                <p><strong>Clue : VMTS Prodi selanjutnya diusulkan ke rapat senat Fakultas dan senat Universitas</strong></p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;.</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <!-- <div class="collapse" id="collapseExample">
+                                <div class="well">
+                                    2Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica,
+                                    craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                </div>
+                            </div> -->
+                        </div>
+                        <?php
                             if (count($dataisian)>0) {
                                 for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3bd3/updateisian111">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian111">
                         <input type="hidden" name="id111" id="id111" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bd3/destroyisian4kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian4kolom_buku/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Visi, misi, tujuan, dan sasaran serta strategi pencapaian di tingkat unit pengelola program studi diploma</h2>
-                        <h2 class="card-inside-title">Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran di tingkat unit pengelola program studi diploma, serta pihak-pihak yang dilibatkan.</h2>
-                        <h2 class="card-inside-title">Visi unit pengelola program studi diploma </h2>
+
+                        <div class="col-md-4"></div>
+                        <h2 class="card-inside-title">Visi, Misi, Tujuan, dan Sasaran serta Strategi Pencapaian</h2>
+                        <h2 class="card-inside-title"><?php echo $butir[0]['butir'] ?>&nbsp; <?php echo $butir[0]['bakumutu'] ?></h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -164,63 +457,198 @@
                                     </div>
                                 </div>
                         </div>
-                        <h2 class="card-inside-title">Misi unit pengelola program studi diploma</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom2_111" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Tujuan unit pengelola program studi diploma</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom3_111" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
                         <input type="hidden" name="version_no111" id="version_no111" value="<?php echo $dataisian[$i]['version_no'] ?>">
                         <input type="hidden" name="created_at111" id="created_at111" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
-                        <?php }
+                        <?php } ?>
+                        <?php
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi111">
+                        
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi111">
                         <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Visi, misi, tujuan, dan sasaran serta strategi pencapaian di tingkat unit pengelola program studi diploma</h2>
-                        <h2 class="card-inside-title">Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran di tingkat unit pengelola program studi diploma, serta pihak-pihak yang dilibatkan.</h2>
-                        <h2 class="card-inside-title">Visi unit pengelola program studi diploma </h2>
+                        <h2 class="card-inside-title">Visi, Misi, Tujuan, dan Sasaran serta Strategi Pencapaian</h2>
+                        <h2 class="card-inside-title"><?php echo $butir[0]['butir'] ?>&nbsp; <?php echo $butir[0]['bakumutu'] ?></h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Misi unit pengelola program studi diploma</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom2_111" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <h2 class="card-inside-title">Tujuan unit pengelola program studi diploma</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom3_111" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <p>Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue: Tuliskan &nbsp;Sejarah untuk mengawali deskripsi</strong></p>
+                                                <p><strong>Clue : Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) program studi diturunkan dari VMTS Universitas Telkom dan Fakultas (Dokumen pendukung adalah renstra Universitas Telkom dan Fakultas&hellip;..),&nbsp; di level prodi ada Renop yang ada didalam renstra fakultas, gambarkan alur nya dengan menggunakan gambar, list semua pihak yang terlibat untuk penyusunan VMTS (Tim perumus, Industri, pemerintah, mahasiswa, alumni, dll)</strong></p>
+                                                <p><strong>&nbsp;</strong></p>
+                                                <p>Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) Program Studi mengacu kepada VMTS Universitas Telkom dan Fakultas &hellip;&hellip;&nbsp; yang tertuang dalam dokumen renstra Universitas, Renstra Fakultas ---<strong>Dst</strong></p>
+                                                <p>&nbsp;</p>
+                                                <p>Visi Universitas Telkom: Menjadi perguruan tinggi berkelas dunia yang berperan aktif dalam pengembangan ilmu pengetahuan dan seni berbasis teknologi informasi.</p>
+                                                <p>Misi Universitas Telkom:</p>
+                                                <ol>
+                                                <li>Menyelenggarakan dan mengembangkan pendidikan berstandar internasional;</li>
+                                                <li>Mengembangkan dan menyebarluaskan ilmu pengetahuan, teknologi, manajemen, dan seni yang diakui secara internasional;</li>
+                                                <li>Memanfaatkan ilmu pengetahuan, teknologi, manajemen, dan seni, untuk kesejahteraan dan kemajuan peradaban bangsa.</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                                <p>Visi Fakultas : &hellip;.</p>
+                                                <p>&nbsp;</p>
+                                                <p>Misi Fakultas: &hellip;..</p>
+                                                <p>&nbsp;</p>
+                                                <p>(Gambarkan mekanisme penyusunan dengan runtutan alur, gambar dibawah ini hanya contoh, semakin lengkap menggambarkan maka semakin baik)</p>
+                                                <p>&nbsp;</p>
+                                                <p style="padding-left: 270px;"><img src="/Screenshot_34.png" width="487" height="259" /></p>
+                                                <p><strong>Clue : Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap dll (Sebutkan siapa saja tim perumus VMTS Prodi)</strong></p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Dilakukan FGD dengan narasumber : industri, pemerintah, komunitas, mahasiswa, alumni (sebutkan lainnya jika ada dan didukung dengan foto-foto FGD) pada tanggal&hellip;&hellip;.</strong></p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama Peserta, Instansi, Jabatan FGD dengan Industri</strong></p>
+                                                <p>&nbsp;</p>
+                                                <table style="height: 122px; float: left;" border="1" width="676" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>Nama</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>Instansi</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>Jabatan</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Pemerintah</strong></p>
+                                                <p>&nbsp;</p>
+                                                <table style="height: 124px;" border="1" width="678" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="width: 56.8px; text-align: center;">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="width: 268px; text-align: center;">
+                                                <p>Nama</p>
+                                                </td>
+                                                <td style="width: 167.2px; text-align: center;">
+                                                <p>Instansi</p>
+                                                </td>
+                                                <td style="width: 160px; text-align: center;">
+                                                <p>Jabatan</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 56.8px; text-align: center;">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="width: 268px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 167.2px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 160px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 56.8px; text-align: center;">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="width: 268px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 167.2px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 160px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Mahasiswa </strong></p>
+                                                <p>&nbsp;</p>
+                                                <table style="height: 124px;" border="1" width="584" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>Peserta</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>Kelas</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>&nbsp;sssss</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>ddd&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan &hellip;&hellip;. (sebutkan yang lainnya: seperti alumni, komunitas, dll)</strong></p>
+                                                <p><strong>Clue : VMTS Prodi selanjutnya diusulkan ke rapat senat Fakultas dan senat Universitas</strong></p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;.</p>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -230,46 +658,321 @@
                             <?php
                                 }
                         }elseif ($getbutir=='1.1.2') {
+                        ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <p>Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue: Tuliskan Prolog untuk mengawali cerita</strong></p>
+                                                <p>Universitas Telkom berdiri pada tanggal 14 Agustus 2013 yang merupakan gabungan dari empat institusi dibawah naungan Yayasan Pendidikan Telkom yaitu Institut Teknologi Telkom, Institut Manajemen Telkom, Sekolah Tinggi Seni Rupa dan Desain Indonesia Telkom, dan Politeknik Telkom. Setelah Universitas Telkom berdiri, maka dilakukan penyesuaian visi, misi, tujuan dan sasaran institusi dan Program Studi. Program studi &hellip;&hellip; merupakan bagian dari Fakultas&hellip;&hellip;&hellip;.</p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) program studi diturunkan dari VMTS Universitas Telkom dan Fakultas (Dokumen pendukung adalah renstra Universitas Telkom dan Fakultas&hellip;..),&nbsp; di level prodi ada Renop yang ada didalam renstra fakultas, gambarkan alur nya dengan menggunakan gambar, list semua pihak yang terlibat untuk penyusunan VMTS (Tim perumus, Industri, pemerintah, mahasiswa, alumni, dll)</strong></p>
+                                                <p><strong>&nbsp;</strong></p>
+                                                <p>Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) Program Studi mengacu kepada VMTS Universitas Telkom dan Fakultas &hellip;&hellip;&nbsp; yang tertuang dalam dokumen renstra Universitas, Renstra Fakultas</p>
+                                                <p>&nbsp;</p>
+                                                <p>Visi Universitas Telkom: Menjadi perguruan tinggi berkelas dunia yang berperan aktif dalam pengembangan ilmu pengetahuan dan seni berbasis teknologi informasi.</p>
+                                                <p>Misi Universitas Telkom:</p>
+                                                <ol>
+                                                <li>Menyelenggarakan dan mengembangkan pendidikan berstandar internasional;</li>
+                                                <li>Mengembangkan dan menyebarluaskan ilmu pengetahuan, teknologi, manajemen, dan seni yang diakui secara internasional;</li>
+                                                <li>Memanfaatkan ilmu pengetahuan, teknologi, manajemen, dan seni, untuk kesejahteraan dan kemajuan peradaban bangsa.</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                                <p>Visi Fakultas : &hellip;.</p>
+                                                <p>&nbsp;</p>
+                                                <p>Misi Fakultas: &hellip;..</p>
+                                                <p>&nbsp;</p>
+                                                <p>(Gambarkan mekanisme penyusunan dengan runtutan alur, gambar dibawah ini hanya contoh, semakin lengkap menggambarkan maka semakin baik)</p>
+                                                <p>&nbsp;</p>
+                                                <p style="padding-left: 270px;"><img src="/Screenshot_34.png" width="487" height="259" /></p>
+                                                <p>Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap dll (Sebutkan siapa saja tim perumus VMTS Prodi)</p>
+                                                <p>&nbsp;</p>
+                                                <p>Dilakukan FGD dengan narasumber : industri, pemerintah, komunitas, mahasiswa, alumni (sebutkan lainnya jika ada dan didukung dengan foto-foto FGD) pada tanggal&hellip;&hellip;.</p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama Peserta, Instansi, Jabatan FGD dengan Industri</strong></p>
+                                                <p>&nbsp;</p>
+                                                <table style="height: 122px; float: left;" border="1" width="676" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>Nama</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>Instansi</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>Jabatan</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 164.4px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Pemerintah</strong></p>
+                                                <p>&nbsp;</p>
+                                                <table style="height: 124px;" border="1" width="678" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="width: 56.8px; text-align: center;">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="width: 268px; text-align: center;">
+                                                <p>Nama</p>
+                                                </td>
+                                                <td style="width: 167.2px; text-align: center;">
+                                                <p>Instansi</p>
+                                                </td>
+                                                <td style="width: 160px; text-align: center;">
+                                                <p>Jabatan</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 56.8px; text-align: center;">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="width: 268px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 167.2px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 160px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 56.8px; text-align: center;">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="width: 268px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 167.2px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 160px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Mahasiswa </strong></p>
+                                                <p>&nbsp;</p>
+                                                <table style="height: 124px;" border="1" width="584" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>Peserta</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>Kelas</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 312.8px; text-align: center;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan &hellip;&hellip;. (sebutkan yang lainnya: seperti alumni, komunitas, dll)</strong></p>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                <p>Berdasarkan hasil-hasil diskusi dan masukan semua pihak, maka selanjutnya disusun rumusan VMTS Prodi&hellip;&hellip;.. Universitas Telkom. Selanjutnya Ketua Program Studi (KaProdi) &hellip;.. Universitas Telkom melaporkan hasil rumusan visi, misi, tujuan dan sasaran melalui <strong>mekanisme rapat sidang Pimpinan Fakultas&hellip;.. dan Senat Fakultas &hellip;&hellip;. </strong>Pada tanggal&hellip;&hellip;. Kemudian di sahkan pada level universitas melalui Rapat senat Universitas.</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <!-- <div class="collapse" id="collapseExample">
+                                <div class="well">
+                                    2Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica,
+                                    craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                </div>
+                            </div> -->
+                        </div>
+                        <?php
                             if (count($dataisian)>0) {
-                                for($i=0;$i<count($dataisian);$i++){
+                            
+                            for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3bd3/updateisian112">
-                        <input type="hidden" name="id112" id="id112" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir112" id="id_butir112" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian11b">
+                        <input type="hidden" name="id11b" id="id11b" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir11b" id="id_butir11b" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
+                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bd3/destroyisian4kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Sasaran dan Strategi Pencapaian</h2>
+                        <div class="col-md-4"></div>
+                        <h2 class="card-inside-title">Sasaran dan Strategi Pencapaiannya</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_112" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom1_11b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <input type="hidden" name="version_no112" id="version_no112" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at112" id="created_at112" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no11b" id="version_no11b" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at11b" id="created_at11b" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
-                        <?php }
+                        <?php } ?>
+                        <!-- <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th>ID Butir</th>
+                                    <th>Sasaran dan Strategi Pencapaiannya</th>
+                                    <th>Version</th>
+                                    <th width="14%">Action</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>ID Butir</th>
+                                    <th>Sasaran dan Strategi Pencapaiannya</th>
+                                    <th>Version</th>
+                                    <th width="14%">Action</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <?php
+                                    // foreach ($dataisian as $key) {
+                                    for($i=0;$i<count($dataisian);$i++){
+                                 ?>
+                                <tr>
+                                    <td><?php echo $dataisian[$i]['id_butir'] ?> </td>
+                                    <td><?php echo $dataisian[$i]['kolom1'] ?> </td>
+                                    <td><a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a>&nbsp; </td>
+                                    <td>
+                                        <div class="js-sweetalert"> -->
+                                            <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/dataisian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
+                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
+                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a>&nbsp;
+                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateIsian2" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                            <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table> -->
+                        <?php
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi112">
-                        <input type="hidden" name="id_butir112" id="id_butir112" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Sasaran dan Strategi Pencapaian</h2>
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi11b">
+                        <input type="hidden" name="id_butir11b" id="id_butir11b" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Sasaran dan Strategi Pencapaiannya</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_112" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_11b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -279,8 +982,61 @@
                             <?php
                                 }
                         }elseif ($getbutir=='1.2') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php 
                             if (count($dataisian)>0) {
-                                for($i=0;$i<count($dataisian);$i++){
+                            for($i=0;$i<count($dataisian);$i++){
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/updateisian12">
                         <input type="hidden" name="id12" id="id12" value="<?php echo $dataisian[$i]['id'] ?>" />
@@ -323,11 +1079,62 @@
                                     </div>
                                 </div>
                         </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
                             <?php
                                 }
                         }elseif ($getbutir=='2.1') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -393,6 +1200,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='2.2') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -446,6 +1306,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='2.3') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -565,6 +1478,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='2.4') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -619,19 +1585,66 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='2.5.1') || ($getbutir=='2.5.2')) {
-                            $getidbutir25 = '';
-                            $querycariidbutir25 = $CI->db->query('select * from butir where butir="2.5.1" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir25->result() as $row){
-                                $getidbutir25 = $row->id;
-                                break;
-                            }
+                        }elseif ($getbutir=='2.5') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/updateisian25">
                         <input type="hidden" name="id25" id="id25" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir25" id="id_butir25" value="<?php echo $getidbutir25 ?>" />
+                        <!-- <input type="hidden" name="id_butir25" id="id_butir25" value="<?php echo $getidbutir25 ?>" /> -->
                         <input type="hidden" name="id_butir251" id="id_butir251" value="<?php echo $isiannya ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
@@ -661,7 +1674,7 @@
                                 }else{
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi25">
-                        <input type="hidden" name="id_butir25" id="id_butir25" value="<?php echo $getidbutir25; ?>" />
+                        <!-- <input type="hidden" name="id_butir25" id="id_butir25" value="<?php echo $getidbutir25; ?>" /> -->
                         <input type="hidden" name="id_butir251" id="id_butir251" value="<?php echo $isiannya ?>" />
                         <h2 class="card-inside-title">Sistem Penjaminan Mutu Unit Pengelola Program Studi Diploma</h2>
                         <h2 class="card-inside-title">Jelaskan sistem penjaminan mutu di unit pengelola program studi diploma. Jelaskan pula standar mutu yang digunakan serta pelaksanaannya.</h2>
@@ -679,19 +1692,66 @@
                             <?php
                                 }
                         }elseif ($getbutir=='3.1.1') {
-                            $getidbutir = '';
-                            $querycariidbutir = $CI->db->query('select * from butir where butir="3.1.1" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir->result() as $row){
-                                $getidbutir = $row->id;
-                                break;
-                            }
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/updateisian311">
                         <input type="hidden" name="id311" id="id311" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                        <!-- <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" /> -->
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
@@ -723,7 +1783,7 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi311">
                         <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                        <!-- <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" /> -->
                         <h2 class="card-inside-title">Sistem Rekrutmen Mahasiswa Baru</h2>
                         <h2 class="card-inside-title" style="text-align: justify;">Kebijakan sistem rekrutmen mahasiswa baru mencakup: Kebijakan rekrutmen calon mahasiswa baru, kriteria seleksi mahasiswa baru, sistem pengambilan keputusan, dan prosedur penerimaan mahasiswa baru.</h2>
                         <h2 class="card-inside-title" style="text-align: justify;">Efektivitas implementasi sistem rekrutmen mahasiswa baru untuk menghasilkan mahasiswa baru yang bermutu diukur dari pemenuhan kriteria seleksi, jumlah peminat, proporsi pendaftar terhadap daya tampung dan proporsi yang diterima terhadap yang registrasi.</h2>
@@ -742,6 +1802,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='3.1.2') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -1051,12 +2164,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='3.1.3') {
-                            $getidbutir = '';
-                            $querycariidbutir = $CI->db->query('select * from butir where butir="3.1.3" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir->result() as $row){
-                                $getidbutir = $row->id;
-                                break;
-                            }
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -1107,160 +2267,66 @@
                             <?php
                                 }
                         }elseif ($getbutir=='3.2.1') {
-                            if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3bd3/updateisian32">
-                        <input type="hidden" name="id32" id="id32" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir32" id="id_butir32" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bd3/destroyisian12kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                        </div>
-                        <h2 class="card-inside-title">Layanan kepada Mahasiswa</h2>
-                        <h2 class="card-inside-title">Lengkapilah tabel berikut untuk setiap jenis pelayanan kepada mahasiswa PS.</h2>
-                        <div class="col-md-12">
-                            <b>Jenis Pelayanan kepada Mahasiswa</b>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">dialpad</i>
-                                </span>
-                            <div class="form-line">
-                             <input type="text" class="form-control" name="kolom1_32" value="<?php echo $dataisian[$i]['kolom1'] ?>" placeholder="Tuliskan disini">
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <b>Bentuk kegiatan, Pelaksanaan dan Hasilnya :</b>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <textarea name="kolom2_32" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <b>Jenis Pelayanan kepada Mahasiswa</b>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">dialpad</i>
-                                </span>
-                            <div class="form-line">
-                             <input type="text" class="form-control" name="kolom3_32" value="<?php echo $dataisian[$i]['kolom3'] ?>" placeholder="Tuliskan disini">
                             </div>
                         </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <b>Bentuk kegiatan, Pelaksanaan dan Hasilnya :</b>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <textarea name="kolom4_32" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <b>Jenis Pelayanan kepada Mahasiswa</b>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">dialpad</i>
-                                </span>
-                            <div class="form-line">
-                             <input type="text" class="form-control" name="kolom5_32" value="<?php echo $dataisian[$i]['kolom5'] ?>" placeholder="Tuliskan disini">
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <b>Bentuk kegiatan, Pelaksanaan dan Hasilnya :</b>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <textarea name="kolom6_32" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom6'] ?></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <b>Jenis Pelayanan kepada Mahasiswa</b>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">dialpad</i>
-                                </span>
-                            <div class="form-line">
-                             <input type="text" class="form-control" name="kolom7_32" value="<?php echo $dataisian[$i]['kolom7'] ?>" placeholder="Tuliskan disini">
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <b>Bentuk kegiatan, Pelaksanaan dan Hasilnya :</b>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <textarea name="kolom8_32" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom8'] ?></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <b>Jenis Pelayanan kepada Mahasiswa</b>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">dialpad</i>
-                                </span>
-                            <div class="form-line">
-                             <input type="text" class="form-control" name="kolom9_32" value="<?php echo $dataisian[$i]['kolom9'] ?>" placeholder="Tuliskan disini">
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <b>Bentuk kegiatan, Pelaksanaan dan Hasilnya :</b>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <textarea name="kolom10_32" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom10'] ?></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="hidden" name="version_no32" id="version_no32" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at32" id="created_at32" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
-                        </form>
-                        <?php }
-                                }else{
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi32">
-                        <input type="hidden" name="id_butir32" id="id_butir32" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Layanan kepada Mahasiswa  </h2>
-                        <h2 class="card-inside-title">Lengkapilah tabel berikut untuk setiap jenis pelayanan kepada mahasiswa PS.</h2>
-                        <div class="col-md-12">
-                            <b>Jenis Pelayanan kepada Mahasiswa</b>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="material-icons">dialpad</i>
-                                </span>
-                            <div class="form-line">
-                             <input type="text" class="form-control" name="kolom1_32" value="Bimbingan dan konseling" placeholder="Tuliskan disini">
-                            </div>
-                        </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
                             <?php
-                                }
-                        }elseif (($getbutir=='3.2.1.1') || ($getbutir=='3.2.1.2')) {
-                            $getidbutir321 = '';
-                            $querycariidbutir321 = $CI->db->query('select * from butir where butir="3.2.1.1" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir321->result() as $row){
-                                $getidbutir321 = $row->id;
-                                break;
-                            }
                             if (count($dataisian)>0) {
                             // for($i=0;$i<count($dataisian);$i++){
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi321">
                         <!-- <input type="hidden" name="id321" id="id321" value="<?php echo $dataisian[$i]['id'] ?>" /> -->
                         <input type="hidden" name="id_butir321" id="id_butir321" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir321" id="id_butir321" value="<?php echo $getidbutir321; ?>" />
+                        <!-- <input type="hidden" name="id_butir321" id="id_butir321" value="<?php echo $getidbutir321; ?>" /> -->
                         <h2 class="card-inside-title">Tenaga kependidikan</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -1398,7 +2464,7 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi321">
                         <input type="hidden" name="id_butir321" id="id_butir321" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir321" id="id_butir321" value="<?php echo $getidbutir321; ?>" />
+                        <!-- <input type="hidden" name="id_butir321" id="id_butir321" value="<?php echo $getidbutir321; ?>" /> -->
                         <h2 class="card-inside-title" style="text-align: justify;">Lulusan</h2>
                         <h2 class="card-inside-title" style="text-align: justify;">Tuliskan rata-rata masa studi dan rata-rata IPK lulusan dari mahasiswa reguler bukan transfer untuk tiap program studi diploma yang sejenjang yang dikelola oleh unit pengelola program studi diploma dengan mengikuti format  tabel berikut:</h2>
                         <div class="row clearfix">
@@ -1460,6 +2526,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='3.2.2') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -1509,6 +2628,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='4.1.1') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -1989,6 +3161,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='4.1.2') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -2223,6 +3448,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='4.1.3') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -2272,18 +3550,65 @@
                             <?php
                                 }
                         }elseif ($getbutir=='4.2') {
-                            $getidbutir331 = '';
-                            $querycariidbutir331 = $CI->db->query('select * from butir where butir="4.2" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir331->result() as $row){
-                                $getidbutir331 = $row->id;
-                                break;
-                            }
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi42">
                         <input type="hidden" name="id_butir42" id="id_butir42" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="42id_butir" id="42id_butir" value="<?php echo $getidbutir331; ?>" />
+                        <!-- <input type="hidden" name="42id_butir" id="42id_butir" value="<?php echo $getidbutir331; ?>" /> -->
                         <h2 class="card-inside-title">Tenaga kependidikan</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -2533,7 +3858,7 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi42">
                         <input type="hidden" name="id_butir42" id="id_butir42" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="42id_butir" id="42id_butir" value="<?php echo $getidbutir331; ?>" />
+                        <!-- <input type="hidden" name="42id_butir" id="42id_butir" value="<?php echo $getidbutir331; ?>" /> -->
                         <h2 class="card-inside-title">Tenaga kependidikan</h2>
                         <h2 class="card-inside-title">Tuliskan data tenaga kependidikan  yang ada di PS, Jurusan, Fakultas atau PT yang melayani mahasiswa PS dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
@@ -2657,6 +3982,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='5.1') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -2708,6 +4086,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='5.2') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -2759,6 +4190,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='5.3') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -2809,7 +4293,60 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='6.1.1.1') {
+                        }elseif ($getbutir=='6.1.1') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -3091,19 +4628,66 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='6.1.2.1') || ($getbutir=='6.1.2.2')) {
-                            $getidbutir612 = '';
-                            $querycariidbutir612 = $CI->db->query('select * from butir where butir="6.1.2.1" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir612->result() as $row){
-                                $getidbutir612 = $row->id;
-                                break;
-                            }
+                        }elseif ($getbutir=='6.1.2') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/updateisian612">
                         <input type="hidden" name="id612" id="id612" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir612" id="id_butir612" value="<?php echo $getidbutir612 ?>" />
+                        <!-- <input type="hidden" name="id_butir612" id="id_butir612" value="<?php echo $getidbutir612 ?>" /> -->
                         <input type="hidden" name="id_butir6121" id="id_butir6121" value="<?php echo $isiannya ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
@@ -3132,7 +4716,7 @@
                                 }else{
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi612">
-                        <input type="hidden" name="id_butir612" id="id_butir612" value="<?php echo $getidbutir612; ?>" />
+                        <!-- <input type="hidden" name="id_butir612" id="id_butir612" value="<?php echo $getidbutir612; ?>" /> -->
                         <input type="hidden" name="id_butir6121" id="id_butir6121" value="<?php echo $isiannya ?>" />
                         <h2 class="card-inside-title">Uraikan pendapat pimpinan unit pengelola program studi diploma  tentang perolehan dana pada butir 6.1.1, yang mencakup aspek: kecukupan dan upaya pengembangannya. Uraikan pula kendala-kendala yang dihadapi.</h2>
                         <div class="row clearfix">
@@ -3149,6 +4733,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='6.2.1') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -3200,12 +4837,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='6.2.2') {
-                            $getidbutir622 = '';
-                            $querycariidbutir622 = $CI->db->query('select * from butir where butir="6.2.2" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir622->result() as $row){
-                                $getidbutir622 = $row->id;
-                                break;
-                            }
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi622">
@@ -3359,7 +5043,7 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi622">
                         <input type="hidden" name="622id_butir" id="622id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir622" id="id_butir622" value="<?php echo $getidbutir622; ?>" />
+                        <!-- <input type="hidden" name="id_butir622" id="id_butir622" value="<?php echo $getidbutir622; ?>" /> -->
                         <h2 class="card-inside-title">Sarana</h2>
                         <h2 class="card-inside-title">Tuliskan sarana tambahan untuk meningkatkan mutu penyelenggarakan program tridarma PT pada semua  program studi yang dikelola dalam tiga tahun terakhir. Uraikan pula  rencana investasi untuk sarana dalam lima tahun mendatang, dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
@@ -3431,6 +5115,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='6.3.1') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -3482,12 +5219,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='6.3.2') {
-                            $getidbutir632 = '';
-                            $querycariidbutir632 = $CI->db->query('select * from butir where butir="6.3.2" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir632->result() as $row){
-                                $getidbutir632 = $row->id;
-                                break;
-                            }
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi632">
@@ -3643,7 +5427,7 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi632">
                         <input type="hidden" name="632id_butir" id="632id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir632" id="id_butir632" value="<?php echo $getidbutir632; ?>" />
+                        <!-- <input type="hidden" name="id_butir632" id="id_butir632" value="<?php echo $getidbutir632; ?>" /> -->
                         <h2 class="card-inside-title">Sebutkan penambahan prasarana untuk semua  program studi yang dikelola dalam tiga tahun terakhir. Uraikan pula  rencana investasi untuk prasarana dalam lima tahun mendatang, dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
@@ -3713,19 +5497,66 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='6.4.1.1') || ($getbutir=='6.4.1.2') || ($getbutir=='6.4.1.3')) {
-                            $getidbutir641 = '';
-                            $querycariidbutir641 = $CI->db->query('select * from butir where butir="6.4.1.1" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir641->result() as $row){
-                                $getidbutir641 = $row->id;
-                                break;
-                            }
+                        }elseif ($getbutir=='6.4.1') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/updateisian641">
                         <input type="hidden" name="id641" id="id641" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir641" id="id_butir641" value="<?php echo $getidbutir641 ?>" />
+                        <!-- <input type="hidden" name="id_butir641" id="id_butir641" value="<?php echo $getidbutir641 ?>" /> -->
                         <input type="hidden" name="id_butir6411" id="id_butir6411" value="<?php echo $isiannya ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
@@ -3754,7 +5585,7 @@
                                 }else{
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi641">
-                        <input type="hidden" name="id_butir641" id="id_butir641" value="<?php echo $getidbutir641; ?>" />
+                        <!-- <input type="hidden" name="id_butir641" id="id_butir641" value="<?php echo $getidbutir641; ?>" /> -->
                         <input type="hidden" name="id_butir6411" id="id_butir6411" value="<?php echo $isiannya ?>" />
                         <h2 class="card-inside-title">Jelaskan sistem informasi manajemen dan fasilitas ICT (Information and Communication Technology) yang digunakan unit pengelola program studi diploma untuk (1) proses pembelajaran termasuk e-learning,  (2) penyelenggaraan administrasi (misalkan SIAKAD, SIMKEU, SIMAWA, SIMFA, SIMPEG), dan (3) pemanfaatannya dalam proses pengambilan keputusan dalam pengembangan institusi (antara lain informasi berupa deskripsi, ringkasan, dan trend berbagai jenis data).</h2>
                         <div class="row clearfix">
@@ -3771,17 +5602,64 @@
                             <?php
                                 }
                         }elseif ($getbutir=='6.4.2') {
-                            $getidbutir642 = '';
-                            $querycariidbutir642 = $CI->db->query('select * from butir where butir="6.4.2" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir642->result() as $row){
-                                $getidbutir642 = $row->id;
-                                break;
-                            }
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi642">
                         <input type="hidden" name="642id_butir" id="642id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir642" id="id_butir642" value="<?php echo $getidbutir642; ?>" />
+                        <!-- <input type="hidden" name="id_butir642" id="id_butir642" value="<?php echo $getidbutir642; ?>" /> -->
                         <h2 class="card-inside-title">Sistem Informasi</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -4222,7 +6100,7 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi642">
                         <input type="hidden" name="642id_butir" id="642id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir642" id="id_butir642" value="<?php echo $getidbutir642; ?>" />
+                        <!-- <input type="hidden" name="id_butir642" id="id_butir642" value="<?php echo $getidbutir642; ?>" /> -->
                         <h2>Sistem Informasi</h2>
                         <h2 class="card-inside-title">Pilih salah satu pada kolom yang sesuai (hanya satu kolom) dengan aksesibilitas tiap jenis data, dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
@@ -4437,6 +6315,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='6.4.3') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -4486,6 +6417,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='6.4.4') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -4534,20 +6518,67 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='7.1.1.1') || ($getbutir=='7.1.1.2')) {
-                            $getidbutir711 = '';
-                            $querycariidbutir711 = $CI->db->query('select * from butir where butir="7.1.1.1" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir711->result() as $row){
-                                $getidbutir711 = $row->id;
-                                break;
-                            }
+                        }elseif ($getbutir=='7.1.1') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             // for($i=0;$i<count($dataisian);$i++){
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi711">
                         <!-- <input type="hidden" name="id711" id="id711" value="<?php echo $dataisian[$i]['id'] ?>" /> -->
                         <input type="hidden" name="id_butir711" id="id_butir711" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir711" id="id_butir711" value="<?php echo $getidbutir711; ?>" />
+                        <!-- <input type="hidden" name="id_butir711" id="id_butir711" value="<?php echo $getidbutir711; ?>" /> -->
                         <h2 class="card-inside-title">Tenaga kependidikan</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -4755,7 +6786,7 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi711">
                         <input type="hidden" name="id_butir711" id="id_butir711" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir711" id="id_butir711" value="<?php echo $getidbutir711; ?>" />
+                        <!-- <input type="hidden" name="id_butir711" id="id_butir711" value="<?php echo $getidbutir711; ?>" /> -->
                         <h2 class="card-inside-title" style="text-align: justify;">Penelitian</h2>
                         <h2 class="card-inside-title" style="text-align: justify;">Tuliskan jumlah dan dana penelitian yang dilakukan oleh dosen tetap pada masing-masing PS diploma sejenjang di lingkungan unit pengelola program studi diploma dalam tiga tahun terakhir dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
@@ -4848,6 +6879,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='7.1.2') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -4896,20 +6980,67 @@
                         </form>
                             <?php
                                 }
-                        }elseif (($getbutir=='7.2.1.1') || ($getbutir=='7.2.1.2')) {
-                            $getidbutir721 = '';
-                            $querycariidbutir721 = $CI->db->query('select * from butir where butir="7.2.1.1" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir721->result() as $row){
-                                $getidbutir721 = $row->id;
-                                break;
-                            }
+                        }elseif ($getbutir=='7.2.1') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             // for($i=0;$i<count($dataisian);$i++){
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi721">
                         <!-- <input type="hidden" name="id721" id="id721" value="<?php echo $dataisian[$i]['id'] ?>" /> -->
                         <input type="hidden" name="id_butir721" id="id_butir721" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir721" id="id_butir721" value="<?php echo $getidbutir721; ?>" />
+                        <!-- <input type="hidden" name="id_butir721" id="id_butir721" value="<?php echo $getidbutir721; ?>" /> -->
                         <h2 class="card-inside-title">Tenaga kependidikan</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -5117,7 +7248,7 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi721">
                         <input type="hidden" name="id_butir721" id="id_butir721" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir721" id="id_butir721" value="<?php echo $getidbutir721; ?>" />
+                        <!-- <input type="hidden" name="id_butir721" id="id_butir721" value="<?php echo $getidbutir721; ?>" /> -->
                         <h2 class="card-inside-title" style="text-align: justify;">Penelitian</h2>
                         <h2 class="card-inside-title" style="text-align: justify;">Tuliskan jumlah dan dana penelitian yang dilakukan oleh dosen tetap pada masing-masing PS diploma sejenjang di lingkungan unit pengelola program studi diploma dalam tiga tahun terakhir dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
@@ -5210,6 +7341,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='7.2.2') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -5259,6 +7443,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='7.3.1') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -5494,6 +7731,59 @@
                             <?php
                                 }
                         }elseif ($getbutir=='7.3.2') {
+                            ?>
+                        <!-- Button Default -->
+                        <div class="body">
+                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+                               aria-controls="collapseExample">
+                                DETAIL PANDUAN
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <b>Default Konten Isian Butir Borang</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <b>List Konten Isian Butir</b>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <div class="card">
+                                        <div class="body bg-cyan">
+                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
+                                            <ul class="dashboard-stat-list">
+                                                <li>
+                                                    <b></b> Dokumen Renstra Universitas Telkom
+                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -5811,7 +8101,7 @@
                                             <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $datadokumen[$i]['id']; ?>" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
                                             <!-- <a type="button" onclick="uploadbukti(<?php echo $butir[$i]['butir'] ?>)" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload Dokumen" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#dokumen11a" data-placement="top" title="Lihat" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">pageview</i></a>&nbsp;
-                                            <a id="del" onclick="deledok(<?php echo $datadokumen[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bd3/destroy/'.$datadokumen[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            <a id="del" onclick="deledok(<?php echo $datadokumen[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroy/'.$datadokumen[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -5853,7 +8143,7 @@
                                         }
                                     ?>
                                         <!-- <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#dokumen11a" data-placement="top" title="Lihat" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">pageview</i></a>&nbsp; -->
-                                        <!-- <a id="del" onclick="deledok(<?php echo $bar->id ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bd3/destroy/'.$bar->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="glyphicon glyphicon-trash"></i></a> -->
+                                        <!-- <a id="del" onclick="deledok(<?php echo $bar->id ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroy/'.$bar->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="glyphicon glyphicon-trash"></i></a> -->
                                         </div>
                                     </td>
                                 </tr>
@@ -5868,8 +8158,8 @@
                             <h2 class="card-inside-title">Tambah Dokumen pendukung yang terkait pada butir <?php echo $butir[0]['butir'] ?></h2>
                         </div>
                         <div class="body">
-                            <form action="<?php echo base_url()?>C_isian3bd3/dokumen11" id="frmFileUpload" class="dropzone form-horizontal" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $this->uri->segment(2, 0); ?>" />
+                            <form action="<?php echo base_url()?>C_isian/dokumen11" id="frmFileUpload" class="dropzone form-horizontal" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id_butir11" id="id_butir11" value="<?php echo $this->uri->segment(2, 0); ?>" />
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label for="nama">Nama Dokumen</label>
@@ -5949,7 +8239,7 @@
             </div>
         </div>
 
-        <!-- MODALS Lihat Buku -->
+        <!-- MODALS View Book -->
         <div class="modal fade" id="viewBook" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -6214,7 +8504,223 @@
         </div>
         <!-- TUTUP UPLOAD BUKTI DOKUMEN -->
 
-        <!-- Modal Update Tabel 312 -->
+
+        <!-- Molda Update Tabel 311 -->
+        <div class="modal fade" id="update311" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updatetabel311', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id311" id="id311" />
+                        <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir311tabel" id="id_butir311tabel" />
+                        <div class="col-md-12">
+                                        <b>Daya Tampung</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_311" id="kolom1_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Calon Mahasiswa Reguler :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Ikut Seleksi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_311" id="kolom2_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Lulus Seleksi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_311" id="kolom3_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Mahasiswa Baru :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Reguler Bukan Transfer</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_311" id="kolom4_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Transfer(3)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_311" id="kolom5_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Total Mahasiswa :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Reguler Bukan Transfer</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom6_311" id="kolom6_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Transfer(3)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom7_311" id="kolom7_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Lulusan :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Reguler Bukan Transfer</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_311" id="kolom8_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Transfer(3)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom9_311" id="kolom9_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>IPK Lulusan Reguler :</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Minimal</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom10_311" id="kolom10_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Rata-rata</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom11_311" id="kolom11_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Maksimal</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text"  name="kolom12_311" id="kolom12_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Presentase Lulusan Reguler dengan IPK :</b>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>< 2,75</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom13_311" id="kolom13_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>2,75 - 3,50</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom14_311" id="kolom14_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <b>> 3,50</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom15_311" id="kolom15_311" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 311 -->
+
+        <!-- Molda Update Tabel 312 -->
         <div class="modal fade" id="update312" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -6227,17 +8733,14 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian312', $attributes);
+                    echo form_open('C_isian/updateisian312', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
                         <input type="hidden" name="id312" id="id312" />
                         <input type="hidden" name="id_butir312tabel" id="id_butir312tabel" />
-                                    <div class="col-md-12">
-                                        <b>Program reguler :</b>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>Mhs. baru bukan transfer</b>
+                        <div class="col-md-12">
+                                        <b>Daya Tampung</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6247,8 +8750,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <b>Mhs. baru transfer </b>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Calon Mahasiswa Reguler :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Ikut Seleksi</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -6258,14 +8764,64 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <b>Total mhs. regular (Student Body)</b>
+                                    <div class="col-md-6">
+                                        <b>Lulus Seleksi</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
                                                 <input type="text" name="kolom3_312" id="kolom3_312" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Mahasiswa Baru :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Reguler Bukan Transfer</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_312" id="kolom4_312" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Transfer(3)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_312" id="kolom5_312" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Total Mahasiswa :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Reguler Bukan Transfer</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom6_312" id="kolom6_312" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Transfer(3)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom7_312" id="kolom7_312" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -6281,7 +8837,7 @@
         </div>
         <!-- Tutup Modal Update 312 -->
 
-        <!-- Modal Update Tabel 313 -->
+        <!-- Molda Update Tabel 313 -->
         <div class="modal fade" id="update313" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -6294,7 +8850,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian313', $attributes);
+                    echo form_open('C_isian/updateisian313', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -6345,8 +8901,8 @@
         </div>
         <!-- Tutup Modal Update 313 -->
 
-        <!-- Modal Update Tabel 321 -->
-        <div class="modal fade" id="update321" tabindex="-1" role="dialog">
+        <!-- Molda Update Tabel 331b -->
+        <div class="modal fade" id="update331b" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -6358,54 +8914,450 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian321', $attributes);
+                    echo form_open('C_isian/updateisian331b', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id321" id="id321" />
-                        <input type="hidden" name="id_butir321" id="id_butir321" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir321tabel" id="id_butir321tabel" />
+                        <input type="hidden" name="id331b" id="id331b" />
+                        <input type="hidden" name="331id_butir" id="331id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir331btabel" id="id_butir331btabel" />
+                        <div class="col-md-12">
+                                        <b>Integritas (etika dan moral)</b>
+                                        <input type="hidden" name="kolom1_331b" id="kolom1_331b" class="form-control" placeholder="Ex: 500">
+                                    </div>
                                     <div class="col-md-12">
-                                        <b>Program Studi</b>
+                                        <b>Tanggapan Pihak Pengguna :</b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Sangat Baik (%)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_321" id="kolom1_321" class="form-control" placeholder="">
+                                                <input type="text" name="kolom2_331b" id="kolom2_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_331b" id="kolom3_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Cukup (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_331b" id="kolom4_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Kurang (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_331b" id="kolom5_331b" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <b>Rata-rata Masa Studi (Tahun)</b>
+                                        <b>Rencana Tindak Lanjut oleh Program Studi</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_321" id="kolom2_321" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom6_331b" id="kolom6_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                            <!-- nomor 2 -->
+                                    <div class="col-md-12">
+                                        <b>Keahlian berdasarkan bidang ilmu (profesionalisme)</b>
+                                        <input type="hidden" name="kolom7_331b" id="kolom7_331b" class="form-control" placeholder="Ex: 500">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tanggapan Pihak Pengguna :</b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Sangat Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_331b" id="kolom8_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom9_331b" id="kolom9_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Cukup (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom10_331b" id="kolom10_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Kurang (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom11_331b" id="kolom11_331b" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <b>Rata-rata IPK Lulusan</b>
+                                        <b>Rencana Tindak Lanjut oleh Program Studi</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_321" id="kolom3_321" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_331b" id="kolom12_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                        <!-- nomor 3 -->
+                                    <div class="col-md-12">
+                                        <b>Bahasa Inggris</b>
+                                        <input type="hidden" name="kolom13_331b" id="kolom13_331b" class="form-control" placeholder="Ex: 500">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tanggapan Pihak Pengguna :</b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Sangat Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom14_331b" id="kolom14_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom15_331b" id="kolom15_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Cukup (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom16_331b" id="kolom16_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Kurang (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom17_331b" id="kolom17_331b" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <b>Keterangan</b>
+                                        <b>Rencana Tindak Lanjut oleh Program Studi</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_321" id="kolom4_321" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom18_331b" id="kolom18_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                        <!-- nomor 4 -->
+                                    <div class="col-md-12">
+                                        <b>Penggunaan Teknologi Informasi</b>
+                                        <input type="hidden" name="kolom19_331b" id="kolom19_331b" class="form-control" placeholder="Ex: 500">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tanggapan Pihak Pengguna :</b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Sangat Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom20_331b" id="kolom20_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom21_331b" id="kolom21_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Cukup (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom22_331b" id="kolom22_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Kurang (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom23_331b" id="kolom23_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Rencana Tindak Lanjut oleh Program Studi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom24_331b" id="kolom24_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                        <!-- nomor 5 -->
+                                    <div class="col-md-12">
+                                        <b>Komunikasi</b>
+                                        <input type="hidden" name="kolom25_331b" id="kolom25_331b" class="form-control" placeholder="Ex: 500">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tanggapan Pihak Pengguna :</b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Sangat Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom26_331b" id="kolom26_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom27_331b" id="kolom27_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Cukup (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom28_331b" id="kolom28_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Kurang (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom29_331b" id="kolom29_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Rencana Tindak Lanjut oleh Program Studi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom30_331b" id="kolom30_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                        <!-- nomor 6 -->
+                                    <div class="col-md-12">
+                                        <b>Komunikasi</b>
+                                        <input type="hidden" name="kolom31_331b" id="kolom31_331b" class="form-control" placeholder="Ex: 500">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tanggapan Pihak Pengguna :</b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Sangat Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom32_331b" id="kolom32_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom33_331b" id="kolom33_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Cukup (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom34_331b" id="kolom34_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Kurang (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom35_331b" id="kolom35_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Rencana Tindak Lanjut oleh Program Studi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom36_331b" id="kolom36_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                        <!-- nomor 7 -->
+                                    <div class="col-md-12">
+                                        <b>Pengembangan diri</b>
+                                        <input type="hidden" name="kolom37_331b" id="kolom37_331b" class="form-control" placeholder="Ex: 500">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tanggapan Pihak Pengguna :</b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Sangat Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom38_331b" id="kolom38_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Baik (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom39_331b" id="kolom39_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Cukup (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom40_331b" id="kolom40_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Kurang (%)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom41_331b" id="kolom41_331b" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Rencana Tindak Lanjut oleh Program Studi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom42_331b" id="kolom42_331b" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -6419,312 +9371,9 @@
                 </div>
             </div>
         </div>
-        <!-- Tutup Modal Update 321 -->
+        <!-- Tutup Modal Update 331b -->
 
-        <!-- Modal Update Tabel 411 -->
-        <div class="modal fade" id="update411" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
-                    </div>
-                    <div class="modal-body">
-                <!-- form start -->
-                <?php
-                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
-                    //   echo form_open('c_borang/update', $attributes);
-                    $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian411', $attributes);
-                    // echo form_open('c_borang/update');
-                ?>
-                    <div class="row clearfix">
-                        <input type="hidden" name="id411" id="id411" />
-                        <input type="hidden" name="id_butir411tabel" id="id_butir411tabel" />
-                                    <div class="col-md-12">
-                                        <b>Jabatan Fungsional :</b>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>Asisten Ahli</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_411" id="kolom1_411" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>Lektor</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_411" id="kolom2_411" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>Lektor Kepala</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_411" id="kolom3_411" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>Guru Besar/Profesor</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom4_411" id="kolom4_411" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Pendidikan Tertinggi :</b>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>S1/D4</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom5_411" id="kolom5_411" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>S2/Profesi/Sp-1</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom6_411" id="kolom6_411" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <b>S3/Sp-2</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom7_411" id="kolom7_411" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                        </div>
-                </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Tutup Modal Update 411 -->
-
-        <!-- Modal Update Tabel 412 -->
-        <div class="modal fade" id="update412" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
-                    </div>
-                    <div class="modal-body">
-                <!-- form start -->
-                <?php
-                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
-                    //   echo form_open('c_borang/update', $attributes);
-                    $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian412', $attributes);
-                    // echo form_open('c_borang/update');
-                ?>
-                    <div class="row clearfix">
-                        <input type="hidden" name="id412" id="id412" />
-                        <input type="hidden" name="id_butir412tabel" id="id_butir412tabel" />
-                                <div class="col-md-12">
-                                    <div class="col-md-3">
-                                        <b>Banyaknya dosen tugas belajar S2/Profesi/Sp-1</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_412" id="kolom1_412" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>Banyaknya dosen tugas belajar S3/Sp-2</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_412" id="kolom2_412" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Tutup Modal Update 412 -->
-
-        <!-- Modal Update Tabel 42 -->
-        <div class="modal fade" id="update42" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
-                    </div>
-                    <div class="modal-body">
-                <!-- form start -->
-                <?php
-                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
-                    //   echo form_open('c_borang/update', $attributes);
-                    $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian42', $attributes);
-                    // echo form_open('c_borang/update');
-                ?>
-                    <div class="row clearfix">
-                        <input type="hidden" name="id42" id="id42" />
-                        <input type="hidden" name="42id_butir" id="42id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir42tabel" id="id_butir42tabel" />
-                                <div class="col-md-12">
-                                        <b>Jenis Tenaga Kependidikan :</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_42" id="kolom1_42" class="form-control" placeholder="Pustakawan *, Laboran/ Teknisi/ Analis/ Operator/ Programer, Tenaga Administrasi">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Tenaga Kependidikan dengan Pendidikan Terakhir :</b>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>S3</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_42" id="kolom2_42" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>S2</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_42" id="kolom3_42" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>S1</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom4_42" id="kolom4_42" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>D4</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom5_42" id="kolom5_42" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>D3</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom6_42" id="kolom6_42" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>D2</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom7_42" id="kolom7_42" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>D1</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom8_42" id="kolom8_42" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <b>SMA/SMK</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom9_42" id="kolom9_42" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                    </div>
-                </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Tutup Modal Update 42 -->
-
-        <!-- Modal Update Tabel 431 -->
+        <!-- Molda Update Tabel 431 -->
         <div class="modal fade" id="update431" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -6737,7 +9386,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian431', $attributes);
+                    echo form_open('C_isian/updateisian431', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -6833,7 +9482,7 @@
         </div>
         <!-- Tutup Modal Update 431 -->
 
-        <!-- Modal Update Tabel 432 -->
+        <!-- Molda Update Tabel 432 -->
         <div class="modal fade" id="update432" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -6846,7 +9495,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian432', $attributes);
+                    echo form_open('C_isian/updateisian432', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -6942,7 +9591,7 @@
         </div>
         <!-- Tutup Modal Update 432 -->
 
-        <!-- Modal Update Tabel 433 -->
+        <!-- Molda Update Tabel 433 -->
         <div class="modal fade" id="update433" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -6955,7 +9604,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian433', $attributes);
+                    echo form_open('C_isian/updateisian433', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -7078,7 +9727,7 @@
         </div>
         <!-- Tutup Modal Update 433 -->
 
-        <!-- Modal Update Tabel 434 -->
+        <!-- Molda Update Tabel 434 -->
         <div class="modal fade" id="update434" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -7091,7 +9740,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian434', $attributes);
+                    echo form_open('C_isian/updateisian434', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -7187,7 +9836,7 @@
         </div>
         <!-- Tutup Modal Update 434 -->
 
-        <!-- Modal Update Tabel 435 -->
+        <!-- Molda Update Tabel 435 -->
         <div class="modal fade" id="update435" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -7200,7 +9849,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian435', $attributes);
+                    echo form_open('C_isian/updateisian435', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -7296,7 +9945,7 @@
         </div>
         <!-- Tutup Modal Update 435 -->
 
-        <!-- Modal Update Tabel 441 -->
+        <!-- Molda Update Tabel 441 -->
         <div class="modal fade" id="update441" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -7309,7 +9958,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian441', $attributes);
+                    echo form_open('C_isian/updateisian441', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -7405,7 +10054,7 @@
         </div>
         <!-- Tutup Modal Update 441 -->
 
-        <!-- Modal Update Tabel 442 -->
+        <!-- Molda Update Tabel 442 -->
         <div class="modal fade" id="update442" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -7418,7 +10067,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian442', $attributes);
+                    echo form_open('C_isian/updateisian442', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -7514,7 +10163,7 @@
         </div>
         <!-- Tutup Modal Update 442 -->
 
-        <!-- Modal Update Tabel 451 -->
+        <!-- Molda Update Tabel 451 -->
         <div class="modal fade" id="update451" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -7527,7 +10176,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian451', $attributes);
+                    echo form_open('C_isian/updateisian451', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -7580,7 +10229,7 @@
         </div>
         <!-- Tutup Modal Update 451 -->
 
-        <!-- Modal Update Tabel 452 -->
+        <!-- Molda Update Tabel 452 -->
         <div class="modal fade" id="update452" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -7593,7 +10242,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian452', $attributes);
+                    echo form_open('C_isian/updateisian452', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -7678,7 +10327,7 @@
         </div>
         <!-- Tutup Modal Update 452 -->
 
-        <!-- Modal Update Tabel 453 -->
+        <!-- Molda Update Tabel 453 -->
         <div class="modal fade" id="update453" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -7691,7 +10340,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian453', $attributes);
+                    echo form_open('C_isian/updateisian453', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -7769,7 +10418,7 @@
         </div>
         <!-- Tutup Modal Update 453 -->
 
-        <!-- Modal Update Tabel 454 -->
+        <!-- Molda Update Tabel 454 -->
         <div class="modal fade" id="update454" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -7782,7 +10431,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian454', $attributes);
+                    echo form_open('C_isian/updateisian454', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -7845,7 +10494,7 @@
         </div>
         <!-- Tutup Modal Update 454 -->
 
-        <!-- Modal Update Tabel 455 -->
+        <!-- Molda Update Tabel 455 -->
         <div class="modal fade" id="update455" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -7858,7 +10507,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian455', $attributes);
+                    echo form_open('C_isian/updateisian455', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -7921,7 +10570,7 @@
         </div>
         <!-- Tutup Modal Update 455 -->
 
-        <!-- Modal Update Tabel 461 -->
+        <!-- Molda Update Tabel 461 -->
         <div class="modal fade" id="update461" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -7934,7 +10583,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian461', $attributes);
+                    echo form_open('C_isian/updateisian461', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -8262,7 +10911,891 @@
         </div>
         <!-- Tutup Modal Update 461 -->
 
-        <!-- Modal Update Tabel 622 -->
+        <!-- Molda Update Tabel 512b -->
+        <div class="modal fade" id="update512b" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian512b', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id512b" id="id512b" />
+                        <input type="hidden" name="512bid_butir" id="512bid_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir512btabel" id="id_butir512btabel" />
+                                    <div class="col-md-12">
+                                        <b>Jenis Mata Kuliah</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_512b" id="kolom1_512b" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>sks</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_512b" id="kolom2_512b" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Keterangan</b>
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom3_512b" id="kolom3_512b" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <textarea name="kolom3_512b" id="kolom3_512b" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                            </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 512b -->
+
+        <!-- Molda Update Tabel 512c -->
+        <div class="modal fade" id="update512c" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian512c', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id512c" id="id512c" />
+                        <input type="hidden" name="512cid_butir" id="512cid_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir512ctabel" id="id_butir512ctabel" />
+                                    <div class="col-md-12">
+                                        <b>Semester</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_512c" id="kolom1_512c" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kode MK</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_512c" id="kolom2_512c" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Nama Mata Kuliah*</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_512c" id="kolom3_512c" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Bobot sks </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_512c" id="kolom4_512c" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>sks MK dalam Kurikulum</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Inti**</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_512c" id="kolom5_512c" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Institusional</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom6_512c" id="kolom6_512c" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-12">
+                                        <b>Bobot Tugas*** </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom7_512c" id="kolom7_512c" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kelengkapan****</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Deskripsi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_512c" id="kolom8_512c" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Silabus</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom9_512c" id="kolom9_512c" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>SAP</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom10_512c" id="kolom10_512c" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-12">
+                                        <!-- <b>Bobot Tugas*** </b> -->
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom7_512c" class="form-control" placeholder="Ex: 500"> -->
+                                                <input type="checkbox" id="tidakadaa2" name="kolom7_512c" value="√" class="filled-in" />
+                                                <label for="tidakadaa2">Bobot Tugas***</label>
+                                            </div>
+                                            <!-- <div class="demo-checkbox">
+                                                    <input type="checkbox" id="tidakada" class="filled-in" />
+                                                    <label for="tidakada">Tidak Ada</label></br>
+                                                    <input type="checkbox" id="ada" class="filled-in" checked />
+                                                    <label for="ada">Ada</label>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kelengkapan****</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- <b>Deskripsi</b> -->
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom8_512c" class="form-control" placeholder="Ex: 500"> -->
+                                                <input type="checkbox" id="tidakada12" name="kolom8_512c" value="√" class="filled-in" />
+                                                <label for="tidakada12">Deskripsi</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- <b>Silabus</b> -->
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom9_512c" class="form-control" placeholder="Ex: 500"> -->
+                                                <input type="checkbox" id="tidakada22" name="kolom9_512c" value="√" class="filled-in" />
+                                                <label for="tidakada22">Silabus</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- <b>SAP</b> -->
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom10_512c" class="form-control" placeholder="Ex: 500"> -->
+                                                <input type="checkbox" id="tidakada32" name="kolom10_512c" value="√" class="filled-in" />
+                                                <label for="tidakada32">SAP</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Unit/ Jur/ Fak Penyelenggara</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom11_512c" id="kolom11_512c" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="col-md-12">
+                                        <b>*  Tuliskan mata kuliah pilihan sebagai mata kuliah pilihan I, mata kuliah pilihan II, dst. (nama-nama mata kuliah pilihan yang dilaksanakan dicantumkan dalam tabel 5.1.3.)</b></br>
+                                        <b>**   Menurut rujukan peer group / SK Mendiknas 045/2002 (ps. 3 ayat 2e)</b></br>
+                                        <b>*** isi dengan "yes" pada mata kuliah yang dalam penentuan nilai akhirnya memberikan bobot pada tugas-tugas (praktikum/praktek, PR atau makalah) ≥ 20%.</b></br>
+                                        <b>****isi dengan "yes" pada mata kuliah yang dilengkapi dengan deskripsi, silabus, dan atau SAP.  Sediakan dokumen pada saat asesmen lapangan.</b></br>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 512c -->
+
+        <!-- Molda Update Tabel 513 -->
+        <div class="modal fade" id="update513" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian513', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id513" id="id513" />
+                        <input type="hidden" name="513id_butir" id="513id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir513tabel" id="id_butir513tabel" />
+                                    <div class="col-md-12">
+                                        <b>Semester</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_513" id="kolom1_513" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kode MK</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_513" id="kolom2_513" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Nama MK (Pilihan)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_513" id="kolom3_513" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Bobot sks</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_513" id="kolom4_513" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <!-- <b>Bobot Tugas*</b> -->
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom5_513" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <input type="checkbox" id="tidakada332" name="kolom5_513" value="√" class="filled-in" />
+                                                <label for="tidakada332">Bobot Tugas*</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Unit/ Jur/ Fak Pengelola</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom6_513" id="kolom6_513" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>* beri tanda √ pada mata kuliah yang dalam penentuan nilai akhirnya memberikan bobot pada tugas-tugas (praktikum/praktek, PR atau makalah) ≥ 20%.</p>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 513 -->
+
+        <!-- Molda Update Tabel 514 -->
+        <div class="modal fade" id="update514" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian514', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id514" id="id514" />
+                        <input type="hidden" name="514id_butir" id="514id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir514tabel" id="id_butir514tabel" />
+                                    <div class="col-md-12">
+                                        <b>Nama Praktikum/Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_514" id="kolom1_514" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Isi Praktikum/Praktek</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Judul/Modul</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_514" id="kolom2_514" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jam Pelaksanaan </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_514" id="kolom3_514" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tempat/Lokasi Praktikum/Praktek</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_514" id="kolom4_514" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 514 -->
+
+        <!-- Molda Update Tabel 52b -->
+        <div class="modal fade" id="update52b" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian52b', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id52b" id="id52b" />
+                        <input type="hidden" name="52bid_butir" id="52bid_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir52btabel" id="id_butir52btabel" />
+                                    <div class="col-md-12">
+                                        <b>No. MK</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_52b" id="kolom1_52b" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Nama MK</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_52b" id="kolom2_52b" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>MK Baru/Lama/Hapus</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_52b" id="kolom3_52b" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Perubahan pada</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Silabus/SAP</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_52b" id="kolom4_52b" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Buku Ajar </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_52b" id="kolom5_52b" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Alasan Peninjauan</b>
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom6_52b" id="kolom6_52b" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <textarea name="kolom6_52b" id="kolom6_52b" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Atas Usulan/ Masukan  dari</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom7_52b" id="kolom7_52b" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Berlaku mulai Sem./Th.</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_52b" id="kolom8_52b" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 52b -->
+
+        <!-- Molda Update Tabel 541 -->
+        <div class="modal fade" id="update541" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian541', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id541" id="id541" />
+                        <input type="hidden" name="541id_butir" id="541id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir541tabel" id="id_butir541tabel" />
+                                    <div class="col-md-12">
+                                        <b>Nama Dosen Pembimbing Akademik</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_541" id="kolom1_541" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Mahasiswa Bimbingan</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_541" id="kolom2_541" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Rata-rata Banyaknya Pertemuan/mhs/semester</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_541" id="kolom3_541" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 541 -->
+
+        <!-- Molda Update Tabel 542 -->
+        <div class="modal fade" id="update542" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian542', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id542" id="id542" />
+                        <input type="hidden" name="542id_butir" id="542id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir542tabel" id="id_butir542tabel" />
+                                    <div class="col-md-12">
+                                        <b>Tujuan pembimbingan</b>
+                                        <input type="hidden" name="kolom1_542" id="kolom1_542" class="form-control" value="Tujuan pembimbingan" placeholder="Tuliskan disini">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom2_542" id="kolom2_542" class="form-control" placeholder="Tuliskan 
+                                                    disini"> -->
+                                                    <textarea name="kolom2_542" id="kolom2_542" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Pelaksanaan pembimbingan</b>
+                                        <input type="hidden" name="kolom3_542" id="kolom3_542" class="form-control" value="Pelaksanaan pembimbingan" placeholder="Tuliskan disini">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom4_542" id="kolom4_542" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <textarea name="kolom4_542" id="kolom4_542" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Masalah yang dibicarakan dalam pembimbingan</b>
+                                        <input type="hidden" name="kolom5_542" id="kolom5_542" class="form-control" value="Masalah yang dibicarakan dalam pembimbingan" placeholder="Tuliskan disini">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom6_542" id="kolom6_542" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <textarea name="kolom6_542" id="kolom6_542" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kesulitan dalam pembimbingan dan upaya untuk mengatasinya</b>
+                                        <input type="hidden" name="kolom7_542" id="kolom7_542" class="form-control" value="Kesulitan dalam pembimbingan dan upaya untuk mengatasinya" placeholder="Tuliskan disini">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom8_542" id="kolom8_542" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <textarea name="kolom8_542" id="kolom8_542" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>TManfaat yang diperoleh mahasiswa dari pembimbingan</b>
+                                        <input type="hidden" name="kolom9_542" id="kolom9_542" class="form-control" value="Manfaat yang diperoleh mahasiswa dari pembimbingan" placeholder="Tuliskan disini">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom10_542" id="kolom10_542" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <textarea name="kolom10_542" id="kolom10_542" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 542 -->
+
+        <!-- Molda Update Tabel 551d -->
+        <div class="modal fade" id="update551d" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian551d', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id551d" id="id551d" />
+                        <input type="hidden" name="551did_butir" id="551did_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir551dtabel" id="id_butir551dtabel" />
+                                    <div class="col-md-12">
+                                        <b>Nama Dosen Pembimbing </b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_551d" id="kolom1_551d" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Mahasiswa</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_551d" id="kolom2_551d" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 551d -->
+
+        <!-- Molda Update Tabel 56 -->
+        <div class="modal fade" id="update56" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian56', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id56" id="id56" />
+                        <input type="hidden" name="56id_butir" id="56id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir56tabel" id="id_butir56tabel" />
+                                    <div class="col-md-12">
+                                        <b>Butir</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_56" id="kolom1_56" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Upaya Perbaikan :</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Tindakan</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_56" id="kolom2_56" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Hasil</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_56" id="kolom3_56" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 56 -->
+
+        <!-- Molda Update Tabel 622 -->
         <div class="modal fade" id="update622" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -8275,7 +11808,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian622', $attributes);
+                    echo form_open('C_isian/updateisian622', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -8283,7 +11816,7 @@
                         <input type="hidden" name="622id_butir" id="622id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir622tabel" id="id_butir622tabel" />
                                     <div class="col-md-12">
-                                        <b>Jenis Prasarana</b>
+                                        <b>Tahun</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -8293,8 +11826,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Investasi Prasarana Selama Tiga Tahun Terakhir (juta Rp)</b>
+                                    <div class="col-md-12">
+                                        <b>Judul Penelitian</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -8305,10 +11838,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Rencana Investasi Prasarana dalam Lima Tahun Mendatang</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Nilai Investasi (Juta Rp)</b>
+                                        <b>Sumber dan Jenis Dana</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -8318,8 +11848,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Sumber Dana</b>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Dana* dalam Juta Rupiah)</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
@@ -8341,8 +11871,8 @@
         </div>
         <!-- Tutup Modal Update 622 -->
 
-        <!-- Modal Update Tabel 632 -->
-        <div class="modal fade" id="update632" tabindex="-1" role="dialog">
+        <!-- Molda Update Tabel 623 -->
+        <div class="modal fade" id="update623" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -8354,57 +11884,54 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian632', $attributes);
+                    echo form_open('C_isian/updateisian623', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id632" id="id632" />
-                        <input type="hidden" name="632id_butir" id="632id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir632tabel" id="id_butir632tabel" />
+                        <input type="hidden" name="id623" id="id623" />
+                        <input type="hidden" name="623id_butir" id="623id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir623tabel" id="id_butir623tabel" />
                                     <div class="col-md-12">
-                                        <b>Jenis Prasarana</b>
+                                        <b>Tahun</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_632" id="kolom1_632" class="form-control" placeholder="Tuliskan disini">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Investasi Prasarana Selama Tiga Tahun Terakhir (juta Rp)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_632" id="kolom2_632" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom1_623" id="kolom1_623" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Rencana Investasi Prasarana dalam Lima Tahun Mendatang</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Nilai Investasi (Juta Rp)</b>
+                                        <b>Judul Kegiatan Pelayanan/Pengabdian kepada Masyarakat</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_632" id="kolom3_632" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom2_623" id="kolom2_623" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <b>Sumber Dana</b>
+                                    <div class="col-md-12">
+                                        <b>Sumber dan Jenis Dana</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_632" id="kolom4_632" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom3_623" id="kolom3_623" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Dana* dalam Juta Rupiah)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_623" id="kolom4_623" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -8418,9 +11945,281 @@
                 </div>
             </div>
         </div>
+        <!-- Tutup Modal Update 623 -->
+
+        <!-- Molda Update Tabel 631 -->
+        <div class="modal fade" id="update631" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian631', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id631" id="id631" />
+                        <input type="hidden" name="631id_butir" id="631id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir631tabel" id="id_butir631tabel" />
+                                    <div class="col-md-12">
+                                        <b>Satu ruang untuk lebih dari 4 dosen</b>
+                                                <input type="hidden" name="kolom1_631" id="kolom1_631" value="Satu ruang untuk lebih dari 4 dosen" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Ruang</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_631" id="kolom2_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Luas (m2)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_631" id="kolom3_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Satu ruang untuk 3 - 4 dosen</b>
+                                                <input type="hidden" name="kolom4_631" id="kolom4_631" value="Satu ruang untuk 3 - 4 dosen" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Ruang</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_631" id="kolom5_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Luas (m2)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom6_631" id="kolom6_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div><div class="col-md-12">
+                                        <b>Satu ruang untuk 2 dosen</b>
+                                                <input type="hidden" name="kolom7_631" id="kolom7_631" value="Satu ruang untuk 2 dosen" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Ruang</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_631" id="kolom8_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Luas (m2)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom9_631" id="kolom9_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div><div class="col-md-12">
+                                        <b>Satu ruang untuk 1 dosen (bukan pejabat struktural)</b>
+                                                <input type="hidden" name="kolom10_631" id="kolom10_631" value="Satu ruang untuk 1 dosen (bukan pejabat struktural)" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Ruang</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom11_631" id="kolom11_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Jumlah Luas (m2)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom12_631" id="kolom12_631" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 631 -->
+
+        <!-- Molda Update Tabel 632 -->
+        <div class="modal fade" id="update632" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian632', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id632" id="id632" />
+                        <input type="hidden" name="632id_butir" id="632id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir632tabel" id="id_butir632tabel" />
+                                    <div class="col-md-12">
+                                        <b>Jenis Prasarana</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_632" id="kolom1_632" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Unit</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_632" id="kolom2_632" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Total Luas (m2)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_632" id="kolom3_632" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kepemilikan</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>SD</b>
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom4_632" class="form-control" placeholder="Ex: 500"> -->
+                                                <input type="checkbox" id="tidakada6321q" name="kolom4_632" value="√" class="filled-in" />
+                                                <label for="tidakada6321q">SD</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>SW</b>
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom5_632" class="form-control" placeholder="Ex: 500"> -->
+                                                <input type="checkbox" id="tidakada6322q" name="kolom5_632" value="√" class="filled-in" />
+                                                <label for="tidakada6322q">SW</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kondisi</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Terawat</b>
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom6_632" class="form-control" placeholder="Ex: 500"> -->
+                                                <input type="checkbox" id="tidakada6323q" name="kolom6_632" value="√" class="filled-in" />
+                                                <label for="tidakada6323q">Terawat</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>Tidak Terawat</b>
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom7_632" class="form-control" placeholder="Ex: 500"> -->
+                                                <input type="checkbox" id="tidakada6324q" name="kolom7_632" value="√" class="filled-in" />
+                                                <label for="tidakada6324q">Tidak Terawat</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Utilisasi (Jam/minggu)</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_632" id="kolom8_632" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Keterangan:</b>
+                                        <b>SD = Milik PT/fakultas/jurusan sendiri; SW = Sewa/Kontrak/Kerjasama</b>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- Tutup Modal Update 632 -->
 
-        <!-- Modal Update Tabel 633 -->
+        <!-- Molda Update Tabel 633 -->
         <div class="modal fade" id="update633" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -8433,7 +12232,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian633', $attributes);
+                    echo form_open('C_isian/updateisian633', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -8558,8 +12357,8 @@
         </div>
         <!-- Tutup Modal Update 633 -->
 
-        <!-- Modal Update Tabel 642 -->
-        <div class="modal fade" id="update642" tabindex="-1" role="dialog">
+        <!-- Molda Update Tabel 641a -->
+        <div class="modal fade" id="update641a" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -8571,219 +12370,55 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian642', $attributes);
+                    echo form_open('C_isian/updateisian641a', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id642" id="id642" />
-                        <input type="hidden" name="642id_butir" id="642id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir642tabel" id="id_butir642tabel" />
-                            <div class="body table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>NO.</th>
-                                            <th style="width: 20%;">JENIS DATA</th>
-                                            <th>SISTEM PENGELOLAAN DATA</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1.</th>
-                                            <td>Mahasiswa
-                                            <input type="hidden" name="kolom1_642" class="form-control" value="Mahasiswa">
-                                            </td>
-                                            <td>
-                                            <input name="kolom2_642" type="radio" class="fill-in" id="rd_1" value="Secara Manual"/>
-                                            <label for="rd_1">Secara Manual</label></br>
-                                            <input name="kolom2_642" type="radio" id="rd_2" class="fill-in" value="Dengan Komputer Tanpa Jaringan"/>
-                                            <label for="rd_2">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom2_642" type="radio" class="fill-in" id="rd_3" value="Dengan Komputer Jaringan Lokal (LAN)"/>
-                                            <label for="rd_3">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom2_642" type="radio" id="rd_4" class="fill-in" value="Dengan Komputer Jaringan Luas (WAN)"/>
-                                            <label for="rd_4">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2.</th>
-                                            <td>Kartu Rencana Studi (KRS)
-                                            <input type="hidden" name="kolom3_642" class="form-control" value="Kartu Rencana Studi (KRS)">
-                                            </td>
-                                            <td>
-                                            <input name="kolom4_642" type="radio" class="fill-in" id="rd_1a" value="Secara Manual" />
-                                            <label for="rd_1a">Secara Manual</label></br>
-                                            <input name="kolom4_642" type="radio" id="rd_2a" class="fill-in" value="Dengan Komputer Tanpa Jaringan"< />
-                                            <label for="rd_2a">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom4_642" type="radio" class="fill-in" id="rd_3a" value="Dengan Komputer Jaringan Lokal (LAN)" />
-                                            <label for="rd_3a">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom4_642" type="radio" id="rd_4a" class="fill-in" value="Dengan Komputer Jaringan Luas (WAN)" />
-                                            <label for="rd_4a">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3.</th>
-                                            <td>Jadwal Mata Kuliah
-                                            <input type="hidden" name="kolom5_642" class="form-control" value="Jadwal Mata Kuliah">
-                                            </td>
-                                            <td>
-                                            <input name="kolom6_642" type="radio" class="fill-in" id="rd_1b" value="Secara Manual" />
-                                            <label for="rd_1b">Secara Manual</label></br>
-                                            <input name="kolom6_642" type="radio" id="rd_2b" class="fill-in" value="Dengan Komputer Tanpa Jaringan" />
-                                            <label for="rd_2b">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom6_642" type="radio" class="fill-in" id="rd_3b" value="Dengan Komputer Jaringan Lokal (LAN)" />
-                                            <label for="rd_3b">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom6_642" type="radio" id="rd_4b" class="fill-in" value="Dengan Komputer Jaringan Luas (WAN)" />
-                                            <label for="rd_4b">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">4.</th>
-                                            <td>Nilai Mata Kuliah
-                                            <input type="hidden" name="kolom7_642" class="form-control" value="Nilai Mata Kuliah">
-                                            </td>
-                                            <td>
-                                            <input name="kolom8_642" type="radio" class="fill-in" id="rd_1c" value="Secara Manual" />
-                                            <label for="rd_1c">Secara Manual</label></br>
-                                            <input name="kolom8_642" type="radio" id="rd_2c" class="fill-in" value="Dengan Komputer Tanpa Jaringan" />
-                                            <label for="rd_2c">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom8_642" type="radio" class="fill-in" id="rd_3c" value="Dengan Komputer Jaringan Lokal (LAN)" />
-                                            <label for="rd_3c">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom8_642" type="radio" id="rd_4c" class="fill-in" value="Dengan Komputer Jaringan Luas (WAN)" />
-                                            <label for="rd_4c">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">5.</th>
-                                            <td>Transkrip Akademik
-                                            <input type="hidden" name="kolom9_642" class="form-control" value="Transkrip Akademik">
-                                            </td>
-                                            <td>
-                                            <input name="kolom10_642" type="radio" class="fill-in" id="rd_1d" value="Secara Manual" />
-                                            <label for="rd_1d">Secara Manual</label></br>
-                                            <input name="kolom10_642" type="radio" id="rd_2d" class="fill-in" value="Dengan Komputer Tanpa Jaringan" />
-                                            <label for="rd_2d">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom10_642" type="radio" class="fill-in" id="rd_3d" value="Dengan Komputer Jaringan Lokal (LAN)" />
-                                            <label for="rd_3d">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom10_642" type="radio" id="rd_4d" class="fill-in" value="Dengan Komputer Jaringan Luas (WAN)" />
-                                            <label for="rd_4d">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">6.</th>
-                                            <td>Lulusan
-                                            <input type="hidden" name="kolom11_642" class="form-control" value="Lulusan">
-                                            </td>
-                                            <td>
-                                            <input name="kolom12_642" type="radio" class="fill-in" id="rd_1e" value="Secara Manual" />
-                                            <label for="rd_1e">Secara Manual</label></br>
-                                            <input name="kolom12_642" type="radio" id="rd_2e" class="fill-in" value="Dengan Komputer Tanpa Jaringan" />
-                                            <label for="rd_2e">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom12_642" type="radio" class="fill-in" id="rd_3e" value="Dengan Komputer Jaringan Lokal (LAN)" />
-                                            <label for="rd_3e">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom12_642" type="radio" id="rd_4e" class="fill-in" value="Dengan Komputer Jaringan Luas (WAN)" />
-                                            <label for="rd_4e">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">7.</th>
-                                            <td>Dosen
-                                            <input type="hidden" name="kolom13_642" class="form-control" value="Dosen">
-                                            </td>
-                                            <td>
-                                            <input name="kolom14_642" type="radio" class="fill-in" id="rd_1f" value="Secara Manual" />
-                                            <label for="rd_1f">Secara Manual</label></br>
-                                            <input name="kolom14_642" type="radio" id="rd_2f" class="fill-in" value="Dengan Komputer Tanpa Jaringan" />
-                                            <label for="rd_2f">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom14_642" type="radio" class="fill-in" id="rd_3f" value="Dengan Komputer Jaringan Lokal (LAN)" />
-                                            <label for="rd_3f">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom14_642" type="radio" id="rd_4f" class="fill-in" value="Dengan Komputer Jaringan Luas (WAN)" />
-                                            <label for="rd_4f">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">8.</th>
-                                            <td>Pegawai
-                                            <input type="hidden" name="kolom15_642" class="form-control" value="Pegawai">
-                                            </td>
-                                            <td>
-                                            <input name="kolom16_642" type="radio" class="fill-in" id="rd_1g" value="Secara Manual" />
-                                            <label for="rd_1g">Secara Manual</label></br>
-                                            <input name="kolom16_642" type="radio" id="rd_2g" class="fill-in" value="Dengan Komputer Tanpa Jaringan" />
-                                            <label for="rd_2g">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom16_642" type="radio" class="fill-in" id="rd_3g" value="Dengan Komputer Jaringan Lokal (LAN)" />
-                                            <label for="rd_3g">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom16_642" type="radio" id="rd_4g" class="fill-in" value="Dengan Komputer Jaringan Luas (WAN)" />
-                                            <label for="rd_4g">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">9.</th>
-                                            <td>Keuangan
-                                            <input type="hidden" name="kolom17_642" class="form-control" value="Keuangan">
-                                            </td>
-                                            <td>
-                                            <input name="kolom18_642" type="radio" class="fill-in" id="rd_1h" value="Secara Manual" />
-                                            <label for="rd_1h">Secara Manual</label></br>
-                                            <input name="kolom18_642" type="radio" id="rd_2h" class="fill-in" value="Dengan Komputer Tanpa Jaringan" />
-                                            <label for="rd_2h">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom18_642" type="radio" class="fill-in" id="rd_3h" value="Dengan Komputer Jaringan Lokal (LAN)" />
-                                            <label for="rd_3h">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom18_642" type="radio" id="rd_4h" class="fill-in" value="Dengan Komputer Jaringan Luas (WAN)" />
-                                            <label for="rd_4h">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">10.</th>
-                                            <td>Inventaris
-                                            <input type="hidden" name="kolom19_642" class="form-control" value="Inventaris">
-                                            </td>
-                                            <td>
-                                            <input name="kolom20_642" type="radio" class="fill-in" id="rd_1i" value="Secara Manual" />
-                                            <label for="rd_1i">Secara Manual</label></br>
-                                            <input name="kolom20_642" type="radio" id="rd_2i" class="fill-in" value="Dengan Komputer Tanpa Jaringan" />
-                                            <label for="rd_2i">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom20_642" type="radio" class="fill-in" id="rd_3i" value="Dengan Komputer Jaringan Lokal (LAN)" />
-                                            <label for="rd_3i">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom20_642" type="radio" id="rd_4i" class="fill-in" value="Dengan Komputer Jaringan Luas (WAN)" />
-                                            <label for="rd_4i">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">11.</th>
-                                            <td>Pembayaran SPP
-                                            <input type="hidden" name="kolom21_642" class="form-control" value="Pembayaran SPP">
-                                            </td>
-                                            <td>
-                                            <input name="kolom22_642" type="radio" class="fill-in" id="rd_1j" value="Secara Manual" />
-                                            <label for="rd_1j">Secara Manual</label></br>
-                                            <input name="kolom22_642" type="radio" id="rd_2j" class="fill-in" value="Dengan Komputer Tanpa Jaringan" />
-                                            <label for="rd_2j">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom22_642" type="radio" class="fill-in" id="rd_3j" value="Dengan Komputer Jaringan Lokal (LAN)" />
-                                            <label for="rd_3j">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom22_642" type="radio" id="rd_4j" class="fill-in" value="Dengan Komputer Jaringan Luas (WAN)" />
-                                            <label for="rd_4j">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">12.</th>
-                                            <td>Perpustakaan
-                                            <input type="hidden" name="kolom23_642" class="form-control" value="Perpustakaan">
-                                            </td>
-                                            <td>
-                                            <input name="kolom24_642" type="radio" class="fill-in" id="rd_1k" value="Secara Manual" />
-                                            <label for="rd_1k">Secara Manual</label></br>
-                                            <input name="kolom24_642" type="radio" class="fill-in" id="rd_2k" value="Dengan Komputer Tanpa Jaringan" />
-                                            <label for="rd_2k">Dengan Komputer Tanpa Jaringan</label></br>
-                                            <input name="kolom24_642" type="radio" class="fill-in" id="rd_3k" value="Dengan Komputer Jaringan Lokal (LAN)" />
-                                            <label for="rd_3k">Dengan Komputer Jaringan Lokal (LAN)</label></br>
-                                            <input name="kolom24_642" type="radio" class="fill-in" id="rd_4k" value="Dengan Komputer Jaringan Luas (WAN)" />
-                                            <label for="rd_4k">Dengan Komputer Jaringan Luas (WAN)</label>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        
+                        <input type="hidden" name="id641a" id="id641a" />
+                        <input type="hidden" name="641aid_butir" id="641aid_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir641atabel" id="id_butir641atabel" />
+                                    <div class="col-md-12">
+                                        <b>Jenis Pustaka</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom1_641a" id="kolom1_641a" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <select name="kolom1_641a">
+                                                    <option value="">-- Please select --</option>
+                                                    <option value="Buku teks ">Buku teks </option>
+                                                    <option value="Jurnal nasional yang terakreditasi">Jurnal nasional yang terakreditasi</option>
+                                                    <option value="Jurnal internasional">Jurnal internasional</option>
+                                                    <option value="Prosiding">Prosiding</option>
+                                                    <option value="Skripsi/Tesis ">Skripsi/Tesis </option>
+                                                    <option value="Disertasi">Disertasi</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Judul</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_641a" id="kolom2_641a" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Copy</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_641a" id="kolom3_641a" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
                     </div>
                 </div>
                     <div class="modal-footer">
@@ -8794,9 +12429,88 @@
                 </div>
             </div>
         </div>
-        <!-- Tutup Modal Update 642 -->
+        <!-- Tutup Modal Update 641a -->
 
-        <!-- Modal Update Tabel 643 -->
+        <!-- Molda Update Tabel 641c -->
+        <div class="modal fade" id="update641c" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian641c', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id641c" id="id641c" />
+                        <input type="hidden" name="641cid_butir" id="641cid_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir641ctabel" id="id_butir641ctabel" />
+                                    <div class="col-md-12">
+                                        <b>Jenis</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_641c" id="kolom1_641c" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Nama Jurnal</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_641c" id="kolom2_641c" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Rincian Tahun dan Nomor</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_641c" id="kolom3_641c" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_641c" id="kolom4_641c" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Catatan * = termasuk e-journal.</b>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 641c -->
+
+        <!-- Molda Update Tabel 643 -->
         <div class="modal fade" id="update643" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -8809,7 +12523,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian643', $attributes);
+                    echo form_open('C_isian/updateisian643', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -8934,7 +12648,303 @@
         </div>
         <!-- Tutup Modal Update 643 -->
 
-        <!-- Modal Update Tabel 711 -->
+        <!-- Molda Update Tabel 652 -->
+        <div class="modal fade" id="update652" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian652', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id652" id="id652" />
+                        <input type="hidden" name="652id_butir" id="652id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir652tabel" id="id_butir652tabel" />
+                                    <div class="col-md-12">
+                                        <b>Jenis Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Mahasiswa</b>
+                                            <div class="form-line">
+                                                <input type="hidden" name="kolom1_652" id="kolom1_652" class="form-control" value="Mahasiswa" placeholder="Tuliskan disini">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sistem Pengelolaan Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="demo-radio-button">
+                                            <input name="kolom2_652" type="radio" class="with-gap" id="radio_1" value="Secara Manual" />
+                                            <label for="radio_1">Secara Manual</label>
+                                            <input name="kolom2_652" type="radio" id="radio_2" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
+                                            <label for="radio_2">Dengan Komputer Tanpa Jaringan</label>
+                                            <input name="kolom2_652" type="radio" class="with-gap" id="radio_3" value="Dengan Komputer Jaringan Lokal (LAN)" />
+                                            <label for="radio_3">Dengan Komputer Jaringan Lokal (LAN)</label>
+                                            <input name="kolom2_652" type="radio" id="radio_4" class="with-gap" value="Dengan Komputer Jaringan Luas (WAN)" />
+                                            <label for="radio_4">Dengan Komputer Jaringan Luas (WAN)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jenis Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Kartu Rencana Studi (KRS)</b>
+                                            <div class="form-line">
+                                                <input type="hidden" name="kolom3_652" id="kolom3_652" class="form-control" value="Kartu Rencana Studi (KRS)" placeholder="Tuliskan disini">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sistem Pengelolaan Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="demo-radio-button">
+                                            <input name="kolom4_652" type="radio" class="with-gap" id="radio_1a" value="Secara Manual" />
+                                            <label for="radio_1a">Secara Manual</label>
+                                            <input name="kolom4_652" type="radio" id="radio_2a" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
+                                            <label for="radio_2a">Dengan Komputer Tanpa Jaringan</label>
+                                            <input name="kolom4_652" type="radio" class="with-gap" id="radio_3a" value="Dengan Komputer Jaringan Lokal (LAN)" />
+                                            <label for="radio_3a">Dengan Komputer Jaringan Lokal (LAN)</label>
+                                            <input name="kolom4_652" type="radio" id="radio_4a" class="with-gap" value="Dengan Komputer Jaringan Luas (WAN)" />
+                                            <label for="radio_4a">Dengan Komputer Jaringan Luas (WAN)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jenis Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jadwal mata kuliah</b>
+                                            <div class="form-line">
+                                                <input type="hidden" name="kolom5_652" id="kolom5_652" class="form-control" value="Jadwal mata kuliah" placeholder="Tuliskan disini">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sistem Pengelolaan Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="demo-radio-button">
+                                            <input name="kolom6_652" type="radio" class="with-gap" id="radio_1b" value="Secara Manual" />
+                                            <label for="radio_1b">Secara Manual</label>
+                                            <input name="kolom6_652" type="radio" id="radio_2b" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
+                                            <label for="radio_2b">Dengan Komputer Tanpa Jaringan</label>
+                                            <input name="kolom6_652" type="radio" class="with-gap" id="radio_3b" value="Dengan Komputer Jaringan Lokal (LAN)" />
+                                            <label for="radio_3b">Dengan Komputer Jaringan Lokal (LAN)</label>
+                                            <input name="kolom6_652" type="radio" id="radio_4b" class="with-gap" value="Dengan Komputer Jaringan Luas (WAN)" />
+                                            <label for="radio_4b">Dengan Komputer Jaringan Luas (WAN)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jenis Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Nilai mata kuliah</b>
+                                            <div class="form-line">
+                                                <input type="hidden" name="kolom7_652" id="kolom7_652" class="form-control" value="Nilai mata kuliah" placeholder="Tuliskan disini">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sistem Pengelolaan Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="demo-radio-button">
+                                            <input name="kolom8_652" type="radio" class="with-gap" id="radio_1c" value="Secara Manual" />
+                                            <label for="radio_1c">Secara Manual</label>
+                                            <input name="kolom8_652" type="radio" id="radio_2c" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
+                                            <label for="radio_2c">Dengan Komputer Tanpa Jaringan</label>
+                                            <input name="kolom8_652" type="radio" class="with-gap" id="radio_3c" value="Dengan Komputer Jaringan Lokal (LAN)" />
+                                            <label for="radio_3c">Dengan Komputer Jaringan Lokal (LAN)</label>
+                                            <input name="kolom8_652" type="radio" id="radio_4c" class="with-gap" value="Dengan Komputer Jaringan Luas (WAN)" />
+                                            <label for="radio_4c">Dengan Komputer Jaringan Luas (WAN)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jenis Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Transkrip akademik</b>
+                                            <div class="form-line">
+                                                <input type="hidden" name="kolom9_652" id="kolom9_652" class="form-control" value="Transkrip akademik" placeholder="Tuliskan disini">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sistem Pengelolaan Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="demo-radio-button">
+                                            <input name="kolom10_652" type="radio" class="with-gap" id="radio_1d" value="Secara Manual" />
+                                            <label for="radio_1d">Secara Manual</label>
+                                            <input name="kolom10_652" type="radio" id="radio_2d" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
+                                            <label for="radio_2d">Dengan Komputer Tanpa Jaringan</label>
+                                            <input name="kolom10_652" type="radio" class="with-gap" id="radio_3d" value="Dengan Komputer Jaringan Lokal (LAN)" />
+                                            <label for="radio_3d">Dengan Komputer Jaringan Lokal (LAN)</label>
+                                            <input name="kolom10_652" type="radio" id="radio_4d" class="with-gap" value="Dengan Komputer Jaringan Luas (WAN)" />
+                                            <label for="radio_4d">Dengan Komputer Jaringan Luas (WAN)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jenis Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Lulusan</b>
+                                            <div class="form-line">
+                                                <input type="hidden" name="kolom11_652" id="kolom11_652" class="form-control" value="Lulusan" placeholder="Tuliskan disini">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sistem Pengelolaan Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="demo-radio-button">
+                                            <input name="kolom12_652" type="radio" class="with-gap" id="radio_1e" value="Secara Manual" />
+                                            <label for="radio_1e">Secara Manual</label>
+                                            <input name="kolom12_652" type="radio" id="radio_2e" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
+                                            <label for="radio_2e">Dengan Komputer Tanpa Jaringan</label>
+                                            <input name="kolom12_652" type="radio" class="with-gap" id="radio_3e" value="Dengan Komputer Jaringan Lokal (LAN)" />
+                                            <label for="radio_3e">Dengan Komputer Jaringan Lokal (LAN)</label>
+                                            <input name="kolom12_652" type="radio" id="radio_4e" class="with-gap" value="Dengan Komputer Jaringan Luas (WAN)" />
+                                            <label for="radio_4e">Dengan Komputer Jaringan Luas (WAN)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jenis Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Dosen</b>
+                                            <div class="form-line">
+                                                <input type="hidden" name="kolom13_652" id="kolom13_652" class="form-control" value="Dosen" placeholder="Tuliskan disini">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sistem Pengelolaan Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="demo-radio-button">
+                                            <input name="kolom14_652" type="radio" class="with-gap" id="radio_1f" value="Secara Manual" />
+                                            <label for="radio_1f">Secara Manual</label>
+                                            <input name="kolom14_652" type="radio" id="radio_2f" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
+                                            <label for="radio_2f">Dengan Komputer Tanpa Jaringan</label>
+                                            <input name="kolom14_652" type="radio" class="with-gap" id="radio_3f" value="Dengan Komputer Jaringan Lokal (LAN)" />
+                                            <label for="radio_3f">Dengan Komputer Jaringan Lokal (LAN)</label>
+                                            <input name="kolom14_652" type="radio" id="radio_4f" class="with-gap" value="Dengan Komputer Jaringan Luas (WAN)" />
+                                            <label for="radio_4f">Dengan Komputer Jaringan Luas (WAN)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jenis Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Pegawai</b>
+                                            <div class="form-line">
+                                                <input type="hidden" name="kolom15_652" id="kolom15_652" class="form-control" value="Pegawai" placeholder="Tuliskan disini">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sistem Pengelolaan Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="demo-radio-button">
+                                            <input name="kolom16_652" type="radio" class="with-gap" id="radio_1g" value="Secara Manual" />
+                                            <label for="radio_1g">Secara Manual</label>
+                                            <input name="kolom16_652" type="radio" id="radio_2g" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
+                                            <label for="radio_2g">Dengan Komputer Tanpa Jaringan</label>
+                                            <input name="kolom16_652" type="radio" class="with-gap" id="radio_3g" value="Dengan Komputer Jaringan Lokal (LAN)" />
+                                            <label for="radio_3g">Dengan Komputer Jaringan Lokal (LAN)</label>
+                                            <input name="kolom16_652" type="radio" id="radio_4g" class="with-gap" value="Dengan Komputer Jaringan Luas (WAN)" />
+                                            <label for="radio_4g">Dengan Komputer Jaringan Luas (WAN)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jenis Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Keuangan</b>
+                                            <div class="form-line">
+                                                <input type="hidden" name="kolom17_652" id="kolom17_652" class="form-control" value="Keuangan" placeholder="Tuliskan disini">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sistem Pengelolaan Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="demo-radio-button">
+                                            <input name="kolom18_652" type="radio" class="with-gap" id="radio_1h" value="Secara Manual" />
+                                            <label for="radio_1h">Secara Manual</label>
+                                            <input name="kolom18_652" type="radio" id="radio_2h" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
+                                            <label for="radio_2h">Dengan Komputer Tanpa Jaringan</label>
+                                            <input name="kolom18_652" type="radio" class="with-gap" id="radio_3h" value="Dengan Komputer Jaringan Lokal (LAN)" />
+                                            <label for="radio_3h">Dengan Komputer Jaringan Lokal (LAN)</label>
+                                            <input name="kolom18_652" type="radio" id="radio_4h" class="with-gap" value="Dengan Komputer Jaringan Luas (WAN)" />
+                                            <label for="radio_4h">Dengan Komputer Jaringan Luas (WAN)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jenis Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Inventaris</b>
+                                            <div class="form-line">
+                                                <input type="hidden" name="kolom19_652" id="kolom19_652" class="form-control" value="Inventaris" placeholder="Tuliskan disini">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sistem Pengelolaan Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="demo-radio-button">
+                                            <input name="kolom20_652" type="radio" class="with-gap" id="radio_1i" value="Secara Manual" />
+                                            <label for="radio_1i">Secara Manual</label>
+                                            <input name="kolom20_652" type="radio" id="radio_2i" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
+                                            <label for="radio_2i">Dengan Komputer Tanpa Jaringan</label>
+                                            <input name="kolom20_652" type="radio" class="with-gap" id="radio_3i" value="Dengan Komputer Jaringan Lokal (LAN)" />
+                                            <label for="radio_3i">Dengan Komputer Jaringan Lokal (LAN)</label>
+                                            <input name="kolom20_652" type="radio" id="radio_4i" class="with-gap" value="Dengan Komputer Jaringan Luas (WAN)" />
+                                            <label for="radio_4i">Dengan Komputer Jaringan Luas (WAN)</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jenis Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Perpustakaan</b>
+                                            <div class="form-line">
+                                                <input type="hidden" name="kolom21_652" id="kolom21_652" class="form-control" value="Perpustakaan" placeholder="Tuliskan disini">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sistem Pengelolaan Data</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="demo-radio-button">
+                                            <input name="kolom22_652" type="radio" class="with-gap" id="radio_1j" value="Secara Manual" />
+                                            <label for="radio_1j">Secara Manual</label>
+                                            <input name="kolom22_652" type="radio" id="radio_2j" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
+                                            <label for="radio_2j">Dengan Komputer Tanpa Jaringan</label>
+                                            <input name="kolom22_652" type="radio" class="with-gap" id="radio_3j" value="Dengan Komputer Jaringan Lokal (LAN)" />
+                                            <label for="radio_3j">Dengan Komputer Jaringan Lokal (LAN)</label>
+                                            <input name="kolom22_652" type="radio" id="radio_4j" class="with-gap" value="Dengan Komputer Jaringan Luas (WAN)" />
+                                            <label for="radio_4j">Dengan Komputer Jaringan Luas (WAN)</label>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 652 -->
+
+        <!-- Molda Update Tabel 711 -->
         <div class="modal fade" id="update711" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -8947,93 +12957,210 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian711', $attributes);
+                    echo form_open('C_isian/updateisian711', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
                         <input type="hidden" name="id711" id="id711" />
-                        <input type="hidden" name="id_butir711" id="id_butir711" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="711id_butir" id="711id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir711tabel" id="id_butir711tabel" />
                                     <div class="col-md-12">
-                                        <b>Nama Program Studi Diploma :</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_711" id="kolom1_711" class="form-control" placeholder="Pustakawan *, Laboran/ Teknisi/ Analis/ Operator/ Programer, Tenaga Administrasi">
-                                            </div>
-                                        </div>
+                                        <b>Sumber Pembiayaan</b>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jumlah Judul Kegiatan Pelayanan/Pengabdian kepada Masyarakat :</b>
+                                        <b>Pembiayaan sendiri oleh peneliti</b>
+                                                <input type="hidden" name="kolom1_711" id="kolom1_711" class="form-control" value="Pembiayaan sendiri oleh peneliti" placeholder="Tuliskan disini">
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>TS-2</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_711" id="kolom2_711" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_711" id="kolom2_711" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>TS-1</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_711" id="kolom3_711" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_711" id="kolom3_711" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>TS</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_711" id="kolom4_711" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_711" id="kolom4_711" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Total Dana Kegiatan Pelayanan/ Pengabdian kepada Masyarakat (juta Rp) :</b>
+                                        <b>Sumber Pembiayaan</b>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-12">
+                                        <b>PT yang bersangkutan</b>
+                                                <input type="hidden" name="kolom5_711" id="kolom5_711" class="form-control" value="PT yang bersangkutan" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-4">
                                         <b>TS-2</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_711" id="kolom5_711" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom6_711" id="kolom6_711" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>TS-1</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom6_711" id="kolom6_711" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom7_711" id="kolom7_711" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>TS</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom7_711" id="kolom7_711" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom8_711" id="kolom8_711" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sumber Pembiayaan</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Depdiknas</b>
+                                                <input type="hidden" name="kolom9_711" id="kolom9_711" class="form-control" value="Depdiknas" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom10_711" id="kolom10_711" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom11_711" id="kolom11_711" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom12_711" id="kolom12_711" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sumber Pembiayaan</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Institusi luar negeri</b>
+                                                <input type="hidden" name="kolom13_711" id="kolom13_711" class="form-control" value="Institusi luar negeri" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom14_711" id="kolom14_711" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom15_711" id="kolom15_711" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom16_711" id="kolom16_711" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sumber Pembiayaan</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Institusi dalam negeri di luar Depdiknas</b>
+                                                <input type="hidden" name="kolom17_711" id="kolom17_711" class="form-control" value="Institusi dalam negeri di luar Depdiknas" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom18_711" id="kolom18_711" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom19_711" id="kolom19_711" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom20_711" id="kolom20_711" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -9049,7 +13176,171 @@
         </div>
         <!-- Tutup Modal Update 711 -->
 
-        <!-- Modal Update Tabel 721 -->
+        <!-- Molda Update Tabel 713 -->
+        <div class="modal fade" id="update713" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian713', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id713" id="id713" />
+                        <input type="hidden" name="713id_butir" id="713id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir713tabel" id="id_butir713tabel" />
+                                    <div class="col-md-12">
+                                        <b>Judul</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_713" id="kolom1_713" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Nama-nama Dosen</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_713" id="kolom2_713" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Dihasilkan/ Dipublikasikan pada</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_713" id="kolom3_713" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>TahunPenyajian/Publikasi</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_713" id="kolom4_713" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Tingkat* </b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- <b>Lokal</b> -->
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom5_713" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <input type="checkbox" id="tidakada3r" name="kolom5_713" value="√" class="filled-in" />
+                                                <label for="tidakada3r">Lokal</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Nasional</b>
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom6_713" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <input type="checkbox" id="tidakada3rw" name="kolom6_713" value="√" class="filled-in" />
+                                                <label for="tidakada3rw">Nasional</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- <b>Interna-sional</b> -->
+                                        <div class="input-group">
+                                            <!-- <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span> -->
+                                            <div class="form-line">
+                                                <!-- <input type="text" name="kolom7_713" class="form-control" placeholder="Tuliskan disini"> -->
+                                                <input type="checkbox" id="tidakada3rd" name="kolom7_713" value="√" class="filled-in" />
+                                                <label for="tidakada3rd">Internasional</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 713 -->
+
+        <!-- Molda Update Tabel 714 -->
+        <div class="modal fade" id="update714" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian714', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id714" id="id714" />
+                        <input type="hidden" name="714id_butir" id="714id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir714tabel" id="id_butir714tabel" />
+                                    <div class="col-md-12">
+                                        <b>Karya*</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_714" id="kolom1_714" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h2 class="card-inside-title">* Lampirkan surat paten HaKI atau keterangan sejenis.</h2>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 714 -->
+
+        <!-- Molda Update Tabel 721 -->
         <div class="modal fade" id="update721" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -9062,93 +13353,210 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian721', $attributes);
+                    echo form_open('C_isian/updateisian721', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
                         <input type="hidden" name="id721" id="id721" />
-                        <input type="hidden" name="id_butir721" id="id_butir721" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="721id_butir" id="721id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir721tabel" id="id_butir721tabel" />
                                     <div class="col-md-12">
-                                        <b>Nama Program Studi Diploma :</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_721" id="kolom1_721" class="form-control" placeholder="Pustakawan *, Laboran/ Teknisi/ Analis/ Operator/ Programer, Tenaga Administrasi">
-                                            </div>
-                                        </div>
+                                        <b>Sumber Pembiayaan</b>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Jumlah Judul Kegiatan Pelayanan/Pengabdian kepada Masyarakat :</b>
+                                        <b>Pembiayaan sendiri oleh peneliti</b>
+                                                <input type="hidden" name="kolom1_721" id="kolom1_721" class="form-control" value="Pembiayaan sendiri oleh peneliti" placeholder="Tuliskan disini">
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>TS-2</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_721" id="kolom2_721" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_721" id="kolom2_721" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>TS-1</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_721" id="kolom3_721" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_721" id="kolom3_721" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>TS</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_721" id="kolom4_721" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_721" id="kolom4_721" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <b>Total Dana Kegiatan Pelayanan/ Pengabdian kepada Masyarakat (juta Rp) :</b>
+                                        <b>Sumber Pembiayaan</b>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-12">
+                                        <b>PT yang bersangkutan</b>
+                                                <input type="hidden" name="kolom5_721" id="kolom5_721" class="form-control" value="PT yang bersangkutan" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-4">
                                         <b>TS-2</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_721" id="kolom5_721" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom6_721" id="kolom6_721" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>TS-1</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom6_721" id="kolom6_721" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom7_721" id="kolom7_721" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>TS</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom7_721" id="kolom7_721" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom8_721" id="kolom8_721" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sumber Pembiayaan</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Depdiknas</b>
+                                                <input type="hidden" name="kolom9_721" id="kolom9_721" class="form-control" value="Depdiknas" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom10_721" id="kolom10_721" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom11_721" id="kolom11_721" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom12_721" id="kolom12_721" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sumber Pembiayaan</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Institusi luar negeri</b>
+                                                <input type="hidden" name="kolom13_721" id="kolom13_721" class="form-control" value="Institusi luar negeri" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom14_721" id="kolom14_721" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom15_721" id="kolom15_721" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom16_721" id="kolom16_721" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Sumber Pembiayaan</b>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Institusi dalam negeri di luar Depdiknas</b>
+                                                <input type="hidden" name="kolom17_721" id="kolom17_721" class="form-control" value="Institusi dalam negeri di luar Depdiknas" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom18_721" id="kolom18_721" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom19_721" id="kolom19_721" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom20_721" id="kolom20_721" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -9163,8 +13571,9 @@
             </div>
         </div>
         <!-- Tutup Modal Update 721 -->
-        
-        <!-- Modal Update Tabel 731 -->
+
+
+        <!-- Molda Update Tabel 731 -->
         <div class="modal fade" id="update731" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -9177,7 +13586,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian731', $attributes);
+                    echo form_open('C_isian/updateisian731', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -9260,7 +13669,7 @@
         </div>
         <!-- Tutup Modal Update 731 -->
 
-        <!-- Modal Update Tabel 732 -->
+        <!-- Molda Update Tabel 732 -->
         <div class="modal fade" id="update732" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -9273,7 +13682,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3bd3/updateisian732', $attributes);
+                    echo form_open('C_isian/updateisian732', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -9356,6 +13765,156 @@
         </div>
         <!-- Tutup Modal Update 732 -->
 
+        <!-- modals isian 1 -->
+
+        <div class="modal fade" id="updateIsian1" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian4kolom', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id" id="id" value="">
+                        <input type="hidden" name="id_butir" id="id_butir" value="">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="kolom1" id="kolom1" rows="4"></textarea>
+                                    <label class="form-label">Mekanisme Penyusunan</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="kolom2" id="kolom2" rows="4"></textarea>
+                                    <label class="form-label">Visi</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="kolom3" id="kolom3" rows="4"></textarea>
+                                    <label class="form-label">Misi</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="kolom4" id="kolom4" rows="4"></textarea>
+                                    <label class="form-label">Tujuan</label>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="version_no" id="version_no">
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- tutup modal isian 1 -->
+
+        <!-- modals isian 2 -->
+
+        <div class="modal fade" id="updateIsian2" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian1kolom', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id1" id="id1" value="">
+                        <input type="hidden" name="id_butir1" id="id_butir1" value="">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="kolom11" id="kolom11" rows="4"></textarea>
+                                    <label class="form-label">Sasaran dan Strategi Pencapaiannya</label>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="version_no1" id="version_no1">
+                        <input type="hidden" name="created_at1" id="created_at1">
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- tutup modal isian 2 -->
+
+        <!-- modals isian 3 -->
+
+        <div class="modal fade" id="updateIsian3" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian1nkolom', $attributes);
+                    // echo form_open('c_borang/update');
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id" id="id" value="">
+                        <input type="hidden" name="id_butir" id="id_butir" value="">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="kolom21" id="kolom21" rows="4"></textarea>
+                                    <label class="form-label">Sosialisasi</label>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="version_no" id="version_no">
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- tutup modal isian 3 -->
 
         <div class="modal fade" id="hapusBorang" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -9399,10 +13958,10 @@
             </div>
         <!-- Tutup modal dokumen pendukung -->
 
-        <!-- BUKA MODAL NILAI 1.1.1 -->
-        <div class="modal fade" id="nilai111" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL NILAI 1.1.A -->
+        <div class="modal fade" id="nilai11a" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
+            <?=form_open("C_penilaian/savenilaiF1");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -9412,14 +13971,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf3');
+                $this->db->from('hitungf1');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -9469,25 +14028,25 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kejelasan (1 - 4) </td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="11a1" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="11a1" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kerealistikan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="11a2" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="11a2" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor keterkaitan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="11a3" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="11a3" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor keterlibatan pemangku kepentingan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai4[]" id="11a4" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai4[]" id="11a4" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
@@ -9517,10 +14076,10 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL NILAI 1.1.1 -->
+        <!-- TUTUP MODAL NILAI 1.1.A -->
 
-        <!-- BUKA MODAL VIEW NILAI 1.1.1 -->
-        <div class="modal fade" id="viewnilai111" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL VIEW NILAI 1.1.A -->
+        <div class="modal fade" id="viewnilai11a" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -9559,25 +14118,25 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kejelasan (1 - 4) </td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="view11a1" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view11a1" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor kerealistikan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="view11a2" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view11a2" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor keterkaitan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="view11a3" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="view11a3" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Skor keterlibatan pemangku kepentingan (1 - 4)</td>
-                                        <td width="10%"><input type="text" required name="nilai4[]" id="view11a4" placeholder="4,00" onkeyup="cekjumlah111()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="10%"><input type="text" required name="nilai4[]" id="view11a4" placeholder="4,00" onkeyup="cekjumlah11a()" style="background: yellow;" class="form-control no-resize" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
@@ -9601,12 +14160,12 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL VIEW NILAI 1.1.1 -->
+        <!-- TUTUP MODAL VIEW NILAI 1.1.A -->
 
-        <!-- BUKA MODAL NILAI 1.1.2 -->
-        <div class="modal fade" id="nilai112" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL NILAI 1.1.B -->
+        <div class="modal fade" id="nilai11b" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
+            <?=form_open("C_penilaian/savenilaiF1");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -9616,14 +14175,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf3');
+                $this->db->from('hitungf1');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -9659,55 +14218,40 @@
                                         <th width="5%" rowspan="7" scope="row">2</th>
                                         <td width="5%" rowspan="7"><?php echo $butir[0]['butir'] ?></td>
                                         <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td></td>
+                                        <td></td>
                                         <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='direct' value="<?php echo $bukunya;?>">
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
                                         <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='masukan[]' value="">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="112" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah112()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td width="25%" rowspan="5"><textarea rows="12" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor kejelasan tahapan waktu dan kerealistikan (1 - 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="11b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
-                                        <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">Skor Matriks</td>
-                                        <td></td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td width="45%">Strategi pencapaian sasaran: (1) tanpa adanya tahapan waktu yang jelas, (2) didukung dokumen yang kurang lengkap.</td>
-                                        <td width="10%"></td>
+                                        <td colspan="2">Skor kelengkapan dokumen (1 - 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="11b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td>2</td>
-                                        <td width="45%">Strategi pencapaian sasaran: (1) dengan tahapan waktu yang jelas, dan cukup realistik, (2) didukung dokumen yang cukup lengkap.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td width="45%">Strategi pencapaian sasaran: (1) dengan tahapan waktu yang jelas, dan realistik, (2) didukung dokumen yang  lengkap.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td width="45%">Strategi pencapaian sasaran:(1) dengan tahapan waktu yang jelas dan sangat realistik, (2) didukung dokumen yang sangat lengkap.</td>
-                                        <td width="10%"></td>
+                                        <td colspan="2">Skor akhir</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="11bskor" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="112nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="11bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
-                                    <input type='hidden' name='nilai2[]' value="0">
-                                    <input type='hidden' name='nilai3[]' value="0">
                                     <input type='hidden' name='nilai4[]' value="0">
                                     <input type='hidden' name='nilai5[]' value="0">
                                     <input type='hidden' name='nilai6[]' value="0">
@@ -9715,6 +14259,9 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -9726,10 +14273,10 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL NILAI 1.1.2 -->
+        <!-- TUTUP MODAL NILAI 1.1.B -->
 
-        <!-- BUKA MODAL VIEW NILAI 1.1.2 -->
-        <div class="modal fade" id="viewnilai112" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL VIEW NILAI 1.1.B -->
+        <div class="modal fade" id="viewnilai11b" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -9762,51 +14309,30 @@
                                         <th width="5%" rowspan="7" scope="row">2</th>
                                         <td width="5%" rowspan="7"><?php echo $butir[0]['butir'] ?></td>
                                         <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
-                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
-                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
-                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
-                                        <input type='hidden' name='masukan[]' value="">
-                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="view112" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah112()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        <td></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="12" name="komentar[]" id="view11bkomentar" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor kejelasan tahapan waktu dan kerealistikan (1 - 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view11b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
                                         Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
-                                        <td width="25%" rowspan="7"><textarea rows="14" name="komentar[]" id="viewkomentar112" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">Skor Matriks</td>
-                                        <td></td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td width="45%">Strategi pencapaian sasaran: (1) tanpa adanya tahapan waktu yang jelas, (2) didukung dokumen yang kurang lengkap.</td>
-                                        <td width="10%"></td>
+                                        <td colspan="2">Skor kelengkapan dokumen (1 - 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view11b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah11b()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td>2</td>
-                                        <td width="45%">Strategi pencapaian sasaran: (1) dengan tahapan waktu yang jelas, dan cukup realistik, (2) didukung dokumen yang cukup lengkap.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td width="45%">Strategi pencapaian sasaran: (1) dengan tahapan waktu yang jelas, dan realistik, (2) didukung dokumen yang  lengkap.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td width="45%">Strategi pencapaian sasaran:(1) dengan tahapan waktu yang jelas dan sangat realistik, (2) didukung dokumen yang sangat lengkap.</td>
-                                        <td width="10%"></td>
+                                        <td colspan="2">Skor akhir</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="view11bskorakhir" placeholder="4,00"  readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view112nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view11bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                 </tbody>
@@ -9819,12 +14345,12 @@
             </form>
             </div>
         </div>
-        <!-- TUTUP MODAL VIEW NILAI 1.1.2 -->
+        <!-- TUTUP MODAL VIEW NILAI 1.1.B -->
 
         <!-- BUKA MODAL NILAI 1.2 -->
         <div class="modal fade" id="nilai12" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
+            <?=form_open("C_penilaian/savenilaiF1");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -9834,14 +14360,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf3');
+                $this->db->from('hitungf1');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -9933,6 +14459,9 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -10042,7 +14571,7 @@
         <!-- BUKA MODAL NILAI 2.1 -->
         <div class="modal fade" id="nilai21" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
+            <?=form_open("C_penilaian/savenilaiF1");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -10052,14 +14581,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf3');
+                $this->db->from('hitungf1');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -10115,25 +14644,25 @@
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Fakultas memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 aspek berikut: kredibel, transparan,akuntabel,bertanggung jawab,adil.</td>
+                                        <td width="45%">Program studi memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 aspek tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara cukup konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi  3 dari 5 aspek berikut: kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
+                                        <td width="45%">Ada tata pamong yang  menjamin penyelenggaraan program studi, namun hanya memenuhi 3 dari 5 aspek tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 aspek berikut: kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
+                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 aspek tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi 5 aspek berikut:kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
+                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 5 aspek tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -10151,6 +14680,9 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -10218,25 +14750,25 @@
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Fakultas memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 aspek berikut: kredibel, transparan,akuntabel,bertanggung jawab,adil.</td>
+                                        <td width="45%">Program studi memiliki  tata pamong, namun hanya memenuhi 1 s.d. 2 dari 5 aspek tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara cukup konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi  3 dari 5 aspek berikut: kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
+                                        <td width="45%">Ada tata pamong yang  menjamin penyelenggaraan program studi, namun hanya memenuhi 3 dari 5 aspek tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 aspek berikut: kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
+                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 4 dari 5 aspek tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Fakultas memiliki  tata pamong yang memungkinkan terlaksananya secara konsisten prinsip tatapamong, dan menjamin penyelenggaraan program studi yang memenuhi 5 aspek berikut:kredibel, transparan, akuntabel, bertanggung jawab, dan adil.</td>
+                                        <td width="45%">Ada tata pamong yang menjamin penyelenggaraan program studi yang memenuhi 5 aspek tsb di atas.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -10260,7 +14792,7 @@
         <!-- BUKA MODAL NILAI 2.2 -->
         <div class="modal fade" id="nilai22" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
+            <?=form_open("C_penilaian/savenilaiF1");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -10270,14 +14802,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf3');
+                $this->db->from('hitungf1');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -10333,25 +14865,25 @@
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Struktur organisasi kurang mampu menggerakkan fungsi lembaga.</td>
+                                        <td width="45%">Kepemimpinan program studi lemah dalam karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara cukup efisien (misalnya struktur ”terlalu gemuk”).</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam salah satu dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara efisien.</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam dua dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara sangat efisien.</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakteristik yang kuat dalam: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -10369,6 +14901,9 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -10436,25 +14971,25 @@
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Struktur organisasi kurang mampu menggerakkan fungsi lembaga.</td>
+                                        <td width="45%">Kepemimpinan program studi lemah dalam karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara cukup efisien (misalnya struktur ”terlalu gemuk”).</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam salah satu dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara efisien.</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakter kepemimpinan yang kuat dalam dua dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Struktur organisasi mampu menggerakkan fungsi lembaga secara sangat efisien.</td>
+                                        <td width="45%">Kepemimpinan program studi memiliki karakteristik yang kuat dalam: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik. </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -10478,7 +15013,7 @@
         <!-- BUKA MODAL NILAI 2.3 -->
         <div class="modal fade" id="nilai23" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
+            <?=form_open("C_penilaian/savenilaiF1");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -10488,14 +15023,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf3');
+                $this->db->from('hitungf1');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -10550,26 +15085,32 @@
                                         <td></td>
                                     </tr>
                                     <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada sistem pengelolaan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
                                         <td>1</td>
-                                        <td width="45%">Kepemimpinan Fakultas lemah dalam karakteristik berikut: (1) kepemim-pinan operasional, (2) kepemim-pinan organisasi, (3) kepemim-pinan publik.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan tidak sesuai dengan SOP.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Kepemimpinan Fakultas memiliki karakter kepemimpinan yang kuat dalam salah satu dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan hanya sebagian sesuai dengan SOP dan dokumen kurang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Kepemimpinan Fakultas memiliki karakter kepemimpinan yang kuat dalam dua dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan dengan cukup baik, sesuai dengan SOP, namun dokumen kurang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Kepemimpinan Fakultas memiliki karakteristik yang kuat dalam: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi berjalan sesuai dengan SOP, yang didukung dokumen yang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -10587,6 +15128,9 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -10653,26 +15197,32 @@
                                         <td></td>
                                     </tr>
                                     <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada sistem pengelolaan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
                                         <td>1</td>
-                                        <td width="45%">Kepemimpinan Fakultas lemah dalam karakteristik berikut: (1) kepemim-pinan operasional, (2) kepemim-pinan organisasi, (3) kepemim-pinan publik.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan tidak sesuai dengan SOP.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Kepemimpinan Fakultas memiliki karakter kepemimpinan yang kuat dalam salah satu dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan hanya sebagian sesuai dengan SOP dan dokumen kurang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Kepemimpinan Fakultas memiliki karakter kepemimpinan yang kuat dalam dua dari karakteristik berikut: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan dengan cukup baik, sesuai dengan SOP, namun dokumen kurang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Kepemimpinan Fakultas memiliki karakteristik yang kuat dalam: (1) kepemimpinan operasional, (2) kepemimpinan organisasi, (3) kepemimpinan publik.</td>
+                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi berjalan sesuai dengan SOP, yang didukung dokumen yang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -10696,7 +15246,7 @@
         <!-- BUKA MODAL NILAI 2.4 -->
         <div class="modal fade" id="nilai24" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
+            <?=form_open("C_penilaian/savenilaiF1");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -10706,14 +15256,14 @@
                 $bukunya = $this->uri->segment(2, 0);
                 $newversi = 0;
                 $this->db->select('id');
-                $this->db->from('hitungf3');
+                $this->db->from('hitungf1');
                 $this->db->where('id_buku', $bukunya);
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
@@ -10769,31 +15319,31 @@
                                     </tr>
                                     <tr>
                                         <td>0</td>
-                                        <td width="45%">Tidak ada sistem pengelolaan.</td>
+                                        <td width="45%">Tidak ada sistem penjaminan mutu.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan tidak sesuai dengan SOP.</td>
+                                        <td width="45%">Ada sistem penjaminan mutu, tetapi tidak berfungsi.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan hanya sebagian sesuai dengan SOP dan dokumen kurang lengkap.</td>
+                                        <td width="45%">Sistem penjaminan mutu berfungsi sebagian namun  tidak ada umpan balik dan dokumen kurang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan dengan cukup baik, sesuai dengan SOP, namun dokumen kurang lengkap.</td>
+                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, umpan balik tersedia tetapi tidak ada tindak lanjut.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi berjalan sesuai dengan SOP, yang didukung dokumen yang lengkap.</td>
+                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, ada  umpan balik dan tindak lanjutnya, yang didukung dokumen yang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -10811,6 +15361,9 @@
                                     <input type='hidden' name='nilai8[]' value="0">
                                     <input type='hidden' name='nilai9[]' value="0">
                                     <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
                                 </tbody>
                         </table>
                     </div>
@@ -10878,37 +15431,37 @@
                                     </tr>
                                     <tr>
                                         <td>0</td>
-                                        <td width="45%">Tidak ada sistem pengelolaan.</td>
+                                        <td width="45%">Tidak ada sistem penjaminan mutu.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan tidak sesuai dengan SOP.</td>
+                                        <td width="45%">Ada sistem penjaminan mutu, tetapi tidak berfungsi.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan hanya sebagian sesuai dengan SOP dan dokumen kurang lengkap.</td>
+                                        <td width="45%">Sistem penjaminan mutu berfungsi sebagian namun  tidak ada umpan balik dan dokumen kurang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi dilakukan dengan cukup baik, sesuai dengan SOP, namun dokumen kurang lengkap.</td>
+                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, umpan balik tersedia tetapi tidak ada tindak lanjut.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Sistem pengelolaan fungsional dan operasional program studi berjalan sesuai dengan SOP, yang didukung dokumen yang lengkap.</td>
+                                        <td width="45%">Sistem penjaminan mutu berjalan sesuai dengan standar penjaminan mutu, ada  umpan balik dan tindak lanjutnya, yang didukung dokumen yang lengkap.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view24nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
                                         <td></td>
                                     </tr>
                                 </tbody>
@@ -10923,887 +15476,10 @@
         </div>
         <!-- TUTUP MODAL VIEW NILAI 2.4 -->
 
-        <!-- BUKA MODAL NILAI 2.5.1 -->
-        <div class="modal fade" id="nilai251" tabindex="-1" role="dialog">
+        <!-- BUKA MODAL NILAI 2.5 -->
+        <div class="modal fade" id="nilai25" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
-                    </div>
-            <?php
-                $CI =& get_instance();
-                $bukunya = $this->uri->segment(2, 0);
-                $newversi = 0;
-                $this->db->select('id');
-                $this->db->from('hitungf3');
-                $this->db->where('id_buku', $bukunya);
-                $versinya = $this->db->count_all_results();
-                if ($versinya==0) {
-                    $newversi = 1;
-                }else{
-                    $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
-                    foreach ($getversi->result() as $row){
-                        $grabversi = $row->review_ke;
-                        break;
-                    }
-                    $newversi = $grabversi+1;
-                }
-                
-            ?>
-                    <div class="modal-body">
-                        <table id="borang" class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                    <tr>
-                                        <th width="5%" rowspan="8" scope="row">8</th>
-                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
-                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
-                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
-                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
-                                        <input type='hidden' name='masukan[]' value="">
-                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="251" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah251()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Skor Matriks</td>
-                                        <td></td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td width="45%">Tidak memiliki unit pelaksana penjaminan mutu.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat, namun belum melakukan sosialisasi.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang baru dalam tahap sosialisasi  sistem penjaminan mutu.  </td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang aktif mensosialisasikan sistem penjaminan mutu dan mulai menerapkannya.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang telah sepenuhnya melakukan proses penjaminan mutu.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai251"><input type="text" required name="skorakhir[]" id="251nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
-                                        <td></td>
-                                    </tr>
-                                    <input type='hidden' name='nilai2[]' value="0">
-                                    <input type='hidden' name='nilai3[]' value="0">
-                                    <input type='hidden' name='nilai4[]' value="0">
-                                    <input type='hidden' name='nilai5[]' value="0">
-                                    <input type='hidden' name='nilai6[]' value="0">
-                                    <input type='hidden' name='nilai7[]' value="0">
-                                    <input type='hidden' name='nilai8[]' value="0">
-                                    <input type='hidden' name='nilai9[]' value="0">
-                                    <input type='hidden' name='nilai10[]' value="0">
-                                </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                </div>
-            </form>
-            </div>
-        </div>
-        <!-- TUTUP MODAL NILAI 2.5.1 -->
-
-        <!-- BUKA MODAL VIEW NILAI 2.5.1 -->
-        <div class="modal fade" id="viewnilai251" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
-                    </div>
-                    <div class="modal-body">
-                        <table id="borang" class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                    <tr>
-                                        <th width="5%" rowspan="8" scope="row">8</th>
-                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
-                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
-                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
-                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
-                                        <input type='hidden' name='masukan[]' value="">
-                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="view251" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah251()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar251" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Skor Matriks</td>
-                                        <td></td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td width="45%">Tidak memiliki unit pelaksana penjaminan mutu.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat, namun belum melakukan sosialisasi.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang baru dalam tahap sosialisasi  sistem penjaminan mutu.  </td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang aktif mensosialisasikan sistem penjaminan mutu dan mulai menerapkannya.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td width="45%">Memiliki unit penjaminan mutu di tingkat pusat/fakultas yang telah sepenuhnya melakukan proses penjaminan mutu.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai251"><input type="text" required name="skorakhir[]" id="view251nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                </div>
-            </form>
-            </div>
-        </div>
-        <!-- TUTUP MODAL VIEW NILAI 2.5.1 -->
-
-        <!-- BUKA MODAL NILAI 2.5.2 -->
-        <div class="modal fade" id="nilai252" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
-                    </div>
-            <?php
-                $CI =& get_instance();
-                $bukunya = $this->uri->segment(2, 0);
-                $newversi = 0;
-                $this->db->select('id');
-                $this->db->from('hitungf3');
-                $this->db->where('id_buku', $bukunya);
-                $versinya = $this->db->count_all_results();
-                if ($versinya==0) {
-                    $newversi = 1;
-                }else{
-                    $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
-                    foreach ($getversi->result() as $row){
-                        $grabversi = $row->review_ke;
-                        break;
-                    }
-                    $newversi = $grabversi+1;
-                }
-                
-            ?>
-                    <div class="modal-body">
-                        <table id="borang" class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                    <tr>
-                                        <th width="5%" rowspan="8" scope="row">9</th>
-                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
-                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
-                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
-                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
-                                        <input type='hidden' name='masukan[]' value="">
-                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="252" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah252()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Skor Matriks</td>
-                                        <td></td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td width="45%">Tidak memiliki standar mutu.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td width="45%">Tersedia standar mutu yang lengkap, namun belum dilaksanakan.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td width="45%">Tersedia standar mutu yang lengkap dan dilaksanakan dengan cukup baik.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td width="45%">Tersedia standar mutu yang lengkap dan dilaksanakan dengan baik.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td width="45%">Tersedia standar mutu yang  lengkap dan dilaksanakan dengan sangat baik.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai252"><input type="text" required name="skorakhir[]" id="252nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
-                                        <td></td>
-                                    </tr>
-                                    <input type='hidden' name='nilai2[]' value="0">
-                                    <input type='hidden' name='nilai3[]' value="0">
-                                    <input type='hidden' name='nilai4[]' value="0">
-                                    <input type='hidden' name='nilai5[]' value="0">
-                                    <input type='hidden' name='nilai6[]' value="0">
-                                    <input type='hidden' name='nilai7[]' value="0">
-                                    <input type='hidden' name='nilai8[]' value="0">
-                                    <input type='hidden' name='nilai9[]' value="0">
-                                    <input type='hidden' name='nilai10[]' value="0">
-                                </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                </div>
-            </form>
-            </div>
-        </div>
-        <!-- TUTUP MODAL NILAI 2.5.2 -->
-
-        <!-- BUKA MODAL VIEW NILAI 2.5.2 -->
-        <div class="modal fade" id="viewnilai252" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
-                    </div>
-                    <div class="modal-body">
-                        <table id="borang" class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                    <tr>
-                                        <th width="5%" rowspan="8" scope="row">9</th>
-                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
-                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
-                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
-                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
-                                        <input type='hidden' name='masukan[]' value="">
-                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="view252" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah252()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar252" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Skor Matriks</td>
-                                        <td></td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td width="45%">Tidak memiliki standar mutu.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td width="45%">Tersedia standar mutu yang lengkap, namun belum dilaksanakan.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td width="45%">Tersedia standar mutu yang lengkap dan dilaksanakan dengan cukup baik.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td width="45%">Tersedia standar mutu yang lengkap dan dilaksanakan dengan baik.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td width="45%">Tersedia standar mutu yang  lengkap dan dilaksanakan dengan sangat baik.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai252"><input type="text" required name="skorakhir[]" id="view252nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                </div>
-            </form>
-            </div>
-        </div>
-        <!-- TUTUP MODAL VIEW NILAI 2.5.2 -->
-
-        <!-- BUKA MODAL NILAI 3.1.1 -->
-        <div class="modal fade" id="nilai311" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
-                    </div>
-            <?php
-                $CI =& get_instance();
-                $bukunya = $this->uri->segment(2, 0);
-                $newversi = 0;
-                $this->db->select('id');
-                $this->db->from('hitungf3');
-                $this->db->where('id_buku', $bukunya);
-                $versinya = $this->db->count_all_results();
-                if ($versinya==0) {
-                    $newversi = 1;
-                }else{
-                    $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
-                    foreach ($getversi->result() as $row){
-                        $grabversi = $row->review_ke;
-                        break;
-                    }
-                    $newversi = $grabversi+1;
-                }
-                
-            ?>
-                    <div class="modal-body">
-                        <table id="borang" class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                    <tr>
-                                        <th width="5%" rowspan="8" scope="row">10</th>
-                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
-                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
-                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
-                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
-                                        <input type='hidden' name='masukan[]' value="">
-                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="311" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Skor Matriks</td>
-                                        <td></td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td width="45%">Tidak tersedia  dokumen tentang penerimaan mahasiswa baru.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td width="45%">(Tidak ada skor 1)</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td width="45%">Tersedia dokumen tentang penerimaan mahasiswa baru, namun pelaksanaannya kurang  konsisten.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td width="45%">(Tidak ada skor 3)</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td width="45%">Tersedia dokumen lengkap tentang penerimaan mahasiswa baru dan dilaksanakan secara konsisten. </td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai311"><input type="text" required name="skorakhir[]" id="311nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
-                                        <td></td>
-                                    </tr>
-                                    <input type='hidden' name='nilai2[]' value="0">
-                                    <input type='hidden' name='nilai3[]' value="0">
-                                    <input type='hidden' name='nilai4[]' value="0">
-                                    <input type='hidden' name='nilai5[]' value="0">
-                                    <input type='hidden' name='nilai6[]' value="0">
-                                    <input type='hidden' name='nilai7[]' value="0">
-                                    <input type='hidden' name='nilai8[]' value="0">
-                                    <input type='hidden' name='nilai9[]' value="0">
-                                    <input type='hidden' name='nilai10[]' value="0">
-                                </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                </div>
-            </form>
-            </div>
-        </div>
-        <!-- TUTUP MODAL NILAI 3.1.1 -->
-
-        <!-- BUKA MODAL VIEW NILAI 3.1.1 -->
-        <div class="modal fade" id="viewnilai311" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
-                    </div>
-                    <div class="modal-body">
-                        <table id="borang" class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                    <tr>
-                                        <th width="5%" rowspan="8" scope="row">10</th>
-                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
-                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
-                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
-                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
-                                        <input type='hidden' name='masukan[]' value="">
-                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="view311" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
-                                        Contoh : 3.5 BUKAN 3,5"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar311" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Skor Matriks</td>
-                                        <td></td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td width="45%">Tidak tersedia  dokumen tentang penerimaan mahasiswa baru.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td width="45%">(Tidak ada skor 1)</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td width="45%">Tersedia dokumen tentang penerimaan mahasiswa baru, namun pelaksanaannya kurang  konsisten.</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td width="45%">(Tidak ada skor 3)</td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td width="45%">Tersedia dokumen lengkap tentang penerimaan mahasiswa baru dan dilaksanakan secara konsisten. </td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Nilai</td>
-                                        <td width="10%"><div id="nilai311"><input type="text" required name="skorakhir[]" id="view311nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                </div>
-            </form>
-            </div>
-        </div>
-        <!-- TUTUP MODAL VIEW NILAI 3.1.1 -->
-
-        <!-- BUKA MODAL NILAI 312 -->
-        <div class="modal fade" id="nilai312" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
-                    </div>
-            <?php
-                $CI =& get_instance();
-                $bukunya = $this->uri->segment(2, 0);
-                $newversi = 0;
-                $this->db->select('id');
-                $this->db->from('hitungf3');
-                $this->db->where('id_buku', $bukunya);
-                $versinya = $this->db->count_all_results();
-                if ($versinya==0) {
-                    $newversi = 1;
-                }else{
-                    $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf3 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
-                    foreach ($getversi->result() as $row){
-                        $grabversi = $row->review_ke;
-                        break;
-                    }
-                    $newversi = $grabversi+1;
-                }
-                
-            ?>
-                    <div class="modal-body">
-                        <table id="borang" class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                    <tr>
-                                        <th width="5%" rowspan="6" scope="row">11</th>
-                                        <td width="5%"><?php echo $butir[0]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
-                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
-                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
-                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
-                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
-                                        <td width="25%"><textarea rows="2" name="masukan[]" id="312info" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td>TMBT</td>
-                                        <td colspan="2">Total mahasiswa baru transfer</td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="3121" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="komentar312" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td>TMB</td>
-                                        <td colspan="2">Total mahasiswa baru bukan transfer</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="3122" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>RM</td>
-                                        <td colspan="2">RM=TMBT/TMB</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="312rasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="312nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
-                                        <td></td>
-                                    </tr>
-                                    <input type='hidden' name='nilai4[]' value="0">
-                                    <input type='hidden' name='nilai5[]' value="0">
-                                    <input type='hidden' name='nilai6[]' value="0">
-                                    <input type='hidden' name='nilai7[]' value="0">
-                                    <input type='hidden' name='nilai8[]' value="0">
-                                    <input type='hidden' name='nilai9[]' value="0">
-                                    <input type='hidden' name='nilai10[]' value="0">
-                                    <!-- <tr>
-                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
-                                    </tr> -->
-                                </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                </div>
-            </form>
-            </div>
-        </div>
-        <!-- TUTUP MODAL NILAI 312 -->
-
-        <!-- BUKA MODAL VIEW NILAI 312 -->
-        <div class="modal fade" id="viewnilai312" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
-                    </div>
-                    <div class="modal-body">
-                        <table id="borang" class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th width="5%">NO.</th>
-                                    <th width="5%">BUTIR</th>
-                                    <th colspan="2">KETERANGAN</th>
-                                    <th>NILAI</th>
-                                    <th></th>
-                                    <th>INFORMASI DARI BORANG</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                    <tr>
-                                        <th width="5%" rowspan="6" scope="row">11</th>
-                                        <td width="5%"><?php echo $butir[0]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
-                                        <td width="10%"></td>
-                                        <td></td>
-                                        <td width="25%"><textarea rows="2" name="masukan[]" id="view312info" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td>TMBT</td>
-                                        <td colspan="2">Total mahasiswa baru transfer</td>
-                                        <td width="10%"><input type="text" required name="nilai1[]" id="view3121" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()"></td>
-                                        <td></td>
-                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="viewkomentar312" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
-                                    </tr>
-                                    <tr>
-                                        <td>TMB</td>
-                                        <td colspan="2">Total mahasiswa baru bukan transfer</td>
-                                        <td width="10%"><input type="text" required name="nilai2[]" id="view3122" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>RM</td>
-                                        <td colspan="2">RM=TMBT/TMB</td>
-                                        <td width="10%"><input type="text" required name="nilai3[]" id="view312rasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3">Nilai</td>
-                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view312nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                </div>
-            </form>
-            </div>
-        </div>
-        <!-- TUTUP MODAL VIEW NILAI 312 -->
-
-        <!-- BUKA MODAL NILAI 3.1.3 -->
-        <div class="modal fade" id="nilai313" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-            <?=form_open("C_penilaian/savenilaiF3");?>
+            <?=form_open("C_penilaian/savenilaiF1");?>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
@@ -11853,7 +15529,1398 @@
                             </tfoot>
                             <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="7" scope="row">12</th>
+                                        <th width="5%" rowspan="8" scope="row">8</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada umpan balik.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan tidak ada tindak lanjut.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan ada tindak lanjut secara insidental.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara insidental.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara berkelanjutan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 2.5 -->
+
+        <!-- BUKA MODAL VIEW NILAI 2.5 -->
+        <div class="modal fade" id="viewnilai25" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row">8</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view25" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah25()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar25" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada umpan balik.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan tidak ada tindak lanjut.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Umpan balik hanya diperoleh dari sebagian dan ada tindak lanjut secara insidental.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara insidental.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Umpan balik diperoleh dari dosen, mahasiswa, alumni dan pengguna serta ditindaklanjuti secara berkelanjutan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai25"><input type="text" required name="skorakhir[]" id="view25nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 2.5 -->
+
+        <!-- BUKA MODAL NILAI 2.6 -->
+        <div class="modal fade" id="nilai26" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row">9</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="26" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah26()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada usaha.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Ada bukti hanya 1 usaha yang dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada bukti hanya sebagian kecil usaha (2-3) yang dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada bukti sebagian usaha ( > 3) dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada bukti semua usaha dilakukan berikut hasilnya.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai26"><input type="text" required name="skorakhir[]" id="26nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 2.6 -->
+
+        <!-- BUKA MODAL VIEW NILAI 2.6 -->
+        <div class="modal fade" id="viewnilai26" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row">9</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view26" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah26()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar26" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Tidak ada usaha.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Ada bukti hanya 1 usaha yang dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Ada bukti hanya sebagian kecil usaha (2-3) yang dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Ada bukti sebagian usaha ( > 3) dilakukan.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Ada bukti semua usaha dilakukan berikut hasilnya.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><div id="nilai26"><input type="text" required name="skorakhir[]" id="view26nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></div></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 2.6 -->
+
+        <!-- BUKA MODAL NILAI 3.1.1.a -->
+        <div class="modal fade" id="nilai311a" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">10</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="311ainfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 3 (Jumlah yang ikut seleksi))</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="311a1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 2 (Daya tampung PS)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="311a2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Rasio = (jumlah kolom 3)/(jumlah kolom 2)</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="311arasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311anilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.1.a -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.1.a -->
+        <div class="modal fade" id="viewnilai311a" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">10</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="view311ainfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 3 (Jumlah yang ikut seleksi))</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view311a1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="viewkomentar311a" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 2 (Daya tampung PS)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view311a2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311a()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Rasio = (jumlah kolom 3)/(jumlah kolom 2)</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="view311arasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view311anilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.1.a -->
+
+        <!-- BUKA MODAL NILAI 3.1.1.b -->
+        <div class="modal fade" id="nilai311b" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">11</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="311binfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 5 (Jumlah mhs baru reguler yang melakukan registrasi)</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="311b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 4 (Jumlah calon mhs yang lulus seleksi)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="311b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Rasio=(jumlah kolom 5)/jumlah kolom 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="311brasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.1.b -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.1.b -->
+        <div class="modal fade" id="viewnilai311b" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">11</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="view311binfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 5 (Jumlah mhs baru reguler yang melakukan registrasi)</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view311b1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="viewkomentar311b" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Jumlah kolom 4 (Jumlah calon mhs yang lulus seleksi)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view311b2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311b()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Rasio=(jumlah kolom 5)/jumlah kolom 4)</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="view311brasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view311bnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.1.b -->
+
+        <!-- BUKA MODAL NILAI 3.1.1.c -->
+        <div class="modal fade" id="nilai311c" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">12</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="311cinfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">TMBT = total mahasiswa baru transfer untuk program S1 reguler dan S1 non-reguler</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="311c1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">TMB = total mahasiswa baru bukan transfer untuk program S1 reguler dan S1 non-reguler</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="311c2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">RM = TMBT/TMB</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="311crasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311cnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                    <!-- <tr>
+                                        <td colspan="6"><button type="button" class="btn btn-block btn-sm btn-success waves-effect">SUCCESS</button></td>
+                                    </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.1.c -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.1.c -->
+        <div class="modal fade" id="viewnilai311c" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="6" scope="row">12</th>
+                                        <td width="5%" rowspan="6"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="view311cinfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">TMBT = total mahasiswa baru transfer untuk program S1 reguler dan S1 non-reguler</td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view311c1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="5"><textarea rows="8" name="komentar[]" id="viewkomentar311c" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">TMB = total mahasiswa baru bukan transfer untuk program S1 reguler dan S1 non-reguler</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view311c2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311c()"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">RM = TMBT/TMB</td>
+                                        <td width="10%"><input type="text" required name="nilai3[]" id="view311crasio" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view311cnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.1.c -->
+
+        <!-- BUKA MODAL NILAI 3.1.1.d -->
+        <div class="modal fade" id="nilai311d" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="4" scope="row">13</th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="311d1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
+                                        <td></td>
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="311dinfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">IPK (Isi angka 0 jika belum ada lulusan)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="311d2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="3"><textarea rows="8" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="311dnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.1.d -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.1.d -->
+        <div class="modal fade" id="viewnilai311d" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="4" scope="row">13</th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view311d1" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
+                                        <td></td>
+                                        <td width="25%"><textarea rows="2" name="masukan[]" id="view311dinfo" placeholder="INFORMASI DARI BORANG" style="color:white;background: grey;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">IPK (Isi angka 0 jika belum ada lulusan)</td>
+                                        <td width="10%"><input type="text" required name="nilai2[]" id="view311d2" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah311d()"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="3"><textarea rows="8" name="komentar[]" id="viewkomentar311d" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view311dnilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.1.d -->
+
+        <!-- BUKA MODAL NILAI 3.1.2 -->
+        <div class="modal fade" id="nilai312" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row">14</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
+                                        <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
+                                        <input type='hidden' name='masukan[]' value="">
+                                        <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
+                                        <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="312" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen sangat berat, melebihi 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen relatif berat, yaitu lebih dari 17 s.d. 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 15  s.d. 17 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 13  s.d. 15 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban mendekati ideal, yaitu kurang atau sama dengan 13 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="312nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                    <input type='hidden' name='nilai2[]' value="0">
+                                    <input type='hidden' name='nilai3[]' value="0">
+                                    <input type='hidden' name='nilai4[]' value="0">
+                                    <input type='hidden' name='nilai5[]' value="0">
+                                    <input type='hidden' name='nilai6[]' value="0">
+                                    <input type='hidden' name='nilai7[]' value="0">
+                                    <input type='hidden' name='nilai8[]' value="0">
+                                    <input type='hidden' name='nilai9[]' value="0">
+                                    <input type='hidden' name='nilai10[]' value="0">
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL NILAI 3.1.2 -->
+
+        <!-- BUKA MODAL VIEW NILAI 3.1.2 -->
+        <div class="modal fade" id="viewnilai312" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="8" scope="row">14</th>
+                                        <td width="5%" rowspan="8"><?php echo $butir[0]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <td width="10%"><input type="text" required name="nilai1[]" id="view312" placeholder="4,00" style="background: yellow;" class="form-control no-resize" onkeyup="cekjumlah312()" data-toggle="tooltip" data-placement="top" title="Isi dengan bilangan desimal : 1 - 4
+                                        Contoh : 3.5 BUKAN 3,5"></td>
+                                        <td></td>
+                                        <td width="25%" rowspan="8"><textarea rows="14" name="komentar[]" id="viewkomentar312" placeholder="INFORMASI DARI BORANG" style="background: yellow;" class="form-control no-resize"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Skor Matriks</td>
+                                        <td></td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen sangat berat, melebihi 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima mengakibatkan beban dosen relatif berat, yaitu lebih dari 17 s.d. 19 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 15  s.d. 17 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban lebih dari 13  s.d. 15 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td width="45%">Jumlah mahasiswa yang diterima masih memungkinkan dosen mengajar seluruh mahasiswa dengan total beban mendekati ideal, yaitu kurang atau sama dengan 13 sks.</td>
+                                        <td width="10%"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Nilai</td>
+                                        <td width="10%"><input type="text" required name="skorakhir[]" id="view312nilai" placeholder="4,00" readonly="readonly" style="color:white; background: grey;" class="form-control no-resize"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- TUTUP MODAL VIEW NILAI 3.1.2 -->
+
+        <!-- BUKA MODAL NILAI 3.1.3 -->
+        <div class="modal fade" id="nilai313" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+            <?=form_open("C_penilaian/savenilaiF1");?>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">YANG DI ISI HANYA SEL YANG BERWARNA KUNING</h4>
+                    </div>
+            <?php
+                $CI =& get_instance();
+                $bukunya = $this->uri->segment(2, 0);
+                $newversi = 0;
+                $this->db->select('id');
+                $this->db->from('hitungf1');
+                $this->db->where('id_buku', $bukunya);
+                $versinya = $this->db->count_all_results();
+                if ($versinya==0) {
+                    $newversi = 1;
+                }else{
+                    $grabversi = "";
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    foreach ($getversi->result() as $row){
+                        $grabversi = $row->review_ke;
+                        break;
+                    }
+                    $newversi = $grabversi+1;
+                }
+                
+            ?>
+                    <div class="modal-body">
+                        <table id="borang" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th width="5%">NO.</th>
+                                    <th width="5%">BUTIR</th>
+                                    <th colspan="2">KETERANGAN</th>
+                                    <th>NILAI</th>
+                                    <th></th>
+                                    <th>INFORMASI DARI BORANG</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                    <tr>
+                                        <th width="5%" rowspan="7" scope="row">15</th>
                                         <td width="5%" rowspan="7"><?php echo $butir[0]['butir'] ?></td>
                                         <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
                                         <input type='hidden' name='load' value="<?php echo $this->uri->segment(1, 0);?>">
@@ -11876,25 +16943,25 @@
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Menerima mahasiswa transfer tanpa seleksi.</td>
+                                        <td width="45%">Tidak ada bukti penghargaan. </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan, proses dilakukan secara kurang ketat dan baik, mutu mahasiswa kurang baik.</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat lokal PT.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan, proses dilakukan secara ketat dan baik, mahasiswa yang diterima kurang bermutu.</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat wilayah.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan,proses dilakukan secara ketat dan baik, mahasiswa yang diterima bermutu akademik tinggi.</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat nasional atau internasional.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -11972,25 +17039,25 @@
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td width="45%">Menerima mahasiswa transfer tanpa seleksi.</td>
+                                        <td width="45%">Tidak ada bukti penghargaan. </td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan, proses dilakukan secara kurang ketat dan baik, mutu mahasiswa kurang baik.</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat lokal PT.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan, proses dilakukan secara ketat dan baik, mahasiswa yang diterima kurang bermutu.</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat wilayah.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td width="45%">Alasan penerimaan untuk meningkatkan layanan pendidikan,proses dilakukan secara ketat dan baik, mahasiswa yang diterima bermutu akademik tinggi.</td>
+                                        <td width="45%">Ada bukti penghargaan juara lomba ilmiah, olah raga, maupun seni tingkat nasional atau internasional.</td>
                                         <td width="10%"></td>
                                         <td></td>
                                     </tr>
@@ -12451,11 +17518,58 @@
 
     });
 
+    $('#update311').on('shown.bs.modal', function (event) {
+        //$(".fakpro").hide();
+        // $( "#updateAccModal #jenisBorang" ).change(function() {
+        //   var selectedValue = $(this).val();
+        //   if(selectedValue!='universitas'){
+        //     $(".fakpro").show();
+        //   }else{
+        //     $(".fakpro").hide();
+        //     $("#fakpro").val("");
+        //   }
+        // });
+
+
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id311').val(buku[0]['id']);
+              $('#id_butir311tabel').val(buku[0]['id_butir']);
+              $('#kolom1_311').val(buku[0]['kolom1']);
+              $('#kolom2_311').val(buku[0]['kolom2']);
+              $('#kolom3_311').val(buku[0]['kolom3']);
+              $('#kolom4_311').val(buku[0]['kolom4']);
+              $('#kolom5_311').val(buku[0]['kolom5']);
+              $('#kolom6_311').val(buku[0]['kolom6']);
+              $('#kolom7_311').val(buku[0]['kolom7']);
+              $('#kolom8_311').val(buku[0]['kolom8']);
+              $('#kolom9_311').val(buku[0]['kolom9']);
+              $('#kolom10_311').val(buku[0]['kolom10']);
+              $('#kolom11_311').val(buku[0]['kolom11']);
+              $('#kolom12_311').val(buku[0]['kolom12']);
+              $('#kolom13_311').val(buku[0]['kolom13']);
+              $('#kolom14_311').val(buku[0]['kolom14']);
+              $('#kolom15_311').val(buku[0]['kolom15']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
     $('#update312').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12472,6 +17586,7 @@
               $('#kolom4_312').val(buku[0]['kolom4']);
               $('#kolom5_312').val(buku[0]['kolom5']);
               $('#kolom6_312').val(buku[0]['kolom6']);
+              $('#kolom7_312').val(buku[0]['kolom7']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -12481,7 +17596,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12500,11 +17615,11 @@
 
     });
 
-    $('#update321').on('shown.bs.modal', function (event) {
+    $('#update331b').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12513,91 +17628,50 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#id321').val(buku[0]['id']);
-              $('#id_butir321tabel').val(buku[0]['id_butir']);
-              $('#kolom1_321').val(buku[0]['kolom1']);
-              $('#kolom2_321').val(buku[0]['kolom2']);
-              $('#kolom3_321').val(buku[0]['kolom3']);
-              $('#kolom4_321').val(buku[0]['kolom4']);
-          });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
-
-    });
-
-    $('#update411').on('shown.bs.modal', function (event) {
-        //ajax call to get isian Borang Informatin from database
-        var button = $(event.relatedTarget)
-        var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
-        $.ajax({
-            method: "POST",
-            url: link,
-            cache: false,
-            data: { id: recipient }
-          })
-          .done(function( msg ) {
-              var buku = JSON.parse(msg);
-              $('#id411').val(buku[0]['id']);
-              $('#id_butir411tabel').val(buku[0]['id_butir']);
-              $('#kolom1_411').val(buku[0]['kolom1']);
-              $('#kolom2_411').val(buku[0]['kolom2']);
-              $('#kolom3_411').val(buku[0]['kolom3']);
-              $('#kolom4_411').val(buku[0]['kolom4']);
-              $('#kolom5_411').val(buku[0]['kolom5']);
-              $('#kolom6_411').val(buku[0]['kolom6']);
-              $('#kolom7_411').val(buku[0]['kolom7']);
-          });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
-
-    });
-
-    $('#update412').on('shown.bs.modal', function (event) {
-        //ajax call to get isian Borang Informatin from database
-        var button = $(event.relatedTarget)
-        var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
-        $.ajax({
-            method: "POST",
-            url: link,
-            cache: false,
-            data: { id: recipient }
-          })
-          .done(function( msg ) {
-              var buku = JSON.parse(msg);
-              $('#id412').val(buku[0]['id']);
-              $('#id_butir412tabel').val(buku[0]['id_butir']);
-              $('#kolom1_412').val(buku[0]['kolom1']);
-              $('#kolom2_412').val(buku[0]['kolom2']);
-          });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
-
-    });
-
-    $('#update42').on('shown.bs.modal', function (event) {
-        //ajax call to get isian Borang Informatin from database
-        var button = $(event.relatedTarget)
-        var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
-        $.ajax({
-            method: "POST",
-            url: link,
-            cache: false,
-            data: { id: recipient }
-          })
-          .done(function( msg ) {
-              var buku = JSON.parse(msg);
-              $('#id42').val(buku[0]['id']);
-              $('#id_butir42tabel').val(buku[0]['id_butir']);
-              $('#kolom1_42').val(buku[0]['kolom1']);
-              $('#kolom2_42').val(buku[0]['kolom2']);
-              $('#kolom3_42').val(buku[0]['kolom3']);
-              $('#kolom4_42').val(buku[0]['kolom4']);
-              $('#kolom5_42').val(buku[0]['kolom5']);
-              $('#kolom6_42').val(buku[0]['kolom6']);
-              $('#kolom7_42').val(buku[0]['kolom7']);
-              $('#kolom8_42').val(buku[0]['kolom8']);
-              $('#kolom9_42').val(buku[0]['kolom9']);
-              $('#kolom10_42').val(buku[0]['kolom10']);
+              $('#id331b').val(buku[0]['id']);
+              $('#id_butir331btabel').val(buku[0]['id_butir']);
+              $('#kolom1_331b').val(buku[0]['kolom1']);
+              $('#kolom2_331b').val(buku[0]['kolom2']);
+              $('#kolom3_331b').val(buku[0]['kolom3']);
+              $('#kolom4_331b').val(buku[0]['kolom4']);
+              $('#kolom5_331b').val(buku[0]['kolom5']);
+              $('#kolom6_331b').val(buku[0]['kolom6']);
+              $('#kolom7_331b').val(buku[0]['kolom7']);
+              $('#kolom8_331b').val(buku[0]['kolom8']);
+              $('#kolom9_331b').val(buku[0]['kolom9']);
+              $('#kolom10_331b').val(buku[0]['kolom10']);
+              $('#kolom11_331b').val(buku[0]['kolom11']);
+              $('#kolom12_331b').val(buku[0]['kolom12']);
+              $('#kolom13_331b').val(buku[0]['kolom13']);
+              $('#kolom14_331b').val(buku[0]['kolom14']);
+              $('#kolom15_331b').val(buku[0]['kolom15']);
+              $('#kolom16_331b').val(buku[0]['kolom16']);
+              $('#kolom17_331b').val(buku[0]['kolom17']);
+              $('#kolom18_331b').val(buku[0]['kolom18']);
+              $('#kolom19_331b').val(buku[0]['kolom19']);
+              $('#kolom20_331b').val(buku[0]['kolom20']);
+              $('#kolom21_331b').val(buku[0]['kolom21']);
+              $('#kolom22_331b').val(buku[0]['kolom22']);
+              $('#kolom23_331b').val(buku[0]['kolom23']);
+              $('#kolom24_331b').val(buku[0]['kolom24']);
+              $('#kolom25_331b').val(buku[0]['kolom25']);
+              $('#kolom26_331b').val(buku[0]['kolom26']);
+              $('#kolom27_331b').val(buku[0]['kolom27']);
+              $('#kolom28_331b').val(buku[0]['kolom28']);
+              $('#kolom29_331b').val(buku[0]['kolom29']);
+              $('#kolom30_331b').val(buku[0]['kolom30']);
+              $('#kolom31_331b').val(buku[0]['kolom31']);
+              $('#kolom32_331b').val(buku[0]['kolom32']);
+              $('#kolom33_331b').val(buku[0]['kolom33']);
+              $('#kolom34_331b').val(buku[0]['kolom34']);
+              $('#kolom35_331b').val(buku[0]['kolom35']);
+              $('#kolom36_331b').val(buku[0]['kolom36']);
+              $('#kolom37_331b').val(buku[0]['kolom37']);
+              $('#kolom38_331b').val(buku[0]['kolom38']);
+              $('#kolom39_331b').val(buku[0]['kolom39']);
+              $('#kolom40_331b').val(buku[0]['kolom40']);
+              $('#kolom41_331b').val(buku[0]['kolom41']);
+              $('#kolom42_331b').val(buku[0]['kolom42']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -12607,7 +17681,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12634,7 +17708,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12661,7 +17735,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12690,7 +17764,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12717,7 +17791,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12744,7 +17818,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12771,7 +17845,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12798,7 +17872,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12821,7 +17895,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12847,7 +17921,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12872,7 +17946,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12896,7 +17970,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12920,7 +17994,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12970,7 +18044,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -12993,7 +18067,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13024,7 +18098,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13050,7 +18124,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13074,7 +18148,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13102,7 +18176,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13125,7 +18199,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13155,7 +18229,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13177,7 +18251,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13200,7 +18274,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13220,11 +18294,35 @@
 
     });
 
+    $('#update623').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id623').val(buku[0]['id']);
+              $('#id_butir623tabel').val(buku[0]['id_butir']);
+              $('#kolom1_623').val(buku[0]['kolom1']);
+              $('#kolom2_623').val(buku[0]['kolom2']);
+              $('#kolom3_623').val(buku[0]['kolom3']);
+              $('#kolom4_623').val(buku[0]['kolom4']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
     $('#update631').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13256,7 +18354,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13271,6 +18369,10 @@
               $('#kolom2_632').val(buku[0]['kolom2']);
               $('#kolom3_632').val(buku[0]['kolom3']);
               $('#kolom4_632').val(buku[0]['kolom4']);
+              $('#kolom5_632').val(buku[0]['kolom5']);
+              $('#kolom6_632').val(buku[0]['kolom6']);
+              $('#kolom7_632').val(buku[0]['kolom7']);
+              $('#kolom8_632').val(buku[0]['kolom8']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -13280,7 +18382,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13304,11 +18406,11 @@
 
     });
 
-     $('#update642').on('shown.bs.modal', function (event) {
+     $('#update641a').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13317,32 +18419,35 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#id642').val(buku[0]['id']);
-              $('#id_butir642tabel').val(buku[0]['id_butir']);
-              $('#kolom1_642').val(buku[0]['kolom1']);
-              $('#kolom2_642').val(buku[0]['kolom2']);
-              $('#kolom3_642').val(buku[0]['kolom3']);
-              $('#kolom4_642').val(buku[0]['kolom4']);
-              $('#kolom5_642').val(buku[0]['kolom5']);
-              $('#kolom6_642').val(buku[0]['kolom6']);
-              $('#kolom7_642').val(buku[0]['kolom7']);
-              $('#kolom8_642').val(buku[0]['kolom8']);
-              $('#kolom9_642').val(buku[0]['kolom9']);
-              $('#kolom10_642').val(buku[0]['kolom10']);
-              $('#kolom11_642').val(buku[0]['kolom11']);
-              $('#kolom12_642').val(buku[0]['kolom12']);
-              $('#kolom13_642').val(buku[0]['kolom13']);
-              $('#kolom14_642').val(buku[0]['kolom14']);
-              $('#kolom15_642').val(buku[0]['kolom15']);
-              $('#kolom16_642').val(buku[0]['kolom16']);
-              $('#kolom17_642').val(buku[0]['kolom17']);
-              $('#kolom18_642').val(buku[0]['kolom18']);
-              $('#kolom19_642').val(buku[0]['kolom19']);
-              $('#kolom20_642').val(buku[0]['kolom20']);
-              $('#kolom21_642').val(buku[0]['kolom21']);
-              $('#kolom22_642').val(buku[0]['kolom22']);
-              $('#kolom23_642').val(buku[0]['kolom23']);
-              $('#kolom24_642').val(buku[0]['kolom24']);
+              $('#id641a').val(buku[0]['id']);
+              $('#id_butir641atabel').val(buku[0]['id_butir']);
+              $('#kolom1_641a').val(buku[0]['kolom1']);
+              $('#kolom2_641a').val(buku[0]['kolom2']);
+              $('#kolom3_641a').val(buku[0]['kolom3']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+     $('#update641c').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id641c').val(buku[0]['id']);
+              $('#id_butir641ctabel').val(buku[0]['id_butir']);
+              $('#kolom1_641c').val(buku[0]['kolom1']);
+              $('#kolom2_641c').val(buku[0]['kolom2']);
+              $('#kolom3_641c').val(buku[0]['kolom3']);
+              $('#kolom4_641c').val(buku[0]['kolom4']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -13352,7 +18457,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13380,7 +18485,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13418,11 +18523,11 @@
 
     });
 
-    $('#update711').on('shown.bs.modal', function (event) {
+     $('#update711').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13443,6 +18548,64 @@
               $('#kolom8_711').val(buku[0]['kolom8']);
               $('#kolom9_711').val(buku[0]['kolom9']);
               $('#kolom10_711').val(buku[0]['kolom10']);
+              $('#kolom11_711').val(buku[0]['kolom11']);
+              $('#kolom12_711').val(buku[0]['kolom12']);
+              $('#kolom13_711').val(buku[0]['kolom13']);
+              $('#kolom14_711').val(buku[0]['kolom14']);
+              $('#kolom15_711').val(buku[0]['kolom15']);
+              $('#kolom16_711').val(buku[0]['kolom16']);
+              $('#kolom17_711').val(buku[0]['kolom17']);
+              $('#kolom18_711').val(buku[0]['kolom18']);
+              $('#kolom19_711').val(buku[0]['kolom19']);
+              $('#kolom20_711').val(buku[0]['kolom20']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+     $('#update713').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id713').val(buku[0]['id']);
+              $('#id_butir713tabel').val(buku[0]['id_butir']);
+              $('#kolom1_713').val(buku[0]['kolom1']);
+              $('#kolom2_713').val(buku[0]['kolom2']);
+              $('#kolom3_713').val(buku[0]['kolom3']);
+              $('#kolom4_713').val(buku[0]['kolom4']);
+              $('#kolom5_713').val(buku[0]['kolom5']);
+              $('#kolom6_713').val(buku[0]['kolom6']);
+              $('#kolom7_713').val(buku[0]['kolom7']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#update714').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id714').val(buku[0]['id']);
+              $('#id_butir714tabel').val(buku[0]['id_butir']);
+              $('#kolom1_714').val(buku[0]['kolom1']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -13452,7 +18615,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13473,6 +18636,16 @@
               $('#kolom8_721').val(buku[0]['kolom8']);
               $('#kolom9_721').val(buku[0]['kolom9']);
               $('#kolom10_721').val(buku[0]['kolom10']);
+              $('#kolom11_721').val(buku[0]['kolom11']);
+              $('#kolom12_721').val(buku[0]['kolom12']);
+              $('#kolom13_721').val(buku[0]['kolom13']);
+              $('#kolom14_721').val(buku[0]['kolom14']);
+              $('#kolom15_721').val(buku[0]['kolom15']);
+              $('#kolom16_721').val(buku[0]['kolom16']);
+              $('#kolom17_721').val(buku[0]['kolom17']);
+              $('#kolom18_721').val(buku[0]['kolom18']);
+              $('#kolom19_721').val(buku[0]['kolom19']);
+              $('#kolom20_721').val(buku[0]['kolom20']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -13482,7 +18655,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13507,7 +18680,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -13544,7 +18717,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findisian";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findisian";
         $.ajax({
             method: "POST",
             url: link,
@@ -13582,7 +18755,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findisian";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findisian";
         $.ajax({
             method: "POST",
             url: link,
@@ -13618,7 +18791,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findisian";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findisian";
         $.ajax({
             method: "POST",
             url: link,
@@ -13658,11 +18831,11 @@
 
     });
 
-    $('#viewnilai111').on('shown.bs.modal', function (event) {
+    $('#viewnilai11a').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13679,14 +18852,15 @@
               $('#view11askorakhir').val(buku[0]['nilai5']);
               $('#view11anilai').val(buku[0]['skorakhir']);
           });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
-    $('#viewnilai112').on('shown.bs.modal', function (event) {
+    $('#viewnilai11b').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13695,11 +18869,13 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#viewkomentar112').val(buku[0]['komentar']);
-              $('#view112').val(buku[0]['nilai1']);
-              $('#view112skorakhir').val(buku[0]['nilai2']);
-              $('#view112nilai').val(buku[0]['skorakhir']);
+              $('#viewkomentar11b').val(buku[0]['komentar']);
+              $('#view11b1').val(buku[0]['nilai1']);
+              $('#view11b2').val(buku[0]['nilai2']);
+              $('#view11bskorakhir').val(buku[0]['nilai3']);
+              $('#view11bnilai').val(buku[0]['skorakhir']);
           });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
@@ -13707,7 +18883,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13721,6 +18897,7 @@
               $('#view12skorakhir').val(buku[0]['nilai2']);
               $('#view12nilai').val(buku[0]['skorakhir']);
           });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
@@ -13728,7 +18905,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13742,6 +18919,7 @@
               $('#view21skorakhir').val(buku[0]['nilai2']);
               $('#view21nilai').val(buku[0]['skorakhir']);
           });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
@@ -13749,7 +18927,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13763,6 +18941,7 @@
               $('#view22skorakhir').val(buku[0]['nilai2']);
               $('#view22nilai').val(buku[0]['skorakhir']);
           });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
@@ -13770,7 +18949,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13784,6 +18963,7 @@
               $('#view23skorakhir').val(buku[0]['nilai2']);
               $('#view23nilai').val(buku[0]['skorakhir']);
           });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
@@ -13791,7 +18971,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13805,14 +18985,15 @@
               $('#view24skorakhir').val(buku[0]['nilai2']);
               $('#view24nilai').val(buku[0]['skorakhir']);
           });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
     });
 
-    $('#viewnilai251').on('shown.bs.modal', function (event) {
+    $('#viewnilai25').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13821,19 +19002,65 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#viewkomentar251').val(buku[0]['komentar']);
-              $('#view251').val(buku[0]['nilai1']);
-              $('#view251skorakhir').val(buku[0]['nilai2']);
-              $('#view251nilai').val(buku[0]['skorakhir']);
+              $('#viewkomentar25').val(buku[0]['komentar']);
+              $('#view25').val(buku[0]['nilai1']);
+              $('#view25skorakhir').val(buku[0]['nilai2']);
+              $('#view25nilai').val(buku[0]['skorakhir']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#viewnilai26').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar26').val(buku[0]['komentar']);
+              $('#view26').val(buku[0]['nilai1']);
+              $('#view26skorakhir').val(buku[0]['nilai2']);
+              $('#view26nilai').val(buku[0]['skorakhir']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#viewnilai311a').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar311a').val(buku[0]['komentar']);
+              $('#view311ainfo').val(buku[0]['masukan']);
+              $('#view311a1').val(buku[0]['nilai1']);
+              $('#view311a2').val(buku[0]['nilai2']);
+              $('#view311arasio').val(buku[0]['nilai3']);
+              $('#view311anilai').val(buku[0]['skorakhir']);
           });
 
     });
 
-    $('#viewnilai252').on('shown.bs.modal', function (event) {
+    $('#viewnilai311b').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13842,19 +19069,21 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#viewkomentar252').val(buku[0]['komentar']);
-              $('#view252').val(buku[0]['nilai1']);
-              $('#view252skorakhir').val(buku[0]['nilai2']);
-              $('#view252nilai').val(buku[0]['skorakhir']);
+              $('#viewkomentar311b').val(buku[0]['komentar']);
+              $('#view311binfo').val(buku[0]['masukan']);
+              $('#view311b1').val(buku[0]['nilai1']);
+              $('#view311b2').val(buku[0]['nilai2']);
+              $('#view311brasio').val(buku[0]['nilai3']);
+              $('#view311bnilai').val(buku[0]['skorakhir']);
           });
 
     });
 
-    $('#viewnilai311').on('shown.bs.modal', function (event) {
+    $('#viewnilai311c').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13863,10 +19092,35 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#viewkomentar311').val(buku[0]['komentar']);
-              $('#view311').val(buku[0]['nilai1']);
-              $('#view311skorakhir').val(buku[0]['nilai2']);
-              $('#view311nilai').val(buku[0]['skorakhir']);
+              $('#viewkomentar311c').val(buku[0]['komentar']);
+              $('#view311cinfo').val(buku[0]['masukan']);
+              $('#view311c1').val(buku[0]['nilai1']);
+              $('#view311c2').val(buku[0]['nilai2']);
+              $('#view311crasio').val(buku[0]['nilai3']);
+              $('#view311cnilai').val(buku[0]['skorakhir']);
+          });
+
+    });
+
+    $('#viewnilai311d').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#viewkomentar311d').val(buku[0]['komentar']);
+              $('#view311dinfo').val(buku[0]['masukan']);
+              $('#view311d1').val(buku[0]['nilai1']);
+              $('#view311d2').val(buku[0]['nilai2']);
+              $('#view311drasio').val(buku[0]['nilai3']);
+              $('#view311dnilai').val(buku[0]['skorakhir']);
           });
 
     });
@@ -13875,7 +19129,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13886,9 +19140,7 @@
               var buku = JSON.parse(msg);
               $('#viewkomentar312').val(buku[0]['komentar']);
               $('#view312info').val(buku[0]['masukan']);
-              $('#view3121').val(buku[0]['nilai1']);
-              $('#view3122').val(buku[0]['nilai2']);
-              $('#view312rasio').val(buku[0]['nilai3']);
+              $('#view312').val(buku[0]['nilai1']);
               $('#view312nilai').val(buku[0]['skorakhir']);
           });
 
@@ -13898,7 +19150,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3bd3/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -13914,6 +19166,29 @@
           });
 
     });
+
+    // $('#del').click(function() {
+    //     var delete_url = $(this).attr('data-url');
+    //     swal({
+    //         title: "Are you sure?",
+    //         text: "You will not be able to recover this imaginary file!",
+    //         type: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#DD6B55",
+    //         confirmButtonText: "Yes, delete it!",
+    //         cancelButtonText: "No, cancel plx!",
+    //         closeOnConfirm: false,
+    //         closeOnCancel: false
+    //     }, function (isConfirm) {
+    //         if (isConfirm) {
+    //             swal("Deleted!", "Your imaginary file has been deleted.", "success");
+    //             location.reload();
+    //             window.location.href = delete_url;
+    //         } else {
+    //             swal("Cancelled", "Your imaginary file is safe :)", "error");
+    //         }
+    //     });
+    // });
 
 
 
@@ -13957,7 +19232,7 @@ function printContent(el){
 
   function deledok(x){
     var butir = "<?php echo $this->uri->segment(2, 0)?>";
-    var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bd3/destroydok/"+x+"/"+butir;
+    var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroydok/"+x+"/"+butir;
         swal({
             title: "Are you sure?",
             text: "You will not be able to recover this imaginary file!",
@@ -13981,7 +19256,7 @@ function printContent(el){
 
   function deletabelbutir(x){
     var butir = "<?php echo $this->uri->segment(2, 0)?>";
-    var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bd3/deletabelbutir/"+x+"/"+butir;
+    var delete_url = "<?php echo base_url(); ?>index.php/C_isian/deletabelbutir/"+x+"/"+butir;
         swal({
             title: "Are you sure?",
             text: "You will not be able to recover this imaginary file!",
@@ -14006,17 +19281,17 @@ function printContent(el){
   function deleisi(x){
     var borang = "<?php echo $this->uri->segment(2, 0)?>";
     if ((borang==1)) {
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bd3/destroyisian4kolom/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolom/"+x+"/"+borang;
     } else if ((borang==2) || (borang==3) || (borang==4) || (borang==5) || (borang==6) || (borang==7) || (borang==24) || (borang==25) || (borang==26) || (borang==27) || (borang==28)){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bd3/destroyisian1kolom/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian1kolom/"+x+"/"+borang;
     } else if (borang==8){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bd3/destroyisian12kolom/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian12kolom/"+x+"/"+borang;
     } else if (borang==9){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bd3/destroyisian5kolom/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian5kolom/"+x+"/"+borang;
     }else if(borang==15){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bd3/destroyisian4kolomsatupersatu/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolomsatupersatu/"+x+"/"+borang;
     }else{
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3bd3/destroyisian1kolom/"+x+"/"+borang;
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian1kolom/"+x+"/"+borang;
     }
     
         swal({
@@ -14064,6 +19339,70 @@ function printContent(el){
         });
   }
 
+  function errorinput(){
+    isi1 = document.getElementById('k3_311').value;
+    isi2 = document.getElementById('k4_311').value;
+    isi3 = document.getElementById('k2_311').value;
+    nil1 = parseInt(isi1);
+    nil2 = parseInt(isi2);
+    nil3 = parseInt(isi3);
+    hasil = nil1 + nil2;
+    hasil1 = nil3 + nil1;
+    if (nil2 > nil1) {
+        swal("Error", "Jumlah Mahasiswa Baru Reguler Bukan Transfer Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi", "error");
+    }
+
+    if (nil1 > nil3) {
+        swal("Error", "Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Ikut Seleksi", "error");
+    }
+  }
+
+  function errorinputikutseleksi(){
+    isi1 = document.getElementById('k2_31').value;
+    isi2 = document.getElementById('k3_31').value;
+    nil1 = parseInt(isi1);
+    nil2 = parseInt(isi2);
+    hasil = nil1 + nil2;
+    if (nil2 > nil1) {
+        swal("Error", "Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Ikut Seleksi", "error");
+    }
+  }
+
+  function errorinputkoma(){
+    isi1 = document.getElementById('k10_311').value;
+    isi2 = document.getElementById('k11_311').value;
+    isi3 = document.getElementById('k12_311').value;
+    isi4 = document.getElementById('k13_311').value;
+    isi5 = document.getElementById('k14_311').value;
+    isi6 = document.getElementById('k15_311').value;
+    nil1 = parseFloat(isi1);
+    nil2 = parseFloat(isi2);
+    nil3 = parseFloat(isi3);
+    nil4 = parseFloat(isi4);
+    nil5 = parseFloat(isi5);
+    nil6 = parseFloat(isi6);
+    desimal1 = nil1.toFixed(2);
+    desimal2 = nil2.toFixed(2);
+    desimal3 = nil3.toFixed(2);
+    desimal4 = nil4.toFixed(2);
+    desimal5 = nil5.toFixed(2);
+    desimal6 = nil6.toFixed(2);
+    cek1 = isi1.search(',');
+    cek2 = isi2.search(',');
+    cek3 = isi3.search(',');
+    if ((cek1 > 0) || (cek2 > 0) || (cek3 > 0)) {
+        swal("Error", "Tidak Boleh Memasukkan Koma", "error");
+    }
+
+    if ((desimal1 > 2.75) && (desimal4 > 0)) {
+        swal("Error", "Persentase Lulusan Reguler dengan IPK < 2.75 tidak sesuai dengan Minimal IPK Lulusan Reguler", "error");
+    }
+
+    if ((desimal3 < 3.50) && (desimal6 > 0)) {
+        swal("Error", "Persentase Lulusan Reguler dengan IPK > 3.50 tidak sesuai dengan Maksimal IPK Lulusan Reguler", "error");
+    }
+  }
+
   function uploadbukti(x) {
     var borang = "<?php echo $this->uri->segment(2, 0)?>";
     var upload_url = "<?php echo base_url(); ?>index.php/C_uploadisi/uploadbukti/"+x+"/"+borang;
@@ -14083,7 +19422,7 @@ function printContent(el){
               }
         }
 
-        function cekjumlah111(){
+        function cekjumlah11a(){
               var txt1 = document.getElementById('11a1').value;
               var txt2 = document.getElementById('11a2').value;
               var txt3 = document.getElementById('11a3').value;
@@ -14096,13 +19435,15 @@ function printContent(el){
                   }
         }
 
-        function cekjumlah112(){
-              var txt1 = document.getElementById('112').value;
-              var result = ((parseFloat(txt1)));
+        function cekjumlah11b(){
+              var txt1 = document.getElementById('11b1').value;
+              var txt2 = document.getElementById('11b2').value;
+              var result = ((parseFloat(txt1) + parseFloat(txt2))/2);
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('112nilai').value = desimalnya;
-              }
+                     document.getElementById('11bskor').value = desimalnya;
+                     document.getElementById('11bnilai').value = desimalnya;
+                  }
         }
 
         function cekjumlah12(){
@@ -14150,36 +19491,71 @@ function printContent(el){
               }
         }
 
-        function cekjumlah251(){
-              var txt1 = document.getElementById('251').value;
+        function cekjumlah25(){
+              var txt1 = document.getElementById('25').value;
               var result = ((parseFloat(txt1)));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('251nilai').value = desimalnya;
+                     document.getElementById('25nilai').value = desimalnya;
               }
         }
 
-        function cekjumlah252(){
-              var txt1 = document.getElementById('252').value;
+        function cekjumlah26(){
+              var txt1 = document.getElementById('26').value;
               var result = ((parseFloat(txt1)));
               var desimalnya = result.toFixed(2);
               if (!isNaN(result)) {
-                     document.getElementById('252nilai').value = desimalnya;
+                     document.getElementById('26nilai').value = desimalnya;
               }
         }
 
-        function cekjumlah311(){
-              var txt1 = document.getElementById('311').value;
-              var result = ((parseFloat(txt1)));
+        function cekjumlah311a(){
+              var txt1 = document.getElementById('311a1').value;
+              var txt2 = document.getElementById('311a2').value;
+              var result = (parseFloat(txt1) / parseFloat(txt2));
               var desimalnya = result.toFixed(2);
-              if (!isNaN(result)) {
-                     document.getElementById('311nilai').value = desimalnya;
+              var nilainya = 0;
+              if (result>=4) {
+                nilainya = 4;
+              }else {
+                nilainya = ((3+desimalnya)/2);
               }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Jumlah calon yang ikut seleksi = '.concat(txt1);
+              var str2 = ', daya tampung PS = '.concat(txt2);
+              var str3 = ', Rasio Calon Mahasiswa yang ikut seleksi terhadap daya tampung = '.concat(desimalnya);
+              if (!isNaN(result)) {
+                     document.getElementById('311arasio').value = desimalnya;
+                     document.getElementById('311anilai').value = hasilnya;
+                     document.getElementById('311ainfo').value = str1.concat(str2,str3);
+                  }
         }
 
-        function cekjumlah312(){
-              var txt1 = document.getElementById('3121').value;
-              var txt2 = document.getElementById('3122').value;
+        function cekjumlah311b(){
+              var txt1 = document.getElementById('311b1').value;
+              var txt2 = document.getElementById('311b2').value;
+              var result = (parseFloat(txt1) / parseFloat(txt2));
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (result>=95) {
+                nilainya = 4;
+              }else {
+                nilainya = ((40*desimalnya-10)/7);
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'Rasio mahasiswa baru reguler yang melakukan registrasi : calon mahasiswa baru reguler yang lulus seleksi = '.concat(txt1);
+              var str2 = ' / '.concat(txt2);
+              var str3 = ' = '.concat(desimalnya);
+              if (!isNaN(result)) {
+                     document.getElementById('311brasio').value = desimalnya;
+                     document.getElementById('311bnilai').value = hasilnya;
+                     document.getElementById('311binfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah311c(){
+              var txt1 = document.getElementById('311c1').value;
+              var txt2 = document.getElementById('311c2').value;
               var result = (parseFloat(txt1) / parseFloat(txt2));
               var desimalnya = result.toFixed(2);
               var nilainya = 0;
@@ -14193,9 +19569,37 @@ function printContent(el){
               var str2 = ' / '.concat(txt2);
               var str3 = ' = '.concat(desimalnya);
               if (!isNaN(result)) {
-                     document.getElementById('312rasio').value = desimalnya;
-                     document.getElementById('312nilai').value = hasilnya;
-                     document.getElementById('312info').value = str1.concat(str2,str3);
+                     document.getElementById('311crasio').value = desimalnya;
+                     document.getElementById('311cnilai').value = hasilnya;
+                     document.getElementById('311cinfo').value = str1.concat(str2,str3);
+                  }
+        }
+
+        function cekjumlah311d(){
+              var txt1 = document.getElementById('311d1').value;
+              var txt2 = document.getElementById('311d2').value;
+              var result = (parseFloat(txt1) / parseFloat(txt2));
+              var desimalnya = result.toFixed(2);
+              var nilainya = 0;
+              if (desimalnya>=0) {
+                nilainya = 4;
+              }else {
+                nilainya = 4;
+              }
+              var hasilnya = nilainya.toFixed(2);
+              var str1 = 'rata-rata IPK Makasiswa = '.concat(txt1);
+              if (!isNaN(result)) {
+                     document.getElementById('311dnilai').value = hasilnya;
+                     document.getElementById('311dinfo').value = str1;
+                  }
+        }
+
+        function cekjumlah312(){
+              var txt1 = document.getElementById('312').value;
+              var result = (parseFloat(txt1));
+              var desimalnya = result.toFixed(2);
+              if (!isNaN(result)) {
+                     document.getElementById('312nilai').value = desimalnya;
                   }
         }
 
@@ -15347,8 +20751,8 @@ function printContent(el){
 
   function infoPamong(){
     swal({
-        title: "Info <small>dari </small>Tata Pamong",
-        text: "Tata pamong adalah suatu sistem yang dapat menjadikan kepemimpinan, sistem pengelolaan dan penjaminan mutu berjalan secara efektif di dalam universitas/institusi yang mengelola program studi.  Hal-hal yang menjadi fokus di dalam tata pamong termasuk bagaimana kebijakan dan strategi disusun sedemikian rupa sehingga memungkinkan terpilihnya pemimpin dan pengelola yang kredibel dan sistem penyelenggaraan program studi secara kredibel, transparan, akuntabel, bertanggung jawab dan menerapkan prinsip-prinsip keadilan.</br> Organisasi dan sistem tata pamong yang baik (good governance) mencerminkan kredibilitas, transparansi, akuntabilitas, tanggungjawab dan keadilan unit pengelola program studi diploma dalam mengelola program studi.</b>",
+        title: "Info <small>dari </small>Sistem Tata Pamong",
+        text: "Sistem tata pamong berjalan secara efektif melalui mekanisme yang disepakati bersama, serta dapat memelihara dan mengakomodasi semua unsur, fungsi, dan peran dalam program studi. Tata pamong didukung dengan budaya organisasi yang dicerminkan dengan ada dan tegaknya aturan, tatacara pemilihan pimpinan, etika dosen, etika mahasiswa, etika tenaga kependidikan, sistem penghargaan dan sanksi serta pedoman dan prosedur pelayanan (administrasi, perpustakaan, laboratorium, dan studio). Sistem tata pamong (input, proses, output dan outcome serta lingkungan eksternal yang menjamin terlaksananya tata pamong yang baik) harus diformulasikan, disosialisasikan, dilaksanakan,  dipantau dan dievaluasi dengan peraturan dan prosedur yang jelas.</br></br> <b>Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang kredibel, transparan, akuntabel, bertanggung jawab dan adil.</b>",
         html: true
     });
   }
@@ -15364,15 +20768,7 @@ function printContent(el){
   function infoKepemimpinan(){
     swal({
         title: "Info <small>dari </small>Kepemimpinan",
-        text: "Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat. Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistis, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi. Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.  Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.  Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.  Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.</b>",
-        html: true
-    });
-  }
-
-  function infoStruktur(){
-    swal({
-        title: "Info <small>dari </small>Struktur Organisasi, Koordinasi dan Cara Kerja Unit Pengelola Program Studi Diploma",
-        text: "Gambarkan struktur organisasi unit pengelola program studi diploma serta tugas/fungsi dari tiap unit yang ada.</b>",
+        text: "Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat. Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistik, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi. Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.  Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.  Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.  Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.</br></br> <b>Jelaskan pola kepemimpinan dalam Program Studi.</b>",
         html: true
     });
   }
@@ -15380,7 +20776,15 @@ function printContent(el){
   function infoPengelolaan(){
     swal({
         title: "Info <small>dari </small>Sistem Pengelolaan",
-        text: "<b>Sistem pengelolaan fungsional dan operasional program studi mencakup perencanaan, pengorganisasian, pengembangan staf, pengawasan, pengarahan, representasi, dan penganggaran.</b>",
+        text: "Sistem pengelolaan fungsional dan operasional program studi mencakup planning, organizing, staffing, leading, controlling dalam kegiatan  internal maupun eksternal.</br></br><b>Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</b>",
+        html: true
+    });
+  }
+
+  function infoMutu(){
+    swal({
+        title: "Info <small>dari </small>Penjaminan Mutu",
+        text: "<b>Bagaimanakah pelaksanaan penjaminan mutu pada Program Studi? Jelaskan.</b>",
         html: true
     });
   }
