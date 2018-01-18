@@ -46,6 +46,28 @@ class M_butir extends CI_Model {
 
                 $this->db->insert('log', $data);
         }
+
+        public function insert_entry_buku()
+        {
+                $data = array(
+                        'butir' => $this->input->post('butir'),
+                        'bakumutu' => $this->input->post('bakumutu'),
+                        // 'penjelasan' => $this->input->post('penjelasan'),
+                        'keterangan' => $this->input->post('keterangan'),
+                        'id_borang' => $this->input->post('id_borang'),
+                        'created_at'=> date('Y-m-d H:i:s'),
+                );
+
+                $this->db->insert('butir_buku', $data);
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Butir  ".$this->input->post('butir'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
         public function buatbutir3AS1($id){
             $this->db->query("INSERT INTO `butir` (`butir`, `bakumutu`, `penjelasan`, `keterangan`, `created_at`, `updated_at`, `id_borang`) VALUES
 ('1.1.a', 'Kejelasan dan kerealistikan visi, misi, tujuan, dan sasaran Program Studi', '', 'Nilai 4 - Memiliki visi, misi, tujuan, dan sasaran yang sangat jelas dan sangat realistik', NOW(), NOW(), ".$id."),
@@ -622,11 +644,40 @@ class M_butir extends CI_Model {
                 $this->db->insert('log', $data);
         }
 
+        public function update_entry_buku()
+        {
+                $data = array(
+                        'butir' => $this->input->post('butir'),
+                        'bakumutu' => $this->input->post('bakumutu'),
+                        // 'penjelasan' => $this->input->post('penjelasan'),
+                        'keterangan' => $this->input->post('keterangan'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                $this->db->update('butir_buku', $data, array('id' => $_POST['idButir']));
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Butir : ".$this->input->post('butir')." dengan ID : ".$this->input->post('idButir'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+                $this->db->insert('log', $data);
+        }
+
         public function find($column,$id){
             return $this->db->select("*")
               ->from('butir')
               ->where($column, $id)
               ->order_by('id', 'DESC')
+              ->get()
+              ->result_array();
+
+        }
+
+        public function find_buku($column,$id){
+            return $this->db->select("*")
+              ->from('butir_buku')
+              ->where($column, $id)
+              ->order_by('id', 'ASC')
               ->get()
               ->result_array();
 
@@ -695,9 +746,36 @@ class M_butir extends CI_Model {
             return $this->db->affected_rows();
         }
 
+        public function delete_buku($column,$id){
+
+            $this->db->delete('butir_buku', array($column => $id));
+            $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "menghapus Butir dengan ID ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                    );
+            $this->db->insert('log', $data);
+            return $this->db->affected_rows();
+        }
+
         public function deleteallbutir($column,$id){
 
             $this->db->delete('butir', array($column => $id));
+            $this->db->delete('dokumenpendukung', array($column => $id));
+            $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "menghapus Semua Butir dengan ID Borang = ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                    );
+            $this->db->insert('log', $data);
+            $this->db->query('ALTER TABLE butir AUTO_INCREMENT 0');
+            $this->db->query('ALTER TABLE dokumenpendukung AUTO_INCREMENT 0');
+            return $this->db->affected_rows();
+        }
+
+        public function deleteallbutir_buku($column,$id){
+
+            $this->db->delete('butir_buku', array($column => $id));
             $this->db->delete('dokumenpendukung', array($column => $id));
             $data = array(
                         'user'=> $_SESSION['name'],

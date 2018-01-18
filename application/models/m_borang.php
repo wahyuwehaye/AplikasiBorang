@@ -137,6 +137,11 @@ class M_borang extends CI_Model {
               return $query->result_array();
         }
 
+        public function find_buku($column,$id){
+              $query = $this->db->get_where('borang', array($column => $id));
+              return $query->result_array();
+        }
+
         public function getidfakultas($id){
             return $this->db->select("fakultas.id, fakultas.nama")
               ->from('fakultas')

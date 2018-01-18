@@ -127,6 +127,44 @@ class C_dokumen extends CI_Controller {
 		echo json_encode(array("status" => TRUE));
 	}
 
+	public function uploadunit()
+	{
+		$data = array(
+				'nama' => $this->input->post('nama'),
+				'ket' => $this->input->post('ket'),
+				'pemilik' => $_SESSION['name'],
+				'created_at' => date('Y-m-d H:i:s'),
+				'updated_at' => date('Y-m-d H:i:s'),
+				// 'filename' => $this->input->post('filename'),
+			);
+
+		// if($this->input->post('remove_filename')) // if remove filename checked
+		// {
+		// 	if(file_exists('bukti/'.$this->input->post('remove_filename')) && $this->input->post('remove_filename'))
+		// 		unlink('bukti/'.$this->input->post('remove_filename'));
+		// 	$data['filename'] = '';
+		// }
+
+		if(!empty($_FILES['filename']['name']))
+		{
+			$upload = $this->_do_uploadunit();
+
+			$data['filename'] = $upload;
+		}
+
+		$this->M_dokumen->uploadunit($data);
+
+		$data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Sudah Mengupload File dengan nama : ". $_FILES['filename']['name'],
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+        $this->db->insert('log', $data);
+
+		redirect('/uploadunit/');
+		echo json_encode(array("status" => TRUE));
+	}
+
 	public function updatebuktidariisian(){
 		$data = array(
 				'status' => 'Sudak OK',
@@ -207,6 +245,42 @@ class C_dokumen extends CI_Controller {
 		redirect('/lampiran/'.$_POST['direct']);
 		echo json_encode(array("status" => TRUE));
 	}
+
+	// public function uploadunit(){
+	// 	$this->load->library('form_validation');
+ //        $this->load->model('M_butir');
+ //        $this->load->model('M_borang');
+ //        $this->load->model('M_uploadisi');
+ //        $config['upload_path']   = FCPATH.'/dokumen/';
+ //        $config['allowed_types'] = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip';
+ //        $this->load->library('upload',$config);
+
+ //        // input ke tabel dokumen
+ //        if($this->upload->do_upload('file')){
+ //          $data = array(
+ //            'nama' => $this->input->post('nama'),
+ //            'filename' => $this->upload->data('file_name'),
+ //            'ket' => $this->input->post('ket'),
+ //            'pemilik' => $this->input->post('pemilik'),
+ //            'created_at'=> date('Y-m-d H:i:s'),
+ //            'updated_at'=> date('Y-m-d H:i:s'),
+ //            );
+ //          $this->db->insert('dokumen', $data);
+
+ //          // membuat history dari dokumen
+ //          $data2 = array(
+ //                'user'=> $_SESSION['name'],
+ //                'action' => "Menambahkan Dokumen dengan nama : ".$this->input->post('nama'),
+ //                'created_at'=> date('Y-m-d H:i:s')
+ //          );
+
+ //          $this->db->insert('log', $data2);
+ //        }
+
+ //        // membuat notify dan redirect
+ //        $_SESSION['suksesinput'] = '';
+ //        redirect('uploadunit');
+	// }
 
 	public function deletebukti($id,$butir)
 	{
@@ -304,6 +378,28 @@ class C_dokumen extends CI_Controller {
 	private function _do_upload()
 	{
 		$config['upload_path']          = 'bukti/';
+        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
+        $config['max_size']             = 0; //set max size allowed in Kilobyte
+        $config['max_width']            = 0; // set max width image allowed
+        $config['max_height']           = 0; // set max height allowed
+        $config['file_name']            = $_FILES['filename']['name']; //just milisecond timestamp fot unique name
+
+        $this->load->library('upload', $config);
+
+        if(!$this->upload->do_upload('filename')) //upload and validate
+        {
+            $data['inputerror'][] = 'filename';
+			$data['error_string'][] = 'Upload error: '.$this->upload->display_errors('',''); //show ajax error
+			$data['status'] = FALSE;
+			echo json_encode($data);
+			exit();
+		}
+		return $this->upload->data('file_name');
+	}
+
+	private function _do_uploadunit()
+	{
+		$config['upload_path']          = 'dokumen/';
         $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
         $config['max_size']             = 0; //set max size allowed in Kilobyte
         $config['max_width']            = 0; // set max width image allowed

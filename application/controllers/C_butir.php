@@ -49,6 +49,25 @@ class C_butir extends CI_Controller {
 		}
 	}
 
+	public function butir_buku()
+	{
+		if(isset($_SESSION['logged_in']))
+		{
+			$this->load->library('form_validation');
+
+			$id=$this->uri->segment(2, 0);
+            $data['active_menu']='borang';
+    		$this->load->view('template/header',$data);
+			$data['buku']=$this->M_borang->find_buku('id',$id);
+			$data['butir']=$this->M_butir->find_buku('id_borang',$id);
+			$data['getdata']=$this->M_butir->join3tabel($id);
+			$this->load->view('butirbuku',$data);
+		}else{
+			redirect('Home/pages');
+			//echo $_SESSION['logged_in']." asdfasdf";
+		}
+	}
+
 	public function lampiran(){
 		if(isset($_SESSION['logged_in']))
 		{
@@ -107,7 +126,42 @@ class C_butir extends CI_Controller {
         // else
         // {
         	$this->M_butir->insert_entry();
-        	redirect('butir/'.$_POST['id_borang']);
+        	redirect('butirbuku/'.$_POST['id_borang']);
+        	/*
+        	$data['buku']=$this->M_borang->find('id',$id);
+			$data['butir']=$this->M_butir->find('id_borang',$id);
+            $this->load->view('header');
+			$this->load->view('content-butir',$data);
+			$this->load->view('footer');
+			*/
+        // }
+
+	}
+
+	public function store_buku(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$id=$_POST['id_borang'];
+       	//form validation
+		// $this->form_validation->set_rules('butir', 'Butir', 'required');
+		// $this->form_validation->set_rules('bakumutu', 'Baku Mutu', 'required');
+		// $this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
+		// $this->form_validation->set_message('required', 'Field {field} wajib diisi.');
+        // this->form_validation->run() == FALSE)
+        // {
+        //
+        // 	$data['buku']=$this->M_borang->find('id',$id);
+		// 	$data['butir']=$this->M_butir->find('id_borang',$id);
+        //     $this->load->view('header');
+		// 	$this->load->view('content-butir',$data);
+		// 	$this->load->view('footer');
+        // }
+        // else
+        // {
+        	$this->M_butir->insert_entry_buku();
+        	redirect('butirbuku/'.$_POST['id_borang']);
         	/*
         	$data['buku']=$this->M_borang->find('id',$id);
 			$data['butir']=$this->M_butir->find('id_borang',$id);
@@ -121,20 +175,20 @@ class C_butir extends CI_Controller {
 
 	public function buatbutir3AS1($id,$borang){
 		$this->M_butir->buatbutir3AS1($id);
-		redirect('butir/'.$borang);
+		redirect('butirbuku/'.$borang);
 	}
 
 	public function buatbutir3BS1($id,$borang){
 		$this->M_butir->buatbutir3BS1($id);
-		redirect('butir/'.$borang);
+		redirect('butirbuku/'.$borang);
 	}
 	public function buatbutir3BD3($id,$borang){
 		$this->M_butir->buatbutir3BD3($id);
-		redirect('butir/'.$borang);
+		redirect('butirbuku/'.$borang);
 	}
 	public function buatbutir3AD3($id,$borang){
 		$this->M_butir->buatbutir3AD3($id);
-		redirect('butir/'.$borang);
+		redirect('butirbuku/'.$borang);
 	}
 
 	public function buatlampiran3AS1($id,$borang){
@@ -155,6 +209,43 @@ class C_butir extends CI_Controller {
 		redirect('lampiran/'.$borang);
 	}
 
+	// buku
+	public function buatbutir3AS1_buku($id,$borang){
+		$this->M_butir->buatbutir3AS1_buku($id);
+		redirect('butirbuku/'.$borang);
+	}
+
+	public function buatbutir3BS1_buku($id,$borang){
+		$this->M_butir->buatbutir3BS1_buku($id);
+		redirect('butirbuku/'.$borang);
+	}
+	public function buatbutir3BD3_buku($id,$borang){
+		$this->M_butir->buatbutir3BD3_buku($id);
+		redirect('butirbuku/'.$borang);
+	}
+	public function buatbutir3AD3_buku($id,$borang){
+		$this->M_butir->buatbutir3AD3_buku($id);
+		redirect('butirbuku/'.$borang);
+	}
+
+	public function buatlampiran3AS1_buku($id,$borang){
+		$this->M_butir->buatlampiran3AS1_buku($id);
+		redirect('lampiran/'.$borang);
+	}
+
+	public function buatlampiran3BS1_buku($id,$borang){
+		$this->M_butir->buatlampiran3BS1_buku($id);
+		redirect('lampiran/'.$borang);
+	}
+	public function buatlampiran3BD3_buku($id,$borang){
+		$this->M_butir->buatlampiran3BD3_buku($id);
+		redirect('lampiran/'.$borang);
+	}
+	public function buatlampiran3AD3_buku($id,$borang){
+		$this->M_butir->buatlampiran3AD3_buku($id);
+		redirect('lampiran/'.$borang);
+	}
+
 	public function destroy($id,$borang){
 		// $id=$_POST['id'];
         // $idbut=3;
@@ -165,8 +256,8 @@ class C_butir extends CI_Controller {
 		}else{
 			echo json_encode('failed');
 		}
-        // redirect('butir/'.$idbut);
-        redirect('butir/'.$borang);
+        // redirect('butirbuku/'.$idbut);
+        redirect('butirbuku/'.$borang);
 	}
 
 	public function destroyallbutir($id,$borang){
@@ -177,7 +268,7 @@ class C_butir extends CI_Controller {
 		}else{
 			echo json_encode('failed');
 		}
-        redirect('butir/'.$borang);
+        redirect('butirbuku/'.$borang);
 	}
 
 	public function update(){
@@ -204,9 +295,66 @@ class C_butir extends CI_Controller {
         // {
         	$this->M_butir->update_entry();
 			// $id=$_POST['id_borang'];
-			// $url="/butir/".$id;
+			// $url="/butirbuku/".$id;
 			// redirect($url);
-			redirect('butir/'.$_POST['id_borang']);
+			redirect('butirbuku/'.$_POST['id_borang']);
+        // }
+
+	}
+
+	// buku
+	public function destroy_buku($id,$borang){
+		// $id=$_POST['id'];
+        // $idbut=3;
+		$this->load->model('M_butir');
+		$result=$this->M_butir->delete_buku('id',$id);
+		if($result > 0){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
+        // redirect('butirbuku/'.$idbut);
+        redirect('butirbuku/'.$borang);
+	}
+
+	public function destroyallbutir_buku($id,$borang){
+		$this->load->model('M_butir');
+		$result=$this->M_butir->deleteallbutir_buku('id_borang',$id);
+		if($result > 0){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
+        redirect('butirbuku/'.$borang);
+	}
+
+	public function update_buku(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$id=$_POST['id_borang'];
+       	//form validation
+		// $this->form_validation->set_rules('butir', 'Butir', 'required');
+		// $this->form_validation->set_rules('bakumutu', 'Baku Mutu', 'required');
+		// $this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
+		// $this->form_validation->set_message('required', 'Field {field} wajib diisi.');
+        // this->form_validation->run() == FALSE)
+        // {
+        //
+        // 	$data['buku']=$this->M_borang->find('id',$id);
+		// 	$data['butir']=$this->M_butir->find('id_borang',$id);
+        //     $this->load->view('header');
+		// 	$this->load->view('content-butir',$data);
+		// 	$this->load->view('footer');
+        // }
+        // else
+        // {
+        	$this->M_butir->update_entry_buku();
+			// $id=$_POST['id_borang'];
+			// $url="/butirbuku/".$id;
+			// redirect($url);
+			redirect('butirbuku/'.$_POST['id_borang']);
         // }
 
 	}
@@ -215,6 +363,13 @@ class C_butir extends CI_Controller {
 		$id=$_POST['id'];
 		$this->load->model('M_butir');
 		$data=$this->M_butir->find('id',$id);
+		echo json_encode($data);
+	}
+
+	public function find_buku(){
+		$id=$_POST['id'];
+		$this->load->model('M_butir');
+		$data=$this->M_butir->find_buku('id',$id);
 		echo json_encode($data);
 	}
 }

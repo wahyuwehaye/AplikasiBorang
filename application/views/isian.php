@@ -2343,325 +2343,622 @@
                             <?php
                                 }
                         }elseif (($getbutir=='3.1.4.a') || ($getbutir=='3.1.4.b')) {
+                            $getidbutir = '';
+                            $querycariidbutir = $CI->db->query('select * from butir where butir="3.1.4.a" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir->result() as $row){
+                                $getidbutir = $row->id;
+                                break;
+                            }
                             if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
+                            // for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian314">
-                        <input type="hidden" name="id314" id="id314" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir314" id="id_butir314" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi314">
+                        <input type="hidden" name="314id_butir" id="314id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir314" id="id_butir314" value="<?php echo $getidbutir; ?>" />
+                        <h2 class="card-inside-title">Mahasiswa</h2>
+                        <h2 class="card-inside-title">Data jumlah mahasiswa reguler tujuh tahun terakhir</h2>
+        <!-- Tabel Edit -->
+                        <div class="header">
+                            <h2>
+                                Edit Tabel Butir <?php echo $butir[0]['butir'] ?>
+                                <small><?php echo $butir[0]['bakumutu'] ?></small>
+                            </h2>
                         </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
-                        </div>
+                        <div class="body table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable" id="table313">
+                                    <thead>
+                                        <tr style="height: 35px;">
+                                            <td style="width: 50px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2"><p><strong>No</strong></p></td>
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2"><p><strong>Tahun Masuk</strong></p></td>
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 35px;" colspan="7"><p><strong>Jumlah Mahasiswa Reguler per Angkatan pada Tahun*</strong></p></td>
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2"><p><strong>Jumlah Lulusan s.d. TS</strong></p><p><strong>(dari Mahasiswa Reguler)</strong></p></td>
+                                        </tr>
+                                        <tr style="height: 4px;">
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;"><p><strong>TS-6</strong></p></td>
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;"><p><strong>TS-5</strong></p></td>
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;"><p><strong>TS-4</strong></p></td>
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;"><p><strong>TS-3</strong></p></td>
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;"><p><strong>TS-2</strong></p></td>
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;"><p><strong>TS-1</strong></p></td>
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;"><p><strong>TS</strong></p></td>
+                                        </tr>
+                                        <tr style="height: 35px;">
+                                            <td style="width: 102px; text-align: center; height: 35px;"><p><strong>(1)</strong></p></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><strong>(2)</strong></p></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><strong>(3)</strong></p></td>
+                                            <td style="width: 93px; text-align: center; height: 35px;"><p><strong>(4)</strong></p></td>
+                                            <td style="width: 93px; text-align: center; height: 35px;"><p><strong>(5)</strong></p></td>
+                                            <td style="width: 100px; text-align: center; height: 35px;"><p><strong>(6)</strong></p></td>
+                                            <td style="width: 100px; text-align: center; height: 35px;"><p><strong>(7)</strong></p></td>
+                                            <td style="width: 109px; text-align: center; height: 35px;"><p><strong>(8)</strong></p></td>
+                                            <td style="width: 281px; text-align: center; height: 35px;"><p><strong>(9)</strong></p></td>
+                                            <td style="width: 281px; text-align: center; height: 35px;"><p><strong>(10)</strong></p></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                        $jum1 = 0;
+                                        $jum2 = 0;
+                                        $jum3 = 0;
+                                        $jum4 = 0;
+                                        $jum5 = 0;
+                                        $jum6 = 0;
+                                        $jum7 = 0;
+                                        $id1 = 0;
+                                        $id2 = 0;
+                                        $id3 = 0;
+                                        $id4 = 0;
+                                        $id5 = 0;
+                                        $id6 = 0;
+                                        $id7 = 0;
+                                        $nil = 0;
+                                        $diloop = count($dataisian);
+                                        $sisacol = 7 - count($dataisian);
+                                        $diloop = $diloop - 1;
+                                        $nil = $nil + 1;
+                                    ?>
+                                        <tr style="height: 35px;">
+                                            <td style="width: 50px; text-align: center;"><p>1. </p>
+                                            </td>
+                                            <td style="width: 102px; text-align: center; height: 35px;"><p>TS-6</p></td>
+                                            <?php
+                                            for($b=0;$b<$sisacol;$b++){
+                                                if ($b==0) {
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;(a)=</em></p></td>
+                                                    <?php
+                                                }else if ($b==6) {
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;(b)=</em></p></td>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
+                                                    <?php
+                                                }
+                                            ?>
+                                            
+                                            <?php }
+                                            for($a=0;$a<count($dataisian);$a++){
+                                                $jum1 = $jum1 + $dataisian[$a]['kolom1'];
+                                                if (!empty($dataisian[0]['id'])){
+                                                    $id1 = $dataisian[0]['id'];
+                                                }else{
+                                                    $id1 = 0;
+                                                }
+
+                                                if (($a==0) && (count($dataisian)==7)) {
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>(a)=<?php echo $dataisian[$a]['kolom1'] ?></em></p></td>
+                                                    <?php
+                                                }else if (($a==0) && (count($dataisian)==1) || ($a==1) && (count($dataisian)==2) || ($a==2) && (count($dataisian)==3) || ($a==3) && (count($dataisian)==4) || ($a==4) && (count($dataisian)==5) || ($a==5) && (count($dataisian)==6) || (($a==6) && (count($dataisian)==7))) {
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>(b)=<?php echo $dataisian[$a]['kolom1'] ?></em></p></td>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom1'] ?></em></p></td>
+                                                    <?php
+                                                }
+                                            }?>
+                                            <td style="width: 281px; text-align: center; height: 35px;"><p><em>(c)=<?php echo $jum1; ?></em></p></td>
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                            <td style="width: 50px; text-align: center;"><p>2. </p></td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><p>TS-5</p></td>
+                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <?php
+                                            for($b=0;$b<($sisacol);$b++){
+                                                if ($b<1) {
+                                                    ?>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
+                                                    <?php
+                                                }
+                                            }
+                                            for($a=0;$a<(count($dataisian));$a++){
+                                                $jum2 = $jum2 + $dataisian[$a]['kolom2'];
+                                                if (!empty($dataisian[1]['id'])){
+                                                    $id2 = $dataisian[1]['id'];
+                                                }else{
+                                                    $id2 = 0;
+                                                }
+
+                                                if ((($a<1) && ((count($dataisian)==7)))) {
+                                                    if (($a==0)) {
+                                                        ?>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom2'] ?></em></p></td>
+                                                        <?php
+                                                    }
+                                                }else{
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom2'] ?></em></p></td>
+                                                    <?php
+                                                }
+                                            }?>
+                                            <td style="width: 281px; text-align: center; height: 35px;"><p><em><?php echo $jum2; ?></em></p></td>
+                                            <!-- <td style="width: 92px; text-align: center; height: 36px;"><p><em>&nbsp;</em></p></td>
+                                            <td style="width: 93px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 93px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 109px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 281px; text-align: center; height: 36px;"><p><em>&nbsp;</em></p></td> -->
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                            <td style="width: 50px; text-align: center;"><p>3. </p></td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><p>TS-4</p></td>
+                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <?php
+                                            for($b=0;$b<($sisacol);$b++){
+                                                if ($b<2) {
+                                                    ?>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
+                                                    <?php
+                                                }
+                                            }
+                                            for($a=0;$a<(count($dataisian));$a++){
+                                                $jum3 = $jum3 + $dataisian[$a]['kolom3'];
+                                                if (!empty($dataisian[2]['id'])){
+                                                    $id3 = $dataisian[2]['id'];
+                                                }else{
+                                                    $id3 = 0;
+                                                }
+
+                                                if ((($a<2) && ((count($dataisian)==7) || (count($dataisian)==6)))) {
+                                                    if (($a==0) || (($a==1) && (count($dataisian)>2))) {
+                                                        ?>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom3'] ?></em></p></td>
+                                                        <?php
+                                                    }
+                                                }else{
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom3'] ?></em></p></td>
+                                                    <?php
+                                                }
+                                            }?>
+                                            <td style="width: 281px; text-align: center; height: 35px;"><p><em><?php echo $jum3; ?></em></p></td>
+                                            <!-- td style="width: 93px; text-align: center; height: 36px;"><p><em>&nbsp;</em></p></td>
+                                            <td style="width: 93px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 109px; text-align: center; height: 36px;"><p><em>&nbsp;</em></p></td>
+                                            <td style="width: 281px; text-align: center; height: 36px;"><p><em>&nbsp;</em></p></td> -->
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                            <td style="width: 50px; text-align: center;"><p>4. </p></td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><p>TS-3</p></td>
+                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <?php
+                                            for($b=0;$b<($sisacol);$b++){
+                                                if ($b<3) {
+                                                    ?>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                    <?php
+                                                }else{
+                                                    if ($b==3) {
+                                                        ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;(d) =</em></p></td>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
+                                                        <?php
+                                                    }
+                                                }
+                                            }
+                                            for($a=0;$a<count($dataisian);$a++){
+                                                $jum4 = $jum4 + $dataisian[$a]['kolom4'];
+                                                if (!empty($dataisian[3]['id'])){
+                                                    $id4 = $dataisian[3]['id'];
+                                                }else{
+                                                    $id4 = 0;
+                                                }
+
+                                                if ((($a<3) && ((count($dataisian)==7) || (count($dataisian)==6) || (count($dataisian)==5)))) {
+                                                    if (($a==0) || (($a==1) && (count($dataisian)>2)) || (($a==2) && (count($dataisian)>3))) {
+                                                        ?>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>(d) = <?php echo $dataisian[$a]['kolom4'] ?></em></p></td>
+                                                        <?php
+                                                    }
+                                                }else{
+                                                    if (($a==0) && (count($dataisian)==1) || ($a==1) && (count($dataisian)==2) || ($a==2) && (count($dataisian)==3) || ($a==3) && (count($dataisian)==4) || ($a==4) && (count($dataisian)==5) || ($a==5) && (count($dataisian)==6) || (($a==6) && (count($dataisian)==7))) {
+                                                        ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>(e) = <?php echo $dataisian[$a]['kolom4'] ?></em></p></td>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom4'] ?></em></p></td>
+                                                        <?php
+                                                    }
+                                                }
+                                            }?>
+                                            <td style="width: 281px; text-align: center; height: 35px;"><p><em>(f) = <?php echo $jum4; ?></em></p></td>
+                                            <!-- <td style="width: 93px; text-align: center; height: 36px;"><p><em>(d) =</em></p></td>
+                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 109px; text-align: center; height: 36px;"><p><em>(e) =</em></p></td>
+                                            <td style="width: 281px; text-align: center; height: 36px;"><p><em>(f) =</em></p></td> -->
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                            <td style="width: 50px; text-align: center;"><p>5. </p></td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><p>TS-2</p></td>
+                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <?php
+                                            for($b=0;$b<($sisacol);$b++){
+                                                if ($b<4) {
+                                                    ?>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
+                                                    <?php
+                                                }
+                                            }
+                                            for($a=0;$a<(count($dataisian));$a++){
+                                                $jum5 = $jum5 + $dataisian[$a]['kolom5'];
+                                                if (!empty($dataisian[4]['id'])){
+                                                    $id5 = $dataisian[4]['id'];
+                                                }else{
+                                                    $id5 = 0;
+                                                }
+
+                                                if ((($a<4) && ((count($dataisian)==7) || (count($dataisian)==6) || (count($dataisian)==5) || (count($dataisian)==4)))) {
+                                                    if (($a==0) || (($a==3) && (count($dataisian)>4))) {
+                                                        ?>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom5'] ?></em></p></td>
+                                                        <?php
+                                                    }
+                                                }else{
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom5'] ?></em></p></td>
+                                                    <?php
+                                                }
+                                            }?>
+                                            <!-- <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 109px; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                            <td style="width: 50px; text-align: center;"><p>6. </p></td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><p>TS-1</p></td>
+                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <?php
+                                            for($b=0;$b<($sisacol);$b++){
+                                                if ($b<5) {
+                                                        ?>
+                                                <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
+                                                        <?php
+                                                }
+                                            }
+                                            for($a=0;$a<(count($dataisian));$a++){
+                                                $jum6 = $jum6 + $dataisian[$a]['kolom6'];
+                                                if (!empty($dataisian[5]['id'])){
+                                                    $id6 = $dataisian[5]['id'];
+                                                }else{
+                                                    $id6 = 0;
+                                                }
+                                                
+                                                if ((($a<5) && ((count($dataisian)==7) || (count($dataisian)==6) || (count($dataisian)==5) || (count($dataisian)==4) || (count($dataisian)==3) || (count($dataisian)==2)))) {
+                                                    if (($a==0) || (($a==1) && (count($dataisian)>2)) || (($a==1) && (count($dataisian)>4)) || (($a==1) && (count($dataisian)>4)) || (($a==3) && (count($dataisian)>4)) || (($a==4) && (count($dataisian)>5)) || (($a==5) && (count($dataisian)>6))) {
+                                                        ?>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom6'] ?></em></p></td>
+                                                        <?php
+                                                    }
+                                                }else{
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom6'] ?></em></p></td>
+                                                    <?php
+                                                }
+                                            }?>
+                                            <!-- <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 109px; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                        </tr>
+                                        <tr style="height: 36px;">
+                                            <td style="width: 50px; text-align: center;"><p>7. </p></td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><p>TS</p></td>
+                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <?php
+                                            for($b=0;$b<($sisacol);$b++){
+                                                if ($b<6) {
+                                                        ?>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
+                                                        <?php
+                                                }
+                                            }
+                                            for($a=0;$a<(count($dataisian));$a++){
+                                                $jum7 = $jum7 + $dataisian[$a]['kolom7'];
+                                                if (!empty($dataisian[6]['id'])){
+                                                    $id7 = $dataisian[6]['id'];
+                                                }else{
+                                                    $id7 = 0;
+                                                }
+
+                                                if ((($a<6) && ((count($dataisian)==7) || (count($dataisian)==6) || (count($dataisian)==5) || (count($dataisian)==4) || (count($dataisian)==3) || (count($dataisian)==2)))) {
+                                                    if (($a==0) || (($a==1) && (count($dataisian)>2)) || (($a==2) && (count($dataisian)>3)) || (($a==3) && (count($dataisian)>4)) || (($a==4) && (count($dataisian)>5)) || (($a==5) && (count($dataisian)>6))) {
+                                                        ?>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom7'] ?></em></p></td>
+                                                        <?php
+                                                    }
+                                                }else{
+                                                    ?>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$a]['kolom7'] ?></em></p></td>
+                                                    <?php
+                                                }
+                                            }?>
+                                            <!-- <td style="width: 109px; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                                <p><br />* Tidak memasukkan mahasiswa transfer.</p>
+                                    <p>Catatan&nbsp;: huruf-huruf a, b, c, d, e dan f harus tetap tercantum pada tabel di atas.</p>
+                            </div>
+        <!-- Tutup Tabel Edit -->
                         <h2 class="card-inside-title">Tuliskan data jumlah mahasiswa reguler tujuh tahun terakhir dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_314" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-6 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-5 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-4 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-3 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-2 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-1 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom6_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom7_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <b>Catatan :</b>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <textarea name="kolom8_314" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
                         </div>
-                        <input type="hidden" name="version_no314" id="version_no314" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at314" id="created_at314" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
-                        <?php }
+                        <?php 
+                    // }
                                 }else{
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian/ngisi314">
-                        <input type="hidden" name="id_butir314" id="id_butir314" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="314id_butir" id="314id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir314" id="id_butir314" value="<?php echo $getidbutir; ?>" />
+                        <h2 class="card-inside-title">Mahasiswa</h2>
                         <h2 class="card-inside-title">Tuliskan data jumlah mahasiswa reguler tujuh tahun terakhir dengan mengikuti format tabel berikut:</h2>
                         <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_314" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    <table style="margin-left: auto; margin-right: auto; height: 383px; width: 1083px;" border="1" cellspacing="0" cellpadding="0">
-                                    <tbody>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2">
-                                    <p><strong>Tahun Masuk</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 35px;" colspan="7">
-                                    <p><strong>Jumlah Mahasiswa Reguler per Angkatan pada Tahun*</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2">
-                                    <p><strong>Jumlah Lulusan s.d. TS</strong></p>
-                                    <p><strong>(dari Mahasiswa Reguler)</strong></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 4px;">
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-6</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-5</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-4</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-3</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-2</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS-1</strong></p>
-                                    </td>
-                                    <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;">
-                                    <p><strong>TS</strong></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 102px; text-align: center; height: 35px;">
-                                    <p><strong>(1)</strong></p>
-                                    </td>
-                                    <td style="width: 92px; text-align: center; height: 35px;">
-                                    <p><strong>(1)</strong></p>
-                                    </td>
-                                    <td style="width: 92px; text-align: center; height: 35px;">
-                                    <p><strong>(2)</strong></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 35px;">
-                                    <p><strong>(3)</strong></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 35px;">
-                                    <p><strong>(4)</strong></p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 35px;">
-                                    <p><strong>(5)</strong></p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 35px;">
-                                    <p><strong>(6)</strong></p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 35px;">
-                                    <p><strong>(7)</strong></p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 35px;">
-                                    <p><strong>(8)</strong></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 102px; text-align: center; height: 35px;">
-                                    <p>TS-6</p>
-                                    </td>
-                                    <td style="width: 92px; text-align: center; height: 35px;">
-                                    <p><em>(a)=</em></p>
-                                    </td>
-                                    <td style="width: 92px; text-align: center; height: 35px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 35px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 35px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 35px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 35px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 35px;">
-                                    <p><em>(b)=</em></p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 35px;">
-                                    <p><em>(c)=</em></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS-5</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; text-align: center; height: 36px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 36px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS-4</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 36px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 36px;">
-                                    <p><em>&nbsp;</em></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS-3</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; text-align: center; height: 36px;">
-                                    <p><em>(d) =</em></p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p><em>(e) =</em></p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 36px;">
-                                    <p><em>(f) =</em></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS-2</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 281px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS-1</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 36px;">
-                                    <td style="width: 102px; text-align: center; height: 36px;">
-                                    <p>TS</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 109px; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    </tbody>
-                                    </table>
-                                    <p><br />* Tidak memasukkan mahasiswa transfer.</p>
-                                    <p>Catatan&nbsp;: huruf-huruf a, b, c, d, e dan f harus tetap tercantum pada tabel di atas.</p>
-                                    <p>&nbsp;</p>
-                                    <p>&nbsp;</p>
-                                            </textarea>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-6 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-5 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-4 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-3 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-2 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS-1 di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom6_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Masukkan data mahasiswa tahun TS di tahun TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom7_314" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <b>Catatan :</b>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <textarea name="kolom8_314" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
@@ -15450,7 +15747,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom2_652" type="radio" class="with-gap" id="radio_1" value="Secara Manual" />
                                             <label for="radio_1">Secara Manual</label>
-                                            <input name="kolom2_652" type="radio" id="radio_2" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom2_652" type="radio" id="radio_2" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom2_652" type="radio" class="with-gap" id="radio_3" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15474,7 +15771,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom4_652" type="radio" class="with-gap" id="radio_1a" value="Secara Manual" />
                                             <label for="radio_1a">Secara Manual</label>
-                                            <input name="kolom4_652" type="radio" id="radio_2a" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom4_652" type="radio" id="radio_2a" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2a">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom4_652" type="radio" class="with-gap" id="radio_3a" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3a">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15498,7 +15795,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom6_652" type="radio" class="with-gap" id="radio_1b" value="Secara Manual" />
                                             <label for="radio_1b">Secara Manual</label>
-                                            <input name="kolom6_652" type="radio" id="radio_2b" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom6_652" type="radio" id="radio_2b" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2b">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom6_652" type="radio" class="with-gap" id="radio_3b" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3b">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15522,7 +15819,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom8_652" type="radio" class="with-gap" id="radio_1c" value="Secara Manual" />
                                             <label for="radio_1c">Secara Manual</label>
-                                            <input name="kolom8_652" type="radio" id="radio_2c" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom8_652" type="radio" id="radio_2c" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2c">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom8_652" type="radio" class="with-gap" id="radio_3c" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3c">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15546,7 +15843,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom10_652" type="radio" class="with-gap" id="radio_1d" value="Secara Manual" />
                                             <label for="radio_1d">Secara Manual</label>
-                                            <input name="kolom10_652" type="radio" id="radio_2d" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom10_652" type="radio" id="radio_2d" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2d">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom10_652" type="radio" class="with-gap" id="radio_3d" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3d">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15570,7 +15867,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom12_652" type="radio" class="with-gap" id="radio_1e" value="Secara Manual" />
                                             <label for="radio_1e">Secara Manual</label>
-                                            <input name="kolom12_652" type="radio" id="radio_2e" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom12_652" type="radio" id="radio_2e" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2e">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom12_652" type="radio" class="with-gap" id="radio_3e" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3e">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15594,7 +15891,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom14_652" type="radio" class="with-gap" id="radio_1f" value="Secara Manual" />
                                             <label for="radio_1f">Secara Manual</label>
-                                            <input name="kolom14_652" type="radio" id="radio_2f" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom14_652" type="radio" id="radio_2f" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2f">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom14_652" type="radio" class="with-gap" id="radio_3f" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3f">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15618,7 +15915,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom16_652" type="radio" class="with-gap" id="radio_1g" value="Secara Manual" />
                                             <label for="radio_1g">Secara Manual</label>
-                                            <input name="kolom16_652" type="radio" id="radio_2g" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom16_652" type="radio" id="radio_2g" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2g">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom16_652" type="radio" class="with-gap" id="radio_3g" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3g">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15642,7 +15939,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom18_652" type="radio" class="with-gap" id="radio_1h" value="Secara Manual" />
                                             <label for="radio_1h">Secara Manual</label>
-                                            <input name="kolom18_652" type="radio" id="radio_2h" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom18_652" type="radio" id="radio_2h" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2h">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom18_652" type="radio" class="with-gap" id="radio_3h" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3h">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15666,7 +15963,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom20_652" type="radio" class="with-gap" id="radio_1i" value="Secara Manual" />
                                             <label for="radio_1i">Secara Manual</label>
-                                            <input name="kolom20_652" type="radio" id="radio_2i" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom20_652" type="radio" id="radio_2i" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2i">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom20_652" type="radio" class="with-gap" id="radio_3i" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3i">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15690,7 +15987,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom22_652" type="radio" class="with-gap" id="radio_1j" value="Secara Manual" />
                                             <label for="radio_1j">Secara Manual</label>
-                                            <input name="kolom22_652" type="radio" id="radio_2j" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom22_652" type="radio" id="radio_2j" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2j">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom22_652" type="radio" class="with-gap" id="radio_3j" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3j">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15726,7 +16023,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom2_652" type="radio" class="with-gap" id="radio_1" value="Secara Manual" />
                                             <label for="radio_1">Secara Manual</label>
-                                            <input name="kolom2_652" type="radio" id="radio_2" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom2_652" type="radio" id="radio_2" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom2_652" type="radio" class="with-gap" id="radio_3" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15750,7 +16047,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom4_652" type="radio" class="with-gap" id="radio_1a" value="Secara Manual" />
                                             <label for="radio_1a">Secara Manual</label>
-                                            <input name="kolom4_652" type="radio" id="radio_2a" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom4_652" type="radio" id="radio_2a" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2a">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom4_652" type="radio" class="with-gap" id="radio_3a" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3a">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15774,7 +16071,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom6_652" type="radio" class="with-gap" id="radio_1b" value="Secara Manual" />
                                             <label for="radio_1b">Secara Manual</label>
-                                            <input name="kolom6_652" type="radio" id="radio_2b" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom6_652" type="radio" id="radio_2b" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2b">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom6_652" type="radio" class="with-gap" id="radio_3b" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3b">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15798,7 +16095,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom8_652" type="radio" class="with-gap" id="radio_1c" value="Secara Manual" />
                                             <label for="radio_1c">Secara Manual</label>
-                                            <input name="kolom8_652" type="radio" id="radio_2c" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom8_652" type="radio" id="radio_2c" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2c">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom8_652" type="radio" class="with-gap" id="radio_3c" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3c">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15822,7 +16119,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom10_652" type="radio" class="with-gap" id="radio_1d" value="Secara Manual" />
                                             <label for="radio_1d">Secara Manual</label>
-                                            <input name="kolom10_652" type="radio" id="radio_2d" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom10_652" type="radio" id="radio_2d" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2d">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom10_652" type="radio" class="with-gap" id="radio_3d" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3d">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15846,7 +16143,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom12_652" type="radio" class="with-gap" id="radio_1e" value="Secara Manual" />
                                             <label for="radio_1e">Secara Manual</label>
-                                            <input name="kolom12_652" type="radio" id="radio_2e" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom12_652" type="radio" id="radio_2e" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2e">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom12_652" type="radio" class="with-gap" id="radio_3e" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3e">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15870,7 +16167,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom14_652" type="radio" class="with-gap" id="radio_1f" value="Secara Manual" />
                                             <label for="radio_1f">Secara Manual</label>
-                                            <input name="kolom14_652" type="radio" id="radio_2f" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom14_652" type="radio" id="radio_2f" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2f">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom14_652" type="radio" class="with-gap" id="radio_3f" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3f">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15894,7 +16191,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom16_652" type="radio" class="with-gap" id="radio_1g" value="Secara Manual" />
                                             <label for="radio_1g">Secara Manual</label>
-                                            <input name="kolom16_652" type="radio" id="radio_2g" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom16_652" type="radio" id="radio_2g" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2g">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom16_652" type="radio" class="with-gap" id="radio_3g" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3g">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15918,7 +16215,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom18_652" type="radio" class="with-gap" id="radio_1h" value="Secara Manual" />
                                             <label for="radio_1h">Secara Manual</label>
-                                            <input name="kolom18_652" type="radio" id="radio_2h" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom18_652" type="radio" id="radio_2h" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2h">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom18_652" type="radio" class="with-gap" id="radio_3h" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3h">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15942,7 +16239,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom20_652" type="radio" class="with-gap" id="radio_1i" value="Secara Manual" />
                                             <label for="radio_1i">Secara Manual</label>
-                                            <input name="kolom20_652" type="radio" id="radio_2i" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom20_652" type="radio" id="radio_2i" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2i">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom20_652" type="radio" class="with-gap" id="radio_3i" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3i">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -15966,7 +16263,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom22_652" type="radio" class="with-gap" id="radio_1j" value="Secara Manual" />
                                             <label for="radio_1j">Secara Manual</label>
-                                            <input name="kolom22_652" type="radio" id="radio_2j" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom22_652" type="radio" id="radio_2j" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2j">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom22_652" type="radio" class="with-gap" id="radio_3j" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3j">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -22760,7 +23057,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom2_652" type="radio" class="with-gap" id="radio_1" value="Secara Manual" />
                                             <label for="radio_1">Secara Manual</label>
-                                            <input name="kolom2_652" type="radio" id="radio_2" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom2_652" type="radio" id="radio_2" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom2_652" type="radio" class="with-gap" id="radio_3" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -22784,7 +23081,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom4_652" type="radio" class="with-gap" id="radio_1a" value="Secara Manual" />
                                             <label for="radio_1a">Secara Manual</label>
-                                            <input name="kolom4_652" type="radio" id="radio_2a" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom4_652" type="radio" id="radio_2a" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2a">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom4_652" type="radio" class="with-gap" id="radio_3a" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3a">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -22808,7 +23105,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom6_652" type="radio" class="with-gap" id="radio_1b" value="Secara Manual" />
                                             <label for="radio_1b">Secara Manual</label>
-                                            <input name="kolom6_652" type="radio" id="radio_2b" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom6_652" type="radio" id="radio_2b" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2b">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom6_652" type="radio" class="with-gap" id="radio_3b" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3b">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -22832,7 +23129,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom8_652" type="radio" class="with-gap" id="radio_1c" value="Secara Manual" />
                                             <label for="radio_1c">Secara Manual</label>
-                                            <input name="kolom8_652" type="radio" id="radio_2c" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom8_652" type="radio" id="radio_2c" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2c">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom8_652" type="radio" class="with-gap" id="radio_3c" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3c">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -22856,7 +23153,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom10_652" type="radio" class="with-gap" id="radio_1d" value="Secara Manual" />
                                             <label for="radio_1d">Secara Manual</label>
-                                            <input name="kolom10_652" type="radio" id="radio_2d" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom10_652" type="radio" id="radio_2d" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2d">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom10_652" type="radio" class="with-gap" id="radio_3d" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3d">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -22880,7 +23177,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom12_652" type="radio" class="with-gap" id="radio_1e" value="Secara Manual" />
                                             <label for="radio_1e">Secara Manual</label>
-                                            <input name="kolom12_652" type="radio" id="radio_2e" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom12_652" type="radio" id="radio_2e" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2e">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom12_652" type="radio" class="with-gap" id="radio_3e" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3e">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -22904,7 +23201,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom14_652" type="radio" class="with-gap" id="radio_1f" value="Secara Manual" />
                                             <label for="radio_1f">Secara Manual</label>
-                                            <input name="kolom14_652" type="radio" id="radio_2f" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom14_652" type="radio" id="radio_2f" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2f">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom14_652" type="radio" class="with-gap" id="radio_3f" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3f">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -22928,7 +23225,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom16_652" type="radio" class="with-gap" id="radio_1g" value="Secara Manual" />
                                             <label for="radio_1g">Secara Manual</label>
-                                            <input name="kolom16_652" type="radio" id="radio_2g" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom16_652" type="radio" id="radio_2g" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2g">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom16_652" type="radio" class="with-gap" id="radio_3g" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3g">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -22952,7 +23249,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom18_652" type="radio" class="with-gap" id="radio_1h" value="Secara Manual" />
                                             <label for="radio_1h">Secara Manual</label>
-                                            <input name="kolom18_652" type="radio" id="radio_2h" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom18_652" type="radio" id="radio_2h" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2h">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom18_652" type="radio" class="with-gap" id="radio_3h" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3h">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -22976,7 +23273,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom20_652" type="radio" class="with-gap" id="radio_1i" value="Secara Manual" />
                                             <label for="radio_1i">Secara Manual</label>
-                                            <input name="kolom20_652" type="radio" id="radio_2i" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom20_652" type="radio" id="radio_2i" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2i">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom20_652" type="radio" class="with-gap" id="radio_3i" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3i">Dengan Komputer Jaringan Lokal (LAN)</label>
@@ -23000,7 +23297,7 @@
                                         <div class="demo-radio-button">
                                             <input name="kolom22_652" type="radio" class="with-gap" id="radio_1j" value="Secara Manual" />
                                             <label for="radio_1j">Secara Manual</label>
-                                            <input name="kolom22_652" type="radio" id="radio_2j" class="with-gap" value="Dengan Komputer Tanpa Jaringan<" />
+                                            <input name="kolom22_652" type="radio" id="radio_2j" class="with-gap" value="Dengan Komputer Tanpa Jaringan" />
                                             <label for="radio_2j">Dengan Komputer Tanpa Jaringan</label>
                                             <input name="kolom22_652" type="radio" class="with-gap" id="radio_3j" value="Dengan Komputer Jaringan Lokal (LAN)" />
                                             <label for="radio_3j">Dengan Komputer Jaringan Lokal (LAN)</label>

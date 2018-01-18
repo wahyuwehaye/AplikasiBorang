@@ -54,15 +54,12 @@ class C_unit extends CI_Controller {
 			$data['buku']=$this->M_borang->find('id',$data['butir'][0]['id_borang']);
 			$data['isian']=$this->M_isian->find('id_butir',$id);
             $data['getdata']=$this->M_isian->join3tabel($id);
-            $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
 			$id_but = $data['butir'][0]['id'];
             $id_bor = $data['butir'][0]['id_borang'];
             $cariidbutir['carbutr'] = $this->M_isian->findButirnyasama('id_borang',$id_bor,'butir','3.1.1.a');
             $idbutirnya = $cariidbutir['carbutr'][0]['id'];
             $data['dataisian']=$this->M_isian->findisian311kolom('id_butir',$idbutirnya);
             $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$idbutirnya);
-            // $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
-            $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$idbutirnya);
     		$this->load->view('unit',$data);
 		}else{
 			redirect('Home/pages');
@@ -92,15 +89,12 @@ class C_unit extends CI_Controller {
 			$data['buku']=$this->M_borang->find('id',$data['butir'][0]['id_borang']);
 			$data['isian']=$this->M_isian->find('id_butir',$id);
             $data['getdata']=$this->M_isian->join3tabel($id);
-            $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
 			$id_but = $data['butir'][0]['id'];
             $id_bor = $data['butir'][0]['id_borang'];
             $cariidbutir['carbutr'] = $this->M_isian->findButirnyasama('id_borang',$id_bor,'butir','3.1.1.a');
             $idbutirnya = $cariidbutir['carbutr'][0]['id'];
             $data['dataisian']=$this->M_isian->findisian311kolom('id_butir',$idbutirnya);
             $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$idbutirnya);
-            // $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
-            $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$idbutirnya);
     		$this->load->view('unitedit',$data);
 		}else{
 			redirect('Home/pages');

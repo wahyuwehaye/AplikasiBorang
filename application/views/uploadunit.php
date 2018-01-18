@@ -1,125 +1,186 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <div class="col-sm-8">
+            <div class="col-sm-4">
             <h2>
-                MENGELOLA DATA <?php echo strtoupper($_SESSION['name']); ?>
+                MENGELOLA DOKUMEN <?php echo strtoupper($_SESSION['name']);?>
                 <small>UNIVERSITAS TELKOM</small>
             </h2>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-8">
             <ol class="breadcrumb breadcrumb-col-deep-purple align-right">
                 <li><a href="<?php echo base_url();?>"><i class="material-icons">home</i> Home</a></li>
-                <li class="active"><i class="material-icons">text_format</i> Data <?php echo ucfirst($_SESSION['username']); ?></li>
+                <li class="active"><i class="material-icons">file_download</i> Dokumen</li>
             </ol>
             </div>
         </div>
 
-        <!-- Exportable Table -->
+        <!-- Exportable Table Dokumen Pendukung -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header js-sweetalert">
                     <h2>
-                        ISIAN DATA <?php echo strtoupper($_SESSION['name']); ?>
+                        Tabel Dokumen <?php echo strtoupper($_SESSION['name']);?>
                     </h2>
+                        <!-- <button type="button" class="btn btn-success btn-circle waves-effect waves-circle waves-float">
+                            <i class="material-icons">add</i>
+                        </button> -->
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#uploadunit" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">add</i></button>
                     </div>
                     <div class="body">
-                        <div class="row clearfix">
-                        <div class="header">
-                            <h2 class="card-inside-title">Tabel Dokumen <?php echo strtoupper($_SESSION['name']) ?></h2>
-                        </div>
-                        <div class="body">
                         <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
                             <thead>
                                 <tr>
-                                    <th>Nama Dokumen</th>
-                                    <th>Pemilik Dokumen</th>
-                                    <th>Softcopy</th>
-                                    <th>Keterangan</th>
-                                    <th>Tanggal Upload</th>
+                                    <th width="3%">No</th>
+                                    <th width="40%">Nama Dokumen</th>
+                                    <th width="30%">Nama File</th>
+                                    <th width="30%">Keterangan</th>
+                                    <th width="30%">Pemilik</th>
+                                    <th width="10%">Tanggal Upload</th>
                                     <th width="10%">Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Nama Dokumen</th>
-                                    <th>Pemilik Dokumen</th>
-                                    <th>Softcopy</th>
-                                    <th>Keterangan</th>
-                                    <th>Tanggal Upload</th>
+                                    <th width="3%">No</th>
+                                    <th width="25%">Nama Dokumen</th>
+                                    <th width="20%">Nama File</th>
+                                    <th width="20%">Keterangan</th>
+                                    <th width="20%">Pemilik</th>
+                                    <th width="10%">Tanggal Upload</th>
                                     <th width="10%">Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                
+                                <!-- <?php
+                                    for($i=0;$i<count($datadokumen);$i++){
+                                 ?>
+                                <tr>
+                                    <td><?php echo $datadokumen[$i]['dokumen'] ?> </td>
+                                    <td><?php echo $datadokumen[$i]['filename'] ?> </td>
+                                    <td><?php echo $datadokumen[$i]['status'] ?> </td>
+                                    <td><?php echo $datadokumen[$i]['created_at'] ?> </td>
+                                    <td>
+                                        <div class="js-sweetalert"> -->
+                                            <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/datadokumen/<?php echo $datadokumen[$i]['id']; ?>" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
+                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $datadokumen[$i]['id']; ?>" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
+                                            <!-- <a type="button" onclick="uploadbukti(<?php echo $butir[$i]['butir'] ?>)" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload Dokumen" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
+                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#dokumen11a" data-placement="top" title="Lihat" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">pageview</i></a>&nbsp;
+                                            <a id="del" onclick="deledok(<?php echo $datadokumen[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroy/'.$datadokumen[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php } ?> -->
+                                <?php
+                                    $CI =& get_instance();
+                                    $list=1;
+                                    $getlistbukti =$CI->db->query('select * from dokumen');
+                                    foreach ($getlistbukti->result() as $bar){
+                                        ?>
+                                <tr>
+                                    <td><?php echo $list ?> </td>
+                                    <td><?php echo $bar->nama ?> </td>
+                                    <td><?php echo $bar->filename ?> </td>
+                                    <td><?php echo $bar->ket ?> </td>
+                                    <td><?php echo $bar->pemilik ?> </td>
+                                    <td><?php echo $bar->created_at ?> </td>
+                                    <td>
+                                        <a target="_blank" href="<?php echo base_url();?>dokumen/<?php echo $bar->filename; ?>" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" onclick="downloadbukti(<?php echo $bar->id; ?>)" data-toggle="tooltip" data-placement="top" title="Download Dokumen" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">file_download</i></a>&nbsp;
+                                        <!-- <a id="del" onclick="deletebukti(<?php echo $bar->id; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_dokumen/deletebukti/'.$bar->id); ?>" data-placement="top" title="Delete Dokumen" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">delete_forever</i></a> -->
+                                        
+                                        <!-- <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#dokumen11a" data-placement="top" title="Lihat" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">pageview</i></a>&nbsp; -->
+                                        <!-- <a id="del" onclick="deledok(<?php echo $bar->id ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroy/'.$bar->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="glyphicon glyphicon-trash"></i></a> -->
+                                        </div>
+                                    </td>
+                                </tr>
+                                        <?php
+                                    $list=$list+1;
+                                    }
+                                ?>
                             </tbody>
                         </table>
                         </div>
-                        <div class="header">
-                            <h2 class="card-inside-title">Tambah Dokumen <?php echo strtoupper($_SESSION['name']) ?></h2>
-                        </div>
-                        <div class="body">
-                            <form action="<?php echo base_url()?>C_uploadisi/dokumen311" id="frmFileUpload" class="dropzone form-horizontal" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id_butir311" id="id_butir311" value="" />
-                                <div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label for="nama">Nama Dokumen</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" name="nama" class="form-control" placeholder="Enter Nama Dokumen">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label for="pemilik">Pemilik Dokumen</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" name="pemilik" class="form-control" placeholder="Enter Pemilik Dokumen" value="<?php echo(strtoupper($_SESSION['name'])) ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label for="ket">Keterangan</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <textarea rows="4" type="text" name="ket" class="form-control" placeholder="Enter Keterangan"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="dz-message">
-                                    <div class="drag-icon-cph">
-                                        <i class="material-icons">touch_app</i>
-                                    </div>
-                                    <h3>Drop files here or click to upload.</h3>
-                                    <em>(Selected files are <strong>automatically</strong> uploaded.)</em>
-                                    <em><small class="help-block" style="color:red;"><strong>Tipe File : pdf, doc, docx, xls, rar, zip. Max File size : 500MB</strong></small></em>
-                                </div>
-                                <div class="fallback">
-                                    <input name="filename" type="file" multiple />
-                                </div>
-                            </form>
-                        </div>
-                        <div class="body">
-                            <button type="submit" onclick="reloadaja()" class="btn btn-block btn-primary waves-effect">SIMPAN</button>
-                        </div>
-                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Exportable Table Dokumen Pendukung-->
+
+        <!-- MODALS For Material Design Colors -->
+        <div class="modal fade" id="mdModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci ante, sed ornare eros vestibulum ut. Ut accumsan
+                        vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus ullamcorper.
+                        Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus
+                        nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla.
+                        Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- #END# Exportable Table -->
+
+        <!-- UPLOAD BUKTI DOKUMEN -->
+        <div class="modal fade" id="uploadunit" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Upload bukti yang harus disiapkan</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
+                    //   echo form_open('c_borang/update', $attributes);
+                    $attributes = array('id' => 'myform');
+                    echo form_open_multipart('C_dokumen/uploadunit', $attributes);
+                ?>
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <label for="buktibutir">Nama Dokumen</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="nama" name="nama">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <label class="form-label">Keterangan</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="ket" id="ket" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <label class="form-label">Upload Bukti</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="file" class="form-control" name="filename" id="filename">
+                                    <!-- <input type="text" class="form-control" id="filename" name="filename"> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- TUTUP UPLOAD BUKTI DOKUMEN -->
+
     </div>
 </section>
 
@@ -232,69 +293,83 @@
   {
       return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
+  $(function () {
 
-  function errorinput(){
-    isi1 = document.getElementById('k3_311').value;
-    isi2 = document.getElementById('k4_311').value;
-    isi3 = document.getElementById('k2_311').value;
-    nil1 = parseInt(isi1);
-    nil2 = parseInt(isi2);
-    nil3 = parseInt(isi3);
-    hasil = nil1 + nil2;
-    hasil1 = nil3 + nil1;
-    if (nil2 > nil1) {
-        swal("Error", "Jumlah Mahasiswa Baru Reguler Bukan Transfer Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi", "error");
+    $('#uploadbukti').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_dokumen/findbukti";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#idbukti').val(buku[0]['id']);
+              $('#buktibutir').val(buku[0]['butir']);
+              $('#aspek').val(buku[0]['aspek']);
+              $('#dokumen').val(buku[0]['dokumen']);
+          });
+
+    });
+
+
+
+  });
+
+function printContent(el){
+    var restorepage = document.body.innerHTML;
+    var printcontent = document.getElementById(el).innerHTML;
+    document.body.innerHTML = printcontent;
+    window.print();
+    document.body.innerHTML = restorepage;
+}
+
+    function reloadaja(){
+        location.reload();
     }
 
-    if (nil1 > nil3) {
-        swal("Error", "Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Ikut Seleksi", "error");
-    }
+  function uploadbukti(x) {
+    var borang = "<?php echo $this->uri->segment(2, 0)?>";
+    var upload_url = "<?php echo base_url(); ?>index.php/C_uploadisi/uploadbukti/"+x+"/"+borang;
+    swal({
+        title: "Bukti yang harus disiapkan!",
+        text: "Bukti yang harus disiapkan dengan id = "+x,
+        imageUrl: "<?php echo base_url(); ?>assets/images/thumbs-up.png"
+    });
+}
+
+    function deletebukti(x){
+    var borang = "<?php echo $this->uri->segment(2, 0)?>";
+    var delete_url = "<?php echo base_url(); ?>C_dokumen/deletebukti/"+x+"/"+borang;
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                window.location.href = delete_url;
+
+            } else {
+                swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+        });
   }
 
-  function errorinputikutseleksi(){
-    isi1 = document.getElementById('k2_31').value;
-    isi2 = document.getElementById('k3_31').value;
-    nil1 = parseInt(isi1);
-    nil2 = parseInt(isi2);
-    hasil = nil1 + nil2;
-    if (nil2 > nil1) {
-        swal("Error", "Jumlah Calon Mahasiswa Reguler yang Lulus Seleksi Tidak Boleh Lebih Besar dari Jumlah Calon Mahasiswa Reguler yang Ikut Seleksi", "error");
-    }
-  }
-
-  function errorinputkoma(){
-    isi1 = document.getElementById('k10_311').value;
-    isi2 = document.getElementById('k11_311').value;
-    isi3 = document.getElementById('k12_311').value;
-    isi4 = document.getElementById('k13_311').value;
-    isi5 = document.getElementById('k14_311').value;
-    isi6 = document.getElementById('k15_311').value;
-    nil1 = parseFloat(isi1);
-    nil2 = parseFloat(isi2);
-    nil3 = parseFloat(isi3);
-    nil4 = parseFloat(isi4);
-    nil5 = parseFloat(isi5);
-    nil6 = parseFloat(isi6);
-    desimal1 = nil1.toFixed(2);
-    desimal2 = nil2.toFixed(2);
-    desimal3 = nil3.toFixed(2);
-    desimal4 = nil4.toFixed(2);
-    desimal5 = nil5.toFixed(2);
-    desimal6 = nil6.toFixed(2);
-    cek1 = isi1.search(',');
-    cek2 = isi2.search(',');
-    cek3 = isi3.search(',');
-    if ((cek1 > 0) || (cek2 > 0) || (cek3 > 0)) {
-        swal("Error", "Tidak Boleh Memasukkan Koma", "error");
-    }
-
-    if ((desimal1 > 2.75) && (desimal4 > 0)) {
-        swal("Error", "Persentase Lulusan Reguler dengan IPK < 2.75 tidak sesuai dengan Minimal IPK Lulusan Reguler", "error");
-    }
-
-    if ((desimal3 < 3.50) && (desimal6 > 0)) {
-        swal("Error", "Persentase Lulusan Reguler dengan IPK > 3.50 tidak sesuai dengan Maksimal IPK Lulusan Reguler", "error");
-    }
+  function downloadbukti(x){
+    var borang = "<?php echo $this->uri->segment(2, 0)?>";
+    var delete_url = "<?php echo base_url(); ?>C_dokumen/downloadbukti/"+x+"/"+borang;
+    
   }
 </script>
 

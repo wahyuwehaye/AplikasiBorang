@@ -110,6 +110,7 @@
                                             if ($borangg !== false) {
                                             ?>
                                             <a type="button" data-color="purple" class="btn bg-purple waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Detail Borang" href="<?php echo base_url();?>butir/<?php echo $key->id; ?>" data-whatever="<?php echo $key->id; ?>"><i class="material-icons">description</i></a>&nbsp;
+                                            <a type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Detail Buku Borang" href="<?php echo base_url();?>butirbuku/<?php echo $key->id; ?>"><i class="material-icons">book</i></a>&nbsp;
                                             <a type="button" data-color="amber" class="btn bg-amber waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Resume Borang" href="<?php echo base_url();?>resume/<?php echo $key->id; ?>"><i class="material-icons">pageview</i></a>&nbsp;
                                             <?php
                                             }elseif ($evdir !== false) {

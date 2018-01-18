@@ -3,6 +3,7 @@
 class M_dokumen extends CI_Model {
     var $table = 'dokumenpendukung';
     var $table1 = 'lampiran';
+    var $table2 = 'dokumen';
 
         public function __construct()
         {
@@ -57,6 +58,12 @@ class M_dokumen extends CI_Model {
             $query = $this->db->get();
 
             return $query->row();
+        }
+
+        public function uploadunit($data)
+        {
+            $this->db->insert($this->table2, $data);
+            return $this->db->affected_rows();
         }
 
         public function updatebukti($where, $data)

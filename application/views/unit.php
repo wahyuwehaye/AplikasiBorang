@@ -41,52 +41,214 @@
                     $CI =& get_instance();
                     $id_but = $butir[0]['id'];
                     $id_bor = $buku[0]['id'];
-                    $isiannya = 2857;
+                    $isiannyaTE = 2857;
+                    $isiannyaTT = 3001;
+                    $isiannyaTF = 2266;
+                    $isiannyaSK = 2757;
                     $getbutir = '';
                     $getid434 = '';
-                    $querycaributir = $CI->db->query('select id, butir from butir where id="'.$isiannya.'" and id_borang = "'.$id_bor.'"');
+                    $querycaributir = $CI->db->query('select id, butir from butir where id="'.$isiannyaTE.'" and id_borang = "'.$id_bor.'"');
                     foreach ($querycaributir->result() as $row){
                         $getbutir = $row->butir;
                         $getid434 = $row->id;
                         break;
                     }
-                            $getidbutir = '';
-                            $querycariidbutir = $CI->db->query('select * from butir where butir="3.1.1.a" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir->result() as $row){
-                                $getidbutir = $row->id;
-                                break;
-                            }
+                    // TE
+                    $getidbutirTE = '';
+                    $querycariidbutirTE = $CI->db->query('select * from butir where butir="3.1.1.a" and id_borang = "'.$id_bor.'"');
+                    foreach ($querycariidbutirTE->result() as $row){
+                        $getidbutirTE = $row->id;
+                        break;
+                    }
+                    // cek udah atau belum
+                    $queryadmisiTEudah=$CI->db->query('SELECT COUNT(id) as cekadmisiTEudah FROM isian_16kolom WHERE id_butir="'.$isiannyaTE.'" and kolom6="needed"');
+                    $cekadmisiTEudah=$queryadmisiTEudah->result_array()[0]['cekadmisiTEudah'];
+                    $cekadmisiTEudah=($cekadmisiTEudah!=0)?($cekadmisiTEudah):0;
                     // ngecek isinya unit admisi
-                    $getunitadmisi = 0;
-                    $queryadmisi=$CI->db->query('SELECT COUNT(id) as cekadmisi FROM isian_16kolom WHERE id_butir="'.$isiannya.'" and kolom1="needed"');
-                    $cekadmisi=$queryadmisi->result_array()[0]['cekadmisi'];
-                    $cekadmisi=($cekadmisi!=0)?($cekadmisi):0;
-                    if ($cekadmisi>0) {
+                    $getunitadmisiTE = 0;
+                    $queryadmisiTE=$CI->db->query('SELECT COUNT(id) as cekadmisiTE FROM isian_16kolom WHERE id_butir="'.$isiannyaTE.'" and kolom1="needed"');
+                    $cekadmisiTE=$queryadmisiTE->result_array()[0]['cekadmisiTE'];
+                    $cekadmisiTE=($cekadmisiTE!=0)?($cekadmisiTE):0;
+                    if ($cekadmisiTE>0) {
                         // cek update atau insert
-                        $querycekadmisi = $CI->db->query('select * from isian_16kolom where id_butir="'.$isiannya.'" and kolom1="needed" LIMIT 1');
-                        foreach ($querycekadmisi->result() as $row){
-                            $getunitadmisi = $row->id;
+                        $querycekadmisiTE = $CI->db->query('select * from isian_16kolom where id_butir="'.$isiannyaTE.'" and kolom1="needed" LIMIT 1');
+                        foreach ($querycekadmisiTE->result() as $row){
+                            $getunitadmisiTE = $row->id;
                             break;
                         }
                     }else{
-                        $getunitadmisi = 0;
+                        $getunitadmisiTE = 0;
+                    }
+
+                    // example query
+                    // SELECT * FROM `isian_16kolom` WHERE month(created_at)=1
+                    // SELECT * FROM `isian_16kolom` WHERE dayofmonth(created_at) BETWEEN 1 AND 5
+                    // 
+
+                    // cek udah atau belum mahasiswa
+                    $querymhsTEudah=$CI->db->query('SELECT COUNT(id) as cekmhsTEudah FROM isian_16kolom WHERE id_butir="'.$isiannyaTE.'" and kolom1=""');
+                    $cekmhsTEudah=$querymhsTEudah->result_array()[0]['cekmhsTEudah'];
+                    $cekmhsTEudah=($cekmhsTEudah!=0)?($cekmhsTEudah):0;
+                    // ngecek isinya unit kemahasiswaan
+                    $getunitmhsTE = 0;
+                    $querymhsTE=$CI->db->query('SELECT COUNT(id) as cekmhsTE FROM isian_16kolom WHERE id_butir="'.$isiannyaTE.'" and kolom6="needed"');
+                    $cekmhsTE=$querymhsTE->result_array()[0]['cekmhsTE'];
+                    $cekmhsTE=($cekmhsTE!=0)?($cekmhsTE):0;
+                    if ($cekmhsTE>0) {
+                        // cek update atau insert
+                        $querycekmhsTE = $CI->db->query('select * from isian_16kolom where id_butir="'.$isiannyaTE.'" and kolom6="needed" LIMIT 1');
+                        foreach ($querycekmhsTE->result() as $row){
+                            $getunitmhsTE = $row->id;
+                            break;
+                        }
+                    }else{
+                        $getunitmhsTE = 0;
+                    }
+                    // Tutup TE
+
+                    // TT
+                    $getidbutirTT = '';
+                    $querycariidbutirTT = $CI->db->query('select * from butir where butir="3.1.1.a" and id_borang = "'.$id_bor.'"');
+                    foreach ($querycariidbutirTT->result() as $row){
+                        $getidbutirTT = $row->id;
+                        break;
+                    }
+                    // cek udah atau belum
+                    $queryadmisiTTudah=$CI->db->query('SELECT COUNT(id) as cekadmisiTTudah FROM isian_16kolom WHERE id_butir="'.$isiannyaTT.'" and kolom6="needed"');
+                    $cekadmisiTTudah=$queryadmisiTTudah->result_array()[0]['cekadmisiTTudah'];
+                    $cekadmisiTTudah=($cekadmisiTTudah!=0)?($cekadmisiTTudah):0;
+                    // ngecek isinya unit admisi
+                    $getunitadmisiTT = 0;
+                    $queryadmisiTT=$CI->db->query('SELECT COUNT(id) as cekadmisiTT FROM isian_16kolom WHERE id_butir="'.$isiannyaTT.'" and kolom1="needed"');
+                    $cekadmisiTT=$queryadmisiTT->result_array()[0]['cekadmisiTT'];
+                    $cekadmisiTT=($cekadmisiTT!=0)?($cekadmisiTT):0;
+                    if ($cekadmisiTT>0) {
+                        // cek updaTT atau insert
+                        $querycekadmisiTT = $CI->db->query('select * from isian_16kolom where id_butir="'.$isiannyaTT.'" and kolom1="needed" LIMIT 1');
+                        foreach ($querycekadmisiTT->result() as $row){
+                            $getunitadmisiTT = $row->id;
+                            break;
+                        }
+                    }else{
+                        $getunitadmisiTT = 0;
+                    }
+
+                    // cek udah atau belum mahasiswa
+                    $querymhsTTudah=$CI->db->query('SELECT COUNT(id) as cekmhsTTudah FROM isian_16kolom WHERE id_butir="'.$isiannyaTT.'" and kolom1="needed"');
+                    $cekmhsTTudah=$querymhsTTudah->result_array()[0]['cekmhsTTudah'];
+                    $cekmhsTTudah=($cekmhsTTudah!=0)?($cekmhsTTudah):0;
+                    // ngecek isinya unit kemahasiswaan
+                    $getunitmhsTT = 0;
+                    $querymhsTT=$CI->db->query('SELECT COUNT(id) as cekmhsTT FROM isian_16kolom WHERE id_butir="'.$isiannyaTT.'" and kolom6="needed"');
+                    $cekmhsTT=$querymhsTT->result_array()[0]['cekmhsTT'];
+                    $cekmhsTT=($cekmhsTT!=0)?($cekmhsTT):0;
+                    if ($cekmhsTT>0) {
+                        // cek updaTT atau insert
+                        $querycekmhsTT = $CI->db->query('select * from isian_16kolom where id_butir="'.$isiannyaTT.'" and kolom6="needed" LIMIT 1');
+                        foreach ($querycekmhsTT->result() as $row){
+                            $getunitmhsTT = $row->id;
+                            break;
+                        }
+                    }else{
+                        $getunitmhsTT = 0;
+                    }
+                    // Tutup TT
+
+                    // TF
+                    $getidbutirTF = '';
+                    $querycariidbutirTF = $CI->db->query('select * from butir where butir="3.1.1.a" and id_borang = "'.$id_bor.'"');
+                    foreach ($querycariidbutirTF->result() as $row){
+                        $getidbutirTF = $row->id;
+                        break;
+                    }
+                    // cek udah atau belum
+                    $queryadmisiTFudah=$CI->db->query('SELECT COUNT(id) as cekadmisiTFudah FROM isian_16kolom WHERE id_butir="'.$isiannyaTF.'" and kolom6="needed"');
+                    $cekadmisiTFudah=$queryadmisiTFudah->result_array()[0]['cekadmisiTFudah'];
+                    $cekadmisiTFudah=($cekadmisiTFudah!=0)?($cekadmisiTFudah):0;
+                    // ngecek isinya unit admisi
+                    $getunitadmisiTF = 0;
+                    $queryadmisiTF=$CI->db->query('SELECT COUNT(id) as cekadmisiTF FROM isian_16kolom WHERE id_butir="'.$isiannyaTF.'" and kolom1="needed"');
+                    $cekadmisiTF=$queryadmisiTF->result_array()[0]['cekadmisiTF'];
+                    $cekadmisiTF=($cekadmisiTF!=0)?($cekadmisiTF):0;
+                    if ($cekadmisiTF>0) {
+                        // cek updaTF atau insert
+                        $querycekadmisiTF = $CI->db->query('select * from isian_16kolom where id_butir="'.$isiannyaTF.'" and kolom1="needed" LIMIT 1');
+                        foreach ($querycekadmisiTF->result() as $row){
+                            $getunitadmisiTF = $row->id;
+                            break;
+                        }
+                    }else{
+                        $getunitadmisiTF = 0;
                     }
                     
+                    // cek udah atau belum mahasiswa
+                    $querymhsTFudah=$CI->db->query('SELECT COUNT(id) as cekmhsTFudah FROM isian_16kolom WHERE id_butir="'.$isiannyaTF.'" and kolom1="needed"');
+                    $cekmhsTFudah=$querymhsTFudah->result_array()[0]['cekmhsTFudah'];
+                    $cekmhsTFudah=($cekmhsTFudah!=0)?($cekmhsTFudah):0;
                     // ngecek isinya unit kemahasiswaan
-                    $getunitmhs = 0;
-                    $querymhs=$CI->db->query('SELECT COUNT(id) as cekmhs FROM isian_16kolom WHERE id_butir="'.$isiannya.'" and kolom6="needed"');
-                    $cekmhs=$querymhs->result_array()[0]['cekmhs'];
-                    $cekmhs=($cekmhs!=0)?($cekmhs):0;
-                    if ($cekmhs>0) {
-                        // cek update atau insert
-                        $querycekmhs = $CI->db->query('select * from isian_16kolom where id_butir="'.$isiannya.'" and kolom6="needed" LIMIT 1');
-                        foreach ($querycekmhs->result() as $row){
-                            $getunitmhs = $row->id;
+                    $getunitmhsTF = 0;
+                    $querymhsTF=$CI->db->query('SELECT COUNT(id) as cekmhsTF FROM isian_16kolom WHERE id_butir="'.$isiannyaTF.'" and kolom6="needed"');
+                    $cekmhsTF=$querymhsTF->result_array()[0]['cekmhsTF'];
+                    $cekmhsTF=($cekmhsTF!=0)?($cekmhsTF):0;
+                    if ($cekmhsTF>0) {
+                        // cek updaTF atau insert
+                        $querycekmhsTF = $CI->db->query('select * from isian_16kolom where id_butir="'.$isiannyaTF.'" and kolom6="needed" LIMIT 1');
+                        foreach ($querycekmhsTF->result() as $row){
+                            $getunitmhsTF = $row->id;
                             break;
                         }
                     }else{
-                        $getunitmhs = 0;
+                        $getunitmhsTF = 0;
                     }
+                    // Tutup TF
+
+                    // SK
+                    $getidbutirSK = '';
+                    $querycariidbutirSK = $CI->db->query('select * from butir where butir="3.1.1.a" and id_borang = "'.$id_bor.'"');
+                    foreach ($querycariidbutirSK->result() as $row){
+                        $getidbutirSK = $row->id;
+                        break;
+                    }
+                    // cek udah atau belum
+                    $queryadmisiSKudah=$CI->db->query('SELECT COUNT(id) as cekadmisiSKudah FROM isian_16kolom WHERE id_butir="'.$isiannyaSK.'" and kolom6="needed"');
+                    $cekadmisiSKudah=$queryadmisiSKudah->result_array()[0]['cekadmisiSKudah'];
+                    $cekadmisiSKudah=($cekadmisiSKudah!=0)?($cekadmisiSKudah):0;
+                    // ngecek isinya unit admisi
+                    $getunitadmisiSK = 0;
+                    $queryadmisiSK=$CI->db->query('SELECT COUNT(id) as cekadmisiSK FROM isian_16kolom WHERE id_butir="'.$isiannyaSK.'" and kolom1="needed"');
+                    $cekadmisiSK=$queryadmisiSK->result_array()[0]['cekadmisiSK'];
+                    $cekadmisiSK=($cekadmisiSK!=0)?($cekadmisiSK):0;
+                    if ($cekadmisiSK>0) {
+                        // cek updaSK atau insert
+                        $querycekadmisiSK = $CI->db->query('select * from isian_16kolom where id_butir="'.$isiannyaSK.'" and kolom1="needed" LIMIT 1');
+                        foreach ($querycekadmisiSK->result() as $row){
+                            $getunitadmisiSK = $row->id;
+                            break;
+                        }
+                    }else{
+                        $getunitadmisiSK = 0;
+                    }
+                    
+                    // cek udah atau belum mahasiswa
+                    $querymhsSKudah=$CI->db->query('SELECT COUNT(id) as cekmhsSKudah FROM isian_16kolom WHERE id_butir="'.$isiannyaSK.'" and kolom1="needed"');
+                    $cekmhsSKudah=$querymhsSKudah->result_array()[0]['cekmhsSKudah'];
+                    $cekmhsSKudah=($cekmhsSKudah!=0)?($cekmhsSKudah):0;
+                    // ngecek isinya unit kemahasiswaan
+                    $getunitmhsSK = 0;
+                    $querymhsSK=$CI->db->query('SELECT COUNT(id) as cekmhsSK FROM isian_16kolom WHERE id_butir="'.$isiannyaSK.'" and kolom6="needed"');
+                    $cekmhsSK=$querymhsSK->result_array()[0]['cekmhsSK'];
+                    $cekmhsSK=($cekmhsSK!=0)?($cekmhsSK):0;
+                    if ($cekmhsSK>0) {
+                        // cek updaSK atau insert
+                        $querycekmhsSK = $CI->db->query('select * from isian_16kolom where id_butir="'.$isiannyaSK.'" and kolom6="needed" LIMIT 1');
+                        foreach ($querycekmhsSK->result() as $row){
+                            $getunitmhsSK = $row->id;
+                            break;
+                        }
+                    }else{
+                        $getunitmhsSK = 0;
+                    }
+                    // Tutup SK
                             
                             ?>
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
@@ -94,15 +256,7 @@
                         <div class="row clearfix">
                         <?php
                         if($_SESSION['role']=="Admisi"){
-                            if ($getunitadmisi>0) {
-                            ?>
-                                <form method="POST" action="<?php echo base_url()?>C_unit/updateisian311admisi">
-                            <?php
-                            }else{
-                            ?>
-                                <form method="POST" action="<?php echo base_url()?>C_unit/ngisi311admisi">
-                            <?php
-                            }
+                            
                             ?>
             <!-- Hover Zoom Effect -->
             <div class="row">
@@ -119,7 +273,10 @@
                 </div>
             </div>
             <!-- #END# Hover Zoom Effect -->
-                        <div class="row clearfix">
+            <div class="row clearfix">
+            <?php
+            if ($cekadmisiTEudah<1) {
+            ?>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="header bg-red">
@@ -128,9 +285,20 @@
                             </h2>
                         </div>
                         <div class="body">
-                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitadmisi; ?>" />
-                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                            <?php
+                            if ($getunitadmisiTE>0) {
+                            ?>
+                                <form method="POST" action="<?php echo base_url()?>C_unit/updateisian311admisi">
+                            <?php
+                            }else{
+                            ?>
+                                <form method="POST" action="<?php echo base_url()?>C_unit/ngisi311admisi">
+                            <?php
+                            }
+                            ?>
+                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitadmisiTE; ?>" />
+                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannyaTE; ?>" />
+                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutirTE; ?>" />
                                         <b>Daya Tampung</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -178,9 +346,15 @@
                                                 <input type="text" name="kolom5_311" id="k5_311" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
+                                <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
                         </div>
                     </div>
                 </div>
+            <?php
+            }
+            if ($cekadmisiTTudah<1) {
+            ?>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="header bg-red">
@@ -189,9 +363,9 @@
                             </h2>
                         </div>
                         <div class="body">
-                            <input type="hidden" name="id311" id="id311" value="<?php echo $getunitadmisi; ?>" />
-                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                            <input type="hidden" name="id311" id="id311" value="<?php echo $getunitadmisiTT; ?>" />
+                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannyaTT; ?>" />
+                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutirTT; ?>" />
                                         <b>Daya Tampung</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -242,6 +416,10 @@
                         </div>
                     </div>
                 </div>
+            <?php
+            }
+            if ($cekadmisiTFudah<1) {
+            ?>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="header bg-red">
@@ -250,9 +428,9 @@
                             </h2>
                         </div>
                         <div class="body">
-                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitadmisi; ?>" />
-                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitadmisiTF; ?>" />
+                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannyaTF; ?>" />
+                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutirTF; ?>" />
                                         <b>Daya Tampung</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -304,6 +482,10 @@
                     </div>
                 </div>
             </div>
+            <?php
+            }
+            if ($cekadmisiSKudah<1) {
+            ?>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="header bg-red">
@@ -312,9 +494,9 @@
                             </h2>
                         </div>
                         <div class="body">
-                                        <input type="hidden" name="id311" id="id311" value="<?php echo $getunitadmisi; ?>" />
-                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                                        <input type="hidden" name="id311" id="id311" value="<?php echo $getunitadmisiSK; ?>" />
+                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannyaSK; ?>" />
+                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutirSK; ?>" />
                                         <b>Daya Tampung</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -365,6 +547,13 @@
                         </div>
                     </div>
                 </div>
+            <?php
+            }
+            ?>
+                
+                
+                
+                
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="header bg-red">
@@ -373,9 +562,9 @@
                             </h2>
                         </div>
                         <div class="body">
-                                        <input type="hidden" name="id311" id="id311" value="<?php echo $getunitadmisi; ?>" />
-                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                                        <input type="hidden" name="id311" id="id311" value="<?php echo $getunitadmisiTE; ?>" />
+                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannyaTE; ?>" />
+                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutirTE; ?>" />
                                         <b>Daya Tampung</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -429,15 +618,7 @@
                     <?php
                         }
                         if ($_SESSION['role']=="Kemahasiswaan") {
-                            if ($getunitmhs>0) {
-                            ?>
-                                <form method="POST" action="<?php echo base_url()?>C_unit/updateisian311kemahasiswaan">
-                            <?php
-                            }else{
-                            ?>
-                                <form method="POST" action="<?php echo base_url()?>C_unit/ngisi311kemahasiswaan">
-                            <?php
-                            }
+                            
                             ?>
                 <!-- Hover Zoom Effect -->
             <div class="row">
@@ -455,6 +636,11 @@
             </div>
             <!-- #END# Hover Zoom Effect -->
                         <div class="row clearfix">
+
+
+            <?php
+            if ($cekmhsTEudah<1) {
+            ?>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="header bg-red">
@@ -463,9 +649,20 @@
                             </h2>
                         </div>
                         <div class="body">
-                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitmhs; ?>" />
-                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                            <?php
+                            if ($getunitmhsTE>0) {
+                            ?>
+                                <form method="POST" action="<?php echo base_url()?>C_unit/updateisian311kemahasiswaan">
+                            <?php
+                            }else{
+                            ?>
+                                <form method="POST" action="<?php echo base_url()?>C_unit/ngisi311kemahasiswaan">
+                            <?php
+                            }
+                            ?>
+                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitmhsTE; ?>" />
+                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannyaTE; ?>" />
+                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutirTE; ?>" />
                                         <b>Jumlah Total Mahasiswa :</b></br>
                                         <b>Reguler Bukan Transfer</b>
                                         <div class="input-group">
@@ -560,9 +757,15 @@
                                                 <input type="text" name="kolom15_311" id="k15_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
+                                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
                         </div>
                     </div>
                 </div>
+            <?php
+            }
+            if ($cekmhsTTudah<1) {
+            ?>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="header bg-red">
@@ -571,9 +774,9 @@
                             </h2>
                         </div>
                         <div class="body">
-                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitmhs; ?>" />
-                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitmhsTT; ?>" />
+                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannyaTT; ?>" />
+                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutirTT; ?>" />
                                         <b>Jumlah Total Mahasiswa :</b></br>
                                         <b>Reguler Bukan Transfer</b>
                                         <div class="input-group">
@@ -671,6 +874,10 @@
                         </div>
                     </div>
                 </div>
+            <?php
+            }
+            if ($cekmhsTFudah<1) {
+            ?>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="header bg-red">
@@ -679,9 +886,9 @@
                             </h2>
                         </div>
                         <div class="body">
-                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitmhs; ?>" />
-                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitmhsTF; ?>" />
+                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannyaTF; ?>" />
+                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutirTF; ?>" />
                                         <b>Jumlah Total Mahasiswa :</b></br>
                                         <b>Reguler Bukan Transfer</b>
                                         <div class="input-group">
@@ -780,6 +987,10 @@
                     </div>
                 </div>
             </div>
+            <?php
+            }
+            if ($cekmhsSKudah<1) {
+            ?>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="header bg-red">
@@ -788,9 +999,9 @@
                             </h2>
                         </div>
                         <div class="body">
-                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitmhs; ?>" />
-                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitmhsSK; ?>" />
+                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannyaSK; ?>" />
+                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutirSK; ?>" />
                                         <b>Jumlah Total Mahasiswa :</b></br>
                                         <b>Reguler Bukan Transfer</b>
                                         <div class="input-group">
@@ -888,6 +1099,13 @@
                         </div>
                     </div>
                 </div>
+            <?php
+            }
+            ?>
+                
+                
+                
+                
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="card">
                         <div class="header bg-red">
@@ -896,9 +1114,9 @@
                             </h2>
                         </div>
                         <div class="body">
-                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitmhs; ?>" />
-                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                                    <input type="hidden" name="id311" id="id311" value="<?php echo $getunitmhsTE; ?>" />
+                                    <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannyaTE; ?>" />
+                                    <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutirTE; ?>" />
                                         <b>Jumlah Total Mahasiswa :</b></br>
                                         <b>Reguler Bukan Transfer</b>
                                         <div class="input-group">
@@ -1001,8 +1219,8 @@
                                 }
                         ?>
                         </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
+                        <!-- <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form> -->
                         
                     </div>
                 </div>

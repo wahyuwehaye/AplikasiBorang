@@ -17,51 +17,259 @@
 
         <!-- Exportable Table -->
         <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header js-sweetalert">
-                    <h2>
-                        LIST LAPORAN
-                    </h2>
-                    </div>
-                    <div class="body">
-                        <div class="row clearfix">
-                        <div class="header">
-                            <h2 class="card-inside-title">Tabel Dokumen Setiap Unit</h2>
-                        </div>
-                        <div class="body">
-                        <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
-                            <thead>
-                                <tr>
-                                    <th>Nama Dokumen</th>
-                                    <th>Pemilik Dokumen</th>
-                                    <th>Softcopy</th>
-                                    <th>Keterangan</th>
-                                    <th>Tanggal Upload</th>
-                                    <th width="10%">Action</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Nama Dokumen</th>
-                                    <th>Pemilik Dokumen</th>
-                                    <th>Softcopy</th>
-                                    <th>Keterangan</th>
-                                    <th>Tanggal Upload</th>
-                                    <th width="10%">Action</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
-                        </div>
+            <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT KEMAHASISWAAN</div>
+                            <ul class="dashboard-stat-list">
+                                <?php
+                                    $CI =& get_instance();
+                                    $list=1;
+                                    $querymhs=$CI->db->query('SELECT COUNT(id) as cekmhs FROM dokumen WHERE pemilik like "%kemahasiswaan%"');
+                                    $cekmhs=$querymhs->result_array()[0]['cekmhs'];
+                                    $cekmhs=($cekmhs!=0)?($cekmhs):0;
+                                    $getlistbuktimhs =$CI->db->query('select * from dokumen where pemilik like "%kemahasiswaan%"');
+                                    foreach ($getlistbuktimhs->result() as $barmhs){
+                                        ?>
+                                <li>
+                                    <b><?php echo $list ?>.</b> <?php echo $barmhs->nama ?>
+                                    <span class="pull-right"><a target="_blank" href="<?php echo base_url();?>dokumen/<?php echo $barmhs->filename; ?>" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" onclick="downloadbukti(<?php echo $barmhs->id; ?>)" data-toggle="tooltip" data-placement="top" title="Download Dokumen" data-whatever="<?php echo $barmhs->id; ?>"><i class="material-icons">file_download</i></a></span>
+                                </li>
+                                        <?php
+                                    $list=$list+1;
+                                    }
+                                ?>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- #END# Exportable Table -->
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ADMISI</div>
+                            <ul class="dashboard-stat-list">
+                                <?php
+                                    $CI =& get_instance();
+                                    $list=1;
+                                    $queryadmisi=$CI->db->query('SELECT COUNT(id) as cekadmisi FROM dokumen WHERE pemilik like "%admisi%"');
+                                    $cekadmisi=$queryadmisi->result_array()[0]['cekadmisi'];
+                                    $cekadmisi=($cekadmisi!=0)?($cekadmisi):0;
+                                    $getlistbuktiadmisi =$CI->db->query('select * from dokumen where pemilik like "%admisi%"');
+                                    foreach ($getlistbuktiadmisi->result() as $baradmisi){
+                                        ?>
+                                <li>
+                                    <b><?php echo $list ?>.</b> <?php echo $baradmisi->nama ?>
+                                    <span class="pull-right"><a target="_blank" href="<?php echo base_url();?>dokumen/<?php echo $baradmisi->filename; ?>" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" onclick="downloadbukti(<?php echo $baradmisi->id; ?>)" data-toggle="tooltip" data-placement="top" title="Download Dokumen" data-whatever="<?php echo $baradmisi->id; ?>"><i class="material-icons">file_download</i></a></span>
+                                </li>
+                                        <?php
+                                    $list=$list+1;
+                                    }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
+                <!-- Dir 1 -->
+            <!-- Answered Tickets -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-teal">
+                            <div class="font-bold m-b--35">DIREKTORAT ...</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    Belum Ada Laporan
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Answered Tickets -->
     </div>
 </section>
 
