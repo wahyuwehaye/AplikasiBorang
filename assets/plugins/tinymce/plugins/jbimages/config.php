@@ -39,7 +39,7 @@
 
 	
 	// $config['img_path'] = './AplikasiBorang/uploads/images'; // Relative to domain name
-	$config['img_path'] = ''; // Relative to domain name
+	$config['img_path'] = '/AplikasiBorang/ImgIsian/'; // Relative to domain name
 	$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'] . $config['img_path']; // Physical path. [Usually works fine like this]
 	// $config['upload_path'] = $_SERVER['DOCUMENT_ROOT']; // Physical path. [Usually works fine like this]
 

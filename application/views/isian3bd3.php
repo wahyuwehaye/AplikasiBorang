@@ -2809,7 +2809,7 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='6.1') {
+                        }elseif ($getbutir=='6.1.1.1') {
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -2846,19 +2846,246 @@
                             ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi61">
                         <input type="hidden" name="id_butir61" id="id_butir61" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Pengelolaan Dana</h2>
-                        <h2 class="card-inside-title">Keterlibatan aktif program studi harus tercerminkan dalam dokumen tentang proses perencanaan, pengelolaan dan pelaporan serta pertanggungjawaban penggunaan dana kepada pemangku kepentingan melalui mekanisme yang transparan dan akuntabel.</h2>
-                        <h2 class="card-inside-title">Jelaskan keterlibatan PS dalam perencanaan anggaran dan pengelolaan dana.</h2>
+                        <h2 class="card-inside-title">Pembiayaan</h2>
+                        <h2 class="card-inside-title">Tuliskan jumlah dana termasuk gaji yang diterima  di unit pengelola program studi diploma selama tiga tahun terakhir dengan mengikuti  format tabel berikut:</h2>
                         <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_61" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                </div>
+                            <table style="height: 657px;" border="1" width="1070" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                    <tr style="text-align: center;">
+                                    <td rowspan="2">
+                                    <p><strong>Sumber Dana</strong></p>
+                                    </td>
+                                    <td rowspan="2">
+                                    <p><strong>Jenis Dana</strong></p>
+                                    </td>
+                                    <td colspan="3">
+                                    <p><strong>Jumlah Dana (Juta Rupiah)</strong></p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <p><strong>TS-2</strong></p>
+                                    </td>
+                                    <td>
+                                    <p><strong>TS-1</strong></p>
+                                    </td>
+                                    <td>
+                                    <p><strong>TS</strong></p>
+                                    </td>
+                                    </tr>
+                                    <tr style="text-align: center;">
+                                    <td style="text-align: center;">
+                                    <p><strong>(1)</strong></p>
+                                    </td>
+                                    <td>
+                                    <p><strong>(2)</strong></p>
+                                    </td>
+                                    <td>
+                                    <p><strong>(3)</strong></p>
+                                    </td>
+                                    <td>
+                                    <p><strong>(4)</strong></p>
+                                    </td>
+                                    <td>
+                                    <p><strong>(5)</strong></p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td rowspan="3">
+                                    <p>Usaha sendiri</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td rowspan="3">
+                                    <p>Mahasiswa</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td rowspan="3">
+                                    <p>Pemerintah</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td rowspan="3">
+                                    <p>Sumber lain</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td colspan="2">
+                                    <p>Total</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    <td>
+                                    <p>&nbsp;</p>
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
