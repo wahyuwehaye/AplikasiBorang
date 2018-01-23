@@ -45,12 +45,13 @@
                 $this->db->select('id');
                 $this->db->from('hitungf1');
                 $this->db->where('id_buku', $bukunya);
+                $this->db->order_by('id', 'ASC');
                 $versinya = $this->db->count_all_results();
                 if ($versinya==0) {
                     $newversi = 1;
                 }else{
                     $grabversi = "";
-                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id DESC LIMIT 1');
+                    $getversi = $CI->db->query('select review_ke from hitungf1 where id_buku="'.$bukunya.'" ORDER BY id ASC LIMIT 1');
                     foreach ($getversi->result() as $row){
                         $grabversi = $row->review_ke;
                         break;
