@@ -814,11 +814,11 @@
             <!-- BUTIR 3.1.1.d -->
                                 <tbody>
                                     <tr>
-                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[0]['id'] ?></th>
-                                        <td width="5%" rowspan="4"><?php echo $butir[0]['butir'] ?></td>
-                                        <td colspan="2"><?php echo $butir[0]['bakumutu'] ?></td>
+                                        <th width="5%" rowspan="4" scope="row"><?php echo $butir[12]['id'] ?></th>
+                                        <td width="5%" rowspan="4"><?php echo $butir[12]['butir'] ?></td>
+                                        <td colspan="2"><?php echo $butir[12]['bakumutu'] ?></td>
                                         <input type='hidden' name='id_buku[]' value="<?php echo $bukunya;?>">
-                                        <input type='hidden' name='butir[]' value="<?php echo $butir[0]['butir'];?>">
+                                        <input type='hidden' name='butir[]' value="<?php echo $butir[12]['butir'];?>">
                                         <input type='hidden' name='nama_asesor[]' value="<?php echo ($_SESSION['name']);?>">
                                         <input type='hidden' name='created_at[]' value="<?php echo date('Y-m-d H:i:s');?>">
                                         <input type='hidden' name='review_ke[]' value="<?php echo $newversi;?>">

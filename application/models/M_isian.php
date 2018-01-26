@@ -6984,7 +6984,7 @@ class M_isian extends CI_Model {
         public function findisian314kolom($column,$id){
                 $this->db->select('*');
                 $this->db->where($column,$id);
-                $this->db->order_by("id","asc");
+                $this->db->order_by("id","desc");
                 $this->db->limit(7);
                 $this->db->from('isian_16kolom');
                 $query=$this->db->get();
@@ -7046,6 +7046,16 @@ class M_isian extends CI_Model {
                 $this->db->where($column,$id);
                 $this->db->order_by("id","asc");
                 $this->db->limit(6);
+                $this->db->from('isian_16kolom');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisian314kolom7brs($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->order_by("id","asc");
+                $this->db->limit(7);
                 $this->db->from('isian_16kolom');
                 $query=$this->db->get();
                 return $query->result_array();

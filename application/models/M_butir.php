@@ -673,6 +673,16 @@ class M_butir extends CI_Model {
 
         }
 
+        public function findNilai($column,$id){
+            return $this->db->select("*")
+              ->from('butir')
+              ->where($column, $id)
+              ->order_by('id', 'ASC')
+              ->get()
+              ->result_array();
+
+        }
+
         public function find_buku($column,$id){
             return $this->db->select("*")
               ->from('butir_buku')

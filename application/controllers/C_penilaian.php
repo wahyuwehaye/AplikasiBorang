@@ -80,7 +80,7 @@ class C_penilaian extends CI_Controller {
         $data['active_menu']='penilaian';
         $this->load->view('template/header',$data);
         $data['buku']=$this->M_borang->find('id',$id);
-        $data['butir']=$this->M_butir->find('id_borang',$id);
+        $data['butir']=$this->M_butir->findNilai('id_borang',$id);
         $data['isian']=$this->M_uploadisi->find('id_butir',$id);
         $data['dataisian']=$this->M_uploadisi->finduploadisi('id_butir',$id);
         $data['dataisianversion']=$this->M_uploadisi->finduploadisiversion('id_kolom',$id);

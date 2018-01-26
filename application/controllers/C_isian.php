@@ -80,8 +80,18 @@ class C_isian extends CI_Controller {
                 $data['dataisian4brs']=$this->M_isian->findisian314kolom4brs('id_butir',$idbutirnya);
                 $data['dataisian5brs']=$this->M_isian->findisian314kolom5brs('id_butir',$idbutirnya);
                 $data['dataisian6brs']=$this->M_isian->findisian314kolom6brs('id_butir',$idbutirnya);
+                $data['dataisian7brs']=$this->M_isian->findisian314kolom7brs('id_butir',$idbutirnya);
                 $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$idbutirnya);
                 $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$idbutirnya);
+            }elseif (($butirnya=='3.2.1') || ($butirnya=='3.2.2')) {
+                $id_but = $data['butir'][0]['id'];
+                $id_bor = $data['butir'][0]['id_borang'];
+                $caributir331b['caribut331b'] = $this->M_isian->findButirnyasama('id_borang',$id_bor,'butir','3.2.1');
+                $butirnya331b = $caributir331b['caribut331b'][0]['id'];
+                $data['dataisian']=$this->M_isian->findisian1kolom('id_butir',$butirnya331b);
+                $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$butirnya331b);
+                // $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
+                $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$butirnya331b);
             }elseif (($butirnya=='3.3.1.b') || ($butirnya=='3.3.1.c')) {
                 $id_but = $data['butir'][0]['id'];
                 $id_bor = $data['butir'][0]['id_borang'];
@@ -687,7 +697,7 @@ class C_isian extends CI_Controller {
         $id=$_POST['id_butir32'];
         $this->M_isian->insert_isian32();
         $_SESSION['suksesinput'] = '';
-        redirect('isian/'.$_POST['id_butir32']);
+        redirect('isian/'.$_POST['32id_butir']);
   }
 
   public function ngisi331a(){
@@ -1954,7 +1964,7 @@ class C_isian extends CI_Controller {
         $id=$_POST['id_butir32'];
         $this->M_isian->update_isian32();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian/'.$_POST['id_butir32']);
+        redirect('isian/'.$_POST['32id_butir']);
   }
 
   public function updateisian331a(){
