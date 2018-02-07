@@ -4,6 +4,7 @@ class M_dokumen extends CI_Model {
     var $table = 'dokumenpendukung';
     var $table1 = 'lampiran';
     var $table2 = 'dokumen';
+    var $table3 = 'dok_ref';
 
         public function __construct()
         {
@@ -63,6 +64,12 @@ class M_dokumen extends CI_Model {
         public function uploadunit($data)
         {
             $this->db->insert($this->table2, $data);
+            return $this->db->affected_rows();
+        }
+
+        public function uploadreferensi($data)
+        {
+            $this->db->insert($this->table3, $data);
             return $this->db->affected_rows();
         }
 

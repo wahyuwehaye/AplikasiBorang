@@ -68,6 +68,23 @@ class M_butir extends CI_Model {
                 $this->db->insert('log', $data);
         }
 
+        public function update_butir_buku_penjelasan()
+        {
+                $data = array(
+                        'penjelasan' => $this->input->post('penjelasan'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                $this->db->update('butir_buku', $data, array('id' => $_POST['id_butir']));
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Penjelasan dari id butir :  ".$this->input->post('id_butir'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
         public function buatbutir3AS1($id){
             $this->db->query("INSERT INTO `butir` (`butir`, `bakumutu`, `penjelasan`, `keterangan`, `created_at`, `updated_at`, `id_borang`) VALUES
 ('1.1.a', 'Kejelasan dan kerealistikan visi, misi, tujuan, dan sasaran Program Studi', '', 'Nilai 4 - Memiliki visi, misi, tujuan, dan sasaran yang sangat jelas dan sangat realistik', NOW(), NOW(), ".$id."),

@@ -165,6 +165,41 @@ class C_dokumen extends CI_Controller {
 		echo json_encode(array("status" => TRUE));
 	}
 
+	public function uploadreferensi()
+	{
+		$id=$_POST['id_butir'];
+		$data = array(
+				'butir' => $this->input->post('butir'),
+				'nama' => $this->input->post('nama'),
+				'filename' => $this->input->post('filename'),
+				'keterangan' => $this->input->post('keterangan'),
+				'pemilik' => $_SESSION['name'],
+				'link_dok' => $this->input->post('link_dok'),
+				'created_at' => date('Y-m-d H:i:s'),
+			);
+
+		if(!empty($_FILES['filename']['name']))
+		{
+			$upload = $this->_do_uploadreferensi();
+
+			$data['filename'] = $upload;
+		}else{
+			$data['filename'] = "";
+		}
+
+		$this->M_dokumen->uploadreferensi($data);
+
+		$data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Sudah Mengupload File dengan nama : ". $_FILES['filename']['name'],
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+        $this->db->insert('log', $data);
+
+		redirect('/isian_buku/'.$_POST['id_butir']);
+		echo json_encode(array("status" => TRUE));
+	}
+
 	public function updatebuktidariisian(){
 		$data = array(
 				'status' => 'Sudak OK',
@@ -400,6 +435,28 @@ class C_dokumen extends CI_Controller {
 	private function _do_uploadunit()
 	{
 		$config['upload_path']          = 'dokumen/';
+        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
+        $config['max_size']             = 0; //set max size allowed in Kilobyte
+        $config['max_width']            = 0; // set max width image allowed
+        $config['max_height']           = 0; // set max height allowed
+        $config['file_name']            = $_FILES['filename']['name']; //just milisecond timestamp fot unique name
+
+        $this->load->library('upload', $config);
+
+        if(!$this->upload->do_upload('filename')) //upload and validate
+        {
+            $data['inputerror'][] = 'filename';
+			$data['error_string'][] = 'Upload error: '.$this->upload->display_errors('',''); //show ajax error
+			$data['status'] = FALSE;
+			echo json_encode($data);
+			exit();
+		}
+		return $this->upload->data('file_name');
+	}
+
+	private function _do_uploadreferensi()
+	{
+		$config['upload_path']          = 'uploadspm/';
         $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
         $config['max_size']             = 0; //set max size allowed in Kilobyte
         $config['max_width']            = 0; // set max width image allowed

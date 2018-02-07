@@ -10530,7 +10530,7 @@
                                         $diloop = $diloop - 1;
                                         $nil = $nil + 1;
                                         $jum1 = $jum1 + $dataisian[$diloop]['kolom4'];
-                                        $jum2 = $jum2 + $dataisian[$diloop]['kolom7'];
+                                        $jum2 = $jum2 + $dataisian[$diloop]['kolom6'];
                                     ?>
                                     <tr style="height: 13px;">
                                         <th scope="row" style="width: 52px; text-align: center; height: 13px;"><?php echo $nil ?></th>
@@ -15187,9 +15187,9 @@
                                         $jum1 = $jum1 + $dataisian[$i]['kolom1'];
                                         $jum2 = $jum2 + $dataisian[$i]['kolom2'];
                                         $jum3 = $jum3 + $dataisian[$i]['kolom3'];
-                                        $jum4 = $jum4 + $dataisian[$i]['kolom4'];
+                                        // $jum4 = $jum4 + $dataisian[$i]['kolom4'];
                                         $jum5 = $jum5 + $dataisian[$i]['kolom5'];
-                                        $jum6 = $jum6 + $dataisian[$i]['kolom6'];
+                                        // $jum6 = $jum6 + $dataisian[$i]['kolom6'];
                                         $jum7 = $jum7 + $dataisian[$i]['kolom7'];
                                         $diloop = $diloop - 1;
                                         $nil = $nil + 1;
