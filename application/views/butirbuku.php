@@ -3,7 +3,7 @@
         <div class="block-header">
             <div class="col-sm-5">
             <h2>
-                MENGELOLA BUTIR <?php echo strtoupper(($buku[0]['jenis']));?>
+                MENGELOLA BUTIRw <?php echo strtoupper(($buku[0]['jenis']));?>
                 <!-- <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small> -->
                 <!-- <small><?php echo ucfirst($buku[0]['jenis'])." ".$buku[0]['fakpro']." - ".$buku[0]['tahun']." - Buku : ".$buku[0]['buku']; ?></small> -->
                 <small><?php echo strtoupper($buku[0]['fakpro']." - ".$buku[0]['tahun']." - ".$getdata[0]['namafakultas']); ?></small>
@@ -147,19 +147,19 @@
                                     <?php
                                         $CI =& get_instance();
                                         // cek sudah terisi atau belum
-                                        $queryCekisi=$CI->db->query('SELECT COUNT(id) as cekisi FROM isian_16kolom WHERE id_butir IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
+                                        $queryCekisi=$CI->db->query('SELECT COUNT(id) as cekisi FROM isian_16kolom_buku WHERE id_butir IN (SELECT id FROM butir_buku WHERE id = '.$butir[$i]['id'].')');
                                         $cekisi=$queryCekisi->result_array()[0]['cekisi'];
                                         $isinya=($cekisi!=0)?($cekisi):0;
 
                                         // cek dulu apakah masuk ke F1 atau F3
                                         if($butirfak !== false){
                                             // cek nilainya
-                                            $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf3 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
+                                            $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf3 WHERE id_buku IN (SELECT id FROM butir_buku WHERE id = '.$butir[$i]['id'].')');
                                             $cekskor=$queryceknilai->result_array()[0]['cekskor'];
                                             $cekskornya=($cekskor!=0)?($cekskor):0;
                                             if ($cekskornya!==0) {
                                                 // ambil nilainya
-                                                $querygetnilai=$CI->db->query('SELECT skorakhir FROM hitungf3 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].') order by id desc');
+                                                $querygetnilai=$CI->db->query('SELECT skorakhir FROM hitungf3 WHERE id_buku IN (SELECT id FROM butir_buku WHERE id = '.$butir[$i]['id'].') order by id desc');
                                                 $getnilai=$querygetnilai->result_array()[0]['skorakhir'];
                                                 $skor=($getnilai!=0)?($getnilai):0;
                                             }else{
@@ -167,12 +167,12 @@
                                             }
                                         }else{
                                             // cek nilainya
-                                            $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].')');
+                                            $queryceknilai=$CI->db->query('SELECT COUNT(id) as cekskor FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir_buku WHERE id = '.$butir[$i]['id'].')');
                                             $cekskor=$queryceknilai->result_array()[0]['cekskor'];
                                             $cekskornya=($cekskor!=0)?($cekskor):0;
                                             if ($cekskornya!==0) {
                                                 // ambil nilainya
-                                                $querygetnilai=$CI->db->query('SELECT skorakhir FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir WHERE id = '.$butir[$i]['id'].') order by id desc');
+                                                $querygetnilai=$CI->db->query('SELECT skorakhir FROM hitungf1 WHERE id_buku IN (SELECT id FROM butir_buku WHERE id = '.$butir[$i]['id'].') order by id desc');
                                                 $getnilai=$querygetnilai->result_array()[0]['skorakhir'];
                                                 $skor=($getnilai!=0)?($getnilai):0;
                                             }else{
