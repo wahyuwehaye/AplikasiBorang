@@ -61,7 +61,7 @@ class M_isian extends CI_Model {
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
-                // $this->db->insert('isian_1kolom_version', $data);
+
                 $this->db->insert('isian_16kolom_version', $data);
 
                 $data = array(
