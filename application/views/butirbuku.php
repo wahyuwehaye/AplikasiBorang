@@ -182,6 +182,7 @@
 
                                         // cek sudah upload semua
                                         $getlistbukti =$CI->db->query('select COUNT(id) as cekfilebukti from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'" and filename = "" and not dokumen=""');
+                                        // $getlistbukti =$CI->db->query('select COUNT(id) as cekfilebukti from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[$i]['butir'].'" and id in (select id_pendukung from data_dok_pendukung)');
                                         $cekfilebukti=$getlistbukti->result_array()[0]['cekfilebukti'];
                                         $cekfilenya=($cekfilebukti!=0)?($cekfilebukti):0;
                                     ?>
@@ -221,11 +222,11 @@
 
                                             if ($cekfilenya!==0) {
                                             ?>
-                                                <a type="button" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Bukti yang harus disiapkan" href="<?php echo base_url();?>uploadbukti/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
+                                                <a type="button" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Bukti yang harus disiapkan" href="<?php echo base_url();?>uploadbukti_pend/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
                                             <?php
                                             }else{
                                             ?>
-                                                <a type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Bukti yang harus disiapkan" href="<?php echo base_url();?>uploadbukti/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
+                                                <a type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Bukti yang harus disiapkan" href="<?php echo base_url();?>uploadbukti_pend/<?php echo $butir[$i]['id']; ?>" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
                                             <?php
                                             }
                                             ?>

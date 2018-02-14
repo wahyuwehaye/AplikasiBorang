@@ -24533,7 +24533,7 @@
                                 <tr>
                                     <th width="5%">No</th>
                                     <th width="40%">Bukti yang harus disiapkan</th>
-                                    <th width="30%">Nama File</th>
+                                    <!-- <th width="30%">Nama File</th> -->
                                     <th width="10%">Status</th>
                                     <th width="10%">Tanggal Upload</th>
                                     <th width="10%">Action</th>
@@ -24543,7 +24543,7 @@
                                 <tr>
                                     <th width="5%">No</th>
                                     <th width="25%">Bukti yang harus disiapkan</th>
-                                    <th width="20%">Nama File</th>
+                                    <!-- <th width="20%">Nama File</th> -->
                                     <th width="10%">Status</th>
                                     <th width="10%">Tanggal Upload</th>
                                     <th width="10%">Action</th>
@@ -24573,14 +24573,19 @@
                                     $list=1;
                                     $getlistbukti =$CI->db->query('select * from dokumenpendukung where id_borang="'.$getdata[0]['idborang'].'" and butir="'.$butir[0]['butir'].'" order by id ASC');
                                     foreach ($getlistbukti->result() as $bar){
-                                        if (($bar->filename)=="") {
-                                            $filename = "Belum di Upload";
+                                        $this->db->select('id');
+                                        $this->db->from('data_dok_pendukung');
+                                        $this->db->where('id_pendukung',$bar->id);
+                                        $listpend = $this->db->count_all_results();
+                                        // if (($bar->filename)=="") {
+                                        if ($listpend<1) {
+                                            // $filename = "Belum di Upload";
                                             $status = "Belum";
                                             $tanggal = "Tidak Diketahui";
                                             $warnanya = "danger";
                                         }else{
-                                            $filename = $bar->filename;
-                                            $status = $bar->status;
+                                            // $filename = $bar->filename;
+                                            $status = "Sudah Upload";
                                             $tanggal = $bar->created_at;
                                             $warnanya = "success";
                                         }
@@ -24588,7 +24593,7 @@
                                 <tr>
                                     <td class='<?php echo($warnanya) ?>'><?php echo $list ?> </td>
                                     <td class='<?php echo($warnanya) ?>'><?php echo $bar->dokumen ?> </td>
-                                    <td class='<?php echo($warnanya) ?>'><?php echo $filename ?> </td>
+                                    <!-- <td class='<?php echo($warnanya) ?>'><?php echo $filename ?> </td> -->
                                     <td class='<?php echo($warnanya) ?>'><?php echo $status ?> </td>
                                     <td class='<?php echo($warnanya) ?>'><?php echo $tanggal ?> </td>
                                     <td class='<?php echo($warnanya) ?>'>
@@ -24596,7 +24601,8 @@
                                     <?php
                                         if (($bar->filename)=="") {
                                     ?>
-                                        <a type="button" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="modal" data-target="#uploadbukti" data-placement="top" title="Upload Dokumen" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
+                                        <!-- <a type="button" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="modal" data-target="#uploadbukti" data-placement="top" title="Upload Dokumen" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
+                                        <a href="<?php echo base_url();?>listpendukung/<?php echo $bar->id; ?>" type="button" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload Dokumen" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
                                     <?php
                                         }else{
                                     ?>
