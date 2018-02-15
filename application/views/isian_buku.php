@@ -354,7 +354,7 @@
                             if (count($dataisian)>0) {
                                 for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian111">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian111_buku">
                         <input type="hidden" name="id111" id="id111" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -388,7 +388,7 @@
                                 }else{
                         ?>
                         
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi111">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi111_buku">
                         <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Visi, Misi, Tujuan, dan Sasaran serta Strategi Pencapaian</h2>
                         <h2 class="card-inside-title"><?php echo $butir[0]['butir'] ?>&nbsp; <?php echo $butir[0]['bakumutu'] ?></h2>
@@ -838,7 +838,7 @@
                             
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian112">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian112_buku">
                         <input type="hidden" name="id112" id="id112" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir112" id="id_butir112" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -869,7 +869,7 @@
                         <?php
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi112">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi112_buku">
                         <input type="hidden" name="id_butir112" id="id_butir112" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Visi</h2>
                         <div class="row clearfix">
@@ -1054,7 +1054,7 @@
                             
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian113">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian113_buku">
                         <input type="hidden" name="id113" id="id113" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir113" id="id_butir113" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -1085,7 +1085,7 @@
                         <?php
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi113">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi113_buku">
                         <input type="hidden" name="id_butir113" id="id_butir113" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Misi</h2>
                         <div class="row clearfix">
@@ -1270,7 +1270,7 @@
                             
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian114">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian114_buku">
                         <input type="hidden" name="id114" id="id114" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir114" id="id_butir114" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -1301,7 +1301,7 @@
                         <?php
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi114">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi114_buku">
                         <input type="hidden" name="id_butir114" id="id_butir114" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Tujuan</h2>
                         <div class="row clearfix">
@@ -1487,7 +1487,7 @@
                             
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian115">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian115_buku">
                         <input type="hidden" name="id115" id="id115" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir115" id="id_butir115" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -1518,7 +1518,7 @@
                         <?php
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi115">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi115_buku">
                         <input type="hidden" name="id_butir115" id="id_butir115" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sasaran dan Strategi Pencapaiannya</h2>
                         <div class="row clearfix">
@@ -2273,7 +2273,7 @@
                             
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian12">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian12_buku">
                         <input type="hidden" name="id12" id="id12" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir12" id="id_butir12" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -2306,7 +2306,7 @@
                         <?php
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi12">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi12_buku">
                         <input type="hidden" name="id_butir12" id="id_butir12" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sosialisasi&nbsp;
                         <button type="button" onclick="infoSosialisasi()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -2599,7 +2599,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian21">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian21_buku">
                         <input type="hidden" name="id21" id="id21" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir21" id="id_butir21" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -2672,7 +2672,7 @@
                         <?php }
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi21">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi21_buku">
                         <input type="hidden" name="id_butir21" id="id_butir21" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sistem Tata Pamong&nbsp;
                         <button type="button" onclick="infoPamong()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -3065,7 +3065,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian22">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian22_buku">
                         <input type="hidden" name="id22" id="id22" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir22" id="id_butir22" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -3130,7 +3130,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi22">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi22_buku">
                         <input type="hidden" name="id_butir22" id="id_butir22" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Kepemimpinan&nbsp;
                         <button type="button" onclick="infoKepemimpinan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -3390,7 +3390,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian23">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian23_buku">
                         <input type="hidden" name="id23" id="id23" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir23" id="id_butir23" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -3423,7 +3423,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi23">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi23_buku">
                         <input type="hidden" name="id_butir23" id="id_butir23" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sistem Pengelolaan&nbsp;
                         <button type="button" onclick="infoPengelolaan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -3879,7 +3879,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian24">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian24_buku">
                         <input type="hidden" name="id24" id="id24" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir24" id="id_butir24" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -3911,7 +3911,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi24">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi24_buku">
                         <input type="hidden" name="id_butir24" id="id_butir24" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Penjaminan Mutu&nbsp;
                         <button type="button" onclick="infoMutu()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -4541,7 +4541,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian25">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian25_buku">
                         <input type="hidden" name="id25" id="id25" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir25" id="id_butir25" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -4648,7 +4648,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi25">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi25_buku">
                         <input type="hidden" name="id_butir25" id="id_butir25" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Umpan Balik&nbsp;
                         <button type="button" onclick="infoUmpan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -4902,7 +4902,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian26">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian26_buku">
                         <input type="hidden" name="id26" id="id26" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir26" id="id_butir26" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -4975,7 +4975,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi26">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi26_buku">
                         <input type="hidden" name="id_butir26" id="id_butir26" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Keberlanjutan&nbsp;
                         <button type="button" onclick="infoKeberlanjutan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -5125,6 +5125,14 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                             </div>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">IMPORT DATA DARI IGRACIAS</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                    <!-- DROPDOWN UNTUK MEMBUKA DETAIL PANDUAN -->
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -5269,6 +5277,200 @@
                                 </div>
                             </div>
                             </div>
+                    <!-- CLOSE DETAIL PANDUAN -->
+
+                    <!-- OPEN DROPDOWN IMPORT DATA -->
+                            <div class="collapse" id="collapseImportData">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">Profil Mahasiswa dan Lulusan</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>Data Seluruh Mahasiswa Reguler(1) dan Lulusannya dalam Lima Tahun Terakhir :</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <?php
+
+                                                    $url = 'https://jsonplaceholder.typicode.com/posts/1'; // path to your JSON file
+                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $characters = json_decode($data, true); // decode the JSON feed
+
+                                                    //echo $characters[0]['STUDENTSCHOOLYEAR']; 
+                                                    ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <b>Daya Tampung</b>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="material-icons">dialpad</i>
+                                                                </span>
+                                                                <div class="form-line">
+                                                                    <input type="text" name="kolom1_311" id="k1_311" class="form-control" value="<?php 
+                                                                    // foreach ($characters as $character) {
+                                                                    //     echo $character[0]['userId'] . '<br>';
+                                                                    // }
+                                                                     ?>" placeholder="Ex: 500">
+                                                                </div>
+                                                            </div>
+                                                            <b>Jumlah Calon Mahasiswa Reguler :</b></BR>
+                                                                <b>Ikut Seleksi</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom2_311" id="k2_311" onkeyup="errorinputikutseleksi()" class="form-control" placeholder="Ex: 500">
+                                                                    </div>
+                                                                </div>
+                                                                <b>Lulus Seleksi</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom3_311" id="k3_311" onkeyup="errorinput()" class="form-control" placeholder="Ex: 500">
+                                                                    </div>
+                                                                </div>
+                                                                <b>Jumlah Mahasiswa Baru :</b></BR>
+                                                                <b>Reguler Bukan Transfer</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom4_311" id="k4_311" onkeyup="errorinput()" class="form-control" placeholder="Ex: 500">
+                                                                    </div>
+                                                                </div>
+                                                                <b>Transfer(3)</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom5_311" id="k5_311" class="form-control" placeholder="Ex: 500">
+                                                                    </div>
+                                                                </div>
+                                                                <b>Jumlah Total Mahasiswa :</b></br>
+                                                                <b>Reguler Bukan Transfer</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom6_311" id="k6_311" class="form-control" placeholder="Ex: 500">
+                                                                    </div>
+                                                                </div>
+                                                                <b>Transfer(3)</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom7_311" id="k7_311" class="form-control" placeholder="Ex: 500">
+                                                                    </div>
+                                                                </div>
+                                                                <b>Jumlah Lulusan :</b></br>
+                                                                <b>Reguler Bukan Transfer</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom8_311" id="k8_311" class="form-control" placeholder="Ex: 500">
+                                                                    </div>
+                                                                </div>
+                                                                <b>Transfer(3)</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom9_311" id="k9_311" class="form-control" placeholder="Ex: 500">
+                                                                    </div>
+                                                                </div>
+                                                                <b>IPK Lulusan Reguler :</b>
+                                                                <b>Minimal</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom10_311" id="k10_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 2.75 (Penulisan Angka Menggunakan (.) Titik">
+                                                                    </div>
+                                                                </div>
+                                                                <b>Rata-rata</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom11_311" id="k11_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 3.00 (Penulisan Angka Menggunakan (.) Titik">
+                                                                    </div>
+                                                                </div>
+                                                                <b>Maksimal</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text"  name="kolom12_311" id="k12_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 3.50 (Penulisan Angka Menggunakan (.) Titik">
+                                                                    </div>
+                                                                </div>
+                                                                <b>Presentase Lulusan Reguler dengan IPK :</b>
+                                                                <b>< 2.75</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom13_311" id="k13_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
+                                                                    </div>
+                                                                </div>
+                                                                <b>2.75 - 3.50</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom14_311" id="k14_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
+                                                                    </div>
+                                                                </div>
+                                                                <b>> 3.50</b>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="material-icons">dialpad</i>
+                                                                    </span>
+                                                                    <div class="form-line">
+                                                                        <input type="text" name="kolom15_311" id="k15_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
+                                                                    </div>
+                                                                </div>
+                                                                <b>Isian / Catatan :</b>
+                                                                <div class="form-group">
+                                                                    <div class="form-line">
+                                                                        <textarea name="kolom16_311" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                        </textarea>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #END# Hover Rows -->
+                                </div>
+                            </div>
+                    <!-- CLOSE IMPORT DATA -->
                         </div>
                         <!-- Tutup DETAIL PANDUAN -->
                         <?php
