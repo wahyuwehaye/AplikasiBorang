@@ -5301,11 +5301,11 @@
                                                 <div class="body">
                                                     <?php
 
-                                                    $url = 'https://jsonplaceholder.typicode.com/posts/1'; // path to your JSON file
+                                                    $url = 'https://igracias.telkomuniversity.ac.id/api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear=1415&studyprogramid=11,18,26'; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $characters = json_decode($data, true); // decode the JSON feed
 
-                                                    //echo $characters[0]['STUDENTSCHOOLYEAR']; 
+                                                    echo $characters[0]['MABA_REGULER']; 
                                                     ?>
                                                     <div class="form-group">
                                                         <div class="form-line">
