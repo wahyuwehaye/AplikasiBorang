@@ -369,6 +369,16 @@ class C_butir extends CI_Controller {
 		redirect('isian_buku/'.$_POST['id_butir']);
 	}
 
+	public function update_butir_buku_penjelasan3as2(){
+		//load needed library,helper,model
+       	$this->load->library('form_validation');
+       	$this->load->model('M_butir');
+       	$this->load->model('M_borang');
+       	$id=$_POST['id_butir'];
+        $this->M_butir->update_butir_buku_penjelasan();
+		redirect('isian_buku3as2/'.$_POST['id_butir']);
+	}
+
 	public function find(){
 		$id=$_POST['id'];
 		$this->load->model('M_butir');
