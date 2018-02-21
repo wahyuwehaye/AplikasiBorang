@@ -200,6 +200,36 @@ class C_dokumen extends CI_Controller {
 		echo json_encode(array("status" => TRUE));
 	}
 
+	public function uploadpendukung()
+	{
+		$id=$_POST['id_pendukung'];
+		$data = array(
+				'id_pendukung' => $this->input->post('id_pendukung'),
+				'created_at' => date('Y-m-d H:i:s'),
+			);
+
+		if(!empty($_FILES['filename']['name']))
+		{
+			$upload = $this->_do_uploadpendukung();
+
+			$data['filename'] = $upload;
+		}else{
+			$data['filename'] = "";
+		}
+
+		$this->M_dokumen->uploadpendukung($data);
+
+		$data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Sudah Mengupload File Pendukung dengan nama : ". $_FILES['filename']['name'],
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+        $this->db->insert('log', $data);
+
+		redirect('/listpendukung/'.$_POST['id_pendukung']);
+		echo json_encode(array("status" => TRUE));
+	}
+
 	public function updatebuktidariisian(){
 		$data = array(
 				'status' => 'Sudak OK',
@@ -476,6 +506,28 @@ class C_dokumen extends CI_Controller {
 		return $this->upload->data('file_name');
 	}
 
+	private function _do_uploadpendukung()
+	{
+		$config['upload_path']          = 'pendukung/';
+        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
+        $config['max_size']             = 0; //set max size allowed in Kilobyte
+        $config['max_width']            = 0; // set max width image allowed
+        $config['max_height']           = 0; // set max height allowed
+        $config['file_name']            = $_FILES['filename']['name']; //just milisecond timestamp fot unique name
+
+        $this->load->library('upload', $config);
+
+        if(!$this->upload->do_upload('filename')) //upload and validate
+        {
+            $data['inputerror'][] = 'filename';
+			$data['error_string'][] = 'Upload error: '.$this->upload->display_errors('',''); //show ajax error
+			$data['status'] = FALSE;
+			echo json_encode($data);
+			exit();
+		}
+		return $this->upload->data('file_name');
+	}
+
 	private function _do_uploadlampiran()
 	{
 		$config['upload_path']          = 'lampiran/';
@@ -529,6 +581,22 @@ class C_dokumen extends CI_Controller {
 			$this->load->view('footer');
         }
 
+	}
+
+	public function del_pend($id,$direct){
+		$this->load->model('M_dokumen');
+		$pendukung = $this->M_dokumen->get_pend_by_id_hapus($id);
+		for ($i=0; $i<count($pendukung); $i++){
+			if(file_exists('pendukung/'.$pendukung->filename) && $pendukung->filename)
+      		unlink('pendukung/'.$pendukung->filename);
+		}
+		$result=$this->M_dokumen->delete_pend('id',$id);
+		if($result > 0){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
+        redirect('listpendukung/'.$direct);
 	}
 
 	public function destroy(){

@@ -5,6 +5,7 @@ class M_dokumen extends CI_Model {
     var $table1 = 'lampiran';
     var $table2 = 'dokumen';
     var $table3 = 'dok_ref';
+    var $table4 = 'data_dok_pendukung';
 
         public function __construct()
         {
@@ -70,6 +71,12 @@ class M_dokumen extends CI_Model {
         public function uploadreferensi($data)
         {
             $this->db->insert($this->table3, $data);
+            return $this->db->affected_rows();
+        }
+
+        public function uploadpendukung($data)
+        {
+            $this->db->insert($this->table4, $data);
             return $this->db->affected_rows();
         }
 
@@ -166,6 +173,15 @@ class M_dokumen extends CI_Model {
                 return $query->row();
         }
 
+        public function get_pend_by_id_hapus($id)
+        {
+                $this->db->from($this->table4);
+                $this->db->where('id',$id);
+                $query = $this->db->get();
+
+                return $query->row();
+        }
+
         public function update_column($data,$id){
                  $this->db->update('dokumen', $data, array('id' => $id));
         }
@@ -235,6 +251,20 @@ class M_dokumen extends CI_Model {
             $data = array(
                         'user'=> $_SESSION['name'],
                         'action' => "Menghapus dokumen dengan ID ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+            return $this->db->affected_rows();
+        }
+
+        public function delete_pend($column,$id){
+            $this->db->delete('data_dok_pendukung', array($column => $id));
+            $this->db->query('ALTER TABLE data_dok_pendukung AUTO_INCREMENT 0');
+
+            $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menghapus dokumen pendukung dengan ID ".$id,
                         'created_at'=> date('Y-m-d H:i:s')
                 );
 
