@@ -490,6 +490,7 @@ class M_isian extends CI_Model {
                         'kolom14' => $this->input->post('kolom14_311'),
                         'kolom15' => $this->input->post('kolom15_311'),
                         'kolom16' => $this->input->post('kolom16_311'),
+                        'kolom17' => $this->input->post('kolom17_311'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -515,6 +516,7 @@ class M_isian extends CI_Model {
                         'kolom14' => $this->input->post('kolom14_311'),
                         'kolom15' => $this->input->post('kolom15_311'),
                         'kolom16' => $this->input->post('kolom16_311'),
+                        'kolom17' => $this->input->post('kolom17_311'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -544,6 +546,7 @@ class M_isian extends CI_Model {
                         'kolom6' => $this->input->post('kolom6_312'),
                         'kolom7' => $this->input->post('kolom7_312'),
                         'kolom8' => $this->input->post('kolom8_312'),
+                        'kolom9' => $this->input->post('kolom9_312'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -561,6 +564,7 @@ class M_isian extends CI_Model {
                         'kolom6' => $this->input->post('kolom6_312'),
                         'kolom7' => $this->input->post('kolom7_312'),
                         'kolom8' => $this->input->post('kolom8_312'),
+                        'kolom9' => $this->input->post('kolom9_312'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -8486,12 +8490,32 @@ class M_isian extends CI_Model {
                 return $query->result_array();
         }
 
+        public function findisian311kolom_buku($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->order_by("id","desc");
+                $this->db->limit(5);
+                $this->db->from('isian_16kolom_buku');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
         public function findisian314kolom($column,$id){
                 $this->db->select('*');
                 $this->db->where($column,$id);
                 $this->db->order_by("id","desc");
                 $this->db->limit(7);
                 $this->db->from('isian_16kolom');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisian314kolom_buku($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->order_by("id","desc");
+                $this->db->limit(7);
+                $this->db->from('isian_16kolom_buku');
                 $query=$this->db->get();
                 return $query->result_array();
         }
@@ -8579,9 +8603,20 @@ class M_isian extends CI_Model {
                 return $query->result_array();
         }
 
+        // FORMAT BUKU BORANG SESUAI EXCEL
         public function findUpdateTbl($column,$id){
             return $this->db->select("*")
               ->from('isian_16kolom')
+              ->where($column, $id)
+              ->order_by('id', 'DESC')
+              ->get()
+              ->result_array();
+        }
+
+        // FORMAT BUKU BORANG SESUAI BUKU
+        public function findUpdateTbl_buku($column,$id){
+            return $this->db->select("*")
+              ->from('isian_16kolom_buku')
               ->where($column, $id)
               ->order_by('id', 'DESC')
               ->get()
@@ -8607,9 +8642,29 @@ class M_isian extends CI_Model {
               ->result_array();
         }
 
+        public function findButirnya_buku($column1,$id,$column2,$id_borang){
+            return $this->db->select("butir")
+              ->from('butir_buku')
+              ->where($column1, $id)
+              ->where($column2, $id_borang)
+              ->order_by('id', 'DESC')
+              ->get()
+              ->result_array();
+        }
+
         public function findButirnyasama($column2,$id_borang,$column3,$butir){
             return $this->db->select("*")
               ->from('butir')
+              ->where($column2, $id_borang)
+              ->where($column3, $butir)
+              ->order_by('id', 'DESC')
+              ->get()
+              ->result_array();
+        }
+
+        public function findButirnyasama_buku($column2,$id_borang,$column3,$butir){
+            return $this->db->select("*")
+              ->from('butir_buku')
               ->where($column2, $id_borang)
               ->where($column3, $butir)
               ->order_by('id', 'DESC')
@@ -8620,6 +8675,7 @@ class M_isian extends CI_Model {
 
 // QUERY DELETE ISIAN
 
+        // FORMAT EXCEL BORANG PENILAIAN
         public function deleteisian1kolom($column,$id){
 
             // $this->db->delete('isian_1kolom', array($column => $id));
@@ -8628,6 +8684,21 @@ class M_isian extends CI_Model {
             $this->db->delete('isian_16kolom', array($column => $id));
             $this->db->delete('isian_16kolom_version', array('id_kolom' => $id));
             $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+            $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "menghapus Isian dengan id : ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                    );
+            $this->db->insert('log', $data);
+            return $this->db->affected_rows();
+        }
+
+        // FORMAT BUKU BORANG WORD
+        public function deleteisian1kolom_buku($column,$id){
+            $this->db->delete('isian_16kolom_buku', array($column => $id));
+            $this->db->delete('isian_16kolom_version', array('id_kolom' => $id));
+            $this->db->query('ALTER TABLE isian_16kolom_buku AUTO_INCREMENT 1');
             $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
             $data = array(
                         'user'=> $_SESSION['name'],
@@ -8656,6 +8727,7 @@ class M_isian extends CI_Model {
             return $this->db->affected_rows();
         }
 
+        // FORMAT BORANG EXCEL
         public function deleteisian4kolom($column,$id){
 
             // $this->db->delete('isian_4kolom', array($column => $id));
@@ -8664,6 +8736,21 @@ class M_isian extends CI_Model {
             $this->db->delete('isian_16kolom', array($column => $id));
             $this->db->delete('isian_16kolom_version', array('id_kolom' => $id));
             $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+            $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "menghapus Isian dengan id : ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                    );
+            $this->db->insert('log', $data);
+            return $this->db->affected_rows();
+        }
+
+        // FORMAT BUKU BORANG WORD
+        public function deleteisian4kolom_buku($column,$id){
+            $this->db->delete('isian_16kolom_buku', array($column => $id));
+            $this->db->delete('isian_16kolom_version', array('id_kolom' => $id));
+            $this->db->query('ALTER TABLE isian_16kolom_buku AUTO_INCREMENT 1');
             $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
             $data = array(
                         'user'=> $_SESSION['name'],
@@ -8728,10 +8815,26 @@ class M_isian extends CI_Model {
             return $this->db->affected_rows();
         }
 
+        // FORMAT BUKU BORANG EXCEL
         public function deletabelbutir($column,$id){
             $this->db->delete('isian_16kolom', array($column => $id));
             // $this->db->delete('isian_16kolom_version', array('id' => $id));
             $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+            $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+            $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "menghapus Isian Butir dengan id : ".$id,
+                        'created_at'=> date('Y-m-d H:i:s')
+                    );
+            $this->db->insert('log', $data);
+            return $this->db->affected_rows();
+        }
+
+        // FORMAT BUKU BORANG WORD
+        public function deletabelbutir_buku($column,$id){
+            $this->db->delete('isian_16kolom_buku', array($column => $id));
+            // $this->db->delete('isian_16kolom_version', array('id' => $id));
+            $this->db->query('ALTER TABLE isian_16kolom_buku AUTO_INCREMENT 1');
             $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
             $data = array(
                         'user'=> $_SESSION['name'],
