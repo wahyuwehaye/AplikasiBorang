@@ -877,6 +877,1041 @@ class C_isian extends CI_Controller {
         redirect($load.'/'.$post['id_butir314'][0]);
     }
 
+    // 30 31 32 33
+    // TANPA ARRAY
+    public function ngisi431_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['431id_butir'];
+        $this->M_isian->insert_isian431_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['431id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi431_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_431'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir431'][$key],
+            'kolom1' => $post['kolom1_431'][$key],
+            'kolom2' => $post['kolom2_431'][$key],
+            'kolom3' => $post['kolom3_431'][$key],
+            'kolom4' => $post['kolom4_431'][$key],
+            'kolom5' => $post['kolom5_431'][$key],
+            'kolom6' => $post['kolom6_431'][$key],
+            'kolom7' => $post['kolom7_431'][$key],
+            'kolom8' => $post['kolom8_431'][$key],
+            'kolom9' => $post['kolom9_431'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir431'][0]);
+    }
+
+    // 34
+    // TANPA ARRAY
+    public function ngisi432_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['432id_butir'];
+        $this->M_isian->insert_isian432_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['432id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi432_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_432'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir432'][$key],
+            'kolom1' => $post['kolom1_432'][$key],
+            'kolom2' => $post['kolom2_432'][$key],
+            'kolom3' => $post['kolom3_432'][$key],
+            'kolom4' => $post['kolom4_432'][$key],
+            'kolom5' => $post['kolom5_432'][$key],
+            'kolom6' => $post['kolom6_432'][$key],
+            'kolom7' => $post['kolom7_432'][$key],
+            'kolom8' => $post['kolom8_432'][$key],
+            'kolom9' => $post['kolom9_432'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir432'][0]);
+    }
+
+    // 35
+    // TANPA ARRAY
+    public function ngisi433_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir433'];
+        $this->M_isian->insert_isian433_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['id_butir433']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi433_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_433'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir433'][$key],
+            'kolom1' => $post['kolom1_433'][$key],
+            'kolom2' => $post['kolom2_433'][$key],
+            'kolom3' => $post['kolom3_433'][$key],
+            'kolom4' => $post['kolom4_433'][$key],
+            'kolom5' => $post['kolom5_433'][$key],
+            'kolom6' => $post['kolom6_433'][$key],
+            'kolom7' => $post['kolom7_433'][$key],
+            'kolom8' => $post['kolom8_433'][$key],
+            'kolom9' => $post['kolom9_433'][$key],
+            'kolom10' => $post['kolom10_433'][$key],
+            'kolom11' => $post['kolom11_433'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir433'][0]);
+    }
+
+    // 36 (434 & 435)
+    // TANPA ARRAY
+    public function ngisi434_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['434id_butir'];
+        $this->M_isian->insert_isian434_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['434id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi434_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_434'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['434id_butir'][$key],
+            'kolom1' => $post['kolom1_434'][$key],
+            'kolom2' => $post['kolom2_434'][$key],
+            'kolom3' => $post['kolom3_434'][$key],
+            'kolom4' => $post['kolom4_434'][$key],
+            'kolom5' => $post['kolom5_434'][$key],
+            'kolom6' => $post['kolom6_434'][$key],
+            'kolom7' => $post['kolom7_434'][$key],
+            'kolom8' => $post['kolom8_434'][$key],
+            'kolom9' => $post['kolom9_434'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['434id_butir'][0]);
+    }
+
+    // 37 (434 & 435)
+    // TANPA ARRAY
+    public function ngisi435_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['435id_butir'];
+        $this->M_isian->insert_isian435_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['435id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi435_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_435'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['435id_butir'][$key],
+            'kolom1' => $post['kolom1_435'][$key],
+            'kolom2' => $post['kolom2_435'][$key],
+            'kolom3' => $post['kolom3_435'][$key],
+            'kolom4' => $post['kolom4_435'][$key],
+            'kolom5' => $post['kolom5_435'][$key],
+            'kolom6' => $post['kolom6_435'][$key],
+            'kolom7' => $post['kolom7_435'][$key],
+            'kolom8' => $post['kolom8_435'][$key],
+            'kolom9' => $post['kolom9_435'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['435id_butir'][0]);
+    }
+
+    // 38
+    // TANPA ARRAY
+    public function ngisi441_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['441id_butir'];
+        $this->M_isian->insert_isian441_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['441id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi441_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_441'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir441'][$key],
+            'kolom1' => $post['kolom1_441'][$key],
+            'kolom2' => $post['kolom2_441'][$key],
+            'kolom3' => $post['kolom3_441'][$key],
+            'kolom4' => $post['kolom4_441'][$key],
+            'kolom5' => $post['kolom5_441'][$key],
+            'kolom6' => $post['kolom6_441'][$key],
+            'kolom7' => $post['kolom7_441'][$key],
+            'kolom8' => $post['kolom8_441'][$key],
+            'kolom9' => $post['kolom9_441'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir441'][0]);
+    }
+
+    // 39 40
+    // TANPA ARRAY
+    public function ngisi442_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['442id_butir'];
+        $this->M_isian->insert_isian442_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['442id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi442_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_442'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir442'][$key],
+            'kolom1' => $post['kolom1_442'][$key],
+            'kolom2' => $post['kolom2_442'][$key],
+            'kolom3' => $post['kolom3_442'][$key],
+            'kolom4' => $post['kolom4_442'][$key],
+            'kolom5' => $post['kolom5_442'][$key],
+            'kolom6' => $post['kolom6_442'][$key],
+            'kolom7' => $post['kolom7_442'][$key],
+            'kolom8' => $post['kolom8_442'][$key],
+            'kolom9' => $post['kolom9_442'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir442'][0]);
+    }
+
+    // 41
+    // TANPA ARRAY
+    public function ngisi451_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir451'];
+        $this->M_isian->insert_isian451_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['id_butir451']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi451_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_451'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir451'][$key],
+            'kolom1' => $post['kolom1_451'][$key],
+            'kolom2' => $post['kolom2_451'][$key],
+            'kolom3' => $post['kolom3_451'][$key],
+            'kolom4' => $post['kolom4_451'][$key],
+            'kolom5' => $post['kolom5_451'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir451'][0]);
+    }
+
+    // 42
+    // TANPA ARRAY
+    public function ngisi452_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir452'];
+        $this->M_isian->insert_isian452_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['id_butir452']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi452_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_452'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir452'][$key],
+            'kolom1' => $post['kolom1_452'][$key],
+            'kolom2' => $post['kolom2_452'][$key],
+            'kolom3' => $post['kolom3_452'][$key],
+            'kolom4' => $post['kolom4_452'][$key],
+            'kolom5' => $post['kolom5_452'][$key],
+            'kolom6' => $post['kolom6_452'][$key],
+            'kolom7' => $post['kolom7_452'][$key],
+            'kolom8' => $post['kolom8_452'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir452'][0]);
+    }
+
+    // 43
+    // TANPA ARRAY
+    public function ngisi453_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir453'];
+        $this->M_isian->insert_isian453_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['id_butir453']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi453_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_453'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir453'][$key],
+            'kolom1' => $post['kolom1_453'][$key],
+            'kolom2' => $post['kolom2_453'][$key],
+            'kolom3' => $post['kolom3_453'][$key],
+            'kolom4' => $post['kolom4_453'][$key],
+            'kolom5' => $post['kolom5_453'][$key],
+            'kolom6' => $post['kolom6_453'][$key],
+            'kolom7' => $post['kolom7_453'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir453'][0]);
+    }
+
+    // 44
+    // TANPA ARRAY
+    public function ngisi454_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir454'];
+        $this->M_isian->insert_isian454_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['id_butir454']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi454_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_454'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir454'][$key],
+            'kolom1' => $post['kolom1_454'][$key],
+            'kolom2' => $post['kolom2_454'][$key],
+            'kolom3' => $post['kolom3_454'][$key],
+            'kolom4' => $post['kolom4_454'][$key],
+            'kolom5' => $post['kolom5_454'][$key],
+            'kolom6' => $post['kolom6_454'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir454'][0]);
+    }
+
+    // 45
+    // TANPA ARRAY
+    public function ngisi455_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir455'];
+        $this->M_isian->insert_isian455_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['id_butir455']);
+    }
+
+    // PAKR ARRAY
+    public function ngisi455_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_455'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir455'][$key],
+            'kolom1' => $post['kolom1_455'][$key],
+            'kolom2' => $post['kolom2_455'][$key],
+            'kolom3' => $post['kolom3_455'][$key],
+            'kolom4' => $post['kolom4_455'][$key],
+            'kolom5' => $post['kolom5_455'][$key],
+            'kolom6' => $post['kolom6_455'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir455'][0]);
+    }
+
+    // 46 47 48
+    // TANPA ARRAY
+    public function ngisi461_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['461id_butir'];
+        $this->M_isian->insert_isian461_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['461id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi461_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_461'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir461'][$key],
+            'kolom1' => $post['kolom1_461'][$key],
+            'kolom2' => $post['kolom2_461'][$key],
+            'kolom3' => $post['kolom3_461'][$key],
+            'kolom4' => $post['kolom4_461'][$key],
+            'kolom5' => $post['kolom5_461'][$key],
+            'kolom6' => $post['kolom6_461'][$key],
+            'kolom7' => $post['kolom7_461'][$key],
+            'kolom8' => $post['kolom8_461'][$key],
+            'kolom9' => $post['kolom9_461'][$key],
+            'kolom10' => $post['kolom10_461'][$key],
+            'kolom11' => $post['kolom11_461'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir461'][0]);
+    }
+
+    // 62 63 64
+    // TANPA ARRAY
+    public function ngisi541_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['541id_butir'];
+        $this->M_isian->insert_isian541_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['541id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi541_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_541'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir541'][$key],
+            'kolom1' => $post['kolom1_541'][$key],
+            'kolom2' => $post['kolom2_541'][$key],
+            'kolom3' => $post['kolom3_541'][$key],
+            'kolom4' => $post['kolom4_541'][$key],
+            'kolom5' => $post['kolom5_541'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir541'][0]);
+    }
+
+    // 66
+    // TANPA ARRAY
+    public function ngisi551_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir551'];
+        $this->M_isian->insert_isian551_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['id_butir551']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi551_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_551'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir551'][$key],
+            'kolom1' => $post['kolom1_551'][$key],
+            'kolom2' => $post['kolom2_551'][$key],
+            'kolom3' => $post['kolom3_551'][$key],
+            'kolom4' => $post['kolom4_551'][$key],
+            'kolom5' => $post['kolom5_551'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir551'][0]);
+    }
+
+    // 79
+    // TANPA ARRAY
+    public function ngisi622_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['622id_butir'];
+        $this->M_isian->insert_isian622_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['622id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi622_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_622'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir622'][$key],
+            'kolom1' => $post['kolom1_622'][$key],
+            'kolom2' => $post['kolom2_622'][$key],
+            'kolom3' => $post['kolom3_622'][$key],
+            'kolom4' => $post['kolom4_622'][$key],
+            'kolom5' => $post['kolom5_622'][$key],
+            'kolom6' => $post['kolom6_622'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir622'][0]);
+    }
+
+    // 80
+    // TANPA ARRAY
+    public function ngisi623_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['623id_butir'];
+        $this->M_isian->insert_isian623_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['623id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi623_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_623'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir623'][$key],
+            'kolom1' => $post['kolom1_623'][$key],
+            'kolom2' => $post['kolom2_623'][$key],
+            'kolom3' => $post['kolom3_623'][$key],
+            'kolom4' => $post['kolom4_623'][$key],
+            'kolom5' => $post['kolom5_623'][$key],
+            'kolom6' => $post['kolom6_623'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir623'][0]);
+    }
+
+    // 93
+    // TANPA ARRAY
+    public function ngisi711_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['711id_butir'];
+        $this->M_isian->insert_isian711_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['711id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi711_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_711'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir711'][$key],
+            'kolom1' => $post['kolom1_711'][$key],
+            'kolom2' => $post['kolom2_711'][$key],
+            'kolom3' => $post['kolom3_711'][$key],
+            'kolom4' => $post['kolom4_711'][$key],
+            'kolom5' => $post['kolom5_711'][$key],
+            'kolom6' => $post['kolom6_711'][$key],
+            'kolom7' => $post['kolom7_711'][$key],
+            'kolom8' => $post['kolom8_711'][$key],
+            'kolom9' => $post['kolom9_711'][$key],
+            'kolom10' => $post['kolom10_711'][$key],
+            'kolom11' => $post['kolom11_711'][$key],
+            'kolom12' => $post['kolom12_711'][$key],
+            'kolom13' => $post['kolom13_711'][$key],
+            'kolom14' => $post['kolom14_711'][$key],
+            'kolom15' => $post['kolom15_711'][$key],
+            'kolom16' => $post['kolom16_711'][$key],
+            'kolom17' => $post['kolom17_711'][$key],
+            'kolom18' => $post['kolom18_711'][$key],
+            'kolom19' => $post['kolom19_711'][$key],
+            'kolom20' => $post['kolom20_711'][$key],
+            'kolom21' => $post['kolom21_711'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir711'][0]);
+    }
+
+    // 95
+    // TANPA ARRAY
+    public function ngisi713_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['713id_butir'];
+        $this->M_isian->insert_isian713_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['713id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi713_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_713'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir713'][$key],
+            'kolom1' => $post['kolom1_713'][$key],
+            'kolom2' => $post['kolom2_713'][$key],
+            'kolom3' => $post['kolom3_713'][$key],
+            'kolom4' => $post['kolom4_713'][$key],
+            'kolom5' => $post['kolom5_713'][$key],
+            'kolom6' => $post['kolom6_713'][$key],
+            'kolom7' => $post['kolom7_713'][$key],
+            'kolom8' => $post['kolom8_713'][$key],
+            'kolom9' => $post['kolom9_713'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir713'][0]);
+    }
+
+    // 96
+    // TANPA ARRAY
+    public function ngisi714_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['714id_butir'];
+        $this->M_isian->insert_isian714_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['714id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi714_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_714'] AS $key => $val)
+        {
+            $result[] = array(
+                'id_butir' => $this->input->post(''),
+                        'kolom1' => $this->input->post(''),
+            'id_butir' => $post['id_butir714'][$key],
+            'kolom1' => $post['kolom1_714'][$key],
+            'kolom2' => $post['kolom2_714'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir714'][0]);
+    }
+
+    // 97
+    // TANPA ARRAY
+    public function ngisi721_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['721id_butir'];
+        $this->M_isian->insert_isian721_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['721id_butir']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi721_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_721'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir721'][$key],
+            'kolom1' => $post['kolom1_721'][$key],
+            'kolom2' => $post['kolom2_721'][$key],
+            'kolom3' => $post['kolom3_721'][$key],
+            'kolom4' => $post['kolom4_721'][$key],
+            'kolom5' => $post['kolom5_721'][$key],
+            'kolom6' => $post['kolom6_721'][$key],
+            'kolom7' => $post['kolom7_721'][$key],
+            'kolom8' => $post['kolom8_721'][$key],
+            'kolom9' => $post['kolom9_721'][$key],
+            'kolom10' => $post['kolom10_721'][$key],
+            'kolom11' => $post['kolom11_721'][$key],
+            'kolom12' => $post['kolom12_721'][$key],
+            'kolom13' => $post['kolom13_721'][$key],
+            'kolom14' => $post['kolom14_721'][$key],
+            'kolom15' => $post['kolom15_721'][$key],
+            'kolom16' => $post['kolom16_721'][$key],
+            'kolom17' => $post['kolom17_721'][$key],
+            'kolom18' => $post['kolom18_721'][$key],
+            'kolom19' => $post['kolom19_721'][$key],
+            'kolom20' => $post['kolom20_721'][$key],
+            'kolom21' => $post['kolom21_721'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir721'][0]);
+    }
+
+    // 99
+    // TANPA ARRAY
+    public function ngisi731_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir731'];
+        $this->M_isian->insert_isian731_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['id_butir731']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi731_buku_array(){
+    //load needed library,helper,model
+        $post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_461'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir461'][$key],
+            'kolom1' => $post['kolom1_461'][$key],
+            'kolom2' => $post['kolom2_461'][$key],
+            'kolom3' => $post['kolom3_461'][$key],
+            'kolom4' => $post['kolom4_461'][$key],
+            'kolom5' => $post['kolom5_461'][$key],
+            'kolom6' => $post['kolom6_461'][$key],
+            'kolom7' => $post['kolom7_461'][$key],
+            'kolom8' => $post['kolom8_461'][$key],
+            'kolom9' => $post['kolom9_461'][$key],
+            'kolom10' => $post['kolom10_461'][$key],
+            'kolom11' => $post['kolom11_461'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir461'][0]);
+    }
+
+    // 100
+    // TANPA ARRAY
+    public function ngisi732_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir732'];
+        $this->M_isian->insert_isian732_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['id_butir732']);
+    }
+
+    // PAKE ARRAY
+    public function ngisi732_buku_array(){
+    //load needed library,helper,model
+$post = $this->input->post();
+        $result = array();
+        $load = 'isian_buku';
+
+        foreach($post['kolom1_461'] AS $key => $val)
+        {
+            $result[] = array(
+            'id_butir' => $post['id_butir461'][$key],
+            'kolom1' => $post['kolom1_461'][$key],
+            'kolom2' => $post['kolom2_461'][$key],
+            'kolom3' => $post['kolom3_461'][$key],
+            'kolom4' => $post['kolom4_461'][$key],
+            'kolom5' => $post['kolom5_461'][$key],
+            'kolom6' => $post['kolom6_461'][$key],
+            'kolom7' => $post['kolom7_461'][$key],
+            'kolom8' => $post['kolom8_461'][$key],
+            'kolom9' => $post['kolom9_461'][$key],
+            'kolom10' => $post['kolom10_461'][$key],
+            'kolom11' => $post['kolom11_461'][$key],
+            'version_no' => "1",
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
+            );
+        }
+
+        $this->db->insert_batch('isian_16kolom_buku', $result);
+        $_SESSION['suksesinput'] = '';
+        redirect($load.'/'.$post['id_butir461'][0]);
+    }
+
     
 
     // INSERT ISIAN BUKU SESUAI DENGA FORMAT BUTIR BORANG PENILAIAN EXCEL 3A 3B
@@ -2381,10 +3416,10 @@ class C_isian extends CI_Controller {
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian');
-        $id=$_POST['id_butir313'];
+        $id=$_POST['id_butir313tabel'];
         $this->M_isian->update_isian313_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian_buku/'.$_POST['id_butir313']);
+        redirect('isian_buku/'.$_POST['id_butir313tabel']);
     }
 
     // 16
@@ -2398,6 +3433,310 @@ class C_isian extends CI_Controller {
         $this->M_isian->update_isian314_buku();
         $_SESSION['suksesupdate'] = '';
         redirect('isian_buku/'.$_POST['id_butir314']);
+    }
+
+    // 30 31 32 33
+    public function updateisian431_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['431id_butir'];
+        $this->M_isian->update_isian431_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['431id_butir']);
+    }
+
+    // 34
+    public function updateisian432_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['432id_butir'];
+        $this->M_isian->update_isian432_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['432id_butir']);
+    }
+
+    // 35
+    public function updateisian433_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir433tabel'];
+        $this->M_isian->update_isian433_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['id_butir433tabel']);
+    }
+
+    // 36 (434 & 435)
+    public function updateisian434_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir434tabel'];
+        $this->M_isian->update_isian434_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['id_butir434tabel']);
+    }
+
+    // 37 (434 & 435)
+    public function updateisian435_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir435tabel'];
+        $this->M_isian->update_isian435_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['id_butir435tabel']);
+    }
+
+    // 38
+    public function updateisian441_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['441id_butir'];
+        $this->M_isian->update_isian441_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['441id_butir']);
+    }
+
+    // 39 40
+    public function updateisian442_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['442id_butir'];
+        $this->M_isian->update_isian442_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['442id_butir']);
+    }
+
+    // 41
+    public function updateisian451_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir451tabel'];
+        $this->M_isian->update_isian451_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['id_butir451tabel']);
+    }
+
+    // 42
+    public function updateisian452_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir452tabel'];
+        $this->M_isian->update_isian452_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['id_butir452tabel']);
+    }
+
+    // 43
+    public function updateisian453_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir453tabel'];
+        $this->M_isian->update_isian453_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['id_butir453tabel']);
+    }
+
+    // 44
+    public function updateisian454_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir454tabel'];
+        $this->M_isian->update_isian454_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['id_butir454tabel']);
+    }
+
+    // 45
+    public function updateisian455_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir455tabel'];
+        $this->M_isian->update_isian455_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['id_butir455tabel']);
+    }
+
+    // 46 47 48
+    public function updateisian461_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['461id_butir'];
+        $this->M_isian->update_isian461_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['461id_butir']);
+    }
+
+    // 62 63 64
+    public function updateisian541_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['541id_butir'];
+        $this->M_isian->update_isian541_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['541id_butir']);
+    }
+
+    
+    // 66
+    public function updateisian551_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['551did_butir'];
+        $this->M_isian->update_isian551_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['551did_butir']);
+    }
+
+    
+    // 79
+    public function updateisian622_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['622id_butir'];
+        $this->M_isian->update_isian622_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['622id_butir']);
+    }
+
+    // 80
+    public function updateisian623_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['623id_butir'];
+        $this->M_isian->update_isian623_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['623id_butir']);
+    }
+
+    
+// 93
+    public function updateisian711_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['711id_butir'];
+        $this->M_isian->update_isian711_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['711id_butir']);
+    }
+
+    
+// 95
+    public function updateisian713_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['713id_butir'];
+        $this->M_isian->update_isian713_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['713id_butir']);
+    }
+
+    
+// 96
+    public function updateisian714_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['714id_butir'];
+        $this->M_isian->update_isian714_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['714id_butir']);
+    }
+
+
+    // 97
+    public function updateisian721_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['721id_butir'];
+        $this->M_isian->update_isian721_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['721id_butir']);
+    }
+// 99
+    public function updateisian731_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir731tabel'];
+        $this->M_isian->update_isian731_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['id_butir731tabel']);
+    }
+
+    // 100
+    public function updateisian732_buku(){
+    //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir732tabel'];
+        $this->M_isian->update_isian732_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['id_butir732tabel']);
     }
 
 

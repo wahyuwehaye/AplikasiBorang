@@ -8558,7 +8558,7 @@
                                       //   $jum8 = $jum8 + $dataisian[$i]['kolom8'] + $dataisian[$i]['kolom18'] + $dataisian[$i]['kolom28'];
                                       //   $jum9 = $jum9 + $dataisian[$i]['kolom9'] + $dataisian[$i]['kolom19'] + $dataisian[$i]['kolom29'];
                                       // $jum10 = $jum10 + $dataisian[$i]['kolom10'] + $dataisian[$i]['kolom20'] + $dataisian[$i]['kolom30'];
-                                        $jum1 = $jum1 + $dataisian[$i]['kolom1'];
+                                        // $jum1 = $jum1 + $dataisian[$i]['kolom1'];
                                         $jum2 = $jum2 + $dataisian[$i]['kolom2'];
                                         $jum3 = $jum3 + $dataisian[$i]['kolom3'];
                                         $jum4 = $jum4 + $dataisian[$i]['kolom4'];
@@ -33005,19 +33005,19 @@ function printContent(el){
 
   function deleisi(x){
     var borang = "<?php echo $this->uri->segment(2, 0)?>";
-    if ((borang==1)) {
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolom/"+x+"/"+borang;
-    } else if ((borang==2) || (borang==3) || (borang==4) || (borang==5) || (borang==6) || (borang==7) || (borang==24) || (borang==25) || (borang==26) || (borang==27) || (borang==28)){
+    // if ((borang==1)) {
+    //     var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolom/"+x+"/"+borang;
+    // } else if ((borang==2) || (borang==3) || (borang==4) || (borang==5) || (borang==6) || (borang==7) || (borang==24) || (borang==25) || (borang==26) || (borang==27) || (borang==28)){
+    //     var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian1kolom/"+x+"/"+borang;
+    // } else if (borang==8){
+    //     var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian12kolom/"+x+"/"+borang;
+    // } else if (borang==9){
+    //     var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian5kolom/"+x+"/"+borang;
+    // }else if(borang==15){
+    //     var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolomsatupersatu/"+x+"/"+borang;
+    // }else{
         var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian1kolom/"+x+"/"+borang;
-    } else if (borang==8){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian12kolom/"+x+"/"+borang;
-    } else if (borang==9){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian5kolom/"+x+"/"+borang;
-    }else if(borang==15){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolomsatupersatu/"+x+"/"+borang;
-    }else{
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian1kolom/"+x+"/"+borang;
-    }
+    // }
     
         swal({
             title: "Are you sure?",
