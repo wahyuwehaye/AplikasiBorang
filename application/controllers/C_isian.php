@@ -797,7 +797,7 @@ class C_isian extends CI_Controller {
         redirect('isian_buku/'.$_POST['id_butir313']);
     }
 
-    // PAKE ARRAY
+    // PAKE ARRAY VERSI 1
     public function ngisi313_buku_array(){
         //load needed library,helper,model
         $post = $this->input->post();
@@ -830,8 +830,11 @@ class C_isian extends CI_Controller {
 
         $_SESSION['suksesinput'] = '';
         redirect($load.'/'.$post['id_butir313'][0]);
-    }
+	}
 
+	// PAKE ARRAY VERSI 2
+	
+	
     // 16
     // TANPA ARRAY
     public function ngisi314_buku(){
@@ -1839,19 +1842,19 @@ class C_isian extends CI_Controller {
         $result = array();
         $load = 'isian_buku';
 
-        foreach($post['kolom1_461'] AS $key => $val)
+        foreach($post['kolom1_731'] AS $key => $val)
         {
             $result[] = array(
-            'id_butir' => $post['id_butir461'][$key],
-            'kolom1' => $post['kolom1_461'][$key],
-            'kolom2' => $post['kolom2_461'][$key],
-            'kolom3' => $post['kolom3_461'][$key],
-            'kolom4' => $post['kolom4_461'][$key],
-            'kolom5' => $post['kolom5_461'][$key],
-            'kolom6' => $post['kolom6_461'][$key],
-            'kolom7' => $post['kolom7_461'][$key],
-            'kolom8' => $post['kolom8_461'][$key],
-            'kolom9' => $post['kolom9_461'][$key],
+            'id_butir' => $post['id_butir731'][$key],
+            'kolom1' => $post['kolom1_731'][$key],
+            'kolom2' => $post['kolom2_731'][$key],
+            'kolom3' => $post['kolom3_731'][$key],
+            'kolom4' => $post['kolom4_731'][$key],
+            'kolom5' => $post['kolom5_731'][$key],
+            'kolom6' => $post['kolom6_731'][$key],
+            'kolom7' => $post['kolom7_731'][$key],
+            'kolom8' => $post['kolom8_731'][$key],
+            'kolom9' => $post['kolom9_731'][$key],
             'kolom10' => $post['kolom10_461'][$key],
             'kolom11' => $post['kolom11_461'][$key],
             'version_no' => "1",
@@ -1862,7 +1865,7 @@ class C_isian extends CI_Controller {
 
         $this->db->insert_batch('isian_16kolom_buku', $result);
         $_SESSION['suksesinput'] = '';
-        redirect($load.'/'.$post['id_butir461'][0]);
+        redirect($load.'/'.$post['id_butir731'][0]);
     }
 
     // 100
@@ -1882,35 +1885,34 @@ class C_isian extends CI_Controller {
     // PAKE ARRAY
     public function ngisi732_buku_array(){
     //load needed library,helper,model
-$post = $this->input->post();
-        $result = array();
-        $load = 'isian_buku';
-
-        foreach($post['kolom1_461'] AS $key => $val)
+    $post = $this->input->post();
+    $result = array();
+    $load = 'isian_buku';
+    foreach($post['kolom1_732'] AS $key => $val)
         {
             $result[] = array(
-            'id_butir' => $post['id_butir461'][$key],
-            'kolom1' => $post['kolom1_461'][$key],
-            'kolom2' => $post['kolom2_461'][$key],
-            'kolom3' => $post['kolom3_461'][$key],
-            'kolom4' => $post['kolom4_461'][$key],
-            'kolom5' => $post['kolom5_461'][$key],
-            'kolom6' => $post['kolom6_461'][$key],
-            'kolom7' => $post['kolom7_461'][$key],
-            'kolom8' => $post['kolom8_461'][$key],
-            'kolom9' => $post['kolom9_461'][$key],
-            'kolom10' => $post['kolom10_461'][$key],
-            'kolom11' => $post['kolom11_461'][$key],
-            'version_no' => "1",
-            'created_at'=> date('Y-m-d H:i:s'),
-            'updated_at'=> date('Y-m-d H:i:s'),
+                'id_butir' => $post['id_butir732'][$key],
+                'kolom1' => $post['kolom1_732'][$key],
+                'kolom2' => $post['kolom2_732'][$key],
+                'kolom3' => $post['kolom3_732'][$key],
+                'kolom4' => $post['kolom4_732'][$key],
+                'kolom5' => $post['kolom5_732'][$key],
+                'kolom6' => $post['kolom6_732'][$key],
+                'kolom7' => $post['kolom7_732'][$key],
+                'kolom8' => $post['kolom8_732'][$key],
+                'kolom9' => $post['kolom9_732'][$key],
+                'kolom10' => $post['kolom10_732'][$key],
+                'kolom11' => $post['kolom11_732'][$key],
+                'version_no' => "1",
+                'created_at'=> date('Y-m-d H:i:s'),
+                'updated_at'=> date('Y-m-d H:i:s'),
             );
         }
-
         $this->db->insert_batch('isian_16kolom_buku', $result);
         $_SESSION['suksesinput'] = '';
-        redirect($load.'/'.$post['id_butir461'][0]);
+        redirect($load.'/'.$post['id_butir732'][0]);
     }
+
 
     
 
@@ -3416,10 +3418,10 @@ $post = $this->input->post();
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian');
-        $id=$_POST['id_butir313tabel'];
+        $id=$_POST['id_butir313'];
         $this->M_isian->update_isian313_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian_buku/'.$_POST['id_butir313tabel']);
+        redirect('isian_buku/'.$_POST['id_butir313']);
     }
 
     // 16

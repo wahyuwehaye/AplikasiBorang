@@ -193,6 +193,41 @@
                         $getid434 = $row->id;
                         break;
                     }
+
+                    // inisiasi variabel
+                    $getKodeProdi = 0;
+                    $getKodeProdiDosen = 0;
+                    
+                    // ketika menggunakan jaringan selain tune
+                    $link = 'https://igracias.telkomuniversity.ac.id/';
+
+                    // ketika menggunakan jaringan tune (lokal kampus)
+                    // $link = 'http://10.252.252.174/';
+
+                    // GET KODE PRODI BERDASARKAN HALAMAN YANG DIBUKA
+                    $urlKodeProdi = $link.'api/borang/borang.php?data=prodi'; // path to your JSON file
+                    $dataKodeProdi = file_get_contents($urlKodeProdi); // put the contents of the file into a variable
+                    $KodeProdi = json_decode($dataKodeProdi, true); // decode the JSON feed
+                    foreach ($KodeProdi as $keyProdi => $valueProdi) {
+                        $prodinya = stripos(($buku[0]['fakpro']), ($valueProdi['NAMA_PRODI']));
+                            if ($prodinya !== FALSE) {
+                                 $getKodeProdi = $valueProdi['KODE'];
+                            }
+                    }
+                    
+                    // GET KODE PRODI DOSEN BERDASARKAN HALAMAN YANG DIBUKA
+                    $urlKodeProdiDosen = $link.'api/borang/borang.php?data=prodidosen'; // path to your JSON file
+                    $dataKodeProdiDosen = file_get_contents($urlKodeProdiDosen); // put the contents of the file into a variable
+                    $KodeProdiDosen = json_decode($dataKodeProdiDosen, true); // decode the JSON feed
+                    $kalimat = $buku[0]['fakpro']; //mengambil nama prodi
+                    $sub_kalimat = substr($kalimat,7); //memotong nama prodi agar sesuai dengan apa yang akan dicari nantinya
+                    foreach ($KodeProdiDosen as $keyProdiDosen => $valueProdiDosen) {
+                        $prodiDosennya = stripos(($valueProdiDosen['NAMA_PRODI_DOSEN']), ($sub_kalimat));
+                            if ($prodiDosennya !== FALSE) {
+                                 $getKodeProdiDosen = $valueProdiDosen['KODE'];
+                            }
+                    }
+
                         if ($getbutir=='1.1.1') {
                         ?>
                         <!-- DETAIL PANDUAN -->
@@ -404,7 +439,7 @@
                                                 <li><strong>Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap</strong><strong>,</strong><strong> dll (sebutkan siapa saja tim perumus VMTS Prodi)</strong></li>
                                                 <li><strong>Alurnya dig</strong><strong>ambarkan dengan menggunakan gambar (dibawah ini adalah contoh gambar, silahkan dimodifikasi atau silakan digambarkan sesuai dengan kondisi masing masing)</strong></li>
                                                 </ol>
-                                                <p style="padding-left: 240px;"><strong>&nbsp;<img src="/Screenshot_34.png" width="487" height="259" /></strong><strong>&nbsp;</strong></p>
+                                                <p style="padding-left: 240px;"><strong>&nbsp;<img src="/AplikasiBorang/ImgIsian/Screenshot_34.png" width="487" height="259" /></strong><strong>&nbsp;</strong></p>
                                                 <ol start="4">
                                                 <li><strong>Ceritakan kapan dan apa isi FGD</strong></li>
                                                 <li><strong>Tampilkan foto-foto kegiatan FGD yang didalamnya ada spanduk/banner tentang kegiatan tersebut.</strong></li>
@@ -5331,7 +5366,7 @@
                                                     <!-- DATA TS - 4 -->
                                                     <?php
 
-                                                    $urlTS4 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS5.$TS4.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS4 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS5.$TS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS4 = file_get_contents($urlTS4); // put the contents of the file into a variable
                                                     $charactersTS4 = json_decode($dataTS4, true); // decode the JSON feed
 
@@ -5363,7 +5398,7 @@
                                                     <!-- DATA TS - 3 -->
                                                     <?php
 
-                                                    $urlTS3 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS4.$TS3.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS3 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS4.$TS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS3 = file_get_contents($urlTS3); // put the contents of the file into a variable
                                                     $charactersTS3 = json_decode($dataTS3, true); // decode the JSON feed
 
@@ -5395,7 +5430,7 @@
                                                     <!-- DATA TS - 2 -->
                                                     <?php
 
-                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS3.$TS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
@@ -5427,7 +5462,7 @@
                                                     <!-- DATA TS - 1 -->
                                                     <?php
 
-                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS2.$TS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
@@ -5459,7 +5494,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS1.$TS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -5508,7 +5543,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi311_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS1.$TS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $characters = json_decode($data, true); // decode the JSON feed
 
@@ -6555,7 +6590,7 @@
                                                     <!-- DATA TS - 4 -->
                                                     <?php
 
-                                                    $urlTS4 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS5.$TS4.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS4 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS5.$TS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS4 = file_get_contents($urlTS4); // put the contents of the file into a variable
                                                     $charactersTS4 = json_decode($dataTS4, true); // decode the JSON feed
 
@@ -6578,7 +6613,7 @@
                                                     <!-- DATA TS - 3 -->
                                                     <?php
 
-                                                    $urlTS3 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS4.$TS3.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS3 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS4.$TS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS3 = file_get_contents($urlTS3); // put the contents of the file into a variable
                                                     $charactersTS3 = json_decode($dataTS3, true); // decode the JSON feed
 
@@ -6601,7 +6636,7 @@
                                                     <!-- DATA TS - 2 -->
                                                     <?php
 
-                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS3.$TS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
@@ -6624,7 +6659,7 @@
                                                     <!-- DATA TS - 1 -->
                                                     <?php
 
-                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS2.$TS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
@@ -6647,7 +6682,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS1.$TS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -6687,7 +6722,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi312_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS1.$TS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $characters = json_decode($data, true); // decode the JSON feed
 
@@ -7317,7 +7352,7 @@
                                                     <!-- DATA TS - 2 -->
                                                     <?php
 
-                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS3.$TS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
                                                     foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
@@ -7339,7 +7374,7 @@
                                                     <!-- DATA TS - 1 -->
                                                     <?php
 
-                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS2.$TS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
                                                     foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
@@ -7362,7 +7397,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS1.$TS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -7403,7 +7438,7 @@
                                                     <!-- DATA TS - 2 -->
                                                     <?php
 
-                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS3.$TS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
                                                     foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
@@ -7425,7 +7460,7 @@
                                                     <!-- DATA TS - 1 -->
                                                     <?php
 
-                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS2.$TS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
                                                     foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
@@ -7448,7 +7483,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS1.$TS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -8196,37 +8231,37 @@
                                                     <?php
 
                                                     // 6
-                                                    $urlFTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS7.$FTS6.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlFTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS7.$FTS6.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataFTS6 = file_get_contents($urlFTS6); // put the contenFTS of the file into a variable
                                                     $charactersFTS6 = json_decode($dataFTS6, true); // decode the JSON feed
 
                                                     // 5
-                                                    $urlFTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS6.$FTS5.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlFTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS6.$FTS5.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataFTS5 = file_get_contents($urlFTS5); // put the contenFTS of the file into a variable
                                                     $charactersFTS5 = json_decode($dataFTS5, true); // decode the JSON feed
 
                                                     // 4
-                                                    $urlFTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS5.$FTS4.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlFTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS5.$FTS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataFTS4 = file_get_contents($urlFTS4); // put the contenFTS of the file into a variable
                                                     $charactersFTS4 = json_decode($dataFTS4, true); // decode the JSON feed
 
                                                     // 3
-                                                    $urlFTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS4.$FTS3.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlFTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS4.$FTS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataFTS3 = file_get_contents($urlFTS3); // put the contenFTS of the file into a variable
                                                     $charactersFTS3 = json_decode($dataFTS3, true); // decode the JSON feed
 
                                                     // 2
-                                                    $urlFTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS3.$FTS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlFTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS3.$FTS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataFTS2 = file_get_contents($urlFTS2); // put the contenFTS of the file into a variable
                                                     $charactersFTS2 = json_decode($dataFTS2, true); // decode the JSON feed
 
                                                     // 1
-                                                    $urlFTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS2.$FTS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlFTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS2.$FTS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataFTS1 = file_get_contents($urlFTS1); // put the contenFTS of the file into a variable
                                                     $charactersFTS1 = json_decode($dataFTS1, true); // decode the JSON feed
 
                                                     // 0
-                                                    $urlFTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS1.$FTS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlFTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$FTS1.$FTS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataFTS = file_get_contents($urlFTS); // put the contenFTS of the file into a variable
                                                     $charactersFTS = json_decode($dataFTS, true); // decode the JSON feed
 
@@ -8251,37 +8286,37 @@
                                                     <?php
 
                                                     // 6
-                                                    $urlETS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS7.$ETS6.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlETS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS7.$ETS6.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataETS6 = file_get_contents($urlETS6); // put the contenETS of the file into a variable
                                                     $charactersETS6 = json_decode($dataETS6, true); // decode the JSON feed
 
                                                     // 5
-                                                    $urlETS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS6.$ETS5.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlETS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS6.$ETS5.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataETS5 = file_get_contents($urlETS5); // put the contenETS of the file into a variable
                                                     $charactersETS5 = json_decode($dataETS5, true); // decode the JSON feed
 
                                                     // 4
-                                                    $urlETS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS5.$ETS4.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlETS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS5.$ETS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataETS4 = file_get_contents($urlETS4); // put the contenETS of the file into a variable
                                                     $charactersETS4 = json_decode($dataETS4, true); // decode the JSON feed
 
                                                     // 3
-                                                    $urlETS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS4.$ETS3.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlETS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS4.$ETS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataETS3 = file_get_contents($urlETS3); // put the contenETS of the file into a variable
                                                     $charactersETS3 = json_decode($dataETS3, true); // decode the JSON feed
 
                                                     // 2
-                                                    $urlETS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS3.$ETS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlETS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS3.$ETS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataETS2 = file_get_contents($urlETS2); // put the contenETS of the file into a variable
                                                     $charactersETS2 = json_decode($dataETS2, true); // decode the JSON feed
 
                                                     // 1
-                                                    $urlETS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS2.$ETS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlETS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS2.$ETS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataETS1 = file_get_contents($urlETS1); // put the contenETS of the file into a variable
                                                     $charactersETS1 = json_decode($dataETS1, true); // decode the JSON feed
 
                                                     // 0
-                                                    $urlETS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS1.$ETS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlETS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ETS1.$ETS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataETS = file_get_contents($urlETS); // put the contenETS of the file into a variable
                                                     $charactersETS = json_decode($dataETS, true); // decode the JSON feed
 
@@ -8306,37 +8341,37 @@
                                                     <?php
 
                                                     // 6
-                                                    $urlDTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS7.$DTS6.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlDTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS7.$DTS6.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataDTS6 = file_get_contents($urlDTS6); // put the contenDTS of the file into a variable
                                                     $charactersDTS6 = json_decode($dataDTS6, true); // decode the JSON feed
 
                                                     // 5
-                                                    $urlDTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS6.$DTS5.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlDTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS6.$DTS5.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataDTS5 = file_get_contents($urlDTS5); // put the contenDTS of the file into a variable
                                                     $charactersDTS5 = json_decode($dataDTS5, true); // decode the JSON feed
 
                                                     // 4
-                                                    $urlDTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS5.$DTS4.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlDTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS5.$DTS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataDTS4 = file_get_contents($urlDTS4); // put the contenDTS of the file into a variable
                                                     $charactersDTS4 = json_decode($dataDTS4, true); // decode the JSON feed
 
                                                     // 3
-                                                    $urlDTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS4.$DTS3.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlDTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS4.$DTS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataDTS3 = file_get_contents($urlDTS3); // put the contenDTS of the file into a variable
                                                     $charactersDTS3 = json_decode($dataDTS3, true); // decode the JSON feed
 
                                                     // 2
-                                                    $urlDTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS3.$DTS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlDTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS3.$DTS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataDTS2 = file_get_contents($urlDTS2); // put the contenDTS of the file into a variable
                                                     $charactersDTS2 = json_decode($dataDTS2, true); // decode the JSON feed
 
                                                     // 1
-                                                    $urlDTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS2.$DTS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlDTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS2.$DTS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataDTS1 = file_get_contents($urlDTS1); // put the contenDTS of the file into a variable
                                                     $charactersDTS1 = json_decode($dataDTS1, true); // decode the JSON feed
 
                                                     // 0
-                                                    $urlDTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS1.$DTS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlDTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$DTS1.$DTS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataDTS = file_get_contents($urlDTS); // put the contenDTS of the file into a variable
                                                     $charactersDTS = json_decode($dataDTS, true); // decode the JSON feed
 
@@ -8362,37 +8397,37 @@
                                                     <?php
 
                                                     // 6
-                                                    $urlCTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS7.$CTS6.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlCTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS7.$CTS6.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataCTS6 = file_get_contents($urlCTS6); // put the contenCTS of the file into a variable
                                                     $charactersCTS6 = json_decode($dataCTS6, true); // decode the JSON feed
 
                                                     // 5
-                                                    $urlCTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS6.$CTS5.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlCTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS6.$CTS5.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataCTS5 = file_get_contents($urlCTS5); // put the contenCTS of the file into a variable
                                                     $charactersCTS5 = json_decode($dataCTS5, true); // decode the JSON feed
 
                                                     // 4
-                                                    $urlCTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS5.$CTS4.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlCTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS5.$CTS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataCTS4 = file_get_contents($urlCTS4); // put the contenCTS of the file into a variable
                                                     $charactersCTS4 = json_decode($dataCTS4, true); // decode the JSON feed
 
                                                     // 3
-                                                    $urlCTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS4.$CTS3.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlCTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS4.$CTS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataCTS3 = file_get_contents($urlCTS3); // put the contenCTS of the file into a variable
                                                     $charactersCTS3 = json_decode($dataCTS3, true); // decode the JSON feed
 
                                                     // 2
-                                                    $urlCTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS3.$CTS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlCTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS3.$CTS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataCTS2 = file_get_contents($urlCTS2); // put the contenCTS of the file into a variable
                                                     $charactersCTS2 = json_decode($dataCTS2, true); // decode the JSON feed
 
                                                     // 1
-                                                    $urlCTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS2.$CTS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlCTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS2.$CTS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataCTS1 = file_get_contents($urlCTS1); // put the contenCTS of the file into a variable
                                                     $charactersCTS1 = json_decode($dataCTS1, true); // decode the JSON feed
 
                                                     // 0
-                                                    $urlCTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS1.$CTS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlCTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$CTS1.$CTS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataCTS = file_get_contents($urlCTS); // put the contenCTS of the file into a variable
                                                     $charactersCTS = json_decode($dataCTS, true); // decode the JSON feed
 
@@ -8417,37 +8452,37 @@
                                                     <?php
 
                                                     // 6
-                                                    $urlBTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS7.$BTS6.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlBTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS7.$BTS6.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataBTS6 = file_get_contents($urlBTS6); // put the contenBTS of the file into a variable
                                                     $charactersBTS6 = json_decode($dataBTS6, true); // decode the JSON feed
 
                                                     // 5
-                                                    $urlBTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS6.$BTS5.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlBTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS6.$BTS5.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataBTS5 = file_get_contents($urlBTS5); // put the contenBTS of the file into a variable
                                                     $charactersBTS5 = json_decode($dataBTS5, true); // decode the JSON feed
 
                                                     // 4
-                                                    $urlBTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS5.$BTS4.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlBTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS5.$BTS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataBTS4 = file_get_contents($urlBTS4); // put the contenBTS of the file into a variable
                                                     $charactersBTS4 = json_decode($dataBTS4, true); // decode the JSON feed
 
                                                     // 3
-                                                    $urlBTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS4.$BTS3.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlBTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS4.$BTS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataBTS3 = file_get_contents($urlBTS3); // put the contenBTS of the file into a variable
                                                     $charactersBTS3 = json_decode($dataBTS3, true); // decode the JSON feed
 
                                                     // 2
-                                                    $urlBTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS3.$BTS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlBTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS3.$BTS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataBTS2 = file_get_contents($urlBTS2); // put the contenBTS of the file into a variable
                                                     $charactersBTS2 = json_decode($dataBTS2, true); // decode the JSON feed
 
                                                     // 1
-                                                    $urlBTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS2.$BTS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlBTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS2.$BTS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataBTS1 = file_get_contents($urlBTS1); // put the contenBTS of the file into a variable
                                                     $charactersBTS1 = json_decode($dataBTS1, true); // decode the JSON feed
 
                                                     // 0
-                                                    $urlBTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS1.$BTS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlBTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$BTS1.$BTS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataBTS = file_get_contents($urlBTS); // put the contenBTS of the file into a variable
                                                     $charactersBTS = json_decode($dataBTS, true); // decode the JSON feed
 
@@ -8472,37 +8507,37 @@
                                                     <?php
 
                                                     // 6
-                                                    $urlATS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS7.$ATS6.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlATS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS7.$ATS6.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataATS6 = file_get_contents($urlATS6); // put the contenATS of the file into a variable
                                                     $charactersATS6 = json_decode($dataATS6, true); // decode the JSON feed
 
                                                     // 5
-                                                    $urlATS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS6.$ATS5.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlATS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS6.$ATS5.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataATS5 = file_get_contents($urlATS5); // put the contenATS of the file into a variable
                                                     $charactersATS5 = json_decode($dataATS5, true); // decode the JSON feed
 
                                                     // 4
-                                                    $urlATS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS5.$ATS4.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlATS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS5.$ATS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataATS4 = file_get_contents($urlATS4); // put the contenATS of the file into a variable
                                                     $charactersATS4 = json_decode($dataATS4, true); // decode the JSON feed
 
                                                     // 3
-                                                    $urlATS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS4.$ATS3.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlATS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS4.$ATS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataATS3 = file_get_contents($urlATS3); // put the contenATS of the file into a variable
                                                     $charactersATS3 = json_decode($dataATS3, true); // decode the JSON feed
 
                                                     // 2
-                                                    $urlATS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS3.$ATS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlATS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS3.$ATS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataATS2 = file_get_contents($urlATS2); // put the contenATS of the file into a variable
                                                     $charactersATS2 = json_decode($dataATS2, true); // decode the JSON feed
 
                                                     // 1
-                                                    $urlATS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS2.$ATS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlATS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS2.$ATS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataATS1 = file_get_contents($urlATS1); // put the contenATS of the file into a variable
                                                     $charactersATS1 = json_decode($dataATS1, true); // decode the JSON feed
 
                                                     // 0
-                                                    $urlATS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS1.$ATS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlATS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$ATS1.$ATS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataATS = file_get_contents($urlATS); // put the contenATS of the file into a variable
                                                     $charactersATS = json_decode($dataATS, true); // decode the JSON feed
 
@@ -8527,37 +8562,37 @@
                                                     <?php
 
                                                     // 6
-                                                    $urlTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS7.$TS6.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS7.$TS6.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS6 = file_get_contents($urlTS6); // put the contents of the file into a variable
                                                     $charactersTS6 = json_decode($dataTS6, true); // decode the JSON feed
 
                                                     // 5
-                                                    $urlTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS6.$TS5.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS6.$TS5.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS5 = file_get_contents($urlTS5); // put the contents of the file into a variable
                                                     $charactersTS5 = json_decode($dataTS5, true); // decode the JSON feed
 
                                                     // 4
-                                                    $urlTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS5.$TS4.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS5.$TS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS4 = file_get_contents($urlTS4); // put the contents of the file into a variable
                                                     $charactersTS4 = json_decode($dataTS4, true); // decode the JSON feed
 
                                                     // 3
-                                                    $urlTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS4.$TS3.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS4.$TS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS3 = file_get_contents($urlTS3); // put the contents of the file into a variable
                                                     $charactersTS3 = json_decode($dataTS3, true); // decode the JSON feed
 
                                                     // 2
-                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS3.$TS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
                                                     // 1
-                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS2.$TS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
                                                     // 0
-                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS1.$TS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -8600,37 +8635,37 @@
                                                     <?php
 
                                                     // 6
-                                                    $urlTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS7.$TS6.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS6 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS7.$TS6.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS6 = file_get_contents($urlTS6); // put the contents of the file into a variable
                                                     $charactersTS6 = json_decode($dataTS6, true); // decode the JSON feed
 
                                                     // 5
-                                                    $urlTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS6.$TS5.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS5 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS6.$TS5.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS5 = file_get_contents($urlTS5); // put the contents of the file into a variable
                                                     $charactersTS5 = json_decode($dataTS5, true); // decode the JSON feed
 
                                                     // 4
-                                                    $urlTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS5.$TS4.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS4 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS5.$TS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS4 = file_get_contents($urlTS4); // put the contents of the file into a variable
                                                     $charactersTS4 = json_decode($dataTS4, true); // decode the JSON feed
 
                                                     // 3
-                                                    $urlTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS4.$TS3.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS3 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS4.$TS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS3 = file_get_contents($urlTS3); // put the contents of the file into a variable
                                                     $charactersTS3 = json_decode($dataTS3, true); // decode the JSON feed
 
                                                     // 2
-                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS3.$TS2.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
                                                     // 1
-                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS2.$TS1.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
                                                     // 0
-                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS1.$TS.'&studyprogramid=12,96'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -12530,7 +12565,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi=694'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -12576,7 +12611,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi431_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi=694'; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
@@ -13166,7 +13201,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi=694'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -13212,7 +13247,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi432_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi=694'; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
@@ -13796,11 +13831,11 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=dosenkeahliansesuai&dosenprodi=694'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosenkeahliansesuai&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
-
-                                                    foreach ($charactersTS as $keyTS => $valueTS) {
+                                                    if(!empty($charactersTS)){
+                                                        foreach ($charactersTS as $keyTS => $valueTS) {
                                                     ?>
                                                         <!-- PAKE UI -->
                                                         <input type="hidden" name="433id_butir[]" id="433id_butir[]" value="<?php echo $isiannya; ?>" />
@@ -13810,7 +13845,7 @@
 
                                                         <!-- GA PAKE UI -->
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
-                                                        <input type="hidden" name="kolom1_433[]" id="k1_433[]" class="form-control" value="<?php echo $valueTS['FULLNAME']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_433[]" id="k1_433[]" class="form-control" value="<?php echo $valueTS['LECTURERNAME']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom2_433[]" id="k2_433[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_433[]" id="k3_433[]" class="form-control" value="0"  placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom4_433[]" id="k4_433[]" class="form-control" value="0" placeholder="Ex: 500">
@@ -13818,8 +13853,9 @@
                                                         <input type="hidden" name="kolom6_433[]" id="k6_433[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom7_433[]" id="k7_433[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom8_433[]" id="kolom8_433[]" value="0" />
-                                                        <input type="hidden" name="kolom9_433[]" id="kolom9_433[]" value="0" />
+                                                        <input type="hidden" name="kolom9_433[]" id="kolom9_433[]" value="<?php echo $valueTS['JUM_SKS']; ?>" />
                                                     <?php
+                                                        }
                                                     }
                                                     ?>
                                                         
@@ -13841,24 +13877,26 @@
                                                 <div class="body">
 
                                                     <!-- DATA TS KETIKA TAHUN BERJALAN -->
-                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi433_buku">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi433_buku_array">
+                                                    <!-- DATA TS -->
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=dosenkeahliansesuai&dosenprodi=694'; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
-                                                    $charactersTS = json_decode($data, true); // decode the JSON feed
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosenkeahliansesuai&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                    $characters = json_decode($dataTS, true); // decode the JSON feed
 
-                                                    foreach ($charactersTS as $keyTS => $valueTS) {
+                                                    if(!empty($characters)){
+                                                        foreach ($characters as $keyTS => $valueTS) {
                                                     ?>
                                                         <!-- PAKE UI -->
                                                         <input type="hidden" name="433id_butir[]" id="433id_butir[]" value="<?php echo $isiannya; ?>" />
                                                         <input type="hidden" name="id_butir433[]" id="id_butir433[]" value="<?php echo $isiannya; ?>" />
-                                                        <input type="hidden" name="kolom8_433[]" id="kolom8_433[]" value="" />
-                                                        <input type="hidden" name="kolom9_433[]" id="kolom9_433[]" value="<?php echo $TS1.$TS; ?>" />
+                                                        <input type="hidden" name="kolom10_433[]" id="kolom10_433[]" value="" />
+                                                        <input type="hidden" name="kolom11_433[]" id="kolom11_433[]" value="<?php echo $TS1.$TS; ?>" />
 
                                                         <!-- GA PAKE UI -->
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
-                                                        <input type="hidden" name="kolom1_433[]" id="k1_433[]" class="form-control" value="<?php echo $valueTS['FULLNAME']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_433[]" id="k1_433[]" class="form-control" value="<?php echo $valueTS['LECTURERNAME']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom2_433[]" id="k2_433[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_433[]" id="k3_433[]" class="form-control" value="0"  placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom4_433[]" id="k4_433[]" class="form-control" value="0" placeholder="Ex: 500">
@@ -13866,10 +13904,11 @@
                                                         <input type="hidden" name="kolom6_433[]" id="k6_433[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom7_433[]" id="k7_433[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom8_433[]" id="kolom8_433[]" value="0" />
-                                                        <input type="hidden" name="kolom9_433[]" id="kolom9_433[]" value="0" />
-
-                                                    <?php
+                                                        <input type="hidden" name="kolom9_433[]" id="kolom9_433[]" value="<?php echo $valueTS['JUM_SKS']; ?>" />
+                                                        <?php
+                                                        }
                                                     }
+                                                    
                                                     if ($getTS<1) {
                                                         ?>
                                                     <div class="row clearfix">
@@ -14541,7 +14580,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi=694&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -14587,7 +14626,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi434_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi=694&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
@@ -15200,7 +15239,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi=694&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -15246,7 +15285,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi435_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi=694&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
@@ -15859,7 +15898,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=dosentidaktetap&dosenprodi=694'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosentidaktetap&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -15905,7 +15944,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi441_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=dosentidaktetap&dosenprodi=694'; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=dosentidaktetap&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
@@ -16496,7 +16535,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=dosenaktivitastidaktetap&dosenprodi=694&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosenaktivitastidaktetap&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -16542,7 +16581,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi442_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=dosenaktivitastidaktetap&dosenprodi=694&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=dosenaktivitastidaktetap&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
@@ -17615,7 +17654,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=dosenseminar&dosenprodi=694'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosenseminar&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -17659,7 +17698,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi453_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=dosenseminar&dosenprodi=694'; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=dosenseminar&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
@@ -18204,7 +18243,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=dosenprestasi&dosenprodi=694'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosenprestasi&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -18247,7 +18286,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi454_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=dosenprestasi&dosenprodi=694'; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=dosenprestasi&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
@@ -22587,7 +22626,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=dosenperwalian&dosenprodi=694&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosenperwalian&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -22629,7 +22668,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi541_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=dosenperwalian&dosenprodi=694&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=dosenperwalian&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
@@ -23547,7 +23586,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=dosenbimbingan&dosenprodi=694'; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=dosenbimbingan&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -23589,7 +23628,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi551_buku">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=dosenbimbingan&dosenprodi=694'; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=dosenbimbingan&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
@@ -25254,7 +25293,6 @@
                                         <td style="width: 85.2px; height: 35.8px; text-align: center;"></td>
                                         <td style="width: 125.2px; height: 35.8px; text-align: center;"></td>
                                         <td style="width: 175.6px; height: 35.8px; text-align: center;"><?php echo $jum1 ?></td>
-                                        <td style="width: 245.2px; height: 35.8px; text-align: center;"></td>
                                         <td style="width: 52px; text-align: center; height: 13px;">#</td>
                                     </tr>
                                 </tbody>
