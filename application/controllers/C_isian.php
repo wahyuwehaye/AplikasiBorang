@@ -1225,6 +1225,8 @@ class C_isian extends CI_Controller {
         $post = $this->input->post();
         $result = array();
         $load = 'isian_buku';
+        $id = $post['idTS'][0];
+        $pilihts = $post['pilihts'][0];
 
         foreach($post['kolom1_442'] AS $key => $val)
         {
@@ -1245,7 +1247,12 @@ class C_isian extends CI_Controller {
             );
         }
 
-        $this->db->insert_batch('isian_16kolom_buku', $result);
+        if (($pilihts=='replacets')) {
+            $this->M_isian->deleteisian1kolom_buku('id_butir',$id);
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }else{
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }
         $_SESSION['suksesinput'] = '';
         redirect($load.'/'.$post['id_butir442'][0]);
     }
@@ -1355,6 +1362,8 @@ class C_isian extends CI_Controller {
         $post = $this->input->post();
         $result = array();
         $load = 'isian_buku';
+        $id = $post['idTS'][0];
+        $pilihts = $post['pilihts'][0];
 
         foreach($post['kolom1_453'] AS $key => $val)
         {
@@ -1373,7 +1382,12 @@ class C_isian extends CI_Controller {
             );
         }
 
-        $this->db->insert_batch('isian_16kolom_buku', $result);
+        if (($pilihts=='replacets')) {
+            $this->M_isian->deleteisian1kolom_buku('id_butir',$id);
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }else{
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }
         $_SESSION['suksesinput'] = '';
         redirect($load.'/'.$post['id_butir453'][0]);
     }
@@ -1398,6 +1412,8 @@ class C_isian extends CI_Controller {
         $post = $this->input->post();
         $result = array();
         $load = 'isian_buku';
+        $id = $post['idTS'][0];
+        $pilihts = $post['pilihts'][0];
 
         foreach($post['kolom1_454'] AS $key => $val)
         {
@@ -1415,7 +1431,12 @@ class C_isian extends CI_Controller {
             );
         }
 
-        $this->db->insert_batch('isian_16kolom_buku', $result);
+        if (($pilihts=='replacets')) {
+            $this->M_isian->deleteisian1kolom_buku('id_butir',$id);
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }else{
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }
         $_SESSION['suksesinput'] = '';
         redirect($load.'/'.$post['id_butir454'][0]);
     }
@@ -1482,6 +1503,8 @@ class C_isian extends CI_Controller {
         $post = $this->input->post();
         $result = array();
         $load = 'isian_buku';
+        $id = $post['idTS'][0];
+        $pilihts = $post['pilihts'][0];
 
         foreach($post['kolom1_461'] AS $key => $val)
         {
@@ -1504,7 +1527,12 @@ class C_isian extends CI_Controller {
             );
         }
 
-        $this->db->insert_batch('isian_16kolom_buku', $result);
+        if (($pilihts=='replacets')) {
+            $this->M_isian->deleteisian1kolom_buku('id_butir',$id);
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }else{
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }
         $_SESSION['suksesinput'] = '';
         redirect($load.'/'.$post['id_butir461'][0]);
     }
@@ -1529,6 +1557,8 @@ class C_isian extends CI_Controller {
         $post = $this->input->post();
         $result = array();
         $load = 'isian_buku';
+        $id = $post['idTS'][0];
+        $pilihts = $post['pilihts'][0];
 
         foreach($post['kolom1_541'] AS $key => $val)
         {
@@ -1545,7 +1575,12 @@ class C_isian extends CI_Controller {
             );
         }
 
-        $this->db->insert_batch('isian_16kolom_buku', $result);
+        if (($pilihts=='replacets')) {
+            $this->M_isian->deleteisian1kolom_buku('id_butir',$id);
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }else{
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }
         $_SESSION['suksesinput'] = '';
         redirect($load.'/'.$post['id_butir541'][0]);
     }
@@ -1570,6 +1605,8 @@ class C_isian extends CI_Controller {
         $post = $this->input->post();
         $result = array();
         $load = 'isian_buku';
+        $id = $post['idTS'][0];
+        $pilihts = $post['pilihts'][0];
 
         foreach($post['kolom1_551'] AS $key => $val)
         {
@@ -1586,7 +1623,12 @@ class C_isian extends CI_Controller {
             );
         }
 
-        $this->db->insert_batch('isian_16kolom_buku', $result);
+        if (($pilihts=='replacets')) {
+            $this->M_isian->deleteisian1kolom_buku('id_butir',$id);
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }else{
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }
         $_SESSION['suksesinput'] = '';
         redirect($load.'/'.$post['id_butir551'][0]);
     }
@@ -1611,6 +1653,8 @@ class C_isian extends CI_Controller {
         $post = $this->input->post();
         $result = array();
         $load = 'isian_buku';
+        $id = $post['idTS'][0];
+        $pilihts = $post['pilihts'][0];
 
         foreach($post['kolom1_622'] AS $key => $val)
         {
@@ -1628,7 +1672,12 @@ class C_isian extends CI_Controller {
             );
         }
 
-        $this->db->insert_batch('isian_16kolom_buku', $result);
+        if (($pilihts=='replacets')) {
+            $this->M_isian->deleteisian1kolom_buku('id_butir',$id);
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }else{
+            $this->db->insert_batch('isian_16kolom_buku', $result);
+        }
         $_SESSION['suksesinput'] = '';
         redirect($load.'/'.$post['id_butir622'][0]);
     }
@@ -3680,10 +3729,10 @@ class C_isian extends CI_Controller {
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian');
-        $id=$_POST['551did_butir'];
+        $id=$_POST['551id_butir'];
         $this->M_isian->update_isian551_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian_buku/'.$_POST['551did_butir']);
+        redirect('isian_buku/'.$_POST['551id_butir']);
     }
 
     

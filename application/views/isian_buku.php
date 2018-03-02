@@ -16178,7 +16178,7 @@
                                                     }else{
                                                         ?>
                                                     <div class="row clearfix">
-                                                        
+
                                                         <div class="col-md-12">
                                                             <h4>Data dosen tidak tetap pada PS sudah di Import kedalam Database Aplikasi</h4>
                                                             
@@ -16750,6 +16750,19 @@
                                                         <input type="hidden" name="kolom5_442[]" id="k5_442[]" class="form-control" value="<?php echo $valueTS['JML_KELAS']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom6_442[]" id="k6_442[]" class="form-control" value="<?php echo $valueTS['JML_DIRENCANAKAN']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom7_442[]" id="k7_442[]" class="form-control" value="<?php echo $valueTS['JML_PERTEMUAN']; ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     ?>
@@ -16772,7 +16785,7 @@
                                                 <div class="body">
 
                                                     <!-- DATA TS KETIKA TAHUN BERJALAN -->
-                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi442_buku">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi442_buku_array">
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenaktivitastidaktetap&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
@@ -16796,13 +16809,25 @@
                                                         <input type="hidden" name="kolom5_442[]" id="k5_442[]" class="form-control" value="<?php echo $valueTS['JML_KELAS']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom6_442[]" id="k6_442[]" class="form-control" value="<?php echo $valueTS['JML_DIRENCANAKAN']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom7_442[]" id="k7_442[]" class="form-control" value="<?php echo $valueTS['JML_PERTEMUAN']; ?>" placeholder="Ex: 500">
-
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     if ($getTS<1) {
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="inputts">
+
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <h4>Import Data aktivitas mengajar dosen tidak tetap pada satu tahun terakhir di PS ini :</h4>
                                                         </div>
@@ -16814,8 +16839,7 @@
                                                     }else{
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="replacets">
-                                                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $idTS; ?>" />
+
                                                         <div class="col-md-12">
                                                             <h4>Data aktivitas mengajar dosen tidak tetap pada satu tahun terakhir di PS ini sudah di Import kedalam Database Aplikasi</h4>
                                                             
@@ -16847,7 +16871,7 @@
                     <?php
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi442">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi442_buku">
                         <input type="hidden" name="442id_butir" id="442id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir442" id="id_butir442" value="<?php echo $getidbutir442; ?>" />
                         <h2 class="card-inside-title">Dosen Tidak Tetap </h2>
@@ -17069,7 +17093,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi442">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi442_buku">
                         <input type="hidden" name="442id_butir" id="442id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir442" id="id_butir442" value="<?php echo $getidbutir442; ?>" />
                         <h2 class="card-inside-title">Tuliskan data aktivitas mengajar dosen tidak tetap pada satu tahun terakhir di PS ini dengan mengikuti format tabel berikut:</h2>
@@ -17867,6 +17891,19 @@
                                                         <input type="hidden" name="kolom3_453[]" id="k3_453[]" class="form-control" value="<?php echo $valueTS['TIPE']; ?>"  placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom4_453[]" id="k4_453[]" class="form-control" value="<?php echo $valueTS['WAKTU']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom5_453[]" id="k5_453[]" class="form-control" value="<?php echo $valueTS['PENYAJI']; ?> <?php echo $valueTS['PESERTA']; ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     ?>
@@ -17889,7 +17926,7 @@
                                                 <div class="body">
 
                                                     <!-- DATA TS KETIKA TAHUN BERJALAN -->
-                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi453_buku">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi453_buku_array">
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenseminar&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
@@ -17901,8 +17938,8 @@
                                                         <!-- PAKE UI -->
                                                         <input type="hidden" name="453id_butir[]" id="453id_butir[]" value="<?php echo $isiannya; ?>" />
                                                         <input type="hidden" name="id_butir453[]" id="id_butir453[]" value="<?php echo $isiannya; ?>" />
-                                                        <input type="hidden" name="kolom8_453[]" id="kolom8_453[]" value="" />
-                                                        <input type="hidden" name="kolom9_453[]" id="kolom9_453[]" value="<?php echo $TS1.$TS; ?>" />
+                                                        <input type="hidden" name="kolom6_453[]" id="kolom6_453[]" value="" />
+                                                        <input type="hidden" name="kolom7_453[]" id="kolom7_453[]" value="<?php echo $TS1.$TS; ?>" />
 
                                                         <!-- GA PAKE UI -->
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
@@ -17911,13 +17948,25 @@
                                                         <input type="hidden" name="kolom3_453[]" id="k3_453[]" class="form-control" value="<?php echo $valueTS['TIPE']; ?>"  placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom4_453[]" id="k4_453[]" class="form-control" value="<?php echo $valueTS['WAKTU']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom5_453[]" id="k5_453[]" class="form-control" value="<?php echo $valueTS['PENYAJI']; ?> <?php echo $valueTS['PESERTA']; ?>" placeholder="Ex: 500">
-
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     if ($getTS<1) {
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="inputts">
+
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <h4>Import Kegiatan dosen tetap yang bidang keahliannya sesuai dengan PS dalam seminar ilmiah/lokakarya/penataran/workshop/ pagelaran/ pameran/peragaan yang tidak hanya melibatkan dosen PT sendiri</h4>
                                                         </div>
@@ -17929,8 +17978,7 @@
                                                     }else{
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="replacets">
-                                                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $idTS; ?>" />
+
                                                         <div class="col-md-12">
                                                             <h4>Kegiatan dosen tetap yang bidang keahliannya sesuai dengan PS dalam seminar ilmiah/lokakarya/penataran/workshop/ pagelaran/ pameran/peragaan yang tidak hanya melibatkan dosen PT sendiri sudah di Import kedalam Database Aplikasi</h4>
                                                             
@@ -18455,6 +18503,19 @@
                                                         <input type="hidden" name="kolom2_454[]" id="k2_454[]" class="form-control" value="<?php echo $valueTS['PRESTASI']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_454[]" id="k3_454[]" class="form-control" value="<?php echo $valueTS['WAKTU_PENCAPAIAN']; ?>"  placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom4_454[]" id="k4_454[]" class="form-control" value="<?php echo $valueTS['TINGKAT']; ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     ?>
@@ -18477,7 +18538,7 @@
                                                 <div class="body">
 
                                                     <!-- DATA TS KETIKA TAHUN BERJALAN -->
-                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi454_buku">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi454_buku_array">
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenprestasi&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
@@ -18489,8 +18550,8 @@
                                                         <!-- PAKE UI -->
                                                         <input type="hidden" name="454id_butir[]" id="454id_butir[]" value="<?php echo $isiannya; ?>" />
                                                         <input type="hidden" name="id_butir454[]" id="id_butir454[]" value="<?php echo $isiannya; ?>" />
-                                                        <input type="hidden" name="kolom8_454[]" id="kolom8_454[]" value="" />
-                                                        <input type="hidden" name="kolom9_454[]" id="kolom9_454[]" value="<?php echo $TS1.$TS; ?>" />
+                                                        <input type="hidden" name="kolom5_454[]" id="kolom5_454[]" value="" />
+                                                        <input type="hidden" name="kolom6_454[]" id="kolom6_454[]" value="<?php echo $TS1.$TS; ?>" />
 
                                                         <!-- GA PAKE UI -->
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
@@ -18498,13 +18559,25 @@
                                                         <input type="hidden" name="kolom2_454[]" id="k2_454[]" class="form-control" value="<?php echo $valueTS['PRESTASI']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_454[]" id="k3_454[]" class="form-control" value="<?php echo $valueTS['WAKTU_PENCAPAIAN']; ?>"  placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom4_454[]" id="k4_454[]" class="form-control" value="<?php echo $valueTS['TINGKAT']; ?>" placeholder="Ex: 500">
-
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     if ($getTS<1) {
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="inputts">
+
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <h4>Import Data pencapaian prestasi/reputasi dosen (misalnya prestasi dalam pendidikan, penelitian dan pelayanan/pengabdian kepada masyarakat)</h4>
                                                         </div>
@@ -18516,8 +18589,7 @@
                                                     }else{
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="replacets">
-                                                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $idTS; ?>" />
+
                                                         <div class="col-md-12">
                                                             <h4>Data pencapaian prestasi/reputasi dosen (misalnya prestasi dalam pendidikan, penelitian dan pelayanan/pengabdian kepada masyarakat) sudah di Import kedalam Database Aplikasi</h4>
                                                             
@@ -19356,6 +19428,20 @@
                                                         <input type="hidden" name="kolom7_461[]" id="k7_461[]" class="form-control" value="<?php echo $CD2; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom8_461[]" id="k8_461[]" class="form-control" value="<?php echo $CD1; ?>"  placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom9_461[]" id="k9_461[]" class="form-control" value="<?php echo $CSMA; ?>" placeholder="Ex: 500">
+
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     
                                                     <div class="row clearfix">
                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
@@ -19374,7 +19460,7 @@
                                                 <div class="body">
 
                                                     <!-- DATA TS KETIKA TAHUN BERJALAN -->
-                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi461_buku">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi461_buku_array">
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=tenagakependidikan'; // path to your JSON file
@@ -19542,11 +19628,25 @@
                                                         <input type="hidden" name="kolom7_461[]" id="k7_461[]" class="form-control" value="<?php echo $CD2; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom8_461[]" id="k8_461[]" class="form-control" value="<?php echo $CD1; ?>"  placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom9_461[]" id="k9_461[]" class="form-control" value="<?php echo $CSMA; ?>" placeholder="Ex: 500">
+
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     if ($getTS<1) {
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="inputts">
+
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <h4>Import Data tenaga kependidikan  yang ada di PS, Jurusan, Fakultas atau PT yang melayani mahasiswa PS</h4>
                                                         </div>
@@ -19558,8 +19658,7 @@
                                                     }else{
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="replacets">
-                                                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $idTS; ?>" />
+
                                                         <div class="col-md-12">
                                                             <h4>Data tenaga kependidikan  yang ada di PS, Jurusan, Fakultas atau PT yang melayani mahasiswa PS sudah di Import kedalam Database Aplikasi</h4>
                                                             
@@ -19592,7 +19691,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi461">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi461_buku">
                         <input type="hidden" name="id_butir461" id="id_butir461" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="461id_butir" id="461id_butir" value="<?php echo $getidbutir331; ?>" />
                         <h2 class="card-inside-title">Tenaga kependidikan</h2>
@@ -20220,7 +20319,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi461">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi461_buku">
                         <input type="hidden" name="id_butir461" id="id_butir461" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="461id_butir" id="461id_butir" value="<?php echo $getidbutir331; ?>" />
                         <h2 class="card-inside-title">Tenaga kependidikan</h2>
@@ -22837,6 +22936,19 @@
                                                         <input type="hidden" name="kolom1_541[]" id="k1_541[]" class="form-control" value="<?php echo $valueTS['FULLNAME']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom2_541[]" id="k2_541[]" class="form-control" value="<?php echo $valueTS['JML_MHS_WALI']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_541[]" id="k3_541[]" class="form-control" value="0"  placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     ?>
@@ -22859,7 +22971,7 @@
                                                 <div class="body">
 
                                                     <!-- DATA TS KETIKA TAHUN BERJALAN -->
-                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi541_buku">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi541_buku_array">
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenperwalian&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
@@ -22879,13 +22991,25 @@
                                                         <input type="hidden" name="kolom1_541[]" id="k1_541[]" class="form-control" value="<?php echo $valueTS['FULLNAME']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom2_541[]" id="k2_541[]" class="form-control" value="<?php echo $valueTS['JML_MHS_WALI']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_541[]" id="k3_541[]" class="form-control" value="0"  placeholder="Ex: 500">
-
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     if ($getTS<1) {
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="inputts">
+
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <h4>Import Data nama dosen pembimbing akademik dan jumlah mahasiswa yang dibimbingnya</h4>
                                                         </div>
@@ -22897,8 +23021,7 @@
                                                     }else{
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="replacets">
-                                                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $idTS; ?>" />
+
                                                         <div class="col-md-12">
                                                             <h4>Data nama dosen pembimbing akademik dan jumlah mahasiswa yang dibimbingnya sudah di Import kedalam Database Aplikasi</h4>
                                                             
@@ -23797,6 +23920,19 @@
                                                         <input type="hidden" name="kolom1_551[]" id="k1_551[]" class="form-control" value="<?php echo $valueTS['FULLNAME']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom2_551[]" id="k2_551[]" class="form-control" value="<?php echo $valueTS['JML_MHS']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_551[]" id="k3_551[]" class="form-control" value="0"  placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     ?>
@@ -23819,7 +23955,7 @@
                                                 <div class="body">
 
                                                     <!-- DATA TS KETIKA TAHUN BERJALAN -->
-                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi551_buku">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi551_buku_array">
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenbimbingan&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
@@ -23839,13 +23975,25 @@
                                                         <input type="hidden" name="kolom1_551[]" id="k1_551[]" class="form-control" value="<?php echo $valueTS['FULLNAME']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom2_551[]" id="k2_551[]" class="form-control" value="<?php echo $valueTS['JML_MHS']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_551[]" id="k3_551[]" class="form-control" value="0"  placeholder="Ex: 500">
-
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     if ($getTS<1) {
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="inputts">
+
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <h4>Import Data nama-nama dosen yang menjadi pembimbing tugas akhir atau skripsi, dan jumlah mahasiswa yang bimbingan</h4>
                                                         </div>
@@ -23857,8 +24005,7 @@
                                                     }else{
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="replacets">
-                                                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $idTS; ?>" />
+
                                                         <div class="col-md-12">
                                                             <h4>Data nama-nama dosen yang menjadi pembimbing tugas akhir atau skripsi, dan jumlah mahasiswa yang bimbingan sudah di Import kedalam Database Aplikasi</h4>
                                                             
@@ -25251,7 +25398,7 @@
                                                     <!-- DATA TS - 2 -->
                                                     <?php
 
-                                                    $urlTS2 = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid=11&schoolyear='.$TS3.$TS2; // path to your JSON file
+                                                    $urlTS2 = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid='.$getKodeProdi.'&schoolyear='.$TS3.$TS2; // path to your JSON file
                                                     $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
@@ -25270,13 +25417,26 @@
                                                         <input type="hidden" name="kolom2_622[]" id="k2_622[]" class="form-control" value="<?php echo $valueTS2['JUDUL_PENELITIAN']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_622[]" id="k3_622[]" class="form-control" value="<?php echo $valueTS2['JENIS_DANA']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom4_622[]" id="k4_622[]" class="form-control" value="<?php echo $valueTS2['JUMLAH_DANA']; ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     ?>
                                                     <!-- DATA TS - 1 -->
                                                     <?php
 
-                                                    $urlTS1 = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid=11&schoolyear='.$TS2.$TS1; // path to your JSON file
+                                                    $urlTS1 = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid='.$getKodeProdi.'&schoolyear='.$TS2.$TS1; // path to your JSON file
                                                     $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
@@ -25295,6 +25455,19 @@
                                                         <input type="hidden" name="kolom2_622[]" id="k2_622[]" class="form-control" value="<?php echo $valueTS1['JUDUL_PENELITIAN']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_622[]" id="k3_622[]" class="form-control" value="<?php echo $valueTS1['JENIS_DANA']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom4_622[]" id="k4_622[]" class="form-control" value="<?php echo $valueTS1['JUMLAH_DANA']; ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     ?>
@@ -25302,7 +25475,7 @@
                                                     <!-- DATA TS -->
                                                     <?php
 
-                                                    $urlTS = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid=11&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $urlTS = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid='.$getKodeProdi.'&schoolyear='.$TS1.$TS; // path to your JSON file
                                                     $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
@@ -25321,6 +25494,19 @@
                                                         <input type="hidden" name="kolom2_622[]" id="k2_622[]" class="form-control" value="<?php echo $valueTS['JUDUL_PENELITIAN']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_622[]" id="k3_622[]" class="form-control" value="<?php echo $valueTS['JENIS_DANA']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom4_622[]" id="k4_622[]" class="form-control" value="<?php echo $valueTS['JUMLAH_DANA']; ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     ?>
@@ -25345,7 +25531,7 @@
                                                     <form method="POST" action="<?php echo base_url()?>C_isian/ngisi622_buku_array">
                                                     <?php
 
-                                                    $url = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid=11&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $url = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid='.$getKodeProdi.'&schoolyear='.$TS1.$TS; // path to your JSON file
                                                     $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
@@ -25364,6 +25550,19 @@
                                                         <input type="hidden" name="kolom2_622[]" id="k2_622[]" class="form-control" value="<?php echo $valueTS['JUDUL_PENELITIAN']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom3_622[]" id="k3_622[]" class="form-control" value="<?php echo $valueTS['JENIS_DANA']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom4_622[]" id="k4_622[]" class="form-control" value="<?php echo $valueTS['JUMLAH_DANA']; ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <?php
                                                     }
                                                     ?>
@@ -25372,7 +25571,7 @@
                                                     if ($getTS<1) {
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="inputts">
+
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <h4>Import dana untuk kegiatan penelitian pada tiga tahun terakhir yang melibatkan dosen yang bidang keahliannya sesuai dengan program studi</h4>
                                                         </div>
@@ -25384,8 +25583,7 @@
                                                     }else{
                                                         ?>
                                                     <div class="row clearfix">
-                                                        <input type="hidden" name="pilihts" value="replacets">
-                                                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $idTS; ?>" />
+
                                                         <div class="col-md-12">
                                                             <h4>dana untuk kegiatan penelitian pada tiga tahun terakhir yang melibatkan dosen yang bidang keahliannya sesuai dengan program studi sudah di Import kedalam Database Aplikasi</h4>
                                                             
@@ -25560,7 +25758,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi622">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi622_buku">
                         <input type="hidden" name="622id_butir" id="622id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir622" id="id_butir622" value="<?php echo $getidbutir622; ?>" />
                         <h2 class="card-inside-title">Tuliskan dana untuk kegiatan penelitian pada tiga tahun terakhir yang melibatkan dosen yang bidang keahliannya sesuai dengan program studi, dengan mengikuti format tabel berikut:</h2>
@@ -25636,9 +25834,438 @@
                                 $getidbutir623 = $row->id;
                                 break;
                             }
+                            ?>
+                        <!-- DETAIL PANDUAN -->
+                        <div class="body">
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">IMPORT DATA DARI IGRACIAS</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                    <!-- DROPDOWN UNTUK MEMBUKA DETAIL PANDUAN -->
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #END# Hover Rows -->
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #END# Hover Rows -->
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "6.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "6.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #END# Hover Rows -->
+                                </div>
+                            </div>
+                            </div>
+                    <!-- CLOSE DETAIL PANDUAN -->
+
+                    <!-- OPEN DROPDOWN IMPORT DATA -->
+                            <div class="collapse" id="collapseImportData">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">Perolehan dan Alokasi Dana</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>dana yang diperoleh dari/untuk kegiatan pelayanan/pengabdian kepada masyarakat pada tiga tahun terakhir :</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                        $tahun_sekarang = date('Y');
+                                                        $tahun = substr($tahun_sekarang, -2);
+
+                                                        $TS = $tahun;
+                                                        $TS1 = $tahun - 1;
+                                                        $TS2 = $tahun - 2;
+                                                        $TS3 = $tahun - 3;
+
+                                                        // ketika menggunakan jaringan selain tune
+                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
+
+                                                        // ketika menggunakan jaringan tune (lokal kampus)
+                                                        // $link = 'http://10.252.252.174/';
+
+                                                        // MENDAPATKAN NILAI TS TAHUN BERJALAN
+                                                        $getTS = 0;
+                                                        $idTS = 0;
+                                                        $querycariTS = $CI->db->query('select id, kolom6 from isian_16kolom_buku where kolom6="'.$TS1.$TS.'" and id_butir = "'.$isiannya.'"');
+                                                        foreach ($querycariTS->result() as $row){
+                                                            $getTS = $getTS+1;
+                                                            $idTS = $row->id;
+                                                        }
+                                            if (count($dataisian)<1){
+                                                ?>
+                                                <div class="body">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi623_buku_array">
+
+                                                    <!-- DATA TS - 2 -->
+                                                    <?php
+
+                                                    $urlTS2 = $link.'api/borang/borang.php?data=danakegiatanabdimas&studyprogramid='.$getKodeProdi.'&schoolyear='.$TS3.$TS2; // path to your JSON file
+                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                                    $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
+
+                                                    foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
+
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="623id_butir[]" id="623id_butir[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="id_butir623[]" id="id_butir623[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom5_623[]" id="kolom5_623[]" value="0" />
+                                                        <input type="hidden" name="kolom6_623[]" id="kolom6_623[]" value="<?php echo $TS3.$TS2; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_623[]" id="k1_623[]" class="form-control" value="<?php echo $valueTS2['YEAR']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_623[]" id="k2_623[]" class="form-control" value="<?php echo $valueTS2['JUDUL_PENELITIAN']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_623[]" id="k3_623[]" class="form-control" value="<?php echo $valueTS2['JENIS_DANA']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_623[]" id="k4_623[]" class="form-control" value="<?php echo $valueTS2['JUMLAH_DANA']; ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <!-- DATA TS - 1 -->
+                                                    <?php
+
+                                                    $urlTS1 = $link.'api/borang/borang.php?data=danakegiatanabdimas&studyprogramid='.$getKodeProdi.'&schoolyear='.$TS2.$TS1; // path to your JSON file
+                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                    $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
+
+                                                    foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
+
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="623id_butir[]" id="623id_butir[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="id_butir623[]" id="id_butir623[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom5_623[]" id="kolom5_623[]" value="0" />
+                                                        <input type="hidden" name="kolom6_623[]" id="kolom6_623[]" value="<?php echo $TS2.$TS1; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_623[]" id="k1_623[]" class="form-control" value="<?php echo $valueTS1['YEAR']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_623[]" id="k2_623[]" class="form-control" value="<?php echo $valueTS1['JUDUL_PENELITIAN']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_623[]" id="k3_623[]" class="form-control" value="<?php echo $valueTS1['JENIS_DANA']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_623[]" id="k4_623[]" class="form-control" value="<?php echo $valueTS1['JUMLAH_DANA']; ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <!-- DATA TS -->
+                                                    <?php
+
+                                                    $urlTS = $link.'api/borang/borang.php?data=danakegiatanabdimas&studyprogramid='.$getKodeProdi.'&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                    $charactersTS = json_decode($dataTS, true); // decode the JSON feed
+
+                                                    foreach ($charactersTS as $keyTS => $valueTS) {
+
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="623id_butir[]" id="623id_butir[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="id_butir623[]" id="id_butir623[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom5_623[]" id="kolom5_623[]" value="0" />
+                                                        <input type="hidden" name="kolom6_623[]" id="kolom6_623[]" value="<?php echo $TS1.$TS; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_623[]" id="k1_623[]" class="form-control" value="<?php echo $valueTS['YEAR']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_623[]" id="k2_623[]" class="form-control" value="<?php echo $valueTS['JUDUL_PENELITIAN']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_623[]" id="k3_623[]" class="form-control" value="<?php echo $valueTS['JENIS_DANA']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_623[]" id="k4_623[]" class="form-control" value="<?php echo $valueTS['JUMLAH_DANA']; ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                                            <h4>Import dana yang diperoleh dari/untuk kegiatan pelayanan/pengabdian kepada masyarakat pada tiga tahun terakhir</h4>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                            <button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DATA &nbsp;<i class="material-icons">import_export</i></button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button> -->
+                                                    </form>
+                                                </div>
+                                                <?php
+                                            }else{
+                                                ?>
+                                                <div class="body">
+
+                                                    <!-- DATA TS KETIKA TAHUN BERJALAN -->
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian/ngisi623_buku_array">
+                                                    <?php
+
+                                                    $url = $link.'api/borang/borang.php?data=danakegiatanabdimas&studyprogramid='.$getKodeProdi.'&schoolyear='.$TS1.$TS; // path to your JSON file
+                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $charactersTS = json_decode($data, true); // decode the JSON feed
+
+                                                    foreach ($charactersTS as $keyTS => $valueTS) {
+
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="623id_butir[]" id="623id_butir[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="id_butir623[]" id="id_butir623[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom5_623[]" id="kolom5_623[]" value="0" />
+                                                        <input type="hidden" name="kolom6_623[]" id="kolom6_623[]" value="<?php echo $TS1.$TS; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_623[]" id="k1_623[]" class="form-control" value="<?php echo $valueTS['YEAR']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_623[]" id="k2_623[]" class="form-control" value="<?php echo $valueTS['JUDUL_PENELITIAN']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_623[]" id="k3_623[]" class="form-control" value="<?php echo $valueTS['JENIS_DANA']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_623[]" id="k4_623[]" class="form-control" value="<?php echo $valueTS['JUMLAH_DANA']; ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="inputts">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    
+                                                    <?php
+                                                    if ($getTS<1) {
+                                                        ?>
+                                                    <div class="row clearfix">
+
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <h4>Import dana yang diperoleh dari/untuk kegiatan pelayanan/pengabdian kepada masyarakat pada tiga tahun terakhir</h4>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DATA &nbsp;<i class="material-icons">import_export</i></button>
+                                                        </div>
+                                                    </div>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                    <div class="row clearfix">
+
+                                                        <div class="col-md-12">
+                                                            <h4>dana yang diperoleh dari/untuk kegiatan pelayanan/pengabdian kepada masyarakat pada tiga tahun terakhir sudah di Import kedalam Database Aplikasi</h4>
+                                                            
+                                                            <div class="alert bg-orange">
+                                                                <h4><code>Import lagi dan replace data sebelumnya?</code><button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DAN REPLACE DATA &nbsp;<i class="material-icons">import_export</i></button></h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    
+                                                    <!-- <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button> -->
+                                                    </form>
+                                                </div>
+                                                <?php
+                                            }
+                                                ?>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #END# Hover Rows -->
+                                </div>
+                            </div>
+                    <!-- CLOSE IMPORT DATA -->
+                        </div>
+                        <!-- Tutup DETAIL PANDUAN -->
+            <?php
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi623">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi623_buku">
                         <input type="hidden" name="623id_butir" id="623id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir623" id="id_butir623" value="<?php echo $getidbutir623; ?>" />
                         <h2 class="card-inside-title">Tuliskan dana yang diperoleh dari/untuk kegiatan pelayanan/pengabdian kepada masyarakat pada tiga tahun terakhir dengan mengikuti format tabel berikut: </h2>
@@ -25774,7 +26401,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi623">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi623_buku">
                         <input type="hidden" name="623id_butir" id="623id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir623" id="id_butir623" value="<?php echo $getidbutir623; ?>" />
                         <h2 class="card-inside-title">Tuliskan dana untuk kegiatan penelitian pada tiga tahun terakhir yang melibatkan dosen yang bidang keahliannya sesuai dengan program studi, dengan mengikuti format tabel berikut:</h2>
@@ -33865,7 +34492,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian442', $attributes);
+                    echo form_open('C_isian/updateisian442_buku', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -34381,7 +35008,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian461', $attributes);
+                    echo form_open('C_isian/updateisian461_buku', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -34389,8 +35016,15 @@
                         <input type="hidden" name="461id_butir" id="461id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir461tabel" id="id_butir461tabel" />
                                     <div class="col-md-12">
-                                        <b>Pustakawan * :</b>
-                                        <input type="hidden" name="kolom1_461" id="kolom1_461" class="form-control" value="Pustakawan" placeholder="Ex: 500">
+                                        <b>Jenis Tenaga Kependidikan :</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom1_461" id="kolom1_461" class="form-control" placeholder="Ex: 500">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-4">
                                         <b>S3</b>
@@ -34491,7 +35125,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <!-- <div class="col-md-12">
                                         <b>Laboran/ Teknisi/ Analis/ Operator/ Programer * :</b>
                                         <input type="hidden" name="kolom11_461" id="kolom11_461" class="form-control" value="Laboran/ Teknisi/ Analis/ Operator/ Programer" placeholder="Ex: 500">
                                     </div>
@@ -34696,7 +35330,7 @@
                                                 <input type="text" name="kolom30_461" id="kolom30_461" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                     </div>
                 </div>
                     <div class="modal-footer">
@@ -35488,9 +36122,9 @@
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id551d" id="id551d" />
-                        <input type="hidden" name="551did_butir" id="551did_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir551dtabel" id="id_butir551dtabel" />
+                        <input type="hidden" name="id551" id="id551" />
+                        <input type="hidden" name="551id_butir" id="551id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir551tabel" id="id_butir551tabel" />
                                     <div class="col-md-12">
                                         <b>Nama Dosen Pembimbing </b>
                                         <div class="input-group">
@@ -35682,7 +36316,7 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian623', $attributes);
+                    echo form_open('C_isian/updateisian623_buku', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -41718,7 +42352,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl_buku";
         $.ajax({
             method: "POST",
             url: link,
@@ -41867,7 +42501,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl_buku";
         $.ajax({
             method: "POST",
             url: link,
@@ -42111,8 +42745,8 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#id551d').val(buku[0]['id']);
-              $('#id_butir551dtabel').val(buku[0]['id_butir']);
+              $('#id551').val(buku[0]['id']);
+              $('#id_butir551tabel').val(buku[0]['id_butir']);
               $('#kolom1_551').val(buku[0]['kolom1']);
               $('#kolom2_551').val(buku[0]['kolom2']);
           });
@@ -42171,7 +42805,7 @@
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl_buku";
         $.ajax({
             method: "POST",
             url: link,
