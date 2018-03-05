@@ -294,6 +294,7 @@ class C_isian extends CI_Controller {
                 $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
                 $data['dataisian']=$this->M_isian->findisian1kolom_buku('id_butir',$id);
                 $data['dataisianversion']=$this->M_isian->findisian1kolomversion('id_kolom',$id);
+                $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$id);
             }
             $this->load->view('isian_buku',$data);
             //$this->load->view('isian2',$data1);
@@ -301,8 +302,6 @@ class C_isian extends CI_Controller {
         }else{
             redirect('Home/pages');
         }
-
-
     }
 
     // VIEW BUKU YANG SUDAH JADI DAN SUDAH TERISI

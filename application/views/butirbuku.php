@@ -45,13 +45,14 @@
                         <button type="button" data-color="light-blue" class="btn bg-red waves-effect btn-xs" onclick="deleteallbutir(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Hapus Semua Butir Borang" href="javascript:void(0)"><i class="material-icons">delete</i></button>
                                 <?php
                         }else{
-                            if(($butird3 !== false) && ($butirfak !== false)){
+                            if((($butird3!==false) || ($butird4!==false)) && ($butirfak !== false)){
                                 ?>
                         <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3BD3(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
                                 <?php
                             } elseif (($butird3!==false) || ($butird4!==false)) {
                                 ?>
-                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3AD3(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <!-- <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3AD3(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button> -->
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
                                 <?php
                             }elseif (($butirs1!==false) && ($butirfak!==false)) {
                                  ?>
