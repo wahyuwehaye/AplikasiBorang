@@ -193,18 +193,52 @@
                         $getid434 = $row->id;
                         break;
                     }
+
+                    // inisiasi variabel
+                    $getKodeProdi = 0;
+                    $getKodeProdiDosen = 0;
+
+                    // ketika menggunakan jaringan selain tune
+                    $link = 'https://igracias.telkomuniversity.ac.id/';
+
+                    // ketika menggunakan jaringan tune (lokal kampus)
+                    // $link = 'http://10.252.252.174/';
+
+                    // GET KODE PRODI BERDASARKAN HALAMAN YANG DIBUKA
+                    $urlKodeProdi = $link.'api/borang/borang.php?data=prodi'; // path to your JSON file
+                    $dataKodeProdi = file_get_contents($urlKodeProdi); // put the contents of the file into a variable
+                    $KodeProdi = json_decode($dataKodeProdi, true); // decode the JSON feed
+                    foreach ($KodeProdi as $keyProdi => $valueProdi) {
+                        $prodinya = stripos(($buku[0]['fakpro']), ($valueProdi['NAMA_PRODI']));
+                            if ($prodinya !== FALSE) {
+                                 $getKodeProdi = $valueProdi['KODE'];
+                            }
+                    }
+                    
+                    // GET KODE PRODI DOSEN BERDASARKAN HALAMAN YANG DIBUKA
+                    $urlKodeProdiDosen = $link.'api/borang/borang.php?data=prodidosen'; // path to your JSON file
+                    $dataKodeProdiDosen = file_get_contents($urlKodeProdiDosen); // put the contents of the file into a variable
+                    $KodeProdiDosen = json_decode($dataKodeProdiDosen, true); // decode the JSON feed
+                    $kalimat = $buku[0]['fakpro']; //mengambil nama prodi
+                    $sub_kalimat = substr($kalimat,7); //memotong nama prodi agar sesuai dengan apa yang akan dicari nantinya
+                    foreach ($KodeProdiDosen as $keyProdiDosen => $valueProdiDosen) {
+                        $prodiDosennya = stripos(($valueProdiDosen['NAMA_PRODI_DOSEN']), ($sub_kalimat));
+                            if ($prodiDosennya !== FALSE) {
+                                 $getKodeProdiDosen = $valueProdiDosen['KODE'];
+                            }
+                    }
+
                         if ($getbutir=='1.1.1') {
                         ?>
-                        <!-- Button Default -->
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
-                            <!-- <button class="btn bg-cyan waves-effect m-b-15" data-parent="#accordion_1" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
-                                    aria-controls="collapseExample">
-                                BUTTON WITH data-target
-                            </button> -->
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -216,223 +250,146 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                <p>Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue: Tuliskan &nbsp;Sejarah untuk mengawali deskripsi</strong></p>
-                                                <p><strong>Clue : Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) program studi diturunkan dari VMTS Universitas Telkom dan Fakultas (Dokumen pendukung adalah renstra Universitas Telkom dan Fakultas&hellip;..),&nbsp; di level prodi ada Renop yang ada didalam renstra fakultas, gambarkan alur nya dengan menggunakan gambar, list semua pihak yang terlibat untuk penyusunan VMTS (Tim perumus, Industri, pemerintah, mahasiswa, alumni, dll)</strong></p>
-                                                <p><strong>&nbsp;</strong></p>
-                                                <p>Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) Program Studi mengacu kepada VMTS Universitas Telkom dan Fakultas &hellip;&hellip;&nbsp; yang tertuang dalam dokumen renstra Universitas, Renstra Fakultas ---<strong>Dst</strong></p>
-                                                <p>&nbsp;</p>
-                                                <p>Visi Universitas Telkom: Menjadi perguruan tinggi berkelas dunia yang berperan aktif dalam pengembangan ilmu pengetahuan dan seni berbasis teknologi informasi.</p>
-                                                <p>Misi Universitas Telkom:</p>
-                                                <ol>
-                                                <li>Menyelenggarakan dan mengembangkan pendidikan berstandar internasional;</li>
-                                                <li>Mengembangkan dan menyebarluaskan ilmu pengetahuan, teknologi, manajemen, dan seni yang diakui secara internasional;</li>
-                                                <li>Memanfaatkan ilmu pengetahuan, teknologi, manajemen, dan seni, untuk kesejahteraan dan kemajuan peradaban bangsa.</li>
-                                                </ol>
-                                                <p>&nbsp;</p>
-                                                <p>Visi Fakultas : &hellip;.</p>
-                                                <p>&nbsp;</p>
-                                                <p>Misi Fakultas: &hellip;..</p>
-                                                <p>&nbsp;</p>
-                                                <p>(Gambarkan mekanisme penyusunan dengan runtutan alur, gambar dibawah ini hanya contoh, semakin lengkap menggambarkan maka semakin baik)</p>
-                                                <p>&nbsp;</p>
-                                                <p style="padding-left: 270px;"><img src="/Screenshot_34.png" width="487" height="259" /></p>
-                                                <p><strong>Clue : Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap dll (Sebutkan siapa saja tim perumus VMTS Prodi)</strong></p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Dilakukan FGD dengan narasumber : industri, pemerintah, komunitas, mahasiswa, alumni (sebutkan lainnya jika ada dan didukung dengan foto-foto FGD) pada tanggal&hellip;&hellip;.</strong></p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama Peserta, Instansi, Jabatan FGD dengan Industri</strong></p>
-                                                <p>&nbsp;</p>
-                                                <table style="height: 122px; float: left;" border="1" width="676" cellspacing="0" cellpadding="0">
-                                                <tbody>
-                                                <tr>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>No</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>Nama</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>Instansi</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>Jabatan</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>1</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>2</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                </tbody>
-                                                </table>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Pemerintah</strong></p>
-                                                <p>&nbsp;</p>
-                                                <table style="height: 124px;" border="1" width="678" cellspacing="0" cellpadding="0">
-                                                <tbody>
-                                                <tr>
-                                                <td style="width: 56.8px; text-align: center;">
-                                                <p>No</p>
-                                                </td>
-                                                <td style="width: 268px; text-align: center;">
-                                                <p>Nama</p>
-                                                </td>
-                                                <td style="width: 167.2px; text-align: center;">
-                                                <p>Instansi</p>
-                                                </td>
-                                                <td style="width: 160px; text-align: center;">
-                                                <p>Jabatan</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 56.8px; text-align: center;">
-                                                <p>1</p>
-                                                </td>
-                                                <td style="width: 268px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 167.2px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 160px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 56.8px; text-align: center;">
-                                                <p>2</p>
-                                                </td>
-                                                <td style="width: 268px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 167.2px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 160px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                </tbody>
-                                                </table>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Mahasiswa </strong></p>
-                                                <p>&nbsp;</p>
-                                                <table style="height: 124px;" border="1" width="584" cellspacing="0" cellpadding="0">
-                                                <tbody>
-                                                <tr>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>No</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>Peserta</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>Kelas</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>1</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>&nbsp;sssss</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>ddd&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>2</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                </tbody>
-                                                </table>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan &hellip;&hellip;. (sebutkan yang lainnya: seperti alumni, komunitas, dll)</strong></p>
-                                                <p><strong>Clue : VMTS Prodi selanjutnya diusulkan ke rapat senat Fakultas dan senat Universitas</strong></p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;.</p>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "1.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "1.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
-                            <!-- <div class="collapse" id="collapseExample">
-                                <div class="well">
-                                    2Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica,
-                                    craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                </div>
-                            </div> -->
                         </div>
+                        <!-- Tutup DETAIL PANDUAN -->
                         <?php
                             if (count($dataisian)>0) {
                                 for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian111">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian111_buku">
                         <input type="hidden" name="id111" id="id111" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -442,7 +399,7 @@
                             <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian4kolom_buku/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian4kolom_buku/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
 
                         <div class="col-md-4"></div>
@@ -457,6 +414,36 @@
                                     </div>
                                 </div>
                         </div>
+                        <h2 class="card-inside-title">Visi program studi</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Misi program studi</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Tujuan program studi</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
                         <input type="hidden" name="version_no111" id="version_no111" value="<?php echo $dataisian[$i]['version_no'] ?>">
                         <input type="hidden" name="created_at111" id="created_at111" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
@@ -466,7 +453,7 @@
                                 }else{
                         ?>
                         
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi111">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi111_buku">
                         <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Visi, Misi, Tujuan, dan Sasaran serta Strategi Pencapaian</h2>
                         <h2 class="card-inside-title"><?php echo $butir[0]['butir'] ?>&nbsp; <?php echo $butir[0]['bakumutu'] ?></h2>
@@ -476,179 +463,306 @@
                                         <div class="form-line">
                                             <textarea name="kolom1_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                                 <p>Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue: Tuliskan &nbsp;Sejarah untuk mengawali deskripsi</strong></p>
-                                                <p><strong>Clue : Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) program studi diturunkan dari VMTS Universitas Telkom dan Fakultas (Dokumen pendukung adalah renstra Universitas Telkom dan Fakultas&hellip;..),&nbsp; di level prodi ada Renop yang ada didalam renstra fakultas, gambarkan alur nya dengan menggunakan gambar, list semua pihak yang terlibat untuk penyusunan VMTS (Tim perumus, Industri, pemerintah, mahasiswa, alumni, dll)</strong></p>
-                                                <p><strong>&nbsp;</strong></p>
-                                                <p>Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) Program Studi mengacu kepada VMTS Universitas Telkom dan Fakultas &hellip;&hellip;&nbsp; yang tertuang dalam dokumen renstra Universitas, Renstra Fakultas ---<strong>Dst</strong></p>
-                                                <p>&nbsp;</p>
-                                                <p>Visi Universitas Telkom: Menjadi perguruan tinggi berkelas dunia yang berperan aktif dalam pengembangan ilmu pengetahuan dan seni berbasis teknologi informasi.</p>
-                                                <p>Misi Universitas Telkom:</p>
+                                                <p>Konten yang harus ada dalam penyusunan standar ini, sebagai berikut:</p>
                                                 <ol>
-                                                <li>Menyelenggarakan dan mengembangkan pendidikan berstandar internasional;</li>
-                                                <li>Mengembangkan dan menyebarluaskan ilmu pengetahuan, teknologi, manajemen, dan seni yang diakui secara internasional;</li>
-                                                <li>Memanfaatkan ilmu pengetahuan, teknologi, manajemen, dan seni, untuk kesejahteraan dan kemajuan peradaban bangsa.</li>
+                                                <li><strong>Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) program studi diturunkan dari VMTS Universitas Telkom dan Fakultas (dokumen pendukung adalah renstra Universitas Telkom dan Fakultas&hellip;..)</strong></li>
+                                                <li><strong>Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap</strong><strong>,</strong><strong> dll (sebutkan siapa saja tim perumus VMTS Prodi)</strong></li>
+                                                <li><strong>Alurnya dig</strong><strong>ambarkan dengan menggunakan gambar (dibawah ini adalah contoh gambar, silahkan dimodifikasi atau silakan digambarkan sesuai dengan kondisi masing masing)</strong></li>
+                                                </ol>
+                                                <p style="padding-left: 240px;"><strong>&nbsp;<img src="/AplikasiBorang/ImgIsian/Screenshot_34.png" width="487" height="259" /></strong><strong>&nbsp;</strong></p>
+                                                <ol start="4">
+                                                <li><strong>Ceritakan kapan dan apa isi FGD</strong></li>
+                                                <li><strong>Tampilkan foto-foto kegiatan FGD yang didalamnya ada spanduk/banner tentang kegiatan tersebut.</strong></li>
+                                                <li><strong>Dilakukan FGD dengan narasumber: industri, pemerintah, komunitas, alumni (sebutkan lainnya jika ada dan didukung dengan foto-foto FGD) pada tanggal&hellip;&hellip;.</strong></li>
+                                                </ol>
+                                                <ol start="7">
+                                                <li><strong>Buat Tabel Nama Peserta, Instansi, Jabatan FGD dengan Industri:</strong></li>
+                                                </ol>
+                                                <table border="1" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr style="height: 35px;">
+                                                <td style="height: 35px; text-align: center;" width="49">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="height: 35px; text-align: center;" width="132">
+                                                <p>Nama</p>
+                                                </td>
+                                                <td style="height: 35px; text-align: center;" width="155">
+                                                <p>Instansi</p>
+                                                </td>
+                                                <td style="height: 35px; text-align: center;" width="144">
+                                                <p>Jabatan</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 35px;">
+                                                <td style="height: 35px; text-align: center;" width="49">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="height: 35px; text-align: center;" width="132">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="height: 35px; text-align: center;" width="155">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="height: 35px; text-align: center;" width="144">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 35px;">
+                                                <td style="height: 35px; text-align: center;" width="49">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="height: 35px; text-align: center;" width="132">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="height: 35px; text-align: center;" width="155">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="height: 35px; text-align: center;" width="144">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 35.3835px;">
+                                                <td style="height: 35.3835px; text-align: center;" width="49">
+                                                <p>Dst&hellip;</p>
+                                                </td>
+                                                <td style="height: 35.3835px; text-align: center;" width="132">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="height: 35.3835px; text-align: center;" width="155">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="height: 35.3835px; text-align: center;" width="144">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <ol start="8">
+                                                <li><strong>Buat Tabel Nama Instansi, Jabatan FGD dengan Pemerintah:</strong></li>
+                                                </ol>
+                                                <table border="1" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="text-align: center;" width="132">
+                                                <p>Nama</p>
+                                                </td>
+                                                <td style="text-align: center;" width="155">
+                                                <p>Instansi</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>Jabatan</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="text-align: center;" width="132">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="155">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="text-align: center;" width="132">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="155">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>Dst&hellip;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="132">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="155">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>&nbsp;<strong>&nbsp;</strong></p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <ol start="9">
+                                                <li><strong>Buat Tabel Nama Instansi, Jabatan FGD dengan Asosiasi :</strong></li>
+                                                </ol>
+                                                <table border="1" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="text-align: center;" width="129">
+                                                <p>Nama</p>
+                                                </td>
+                                                <td style="text-align: center;" width="155">
+                                                <p>Nama Asosiasi</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>Jabatan</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="text-align: center;" width="129">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="155">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="text-align: center;" width="129">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="155">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>Dst&hellip;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="129">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="155">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <ol start="10">
+                                                <li><strong>Buat Tabel Nama Pakar, Jabatan yang diundang dalam FGD :</strong></li>
+                                                </ol>
+                                                <table border="1" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>No</p>
+                                                </td>
+                                                <td style="text-align: center;" width="128">
+                                                <p>Nama</p>
+                                                </td>
+                                                <td style="text-align: center;" width="156">
+                                                <p>Nama Organisasi</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>Jabatan</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="text-align: center;" width="128">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="156">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="text-align: center;" width="128">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="156">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="text-align: center;" width="49">
+                                                <p>Dst&hellip;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="128">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="156">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="text-align: center;" width="147">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <ol start="11">
+                                                <li><strong>Setelah FGD dilakukan kemudian draft VMTS Prodi disahkan oleh&hellip;&hellip;&hellip;.</strong></li>
                                                 </ol>
                                                 <p>&nbsp;</p>
-                                                <p>Visi Fakultas : &hellip;.</p>
-                                                <p>&nbsp;</p>
-                                                <p>Misi Fakultas: &hellip;..</p>
-                                                <p>&nbsp;</p>
-                                                <p>(Gambarkan mekanisme penyusunan dengan runtutan alur, gambar dibawah ini hanya contoh, semakin lengkap menggambarkan maka semakin baik)</p>
-                                                <p>&nbsp;</p>
-                                                <p style="padding-left: 270px;"><img src="/Screenshot_34.png" width="487" height="259" /></p>
-                                                <p><strong>Clue : Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap dll (Sebutkan siapa saja tim perumus VMTS Prodi)</strong></p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Dilakukan FGD dengan narasumber : industri, pemerintah, komunitas, mahasiswa, alumni (sebutkan lainnya jika ada dan didukung dengan foto-foto FGD) pada tanggal&hellip;&hellip;.</strong></p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama Peserta, Instansi, Jabatan FGD dengan Industri</strong></p>
-                                                <p>&nbsp;</p>
-                                                <table style="height: 122px; float: left;" border="1" width="676" cellspacing="0" cellpadding="0">
-                                                <tbody>
-                                                <tr>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>No</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>Nama</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>Instansi</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>Jabatan</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>1</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>2</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                </tbody>
-                                                </table>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Pemerintah</strong></p>
-                                                <p>&nbsp;</p>
-                                                <table style="height: 124px;" border="1" width="678" cellspacing="0" cellpadding="0">
-                                                <tbody>
-                                                <tr>
-                                                <td style="width: 56.8px; text-align: center;">
-                                                <p>No</p>
-                                                </td>
-                                                <td style="width: 268px; text-align: center;">
-                                                <p>Nama</p>
-                                                </td>
-                                                <td style="width: 167.2px; text-align: center;">
-                                                <p>Instansi</p>
-                                                </td>
-                                                <td style="width: 160px; text-align: center;">
-                                                <p>Jabatan</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 56.8px; text-align: center;">
-                                                <p>1</p>
-                                                </td>
-                                                <td style="width: 268px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 167.2px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 160px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 56.8px; text-align: center;">
-                                                <p>2</p>
-                                                </td>
-                                                <td style="width: 268px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 167.2px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 160px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                </tbody>
-                                                </table>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Mahasiswa </strong></p>
-                                                <p>&nbsp;</p>
-                                                <table style="height: 124px;" border="1" width="584" cellspacing="0" cellpadding="0">
-                                                <tbody>
-                                                <tr>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>No</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>Peserta</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>Kelas</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>1</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>&nbsp;sssss</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>ddd&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>2</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                </tbody>
-                                                </table>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan &hellip;&hellip;. (sebutkan yang lainnya: seperti alumni, komunitas, dll)</strong></p>
-                                                <p><strong>Clue : VMTS Prodi selanjutnya diusulkan ke rapat senat Fakultas dan senat Universitas</strong></p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;.</p>
                                             </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Visi program studi</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Misi program studi</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Tujuan program studi</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_111" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -659,12 +773,15 @@
                                 }
                         }elseif ($getbutir=='1.1.2') {
                         ?>
-                        <!-- Button Default -->
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -676,228 +793,149 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                <p>Jelaskan mekanisme penyusunan visi, misi, tujuan dan sasaran program studi, serta pihak-pihak yang dilibatkan</p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue: Tuliskan Prolog untuk mengawali cerita</strong></p>
-                                                <p>Universitas Telkom berdiri pada tanggal 14 Agustus 2013 yang merupakan gabungan dari empat institusi dibawah naungan Yayasan Pendidikan Telkom yaitu Institut Teknologi Telkom, Institut Manajemen Telkom, Sekolah Tinggi Seni Rupa dan Desain Indonesia Telkom, dan Politeknik Telkom. Setelah Universitas Telkom berdiri, maka dilakukan penyesuaian visi, misi, tujuan dan sasaran institusi dan Program Studi. Program studi &hellip;&hellip; merupakan bagian dari Fakultas&hellip;&hellip;&hellip;.</p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) program studi diturunkan dari VMTS Universitas Telkom dan Fakultas (Dokumen pendukung adalah renstra Universitas Telkom dan Fakultas&hellip;..),&nbsp; di level prodi ada Renop yang ada didalam renstra fakultas, gambarkan alur nya dengan menggunakan gambar, list semua pihak yang terlibat untuk penyusunan VMTS (Tim perumus, Industri, pemerintah, mahasiswa, alumni, dll)</strong></p>
-                                                <p><strong>&nbsp;</strong></p>
-                                                <p>Mekanisme penyusunan visi, misi, tujuan dan sasaran (VMTS) Program Studi mengacu kepada VMTS Universitas Telkom dan Fakultas &hellip;&hellip;&nbsp; yang tertuang dalam dokumen renstra Universitas, Renstra Fakultas</p>
-                                                <p>&nbsp;</p>
-                                                <p>Visi Universitas Telkom: Menjadi perguruan tinggi berkelas dunia yang berperan aktif dalam pengembangan ilmu pengetahuan dan seni berbasis teknologi informasi.</p>
-                                                <p>Misi Universitas Telkom:</p>
-                                                <ol>
-                                                <li>Menyelenggarakan dan mengembangkan pendidikan berstandar internasional;</li>
-                                                <li>Mengembangkan dan menyebarluaskan ilmu pengetahuan, teknologi, manajemen, dan seni yang diakui secara internasional;</li>
-                                                <li>Memanfaatkan ilmu pengetahuan, teknologi, manajemen, dan seni, untuk kesejahteraan dan kemajuan peradaban bangsa.</li>
-                                                </ol>
-                                                <p>&nbsp;</p>
-                                                <p>Visi Fakultas : &hellip;.</p>
-                                                <p>&nbsp;</p>
-                                                <p>Misi Fakultas: &hellip;..</p>
-                                                <p>&nbsp;</p>
-                                                <p>(Gambarkan mekanisme penyusunan dengan runtutan alur, gambar dibawah ini hanya contoh, semakin lengkap menggambarkan maka semakin baik)</p>
-                                                <p>&nbsp;</p>
-                                                <p style="padding-left: 270px;"><img src="/Screenshot_34.png" width="487" height="259" /></p>
-                                                <p>Prodi membentuk Tim Perumus VMTS mengacu pada SK No&hellip;&hellip; melibatkan Kaprodi, Dekan, dosen tetap dll (Sebutkan siapa saja tim perumus VMTS Prodi)</p>
-                                                <p>&nbsp;</p>
-                                                <p>Dilakukan FGD dengan narasumber : industri, pemerintah, komunitas, mahasiswa, alumni (sebutkan lainnya jika ada dan didukung dengan foto-foto FGD) pada tanggal&hellip;&hellip;.</p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama Peserta, Instansi, Jabatan FGD dengan Industri</strong></p>
-                                                <p>&nbsp;</p>
-                                                <table style="height: 122px; float: left;" border="1" width="676" cellspacing="0" cellpadding="0">
-                                                <tbody>
-                                                <tr>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>No</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>Nama</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>Instansi</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>Jabatan</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>1</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>2</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 164.4px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                </tbody>
-                                                </table>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Pemerintah</strong></p>
-                                                <p>&nbsp;</p>
-                                                <table style="height: 124px;" border="1" width="678" cellspacing="0" cellpadding="0">
-                                                <tbody>
-                                                <tr>
-                                                <td style="width: 56.8px; text-align: center;">
-                                                <p>No</p>
-                                                </td>
-                                                <td style="width: 268px; text-align: center;">
-                                                <p>Nama</p>
-                                                </td>
-                                                <td style="width: 167.2px; text-align: center;">
-                                                <p>Instansi</p>
-                                                </td>
-                                                <td style="width: 160px; text-align: center;">
-                                                <p>Jabatan</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 56.8px; text-align: center;">
-                                                <p>1</p>
-                                                </td>
-                                                <td style="width: 268px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 167.2px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 160px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 56.8px; text-align: center;">
-                                                <p>2</p>
-                                                </td>
-                                                <td style="width: 268px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 167.2px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 160px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                </tbody>
-                                                </table>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan Mahasiswa </strong></p>
-                                                <p>&nbsp;</p>
-                                                <table style="height: 124px;" border="1" width="584" cellspacing="0" cellpadding="0">
-                                                <tbody>
-                                                <tr>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>No</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>Peserta</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>Kelas</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>1</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>2</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                <td style="width: 312.8px; text-align: center;">
-                                                <p>&nbsp;</p>
-                                                </td>
-                                                </tr>
-                                                </tbody>
-                                                </table>
-                                                <p>&nbsp;</p>
-                                                <p><strong>Clue : Buat Tabel Nama </strong><strong>Instansi, Jabatan FGD dengan &hellip;&hellip;. (sebutkan yang lainnya: seperti alumni, komunitas, dll)</strong></p>
-                                                <p>&nbsp;</p>
-                                                <p>&nbsp;</p>
-                                                <p>Berdasarkan hasil-hasil diskusi dan masukan semua pihak, maka selanjutnya disusun rumusan VMTS Prodi&hellip;&hellip;.. Universitas Telkom. Selanjutnya Ketua Program Studi (KaProdi) &hellip;.. Universitas Telkom melaporkan hasil rumusan visi, misi, tujuan dan sasaran melalui <strong>mekanisme rapat sidang Pimpinan Fakultas&hellip;.. dan Senat Fakultas &hellip;&hellip;. </strong>Pada tanggal&hellip;&hellip;. Kemudian di sahkan pada level universitas melalui Rapat senat Universitas.</p>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "1.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "1.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
-                            <!-- <div class="collapse" id="collapseExample">
-                                <div class="well">
-                                    2Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica,
-                                    craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                </div>
-                            </div> -->
                         </div>
+                        <!-- Tutup DETAIL PANDUAN -->
                         <?php
                             if (count($dataisian)>0) {
                             
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian11b">
-                        <input type="hidden" name="id11b" id="id11b" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir11b" id="id_butir11b" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian112_buku">
+                        <input type="hidden" name="id112" id="id112" value="<?php echo $dataisian[$i]['id'] ?>" />
+                        <input type="hidden" name="id_butir112" id="id_butir112" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
@@ -905,74 +943,612 @@
                             <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
                         <div class="col-md-4"></div>
-                        <h2 class="card-inside-title">Sasaran dan Strategi Pencapaiannya</h2>
+                        <h2 class="card-inside-title">Sasaran dan strategi pencapaian</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_11b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom1_112" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <input type="hidden" name="version_no11b" id="version_no11b" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at11b" id="created_at11b" value="<?php echo $dataisian[$i]['updated_at'] ?>">
+                        <input type="hidden" name="version_no112" id="version_no112" value="<?php echo $dataisian[$i]['version_no'] ?>">
+                        <input type="hidden" name="created_at112" id="created_at112" value="<?php echo $dataisian[$i]['updated_at'] ?>">
                         <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
                         </form>
                         <?php } ?>
-                        <!-- <table id="borang" class="table table-bordered table-striped table-hover dataTable js-exportable">
-                            <thead>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Sasaran dan Strategi Pencapaiannya</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID Butir</th>
-                                    <th>Sasaran dan Strategi Pencapaiannya</th>
-                                    <th>Version</th>
-                                    <th width="14%">Action</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <?php
-                                    // foreach ($dataisian as $key) {
-                                    for($i=0;$i<count($dataisian);$i++){
-                                 ?>
-                                <tr>
-                                    <td><?php echo $dataisian[$i]['id_butir'] ?> </td>
-                                    <td><?php echo $dataisian[$i]['kolom1'] ?> </td>
-                                    <td><a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a>&nbsp; </td>
-                                    <td>
-                                        <div class="js-sweetalert"> -->
-                                            <!-- <a type="button" data-color="indigo" class="btn bg-indigo waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Isian" href="<?php echo base_url();?>index.php/dataisian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">text_format</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $dataisian[$i]['id']; ?>" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
-                                            <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a>&nbsp;
-                                            <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#updateIsian2" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-                                            <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table> -->
                         <?php
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi11b">
-                        <input type="hidden" name="id_butir11b" id="id_butir11b" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Sasaran dan Strategi Pencapaiannya</h2>
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi112_buku">
+                        <input type="hidden" name="id_butir112" id="id_butir112" value="<?php echo $isiannya; ?>" />
+                        <h2 class="card-inside-title">Sasaran dan strategi pencapaian</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_11b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_112" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <p>Konten yang harus ada dalam penyusunan standar ini, sebagai berikut:</p>
+                                                <ol>
+                                                <li>Harus ditulis sasaran dan strategi pencapaian tersebut tertulis didokumen yang mana (biasanya sasaran dan strategi pencapaian tertulis dalam dokumen renstra Prodi yang kemudian dijabarkan dalam rencana operasional Prodi)</li>
+                                                <li>Jelaskan Sasaran dan strategi pencapaian Program Studi. Sasaran harus mengacu pada tujuan</li>
+                                                <li>Buat Tabel berisi sasaran, strategi pencapaian dan Indikator Keberhasilan&hellip;&hellip; (berupa tahapan/milestone dari tahun ke tahun/berupa gambar)</li>
+                                                </ol>
+                                                <p>(Contoh tabel terlampir/isi diganti sesuai sasaran program studi)</p>
+                                                <table style="width: 619.705px;" border="1" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="background-color: #d6d6d6; width: 227.705px; text-align: center; vertical-align: middle;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                <p><strong>No</strong></p>
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="background-color: #d6d6d6; width: 227.705px; text-align: center; vertical-align: middle;">
+                                                <p><strong>Sasaran</strong></p>
+                                                </td>
+                                                <td style="background-color: #d6d6d6; width: 227.705px; text-align: center; vertical-align: middle;">
+                                                <p><strong>Strategi pencapaian</strong></p>
+                                                </td>
+                                                <td style="background-color: #d6d6d6; width: 227.705px; text-align: center; vertical-align: middle;">
+                                                <p><strong>Indikator Keberhasilan</strong></p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 106px;">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="width: 138px;">
+                                                <p>Terwujudnya ..........</p>
+                                                <p>Meningkatnya....</p>
+                                                <p>dll</p>
+                                                </td>
+                                                <td style="width: 145px;">
+                                                <p>Mendorong .....</p>
+                                                <p>Meningkatkan...</p>
+                                                <p>Mempertahankan...</p>
+                                                <p>Mengembangkan....</p>
+                                                <p>Mengadakan.....</p>
+                                                <p>dll</p>
+                                                </td>
+                                                <td style="width: 227.705px;">
+                                                <p>Persentase pertumbuhan ......</p>
+                                                <p>Rata-rata evaluasi...</p>
+                                                <p>Rasio...</p>
+                                                <p>Jumlah....</p>
+                                                <p>Diraihnya ....</p>
+                                                <p>dll</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 106px;">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="width: 138px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 145px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 227.705px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 106px;">
+                                                <p>3</p>
+                                                </td>
+                                                <td style="width: 138px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 145px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 227.705px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 106px;">
+                                                <p>4</p>
+                                                </td>
+                                                <td style="width: 138px;">
+                                                <p>dst</p>
+                                                </td>
+                                                <td style="width: 145px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 227.705px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <ol start="4">
+                                                <li>Dari setiap sasaran yang telah disebutkan lalu dibuatkan tabel berisi sasaran yang telah disebutkan pada tabel sebelumnya, indikator keberhasilan dan target per tahun (Contoh tabel terlampir/isi menyesuaikan Prodi; tahun mengikuti tahun renstra)</li>
+                                                </ol>
+                                                <table border="1" width="533" cellspacing="0" cellpadding="0">
+                                                <thead>
+                                                <tr>
+                                                <td style="background-color: #d1d1d1; width: 284px; text-align: center; vertical-align: middle;" rowspan="2" width="42">
+                                                <p><strong>&nbsp;</strong></p>
+                                                <p><strong>No</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 284px; text-align: center; vertical-align: middle;" rowspan="2" width="104">
+                                                <p><strong>Sasaran</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 284px; text-align: center; vertical-align: middle;" rowspan="2" width="104">
+                                                <p><strong>Indikator Keberhasilan</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 284px; text-align: center; vertical-align: middle;" colspan="5" width="284">
+                                                <p><strong>Tahun</strong></p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="background-color: #d1d1d1; width: 284px; text-align: center; vertical-align: middle;" width="57">
+                                                <p><strong>Tahun ke 1</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 284px; text-align: center; vertical-align: middle;" width="57">
+                                                <p><strong>Tahun ke 2</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 284px; text-align: center; vertical-align: middle;" width="57">
+                                                <p><strong>Tahun ke 3</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 284px; text-align: center; vertical-align: middle;" width="57">
+                                                <p><strong>Tahun ke 4</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 284px; text-align: center; vertical-align: middle;" width="57">
+                                                <p><strong>Tahun ke 5</strong></p>
+                                                </td>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                <td rowspan="2" width="42">
+                                                <p>1</p>
+                                                </td>
+                                                <td rowspan="2" width="104">
+                                                <p>Terwujudnya ..........</p>
+                                                <p>Meningkatnya....</p>
+                                                <p>&nbsp;</p>
+                                                <p>dll</p>
+                                                </td>
+                                                <td width="104">
+                                                <p>Persentase pertumbuhan .....</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>80%</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>82%</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>84%</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>86%</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>88%</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="104">
+                                                <p>Rata-rata evaluasi...</p>
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp; 65</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>70</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>75</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>80</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>85</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td rowspan="2" width="42">
+                                                <p>2</p>
+                                                </td>
+                                                <td rowspan="2" width="104">
+                                                <p>Meningkatnya ...</p>
+                                                </td>
+                                                <td width="104">
+                                                <p>Rasio....</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="104">
+                                                <p>Nilai ....</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="42">
+                                                <p>Dst&hellip;</p>
+                                                </td>
+                                                <td width="104">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="104">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="57">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <ol start="5">
+                                                <li>Ceritakan juga bagaimana Prodi mengefaluasi tahapan tahapan target per</li>
+                                                </ol>
+                                                <p>Buat tabel yang berisi evaluasi pencapaian dari awal tahun renstra sampai tahun TS (Contoh tabel terlampir/isi menyesuaikan prodi; tahun mengikuti tahun renstra)</p>
+                                                <table border="1" width="102%" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" rowspan="3" width="4%">
+                                                <p><strong>&nbsp;</strong></p>
+                                                <p><strong>No</strong></p>
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" rowspan="3" width="13%">
+                                                <p><strong>Sasaran</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" rowspan="3" width="11%">
+                                                <p><strong>Indikator Keberhasilan</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" colspan="10" width="70%">
+                                                <p><strong>Tahun</strong></p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" colspan="2" width="13%">
+                                                <p><strong>Tahun TS-4</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" colspan="2" width="13%">
+                                                <p><strong>Tahun TS-3</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" colspan="2" width="13%">
+                                                <p><strong>Tahun TS-2</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" colspan="2" width="13%">
+                                                <p><strong>Tahun TS-1</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" colspan="2" width="15%">
+                                                <p><strong>Tahun TS</strong></p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" width="7%">
+                                                <p><strong>Target</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" width="6%">
+                                                <p><strong>Penca</strong></p>
+                                                <p><strong>paian</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" width="7%">
+                                                <p><strong>Target</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" width="6%">
+                                                <p><strong>Penca</strong></p>
+                                                <p><strong>paian</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" width="7%">
+                                                <p><strong>Target</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" width="6%">
+                                                <p><strong>Penca</strong></p>
+                                                <p><strong>paian</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" width="7%">
+                                                <p><strong>Target</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" width="6%">
+                                                <p><strong>Penca</strong></p>
+                                                <p><strong>paian</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" width="7%">
+                                                <p><strong>Target</strong></p>
+                                                </td>
+                                                <td style="background-color: #d1d1d1; width: 7%; text-align: center; vertical-align: middle;" width="8%">
+                                                <p><strong>Penca</strong></p>
+                                                <p><strong>paian</strong></p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td rowspan="2" width="4%">
+                                                <p>1</p>
+                                                </td>
+                                                <td rowspan="2" width="13%">
+                                                <p>Terwujudnya ..........</p>
+                                                <p>Meningkatnya....</p>
+                                                <p>dll</p>
+                                                </td>
+                                                <td width="11%">
+                                                <p>Persentase pertumbuhan .....</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>80%</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>82%</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>84%</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>86%</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>88%</p>
+                                                </td>
+                                                <td width="8%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="11%">
+                                                <p>Rata-rata evaluasi...</p>
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp; 65</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>70</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>75</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>80</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>85</p>
+                                                </td>
+                                                <td width="8%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td rowspan="2" width="4%">
+                                                <p>2</p>
+                                                </td>
+                                                <td rowspan="2" width="13%">
+                                                <p>Meningkatnya ...</p>
+                                                </td>
+                                                <td width="11%">
+                                                <p>Rasio....</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="8%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="11%">
+                                                <p>Nilai ....</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="8%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="4%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="13%">
+                                                <p>Dst...</p>
+                                                </td>
+                                                <td width="11%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="8%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="4%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="13%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="11%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="6%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="7%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="8%">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -982,13 +1558,16 @@
                             <?php
                                 }
                         }elseif ($getbutir=='1.2') {
-                            ?>
-                        <!-- Button Default -->
+                        ?>
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -1000,45 +1579,146 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "1.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "1.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
                         </div>
-                            <?php 
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3bd3/updateisian12">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian12_buku">
                         <input type="hidden" name="id12" id="id12" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir12" id="id_butir12" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -1048,9 +1728,11 @@
                             <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Lihat Buku" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
                         </div>
                         <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3bd3/destroyisian4kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian4kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">Sosialisasi</h2>
+                        <div class="col-md-4"></div>
+                        <h2 class="card-inside-title">Sosialisasi&nbsp;
+                        <button type="button" onclick="infoSosialisasi()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Uraikan upaya penyebaran/sosialisasi visi, misi dan tujuan program studi serta pemahaman sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
@@ -1068,7 +1750,7 @@
                         <?php }
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3bd3/ngisi12">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi12_buku">
                         <input type="hidden" name="id_butir12" id="id_butir12" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sosialisasi</h2>
                         <h2 class="card-inside-title">Uraikan upaya penyebaran/sosialisasi visi, misi dan tujuan program studi serta pemahaman sivitas akademika (dosen dan mahasiswa) dan tenaga kependidikan.</h2>
@@ -1076,21 +1758,140 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_12" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_12" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <h2>Konten yang harus ada dalam penyusunan standar ini, sebagai berikut:</h2>
+                                                <ol>
+                                                <li>Jelaskan kapan saja prodi melakukan sosialisasi visi dan misi didukung dengan foto-foto yang menunjukan bahwa foto tersebut adalah foto sosialisasi visi misi</li>
+                                                <li>Tampilkan capture banner, poster visi misi prodi</li>
+                                                <li>Tampilkan capture Slide sosialisasi visi misi prodi&nbsp;</li>
+                                                </ol>
+                                                <p>Contoh foto yang menunjukan bahwa foto tersebut memang foto sosialisasi visi dan misi (slide berisi visi dan misi, banner yang berisi visi dan misi, website yang berisi visi dan misi, dst&hellip;):</p>
+                                                <p style="padding-left: 210px;"><img src="/AplikasiBorang/ImgIsian//butir12.png" /></p>
+                                                <ol start="4">
+                                                <li>Dapat dibuat uraian atau dapat dibuat tabel per stakeholder</li>
+                                                </ol>
+                                                <table border="1" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td width="37">
+                                                <p><strong>No</strong></p>
+                                                </td>
+                                                <td width="183">
+                                                <p><strong>Stakeholder</strong></p>
+                                                </td>
+                                                <td width="299">
+                                                <p><strong>Kegiatan Sosialisasi Visi dan Misi Prodi &hellip;.</strong></p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="37">
+                                                <p>1</p>
+                                                </td>
+                                                <td width="183">
+                                                <p>Dosen</p>
+                                                </td>
+                                                <td width="299">
+                                                <p>Sosialisasi pada saat &hellip;</p>
+                                                <p>Website&hellip;</p>
+                                                <p>dst</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="37">
+                                                <p>2</p>
+                                                </td>
+                                                <td width="183">
+                                                <p>Mahasiswa</p>
+                                                </td>
+                                                <td width="299">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="37">
+                                                <p>3</p>
+                                                </td>
+                                                <td width="183">
+                                                <p>Tenaga kependidikan (TPA)</p>
+                                                </td>
+                                                <td width="299">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="37">
+                                                <p>4</p>
+                                                </td>
+                                                <td width="183">
+                                                <p>Alumni</p>
+                                                </td>
+                                                <td width="299">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="37">
+                                                <p>5</p>
+                                                </td>
+                                                <td width="183">
+                                                <p>Masyarakat</p>
+                                                </td>
+                                                <td width="299">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <ol start="5">
+                                                <li>Jelaskan hasil survey pemahaman visi dan misi menggunakan kuesioner</li>
+                                                </ol>
+                                                <p>Kuesioner mencangkup pernyataan mengenai :</p>
+                                                <ul>
+                                                <li>Saya mengetahui Visi Misi Tujuan Program Studi&hellip;&hellip;.</li>
+                                                <li>Saya memahami Visi Misi Tujuan Program Studi&hellip;&hellip;.</li>
+                                                <li>Saya melaksanakan visi dan misi &hellip;.</li>
+                                                </ul>
+                                                <p>&nbsp;</p>
+                                                <p>Alternatif Skala : Sangat Setuju, Setuju, Tidak Setuju, Sangat Tidak Setuju</p>
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sangat Memahami, Kurang Memahami , Tidak Memahami</p>
+                                                <ol start="6">
+                                                <li>Buat grafik tingkat pemahaman dosen terhadap visi dan misi program studi beserta penjelasannya (Hasil untuk dosen harus 100% dan tidak jauh dari 100%).</li>
+                                                </ol>
+                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sebesar 100% dosen mengetahui visi, misi tujuan dan sasaran prodi &hellip;..</p>
+                                                <ol start="7">
+                                                <li>Buat grafik tingkat pemahaman tenaga kependidikan (TPA) terhadap visi dan misi program studi beserta penjelasannya (hasil untuk tenaga kependidikan (TPA) harus 100% dan tidak jauh dari 100%)</li>
+                                                <li>Buat grafik tingkat pemahaman mahasiswa terhadap visi dan misi program studi beserta penjelasannya (hasil harus diatas 90%)</li>
+                                                <li>Tuliskan berapa jumlah responden yang dilibatkan</li>
+                                                <li>Penguatan pemahaman juga dilihat dari beberapa pencapaian prestasi mahasiswa dan dosen yang terkait dengan visi dan misi (Tunjukan yang meningkat saja)</li>
+                                                </ol>
+                                                <ul>
+                                                <li>Meningkatnya publikasi</li>
+                                                <li>Meningkatnya penghargaan internasional mahasiswa prodi</li>
+                                                <li>Meningkatnya pengabdian masyarakat</li>
+                                                <li>Meningkatnya jumlah student exchange</li>
+                                                <li>Dst&hellip;</li>
+                                                </ul>
+                                                <p>&nbsp;</p>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
+                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        </form>
                             <?php
                                 }
                         }elseif ($getbutir=='2.1') {
-                            ?>
-                        <!-- Button Default -->
+                        ?>
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -1102,45 +1903,146 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
                         </div>
-                            <?php
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian21">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian21_buku">
                         <input type="hidden" name="id21" id="id21" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir21" id="id_butir21" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -1152,15 +2054,56 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
+                        <div class="col-md-4"></div>
                         <h2 class="card-inside-title">Sistem Tata Pamong&nbsp;
                         <button type="button" onclick="infoPamong()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title" style="text-align: justify;">Sistem tata pamong berjalan secara efektif melalui mekanisme yang disepakati bersama, serta dapat memelihara dan mengakomodasi semua unsur, fungsi, dan peran dalam program studi. Tata pamong didukung dengan budaya organisasi yang dicerminkan dengan ada dan tegaknya aturan, tatacara pemilihan pimpinan, etika dosen, etika mahasiswa, etika tenaga kependidikan, sistem penghargaan dan sanksi serta pedoman dan prosedur pelayanan (administrasi, perpustakaan, laboratorium, dan studio). Sistem tata pamong (input, proses, output dan outcome serta lingkungan eksternal yang menjamin terlaksananya tata pamong yang baik) harus diformulasikan, disosialisasikan, dilaksanakan,  dipantau dan dievaluasi dengan peraturan dan prosedur yang jelas. </h2>
-                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di program studi untuk  membangun sistem tata pamong yang kredibel, transparan, akuntabel, bertanggung jawab dan adil.</h2>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang kredibel</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <textarea name="kolom1_21" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang transparan</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_21" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang akuntabel</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_21" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang bertanggung jawab</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_21" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang adil.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom5_21" id="tin5" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom5'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1172,17 +2115,230 @@
                         <?php }
                                 }else{
                         ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi21">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi21_buku">
                         <input type="hidden" name="id_butir21" id="id_butir21" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sistem Tata Pamong&nbsp;
                         <button type="button" onclick="infoPamong()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Sistem tata pamong berjalan secara efektif melalui mekanisme yang disepakati bersama, serta dapat memelihara dan mengakomodasi semua unsur, fungsi, dan peran dalam program studi. Tata pamong didukung dengan budaya organisasi yang dicerminkan dengan ada dan tegaknya aturan, tatacara pemilihan pimpinan, etika dosen, etika mahasiswa, etika tenaga kependidikan, sistem penghargaan dan sanksi serta pedoman dan prosedur pelayanan (administrasi, perpustakaan, laboratorium, dan studio). Sistem tata pamong (input, proses, output dan outcome serta lingkungan eksternal yang menjamin terlaksananya tata pamong yang baik) harus diformulasikan, disosialisasikan, dilaksanakan,  dipantau dan dievaluasi dengan peraturan dan prosedur yang jelas. </h2>
-                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang kredibel, transparan, akuntabel, bertanggung jawab dan adil.</h2>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang kredibel</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_21" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_21" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <p><strong>1. Kredibel</strong></p>
+                                                <p><strong>&nbsp;</strong></p>
+                                                <ol style="list-style-type: lower-alpha;">
+                                                <li>Jelaskan bahwa seleksi yang jelas dan terukur dan sesuai aturan.</li>
+                                                </ol>
+                                                <p>Jelaskan mekanisme proses pemilihan kaprodi:</p>
+                                                <ul>
+                                                <li>Kriteria Kaprodi (prestasi akademis, kemampuan manajerial, kepemimpinan, dst download SK persyaratan Kaprodi) dan mengikuti aturan yang berlaku di bagian pengembangan sdm (Bang SDM)</li>
+                                                <li>Diusulkan 2-3 orang calon yang kemudian dilakukan assestment oleh assessment centre Indonesia (ACI)</li>
+                                                <li>Setelah dilakukan assessment kemudian pemilihan oleh pejabat dan kemudian diusulkan ke YPT</li>
+                                                <li>Penerimaan SK YPT yang disahkan oleh rektor</li>
+                                                <li>Kemudian dalam menjalankan tugas dibantu oleh sekprodi</li>
+                                                <li>Kriteria KProdi dan Sek.prodi terdapat pada dokumen job description nomor.....(donwload SK job desk Kaprodi dan Sekprodi)</li>
+                                                <li>...</li>
+                                                </ul>
+                                                <p style="padding-left: 30px;">b. Buatkan Tabel Persyaratan Ka.Prodi dan Sekprodi ......(Contoh Tabel Terlampir-silahkan dilakukan modifikasi sesuai kebutuhan)</p>
+                                                <table border="1" width="553" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td width="39">
+                                                <p>No</p>
+                                                </td>
+                                                <td width="174">
+                                                <p>Posisi</p>
+                                                </td>
+                                                <td width="197">
+                                                <p>Persyaratan</p>
+                                                </td>
+                                                <td width="142">
+                                                <p>Persyaratan</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td rowspan="3" width="39">
+                                                <p>1</p>
+                                                </td>
+                                                <td rowspan="3" width="174">
+                                                <p>Ketua Program Studi</p>
+                                                </td>
+                                                <td width="197">
+                                                <p>Kompetensi Teknis</p>
+                                                </td>
+                                                <td width="142">
+                                                <p>a.&nbsp;&nbsp; Pendidikan minimum...</p>
+                                                <p>b.&nbsp;&nbsp; dst</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="197">
+                                                <p>Kompetensi Administrasi</p>
+                                                </td>
+                                                <td width="142">
+                                                <p>a.&nbsp;&nbsp; memiliki....</p>
+                                                <p>b.&nbsp;&nbsp; &nbsp;</p>
+                                                <p>dst</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="197">
+                                                <p>dst</p>
+                                                </td>
+                                                <td width="142">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td rowspan="3" width="39">
+                                                <p>2</p>
+                                                </td>
+                                                <td rowspan="3" width="174">
+                                                <p>Sekretaris Program Studi</p>
+                                                </td>
+                                                <td width="197">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="142">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="197">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="142">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td width="197">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td width="142">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p style="padding-left: 30px;">c. Penerimaan Dosen Tetap maupun LB dengan proses yang selektif yaitu administrasi, akademik, kesehatan, wawancara serta micro teaching.</p>
+                                                <p style="padding-left: 30px;">d. Dst&hellip;</p>
+                                                <p><strong>&nbsp;</strong></p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang transparan</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_21" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <p><strong>2. Transparan</strong></p>
+                                                <ol style="list-style-type: lower-alpha;">
+                                                <li>Pedoman akademik: kejelasan aturan akademik dan disosialisaikan di website Tel-U, prodi, buku pedoman, dll</li>
+                                                <li>Seluruh kebijakan di sosialisasikan dan didistribusikan kepada pihak terkait: SOP Prodi dapat diakses pada&hellip;</li>
+                                                <li>Keterbukaan sistem informasi nilai yang dapat diakses oleh mahasiswa, orang tua mahasiswa (meliputi komponen&hellip;.)</li>
+                                                <li>Kalender akademik sebagai panduan pelaksanaan kegiatan akademik bagi seluruh civitas Program Studi</li>
+                                                <li>Transparan untuk pihak eksternal (website Telkom University dan website Program Studi) seperti penerimaan mahasiswa baru, akreditasi program studi, buku kurikulum, beasiswa dll</li>
+                                                <li>Transparansi untuk pihak internal: pedoman tugas akhir, beasiswa, dll</li>
+                                                <li>Transparansi bagi pegawai dan dosen melalui NKI dan BKD</li>
+                                                <li>Bagi Manajemen: SIMKUG, transparansi anggaran &hellip;.</li>
+                                                <li>Dst</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang akuntabel</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_21" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <p><strong>3. Akuntabel</strong></p>
+                                                <ol style="list-style-type: lower-alpha;">
+                                                <li>Laporan Triwulan &amp; Laporan Tahunan: merupakan laporan seluruh kegiatan di program studi yang meliputi penelitian, pengabdian masyarakat, publikasi jurnal, pameran-pameran, seminar, pelatihan, dst yang diukur melalui kontak manajemen yang kemudian dibahas pada rapat pimpinan yang melibatkan Dekan. Penyusunan laporan triwulan berdasarkan Keputusan Dewan Pengurus YPT nomor KEP. 0018/00/DHE-02/YPT/2015 tentang Kontrak Manajemen Universitas Telkom.</li>
+                                                <li>Laporan Audit Mutu Internal yang dilakukan oleh Satuan Audit Internal mengacu pada standar ISO 9001:2008</li>
+                                                </ol>
+                                                <ol style="list-style-type: lower-alpha;" start="3">
+                                                <li>Laporan Audit Mutu Eksternal standar ISO 9001:2008 dilakukan setiap 6 (enam) bulan sekali oleh Badan Sertifikasi Bureau Veritas Indonesia.</li>
+                                                <li>Dilakukan evaluasi internal berkaitan SOP dilingkup program studi, SAP,kurikulum, Tugas Akhir, RPS dll</li>
+                                                <li>EDOM: Survey evaluasi dosen terhadap mahasiswa- evaluasi untuk meningkatkan mutu pengajaran dengan menggunakan indikator&hellip;&hellip;</li>
+                                                <li>Kehadiran Dosen : melalui Tapping RFID</li>
+                                                <li>Kinerja dosen :penelitian (minimal 2 dalam satu tahun) dan pengabdian masyarakat (minimal 1 kali dalam satu tahun)</li>
+                                                <li>Monitoring pencapaian BKD setiap dosen yang berdampak pada sistem gaji individu</li>
+                                                <li>Pengukuran kehadiran mahasiswa: sebagai dasar peningkatan mutu kualitas yang diperoleh dari kegiatan belajar mengajar dan syarat ujian</li>
+                                                <li>Pencapaian penyerapan RKM/RKA yang memperlihatkan program kerja</li>
+                                                <li>Penggunaan Sistem Informasi untuk berbagai kegiatan akademik dan non akademik dilingkup prodi</li>
+                                                <li>Dst&hellip; (tambahkan yang lainnya jika ada)</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang bertanggung jawab</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_21" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><p><strong>4. Bertanggung Jawab</strong></p>
+                                                <ol style="list-style-type: lower-alpha;">
+                                                <li>Pengelolaan tata pamong Prodi&hellip; secara bertanggung jawab mengikuti alur pada SOTK (Tampilkan Gambar Stuktur Organisasi dan Tata Kelola &ndash; Jelaskan- Gambar Terlampir- Jelaskan Tugas Pokok Kaprodi yang merupakan cerminan tanggung jawabnya sebagai Kaprodi)</li>
+                                                <li>Gambarkan struktur organisasi di level prodi<img src="/AplikasiBorang/ImgIsian//butir21a.png" /></li>
+                                                <li>Jelaskan tugas masing-masing unit pendukung Prodi: Kaur Akademik, Kaur Kemahasiswaan, Kaur Laboratorium/bengkel /studio, Kaur SDM dan Keuangan, Kaur Logistik &amp;Rumah Tangga, Kaur Sekretariatan, Ketua KK, dst</li>
+                                                <li>Ceritakan tentang semua hal yang terkait dengan laporan pertanggungjawaban :</li>
+                                                </ol>
+                                                <ul>
+                                                <li>Laporan pertanggung jawaban kaprodi tiap 3 bulan sekali, 1 smt sekali, 1 tahun sekali, dsb&hellip;</li>
+                                                <li>Kegiatan belajar mengajar ada laporan pertanggungjawabannya, misalkan dalam bentuk berita acara perkuliahan</li>
+                                                <li>Setiap PIC kegiatan di prodi harus membuat laporan pertanggung jawaban</li>
+                                                <li>Kegiatan mahasiswa ( workshop, pameran, lomba, dst..) diakhir kegiatan dibuat laporan pertanggung jawabannya</li>
+                                                <li>Dosen yang mengikuti seminar dan atau ditugaskan keluar kota untuk melakukan kegiatan di akhir kegiatannya membuat laporan pertanggung jawabannya</li>
+                                                <li>Dst&hellip;</li>
+                                                </ul>
+                                                <p style="padding-left: 30px;">e. Lingkup tanggung jawab dosen: melakukan pengajaran&hellip; sks, pengikuti perkuliahan sebanyak 14 kali pertemuan, dosen memberikan materi perkuliahan sesuai dengan RPS, Dosen harus melakukan kegiatan penelitian dan mempublikasikannya di skala nasional dan internasional minimal 2 kali dalam setahun. Dosen harus melakukan kegiatan pengabdian masyarakat dengan melibatkan mahasiswa minimal 1 kali dalam setahun, mengumpulkan nilai tepat waktu (maksimal 7 hari setelah ujian dilaksanakan),</p>
+                                                <p style="padding-left: 30px;">f. Program studi melalui dosen wali yang ditunjuk memiliki tanggung jawab memberikan informasi berupa LKS kepada orang tua wali</p>
+                                                <p style="padding-left: 30px;">g. Prodi memberikan teguran dan sanksi kepada mahasiswa, dosen, tenaga kependidikan jika ditemukan adanya kegiatan yang melanggar kode etik mahasiswa, kode etik dosen, dan pelanggaran lain yang menyalahi aturan</p>
+                                                <p style="padding-left: 30px;">h. Dst&hellip;.</p>
+                                                </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Uraikan secara ringkas sistem dan pelaksanaan tata pamong di Program Studi untuk  membangun sistem tata pamong yang adil.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom5_21" id="tin5" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <p><strong>5. Adil </strong></p>
+                                                <ol style="list-style-type: lower-alpha;">
+                                                <li>Adanya kesempatan yang sama bagi dosen dan staff untuk mengikuti pelatihan dan sertifikasi</li>
+                                                <li>Adanya kesempatan yang sama untuk melakukan studi lanjut untuk dosen dan staff melalui mekanisme Faculty &amp; Staff Development Program</li>
+                                                <li>BKD dibagi secara merata kepada dosen-dosen di program studi. Dosen mengajar sesuai dengan keahlian dan kompetensi dosen</li>
+                                                <li>Intensif: berbanding lurus dengan kinerja dosen sesuai dengan BKD dan NKI</li>
+                                                <li>Kesempatan yang sama memperoleh insentif penelitian jurnal bereputasi</li>
+                                                <li>Kesempatan yang sama untuk mengikuti hibah internal dan eksternal</li>
+                                                <li>Kesempatan memperoleh dana pengabdian dan masyarakat yang berasal dari internal maupun eksternal</li>
+                                                <li>Penghargaan dosen berprestasi di lingkup prodi berupa pemberian sertifikat dan intensif tertentu</li>
+                                                <li>Kesempatan yang sama bagi setiap dosen untuk menjadi narasumber, pemberi materi workshop baik internal maupun eksternal</li>
+                                                <li>Mahasiswa memperoleh kesempatan yang sama untuk memperoleh beasiswa</li>
+                                                <li>Memiliki akses yang sama kepada seluruh fasilitas yang ada dilingkungan kampus (gedung perpustakaan, olahraga, klinik, dll)</li>
+                                                <li>Penghargaan mahasiswa berprestasi</li>
+                                                <li>Dst&hellip;</li>
+                                                </ol>
+                                                <p><strong>&nbsp;</strong></p>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1192,13 +2348,16 @@
                             <?php
                                 }
                         }elseif ($getbutir=='2.2') {
-                            ?>
-                        <!-- Button Default -->
+                        ?>
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -1210,45 +2369,146 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
                         </div>
-                            <?php
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian22">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian22_buku">
                         <input type="hidden" name="id22" id="id22" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir22" id="id_butir22" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -1263,7 +2523,7 @@
                         <h2 class="card-inside-title">Kepemimpinan&nbsp;
                         <button type="button" onclick="infoKepemimpinan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat.
-                        Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistik, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi. Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.  Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.  Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.  Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.
+                        Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistik, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi.  Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.  Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.  Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.  Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.
                         </h2>
                         <h2 class="card-inside-title">Jelaskan pola kepemimpinan dalam Program Studi. </h2>
                         <div class="row clearfix">
@@ -1312,19 +2572,21 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi22">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi22_buku">
                         <input type="hidden" name="id_butir22" id="id_butir22" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Kepemimpinan&nbsp;
                         <button type="button" onclick="infoKepemimpinan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Kepemimpinan efektif mengarahkan dan mempengaruhi perilaku semua unsur dalam program studi, mengikuti nilai, norma, etika, dan budaya organisasi yang disepakati bersama, serta mampu membuat keputusan yang tepat dan cepat.
                         Kepemimpinan mampu memprediksi masa depan, merumuskan dan mengartikulasi visi yang realistik, kredibel, serta mengkomunikasikan visi ke depan, yang menekankan pada keharmonisan hubungan manusia dan mampu menstimulasi secara intelektual dan arif bagi anggota untuk mewujudkan visi organisasi, serta mampu memberikan arahan, tujuan, peran, dan tugas kepada seluruh unsur dalam perguruan tinggi. Dalam menjalankan fungsi kepemimpinan dikenal kepemimpinan operasional, kepemimpinan organisasi, dan kepemimpinan publik.  Kepemimpinan operasional berkaitan dengan kemampuan menjabarkan visi, misi ke dalam kegiatan operasional program studi.  Kepemimpinan organisasi berkaitan dengan pemahaman tata kerja antar unit dalam organisasi perguruan tinggi.  Kepemimpinan publik berkaitan dengan kemampuan menjalin kerjasama dan menjadi rujukan bagi publik.
                         </h2>
-                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan dalam Program Studi. </h2>
+                        <h2 class="card-inside-title">Jelaskan pola kepemimpinan dalam Program Studi.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_22" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_22" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1334,7 +2596,17 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom2_22" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom2_22" id="tin2" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <h3>A<strong>. </strong><strong>Kepemimpinan Operasional</strong></h3>
+                                                <p>Kepemimpinan operasional mencangkup kemampuan menjabarkan visi dan misi kedalam kegiatan operasional program studi. Adapun konten yang harus diperhatikan dalam penyusunan sub standar antara lain:</p>
+                                                <ol>
+                                                <li>Kepemimpinan operasional mencangkup kegiatan harian seperti pengaturan beban kerja dosen secara proporsional untuk kegiatan belajar mengajar, dan kegiatan penunjang seperti kepanitiaan dll, pelaksanaan rapat internal program studi, registrasi mahasiswa, pelaksanaan sidang proposal dan skripsi, memastikan sarana dan prasarana yang memadai untuk kegiatan belajar mengajar, dsb&hellip;.</li>
+                                                <li>Kepemimpinan operasional yang mencangkup kegiatan perencanaan seperti pembuatan RKM/RKA, melakukan realisasi program dilingkup prodi seperti kegiatan seminar, kegiatan benchmark, company visit, perencanaan dosen dan tenaga penunjang akademik, perencanaan pengembangan kompetensi dosen, dsb&hellip;</li>
+                                                <li>Kepemimpinan operasional yang meliputi evaluasi dan pengembangan seperti pembuatan laporan triwulan, evaluasi kurikulum, pencapaian sasaran mutu, kegiatan pengembangan dosen, pengembangan kolaborasi dengan industri, pengembangan kerjasama penelitian, dsb&hellip;</li>
+                                                <li>Dst&hellip;..</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1344,7 +2616,30 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom3_22" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom3_22" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <h3><strong>B. </strong><strong>Kepemimpinan Organisasi </strong></h3>
+                                                <p>Pada sub standar ini, kepemimpinan organisasi mencangkup pemahaman tata kerja antar unit dalam organisasi perguruan tinggi dalam mewujudkan visi dan misi (Gambarkan bahwa Program studi membutuhkan unit-unit pendukung lain dalam lingkup Universitas Telkom)</p>
+                                                <p>&nbsp;</p>
+                                                <ol>
+                                                <li>Kaprodi bekerjasama dengan unit Admisi dalam menjaring mahasiswa baru, mempromosikan program unggulan prodi</li>
+                                                <li>Kaprodi bekerjasama dengan Layanan akademik : dalam pelaksanaan UTS, UAS, dst</li>
+                                                <li>Kaprodi bekerjasama dengan unit SDM dalam&hellip;</li>
+                                                <li>Kaprodi bekerjasama dengan unit keuangan dalam&hellip;</li>
+                                                <li>Kaprodi bekerjasama dengan unit sisfo dalam</li>
+                                                <li>Kaprodi bekerjasama dengan Unit Kemahasiswaan dalam hal..</li>
+                                                <li>Kaprodi bekerjasama dengan Unit CDC dalam hal&hellip;</li>
+                                                <li>Kaprodi bekerjasama dengan Dekanat dalam hal&hellip;.</li>
+                                                <li>Kaprodi bekerjasama dengan Unit PPM dalam hal&hellip;</li>
+                                                <li>Kaprodi bekerjasama dengan Unit Logistik dalam hal&hellip;</li>
+                                                <li>Kaprodi bekerjasama dengan Unit SPM dalam hal&hellip;</li>
+                                                <li>Kaprodi bekerjasama dengan Unit SAI dalam hal&hellip;</li>
+                                                <li>Kaprodi bekerjasama dengan &hellip;dalam hal&hellip;</li>
+                                                <li>Dst (sebutkan unit-unit lainnya dan bentuk kerjasama antar unit dalam kegiatan prodi)</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                                
+                                                </ol>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1354,7 +2649,20 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom4_22" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom4_22" id="tin4" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <h3><strong>C. </strong><strong>Kepemimpinan Publik: </strong></h3>
+                                                <p>&nbsp;</p>
+                                                <p>Kepemimpinan Publik mencangkum kemampuan menjalin kerjasama dan menjadi rujukan bagi publik</p>
+                                                <ol>
+                                                <li>Mendorong dosen untuk aktif dalam asosiasi nasional (Sebutkan dosen- asosiasinya, terutama sebagai pengurus)</li>
+                                                <li>Mendorong dosen untuk aktif dalam asosiasi internasional (Sebutkan dosen-asosiasinya, terutama sebagai pengurus)</li>
+                                                <li>Berperan mendorong dosen untuk aktif dalam organisasi profesi (Sebutkan dosennya-dan kegiatan profesinya, terutama sebagai pengurus)</li>
+                                                <li>Meningkatkan kualifikasi dosen sehingga bias menjadi rujukan dalam hal diundang menjadi narasumber (sebutkan nama perusahaan/organisasi yang mengundang beserta nama dosen yang diundang)</li>
+                                                <li>Aktif sebagai konsultan (Sebutkan dosennya- dan nama perusahaan dan aktifitas (kegiatan)</li>
+                                                <li>Mendorong dosen untuk menjadi pengisi acara pelatihan (Sebutkan nama dosen-dan nama acara/judul materi)</li>
+                                                <li>Ceritakan kerjasama kerjasama dimana prodi menjadi panutan (membina perusahaan/organisasi, mempunyai desa binaan, dst..)</li>
+                                                <li>Dst&hellip;.</li>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1364,13 +2672,16 @@
                             <?php
                                 }
                         }elseif ($getbutir=='2.3') {
-                            ?>
-                        <!-- Button Default -->
+                        ?>
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -1382,45 +2693,146 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
                         </div>
-                            <?php
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian23">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian23_buku">
                         <input type="hidden" name="id23" id="id23" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir23" id="id_butir23" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -1435,12 +2847,62 @@
                         <h2 class="card-inside-title">Sistem Pengelolaan&nbsp;
                         <button type="button" onclick="infoPengelolaan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Sistem pengelolaan fungsional dan operasional program studi mencakup perencanaan, pengorganisasian, pengembangan staf, pengawasan, pengarahan, representasi, dan penganggaran.</h2>
-                        <h2 class="card-inside-title">Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</h2>
+                        <h2 class="card-inside-title">A. Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <textarea name="kolom1_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">B. Perencanaan </h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">C. Pengorganisasian</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">D. Staffing</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">E. Leading</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom5_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom5'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">F. Controlling</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom6_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom6'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1452,17 +2914,348 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi23">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi23_buku">
                         <input type="hidden" name="id_butir23" id="id_butir23" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sistem Pengelolaan&nbsp;
                         <button type="button" onclick="infoPengelolaan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                          <h2 class="card-inside-title">Sistem pengelolaan fungsional dan operasional program studi mencakup perencanaan, pengorganisasian, pengembangan staf, pengawasan, pengarahan, representasi, dan penganggaran.</h2>
-                        <h2 class="card-inside-title">Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</h2>
+                        <h2 class="card-inside-title">A. Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <h3><strong>A. </strong><strong>Jelaskan Sistem Pengelolaan Program Studi serta dokumen pendukungnya </strong></h3>
+                                                <p>&nbsp;</p>
+                                                <ol>
+                                                <li>Jelaskan bahwa sistem pengelolaan fungsional dan operasional program studi tercermin pada dokumen mutu ISO 9001: 2008 yang meliputi SOP dan IK yang berkaitan dengan program Studi.....</li>
+                                                <li>List Seluruh Prosedur yang berkaitan dengan Program Studi..... buatkan tabel SOP lalu checklist apakah berada pada lingkup Planning, Organizing, Staffing, Leading, Controlling- bisa lebih dari satu checklist</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                                <table style="width: 648px;" border="1" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                <td style="width: 25px;">
+                                                <p><strong>No</strong></p>
+                                                </td>
+                                                <td style="width: 106.29px;">
+                                                <p><strong>Nama Dokumen</strong></p>
+                                                </td>
+                                                <td style="width: 59.7102px;">
+                                                <p><strong>Planning</strong></p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p><strong>Organizing</strong></p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p><strong>Staffing</strong></p>
+                                                </td>
+                                                <td style="width: 82px;">
+                                                <p><strong>Leading</strong></p>
+                                                </td>
+                                                <td style="width: 94px;">
+                                                <p><strong>Controlling</strong></p>
+                                                </td>
+                                                <td style="width: 135px;">
+                                                <p><strong>Pemilik Proses</strong></p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 25px;">
+                                                <p>1</p>
+                                                </td>
+                                                <td style="width: 106.29px;">
+                                                <p>Perkuliahan</p>
+                                                </td>
+                                                <td style="width: 59.7102px;">
+                                                <p>✔</p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p>✔</p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 82px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 94px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 135px;">
+                                                <p>Ka.Prodi</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 25px;">
+                                                <p>2</p>
+                                                </td>
+                                                <td style="width: 106.29px;">
+                                                <p>Penyusunan Tugas Akhir</p>
+                                                </td>
+                                                <td style="width: 59.7102px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 82px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 94px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 135px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 25px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 106.29px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 59.7102px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 82px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 94px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 135px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 25px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 106.29px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 59.7102px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 82px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 94px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                <td style="width: 135px;">
+                                                <p>&nbsp;</p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 25px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 106.29px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 59.7102px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 82px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 94px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 135px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 25px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 106.29px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 59.7102px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 82px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 94px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 135px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td style="width: 25px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 106.29px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 59.7102px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 68px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 82px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 94px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                <td style="width: 135px;">
+                                                <p><strong>&nbsp;</strong></p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>(Download seluruh SOP Universitas Telkom)</p>
+                                                <p>&nbsp;</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">B. Perencanaan </h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <h3><strong>B. </strong><strong>Perencanaan </strong></h3>
+                                                <p>Pada sub standar ini, dibuatkan list seluruh aktivitas di Program Studi yang masuk ke dalam aktivitas Planning:</p>
+                                                <p>&nbsp;</p>
+                                                <ol>
+                                                <li>Penyusunan RKM dan RKA</li>
+                                                <li>Plotting Pengajaran</li>
+                                                <li>Penyusunan Beban Kerja Dosen</li>
+                                                <li>Perencanaan Kurikulum Baru</li>
+                                                <li>List aktifitas penting prodi dalam lingkup perencanaan (bisa dilihat dari tabel SOP yang sudah di list sebelumnya</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">C. Pengorganisasian</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <h3><strong>C. </strong><strong>Pengorganisasian</strong></h3>
+                                                <p>&nbsp;</p>
+                                                <p>Pada sub standar ini, dibuatkan list seluruh aktivitas di Program Studi yang masuk ke dalam aktivitas Organizing dan Staffing</p>
+                                                <ol>
+                                                <li>Pengajaran (melakukan pemetaan mata kuliah sesuai dengan kompetensi dosen; pengaturan jadwal dosen, pengaturan kuliah umum di setiap mata kuliah, pengaturan perwalia, dst...)</li>
+                                                <li>Tugas Akhir (menetapkan alur proses bimbingan tugas akhir, menempatkan dosen sesuai dengan bidang keahliannya dalam membimbing, menentukan penguji tugas akhir, dst...)</li>
+                                                <li>Penelitian (mengkordinasikan dengan ketua KK untuk mendorong dosen melakukan penelitian, mengkordinasi kegiatan penelitian hibah internal maupun eksternal)</li>
+                                                <li>Pengabdian Masyarakat (mengkordinasikan pencarian mitra, mendorong melakukan pengabdian masyarakat, mengkordinasi pembuatan proposal, dst</li>
+                                                <li>Kemahasiswaan dan Alumni (memfasilitasi kegiatan mahasiswa, perekaman data lulusan, mengkordiasikan partisipasi alumni dalam kegiatan akademik dan non akademik, dst)</li>
+                                                <li>Pengembangan kompetensi dosen (mengkordinasikan pengadaan trainnig bagi dosen, melakukan analisis kebutuhan staff dan dosen, mengakomodir pengajuan pelatihan oleh dosen, mendorong sertifikasi bagi dosen)</li>
+                                                <li>Dst&hellip;</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">D. Staffing</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <h3><strong>D. </strong><strong>Staffing</strong></h3>
+                                                <p>Adapun konten yang harus diperhatikan dalam penyusunan sub standar antara lain:</p>
+                                                <ol>
+                                                <li>Pengembangan kompetensi dosen (mengkordinasikan pengadaan trainnig bagi dosen, melakukan analisis kebutuhan staff dan dosen, mengakomodir pengajuan pelatihan oleh dosen, mendorong sertifikasi bagi dosen \</li>
+                                                <li>List semua kegiatan kegiatan yang terkait dengan pengembangan kompetensi dosen (workshop, mengundang pakar untuk membahas keilmuan tertentu, kegiatan terkait jabatan fungsional dosen, dst&hellip;)</li>
+                                                <li>Pembuatan pemetaan dosen terhadap bidang keilmuan di prodi</li>
+                                                <li>Perencanaan sumber daya prodi termasuk dosen dan karyawan (TPA). Lihat dokumen FSDP (Faculty and Staff Development Planning) Fakultas sesuaikan dengan prodi yang bersangkutan.</li>
+                                                <li>dst</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">E. Leading</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom5_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <h3><strong>E. </strong><strong>Leading</strong></h3>
+                                                <p>Pada sub standar ini dibuatkan list seluruh aktivitas di Program Studi yang masuk ke dalam aktivitas Leading:</p>
+                                                <ol>
+                                                <li>Memberikan arahan kepada dosen terkait aturan baru</li>
+                                                <li>Memberikan arahan pencapaian visi dan misi program studi</li>
+                                                <li>Memberikan arahan dalam melaksanakan kegiatan seminar di program studi</li>
+                                                <li>Memberikan solusi ketika dosen atau mahasiswa mengalami kendala</li>
+                                                <li>Memimpin rapat internal program studi</li>
+                                                <li>Dst&hellip;</li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">F. Controlling</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom6_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <h3><strong>F. </strong><strong>Controlling</strong></h3>
+                                                <p>&nbsp;</p>
+                                                <p>Pada sub standar ini dibuatkan list seluruh aktivitas di Program Studi yang masuk ke dalam aktivitas Controlling (Monitoring dan Evaluasi):</p>
+                                                <p>&nbsp;</p>
+                                                <ol>
+                                                <li>Pengawasan yang dilakukan melalui igracias (List kegiatan: pengawasan kehadiran dosen dan mahasiswa dalam kegiatan belajar mengajar, lulus tingkat mahasiswa, her-registrasi, kemajuan studi, nilai mahasiswa, control materi pembelajaran, dst</li>
+                                                <li>Rapat tinjauan manajemen: (Pencapaian BKD untuk Dosen dan BKND untuk TPA, Pembahasan kendala-kendala yang dihadapi prodi, kendala-kendala yang dihadapi mahasiswa, pemantauan NKI)</li>
+                                                </ol>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1472,13 +3265,16 @@
                             <?php
                                 }
                         }elseif ($getbutir=='2.4') {
-                            ?>
-                        <!-- Button Default -->
+                        ?>
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -1490,45 +3286,146 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
                         </div>
-                            <?php
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian24">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian24_buku">
                         <input type="hidden" name="id24" id="id24" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir24" id="id_butir24" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -1542,7 +3439,7 @@
                         </div>
                         <h2 class="card-inside-title">Penjaminan Mutu&nbsp;
                         <button type="button" onclick="infoMutu()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Jelaskan penjaminan mutu pada program studi yang mencakup informasi tentang kebijakan, sistem dokumentasi, dan tindak lanjut atas laporan pelaksanaannya.</h2>
+                        <h2 class="card-inside-title">Jelaskan penjaminan mutu pada program studi</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -1552,7 +3449,7 @@
                                     </div>
                                 </div>
                         </div>
-                        <h2 class="card-inside-title">Sistem Dokumentasi</h2>
+                        <h2 class="card-inside-title">Jelaskan penjaminan mutu pada program studi yang mencakup informasi tentang kebijakan</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -1562,12 +3459,22 @@
                                     </div>
                                 </div>
                         </div>
-                        <h2 class="card-inside-title">Tindak lanjut atas laporan pelaksanaan</h2>
+                        <h2 class="card-inside-title">Jelaskan penjaminan mutu pada program studi yang mencakup informasi tentang sistem dokumentasi</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <textarea name="kolom3_24" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">Jelaskan penjaminan mutu pada program studi yang mencakup informasi tentang tindak lanjut atas laporan pelaksanaannya.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_24" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1579,21 +3486,472 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi24">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi24_buku">
                         <input type="hidden" name="id_butir24" id="id_butir24" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Penjaminan Mutu&nbsp;
                         <button type="button" onclick="infoMutu()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
-                        <h2 class="card-inside-title">Jelaskan penjaminan mutu pada program studi yang mencakup informasi tentang kebijakan, sistem dokumentasi, dan tindak lanjut atas laporan pelaksanaannya.</h2>
+                        <h2 class="card-inside-title">Jelaskan penjaminan mutu pada program studi </h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_24" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_24" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <ol>
+                                                <li>Universitas Telkom membentuk Bagian Satuan Penjaminan Mutu dan Satuan Audit Internal yang bertujuan untuk terbangunnya budaya mutu di Universitas Telkom</li>
+                                                <li>Gambarkan struktur SPM dan SAI pada SOTK Universitas Telkom: merupakan bagian dibawah Direktorat Sekretariat Universitas (Dir. SUV)</li>
+                                                </ol>
+                                                <p>Contoh: Gambar terlampir sampai pada tingkat Fakultas (QMR) dan Prodi (GKM)</p>
+                                                <p><img src="/AplikasiBorang/ImgIsian//butir24a1.png" /></p>
+                                                <p style="text-align: center;">Tambahkan gambar struktur QMR dan GKM</p>
+                                                <p>&nbsp;</p>
+                                                <ol start="3">
+                                                <li>Gambarkan Struktur QMR Fakultas dan GKM (Download SK)</li>
+                                                <li>Jelaskan Peran SPM dan SAI (SPM menetapkan standar, dan SAI berperan dalam tahap evaluasi dalam melakukan audit secara berkala), QMR (Download SK)</li>
+                                                <li>Siklus kegiatan penjaminan mutu Universitas Telkom terdiri atas komponen-komponen yang diimplementasikan dalam model siklus PPEPP (Penetapan, Pelaksanaan, Evaluasi, Pengendalian, Peningkatan) yang akan menghasilkan perbaikan/pengembangan yang berkelanjutan (Gambar ppep)<img src="/AplikasiBorang/ImgIsian//butir24b.png" /></li>
+                                                <li>Sebutkan Kebijakan mutu Universitas &amp; Sasaran Mutu Universitas Telkom</li>
+                                                </ol>
+                                                <p><strong>Kebijakan Mutu Universitas :</strong></p>
+                                                <ul>
+                                                <li>Peningkatan mutu berkesinambungan (continuous quality improvement);</li>
+                                                <li>Hasil efektif dari proses efisien (effective result by the efficient process);</li>
+                                                <li>Mematuhi aturan (comply with regulations).</li>
+                                                </ul>
+                                                <p><strong>&nbsp;</strong></p>
+                                                <p><strong>Sasaran Mutu Universitas Telkom: </strong></p>
+                                                <ul>
+                                                <li>Universitas Terakreditasi Nasional A;</li>
+                                                <li>Dua Program Studi terakreditasi Internasional JABEE dan ABEST;</li>
+                                                <li>Ranking Dunia Webometric 200;</li>
+                                                <li>Jumlah Program Studi yang terakreditasi Nasional A minimal 50%;</li>
+                                                <li>Dosen berpendidikan S3 minimal 30%.</li>
+                                                </ul>
+                                                <ol start="7">
+                                                <li>Sebutkan Sasaran Mutu Program Studi</li>
+                                                <li>Dalam pengelolaan sistem manajemen mutu di lingkup prodi dibentuk Gugus Kendali Mutu (Gambarkan Struktur GKM). Sebutkan Peran GKM-Jelaskan aktivitas GKM di prodi dan dukung dengan foto kegiatan (Download SK)</li>
+                                                <li>Untuk mendukung sistem penjaminan mutu, terdapat beberapa standar yang telah ditetapkan</li>
+                                                </ol>
+                                                <table style="width: 787px;" border="1" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr style="height: 35px;">
+                                                <td style="height: 35px; background-color: #d9d9d9; width: 784px; text-align: center; vertical-align: middle;" colspan="4">
+                                                <p>NAMA STANDAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOMER DOKUMEN</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 392px; background-color: #caedc0; width: 164px;" rowspan="8">
+                                                <p>&nbsp;</p>
+                                                <p><strong>S</strong><strong>T</strong><strong>A</strong><strong>NDAR NASIONAL PENDIDIDKAN</strong></p>
+                                                </td>
+                                                <td style="height: 49px; background-color: #caedc0; width: 157px;">
+                                                <p>001</p>
+                                                </td>
+                                                <td style="height: 49px; background-color: #caedc0; width: 223.188px;">
+                                                <p>Standar Kompetensi Lulusan</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-1.1</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; background-color: #caedc0; width: 157px;">
+                                                <p>002</p>
+                                                </td>
+                                                <td style="height: 49px; background-color: #caedc0; width: 223.188px;">
+                                                <p>Standar Isi Pembelajaran</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-1.2</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; background-color: #caedc0; width: 157px;">
+                                                <p>003</p>
+                                                </td>
+                                                <td style="height: 49px; background-color: #caedc0; width: 223.188px;">
+                                                <p>Standar Proses Pembelajaran</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-1.3</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; background-color: #caedc0; width: 157px;">
+                                                <p>004</p>
+                                                </td>
+                                                <td style="height: 49px; background-color: #caedc0; width: 223.188px;">
+                                                <p>Standar Penilaian Pembelajaran</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-1.4</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; background-color: #caedc0; width: 157px;">
+                                                <p>005</p>
+                                                </td>
+                                                <td style="height: 49px; background-color: #caedc0; width: 223.188px;">
+                                                <p>Standar Dosen dan Tenaga Kependidikan</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-1.5</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; background-color: #caedc0; width: 157px;">
+                                                <p>006</p>
+                                                </td>
+                                                <td style="height: 49px; background-color: #caedc0; width: 223.188px;">
+                                                <p>Standar Sarana dan Prasarana pembelajaran</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-1.6</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; background-color: #caedc0; width: 157px;">
+                                                <p>007</p>
+                                                </td>
+                                                <td style="height: 49px; background-color: #caedc0; width: 223.188px;">
+                                                <p>Standar Pengelolaan Pembelajaran</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-1.7</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; background-color: #caedc0; width: 157px;">
+                                                <p>008</p>
+                                                </td>
+                                                <td style="height: 49px; background-color: #caedc0; width: 223.188px;">
+                                                <p>Standar Pembiayaan Pembelajaran</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-1.8</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 392px; width: 223.188px; background-color: #76e3d8;" rowspan="8">
+                                                <p>&nbsp;</p>
+                                                <p><strong>S</strong><strong>T</strong><strong>A</strong><strong>NDAR NASIONAL PENELITIAN</strong></p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>009</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>Standar Hasil Penelitian</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-2.1</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>010</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>Standar Isi penelitian</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-2.2</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>011</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>Standar Proses Penelitian</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-2.3</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>012</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>Standar Penilaian Penelitian</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-2.4</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>013</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>Standar Peneliti</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-2.5</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>014</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>Standar Sarana dan Prasarana Penelitian</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-2.6</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>015</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>Standar Pengelolaan Penelitian</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-2.7</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>016</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #76e3d8;">
+                                                <p>Standar Pendanaan dan Pembiayaan penelitian</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-2.8</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 392px; width: 223.188px; background-color: #fad698;" rowspan="8">
+                                                <p><strong>S</strong><strong>T</strong><strong>A</strong><strong>NDAR NASIONAL PENGABDIAN KEPADA MASYARAKAT</strong></p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>017</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>Standar Hasil Pengabdian Kepada Masyarakat</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-3.1</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>018</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>Standar Isi Pengabdian Kepada Masyarakat</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-3.2</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>019</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>Standar Proses Pengabdian Masyarakat</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-3.3</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>020</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>Standar Penilaian Pengabdian Kepada masyarakat</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-3.4</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>021</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>Standar Pelaksanaan Pengabdian Kepada Masyarakat</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-3.5</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>022</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>Standar Sarana dan Prasarana Pengabdian Kepada Masyarakat</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-3.6</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>023</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>Standar Pengeloaan Pengabdian Kepada Masyarakat</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-3.7</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>024</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #fad698;">
+                                                <p>Standar Pendanaan dan Pembiayaan Pengabdian Kepada Masyarakat</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-3.8</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49.912px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;" rowspan="10">
+                                                <p>&nbsp;</p>
+                                                <p><strong>S</strong><strong>T</strong><strong>A</strong><strong>NDAR PENDIDIKAN</strong></p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>025</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>manual &amp; Standar Penerimaan Mahasiswa Baru</p>
+                                                </td>
+                                                <td style="height: 49.912px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-4.1</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>026</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>manual &amp; Standar Kerjasama</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-4.2</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>027</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>manual &amp; Standar Tata Kelola</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-4.3</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>028</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>manual &amp; Standar Kebersihan &amp; Keamanan</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-4.4</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>029</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>manual &amp; Standar Kemahasiswaan &amp; Lulusan</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-4.5</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>030</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>manual &amp; Standar Sistem Informasi</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-4.6</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>031</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>manual &amp; Standar e-learning</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-4.7</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>032</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>manual &amp; Standar Buku Ajar</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-4.8</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>033</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>manual &amp; Standar Pembelajaran Jarak Jauh</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-4.9</p>
+                                                </td>
+                                                </tr>
+                                                <tr style="height: 49px;">
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>034</p>
+                                                </td>
+                                                <td style="height: 49px; width: 223.188px; background-color: #6eeb98;">
+                                                <p>manual &amp; Standar Pembelajaran Tata Kelola Keungan</p>
+                                                </td>
+                                                <td style="height: 49px; width: 239.812px;">
+                                                <p>Tel_U-UT-REK-SPM-SN-4.10</p>
+                                                </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <ol start="10">
+                                                <li>Sistem penjaminan mutu internal dilengkapi dengan &hellip; prosedur,&hellip; IK&hellip; dan&hellip; formulir</li>
+                                                <li>Capaian mutu di Universitas Telkom (Lihat pada website Telkom University)</li>
+                                                </ol>
+                                                <ul>
+                                                <li>Akreditasi AIPT A (Tunjukan dengan Foto)</li>
+                                                <li>Sertifikasi ISO 9001: 2008</li>
+                                                <li>Sertifikasi ISO 20000 untuk sistem informasi igracias</li>
+                                                <li>QS Star</li>
+                                                <li>Webometric</li>
+                                                <li>Greencampus</li>
+                                                <li>Dst&hellip;</li>
+                                                </ul>
+                                                <ol start="12">
+                                                <li>Dalam proses monitoring dan evaluasi: SAI melakukan audit secara berkala yaitu Audit Mutu Internal dan Audit Mutu Eksternal (Jelaskan ).</li>
+                                                <li>Tuliskan temuan temuan prodi dari hasil audit mutu internal dan tindak lanjutnnya. Masukkan scanning dari form PTPP (Prosedur Tindakan Perbaikan dan Pencegahan) yang sudah diisi dari hasil audit</li>
+                                                </ol>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                        <h2 class="card-inside-title">Sistem Dokumentasi</h2>
+                        <h2 class="card-inside-title">Jelaskan penjaminan mutu pada program studi yang mencakup informasi tentang kebijakan</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -1603,7 +3961,7 @@
                                     </div>
                                 </div>
                         </div>
-                        <h2 class="card-inside-title">Tindak lanjut atas laporan pelaksanaan</h2>
+                        <h2 class="card-inside-title">Jelaskan penjaminan mutu pada program studi yang mencakup informasi tentang sistem dokumentasi</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -1613,18 +3971,31 @@
                                     </div>
                                 </div>
                         </div>
+                        <h2 class="card-inside-title">Jelaskan penjaminan mutu pada program studi yang mencakup informasi tentang tindak lanjut atas laporan pelaksanaannya.</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_24" id="tin3" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
                         <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
                         </form>
                             <?php
                                 }
                         }elseif ($getbutir=='2.5') {
-                            ?>
-                        <!-- Button Default -->
+                        ?>
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -1636,45 +4007,146 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
                         </div>
-                            <?php
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian25">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian25_buku">
                         <input type="hidden" name="id25" id="id25" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir25" id="id_butir25" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -1780,7 +4252,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi25">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi25_buku">
                         <input type="hidden" name="id_butir25" id="id_butir25" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Umpan Balik&nbsp;
                         <button type="button" onclick="infoUmpan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -1874,13 +4346,16 @@
                             <?php
                                 }
                         }elseif ($getbutir=='2.6') {
-                            ?>
-                        <!-- Button Default -->
+                        ?>
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -1892,45 +4367,146 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "2.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
                         </div>
-                            <?php
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian26">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian26_buku">
                         <input type="hidden" name="id26" id="id26" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir26" id="id_butir26" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -2002,7 +4578,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi26">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi26_buku">
                         <input type="hidden" name="id_butir26" id="id_butir26" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Keberlanjutan&nbsp;
                         <button type="button" onclick="infoKeberlanjutan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -2012,7 +4588,22 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom1_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <ol>
+                                                <li>List dan jelaskan seluruh upaya yang dilakukan oleh program studi untuk meningkatkan calon mahasiswa:</li>
+                                                </ol>
+                                                <ul>
+                                                <li>Penyediaan informasi melalui web, sosialisasi roadshow, kerjasama dengan pihak sekolah dst</li>
+                                                <li>Menggunakan media promosi ; &hellip;.</li>
+                                                <li>Road show ke sekolah-sekolah</li>
+                                                <li>Pendaftaran mahasiswa dengan berbagai jalur (JPA), UTG, CBT, USM</li>
+                                                <li>Membuka international class:&hellip;</li>
+                                                <li>Kerjasama dengan&hellip;.</li>
+                                                <li>Pemberian beasiswa &hellip;.</li>
+                                                <li>...</li>
+                                                </ul>
+                                                <p>&nbsp;</p>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -2022,7 +4613,19 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom2_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom2_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <ol start="2">
+                                                <li>List dan jelaskan seluruh upaya yang dilakukan oleh program studi untuk peningkatan mutu manajemen</li>
+                                                </ol>
+                                                <ul>
+                                                <li>Pencapaian KM melalui laporan triwulan</li>
+                                                <li>Pelatihan bagi struktural (akreditasi, sapto, audit, dll)- (Sebutkan kegiatannya)</li>
+                                                <li>Pelatihan bagi tenaga kependidikan, dosen dll (Sebutkan nama pelatihan )</li>
+                                                <li>Melakukan benchmarking ke kampus-kampus top (Sebutkan nama kampusnya)</li>
+                                                <li>Dst&hellip;</li>
+                                                </ul>
+                                                <p>&nbsp;</p>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -2032,7 +4635,22 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom3_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom3_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <ol start="3">
+                                                <li>List dan jelaskan seluruh upaya untuk peningkatan mutu lulusan</li>
+                                                </ol>
+                                                <ul>
+                                                <li>Company visit (Sebutkan perusahaannya)</li>
+                                                <li>Membekali dengan kegiatan kegiatan mahasiswa (sebutkan kegiatannya seperti softskill dan hardskill)</li>
+                                                <li>Mendorong mahasiswa mengikuti lomba-lomba dan kompetensi (sebutkan kegiatannya)</li>
+                                                <li>Melengkapi persyaratan lulus dengan jurnal, toefl dengan skor&hellip;., nilai TAK,&hellip;</li>
+                                                <li>Mengikutsertakan dalam kegiatan akademik prodi seperti panitia seminar, penelitian dan pengabdian masyarakat (sebutkan kegiatan secara ringkas)</li>
+                                                <li>Mengirim mahasiswa untuk student exchange (sebutkan nama universitas tujuan)</li>
+                                                <li>Mendatangkan pembicara dalam bentuk kuliah umum (sebutkan nama pembicara )</li>
+                                                <li>Mengharuskan magang sebagai sks dalam kurikulum</li>
+                                                <li>Dst&hellip;</li>
+                                                </ul>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -2042,7 +4660,23 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom4_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom4_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <p>&nbsp;</p>
+                                                <ol start="4">
+                                                <li>List dan jelaskan seluruh upaya untuk pelaksanaan dan hasil kerjasama kemitraan</li>
+                                                </ol>
+                                                <ul>
+                                                <li>Menyelenggarakan penelitian bersama (sebutkan mitranya)</li>
+                                                <li>Menjalin kerjasama untuk penyaluran magang mahasiswa (sebutkan mitranya)</li>
+                                                <li>Menjalin kerjasama untuk kegiatan abdimas (sebutkan mitranya)</li>
+                                                <li>Menjalin kerjasama untuk mengadakan seminar (sebutkan mitranya)</li>
+                                                <li>Menjalin kerjasama dalam bentuk pemberian pelatihan (sebutkan mitranya)</li>
+                                                <li>Menjalin kerjasama dalam bentuk asosiasi profesi nasional dan internasional (sebutkan mitranya)</li>
+                                                <li>Kerjasama pembuatan kasus industri (sebutkan mitranya)</li>
+                                                <li>.</li>
+                                                </ul>
+                                                <p>&nbsp;</p>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -2052,7 +4686,19 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom5_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                            <textarea name="kolom5_26" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
+                                                <ol start="5">
+                                                <li>List dan jelaskan upaya dan prestasi memperoleh hibah kompetitif yang bertujuan untuk meningkatkan semangat kompetitif dosen dan mahasiswa</li>
+                                                </ol>
+                                                <ul>
+                                                <li>Membagikan informasi tentang peluang-peluang hibah</li>
+                                                <li>Mendorong dosen untuk membuat proposal penelitian dan mengirimkan untuk diikutkan seleksi</li>
+                                                <li>Mendorong dosen untuk mengikuti berbagai hibah seperti&hellip;. (sebutkan)</li>
+                                                <li>Mengadakan workshop workshop terkait dengan perolehan hibah kompetitif (pelatihan penulisan proposal hibah, seminar tips dan trik memperoleh hibah, dst, baik yang terkait dengan penelitian, pengabdian masyarakat, pendidikan dan pengajaran, dsb&hellip;</li>
+                                                <li>Hasil hibah kompetitif yang diperoleh program studi&hellip; adalah sebagai berikut&hellip; (list seluruh hibah kompetitif yang diperoleh prodi)</li>
+                                                <li>Dst&hellip;.</li>
+                                                </ul>
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -2062,13 +4708,30 @@
                             <?php
                                 }
                         }elseif ($getbutir=='3.1.1') {
+                            $getidbutir = '';
+                            $querycariidbutir = $CI->db->query('select * from butir_buku where butir="3.1.1" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir->result() as $row){
+                                $getidbutir = $row->id;
+                                break;
+                            }
                             ?>
-                        <!-- Button Default -->
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">IMPORT DATA DARI IGRACIAS</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                    <!-- DROPDOWN UNTUK MEMBUKA DETAIL PANDUAN -->
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -2080,48 +4743,458 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "3.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "3.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
+                    <!-- CLOSE DETAIL PANDUAN -->
+
+                    <!-- OPEN DROPDOWN IMPORT DATA -->
+                            <div class="collapse" id="collapseImportData">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">Profil Mahasiswa dan Lulusan</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>Data Seluruh Mahasiswa Reguler(1) dan Lulusannya dalam Lima Tahun Terakhir :</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                        $tahun_sekarang = date('Y');
+                                                        $tahun = substr($tahun_sekarang, -2);
+
+                                                        $TS = $tahun;
+                                                        $TS1 = $tahun - 1;
+                                                        $TS2 = $tahun - 2;
+                                                        $TS3 = $tahun - 3;
+                                                        $TS4 = $tahun - 4;
+                                                        $TS5 = $tahun - 5;
+
+                                                        // ketika menggunakan jaringan selain tune
+                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
+
+                                                        // ketika menggunakan jaringan tune (lokal kampus)
+                                                        // $link = 'http://10.252.252.174/';
+
+                                                        // MENDAPATKAN NILAI TS TAHUN BERJALAN
+                                                        $getTS = 0;
+                                                        $idTS = 0;
+                                                        $idTSbutir = 0;
+                                                        $querycariTS = $CI->db->query('select id, id_butir, kolom17 from isian_16kolom_buku where kolom17="'.$TS1.$TS.'" and id_butir = "'.$isiannya.'"');
+                                                        foreach ($querycariTS->result() as $row){
+                                                            $getTS = $getTS+1;
+                                                            $idTS = $row->id;
+                                                            $idTSbutir = $row->id_butir;
+                                                        }
+                                            if (count($dataisian)<1){
+                                                ?>
+                                                <div class="body">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi311_buku_array">
+
+                                                    <!-- DATA TS - 4 -->
+                                                    <?php
+
+                                                    $urlTS4 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS5.$TS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $dataTS4 = file_get_contents($urlTS4); // put the contents of the file into a variable
+                                                    $charactersTS4 = json_decode($dataTS4, true); // decode the JSON feed
+
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="311id_butir[]" id="311id_butir[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="id_butir311[]" id="id_butir311[]" value="<?php echo $getidbutir; ?>" />
+                                                        <input type="hidden" name="kolom16_311[]" id="kolom16_311[]" value="" />
+                                                        <input type="hidden" name="kolom17_311[]" id="kolom17_311[]" value="<?php echo $TS5.$TS4; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_311[]" id="k1_311[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_311[]" id="k2_311[]" value="0" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_311[]" id="k3_311[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_311[]" id="k4_311[]" class="form-control" value="<?php echo $charactersTS4[0]['MABA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_311[]" id="k5_311[]" class="form-control" value="<?php echo $charactersTS4[0]['MABA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_311[]" id="k6_311[]" class="form-control" value="<?php echo $charactersTS4[0]['MALA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_311[]" id="k7_311[]" class="form-control" value="<?php echo $charactersTS4[0]['MALA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom8_311[]" id="k8_311[]" class="form-control" value="<?php echo $charactersTS4[0]['MALA_LULUS_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom9_311[]" id="k9_311[]" class="form-control" value="<?php echo $charactersTS4[0]['MALA_LULUS_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom10_311[]" id="k10_311[]" class="form-control" value="<?php echo $charactersTS4[0]['MIN_GPA']; ?>" placeholder="Ex: 2.75 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom11_311[]" id="k11_311[]" class="form-control" value="<?php echo $charactersTS4[0]['AVG_GPA']; ?>" placeholder="Ex: 3.00 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden"  name="kolom12_311[]" id="k12_311[]" class="form-control" value="<?php echo $charactersTS4[0]['MAX_GPA']; ?>" placeholder="Ex: 3.50 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom13_311[]" id="k13_311[]" class="form-control" value="<?php echo $charactersTS4[0]['PRESENTASE_IPK_MIN']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom14_311[]" id="k14_311[]" class="form-control" value="<?php echo $charactersTS4[0]['PRESENTASE_IPK_AVG']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom15_311[]" id="k15_311[]" class="form-control" value="<?php echo $charactersTS4[0]['PRESENTASE_IPK_MAX']; ?>" placeholder="Ex: 500">
+
+                                                    <!-- DATA TS - 3 -->
+                                                    <?php
+
+                                                    $urlTS3 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS4.$TS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $dataTS3 = file_get_contents($urlTS3); // put the contents of the file into a variable
+                                                    $charactersTS3 = json_decode($dataTS3, true); // decode the JSON feed
+
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="311id_butir[]" id="311id_butir[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="id_butir311[]" id="id_butir311[]" value="<?php echo $getidbutir; ?>" />
+                                                        <input type="hidden" name="kolom16_311[]" id="kolom16_311[]" value="" />
+                                                        <input type="hidden" name="kolom17_311[]" id="kolom17_311[]" value="<?php echo $TS4.$TS3; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_311[]" id="k1_311[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_311[]" id="k2_311[]" value="0" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_311[]" id="k3_311[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_311[]" id="k4_311[]" class="form-control" value="<?php echo $charactersTS3[0]['MABA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_311[]" id="k5_311[]" class="form-control" value="<?php echo $charactersTS3[0]['MABA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_311[]" id="k6_311[]" class="form-control" value="<?php echo $charactersTS3[0]['MALA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_311[]" id="k7_311[]" class="form-control" value="<?php echo $charactersTS3[0]['MALA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom8_311[]" id="k8_311[]" class="form-control" value="<?php echo $charactersTS3[0]['MALA_LULUS_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom9_311[]" id="k9_311[]" class="form-control" value="<?php echo $charactersTS3[0]['MALA_LULUS_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom10_311[]" id="k10_311[]" class="form-control" value="<?php echo $charactersTS3[0]['MIN_GPA']; ?>" placeholder="Ex: 2.75 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom11_311[]" id="k11_311[]" class="form-control" value="<?php echo $charactersTS3[0]['AVG_GPA']; ?>" placeholder="Ex: 3.00 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden"  name="kolom12_311[]" id="k12_311[]" class="form-control" value="<?php echo $charactersTS3[0]['MAX_GPA']; ?>" placeholder="Ex: 3.50 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom13_311[]" id="k13_311[]" class="form-control" value="<?php echo $charactersTS3[0]['PRESENTASE_IPK_MIN']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom14_311[]" id="k14_311[]" class="form-control" value="<?php echo $charactersTS3[0]['PRESENTASE_IPK_AVG']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom15_311[]" id="k15_311[]" class="form-control" value="<?php echo $charactersTS3[0]['PRESENTASE_IPK_MAX']; ?>" placeholder="Ex: 500">
+
+                                                    <!-- DATA TS - 2 -->
+                                                    <?php
+
+                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                                    $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
+
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="311id_butir[]" id="311id_butir[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="id_butir311[]" id="id_butir311[]" value="<?php echo $getidbutir; ?>" />
+                                                        <input type="hidden" name="kolom16_311[]" id="kolom16_311[]" value="" />
+                                                        <input type="hidden" name="kolom17_311[]" id="kolom17_311[]" value="<?php echo $TS3.$TS2; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_311[]" id="k1_311[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_311[]" id="k2_311[]" value="0" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_311[]" id="k3_311[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_311[]" id="k4_311[]" class="form-control" value="<?php echo $charactersTS2[0]['MABA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_311[]" id="k5_311[]" class="form-control" value="<?php echo $charactersTS2[0]['MABA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_311[]" id="k6_311[]" class="form-control" value="<?php echo $charactersTS2[0]['MALA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_311[]" id="k7_311[]" class="form-control" value="<?php echo $charactersTS2[0]['MALA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom8_311[]" id="k8_311[]" class="form-control" value="<?php echo $charactersTS2[0]['MALA_LULUS_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom9_311[]" id="k9_311[]" class="form-control" value="<?php echo $charactersTS2[0]['MALA_LULUS_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom10_311[]" id="k10_311[]" class="form-control" value="<?php echo $charactersTS2[0]['MIN_GPA']; ?>" placeholder="Ex: 2.75 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom11_311[]" id="k11_311[]" class="form-control" value="<?php echo $charactersTS2[0]['AVG_GPA']; ?>" placeholder="Ex: 3.00 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden"  name="kolom12_311[]" id="k12_311[]" class="form-control" value="<?php echo $charactersTS2[0]['MAX_GPA']; ?>" placeholder="Ex: 3.50 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom13_311[]" id="k13_311[]" class="form-control" value="<?php echo $charactersTS2[0]['PRESENTASE_IPK_MIN']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom14_311[]" id="k14_311[]" class="form-control" value="<?php echo $charactersTS2[0]['PRESENTASE_IPK_AVG']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom15_311[]" id="k15_311[]" class="form-control" value="<?php echo $charactersTS2[0]['PRESENTASE_IPK_MAX']; ?>" placeholder="Ex: 500">
+
+                                                    <!-- DATA TS - 1 -->
+                                                    <?php
+
+                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                    $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
+
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="311id_butir[]" id="311id_butir[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="id_butir311[]" id="id_butir311[]" value="<?php echo $getidbutir; ?>" />
+                                                        <input type="hidden" name="kolom16_311[]" id="kolom16_311[]" value="" />
+                                                        <input type="hidden" name="kolom17_311[]" id="kolom17_311[]" value="<?php echo $TS2.$TS1; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_311[]" id="k1_311[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_311[]" id="k2_311[]" value="0" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_311[]" id="k3_311[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_311[]" id="k4_311[]" class="form-control" value="<?php echo $charactersTS1[0]['MABA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_311[]" id="k5_311[]" class="form-control" value="<?php echo $charactersTS1[0]['MABA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_311[]" id="k6_311[]" class="form-control" value="<?php echo $charactersTS1[0]['MALA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_311[]" id="k7_311[]" class="form-control" value="<?php echo $charactersTS1[0]['MALA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom8_311[]" id="k8_311[]" class="form-control" value="<?php echo $charactersTS1[0]['MALA_LULUS_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom9_311[]" id="k9_311[]" class="form-control" value="<?php echo $charactersTS1[0]['MALA_LULUS_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom10_311[]" id="k10_311[]" class="form-control" value="<?php echo $charactersTS1[0]['MIN_GPA']; ?>" placeholder="Ex: 2.75 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom11_311[]" id="k11_311[]" class="form-control" value="<?php echo $charactersTS1[0]['AVG_GPA']; ?>" placeholder="Ex: 3.00 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden"  name="kolom12_311[]" id="k12_311[]" class="form-control" value="<?php echo $charactersTS1[0]['MAX_GPA']; ?>" placeholder="Ex: 3.50 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom13_311[]" id="k13_311[]" class="form-control" value="<?php echo $charactersTS1[0]['PRESENTASE_IPK_MIN']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom14_311[]" id="k14_311[]" class="form-control" value="<?php echo $charactersTS1[0]['PRESENTASE_IPK_AVG']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom15_311[]" id="k15_311[]" class="form-control" value="<?php echo $charactersTS1[0]['PRESENTASE_IPK_MAX']; ?>" placeholder="Ex: 500">
+
+                                                    <!-- DATA TS -->
+                                                    <?php
+
+                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                    $charactersTS = json_decode($dataTS, true); // decode the JSON feed
+
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="311id_butir[]" id="311id_butir[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="id_butir311[]" id="id_butir311[]" value="<?php echo $getidbutir; ?>" />
+                                                        <input type="hidden" name="kolom16_311[]" id="kolom16_311[]" value="" />
+                                                        <input type="hidden" name="kolom17_311[]" id="kolom17_311[]" value="<?php echo $TS1.$TS; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_311[]" id="k1_311[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_311[]" id="k2_311[]" value="0" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_311[]" id="k3_311[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_311[]" id="k4_311[]" class="form-control" value="<?php echo $charactersTS[0]['MABA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_311[]" id="k5_311[]" class="form-control" value="<?php echo $charactersTS[0]['MABA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_311[]" id="k6_311[]" class="form-control" value="<?php echo $charactersTS[0]['MALA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_311[]" id="k7_311[]" class="form-control" value="<?php echo $charactersTS[0]['MALA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom8_311[]" id="k8_311[]" class="form-control" value="<?php echo $charactersTS[0]['MALA_LULUS_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom9_311[]" id="k9_311[]" class="form-control" value="<?php echo $charactersTS[0]['MALA_LULUS_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom10_311[]" id="k10_311[]" class="form-control" value="<?php echo $charactersTS[0]['MIN_GPA']; ?>" placeholder="Ex: 2.75 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom11_311[]" id="k11_311[]" class="form-control" value="<?php echo $charactersTS[0]['AVG_GPA']; ?>" placeholder="Ex: 3.00 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden"  name="kolom12_311[]" id="k12_311[]" class="form-control" value="<?php echo $charactersTS[0]['MAX_GPA']; ?>" placeholder="Ex: 3.50 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom13_311[]" id="k13_311[]" class="form-control" value="<?php echo $charactersTS[0]['PRESENTASE_IPK_MIN']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom14_311[]" id="k14_311[]" class="form-control" value="<?php echo $charactersTS[0]['PRESENTASE_IPK_AVG']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom15_311[]" id="k15_311[]" class="form-control" value="<?php echo $charactersTS[0]['PRESENTASE_IPK_MAX']; ?>" placeholder="Ex: 500">
+                                                    
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                                            <h4>Import Data Seluruh Mahasiswa Tahun Akademik dari TS-4 sampai dengan TS</h4>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                            <button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DATA MAHASISWA &nbsp;<i class="material-icons">import_export</i></button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button> -->
+                                                    </form>
+                                                </div>
+                                                <?php
+                                            }else{
+                                                ?>
+                                                <div class="body">
+
+                                                    <!-- DATA TS KETIKA TAHUN BERJALAN -->
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi311_buku">
+                                                    <?php
+
+                                                    $url = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $characters = json_decode($data, true); // decode the JSON feed
+
+                                                    // echo $characters[0]['STUDENTSCHOOLYEAR'];
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                                                        <input type="hidden" name="kolom16_311" id="kolom16_311" value="" />
+                                                        <input type="hidden" name="kolom17_311" id="kolom17_311" value="<?php echo $TS1.$TS; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="kolom1_311" id="k1_311" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_311" id="k2_311" onkeyup="errorinputikutseleksi()" value="0" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_311" id="k3_311" onkeyup="errorinput()" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_311" id="k4_311" onkeyup="errorinput()" class="form-control" value="<?php echo $characters[0]['MABA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_311" id="k5_311" class="form-control" value="<?php echo $characters[0]['MABA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_311" id="k6_311" class="form-control" value="<?php echo $characters[0]['MALA_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_311" id="k7_311" class="form-control" value="<?php echo $characters[0]['MALA_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom8_311" id="k8_311" class="form-control" value="<?php echo $characters[0]['MALA_LULUS_REGULER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom9_311" id="k9_311" class="form-control" value="<?php echo $characters[0]['MALA_LULUS_TRANSFER']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom10_311" id="k10_311" onkeyup="errorinputkoma()" class="form-control" value="<?php echo $characters[0]['MIN_GPA']; ?>" placeholder="Ex: 2.75 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom11_311" id="k11_311" onkeyup="errorinputkoma()" class="form-control" value="<?php echo $characters[0]['AVG_GPA']; ?>" placeholder="Ex: 3.00 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden"  name="kolom12_311" id="k12_311" onkeyup="errorinputkoma()" class="form-control" value="<?php echo $characters[0]['MAX_GPA']; ?>" placeholder="Ex: 3.50 (Penulisan Angka Menggunakan (.) Titik">
+                                                        <input type="hidden" name="kolom13_311" id="k13_311" onkeyup="errorinputkoma()" class="form-control" value="<?php echo $characters[0]['PRESENTASE_IPK_MIN']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom14_311" id="k14_311" onkeyup="errorinputkoma()" class="form-control" value="<?php echo $characters[0]['PRESENTASE_IPK_AVG']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom15_311" id="k15_311" onkeyup="errorinputkoma()" class="form-control" value="<?php echo $characters[0]['PRESENTASE_IPK_MAX']; ?>" placeholder="Ex: 500">
+                                                    
+                                                    <?php
+                                                    if ($getTS<1) {
+                                                        ?>
+                                                    <div class="row clearfix">
+                                                        <input type="hidden" name="pilihts" value="inputts">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <h4>Import Data Seluruh Mahasiswa Tahun Akademik TS</h4>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DATA MAHASISWA &nbsp;<i class="material-icons">import_export</i></button>
+                                                        </div>
+                                                    </div>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                    <div class="row clearfix">
+                                                        <input type="hidden" name="pilihts" value="replacets">
+                                                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $idTS; ?>" />
+                                                        <div class="col-md-12">
+                                                            <h4>Data Seluruh Mahasiswa Tahun Akademik TS sudah di Import kedalam Database Aplikasi</h4>
+                                                            
+                                                            <div class="alert bg-orange">
+                                                                <h4><code>Import lagi dan replace data sebelumnya?</code><button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DAN REPLACE DATA MAHASISWA &nbsp;<i class="material-icons">import_export</i></button></h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    
+                                                    <!-- <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button> -->
+                                                    </form>
+                                                </div>
+                                                <?php
+                                            }
+                                                ?>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #END# Hover Rows -->
+                                </div>
+                            </div>
+                    <!-- CLOSE IMPORT DATA -->
                         </div>
-                            <?php
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
                             if (count($dataisian)>0) {
                             // for($i=0;$i<count($dataisian);$i++){
                             
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi311">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi311_buku">
                         <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                        <!-- <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" /> -->
+                        <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $idTS; ?>" />
+                        <input type="hidden" name="kolom17_311" id="kolom17_311" value="<?php echo $TS1.$TS; ?>" />
+                        <input type="hidden" name="pilihts" value="inputts">
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -2261,12 +5334,18 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum7;?>&nbsp;</td>
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum8;?>&nbsp;</td>
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $jum9;?>&nbsp;</td>
-                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum10/$nil;?>&nbsp;</td>
+                                        <!-- <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum10/$nil;?>&nbsp;</td>
                                         <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum11/$nil;?>&nbsp;</td>
                                         <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum12/$nil;?>&nbsp;</td>
                                         <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum13/$nil;?> %&nbsp;</td>
                                         <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum14/$nil;?> %&nbsp;</td>
-                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum15/$nil;?> %&nbsp;</td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"><?php echo $jum15/$nil;?> %&nbsp;</td> -->
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"></td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"></td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"></td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"></td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"></td>
+                                        <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;"></td>
                                         <td style="width: 52px; height: 13px; background-color: #b0abab; text-align: center;">Pengaturan</td>
                                     </tr>
                                 </tbody>
@@ -2296,7 +5375,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_311" id="k2_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_311" id="k2_311" onkeyup="errorinputikutseleksi()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -2396,7 +5475,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom10_311" id="k10_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom10_311" id="k10_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -2407,7 +5486,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom11_311" id="k11_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom11_311" id="k11_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -2418,7 +5497,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text"  name="kolom12_311" id="k12_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text"  name="kolom12_311" id="k12_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -2432,7 +5511,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom13_311" id="k13_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom13_311" id="k13_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -2443,7 +5522,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom14_311" id="k14_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom14_311" id="k14_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -2454,7 +5533,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom15_311" id="k15_311" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom15_311" id="k15_311" onkeyup="errorinputkoma()" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -2485,9 +5564,12 @@
                     // }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi311">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi311_buku">
                         <input type="hidden" name="311id_butir" id="311id_butir" value="<?php echo $isiannya; ?>" />
-                        <!-- <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" /> -->
+                        <input type="hidden" name="id_butir311" id="id_butir311" value="<?php echo $getidbutir; ?>" />
+                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $idTS; ?>" />
+                        <input type="hidden" name="kolom17_311" id="kolom17_311" value="<?php echo $TS1.$TS; ?>" />
+                        <input type="hidden" name="pilihts" value="inputts">
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
                         <h2 class="card-inside-title">Tuliskan data seluruh mahasiswa reguler(1) dan lulusannya dalam lima tahun terakhir dengan mengikuti format berikut:</h2>
                         <div class="row clearfix">
@@ -2698,13 +5780,24 @@
                             <?php
                                 }
                         }elseif ($getbutir=='3.1.2') {
-                            ?>
-                        <!-- Button Default -->
+                        ?>
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">IMPORT DATA DARI IGRACIAS</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                            <!-- DROPDOWN UNTUK MEMBUKA DETAIL PANDUAN -->
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -2716,46 +5809,432 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "3.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "3.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
+                        <!-- CLOSE DETAIUL PANDUAN -->
+
+                        <!-- OPEN DROPDOWN IMPORT DATA -->
+                            <div class="collapse" id="collapseImportData">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">Profil Mahasiswa dan Lulusan</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>Sebutkan pencapaian prestasi/reputasi mahasiswa dalam tiga tahun terakhir di bidang akademik dan non-akademik (misalnya prestasi dalam penelitian dan lomba karya ilmiah, olahraga, dan seni).</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                        $tahun_sekarang = date('Y');
+                                                        $tahun = substr($tahun_sekarang, -2);
+
+                                                        $TS = $tahun;
+                                                        $TS1 = $tahun - 1;
+                                                        $TS2 = $tahun - 2;
+                                                        $TS3 = $tahun - 3;
+
+                                                        // ketika menggunakan jaringan selain tune
+                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
+
+                                                        // ketika menggunakan jaringan tune (lokal kampus)
+                                                        // $link = 'http://10.252.252.174/';
+
+                                                        // MENDAPATKAN NILAI TS TAHUN BERJALAN
+                                                        $getTS = 0;
+                                                        $idTS = 0;
+                                                        $querycariTS = $CI->db->query('select id, kolom5 from isian_16kolom_buku where kolom5="'.$TS1.$TS.'" and id_butir = "'.$isiannya.'"');
+                                                        foreach ($querycariTS->result() as $row){
+                                                            $getTS = $getTS+1;
+                                                            $idTS = $row->id;
+                                                        }
+                                            if (count($dataisian)<1){
+                                                ?>
+                                                <div class="body">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi312_buku_array">
+
+                                                    <!-- DATA TS - 2 -->
+                                                    <?php
+
+                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                                    $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
+                                                    foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
+                                                    ?>
+                                                    
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="id_butir312[]" id="id_butir312[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom4_312[]" id="kolom4_312[]" value="" />
+                                                        <input type="hidden" name="kolom5_312[]" id="kolom5_312[]" value="<?php echo $TS3.$TS2; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_312[]" id="k1_312[]" class="form-control" value="<?php echo $valueTS2['KEGIATAN'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_312[]" id="k2_312[]" value="<?php echo $valueTS2['TINGKAT'] ?>" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_312[]" id="k3_312[]" class="form-control" value="<?php echo $valueTS2['PRESTASI'] ?>" placeholder="Ex: 500">
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <!-- DATA TS - 1 -->
+                                                    <?php
+
+                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                    $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
+                                                    foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="id_butir312[]" id="id_butir312[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom4_312[]" id="kolom4_312[]" value="" />
+                                                        <input type="hidden" name="kolom5_312[]" id="kolom5_312[]" value="<?php echo $TS2.$TS1; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_312[]" id="k1_312[]" class="form-control" value="<?php echo $valueTS1['KEGIATAN'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_312[]" id="k2_312[]" value="<?php echo $valueTS1['TINGKAT'] ?>" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_312[]" id="k3_312[]" class="form-control" value="<?php echo $valueTS1['PRESTASI'] ?>" placeholder="Ex: 500">
+
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <!-- DATA TS -->
+                                                    <?php
+
+                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                    $charactersTS = json_decode($dataTS, true); // decode the JSON feed
+                                                    foreach ($charactersTS as $keyTS => $valueTS) {
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="id_butir312[]" id="id_butir312[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom4_312[]" id="kolom4_312[]" value="" />
+                                                        <input type="hidden" name="kolom5_312[]" id="kolom5_312[]" value="<?php echo $TS1.$TS; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_312[]" id="k1_312[]" class="form-control" value="<?php echo $valueTS['KEGIATAN'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_312[]" id="k2_312[]" value="<?php echo $valueTS['TINGKAT'] ?>" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_312[]" id="k3_312[]" class="form-control" value="<?php echo $valueTS['PRESTASI'] ?>" placeholder="Ex: 500">
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                                            <h4>Import Data pencapaian prestasi/reputasi mahasiswa dalam tiga tahun terakhir</h4>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                            <button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DATA &nbsp;<i class="material-icons">import_export</i></button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button> -->
+                                                    </form>
+                                                </div>
+                                                <?php
+                                            }else{
+                                                ?>
+                                                <div class="body">
+
+                                                    <!-- DATA TS KETIKA TAHUN BERJALAN -->
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi312_buku_array">
+                                                    
+                                                    <!-- DATA TS - 2 -->
+                                                    <?php
+
+                                                    $urlTS2 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                                    $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
+                                                    foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
+                                                    ?>
+                                                    
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="id_butir312[]" id="id_butir312[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom4_312[]" id="kolom4_312[]" value="" />
+                                                        <input type="hidden" name="kolom5_312[]" id="kolom5_312[]" value="<?php echo $TS3.$TS2; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_312[]" id="k1_312[]" class="form-control" value="<?php echo $valueTS2['KEGIATAN'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_312[]" id="k2_312[]" value="<?php echo $valueTS2['TINGKAT'] ?>" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_312[]" id="k3_312[]" class="form-control" value="<?php echo $valueTS2['PRESTASI'] ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" id="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS[]" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" id="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS[]" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <!-- DATA TS - 1 -->
+                                                    <?php
+
+                                                    $urlTS1 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                    $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
+                                                    foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="id_butir312[]" id="id_butir312[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom4_312[]" id="kolom4_312[]" value="" />
+                                                        <input type="hidden" name="kolom5_312[]" id="kolom5_312[]" value="<?php echo $TS2.$TS1; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_312[]" id="k1_312[]" class="form-control" value="<?php echo $valueTS1['KEGIATAN'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_312[]" id="k2_312[]" value="<?php echo $valueTS1['TINGKAT'] ?>" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_312[]" id="k3_312[]" class="form-control" value="<?php echo $valueTS1['PRESTASI'] ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" id="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS[]" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" id="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS[]" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <!-- DATA TS -->
+                                                    <?php
+
+                                                    $urlTS = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
+                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                    $charactersTS = json_decode($dataTS, true); // decode the JSON feed
+                                                    foreach ($charactersTS as $keyTS => $valueTS) {
+                                                    ?>
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="id_butir312[]" id="id_butir312[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom4_312[]" id="kolom4_312[]" value="" />
+                                                        <input type="hidden" name="kolom5_312[]" id="kolom5_312[]" value="<?php echo $TS1.$TS; ?>" />
+
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <input type="hidden" name="kolom1_312[]" id="k1_312[]" class="form-control" value="<?php echo $valueTS['KEGIATAN'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_312[]" id="k2_312[]" value="<?php echo $valueTS['TINGKAT'] ?>" class="form-control" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_312[]" id="k3_312[]" class="form-control" value="<?php echo $valueTS['PRESTASI'] ?>" placeholder="Ex: 500">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" id="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS[]" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" id="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS[]" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <?php
+                                                    if ($getTS<1) {
+                                                        ?>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <h4>Import Data pencapaian prestasi/reputasi mahasiswa dalam tiga tahun terakhir</h4>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DATA &nbsp;<i class="material-icons">import_export</i></button>
+                                                        </div>
+                                                    </div>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                    <div class="row clearfix">
+                                                        <div class="col-md-12">
+                                                            <h4>Data pencapaian prestasi/reputasi mahasiswa dalam tiga tahun terakhir sudah di Import kedalam Database Aplikasi</h4>
+                                                            
+                                                            <div class="alert bg-orange">
+                                                                <h4><code>Import lagi dan replace data sebelumnya?</code><button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DAN REPLACE DATA &nbsp;<i class="material-icons">import_export</i></button></h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    
+                                                    <!-- <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button> -->
+                                                    </form>
+                                                </div>
+                                                <?php
+                                            }
+                                                ?>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #END# Hover Rows -->
+                                </div>
+                            </div>
+                    <!-- CLOSE IMPORT DATA -->
                         </div>
-                            <?php
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi312">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi312_buku">
                         <input type="hidden" name="id_butir312" id="id_butir312" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="pilihts" value="">
+                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -2867,8 +6346,10 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi312">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi312_buku">
                         <input type="hidden" name="id_butir312" id="id_butir312" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="pilihts" value="">
+                        <input type="hidden" name="idTS" id="idTS" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sebutkan pencapaian prestasi/reputasi mahasiswa dalam tiga tahun terakhir di bidang akademik dan non-akademik (misalnya prestasi dalam penelitian dan lomba karya ilmiah, olahraga, dan seni). </h2>
                         <div class="row clearfix">
                                     <div class="col-md-12">
@@ -21633,7 +25114,7 @@ dst.
                                             <!-- <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload" href="<?php echo base_url();?>index.php/isian/<?php echo $datadokumen[$i]['id']; ?>" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp; -->
                                             <!-- <a type="button" onclick="uploadbukti(<?php echo $butir[$i]['butir'] ?>)" data-color="brown" class="btn bg-brown waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Upload Dokumen" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="material-icons">file_upload</i></a>&nbsp;
                                             <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#dokumen11a" data-placement="top" title="Lihat" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="material-icons">pageview</i></a>&nbsp;
-                                            <a id="del" onclick="deledok(<?php echo $datadokumen[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroy/'.$datadokumen[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            <a id="del" onclick="deledok(<?php echo $datadokumen[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroy/'.$datadokumen[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $datadokumen[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -21675,7 +25156,7 @@ dst.
                                         }
                                     ?>
                                         <!-- <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#dokumen11a" data-placement="top" title="Lihat" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="material-icons">pageview</i></a>&nbsp; -->
-                                        <!-- <a id="del" onclick="deledok(<?php echo $bar->id ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroy/'.$bar->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="glyphicon glyphicon-trash"></i></a> -->
+                                        <!-- <a id="del" onclick="deledok(<?php echo $bar->id ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroy/'.$bar->id); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $bar->id; ?>"><i class="glyphicon glyphicon-trash"></i></a> -->
                                         </div>
                                     </td>
                                 </tr>
@@ -21690,7 +25171,7 @@ dst.
                             <h2 class="card-inside-title">Tambah Dokumen pendukung yang terkait pada butir <?php echo $butir[0]['butir'] ?></h2>
                         </div>
                         <div class="body">
-                            <form action="<?php echo base_url()?>C_isian/dokumen11" id="frmFileUpload" class="dropzone form-horizontal" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo base_url()?>C_isian3ad3/dokumen11" id="frmFileUpload" class="dropzone form-horizontal" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="id_butir11" id="id_butir11" value="<?php echo $this->uri->segment(2, 0); ?>" />
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -22050,7 +25531,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updatetabel311', $attributes);
+                    echo form_open('C_isian3ad3/updateisian311_buku', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -22265,129 +25746,12 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian312', $attributes);
+                    echo form_open('C_isian3ad3/updateisian312_buku', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
                         <input type="hidden" name="id312" id="id312" />
                         <input type="hidden" name="id_butir312tabel" id="id_butir312tabel" />
-                        <div class="col-md-12">
-                                        <b>Daya Tampung</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom1_312" id="kolom1_312" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Calon Mahasiswa Reguler :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Ikut Seleksi</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom2_312" id="kolom2_312" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Lulus Seleksi</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom3_312" id="kolom3_312" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Mahasiswa Baru :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom4_312" id="kolom4_312" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom5_312" id="kolom5_312" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <b>Jumlah Total Mahasiswa :</b>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Reguler Bukan Transfer</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom6_312" id="kolom6_312" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <b>Transfer(3)</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">dialpad</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="kolom7_312" id="kolom7_312" class="form-control" placeholder="Ex: 500">
-                                            </div>
-                                        </div>
-                                    </div>
-                    </div>
-                </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Tutup Modal Update 312 -->
-
-        <!-- Molda Update Tabel 313 -->
-        <div class="modal fade" id="update313" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
-                    </div>
-                    <div class="modal-body">
-                <!-- form start -->
-                <?php
-                    //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
-                    //   echo form_open('c_borang/update', $attributes);
-                    $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian313', $attributes);
-                    // echo form_open('c_borang/update');
-                ?>
-                    <div class="row clearfix">
-                        <input type="hidden" name="id313" id="id313" />
-                        <input type="hidden" name="id_butir313tabel" id="id_butir313tabel" />
                                     <div class="col-md-12">
                                         <b>Nama Kegiatan dan Waktu Penyelenggaraan</b>
                                         <div class="input-group">
@@ -22395,7 +25759,7 @@ dst.
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom1_313" id="kolom1_313" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom1_312" id="kolom1_312" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -22406,7 +25770,7 @@ dst.
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_313" id="kolom2_313" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom2_312" id="kolom2_312" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -22417,7 +25781,7 @@ dst.
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_313" id="kolom3_313" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom3_312" id="kolom3_312" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
@@ -22446,7 +25810,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian331b', $attributes);
+                    echo form_open('C_isian3ad3/updateisian331b', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -22918,7 +26282,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian431', $attributes);
+                    echo form_open('C_isian3ad3/updateisian431', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23027,7 +26391,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian432', $attributes);
+                    echo form_open('C_isian3ad3/updateisian432', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23136,7 +26500,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian433', $attributes);
+                    echo form_open('C_isian3ad3/updateisian433', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23272,7 +26636,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian434', $attributes);
+                    echo form_open('C_isian3ad3/updateisian434', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23381,7 +26745,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian435', $attributes);
+                    echo form_open('C_isian3ad3/updateisian435', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23490,7 +26854,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian441', $attributes);
+                    echo form_open('C_isian3ad3/updateisian441', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23599,7 +26963,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian442', $attributes);
+                    echo form_open('C_isian3ad3/updateisian442', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23708,7 +27072,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian451', $attributes);
+                    echo form_open('C_isian3ad3/updateisian451', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23774,7 +27138,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian452', $attributes);
+                    echo form_open('C_isian3ad3/updateisian452', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23872,7 +27236,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian453', $attributes);
+                    echo form_open('C_isian3ad3/updateisian453', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -23963,7 +27327,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian454', $attributes);
+                    echo form_open('C_isian3ad3/updateisian454', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -24039,7 +27403,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian455', $attributes);
+                    echo form_open('C_isian3ad3/updateisian455', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -24115,7 +27479,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian461', $attributes);
+                    echo form_open('C_isian3ad3/updateisian461', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -24456,7 +27820,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian512b', $attributes);
+                    echo form_open('C_isian3ad3/updateisian512b', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -24523,7 +27887,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian512c', $attributes);
+                    echo form_open('C_isian3ad3/updateisian512c', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -24749,7 +28113,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian513', $attributes);
+                    echo form_open('C_isian3ad3/updateisian513', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -24852,7 +28216,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian514', $attributes);
+                    echo form_open('C_isian3ad3/updateisian514', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -24931,7 +28295,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian52b', $attributes);
+                    echo form_open('C_isian3ad3/updateisian52b', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -25055,7 +28419,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian541', $attributes);
+                    echo form_open('C_isian3ad3/updateisian541', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -25120,7 +28484,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian542', $attributes);
+                    echo form_open('C_isian3ad3/updateisian542', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -25218,7 +28582,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian551d', $attributes);
+                    echo form_open('C_isian3ad3/updateisian551d', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -25272,7 +28636,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian56', $attributes);
+                    echo form_open('C_isian3ad3/updateisian56', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -25340,7 +28704,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian622', $attributes);
+                    echo form_open('C_isian3ad3/updateisian622', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -25416,7 +28780,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian623', $attributes);
+                    echo form_open('C_isian3ad3/updateisian623', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -25492,7 +28856,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian631', $attributes);
+                    echo form_open('C_isian3ad3/updateisian631', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -25626,7 +28990,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian632', $attributes);
+                    echo form_open('C_isian3ad3/updateisian632', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -25764,7 +29128,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian633', $attributes);
+                    echo form_open('C_isian3ad3/updateisian633', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -25902,7 +29266,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian641a', $attributes);
+                    echo form_open('C_isian3ad3/updateisian641a', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -25976,7 +29340,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian641c', $attributes);
+                    echo form_open('C_isian3ad3/updateisian641c', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -26055,7 +29419,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian643', $attributes);
+                    echo form_open('C_isian3ad3/updateisian643', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -26193,7 +29557,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian652', $attributes);
+                    echo form_open('C_isian3ad3/updateisian652', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -26489,7 +29853,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian711', $attributes);
+                    echo form_open('C_isian3ad3/updateisian711', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -26721,7 +30085,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian713', $attributes);
+                    echo form_open('C_isian3ad3/updateisian713', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -26839,7 +30203,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian714', $attributes);
+                    echo form_open('C_isian3ad3/updateisian714', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -26885,7 +30249,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian721', $attributes);
+                    echo form_open('C_isian3ad3/updateisian721', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -27118,7 +30482,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian731', $attributes);
+                    echo form_open('C_isian3ad3/updateisian731', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -27214,7 +30578,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian732', $attributes);
+                    echo form_open('C_isian3ad3/updateisian732', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -27311,7 +30675,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian4kolom', $attributes);
+                    echo form_open('C_isian3ad3/updateisian4kolom', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -27377,7 +30741,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian1kolom', $attributes);
+                    echo form_open('C_isian3ad3/updateisian1kolom', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -27420,7 +30784,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian1nkolom', $attributes);
+                    echo form_open('C_isian3ad3/updateisian1nkolom', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -30610,6 +33974,77 @@ dst.
         </div>
         <!-- TUTUP MODAL VIEW NILAI 3.1.3 -->
 
+        <!-- UPLOAD BUKTI DOKUMEN -->
+        <div class="modal fade" id="uploadreferensi" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Upload bukti yang harus disiapkan</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    $attributes = array('id' => 'myform');
+                    echo form_open_multipart('C_dokumen/uploadreferensi', $attributes);
+                ?>
+                <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                <input type="hidden" name="backlink" value="<?php echo $this->uri->segment(1, 0); ?>">
+                <input type="hidden" name="butir" value="<?php echo $butir[0]['butir']?>">
+                    <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <label for="buktibutir">Nama Dokumen</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" id="nama" name="nama">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <label class="form-label">Keterangan</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="keterangan" id="keterangan" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-sm-12">
+                            <label class="form-label">Pemilik Dokumen</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="pemilik" id="pemilik" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col-sm-12">
+                            <label class="form-label">Upload Bukti</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="file" class="form-control" name="filename" id="filename">
+                                    <!-- <input type="text" class="form-control" id="filename" name="filename"> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12"><code>OR</code></div>
+                        <div class="col-sm-12">
+                            <label class="form-label">Link Dokumen/Bukti</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea class="form-control" name="link_dok" id="link_dok" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- TUTUP UPLOAD BUKTI DOKUMEN -->
+
     </div>
 </section>
 
@@ -31066,7 +34501,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl_buku";
         $.ajax({
             method: "POST",
             url: link,
@@ -31101,7 +34536,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl_buku";
         $.ajax({
             method: "POST",
             url: link,
@@ -31115,33 +34550,6 @@ dst.
               $('#kolom1_312').val(buku[0]['kolom1']);
               $('#kolom2_312').val(buku[0]['kolom2']);
               $('#kolom3_312').val(buku[0]['kolom3']);
-              $('#kolom4_312').val(buku[0]['kolom4']);
-              $('#kolom5_312').val(buku[0]['kolom5']);
-              $('#kolom6_312').val(buku[0]['kolom6']);
-              $('#kolom7_312').val(buku[0]['kolom7']);
-          });
-          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
-
-    });
-
-    $('#update313').on('shown.bs.modal', function (event) {
-        //ajax call to get isian Borang Informatin from database
-        var button = $(event.relatedTarget)
-        var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
-        $.ajax({
-            method: "POST",
-            url: link,
-            cache: false,
-            data: { id: recipient }
-          })
-          .done(function( msg ) {
-              var buku = JSON.parse(msg);
-              $('#id313').val(buku[0]['id']);
-              $('#id_butir313tabel').val(buku[0]['id_butir']);
-              $('#kolom1_313').val(buku[0]['kolom1']);
-              $('#kolom2_313').val(buku[0]['kolom2']);
-              $('#kolom3_313').val(buku[0]['kolom3']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
@@ -31151,7 +34559,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31213,7 +34621,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31240,7 +34648,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31267,7 +34675,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31296,7 +34704,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31323,7 +34731,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31350,7 +34758,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31377,7 +34785,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31404,7 +34812,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31427,7 +34835,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31453,7 +34861,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31478,7 +34886,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31502,7 +34910,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31526,7 +34934,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31576,7 +34984,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31599,7 +35007,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31630,7 +35038,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31656,7 +35064,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31680,7 +35088,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31708,7 +35116,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31731,7 +35139,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31761,7 +35169,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31783,7 +35191,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31806,7 +35214,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31830,7 +35238,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31854,7 +35262,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31886,7 +35294,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31914,7 +35322,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31942,7 +35350,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31965,7 +35373,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -31989,7 +35397,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -32017,7 +35425,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -32059,7 +35467,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -32099,7 +35507,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -32126,7 +35534,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -32147,7 +35555,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -32187,7 +35595,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -32212,7 +35620,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
         $.ajax({
             method: "POST",
             url: link,
@@ -32249,7 +35657,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findisian";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findisian";
         $.ajax({
             method: "POST",
             url: link,
@@ -32287,7 +35695,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findisian";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findisian";
         $.ajax({
             method: "POST",
             url: link,
@@ -32323,7 +35731,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findisian";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findisian";
         $.ajax({
             method: "POST",
             url: link,
@@ -32367,7 +35775,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32392,7 +35800,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32415,7 +35823,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32437,7 +35845,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32459,7 +35867,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32481,7 +35889,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32503,7 +35911,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32525,7 +35933,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32547,7 +35955,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32569,7 +35977,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32592,7 +36000,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32615,7 +36023,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32638,7 +36046,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32661,7 +36069,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32682,7 +36090,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findNilai";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findNilai";
         $.ajax({
             method: "POST",
             url: link,
@@ -32764,7 +36172,7 @@ function printContent(el){
 
   function deledok(x){
     var butir = "<?php echo $this->uri->segment(2, 0)?>";
-    var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroydok/"+x+"/"+butir;
+    var delete_url = "<?php echo base_url(); ?>index.php/C_isian3ad3/destroydok/"+x+"/"+butir;
         swal({
             title: "Are you sure?",
             text: "You will not be able to recover this imaginary file!",
@@ -32788,7 +36196,7 @@ function printContent(el){
 
   function deletabelbutir(x){
     var butir = "<?php echo $this->uri->segment(2, 0)?>";
-    var delete_url = "<?php echo base_url(); ?>index.php/C_isian/deletabelbutir/"+x+"/"+butir;
+    var delete_url = "<?php echo base_url(); ?>index.php/C_isian3ad3/deletabelbutir_buku/"+x+"/"+butir;
         swal({
             title: "Are you sure?",
             text: "You will not be able to recover this imaginary file!",
@@ -32812,19 +36220,19 @@ function printContent(el){
 
   function deleisi(x){
     var borang = "<?php echo $this->uri->segment(2, 0)?>";
-    if ((borang==1)) {
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolom/"+x+"/"+borang;
-    } else if ((borang==2) || (borang==3) || (borang==4) || (borang==5) || (borang==6) || (borang==7) || (borang==24) || (borang==25) || (borang==26) || (borang==27) || (borang==28)){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian1kolom/"+x+"/"+borang;
-    } else if (borang==8){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian12kolom/"+x+"/"+borang;
-    } else if (borang==9){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian5kolom/"+x+"/"+borang;
-    }else if(borang==15){
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian4kolomsatupersatu/"+x+"/"+borang;
-    }else{
-        var delete_url = "<?php echo base_url(); ?>index.php/C_isian/destroyisian1kolom/"+x+"/"+borang;
-    }
+    // if ((borang==1)) {
+    //     var delete_url = "<?php echo base_url(); ?>index.php/C_isian3ad3/destroyisian4kolom/"+x+"/"+borang;
+    // } else if ((borang==2) || (borang==3) || (borang==4) || (borang==5) || (borang==6) || (borang==7) || (borang==24) || (borang==25) || (borang==26) || (borang==27) || (borang==28)){
+    //     var delete_url = "<?php echo base_url(); ?>index.php/C_isian3ad3/destroyisian1kolom/"+x+"/"+borang;
+    // } else if (borang==8){
+    //     var delete_url = "<?php echo base_url(); ?>index.php/C_isian3ad3/destroyisian12kolom/"+x+"/"+borang;
+    // } else if (borang==9){
+    //     var delete_url = "<?php echo base_url(); ?>index.php/C_isian3ad3/destroyisian5kolom/"+x+"/"+borang;
+    // }else if(borang==15){
+    //     var delete_url = "<?php echo base_url(); ?>index.php/C_isian3ad3/destroyisian4kolomsatupersatu/"+x+"/"+borang;
+    // }else{
+        var delete_url = "<?php echo base_url(); ?>index.php/C_isian3ad3/destroyisian1kolom_buku/"+x+"/"+borang;
+    // }
     
         swal({
             title: "Are you sure?",

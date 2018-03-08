@@ -168,6 +168,7 @@ class C_dokumen extends CI_Controller {
 	public function uploadreferensi()
 	{
 		$id=$_POST['id_butir'];
+		$backlink=$_POST['backlink'];
 		$data = array(
 				'butir' => $this->input->post('butir'),
 				'nama' => $this->input->post('nama'),
@@ -196,7 +197,7 @@ class C_dokumen extends CI_Controller {
                 );
         $this->db->insert('log', $data);
 
-		redirect('/isian_buku/'.$_POST['id_butir']);
+		redirect($backlink.'/'.$id);
 		echo json_encode(array("status" => TRUE));
 	}
 

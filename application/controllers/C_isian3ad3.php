@@ -289,7 +289,7 @@ class C_isian3ad3 extends CI_Controller {
                 $id_bor = $data['butir'][0]['id_borang'];
                 $cariidbutir['carbutr'] = $this->M_isian3ad3->findButirnyasama_buku('id_borang',$id_bor,'butir','3.1.1');
                 $idbutirnya = $cariidbutir['carbutr'][0]['id'];
-                $data['dataisian']=$this->M_isian->findisian311kolom_buku('id_butir',$idbutirnya);
+                $data['dataisian']=$this->M_isian3ad3->findisian311kolom_buku('id_butir',$idbutirnya);
                 $data['dataisianversion']=$this->M_isian3ad3->findisian1kolomversion('id_kolom',$idbutirnya);
                 $data['datadokumenversion']=$this->M_uploadisi->finduploaddokumenversion('id_dokumen',$idbutirnya);
                 $data['datadokumen']=$this->M_uploadisi->finduploaddokumen('id_butir',$id);
@@ -530,7 +530,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir111'];
         $this->M_isian3ad3->insert_isian111_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir111']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir111']);
     }
 
     // 2
@@ -543,7 +543,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir112'];
         $this->M_isian3ad3->insert_isian112_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir112']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir112']);
     }
 
     // 3
@@ -556,7 +556,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir12'];
         $this->M_isian3ad3->insert_isian12_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir12']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir12']);
     }
 
     // 4
@@ -569,7 +569,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir21'];
         $this->M_isian3ad3->insert_isian21_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir21']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir21']);
     }
 
     // 5
@@ -582,7 +582,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir22'];
         $this->M_isian3ad3->insert_isian22_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir22']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir22']);
     }
 
     // 6
@@ -595,7 +595,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir23'];
         $this->M_isian3ad3->insert_isian23_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir23']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir23']);
     }
 
     // 7
@@ -608,7 +608,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir24'];
         $this->M_isian3ad3->insert_isian24_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir24']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir24']);
     }
 
     // 8
@@ -621,7 +621,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir25'];
         $this->M_isian3ad3->insert_isian25_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir25']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir25']);
     }
 
     // 9
@@ -634,7 +634,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir26'];
         $this->M_isian3ad3->insert_isian26_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir26']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir26']);
     }
 
     // 10
@@ -655,7 +655,7 @@ class C_isian3ad3 extends CI_Controller {
         }
 
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir311']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir311']);
     }
 
     // PAKE ARRAY
@@ -663,7 +663,7 @@ class C_isian3ad3 extends CI_Controller {
     {
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
 
         foreach($post['kolom1_311'] AS $key => $val)
         {
@@ -709,7 +709,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir312'];
         $this->M_isian3ad3->insert_isian312_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir312']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir312']);
     }
 
     // PAKE ARRAY
@@ -721,7 +721,7 @@ class C_isian3ad3 extends CI_Controller {
         $this->load->model('M_isian3ad3');
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -770,7 +770,7 @@ class C_isian3ad3 extends CI_Controller {
         }
 
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir313']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir313']);
     }
 
     // PAKE ARRAY
@@ -778,7 +778,7 @@ class C_isian3ad3 extends CI_Controller {
         //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
 
         foreach($post['kolom1_313'] AS $key => $val)
         {
@@ -814,7 +814,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir32'];
         $this->M_isian3ad3->insert_isian32_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir32']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir32']);
     }
 
     // 14
@@ -827,7 +827,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir33'];
         $this->M_isian3ad3->insert_isian33_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir33']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir33']);
     }
 
     // 15
@@ -840,7 +840,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir341'];
         $this->M_isian3ad3->insert_isian341_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir341']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir341']);
     }
 
     // 16
@@ -853,7 +853,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir342'];
         $this->M_isian3ad3->insert_isian342_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir342']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir342']);
     }
 
     // 17
@@ -866,7 +866,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir343'];
         $this->M_isian3ad3->insert_isian343_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir343']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir343']);
     }
 
     // 18
@@ -879,7 +879,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir344'];
         $this->M_isian3ad3->insert_isian344_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir344']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir344']);
     }
 
     // 19
@@ -892,7 +892,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir345'];
         $this->M_isian3ad3->insert_isian345_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir345']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir345']);
     }
 
     // 20
@@ -905,7 +905,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir35'];
         $this->M_isian3ad3->insert_isian35_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir35']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir35']);
     }
 
     // 21
@@ -918,7 +918,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir41'];
         $this->M_isian3ad3->insert_isian41_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir41']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir41']);
     }
 
     // 22
@@ -931,7 +931,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir42'];
         $this->M_isian3ad3->insert_isian42_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir42']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir42']);
     }
 
     // 23
@@ -945,7 +945,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir431'];
         $this->M_isian3ad3->insert_isian431_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir431']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir431']);
     }
 
     // PAKE ARRAY
@@ -953,7 +953,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -998,7 +998,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir432'];
         $this->M_isian3ad3->insert_isian432_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir432']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir432']);
     }
 
     // PAKE ARRAY
@@ -1050,7 +1050,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir433'];
         $this->M_isian3ad3->insert_isian433_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir433']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir433']);
     }
 
     // PAKE ARRAY
@@ -1058,7 +1058,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -1104,7 +1104,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir434'];
         $this->M_isian3ad3->insert_isian434_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir434']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir434']);
     }
 
     // PAKE ARRAY
@@ -1112,7 +1112,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -1156,7 +1156,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir435'];
         $this->M_isian3ad3->insert_isian435_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir435']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir435']);
     }
 
     // PAKE ARRAY
@@ -1164,7 +1164,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -1208,7 +1208,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir441'];
         $this->M_isian3ad3->insert_isian441_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir441']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir441']);
     }
 
     // PAKE ARRAY
@@ -1216,7 +1216,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -1260,7 +1260,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir442'];
         $this->M_isian3ad3->insert_isian442_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir442']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir442']);
     }
 
     // PAKE ARRAY
@@ -1268,7 +1268,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -1312,7 +1312,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir451'];
         $this->M_isian3ad3->insert_isian451_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir451']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir451']);
     }
 
     // PAKE ARRAY
@@ -1320,7 +1320,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
 
         foreach($post['kolom1_451'] AS $key => $val)
         {
@@ -1352,7 +1352,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir452'];
         $this->M_isian3ad3->insert_isian452_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir452']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir452']);
     }
 
     // 32
@@ -1366,7 +1366,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir453'];
         $this->M_isian3ad3->insert_isian453_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir453']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir453']);
     }
 
     // PAKE ARRAY
@@ -1374,7 +1374,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -1416,7 +1416,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir454'];
         $this->M_isian3ad3->insert_isian454_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir454']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir454']);
     }
 
     // PAKE ARRAY
@@ -1424,7 +1424,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -1464,7 +1464,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir455'];
         $this->M_isian3ad3->insert_isian455_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir455']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir455']);
     }
 
     // 35
@@ -1478,7 +1478,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir461'];
         $this->M_isian3ad3->insert_isian461_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir461']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir461']);
     }
 
     // PAKE ARRAY
@@ -1486,7 +1486,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -1531,7 +1531,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir462'];
         $this->M_isian3ad3->insert_isian462_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir462']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir462']);
     }
 
     // 37
@@ -1544,7 +1544,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir511'];
         $this->M_isian3ad3->insert_isian511_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir511']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir511']);
     }
 
     // 38
@@ -1557,7 +1557,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5121'];
         $this->M_isian3ad3->insert_isian5121_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5121']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5121']);
     }
 
     // 39
@@ -1570,7 +1570,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5122'];
         $this->M_isian3ad3->insert_isian5122_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5122']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5122']);
     }
 
     // 40
@@ -1583,7 +1583,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir521'];
         $this->M_isian3ad3->insert_isian521_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir521']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir521']);
     }
 
     // 41
@@ -1596,7 +1596,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir522'];
         $this->M_isian3ad3->insert_isian522_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir522']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir522']);
     }
 
     // 42
@@ -1609,7 +1609,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir523'];
         $this->M_isian3ad3->insert_isian523_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir523']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir523']);
     }
 
     // 43
@@ -1622,7 +1622,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir531'];
         $this->M_isian3ad3->insert_isian531_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir531']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir531']);
     }
 
     // 44
@@ -1635,7 +1635,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir532'];
         $this->M_isian3ad3->insert_isian532_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir532']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir532']);
     }
 
     // 45
@@ -1649,7 +1649,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir541'];
         $this->M_isian3ad3->insert_isian541_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir541']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir541']);
     }
 
     // PAKE ARRAY
@@ -1657,7 +1657,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -1696,7 +1696,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir542'];
         $this->M_isian3ad3->insert_isian542_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir542']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir542']);
     }
 
     // 47
@@ -1709,7 +1709,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir551'];
         $this->M_isian3ad3->insert_isian551_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir551']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir551']);
     }
 
     // 48
@@ -1722,7 +1722,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5521'];
         $this->M_isian3ad3->insert_isian5521_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5521']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5521']);
     }
 
     // 49
@@ -1735,7 +1735,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5522'];
         $this->M_isian3ad3->insert_isian5522_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5522']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5522']);
     }
 
     // 50
@@ -1748,7 +1748,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5523'];
         $this->M_isian3ad3->insert_isian5523_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5523']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5523']);
     }
 
     // 51
@@ -1762,7 +1762,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5524'];
         $this->M_isian3ad3->insert_isian5524_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5524']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5524']);
     }
 
     // PAKE ARRAY
@@ -1770,7 +1770,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -1809,7 +1809,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir56'];
         $this->M_isian3ad3->insert_isian56_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir56']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir56']);
     }
 
     // 53
@@ -1822,7 +1822,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir571'];
         $this->M_isian3ad3->insert_isian571_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir571']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir571']);
     }
 
     // 54
@@ -1835,7 +1835,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir572'];
         $this->M_isian3ad3->insert_isian572_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir572']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir572']);
     }
 
     // 55
@@ -1848,7 +1848,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir573'];
         $this->M_isian3ad3->insert_isian573_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir573']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir573']);
     }
 
     // 56
@@ -1861,7 +1861,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir574'];
         $this->M_isian3ad3->insert_isian574_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir574']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir574']);
     }
 
     // 57
@@ -1874,7 +1874,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir58'];
         $this->M_isian3ad3->insert_isian58_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir58']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir58']);
     }
 
     // 58
@@ -1887,7 +1887,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir59'];
         $this->M_isian3ad3->insert_isian59_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir59']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir59']);
     }
 
     // 59
@@ -1900,7 +1900,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir61'];
         $this->M_isian3ad3->insert_isian61_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir61']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir61']);
     }
 
     // 60
@@ -1913,7 +1913,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir621'];
         $this->M_isian3ad3->insert_isian621_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir621']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir621']);
     }
 
     // 61
@@ -1927,7 +1927,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir622'];
         $this->M_isian3ad3->insert_isian622_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir622']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir622']);
     }
 
     // PAKE ARRAY
@@ -1935,7 +1935,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -1976,7 +1976,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir623'];
         $this->M_isian3ad3->insert_isian623_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir623']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir623']);
     }
 
     // PAKE ARRAY
@@ -1984,7 +1984,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
 
         foreach($post['kolom1_623'] AS $key => $val)
         {
@@ -2017,7 +2017,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir631'];
         $this->M_isian3ad3->insert_isian631_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir631']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir631']);
     }
 
     // 64
@@ -2030,7 +2030,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir632'];
         $this->M_isian3ad3->insert_isian632_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir632']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir632']);
     }
 
     // 65
@@ -2043,7 +2043,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir633'];
         $this->M_isian3ad3->insert_isian633_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir633']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir633']);
     }
 
     // 66
@@ -2056,7 +2056,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir641'];
         $this->M_isian3ad3->insert_isian641_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir641']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir641']);
     }
 
     // 67
@@ -2069,7 +2069,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir642'];
         $this->M_isian3ad3->insert_isian642_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir642']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir642']);
     }
 
     // 68
@@ -2082,7 +2082,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir643'];
         $this->M_isian3ad3->insert_isian643_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir643']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir643']);
     }
 
     // 69
@@ -2095,7 +2095,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir651'];
         $this->M_isian3ad3->insert_isian651_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir651']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir651']);
     }
 
     // 70
@@ -2108,7 +2108,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir652'];
         $this->M_isian3ad3->insert_isian652_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir652']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir652']);
     }
 
     // 71
@@ -2122,7 +2122,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir711'];
         $this->M_isian3ad3->insert_isian711_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir711']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir711']);
     }
 
     // PAKE ARRAY
@@ -2130,7 +2130,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -2186,7 +2186,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir712'];
         $this->M_isian3ad3->insert_isian712_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir712']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir712']);
     }
 
     // PAKE ARRAY
@@ -2194,7 +2194,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -2238,7 +2238,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir713'];
         $this->M_isian3ad3->insert_isian713_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir713']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir713']);
     }
 
     // PAKE ARRAY
@@ -2246,7 +2246,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
         $id = $post['idTS'][0];
         $pilihts = $post['pilihts'][0];
 
@@ -2285,7 +2285,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir721'];
         $this->M_isian3ad3->insert_isian721_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir721']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir721']);
     }
 
     // PAKE ARRAY
@@ -2293,7 +2293,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
 
         foreach($post['kolom1_721'] AS $key => $val)
         {
@@ -2341,7 +2341,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir722'];
         $this->M_isian3ad3->insert_isian722_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir722']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir722']);
     }
 
     // 76
@@ -2355,7 +2355,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir731'];
         $this->M_isian3ad3->insert_isian731_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir731']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir731']);
     }
 
     // PAKE ARRAY
@@ -2363,7 +2363,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
         $post = $this->input->post();
         $result = array();
-        $load = 'isian3ad3_buku';
+        $load = 'isian_buku3ad3';
 
         foreach($post['kolom1_731'] AS $key => $val)
         {
@@ -2402,7 +2402,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir732'];
         $this->M_isian3ad3->insert_isian732_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir732']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir732']);
     }
 
     // PAKE ARRAY
@@ -2410,7 +2410,7 @@ class C_isian3ad3 extends CI_Controller {
     //load needed library,helper,model
     $post = $this->input->post();
     $result = array();
-    $load = 'isian3ad3_buku';
+    $load = 'isian_buku3ad3';
     foreach($post['kolom1_732'] AS $key => $val)
         {
             $result[] = array(
@@ -3845,7 +3845,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir111'];
         $this->M_isian3ad3->update_isian111_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir111']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir111']);
     }
 
     // 2
@@ -3858,7 +3858,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir112'];
         $this->M_isian3ad3->update_isian112_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir112']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir112']);
     }
 
     // 3
@@ -3871,7 +3871,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir12'];
         $this->M_isian3ad3->update_isian12_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir12']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir12']);
     }
 
     // 4
@@ -3884,7 +3884,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir21'];
         $this->M_isian3ad3->update_isian21_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir21']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir21']);
     }
 
     // 5
@@ -3897,7 +3897,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir22'];
         $this->M_isian3ad3->update_isian22_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir22']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir22']);
     }
 
     // 6
@@ -3910,7 +3910,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir23'];
         $this->M_isian3ad3->update_isian23_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir23']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir23']);
     }
 
     // 7
@@ -3923,7 +3923,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir24'];
         $this->M_isian3ad3->update_isian24_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir24']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir24']);
     }
 
     // 8
@@ -3936,7 +3936,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir25'];
         $this->M_isian3ad3->update_isian25_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir25']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir25']);
     }
 
     // 9
@@ -3949,7 +3949,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir26'];
         $this->M_isian3ad3->update_isian26_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir26']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir26']);
     }
 
     // 10
@@ -3959,10 +3959,10 @@ class C_isian3ad3 extends CI_Controller {
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian3ad3');
-        $id=$_POST['id_butir311'];
-        $this->M_isian3ad3->update_isian311_buku();
+        $id=$_POST['id_butir311tabel'];
+        $this->M_isian3ad3->updatetabel311_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir311']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir311tabel']);
     }
 
     // 11
@@ -3972,10 +3972,10 @@ class C_isian3ad3 extends CI_Controller {
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian3ad3');
-        $id=$_POST['id_butir312'];
+        $id=$_POST['id_butir312tabel'];
         $this->M_isian3ad3->update_isian312_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir312']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir312tabel']);
     }
 
     // 12
@@ -3988,7 +3988,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir313'];
         $this->M_isian3ad3->update_isian313_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir313']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir313']);
     }
 
     // 13
@@ -4001,7 +4001,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir32'];
         $this->M_isian3ad3->update_isian32_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir32']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir32']);
     }
 
     // 14
@@ -4014,7 +4014,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir33'];
         $this->M_isian3ad3->update_isian33_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir33']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir33']);
     }
 
     // 15
@@ -4027,7 +4027,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir341'];
         $this->M_isian3ad3->update_isian341_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir341']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir341']);
     }
 
     // 16
@@ -4040,7 +4040,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir342'];
         $this->M_isian3ad3->update_isian342_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir342']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir342']);
     }
 
     // 17
@@ -4053,7 +4053,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir343'];
         $this->M_isian3ad3->update_isian343_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir343']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir343']);
     }
 
     // 18
@@ -4066,7 +4066,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir344'];
         $this->M_isian3ad3->update_isian344_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir344']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir344']);
     }
 
     // 19
@@ -4079,7 +4079,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir345'];
         $this->M_isian3ad3->update_isian345_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir345']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir345']);
     }
 
     // 20
@@ -4092,7 +4092,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir35'];
         $this->M_isian3ad3->update_isian35_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir35']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir35']);
     }
 
     // 21
@@ -4105,7 +4105,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir41'];
         $this->M_isian3ad3->update_isian41_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir41']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir41']);
     }
 
     // 22
@@ -4118,7 +4118,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir42'];
         $this->M_isian3ad3->update_isian42_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir42']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir42']);
     }
 
     // 23
@@ -4131,7 +4131,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir431'];
         $this->M_isian3ad3->update_isian431_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir431']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir431']);
     }
 
     // 24
@@ -4144,7 +4144,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir432'];
         $this->M_isian3ad3->update_isian432_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir432']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir432']);
     }
 
     // 25
@@ -4157,7 +4157,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir433'];
         $this->M_isian3ad3->update_isian433_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir433']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir433']);
     }
 
     // 26
@@ -4170,7 +4170,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir434'];
         $this->M_isian3ad3->update_isian434_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir434']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir434']);
     }
 
     // 27
@@ -4183,7 +4183,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir435'];
         $this->M_isian3ad3->update_isian435_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir435']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir435']);
     }
 
     // 28
@@ -4196,7 +4196,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir441'];
         $this->M_isian3ad3->update_isian441_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir441']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir441']);
     }
 
     // 29
@@ -4209,7 +4209,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir442'];
         $this->M_isian3ad3->update_isian442_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir442']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir442']);
     }
 
     // 30
@@ -4222,7 +4222,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir451'];
         $this->M_isian3ad3->update_isian451_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir451']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir451']);
     }
 
     // 31
@@ -4235,7 +4235,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir452'];
         $this->M_isian3ad3->update_isian452_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir452']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir452']);
     }
 
     // 32
@@ -4248,7 +4248,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir453'];
         $this->M_isian3ad3->update_isian453_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir453']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir453']);
     }
 
     // 33
@@ -4261,7 +4261,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir454'];
         $this->M_isian3ad3->update_isian454_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir454']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir454']);
     }
 
     // 34
@@ -4274,7 +4274,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir455'];
         $this->M_isian3ad3->update_isian455_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir455']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir455']);
     }
 
     // 35
@@ -4287,7 +4287,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir461'];
         $this->M_isian3ad3->update_isian461_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir461']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir461']);
     }
 
     // 36
@@ -4300,7 +4300,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir462'];
         $this->M_isian3ad3->update_isian462_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir462']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir462']);
     }
 
     // 37
@@ -4313,7 +4313,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir511'];
         $this->M_isian3ad3->update_isian511_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir511']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir511']);
     }
 
     // 38
@@ -4326,7 +4326,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5121'];
         $this->M_isian3ad3->update_isian5121_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5121']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5121']);
     }
 
     // 39
@@ -4339,7 +4339,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5122'];
         $this->M_isian3ad3->update_isian5122_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5122']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5122']);
     }
 
     // 40
@@ -4352,7 +4352,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir521'];
         $this->M_isian3ad3->update_isian521_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir521']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir521']);
     }
 
     // 41
@@ -4365,7 +4365,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir522'];
         $this->M_isian3ad3->update_isian522_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir522']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir522']);
     }
 
     // 42
@@ -4378,7 +4378,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir523'];
         $this->M_isian3ad3->update_isian523_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir523']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir523']);
     }
 
     // 43
@@ -4391,7 +4391,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir531'];
         $this->M_isian3ad3->update_isian531_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir531']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir531']);
     }
 
     // 44
@@ -4404,7 +4404,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir532'];
         $this->M_isian3ad3->update_isian532_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir532']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir532']);
     }
 
     // 45
@@ -4417,7 +4417,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir541'];
         $this->M_isian3ad3->update_isian541_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir541']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir541']);
     }
 
     // 46
@@ -4430,7 +4430,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir542'];
         $this->M_isian3ad3->update_isian542_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir542']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir542']);
     }
 
     // 47
@@ -4443,7 +4443,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir551'];
         $this->M_isian3ad3->update_isian551_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir551']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir551']);
     }
 
     // 48
@@ -4456,7 +4456,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5521'];
         $this->M_isian3ad3->update_isian5521_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5521']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5521']);
     }
 
     // 49
@@ -4469,7 +4469,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5522'];
         $this->M_isian3ad3->update_isian5522_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5522']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5522']);
     }
 
     // 50
@@ -4482,7 +4482,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5523'];
         $this->M_isian3ad3->update_isian5523_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5523']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5523']);
     }
 
     // 51
@@ -4495,7 +4495,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir5524'];
         $this->M_isian3ad3->update_isian5524_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir5524']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir5524']);
     }
 
     // 52
@@ -4508,7 +4508,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir56'];
         $this->M_isian3ad3->update_isian56_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir56']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir56']);
     }
 
     // 53
@@ -4521,7 +4521,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir571'];
         $this->M_isian3ad3->update_isian571_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir571']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir571']);
     }
 
     // 54
@@ -4534,7 +4534,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir572'];
         $this->M_isian3ad3->update_isian572_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir572']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir572']);
     }
 
     // 55
@@ -4547,7 +4547,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir573'];
         $this->M_isian3ad3->update_isian573_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir573']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir573']);
     }
 
     // 56
@@ -4560,7 +4560,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir574'];
         $this->M_isian3ad3->update_isian574_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir574']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir574']);
     }
 
     // 57
@@ -4573,7 +4573,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir58'];
         $this->M_isian3ad3->update_isian58_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir58']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir58']);
     }
 
     // 58
@@ -4586,7 +4586,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir59'];
         $this->M_isian3ad3->update_isian59_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir59']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir59']);
     }
 
     // 59
@@ -4599,7 +4599,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir61'];
         $this->M_isian3ad3->update_isian61_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir61']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir61']);
     }
 
     // 60
@@ -4612,7 +4612,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir621'];
         $this->M_isian3ad3->update_isian621_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir621']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir621']);
     }
 
     // 61
@@ -4625,7 +4625,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir622'];
         $this->M_isian3ad3->update_isian622_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir622']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir622']);
     }
 
     // 62
@@ -4638,7 +4638,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir623'];
         $this->M_isian3ad3->update_isian623_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir623']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir623']);
     }
 
     // 63
@@ -4651,7 +4651,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir631'];
         $this->M_isian3ad3->update_isian631_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir631']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir631']);
     }
 
     // 64
@@ -4664,7 +4664,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir632'];
         $this->M_isian3ad3->update_isian632_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir632']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir632']);
     }
 
     // 65
@@ -4677,7 +4677,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir633'];
         $this->M_isian3ad3->update_isian633_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir633']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir633']);
     }
 
     // 66
@@ -4690,7 +4690,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir641'];
         $this->M_isian3ad3->update_isian641_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir641']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir641']);
     }
 
     // 67
@@ -4703,7 +4703,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir642'];
         $this->M_isian3ad3->update_isian642_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir642']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir642']);
     }
 
     // 68
@@ -4716,7 +4716,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir643'];
         $this->M_isian3ad3->update_isian643_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir643']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir643']);
     }
 
     // 69
@@ -4729,7 +4729,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir651'];
         $this->M_isian3ad3->update_isian651_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir651']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir651']);
     }
 
     // 70
@@ -4742,7 +4742,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir652'];
         $this->M_isian3ad3->update_isian652_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir652']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir652']);
     }
 
     // 71
@@ -4755,7 +4755,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir711'];
         $this->M_isian3ad3->update_isian711_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir711']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir711']);
     }
 
     // 72
@@ -4768,7 +4768,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir712'];
         $this->M_isian3ad3->update_isian712_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir712']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir712']);
     }
 
     // 73
@@ -4781,7 +4781,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir713'];
         $this->M_isian3ad3->update_isian713_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir713']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir713']);
     }
 
     // 74
@@ -4794,7 +4794,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir721'];
         $this->M_isian3ad3->update_isian721_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir721']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir721']);
     }
 
     // 75
@@ -4807,11 +4807,11 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir722'];
         $this->M_isian3ad3->update_isian722_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir722']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir722']);
     }
 
     // 76
-    public function ngisi731_buku(){
+    public function updateisian731_buku(){
         //load needed library,helper,model
         $this->load->library('form_validation');
         $this->load->model('M_butir');
@@ -4820,11 +4820,11 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir731'];
         $this->M_isian3ad3->insert_isian731_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir731']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir731']);
     }
 
     // 77
-    public function ngisi732_buku(){
+    public function updateisian732_buku(){
         //load needed library,helper,model
         $this->load->library('form_validation');
         $this->load->model('M_butir');
@@ -4833,7 +4833,7 @@ class C_isian3ad3 extends CI_Controller {
         $id=$_POST['id_butir732'];
         $this->M_isian3ad3->insert_isian732_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian3ad3_buku/'.$_POST['id_butir732']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir732']);
     }
 
 
@@ -6121,7 +6121,7 @@ class C_isian3ad3 extends CI_Controller {
             echo json_encode('failed');
         }
         // redirect('butir/'.$idbut);
-        redirect('isian3ad3_buku/'.$borang);
+        redirect('isian_buku3ad3/'.$borang);
     }
 
     // DELETE ISIAN DENGAN 2 KOLOM SESIAI FORMAT PENILAIAN EXCEL
@@ -6166,7 +6166,7 @@ class C_isian3ad3 extends CI_Controller {
             echo json_encode('failed');
         }
         // redirect('butir/'.$idbut);
-        redirect('isian3ad3_buku/'.$borang);
+        redirect('isian_buku3ad3/'.$borang);
     }
 
     // DELETE ISIAN DENGAN 12 KOLOM SESUAI DENGAN FORMAT PENILAIAN EXCEL
@@ -6237,7 +6237,7 @@ class C_isian3ad3 extends CI_Controller {
         }else{
             echo json_encode('failed');
         }
-        redirect('isian3ad3_buku/'.$borang);
+        redirect('isian_buku3ad3/'.$borang);
     }
 // TUTUP QUERY DELETE ISIAN
 

@@ -317,6 +317,11 @@ class M_isian extends CI_Model {
                 $data = array(
                         'id_butir' => $this->input->post('id_butir23'),
                         'kolom1' => $this->input->post('kolom1_23'),
+                        'kolom2' => $this->input->post('kolom2_23'),
+                        'kolom3' => $this->input->post('kolom3_23'),
+                        'kolom4' => $this->input->post('kolom4_23'),
+                        'kolom5' => $this->input->post('kolom5_23'),
+                        'kolom6' => $this->input->post('kolom6_23'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -327,6 +332,11 @@ class M_isian extends CI_Model {
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir23'),
                         'kolom1' => $this->input->post('kolom1_23'),
+                        'kolom2' => $this->input->post('kolom2_23'),
+                        'kolom3' => $this->input->post('kolom3_23'),
+                        'kolom4' => $this->input->post('kolom4_23'),
+                        'kolom5' => $this->input->post('kolom5_23'),
+                        'kolom6' => $this->input->post('kolom6_23'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -5728,6 +5738,11 @@ class M_isian extends CI_Model {
                  $data = array(
                         'id_butir' => $this->input->post('id_butir23'),
                         'kolom1' => $this->input->post('kolom1_23'),
+                        'kolom2' => $this->input->post('kolom2_23'),
+                        'kolom3' => $this->input->post('kolom3_23'),
+                        'kolom4' => $this->input->post('kolom4_23'),
+                        'kolom5' => $this->input->post('kolom5_23'),
+                        'kolom6' => $this->input->post('kolom6_23'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -5737,6 +5752,11 @@ class M_isian extends CI_Model {
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir23'),
                         'kolom1' => $this->input->post('kolom1_23'),
+                        'kolom2' => $this->input->post('kolom2_23'),
+                        'kolom3' => $this->input->post('kolom3_23'),
+                        'kolom4' => $this->input->post('kolom4_23'),
+                        'kolom5' => $this->input->post('kolom5_23'),
+                        'kolom6' => $this->input->post('kolom6_23'),
                         'version_no' => $new_version,
                         'created_at'=> date($this->input->post('created_at23')),
                         'updated_at'=> date('Y-m-d H:i:s'),

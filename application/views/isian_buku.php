@@ -3441,12 +3441,62 @@
                         <h2 class="card-inside-title">Sistem Pengelolaan&nbsp;
                         <button type="button" onclick="infoPengelolaan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                         <h2 class="card-inside-title">Sistem pengelolaan fungsional dan operasional program studi mencakup planning, organizing, staffing, leading, controlling dalam kegiatan  internal maupun eksternal.</h2>
-                        <h2 class="card-inside-title">Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</h2>
+                        <h2 class="card-inside-title">A. Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <textarea name="kolom1_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">B. Perencanaan </h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom2'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">C. Pengorganisasian</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom3'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">D. Staffing</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom4'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">E. Leading</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom5_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom5'] ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">F. Controlling</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom6_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom6'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -3463,7 +3513,7 @@
                         <h2 class="card-inside-title">Sistem Pengelolaan&nbsp;
                         <button type="button" onclick="infoPengelolaan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
                          <h2 class="card-inside-title">Sistem pengelolaan fungsional dan operasional program studi mencakup planning, organizing, staffing, leading, controlling dalam kegiatan  internal maupun eksternal.</h2>
-                        <h2 class="card-inside-title">Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</h2>
+                        <h2 class="card-inside-title">A. Jelaskan sistem pengelolaan Program Studi serta dokumen pendukungnya.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -3690,6 +3740,17 @@
                                                 </table>
                                                 <p>(Download seluruh SOP Universitas Telkom)</p>
                                                 <p>&nbsp;</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">B. Perencanaan </h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom2_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                                 <h3><strong>B. </strong><strong>Perencanaan </strong></h3>
                                                 <p>Pada sub standar ini, dibuatkan list seluruh aktivitas di Program Studi yang masuk ke dalam aktivitas Planning:</p>
                                                 <p>&nbsp;</p>
@@ -3701,6 +3762,17 @@
                                                 <li>List aktifitas penting prodi dalam lingkup perencanaan (bisa dilihat dari tabel SOP yang sudah di list sebelumnya</li>
                                                 </ol>
                                                 <p>&nbsp;</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">C. Pengorganisasian</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom3_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                                 <h3><strong>C. </strong><strong>Pengorganisasian</strong></h3>
                                                 <p>&nbsp;</p>
                                                 <p>Pada sub standar ini, dibuatkan list seluruh aktivitas di Program Studi yang masuk ke dalam aktivitas Organizing dan Staffing</p>
@@ -3714,6 +3786,17 @@
                                                 <li>Dst&hellip;</li>
                                                 </ol>
                                                 <p>&nbsp;</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">D. Staffing</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom4_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                                 <h3><strong>D. </strong><strong>Staffing</strong></h3>
                                                 <p>Adapun konten yang harus diperhatikan dalam penyusunan sub standar antara lain:</p>
                                                 <ol>
@@ -3724,6 +3807,17 @@
                                                 <li>dst</li>
                                                 </ol>
                                                 <p>&nbsp;</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">E. Leading</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom5_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                                 <h3><strong>E. </strong><strong>Leading</strong></h3>
                                                 <p>Pada sub standar ini dibuatkan list seluruh aktivitas di Program Studi yang masuk ke dalam aktivitas Leading:</p>
                                                 <ol>
@@ -3736,6 +3830,17 @@
                                                 </ol>
                                                 <p>&nbsp;</p>
                                                 <p>&nbsp;</p>
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <h2 class="card-inside-title">F. Controlling</h2>
+                        <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom6_23" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
                                                 <h3><strong>F. </strong><strong>Controlling</strong></h3>
                                                 <p>&nbsp;</p>
                                                 <p>Pada sub standar ini dibuatkan list seluruh aktivitas di Program Studi yang masuk ke dalam aktivitas Controlling (Monitoring dan Evaluasi):</p>
@@ -42816,6 +42921,7 @@
                     echo form_open_multipart('C_dokumen/uploadreferensi', $attributes);
                 ?>
                 <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                <input type="hidden" name="backlink" value="<?php echo $this->uri->segment(1, 0); ?>">
                 <input type="hidden" name="butir" value="<?php echo $butir[0]['butir']?>">
                     <div class="row clearfix">
                         <div class="col-sm-12">
