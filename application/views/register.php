@@ -28,7 +28,7 @@
 <body class="signup-page">
     <div class="signup-box">
         <div class="logo">
-            <a href="javascript:void(0);">Admin<b>BORANG</b></a>
+            <a href="javascript:void(0);">TEL-U&nbsp;<b>ONBOARD</b></a>
             <small>Aplikasi Borang Universitas Online</small>
         </div>
         <div class="card">
