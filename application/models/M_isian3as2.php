@@ -1316,6 +1316,92 @@ class M_isian3as2 extends CI_Model {
                 $this->db->insert('log', $data);
         }
 
+        // 44
+        public function insert_isian4542_buku()
+        {
+                $data = array(
+                        'id_butir' => $this->input->post('id_butir4542'),
+                        'kolom1' => $this->input->post('kolom1_4542'),
+                        'kolom2' => $this->input->post('kolom2_4542'),
+                        'kolom3' => $this->input->post('kolom3_4542'),
+                        'kolom4' => $this->input->post('kolom4_4542'),
+                        'kolom5' => $this->input->post('kolom5_4542'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                // $this->db->insert('isian_1kolom', $data);
+                $this->db->insert('isian_16kolom_buku', $data);
+
+                $data = array(
+                        'id_kolom' => $this->input->post('id_butir4542'),
+                        'kolom1' => $this->input->post('kolom1_4542'),
+                        'kolom2' => $this->input->post('kolom2_4542'),
+                        'kolom3' => $this->input->post('kolom3_4542'),
+                        'kolom4' => $this->input->post('kolom4_4542'),
+                        'kolom5' => $this->input->post('kolom5_4542'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                $this->db->insert('isian_16kolom_version', $data);
+                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir4542'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 44
+        public function insert_isian4543_buku()
+        {
+                $data = array(
+                        'id_butir' => $this->input->post('id_butir4543'),
+                        'kolom1' => $this->input->post('kolom1_4543'),
+                        'kolom2' => $this->input->post('kolom2_4543'),
+                        'kolom3' => $this->input->post('kolom3_4543'),
+                        'kolom4' => $this->input->post('kolom4_4543'),
+                        'kolom5' => $this->input->post('kolom5_4543'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                // $this->db->insert('isian_1kolom', $data);
+                $this->db->insert('isian_16kolom_buku', $data);
+
+                $data = array(
+                        'id_kolom' => $this->input->post('id_butir4543'),
+                        'kolom1' => $this->input->post('kolom1_4543'),
+                        'kolom2' => $this->input->post('kolom2_4543'),
+                        'kolom3' => $this->input->post('kolom3_4543'),
+                        'kolom4' => $this->input->post('kolom4_4543'),
+                        'kolom5' => $this->input->post('kolom5_4543'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                $this->db->insert('isian_16kolom_version', $data);
+                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir4543'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
         // 45
         public function insert_isian455_buku()
         {
@@ -1454,6 +1540,154 @@ class M_isian3as2 extends CI_Model {
                 $this->db->insert('log', $data);
         }
 
+        // 28 29
+        public function insert_isian462_buku()
+        {
+                $data = array(
+                        'id_butir' => $this->input->post('id_butir462'),
+                        'kolom1' => $this->input->post('kolom1_462'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                // $this->db->insert('isian_1kolom', $data);
+                $this->db->insert('isian_16kolom_buku', $data);
+
+                $data = array(
+                        'id_kolom' => $this->input->post('id_butir462'),
+                        'kolom1' => $this->input->post('kolom1_462'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                $this->db->insert('isian_16kolom_version', $data);
+                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir462'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 28 29
+        public function insert_isian511_buku()
+        {
+                $data = array(
+                        'id_butir' => $this->input->post('id_butir511'),
+                        'kolom1' => $this->input->post('kolom1_511'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                // $this->db->insert('isian_1kolom', $data);
+                $this->db->insert('isian_16kolom_buku', $data);
+
+                $data = array(
+                        'id_kolom' => $this->input->post('id_butir511'),
+                        'kolom1' => $this->input->post('kolom1_511'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                $this->db->insert('isian_16kolom_version', $data);
+                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir511'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 28 29
+        public function insert_isian5121_buku()
+        {
+                $data = array(
+                        'id_butir' => $this->input->post('id_butir5121'),
+                        'kolom1' => $this->input->post('kolom1_5121'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                // $this->db->insert('isian_1kolom', $data);
+                $this->db->insert('isian_16kolom_buku', $data);
+
+                $data = array(
+                        'id_kolom' => $this->input->post('id_butir5121'),
+                        'kolom1' => $this->input->post('kolom1_5121'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                $this->db->insert('isian_16kolom_version', $data);
+                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir5121'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 44
+        public function insert_isian5122_buku()
+        {
+                $data = array(
+                        'id_butir' => $this->input->post('id_butir5122'),
+                        'kolom1' => $this->input->post('kolom1_5122'),
+                        'kolom2' => $this->input->post('kolom2_5122'),
+                        'kolom3' => $this->input->post('kolom3_5122'),
+                        'kolom4' => $this->input->post('kolom4_5122'),
+                        'kolom5' => $this->input->post('kolom5_5122'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                // $this->db->insert('isian_1kolom', $data);
+                $this->db->insert('isian_16kolom_buku', $data);
+
+                $data = array(
+                        'id_kolom' => $this->input->post('id_butir5122'),
+                        'kolom1' => $this->input->post('kolom1_5122'),
+                        'kolom2' => $this->input->post('kolom2_5122'),
+                        'kolom3' => $this->input->post('kolom3_5122'),
+                        'kolom4' => $this->input->post('kolom4_5122'),
+                        'kolom5' => $this->input->post('kolom5_5122'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                $this->db->insert('isian_16kolom_version', $data);
+                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir5122'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
         // 62 63 64
         public function insert_isian541_buku()
         {
@@ -1489,6 +1723,53 @@ class M_isian3as2 extends CI_Model {
                 $data = array(
                         'user'=> $_SESSION['name'],
                         'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir541'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 62 63 64
+        public function insert_isian542_buku()
+        {
+                $data = array(
+                        'id_butir' => $this->input->post('id_butir542'),
+                        'kolom1' => $this->input->post('kolom1_542'),
+                        'kolom2' => $this->input->post('kolom2_542'),
+                        'kolom3' => $this->input->post('kolom3_542'),
+                        'kolom4' => $this->input->post('kolom4_542'),
+                        'kolom5' => $this->input->post('kolom5_542'),
+                        'kolom6' => $this->input->post('kolom6_542'),
+                        'kolom7' => $this->input->post('kolom7_542'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                // $this->db->insert('isian_1kolom', $data);
+                $this->db->insert('isian_16kolom_buku', $data);
+
+                $data = array(
+                        'id_kolom' => $this->input->post('id_butir542'),
+                        'kolom1' => $this->input->post('kolom1_542'),
+                        'kolom2' => $this->input->post('kolom2_542'),
+                        'kolom3' => $this->input->post('kolom3_542'),
+                        'kolom4' => $this->input->post('kolom4_542'),
+                        'kolom5' => $this->input->post('kolom5_542'),
+                        'kolom6' => $this->input->post('kolom6_542'),
+                        'kolom7' => $this->input->post('kolom7_542'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                $this->db->insert('isian_16kolom_version', $data);
+                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir542'),
                         'created_at'=> date('Y-m-d H:i:s')
                 );
 
@@ -1622,6 +1903,47 @@ class M_isian3as2 extends CI_Model {
                 $this->db->insert('log', $data);
         }
 
+        // 80
+        public function insert_isian624_buku()
+        {
+                $data = array(
+                        'id_butir' => $this->input->post('id_butir624'),
+                        'kolom1' => $this->input->post('kolom1_624'),
+                        'kolom2' => $this->input->post('kolom2_624'),
+                        'kolom3' => $this->input->post('kolom3_624'),
+                        'kolom4' => $this->input->post('kolom4_624'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                // $this->db->insert('isian_1kolom', $data);
+                $this->db->insert('isian_16kolom_buku', $data);
+
+                $data = array(
+                        'id_kolom' => $this->input->post('id_butir624'),
+                        'kolom1' => $this->input->post('kolom1_624'),
+                        'kolom2' => $this->input->post('kolom2_624'),
+                        'kolom3' => $this->input->post('kolom3_624'),
+                        'kolom4' => $this->input->post('kolom4_624'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                $this->db->insert('isian_16kolom_version', $data);
+                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir624'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
         
         // 93
         public function insert_isian711_buku()
@@ -1747,12 +2069,31 @@ class M_isian3as2 extends CI_Model {
         }
 
         
-        // 96
+        // 93
         public function insert_isian714_buku()
         {
                 $data = array(
                         'id_butir' => $this->input->post('id_butir714'),
                         'kolom1' => $this->input->post('kolom1_714'),
+                        'kolom2' => $this->input->post('kolom2_714'),
+                        'kolom3' => $this->input->post('kolom3_714'),
+                        'kolom4' => $this->input->post('kolom4_714'),
+                        'kolom5' => $this->input->post('kolom5_714'),
+                        'kolom6' => $this->input->post('kolom6_714'),
+                        'kolom7' => $this->input->post('kolom7_714'),
+                        'kolom8' => $this->input->post('kolom8_714'),
+                        'kolom9' => $this->input->post('kolom9_714'),
+                        'kolom10' => $this->input->post('kolom10_714'),
+                        'kolom11' => $this->input->post('kolom11_714'),
+                        'kolom12' => $this->input->post('kolom12_714'),
+                        'kolom13' => $this->input->post('kolom13_714'),
+                        'kolom14' => $this->input->post('kolom14_714'),
+                        'kolom15' => $this->input->post('kolom15_714'),
+                        'kolom16' => $this->input->post('kolom16_714'),
+                        'kolom17' => $this->input->post('kolom17_714'),
+                        'kolom18' => $this->input->post('kolom18_714'),
+                        'kolom19' => $this->input->post('kolom19_714'),
+                        'kolom20' => $this->input->post('kolom20_714'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -1764,6 +2105,25 @@ class M_isian3as2 extends CI_Model {
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir714'),
                         'kolom1' => $this->input->post('kolom1_714'),
+                        'kolom2' => $this->input->post('kolom2_714'),
+                        'kolom3' => $this->input->post('kolom3_714'),
+                        'kolom4' => $this->input->post('kolom4_714'),
+                        'kolom5' => $this->input->post('kolom5_714'),
+                        'kolom6' => $this->input->post('kolom6_714'),
+                        'kolom7' => $this->input->post('kolom7_714'),
+                        'kolom8' => $this->input->post('kolom8_714'),
+                        'kolom9' => $this->input->post('kolom9_714'),
+                        'kolom10' => $this->input->post('kolom10_714'),
+                        'kolom11' => $this->input->post('kolom11_714'),
+                        'kolom12' => $this->input->post('kolom12_714'),
+                        'kolom13' => $this->input->post('kolom13_714'),
+                        'kolom14' => $this->input->post('kolom14_714'),
+                        'kolom15' => $this->input->post('kolom15_714'),
+                        'kolom16' => $this->input->post('kolom16_714'),
+                        'kolom17' => $this->input->post('kolom17_714'),
+                        'kolom18' => $this->input->post('kolom18_714'),
+                        'kolom19' => $this->input->post('kolom19_714'),
+                        'kolom20' => $this->input->post('kolom20_714'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -1783,6 +2143,95 @@ class M_isian3as2 extends CI_Model {
         }
 
         
+        // 95
+        public function insert_isian715_buku()
+        {
+                $data = array(
+                        'id_butir' => $this->input->post('id_butir715'),
+                        'kolom1' => $this->input->post('kolom1_715'),
+                        'kolom2' => $this->input->post('kolom2_715'),
+                        'kolom3' => $this->input->post('kolom3_715'),
+                        'kolom4' => $this->input->post('kolom4_715'),
+                        'kolom5' => $this->input->post('kolom5_715'),
+                        'kolom6' => $this->input->post('kolom6_715'),
+                        'kolom7' => $this->input->post('kolom7_715'),
+                        'kolom8' => $this->input->post('kolom8_715'),
+                        'kolom9' => $this->input->post('kolom9_715'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                // $this->db->insert('isian_1kolom', $data);
+                $this->db->insert('isian_16kolom_buku', $data);
+
+                $data = array(
+                        'id_kolom' => $this->input->post('id_butir715'),
+                        'kolom1' => $this->input->post('kolom1_715'),
+                        'kolom2' => $this->input->post('kolom2_715'),
+                        'kolom3' => $this->input->post('kolom3_715'),
+                        'kolom4' => $this->input->post('kolom4_715'),
+                        'kolom5' => $this->input->post('kolom5_715'),
+                        'kolom6' => $this->input->post('kolom6_715'),
+                        'kolom7' => $this->input->post('kolom7_715'),
+                        'kolom8' => $this->input->post('kolom8_715'),
+                        'kolom9' => $this->input->post('kolom9_715'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                $this->db->insert('isian_16kolom_version', $data);
+                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir715'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        
+        // 96
+        public function insert_isian717_buku()
+        {
+                $data = array(
+                        'id_butir' => $this->input->post('id_butir717'),
+                        'kolom1' => $this->input->post('kolom1_717'),
+                        'kolom2' => $this->input->post('kolom2_717'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                // $this->db->insert('isian_1kolom', $data);
+                $this->db->insert('isian_16kolom_buku', $data);
+
+                $data = array(
+                        'id_kolom' => $this->input->post('id_butir717'),
+                        'kolom1' => $this->input->post('kolom1_717'),
+                        'kolom2' => $this->input->post('kolom2_717'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                $this->db->insert('isian_16kolom_version', $data);
+                // $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                // $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir717'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
         // 97
         public function insert_isian721_buku()
         {
@@ -6850,6 +7299,84 @@ class M_isian3as2 extends CI_Model {
                 $this->db->insert('log', $data);
         }
 
+        // 44
+        public function update_isian4542_buku()
+        {
+            $last_version = $this->input->post('version_no');
+            $new_version = $last_version + 1;
+                 $data = array(
+                        'kolom1' => $this->input->post('kolom1_4542'),
+                        'kolom2' => $this->input->post('kolom2_4542'),
+                        'kolom3' => $this->input->post('kolom3_4542'),
+                        'kolom4' => $this->input->post('kolom4_4542'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->update('isian_2kolom', $data, array('id' => $this->input->post('id')));
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id4542')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir4542tabel'),
+                        'kolom1' => $this->input->post('kolom1_4542'),
+                        'kolom2' => $this->input->post('kolom2_4542'),
+                        'kolom3' => $this->input->post('kolom3_4542'),
+                        'kolom4' => $this->input->post('kolom4_4542'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_2kolom_version', $data);
+                 $this->db->insert('isian_16kolom_version', $data);
+                 $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir4542tabel'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 44
+        public function update_isian4543_buku()
+        {
+            $last_version = $this->input->post('version_no');
+            $new_version = $last_version + 1;
+                 $data = array(
+                        'kolom1' => $this->input->post('kolom1_4543'),
+                        'kolom2' => $this->input->post('kolom2_4543'),
+                        'kolom3' => $this->input->post('kolom3_4543'),
+                        'kolom4' => $this->input->post('kolom4_4543'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->update('isian_2kolom', $data, array('id' => $this->input->post('id')));
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id4543')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir4543tabel'),
+                        'kolom1' => $this->input->post('kolom1_4543'),
+                        'kolom2' => $this->input->post('kolom2_4543'),
+                        'kolom3' => $this->input->post('kolom3_4543'),
+                        'kolom4' => $this->input->post('kolom4_4543'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_2kolom_version', $data);
+                 $this->db->insert('isian_16kolom_version', $data);
+                 $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir4543tabel'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
         // 45
         public function update_isian455_buku()
         {
@@ -6980,6 +7507,152 @@ class M_isian3as2 extends CI_Model {
                 $this->db->insert('log', $data);
         }
 
+        // 28
+        public function update_isian462_buku()
+        {
+            $last_version = $this->input->post('version_no462');
+            $new_version = $last_version + 1;
+                 $data = array(
+                        'id_butir' => $this->input->post('id_butir462'),
+                        'kolom1' => $this->input->post('kolom1_462'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id462')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir462'),
+                        'kolom1' => $this->input->post('kolom1_462'),
+                        'version_no' => $new_version,
+                        'created_at'=> date($this->input->post('created_at462')),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                 $this->db->insert('isian_16kolom_version', $data);
+                $this->db->query('ALTER TABLE isian_16kolom_buku AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian dari butir : ".$this->input->post('id_butir462'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 28
+        public function update_isian511_buku()
+        {
+            $last_version = $this->input->post('version_no511');
+            $new_version = $last_version + 1;
+                 $data = array(
+                        'id_butir' => $this->input->post('id_butir511'),
+                        'kolom1' => $this->input->post('kolom1_511'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id511')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir511'),
+                        'kolom1' => $this->input->post('kolom1_511'),
+                        'version_no' => $new_version,
+                        'created_at'=> date($this->input->post('created_at511')),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                 $this->db->insert('isian_16kolom_version', $data);
+                $this->db->query('ALTER TABLE isian_16kolom_buku AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian dari butir : ".$this->input->post('id_butir511'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 28
+        public function update_isian5121_buku()
+        {
+            $last_version = $this->input->post('version_no5121');
+            $new_version = $last_version + 1;
+                 $data = array(
+                        'id_butir' => $this->input->post('id_butir5121'),
+                        'kolom1' => $this->input->post('kolom1_5121'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->update('isian_1kolom', $data, array('id' => $this->input->post('id')));
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id5121')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir5121'),
+                        'kolom1' => $this->input->post('kolom1_5121'),
+                        'version_no' => $new_version,
+                        'created_at'=> date($this->input->post('created_at5121')),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_1kolom_version', $data);
+                 $this->db->insert('isian_16kolom_version', $data);
+                $this->db->query('ALTER TABLE isian_16kolom_buku AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian dari butir : ".$this->input->post('id_butir5121'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 44
+        public function update_isian5122_buku()
+        {
+            $last_version = $this->input->post('version_no');
+            $new_version = $last_version + 1;
+                 $data = array(
+                        'kolom1' => $this->input->post('kolom1_5122'),
+                        'kolom2' => $this->input->post('kolom2_5122'),
+                        'kolom3' => $this->input->post('kolom3_5122'),
+                        'kolom4' => $this->input->post('kolom4_5122'),
+                        'kolom5' => $this->input->post('kolom5_5122'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->update('isian_2kolom', $data, array('id' => $this->input->post('id')));
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id5122')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir5122tabel'),
+                        'kolom1' => $this->input->post('kolom1_5122'),
+                        'kolom2' => $this->input->post('kolom2_5122'),
+                        'kolom3' => $this->input->post('kolom3_5122'),
+                        'kolom4' => $this->input->post('kolom4_5122'),
+                        'kolom5' => $this->input->post('kolom5_5122'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_2kolom_version', $data);
+                 $this->db->insert('isian_16kolom_version', $data);
+                 $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir5122tabel'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
         // 62 63 64
         public function update_isian541_buku()
         {
@@ -7011,6 +7684,47 @@ class M_isian3as2 extends CI_Model {
                 $data = array(
                         'user'=> $_SESSION['name'],
                         'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir541tabel'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 62 63 64
+        public function update_isian542_buku()
+        {
+            $last_version = $this->input->post('version_no');
+            $new_version = $last_version + 1;
+                 $data = array(
+                        'kolom1' => $this->input->post('kolom1_542'),
+                        'kolom2' => $this->input->post('kolom2_542'),
+                        'kolom3' => $this->input->post('kolom3_542'),
+                        'kolom4' => $this->input->post('kolom4_542'),
+                        'kolom5' => $this->input->post('kolom5_542'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->update('isian_2kolom', $data, array('id' => $this->input->post('id')));
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id542')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir542tabel'),
+                        'kolom1' => $this->input->post('kolom1_542'),
+                        'kolom2' => $this->input->post('kolom2_542'),
+                        'kolom3' => $this->input->post('kolom3_542'),
+                        'kolom4' => $this->input->post('kolom4_542'),
+                        'kolom5' => $this->input->post('kolom5_542'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_2kolom_version', $data);
+                 $this->db->insert('isian_16kolom_version', $data);
+                 $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir542tabel'),
                         'created_at'=> date('Y-m-d H:i:s')
                 );
 
@@ -7103,6 +7817,7 @@ class M_isian3as2 extends CI_Model {
                         'kolom2' => $this->input->post('kolom2_623'),
                         'kolom3' => $this->input->post('kolom3_623'),
                         'kolom4' => $this->input->post('kolom4_623'),
+                        'kolom5' => $this->input->post('kolom5_623'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -7115,6 +7830,7 @@ class M_isian3as2 extends CI_Model {
                         'kolom2' => $this->input->post('kolom2_623'),
                         'kolom3' => $this->input->post('kolom3_623'),
                         'kolom4' => $this->input->post('kolom4_623'),
+                        'kolom5' => $this->input->post('kolom5_623'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -7126,6 +7842,45 @@ class M_isian3as2 extends CI_Model {
                 $data = array(
                         'user'=> $_SESSION['name'],
                         'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir623tabel'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 80
+        public function update_isian624_buku()
+        {
+            $last_version = $this->input->post('version_no624');
+            $new_version = $last_version + 1;
+                 $data = array(
+                        'kolom1' => $this->input->post('kolom1_624'),
+                        'kolom2' => $this->input->post('kolom2_624'),
+                        'kolom3' => $this->input->post('kolom3_624'),
+                        'kolom4' => $this->input->post('kolom4_624'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->update('isian_2kolom', $data, array('id' => $this->input->post('id')));
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id624')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir624tabel'),
+                        'kolom1' => $this->input->post('kolom1_624'),
+                        'kolom2' => $this->input->post('kolom2_624'),
+                        'kolom3' => $this->input->post('kolom3_624'),
+                        'kolom4' => $this->input->post('kolom4_624'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_2kolom_version', $data);
+                 $this->db->insert('isian_16kolom_version', $data);
+                 $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir624tabel'),
                         'created_at'=> date('Y-m-d H:i:s')
                 );
 
@@ -7250,13 +8005,33 @@ class M_isian3as2 extends CI_Model {
                 $this->db->insert('log', $data);
         }
 
-        // 96
+        
+// 93
         public function update_isian714_buku()
         {
             $last_version = $this->input->post('version_no714');
             $new_version = $last_version + 1;
                  $data = array(
                         'kolom1' => $this->input->post('kolom1_714'),
+                        'kolom2' => $this->input->post('kolom2_714'),
+                        'kolom3' => $this->input->post('kolom3_714'),
+                        'kolom4' => $this->input->post('kolom4_714'),
+                        'kolom5' => $this->input->post('kolom5_714'),
+                        'kolom6' => $this->input->post('kolom6_714'),
+                        'kolom7' => $this->input->post('kolom7_714'),
+                        'kolom8' => $this->input->post('kolom8_714'),
+                        'kolom9' => $this->input->post('kolom9_714'),
+                        'kolom10' => $this->input->post('kolom10_714'),
+                        'kolom11' => $this->input->post('kolom11_714'),
+                        'kolom12' => $this->input->post('kolom12_714'),
+                        'kolom13' => $this->input->post('kolom13_714'),
+                        'kolom14' => $this->input->post('kolom14_714'),
+                        'kolom15' => $this->input->post('kolom15_714'),
+                        'kolom16' => $this->input->post('kolom16_714'),
+                        'kolom17' => $this->input->post('kolom17_714'),
+                        'kolom18' => $this->input->post('kolom18_714'),
+                        'kolom19' => $this->input->post('kolom19_714'),
+                        'kolom20' => $this->input->post('kolom20_714'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -7266,6 +8041,25 @@ class M_isian3as2 extends CI_Model {
                  $data = array(
                         'id_kolom' => $this->input->post('id_butir714tabel'),
                         'kolom1' => $this->input->post('kolom1_714'),
+                        'kolom2' => $this->input->post('kolom2_714'),
+                        'kolom3' => $this->input->post('kolom3_714'),
+                        'kolom4' => $this->input->post('kolom4_714'),
+                        'kolom5' => $this->input->post('kolom5_714'),
+                        'kolom6' => $this->input->post('kolom6_714'),
+                        'kolom7' => $this->input->post('kolom7_714'),
+                        'kolom8' => $this->input->post('kolom8_714'),
+                        'kolom9' => $this->input->post('kolom9_714'),
+                        'kolom10' => $this->input->post('kolom10_714'),
+                        'kolom11' => $this->input->post('kolom11_714'),
+                        'kolom12' => $this->input->post('kolom12_714'),
+                        'kolom13' => $this->input->post('kolom13_714'),
+                        'kolom14' => $this->input->post('kolom14_714'),
+                        'kolom15' => $this->input->post('kolom15_714'),
+                        'kolom16' => $this->input->post('kolom16_714'),
+                        'kolom17' => $this->input->post('kolom17_714'),
+                        'kolom18' => $this->input->post('kolom18_714'),
+                        'kolom19' => $this->input->post('kolom19_714'),
+                        'kolom20' => $this->input->post('kolom20_714'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -7277,6 +8071,89 @@ class M_isian3as2 extends CI_Model {
                 $data = array(
                         'user'=> $_SESSION['name'],
                         'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir714tabel'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        
+// 95
+        public function update_isian715_buku()
+        {
+            $last_version = $this->input->post('version_no715');
+            $new_version = $last_version + 1;
+                 $data = array(
+                        'kolom1' => $this->input->post('kolom1_715'),
+                        'kolom2' => $this->input->post('kolom2_715'),
+                        'kolom3' => $this->input->post('kolom3_715'),
+                        'kolom4' => $this->input->post('kolom4_715'),
+                        'kolom5' => $this->input->post('kolom5_715'),
+                        'kolom6' => $this->input->post('kolom6_715'),
+                        'kolom7' => $this->input->post('kolom7_715'),
+                        'kolom8' => $this->input->post('kolom8_715'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->update('isian_2kolom', $data, array('id' => $this->input->post('id')));
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id715')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir715tabel'),
+                        'kolom1' => $this->input->post('kolom1_715'),
+                        'kolom2' => $this->input->post('kolom2_715'),
+                        'kolom3' => $this->input->post('kolom3_715'),
+                        'kolom4' => $this->input->post('kolom4_715'),
+                        'kolom5' => $this->input->post('kolom5_715'),
+                        'kolom6' => $this->input->post('kolom6_715'),
+                        'kolom7' => $this->input->post('kolom7_715'),
+                        'kolom8' => $this->input->post('kolom8_715'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_2kolom_version', $data);
+                 $this->db->insert('isian_16kolom_version', $data);
+                 $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir715tabel'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 96
+        public function update_isian717_buku()
+        {
+            $last_version = $this->input->post('version_no717');
+            $new_version = $last_version + 1;
+                 $data = array(
+                        'kolom1' => $this->input->post('kolom1_717'),
+                        'kolom2' => $this->input->post('kolom2_717'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->update('isian_2kolom', $data, array('id' => $this->input->post('id')));
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id717')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir717tabel'),
+                        'kolom1' => $this->input->post('kolom1_717'),
+                        'kolom2' => $this->input->post('kolom2_717'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                // $this->db->insert('isian_2kolom_version', $data);
+                 $this->db->insert('isian_16kolom_version', $data);
+                 $this->db->query('ALTER TABLE isian_16kolom AUTO_INCREMENT 1');
+                $this->db->query('ALTER TABLE isian_16kolom_version AUTO_INCREMENT 1');
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir717tabel'),
                         'created_at'=> date('Y-m-d H:i:s')
                 );
 
