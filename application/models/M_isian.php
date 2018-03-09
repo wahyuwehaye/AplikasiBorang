@@ -1738,6 +1738,39 @@ class M_isian extends CI_Model {
                 $this->db->insert('log', $data);
         }
 
+        // 98
+        public function insert_isian722_buku()
+        {
+                $data = array(
+                        'id_butir' => $this->input->post('id_butir722'),
+                        'kolom1' => $this->input->post('kolom1_722'),
+                        'kolom2' => $this->input->post('kolom2_722'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                $this->db->insert('isian_16kolom_buku', $data);
+
+                $data = array(
+                        'id_kolom' => $this->input->post('id_butir722'),
+                        'kolom1' => $this->input->post('kolom1_722'),
+                        'kolom2' => $this->input->post('kolom2_722'),
+                        'version_no' => "1",
+                        'created_at'=> date('Y-m-d H:i:s'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+                $this->db->insert('isian_16kolom_version', $data);
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Menambahkan Isian pada butir ke : ".$this->input->post('id_butir722'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
         
         // 99
         public function insert_isian731_buku()
@@ -1749,6 +1782,7 @@ class M_isian extends CI_Model {
                         'kolom3' => $this->input->post('kolom3_731'),
                         'kolom4' => $this->input->post('kolom4_731'),
                         'kolom5' => $this->input->post('kolom5_731'),
+                        'kolom6' => $this->input->post('kolom6_731'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -1792,6 +1826,7 @@ class M_isian extends CI_Model {
                         'kolom3' => $this->input->post('kolom3_732'),
                         'kolom4' => $this->input->post('kolom4_732'),
                         'kolom5' => $this->input->post('kolom5_732'),
+                        'kolom6' => $this->input->post('kolom6_732'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -1807,6 +1842,7 @@ class M_isian extends CI_Model {
                         'kolom3' => $this->input->post('kolom3_732'),
                         'kolom4' => $this->input->post('kolom4_732'),
                         'kolom5' => $this->input->post('kolom5_732'),
+                        'kolom6' => $this->input->post('kolom6_732'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -7067,7 +7103,40 @@ class M_isian extends CI_Model {
 
                 $this->db->insert('log', $data);
         }
-// 99
+
+        // 98
+        public function update_isian722_buku()
+        {
+            $last_version = $this->input->post('version_no722');
+            $new_version = $last_version + 1;
+                 $data = array(
+                        'kolom2' => $this->input->post('kolom2_722'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id722')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir722tabel'),
+                        'kolom1' => $this->input->post('kolom1_722'),
+                        'kolom2' => $this->input->post('kolom2_722'),
+                        'version_no' => $new_version,
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                $this->db->insert('isian_16kolom_version', $data);
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir722tabel'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // 99
         public function update_isian731_buku()
         {
             $last_version = $this->input->post('version_no731');
@@ -7078,6 +7147,7 @@ class M_isian extends CI_Model {
                         'kolom3' => $this->input->post('kolom3_731'),
                         'kolom4' => $this->input->post('kolom4_731'),
                         'kolom5' => $this->input->post('kolom5_731'),
+                        'kolom6' => $this->input->post('kolom6_731'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -7091,6 +7161,7 @@ class M_isian extends CI_Model {
                         'kolom3' => $this->input->post('kolom3_731'),
                         'kolom4' => $this->input->post('kolom4_731'),
                         'kolom5' => $this->input->post('kolom5_731'),
+                        'kolom6' => $this->input->post('kolom6_731'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -7119,6 +7190,7 @@ class M_isian extends CI_Model {
                         'kolom3' => $this->input->post('kolom3_732'),
                         'kolom4' => $this->input->post('kolom4_732'),
                         'kolom5' => $this->input->post('kolom5_732'),
+                        'kolom6' => $this->input->post('kolom6_732'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -7132,6 +7204,7 @@ class M_isian extends CI_Model {
                         'kolom3' => $this->input->post('kolom3_732'),
                         'kolom4' => $this->input->post('kolom4_732'),
                         'kolom5' => $this->input->post('kolom5_732'),
+                        'kolom6' => $this->input->post('kolom6_732'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
