@@ -24,7 +24,7 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header js-sweetalert">
+                    <div class="header js-sweetalert bg-teal">
                     <h2>
                         DETAIL BUTIR 
                     </h2>
@@ -133,12 +133,12 @@
                                     $btr = str_replace('.', '', $butir[$i]['butir']);
                                     if ($cekskornya!==0) {
                                     ?>
-                                            <a type="button" data-color="light-blue" class="btn bg-amber waves-effect btn-sm" data-toggle="modal" data-target="#viewnilai<?php echo($btr) ?>" data-placement="top" title="Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?>" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><span class="badge"><?php echo $skor; ?></span></a>&nbsp;
-                                            <a type="button" data-color="amber" class="btn bg-amber waves-effect btn-xs" data-toggle="modal" data-target="#nilai<?php echo($btr) ?>" data-placement="top" title="Nilai Ulang" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="glyphicon glyphicon-star"></i></a>
+                                            <!-- <a type="button" data-color="light-blue" class="btn bg-amber waves-effect btn-sm" data-toggle="modal" data-target="#viewnilai<?php echo($btr) ?>" data-placement="top" title="Hasil Nilai dari Review ke - <?php echo($getjumlahreview) ?>" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><span class="badge"><?php echo $skor; ?></span></a>&nbsp;
+                                            <a type="button" data-color="amber" class="btn bg-amber waves-effect btn-xs" data-toggle="modal" data-target="#nilai<?php echo($btr) ?>" data-placement="top" title="Nilai Ulang" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="glyphicon glyphicon-star"></i></a> -->
                                     <?php
                                     }else{
                                         ?>
-                                            <a type="button" data-color="amber" class="btn bg-amber waves-effect btn-xs" data-toggle="modal" data-target="#nilai<?php echo($btr) ?>" data-placement="top" title="Nilai Ulang" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="glyphicon glyphicon-star"></i></a>
+                                            <!-- <a type="button" data-color="amber" class="btn bg-amber waves-effect btn-xs" data-toggle="modal" data-target="#nilai<?php echo($btr) ?>" data-placement="top" title="Nilai Ulang" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><i class="glyphicon glyphicon-star"></i></a> -->
                                         <?php
                                     }
                                     ?>
@@ -158,7 +158,7 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header js-sweetalert">
+                    <div class="header js-sweetalert bg-teal">
                     <h2>
                         ISIAN BUTIR 
                     </h2>
@@ -239,6 +239,7 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                             </div>
+                            
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -392,7 +393,7 @@
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian111_buku">
                         <input type="hidden" name="id111" id="id111" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir111" id="id_butir111" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
@@ -400,9 +401,22 @@
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian4kolom_buku/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div> -->
+                        <div class="icon-button-demo">
+                            <button style="float: right;" type="button" class="btn bg-pink btn-circle-lg waves-effect waves-circle waves-float">
+                                    <i class="material-icons">delete</i>
+                            </button>
                         </div>
-
-                        <div class="col-md-4"></div>
+                        <div class="icon-button-demo">
+                            <button style="float: right;" type="button" class="btn bg-green btn-circle-lg waves-effect waves-circle waves-float" >
+                                    <i class="material-icons">book</i>
+                            </button>
+                        </div>
+                        <div class="icon-button-demo">
+                            <button style="float: right;" type="button" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>">
+                                    <h4><code><?php echo $dataisian[$i]['version_no'] ?></code></h4>
+                            </button>
+                        </div>
                         <h2 class="card-inside-title">Visi, Misi, Tujuan, dan Sasaran serta Strategi Pencapaian</h2>
                         <h2 class="card-inside-title"><?php echo $butir[0]['butir'] ?>&nbsp; <?php echo $butir[0]['bakumutu'] ?></h2>
                         <div class="row clearfix">
@@ -2511,7 +2525,7 @@
                         <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian22_buku">
                         <input type="hidden" name="id22" id="id22" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir22" id="id_butir22" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
                         </div>
                         <div class="col-md-4">
@@ -2519,6 +2533,21 @@
                         </div>
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3ad3/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
+                        </div> -->
+                        <div class="icon-button-demo">
+                            <button style="float: right;" type="button" class="btn bg-pink btn-circle-lg waves-effect waves-circle waves-float">
+                                    <i class="material-icons">delete</i>
+                            </button>
+                        </div>
+                        <div class="icon-button-demo">
+                            <button style="float: right;" type="button" class="btn bg-pink btn-circle-lg waves-effect waves-circle waves-float">
+                                    <i class="material-icons">delete</i>
+                            </button>
+                        </div>
+                        <div class="icon-button-demo">
+                            <button style="float: right;" type="button" class="btn bg-pink btn-circle-lg waves-effect waves-circle waves-float">
+                                    <i class="material-icons">delete</i>
+                            </button>
                         </div>
                         <h2 class="card-inside-title">Kepemimpinan&nbsp;
                         <button type="button" onclick="infoKepemimpinan()" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Info" href="javascript:void(0)"><i class="material-icons">info_outline</i></button></h2>
@@ -30885,7 +30914,7 @@ dst.
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi721">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi721_buku">
                         <input type="hidden" name="721id_butir" id="721id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir721" id="id_butir721" value="<?php echo $getidbutir721; ?>" />
                         <h2 class="card-inside-title">Penelitian Dosen Tetap yang Bidang Keahliannya Sesuai dengan PS</h2>
@@ -31098,12 +31127,15 @@ dst.
                                 }
                         }elseif ($getbutir=='7.2.2') {
                             ?>
-                        <!-- Button Default -->
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -31115,45 +31147,146 @@ dst.
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "7.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "7.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
                         </div>
+                        <!-- Tutup DETAIL PANDUAN -->
                             <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian722">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/updateisian722_buku">
                         <input type="hidden" name="id722" id="id722" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir722" id="id_butir722" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -31189,7 +31322,7 @@ dst.
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi722">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi722_buku">
                         <input type="hidden" name="id_butir722" id="id_butir722" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Adakah mahasiswa yang dilibatkan dalam kegiatan pelayanan/pengabdian kepada masyarakat dalam tiga tahun terakhir?</h2>
                         <div class="demo-radio-button">
@@ -31216,12 +31349,23 @@ dst.
                                 }
                         }elseif ($getbutir=='7.3.1') {
                             ?>
-                        <!-- Button Default -->
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">IMPORT DATA DARI IGRACIAS</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                            <!-- DROPDOWN UNTUK MEMBUKA DETAIL PANDUAN -->
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -31233,41 +31377,315 @@ dst.
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "7.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "7.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
+                        <!-- CLOSE DETAIUL PANDUAN -->
+
+                        <!-- OPEN DROPDOWN IMPORT DATA -->
+                            <div class="collapse" id="collapseImportData">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">Kegiatan Kerjasama dengan Instansi Lain </a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>instansi dalam negeri yang menjalin kerjasama* yang terkait dengan program studi/jurusan dalam tiga tahun terakhir</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                        $tahun_sekarang = date('Y');
+                                                        $tahun = substr($tahun_sekarang, -2);
+
+                                                        $TS = $tahun;
+                                                        $TS1 = $tahun - 1;
+                                                        $TS2 = $tahun - 2;
+                                                        $TS3 = $tahun - 3;
+
+                                                        // ketika menggunakan jaringan selain tune
+                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
+
+                                                        // ketika menggunakan jaringan tune (lokal kampus)
+                                                        // $link = 'http://10.252.252.174/';
+
+                                                        // MENDAPATKAN NILAI TS TAHUN BERJALAN
+                                                        $getTS = 0;
+                                                        $idTS = 0;
+                                                        $querycariTS = $CI->db->query('select id, kolom7 from isian_16kolom_buku where kolom7="'.$TS1.$TS.'" and id_butir = "'.$isiannya.'"');
+                                                        foreach ($querycariTS->result() as $row){
+                                                            $getTS = $getTS+1;
+                                                            $idTS = $row->id;
+                                                        }
+                                            if (count($dataisian)<1){
+                                                ?>
+                                                <div class="body">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi731_buku_array">
+
+                                                    <!-- DATA TS -->
+                                                    <?php
+
+                                                    $urlTS = $link.'api/borang/borang.php?data=dokumeninstansi&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
+                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                    $charactersTS = json_decode($dataTS, true); // decode the JSON feed
+                                                    foreach ($charactersTS as $keyTS => $valueTS) {
+                                                    ?>
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="kolom1_731[]" id="k1_731[]" class="form-control" value="<?php echo $valueTS['NAMA_INSTANSI'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_731[]" id="k2_731[]" class="form-control" value="<?php echo $valueTS['JENIS_KEGIATAN'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_731[]" id="k3_731[]" class="form-control" value="<?php echo $valueTS['KURUN_WAKTU'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_731[]" id="k4_731[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_731[]" id="k5_731[]" class="form-control" value="<?php echo $valueTS['MANFAAT'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_731[]" id="k6_731[]" class="form-control" value="<?php echo $valueTS['URL'] ?>" placeholder="Ex: 500">
+
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="id_butir731[]" id="id_butir731[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom7_731[]" id="kolom7_731[]" value="<?php echo $TS1.$TS; ?>" />
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                                            <h4>Import Data instansi dalam negeri yang menjalin kerjasama* yang terkait dengan program studi/jurusan dalam tiga tahun terakhir</h4>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                            <button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DATA &nbsp;<i class="material-icons">import_export</i></button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button> -->
+                                                    </form>
+                                                </div>
+                                                <?php
+                                            }else{
+                                                ?>
+                                                <div class="body">
+
+                                                    <!-- DATA TS KETIKA TAHUN BERJALAN -->
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi731_buku_array">
+                                                    
+                                                    <!-- DATA TS -->
+                                                    <?php
+
+                                                    $urlTS = $link.'api/borang/borang.php?data=dokumeninstansi&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
+                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                    $charactersTS = json_decode($dataTS, true); // decode the JSON feed
+                                                    foreach ($charactersTS as $keyTS => $valueTS) {
+                                                   
+                                                    ?>
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="kolom1_731[]" id="k1_731[]" class="form-control" value="<?php echo $valueTS['NAMA_INSTANSI'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_731[]" id="k2_731[]" class="form-control" value="<?php echo $valueTS['JENIS_KEGIATAN'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_731[]" id="k3_731[]" class="form-control" value="<?php echo $valueTS['KURUN_WAKTU'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_731[]" id="k4_731[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_731[]" id="k5_731[]" class="form-control" value="<?php echo $valueTS['MANFAAT'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_731[]" id="k6_731[]" class="form-control" value="<?php echo $valueTS['URL'] ?>" placeholder="Ex: 500">
+                                                        
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="id_butir731[]" id="id_butir731[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom7_731[]" id="kolom7_731[]" value="<?php echo $TS1.$TS; ?>" />
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" id="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS[]" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" id="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS[]" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <?php
+                                                    if ($getTS<1) {
+                                                        ?>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <h4>Import Data instansi dalam negeri yang menjalin kerjasama* yang terkait dengan program studi/jurusan dalam tiga tahun terakhir</h4>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DATA &nbsp;<i class="material-icons">import_export</i></button>
+                                                        </div>
+                                                    </div>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                    <div class="row clearfix">
+                                                        <div class="col-md-12">
+                                                            <h4>Data instansi dalam negeri yang menjalin kerjasama* yang terkait dengan program studi/jurusan dalam tiga tahun terakhir sudah di Import kedalam Database Aplikasi</h4>
+                                                            
+                                                            <div class="alert bg-orange">
+                                                                <h4><code>Import lagi dan replace data sebelumnya?</code><button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DAN REPLACE DATA &nbsp;<i class="material-icons">import_export</i></button></h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    
+                                                    <!-- <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button> -->
+                                                    </form>
+                                                </div>
+                                                <?php
+                                            }
+                                                ?>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #END# Hover Rows -->
+                                </div>
+                            </div>
+                    <!-- CLOSE IMPORT DATA -->
                         </div>
-                            <?php
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -31510,12 +31928,23 @@ dst.
                                 }
                         }elseif ($getbutir=='7.3.2') {
                             ?>
-                        <!-- Button Default -->
+                        <!-- DETAIL PANDUAN -->
                         <div class="body">
-                            <a class="btn bg-pink waves-effect m-b-15" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
-                               aria-controls="collapseExample">
-                                DETAIL PANDUAN
-                            </a>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">IMPORT DATA DARI IGRACIAS</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseImportData" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                            <!-- DROPDOWN UNTUK MEMBUKA DETAIL PANDUAN -->
                             <div class="collapse" id="collapseExample1">
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
@@ -31527,41 +31956,315 @@ dst.
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="default">
-                                    <b>Default Konten Isian Butir Borang</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea id="tin1" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
-                                                
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan3ad3', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="listkonten">
-                                    <b>List Konten Isian Butir</b>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
-                                            </textarea>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="referensi">
-                                    <div class="card">
-                                        <div class="body bg-cyan">
-                                            <div class="font-bold m-b--35">Download Dokumen Referensi</div>
-                                            <ul class="dashboard-stat-list">
-                                                <li>
-                                                    <b></b> Dokumen Renstra Universitas Telkom
-                                                    <span><a target="_blank" href="<?php echo base_url();?>uploadspm/Renstra_Universitas_Telkom.pdf" data-toggle="tooltip" type="button" data-color="lime" class="btn bg-lime waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></span>
-                                                </li>
-                                            </ul>
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "7.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "7.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
                             </div>
                             </div>
+                        <!-- CLOSE DETAIUL PANDUAN -->
+
+                        <!-- OPEN DROPDOWN IMPORT DATA -->
+                            <div class="collapse" id="collapseImportData">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">Kegiatan Kerjasama dengan Instansi Lain </a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>instansi dalam negeri yang menjalin kerjasama* yang terkait dengan program studi/jurusan dalam tiga tahun terakhir</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                        $tahun_sekarang = date('Y');
+                                                        $tahun = substr($tahun_sekarang, -2);
+
+                                                        $TS = $tahun;
+                                                        $TS1 = $tahun - 1;
+                                                        $TS2 = $tahun - 2;
+                                                        $TS3 = $tahun - 3;
+
+                                                        // ketika menggunakan jaringan selain tune
+                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
+
+                                                        // ketika menggunakan jaringan tune (lokal kampus)
+                                                        // $link = 'http://10.252.252.174/';
+
+                                                        // MENDAPATKAN NILAI TS TAHUN BERJALAN
+                                                        $getTS = 0;
+                                                        $idTS = 0;
+                                                        $querycariTS = $CI->db->query('select id, kolom7 from isian_16kolom_buku where kolom7="'.$TS1.$TS.'" and id_butir = "'.$isiannya.'"');
+                                                        foreach ($querycariTS->result() as $row){
+                                                            $getTS = $getTS+1;
+                                                            $idTS = $row->id;
+                                                        }
+                                            if (count($dataisian)<1){
+                                                ?>
+                                                <div class="body">
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi732_buku_array">
+
+                                                    <!-- DATA TS -->
+                                                    <?php
+
+                                                    $urlTS = $link.'api/borang/borang.php?data=dokumeninstansiinternasional&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
+                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                    $charactersTS = json_decode($dataTS, true); // decode the JSON feed
+                                                    foreach ($charactersTS as $keyTS => $valueTS) {
+                                                    ?>
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="kolom1_732[]" id="k1_732[]" class="form-control" value="<?php echo $valueTS['NAMA_INSTANSI'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_732[]" id="k2_732[]" class="form-control" value="<?php echo $valueTS['JENIS_KEGIATAN'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_732[]" id="k3_732[]" class="form-control" value="<?php echo $valueTS['KURUN_WAKTU'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_732[]" id="k4_732[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_732[]" id="k5_732[]" class="form-control" value="<?php echo $valueTS['MANFAAT'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_732[]" id="k6_732[]" class="form-control" value="<?php echo $valueTS['URL'] ?>" placeholder="Ex: 500">
+
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="id_butir732[]" id="id_butir732[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom7_732[]" id="kolom7_732[]" value="<?php echo $TS1.$TS; ?>" />
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                                            <h4>Import Data instansi dalam negeri yang menjalin kerjasama* yang terkait dengan program studi/jurusan dalam tiga tahun terakhir</h4>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                            <button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DATA &nbsp;<i class="material-icons">import_export</i></button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button> -->
+                                                    </form>
+                                                </div>
+                                                <?php
+                                            }else{
+                                                ?>
+                                                <div class="body">
+
+                                                    <!-- DATA TS KETIKA TAHUN BERJALAN -->
+                                                    <form method="POST" action="<?php echo base_url()?>C_isian3ad3/ngisi732_buku_array">
+                                                    
+                                                    <!-- DATA TS -->
+                                                    <?php
+
+                                                    $urlTS = $link.'api/borang/borang.php?data=dokumeninstansiinternasional&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
+                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                    $charactersTS = json_decode($dataTS, true); // decode the JSON feed
+                                                    foreach ($charactersTS as $keyTS => $valueTS) {
+                                                   
+                                                    ?>
+                                                        <!-- GA PAKE UI -->
+                                                        <input type="hidden" name="kolom1_732[]" id="k1_732[]" class="form-control" value="<?php echo $valueTS['NAMA_INSTANSI'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_732[]" id="k2_732[]" class="form-control" value="<?php echo $valueTS['JENIS_KEGIATAN'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_732[]" id="k3_732[]" class="form-control" value="<?php echo $valueTS['KURUN_WAKTU'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_732[]" id="k4_732[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_732[]" id="k5_732[]" class="form-control" value="<?php echo $valueTS['MANFAAT'] ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_732[]" id="k6_732[]" class="form-control" value="<?php echo $valueTS['URL'] ?>" placeholder="Ex: 500">
+                                                        
+                                                        <!-- PAKE UI -->
+                                                        <input type="hidden" name="id_butir732[]" id="id_butir732[]" value="<?php echo $isiannya; ?>" />
+                                                        <input type="hidden" name="kolom7_732[]" id="kolom7_732[]" value="<?php echo $TS1.$TS; ?>" />
+                                                        <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
+                                                        <?php
+                                                        if ($getTS<1) {
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" id="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS[]" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }else{
+                                                        ?>
+                                                        <input type="hidden" name="pilihts[]" id="pilihts[]" value="replacets">
+                                                        <input type="hidden" name="idTS[]" id="idTS[]" value="<?php echo $isiannya; ?>" />
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <?php
+                                                    if ($getTS<1) {
+                                                        ?>
+                                                    <div class="row clearfix">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <h4>Import Data instansi dalam negeri yang menjalin kerjasama* yang terkait dengan program studi/jurusan dalam tiga tahun terakhir</h4>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DATA &nbsp;<i class="material-icons">import_export</i></button>
+                                                        </div>
+                                                    </div>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                    <div class="row clearfix">
+                                                        <div class="col-md-12">
+                                                            <h4>Data instansi dalam negeri yang menjalin kerjasama* yang terkait dengan program studi/jurusan dalam tiga tahun terakhir sudah di Import kedalam Database Aplikasi</h4>
+                                                            
+                                                            <div class="alert bg-orange">
+                                                                <h4><code>Import lagi dan replace data sebelumnya?</code><button type="submit" class="btn bg-purple btn-lg m-l-15 waves-effect">IMPORT DAN REPLACE DATA &nbsp;<i class="material-icons">import_export</i></button></h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    
+                                                    <!-- <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button> -->
+                                                    </form>
+                                                </div>
+                                                <?php
+                                            }
+                                                ?>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #END# Hover Rows -->
+                                </div>
+                            </div>
+                    <!-- CLOSE IMPORT DATA -->
                         </div>
-                            <?php
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
@@ -31645,6 +32348,7 @@ dst.
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom5'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
+                                                <a target="_blank" href="//<?php echo $dataisian[$diloop]['kolom6'] ?>" type="button" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="Download Dokumen" href="javascript:void(0)"><i class="glyphicon glyphicon-cloud-download"></i></a>&nbsp;
                                                 <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update732" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
@@ -31820,7 +32524,7 @@ dst.
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header js-sweetalert">
+                    <div class="header js-sweetalert bg-teal">
                     <h2>
                         Tabel Dokumen pendukung yang terkait pada butir <?php echo $butir[0]['butir'] ?>
                     </h2>
@@ -32176,7 +32880,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_butir/update', $attributes);
+                    echo form_open('C_butir/update_buku', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -37356,7 +38060,7 @@ dst.
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian3ad3/updateisian732', $attributes);
+                    echo form_open('C_isian3ad3/updateisian732_buku', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
@@ -41221,7 +41925,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_butir/find";
+        var link="<?php echo base_url(); ?>index.php/C_butir/find_buku";
         $.ajax({
             method: "POST",
             url: link,
@@ -42398,7 +43102,7 @@ dst.
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian3ad3/findUpdateTbl_buku";
         $.ajax({
             method: "POST",
             url: link,

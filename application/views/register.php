@@ -25,7 +25,7 @@
     <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 </head>
 
-<body class="signup-page">
+<body class="signup-page" style="background: #f06292">
     <div class="signup-box">
         <div class="logo">
             <a href="javascript:void(0);">TEL-U&nbsp;<b>ONBOARD</b></a>

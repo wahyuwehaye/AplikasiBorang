@@ -82,7 +82,7 @@
     <link href="<?php echo base_url();?>assets/css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
+<body class="theme-red" style="background: #ffb2dd">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -116,7 +116,7 @@
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
-        <div class="container-fluid">
+        <div class="container-fluid" style="background: #ed407a">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
@@ -326,7 +326,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="<?php echo base_url();?>assets/images/user.png" width="48" height="48" alt="User" />
+                    <img src="<?php echo base_url();?>assets/images/bufir.png" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ($_SESSION['name']); ?></div>
@@ -347,9 +347,9 @@
             </div>
             <!-- #User Info -->
             <!-- Menu -->
-            <div class="menu">
+            <div class="menu" style="background: #ff94c2">
                 <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="header" style="background: #f06292">MAIN NAVIGATION</li>
                     <li class="<?php echo ($active_menu=="home") ? "active" :""; ?>">
                         <a href="<?php echo base_url();?>">
                             <i class="material-icons">home</i>
@@ -749,7 +749,7 @@
             </div>
             <!-- #Menu -->
             <!-- Footer -->
-            <div class="legal">
+            <div class="legal" style="background: #f06292">
                 <div class="copyright">
                     &copy; 2017 <a href="javascript:void(0);">Borang Application</a>.
                 </div>

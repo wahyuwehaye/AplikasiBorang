@@ -2376,10 +2376,6 @@ class C_isian3ad3 extends CI_Controller {
             'kolom5' => $post['kolom5_731'][$key],
             'kolom6' => $post['kolom6_731'][$key],
             'kolom7' => $post['kolom7_731'][$key],
-            'kolom8' => $post['kolom8_731'][$key],
-            'kolom9' => $post['kolom9_731'][$key],
-            'kolom10' => $post['kolom10_461'][$key],
-            'kolom11' => $post['kolom11_461'][$key],
             'version_no' => "1",
             'created_at'=> date('Y-m-d H:i:s'),
             'updated_at'=> date('Y-m-d H:i:s'),
@@ -2422,10 +2418,6 @@ class C_isian3ad3 extends CI_Controller {
                 'kolom5' => $post['kolom5_732'][$key],
                 'kolom6' => $post['kolom6_732'][$key],
                 'kolom7' => $post['kolom7_732'][$key],
-                'kolom8' => $post['kolom8_732'][$key],
-                'kolom9' => $post['kolom9_732'][$key],
-                'kolom10' => $post['kolom10_732'][$key],
-                'kolom11' => $post['kolom11_732'][$key],
                 'version_no' => "1",
                 'created_at'=> date('Y-m-d H:i:s'),
                 'updated_at'=> date('Y-m-d H:i:s'),
@@ -4817,10 +4809,10 @@ class C_isian3ad3 extends CI_Controller {
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian3ad3');
-        $id=$_POST['id_butir731'];
+        $id=$_POST['id_butir731tabel'];
         $this->M_isian3ad3->insert_isian731_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian_buku3ad3/'.$_POST['id_butir731']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir731tabel']);
     }
 
     // 77
@@ -4830,10 +4822,10 @@ class C_isian3ad3 extends CI_Controller {
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian3ad3');
-        $id=$_POST['id_butir732'];
+        $id=$_POST['id_butir732tabel'];
         $this->M_isian3ad3->insert_isian732_buku();
         $_SESSION['suksesinput'] = '';
-        redirect('isian_buku3ad3/'.$_POST['id_butir732']);
+        redirect('isian_buku3ad3/'.$_POST['id_butir732tabel']);
     }
 
 
