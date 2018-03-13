@@ -28,7 +28,7 @@
     <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 </head>
 
-<body class="login-page">
+<body class="login-page" style="background: #f06292">
     <div class="login-box">
         <div class="logo">
             <a href="javascript:void(0);">TEL-U&nbsp;<b>ONBOARD</b></a>

@@ -1798,6 +1798,7 @@ class M_isian extends CI_Model {
                         'kolom3' => $this->input->post('kolom3_731'),
                         'kolom4' => $this->input->post('kolom4_731'),
                         'kolom5' => $this->input->post('kolom5_731'),
+                        'kolom6' => $this->input->post('kolom6_731'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
