@@ -1797,10 +1797,9 @@ class C_isian3as2 extends CI_Controller {
         redirect('isian_buku3as2/'.$_POST['id_butir543']);
     }
 
-    // 66
-    // TANPA ARRAY
+    // 28
     public function ngisi551_buku(){
-    //load needed library,helper,model
+        //load needed library,helper,model
         $this->load->library('form_validation');
         $this->load->model('M_butir');
         $this->load->model('M_borang');
@@ -1811,31 +1810,95 @@ class C_isian3as2 extends CI_Controller {
         redirect('isian_buku3as2/'.$_POST['id_butir551']);
     }
 
-    // PAKE ARRAY
-    public function ngisi551_buku_array(){
-    //load needed library,helper,model
-        $post = $this->input->post();
-        $result = array();
-        $load = 'isian_buku3as2';
-
-        foreach($post['kolom1_551'] AS $key => $val)
-        {
-            $result[] = array(
-            'id_butir' => $post['id_butir551'][$key],
-            'kolom1' => $post['kolom1_551'][$key],
-            'kolom2' => $post['kolom2_551'][$key],
-            'kolom3' => $post['kolom3_551'][$key],
-            'kolom4' => $post['kolom4_551'][$key],
-            'kolom5' => $post['kolom5_551'][$key],
-            'version_no' => "1",
-            'created_at'=> date('Y-m-d H:i:s'),
-            'updated_at'=> date('Y-m-d H:i:s'),
-            );
-        }
-
-        $this->db->insert_batch('isian_16kolom_buku', $result);
+    // 28
+    public function ngisi552_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir552'];
+        $this->M_isian3as2->insert_isian552_buku();
         $_SESSION['suksesinput'] = '';
-        redirect($load.'/'.$post['id_butir551'][0]);
+        redirect('isian_buku3as2/'.$_POST['id_butir552']);
+    }
+
+    // 28
+    public function ngisi553_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir553'];
+        $this->M_isian3as2->insert_isian553_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir553']);
+    }
+
+    // 28
+    public function ngisi554_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir554'];
+        $this->M_isian3as2->insert_isian554_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir554']);
+    }
+
+    // 28
+    public function ngisi561_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir561'];
+        $this->M_isian3as2->insert_isian561_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir561']);
+    }
+
+    // 28
+    public function ngisi562_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir562'];
+        $this->M_isian3as2->insert_isian562_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir562']);
+    }
+
+    // 28
+    public function ngisi563_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir563'];
+        $this->M_isian3as2->insert_isian563_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir563']);
+    }
+
+    // 28
+    public function ngisi564_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir564'];
+        $this->M_isian3as2->insert_isian564_buku();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir564']);
     }
 
     // 79
@@ -4345,18 +4408,108 @@ $post = $this->input->post();
         redirect('isian_buku3as2/'.$_POST['id_butir543']);
     }
 
-    
-    // 66
+    // 28
     public function updateisian551_buku(){
-    //load needed library,helper,model
+        //load needed library,helper,model
         $this->load->library('form_validation');
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian3as2');
-        $id=$_POST['551did_butir'];
+        $id=$_POST['id_butir551'];
         $this->M_isian3as2->update_isian551_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian_buku3as2/'.$_POST['551did_butir']);
+        redirect('isian_buku3as2/'.$_POST['id_butir551']);
+    }
+
+    // 28
+    public function updateisian552_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir552'];
+        $this->M_isian3as2->update_isian552_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir552']);
+    }
+
+    // 28
+    public function updateisian553_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir553'];
+        $this->M_isian3as2->update_isian553_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir553']);
+    }
+
+    // 28
+    public function updateisian554_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir554'];
+        $this->M_isian3as2->update_isian554_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir554']);
+    }
+
+    // 28
+    public function updateisian561_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir561'];
+        $this->M_isian3as2->update_isian561_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir561']);
+    }
+
+    // 28
+    public function updateisian562_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir562'];
+        $this->M_isian3as2->update_isian562_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir562']);
+    }
+
+    // 28
+    public function updateisian563_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir563'];
+        $this->M_isian3as2->update_isian563_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir563']);
+    }
+
+    // 28
+    public function updateisian564_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian3as2');
+        $id=$_POST['id_butir564'];
+        $this->M_isian3as2->update_isian564_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku3as2/'.$_POST['id_butir564']);
     }
 
     
