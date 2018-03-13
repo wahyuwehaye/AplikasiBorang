@@ -17316,10 +17316,10 @@
                                     <?php
                                      } ?>
                                      <tr>
-                                        <th colspan="4" scope="row" style="width: 52px; text-align: center; height: 13px;">Total sks</th>
-                                        <!-- <td style="width: 139.6px; height: 35.8px; text-align: center;"></td>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">Total sks</th>
+                                        <td style="width: 139.6px; height: 35.8px; text-align: center;"></td>
                                         <td style="width: 85.2px; height: 35.8px; text-align: center;"></td>
-                                        <td style="width: 85.2px; height: 35.8px; text-align: center;"></td> -->
+                                        <td style="width: 85.2px; height: 35.8px; text-align: center;"></td>
                                         <td style="width: 134.8px; height: 35.8px; text-align: center;"><?php echo $jum1 ?></td>
                                         <td scope="row" style="width: 52px; text-align: center; height: 13px; background-color: #9c9c9c;"></td>
                                         <td style="width: 52px; text-align: center; height: 13px;">#</td>
@@ -17641,7 +17641,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian513">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian513_buku">
                         <input type="hidden" name="id513" id="id513" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir513" id="id_butir513" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -17671,7 +17671,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi513">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi513_buku">
                         <input type="hidden" name="id_butir513" id="id_butir513" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Peninjauan Kurikulum dalam 5 Tahun Terakhir</h2>
                         <h2 class="card-inside-title">Jelaskan mekanisme peninjauan kurikulum dan pihak-pihak yang dilibatkan dalam proses peninjauan tersebut.</h2>
@@ -17852,7 +17852,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian521">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian521_buku">
                         <input type="hidden" name="id521" id="id521" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir521" id="id_butir521" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -17864,7 +17864,7 @@
                         <div class="col-md-4">
                             <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian3as2/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
                         </div>
-                        <h2 class="card-inside-title">5.2.1 Jelaskan persyaratan mukim (residency requirement), pelaksanaan dan kendala yang dihadapi.</h2>
+                        <h2 class="card-inside-title">Jelaskan persyaratan mukim (residency requirement), pelaksanaan dan kendala yang dihadapi.</h2>
                         <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -17881,7 +17881,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi521">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi521_buku">
                         <input type="hidden" name="id_butir521" id="id_butir521" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan persyaratan mukim (residency requirement), pelaksanaan dan kendala yang dihadapi.</h2>
                         <div class="row clearfix">
@@ -18061,7 +18061,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian522">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian522_buku">
                         <input type="hidden" name="id522" id="id522" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir522" id="id_butir522" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -18090,7 +18090,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi522">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi522_buku">
                         <input type="hidden" name="id_butir522" id="id_butir522" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan persyaratan penguasaan bahasa Inggris. Untuk penguasaan bahasa Inggris digunakan standar TOEFL. </h2>
                         <div class="row clearfix">
@@ -18270,7 +18270,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian523">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian523_buku">
                         <input type="hidden" name="id523" id="id523" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir523" id="id_butir523" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -18299,7 +18299,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi523">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi523_buku">
                         <input type="hidden" name="id_butir523" id="id_butir523" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan persyaratan perkuliahan dan ujian mata kuliah yang isinya berupa perkembangan ilmu mutakhir dalam bidangnya. Berikan pula penjelasan tentang pelaksanaan dan kendala yang dihadapi.</h2>
                         <div class="row clearfix">
@@ -18479,7 +18479,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian524">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian524_buku">
                         <input type="hidden" name="id524" id="id524" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir524" id="id_butir524" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -18508,7 +18508,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi524">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi524_buku">
                         <input type="hidden" name="id_butir524" id="id_butir524" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan cara penyajian dan penilaian rencana penelitian tesis.</h2>
                         <div class="row clearfix">
@@ -18688,7 +18688,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian525">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian525_buku">
                         <input type="hidden" name="id525" id="id525" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir525" id="id_butir525" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -18717,7 +18717,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi525">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi525_buku">
                         <input type="hidden" name="id_butir525" id="id_butir525" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan peraturan tentang kewajiban penyajian hasil penelitian tesis dalam seminar (internasional, nasional, wilayah, lokal PT) serta pelaksanaan dan kendala yang dihadapi.</h2>
                         <div class="row clearfix">
@@ -18897,7 +18897,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian526">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian526_buku">
                         <input type="hidden" name="id526" id="id526" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir526" id="id_butir526" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -18926,7 +18926,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi526">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi526_buku">
                         <input type="hidden" name="id_butir526" id="id_butir526" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan sistem penjaminan mutu tesis, pelaksanaan serta kendala yang dihadapi.</h2>
                         <div class="row clearfix">
@@ -19106,7 +19106,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian527">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian527_buku">
                         <input type="hidden" name="id527" id="id527" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir527" id="id_butir527" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -19135,7 +19135,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi527">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi527_buku">
                         <input type="hidden" name="id_butir527" id="id_butir527" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan peraturan tentang keanggotaan tim penguji dalam ujian akhir studi magister, pelaksanaan serta kendala yang dihadapi.</h2>
                         <div class="row clearfix">
@@ -19315,7 +19315,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian531">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian531_buku">
                         <input type="hidden" name="id531" id="id531" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir531" id="id_butir531" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -19345,7 +19345,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi531">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi531_buku">
                         <input type="hidden" name="id_butir531" id="id_butir531" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Mekanisme Monitoring Perkuliahan</h2>
                         <h2 class="card-inside-title">Jelaskan mekanisme untuk memonitor perkuliahan, antara lain kehadiran dosen dan mahasiswa, serta materi perkuliahan.</h2>
@@ -19525,7 +19525,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian532">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian532_buku">
                         <input type="hidden" name="id532" id="id532" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir532" id="id_butir532" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -19555,7 +19555,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi532">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi532_buku">
                         <input type="hidden" name="id_butir532" id="id_butir532" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Lampirkan contoh soal ujian dalam 1 tahun terakhir untuk 5 mata kuliah keahlian berikut silabusnya.</h2>
@@ -19736,7 +19736,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian541">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian541_buku">
                         <input type="hidden" name="id541" id="id541" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir541" id="id_butir541" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <h2 class="card-inside-title">Penelitian Tesis</h2>
@@ -19766,7 +19766,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi541">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi541_buku">
                         <input type="hidden" name="id_butir541" id="id_butir541" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Penelitian Tesis</h2>
                         <h2 class="card-inside-title">Jelaskan sistem pembimbingan penelitian tesis pada program studi ini, mencakup informasi tentang: ketersediaan panduan, kebijakan pembimbingan, mekanisme penunjukan pembimbing  dan mahasiswa bimbingan, serta proses pembimbingannya.</h2>
@@ -20815,7 +20815,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian543">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian543_buku">
                         <input type="hidden" name="id543" id="id543" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir543" id="id_butir543" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <!-- <h2 class="card-inside-title">Penelitian Tesis</h2> -->
@@ -20845,7 +20845,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi543">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi543_buku">
                         <input type="hidden" name="id_butir543" id="id_butir543" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Penelitian Tesis</h2> -->
                         <h2 class="card-inside-title">Rata-rata lama penyelesaian tugas akhir/tesis pada tiga tahun terakhir :  ... bulan. (Menurut kurikulum tugas akhir direncanakan ... semester).</h2>
@@ -38540,7 +38540,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom6_5122" id="kolom6_5122" class="form-control" placeholder="Tuliskan disini">
+                                                <input type="text" name="kolom5_5122" id="kolom5_5122" class="form-control" placeholder="Tuliskan disini">
                                             </div>
                                         </div>
                                     </div>
