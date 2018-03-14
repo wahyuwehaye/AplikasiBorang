@@ -24503,14 +24503,12 @@
                                                         <!-- PAKE UI -->
                                                         <input type="hidden" name="551id_butir[]" id="551id_butir[]" value="<?php echo $isiannya; ?>" />
                                                         <input type="hidden" name="id_butir551[]" id="id_butir551[]" value="<?php echo $isiannya; ?>" />
-                                                        <input type="hidden" name="kolom4_551[]" id="kolom4_551[]" value="" />
-                                                        <input type="hidden" name="kolom5_551[]" id="kolom5_551[]" value="<?php echo $TS1.$TS; ?>" />
+                                                        <input type="hidden" name="kolom3_551[]" id="kolom5_551[]" value="<?php echo $TS1.$TS; ?>" />
 
                                                         <!-- GA PAKE UI -->
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         <input type="hidden" name="kolom1_551[]" id="k1_551[]" class="form-control" value="<?php echo $valueTS['FULLNAME']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom2_551[]" id="k2_551[]" class="form-control" value="<?php echo $valueTS['JML_MHS']; ?>" placeholder="Ex: 500">
-                                                        <input type="hidden" name="kolom3_551[]" id="k3_551[]" class="form-control" value="0"  placeholder="Ex: 500">
                                                         <?php
                                                         if ($getTS<1) {
                                                         ?>
@@ -24558,14 +24556,12 @@
                                                         <!-- PAKE UI -->
                                                         <input type="hidden" name="551id_butir[]" id="551id_butir[]" value="<?php echo $isiannya; ?>" />
                                                         <input type="hidden" name="id_butir551[]" id="id_butir551[]" value="<?php echo $isiannya; ?>" />
-                                                        <input type="hidden" name="kolom4_551[]" id="kolom4_551[]" value="" />
-                                                        <input type="hidden" name="kolom5_551[]" id="kolom5_551[]" value="<?php echo $TS1.$TS; ?>" />
+                                                        <input type="hidden" name="kolom3_551[]" id="kolom5_551[]" value="<?php echo $TS1.$TS; ?>" />
 
                                                         <!-- GA PAKE UI -->
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         <input type="hidden" name="kolom1_551[]" id="k1_551[]" class="form-control" value="<?php echo $valueTS['FULLNAME']; ?>" placeholder="Ex: 500">
                                                         <input type="hidden" name="kolom2_551[]" id="k2_551[]" class="form-control" value="<?php echo $valueTS['JML_MHS']; ?>" placeholder="Ex: 500">
-                                                        <input type="hidden" name="kolom3_551[]" id="k3_551[]" class="form-control" value="0"  placeholder="Ex: 500">
                                                         <?php
                                                         if ($getTS<1) {
                                                         ?>
