@@ -22709,7 +22709,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian61">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian61_buku">
                         <input type="hidden" name="id61" id="id61" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir61" id="id_butir61" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -22740,7 +22740,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi61">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi61_buku">
                         <input type="hidden" name="id_butir61" id="id_butir61" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Pengelolaan Dana</h2>
                         <h2 class="card-inside-title">Keterlibatan aktif program studi harus tercerminkan dalam dokumen tentang proses perencanaan, pengelolaan dan pelaporan serta pertanggungjawaban penggunaan dana kepada pemangku kepentingan melalui mekanisme yang transparan dan akuntabel.</h2>
@@ -25582,7 +25582,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian632">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian632_buku">
                         <input type="hidden" name="id632" id="id632" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir632" id="id_butir632" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <h2 class="card-inside-title">Sistem Monitoring dan Evaluasi (Monev) Pembelajaran</h2>
@@ -25612,7 +25612,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi632">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi632_buku">
                         <input type="hidden" name="id_butir632" id="id_butir632" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan ketersediaan tempat kerja dan fasilitas internet (bandwidth) untuk mahasiswa program magister. </h2>
                         <div class="row clearfix">
@@ -27800,7 +27800,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian651">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian651_buku">
                         <input type="hidden" name="id651" id="id651" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir651" id="id_butir651" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -27830,7 +27830,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi651">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi651_buku">
                         <input type="hidden" name="id_butir651" id="id_butir651" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Sistem Informasi</h2>
                         <h2 class="card-inside-title">Jelaskan sistem informasi dan fasilitas yang digunakan oleh program studi untuk proses pembelajaran (hardware, software, e-learning, perpustakaan, dll.).</h2>
@@ -28015,7 +28015,7 @@
                             <?php
                             if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi652">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi652_buku">
                         <input type="hidden" name="652id_butir" id="652id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir652" id="id_butir652" value="<?php echo $getidbutir652; ?>" />
                         <h2 class="card-inside-title">Sistem Informasi</h2>
@@ -28501,7 +28501,7 @@
                         <?php
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi652">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi652_buku">
                         <input type="hidden" name="652id_butir" id="652id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir652" id="id_butir652" value="<?php echo $getidbutir652; ?>" />
                         <h2>Sistem Informasi</h2>
@@ -29470,7 +29470,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian712">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian712_buku">
                         <input type="hidden" name="id712" id="id712" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir712" id="id_butir712" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <div class="col-md-4">
@@ -29500,7 +29500,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi712">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi712_buku">
                         <input type="hidden" name="id_butir712" id="id_butir712" value="<?php echo $isiannya; ?>" />
                         <!-- <h2 class="card-inside-title">Profil Mahasiswa dan Lulusan</h2> -->
                         <h2 class="card-inside-title">Jelaskan penggunaan pendekatan dan pemikiran baru dalam penelitian dosen dan mahasiswa.</h2>
@@ -29680,7 +29680,7 @@
                             if (count($dataisian)>0) {
                             for($i=0;$i<count($dataisian);$i++){
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian713">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/updateisian713_buku">
                         <input type="hidden" name="id713" id="id713" value="<?php echo $dataisian[$i]['id'] ?>" />
                         <input type="hidden" name="id_butir713" id="id_butir713" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
                         <h2 class="card-inside-title">Sistem Monitoring dan Evaluasi (Monev) Pembelajaran</h2>
@@ -29710,7 +29710,7 @@
                         <?php }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi713">
+                        <form method="POST" action="<?php echo base_url()?>C_isian3as2/ngisi713_buku">
                         <input type="hidden" name="id_butir713" id="id_butir713" value="<?php echo $isiannya; ?>" />
                         <h2 class="card-inside-title">Jelaskan hasil penelitian dosen atau penelitian tesis mahasiswa  pada butir 7.1.1. yang berdampak pada peningkatan (1) produktivitas, (2) kesejahteraan masyarakat, dan (3) mutu lingkungan.</h2>
                         <div class="row clearfix">
