@@ -232,7 +232,7 @@
                                             }
                                             ?>
                                             
-                                            <a type="button" onclick="sudahdinilai()" data-color="light-blue" class="btn bg-amber waves-effect btn-sm" data-toggle="tooltip" data-placement="top" title="Nilai" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><span class="badge"><?php echo $skor; ?></span></a>&nbsp;
+                                            <!-- <a type="button" onclick="sudahdinilai()" data-color="light-blue" class="btn bg-amber waves-effect btn-sm" data-toggle="tooltip" data-placement="top" title="Nilai" href="javascript:void(0)" data-whatever="<?php echo $butir[$i]['id']; ?>"><span class="badge"><?php echo $skor; ?></span></a>&nbsp; -->
                                         </div>
                                     </td>
                                 </tr>
