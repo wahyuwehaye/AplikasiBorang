@@ -9739,77 +9739,11 @@
                         </form>
                             <?php
                                 }
-                        }elseif ($getbutir=='3.3.1.a') {
-                            if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian331a">
-                        <input type="hidden" name="id331a" id="id331a" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir331a" id="id_butir331a" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
-                        </div>
-                        
-                        <h2 class="card-inside-title">Evaluasi Lulusan</h2>
-                        <h2 class="card-inside-title">Adakah studi pelacakan (tracer study) untuk mendapatkan hasil evaluasi kinerja lulusan dengan pihak pengguna?</h2>
-                        <div class="demo-checkbox">
-                                <input type="checkbox" id="tidakada" class="filled-in" />
-                                <label for="tidakada">Tidak Ada</label></br>
-                                <input type="checkbox" id="ada" class="filled-in" checked />
-                                <label for="ada">Ada</label>
-                        </div>
-                        <h2 class="card-inside-title">Jika ada, uraikan metode, proses dan mekanisme kegiatan studi pelacakan tersebut.  Jelaskan pula bentuk tindak lanjut dari hasil kegiatan ini.</h2>
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        <input type="hidden" name="version_no331a" id="version_no331a" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at331a" id="created_at331a" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
-                        </form>
-                        <?php }
-                                }else{
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi331a">
-                        <input type="hidden" name="id_butir331a" id="id_butir331a" value="<?php echo $isiannya; ?>" />
-                        <h2 class="card-inside-title">Evaluasi Lulusan</h2>
-                        <h2 class="card-inside-title">Adakah studi pelacakan (tracer study) untuk mendapatkan hasil evaluasi kinerja lulusan dengan pihak pengguna?</h2>
-                        <div class="demo-checkbox">
-                                <input type="checkbox" id="tidakada" class="filled-in" />
-                                <label for="tidakada">Tidak Ada</label></br>
-                                <input type="checkbox" id="ada" class="filled-in" />
-                                <label for="ada">Ada</label>
-                            </div>
-                        <h2 class="card-inside-title">Jika ada, uraikan metode, proses dan mekanisme kegiatan studi pelacakan tersebut.  Jelaskan pula bentuk tindak lanjut dari hasil kegiatan ini.</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
-                        </form>
-                            <?php
-                                }
                         }elseif ($getbutir=='3.3.1') {
-                            $getidbutir331b = '';
-                            $querycariidbutir331b = $CI->db->query('select * from butir_buku where butir="3.3.1" and id_borang = "'.$id_bor.'"');
-                            foreach ($querycariidbutir331b->result() as $row){
-                                $getidbutir331b = $row->id;
+                            $getidbutir331 = '';
+                            $querycariidbutir331 = $CI->db->query('select * from butir_buku where butir="3.3.1" and id_borang = "'.$id_bor.'"');
+                            foreach ($querycariidbutir331->result() as $row){
+                                $getidbutir331 = $row->id;
                                 break;
                             }
                     ?>
@@ -9972,47 +9906,26 @@
                         <!-- Tutup DETAIL PANDUAN -->
                     <?php
                             if (count($dataisian)>0) {
-                            // for($i=0;$i<count($dataisian);$i++){
-                            
                             ?>
-                        
-
-                            <!-- 3.3.1.A -->
-                        <input type="hidden" name="id331a" id="id331a" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir331a" id="id_butir331a" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
-                        </div>
-                        
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi331_buku">
+                        <input type="hidden" name="331id_butir" id="331id_butir" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir331" id="id_butir331" value="<?php echo $getidbutir331; ?>" />
                         <h2 class="card-inside-title">Evaluasi Lulusan</h2>
                         <h2 class="card-inside-title">Adakah studi pelacakan (tracer study) untuk mendapatkan hasil evaluasi kinerja lulusan dengan pihak pengguna?</h2>
                         <div class="demo-checkbox">
-                                <input type="checkbox" id="tidakada" class="filled-in" />
-                                <label for="tidakada">Tidak Ada</label></br>
-                                <input type="checkbox" id="ada" class="filled-in" checked />
-                                <label for="ada">Ada</label>
+                                <input type="radio" id="rb1" name="kolom43_331" <?php echo ($dataisian[0]['kolom43']=='Ya')?'checked':'' ?> class="filled-in" value="Ya" />
+                                <label for="rb1">Ya</label></br>
+                                <input type="radio" id="rb2" name="kolom43_331" <?php echo ($dataisian[0]['kolom43']=='Tidak')?'checked':'' ?> class="filled-in" value="Tidak" />
+                                <label for="rb2">Tidak</label>
                         </div>
                         <h2 class="card-inside-title">Jika ada, uraikan metode, proses dan mekanisme kegiatan studi pelacakan tersebut.  Jelaskan pula bentuk tindak lanjut dari hasil kegiatan ini.</h2>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <textarea name="kolom1_331a" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                                            <textarea name="kolom44_331" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[0]['kolom44'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
-                        <input type="hidden" name="version_no331a" id="version_no331a" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at331a" id="created_at331a" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                            <!-- TUTUP 3.3.1.A -->
-
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi331b">
-                        <input type="hidden" name="331id_butir" id="331id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir331b" id="id_butir331b" value="<?php echo $getidbutir331b; ?>" />
                         <h2 class="card-inside-title">Hasil studi pelacakan dirangkum dalam tabel berikut:</h2>
         <!-- Tabel Edit -->
                         <div class="header">
@@ -10082,7 +9995,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom6'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331b" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -10097,7 +10010,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom12'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331b" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -10112,7 +10025,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom18'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331b" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -10127,7 +10040,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom24'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331b" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -10142,7 +10055,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom30'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331b" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -10157,7 +10070,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom36'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331b" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -10172,7 +10085,7 @@
                                         <td style="width: 52px; text-align: center; height: 13px;"><?php echo $dataisian[$diloop]['kolom42'] ?>&nbsp;</td>
                                         <td style="width: 53px; text-align: center; height: 13px;">
                                             <div class="js-sweetalert">
-                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331b" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update331" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
                                                 <a id="del" onclick="deletabelbutir(<?php echo $dataisian[$diloop]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$dataisian[$diloop]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$diloop]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                                             </div>
                                         </td>
@@ -10198,7 +10111,7 @@
                             <!-- nomor 1 -->
                                     <div class="col-md-12">
                                         <b>Integritas (etika dan moral)</b>
-                                        <input type="hidden" name="kolom1_331b" value="Integritas (etika dan moral)" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom1_331" value="Integritas (etika dan moral)" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10210,7 +10123,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10221,7 +10134,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10232,7 +10145,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10243,7 +10156,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom5_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10254,14 +10167,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom6_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom6_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                             <!-- nomor 2 -->
                                     <div class="col-md-12">
                                         <b>Keahlian berdasarkan bidang ilmu (profesionalisme)</b>
-                                        <input type="hidden" name="kolom7_331b" value="Keahlian berdasarkan bidang ilmu (profesionalisme)" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom7_331" value="Keahlian berdasarkan bidang ilmu (profesionalisme)" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10273,7 +10186,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom8_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom8_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10284,7 +10197,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom9_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom9_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10295,7 +10208,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom10_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom10_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10306,7 +10219,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom11_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom11_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10317,14 +10230,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom12_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 3 -->
                                     <div class="col-md-12">
                                         <b>Bahasa Inggris</b>
-                                        <input type="hidden" name="kolom13_331b" value="Bahasa Inggris" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom13_331" value="Bahasa Inggris" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10336,7 +10249,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom14_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom14_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10347,7 +10260,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom15_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom15_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10358,7 +10271,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom16_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom16_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10369,7 +10282,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom17_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom17_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10380,14 +10293,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom18_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom18_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 4 -->
                                     <div class="col-md-12">
                                         <b>Penggunaan Teknologi Informasi</b>
-                                        <input type="hidden" name="kolom19_331b" value="Penggunaan Teknologi Informasi" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom19_331" value="Penggunaan Teknologi Informasi" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10399,7 +10312,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom20_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom20_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10410,7 +10323,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom21_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom21_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10421,7 +10334,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom22_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom22_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10432,7 +10345,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom23_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom23_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10443,14 +10356,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom24_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom24_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 5 -->
                                     <div class="col-md-12">
                                         <b>Komunikasi</b>
-                                        <input type="hidden" name="kolom25_331b" value="Komunikasi" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom25_331" value="Komunikasi" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10462,7 +10375,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom26_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom26_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10473,7 +10386,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom27_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom27_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10484,7 +10397,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom28_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom28_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10495,7 +10408,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom29_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom29_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10506,14 +10419,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom30_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom30_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 6 -->
                                     <div class="col-md-12">
                                         <b>Kerjasama tim</b>
-                                        <input type="hidden" name="kolom31_331b" value="Kerjasama tim" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom31_331" value="Kerjasama tim" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10525,7 +10438,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom32_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom32_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10536,7 +10449,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom33_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom33_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10547,7 +10460,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom34_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom34_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10558,7 +10471,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom35_331b"  class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom35_331"  class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10569,14 +10482,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom36_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom36_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 7 -->
                                     <div class="col-md-12">
                                         <b>Pengembangan diri</b>
-                                        <input type="hidden" name="kolom37_331b" value="Pengembangan diri" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom37_331" value="Pengembangan diri" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10588,7 +10501,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom38_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom38_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10599,7 +10512,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom39_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom39_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10610,7 +10523,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom40_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom40_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10621,7 +10534,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom41_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom41_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10632,7 +10545,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom42_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom42_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10641,12 +10554,6 @@
                                         <b>Isian / Catatan :</b>
                                     </div>
                                 <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom43_331b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                            </textarea>
-                                        </div>
-                                    </div>
                                     <p>Catatan :  Sediakan dokumen pendukung pada saat asesmen lapangan</p>
                                         <p>(*) persentase tanggapan pihak pengguna = [(jumlah tanggapan pada peringkat) : (jumlah tanggapan yang ada)] x 100</p>
                                 </div>
@@ -10659,16 +10566,32 @@
                     // }
                                 }else{
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi331b">
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi331_buku">
                         <input type="hidden" name="331id_butir" id="331id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir331b" id="id_butir331b" value="<?php echo $getidbutir331b; ?>" />
+                        <input type="hidden" name="id_butir331" id="id_butir331" value="<?php echo $getidbutir331; ?>" />
+                        <h2 class="card-inside-title">Evaluasi Lulusan</h2>
+                        <h2 class="card-inside-title">Adakah studi pelacakan (tracer study) untuk mendapatkan hasil evaluasi kinerja lulusan dengan pihak pengguna?</h2>
+                        <div class="demo-checkbox">
+                                <input type="radio" id="rb1" name="kolom43_331" class="filled-in" value="Ya" />
+                                <label for="rb1">Ya</label></br>
+                                <input type="radio" id="rb2" name="kolom43_331" class="filled-in" value="Tidak" />
+                                <label for="rb2">Tidak</label>
+                        </div>
+                        <h2 class="card-inside-title">Jika ada, uraikan metode, proses dan mekanisme kegiatan studi pelacakan tersebut.  Jelaskan pula bentuk tindak lanjut dari hasil kegiatan ini.</h2>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="kolom44_331" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                         <h2 class="card-inside-title">Hasil studi pelacakan dirangkum dalam tabel berikut:</h2>
                         <h2 class="card-inside-title">Nyatakan angka persentasenya(*)  pada kolom yang sesuai.</h2>
                         <div class="row clearfix">
                         <!-- nomor 1 -->
                                     <div class="col-md-12">
                                         <b>Integritas (etika dan moral)</b>
-                                        <input type="hidden" name="kolom1_331b" value="Integritas (etika dan moral)" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom1_331" value="Integritas (etika dan moral)" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10680,7 +10603,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10691,7 +10614,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10702,7 +10625,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10713,7 +10636,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom5_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10724,14 +10647,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom6_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom6_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                             <!-- nomor 2 -->
                                     <div class="col-md-12">
                                         <b>Keahlian berdasarkan bidang ilmu (profesionalisme)</b>
-                                        <input type="hidden" name="kolom7_331b" value="Keahlian berdasarkan bidang ilmu (profesionalisme)" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom7_331" value="Keahlian berdasarkan bidang ilmu (profesionalisme)" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10743,7 +10666,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom8_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom8_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10754,7 +10677,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom9_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom9_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10765,7 +10688,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom10_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom10_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10776,7 +10699,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom11_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom11_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10787,14 +10710,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom12_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 3 -->
                                     <div class="col-md-12">
                                         <b>Bahasa Inggris</b>
-                                        <input type="hidden" name="kolom13_331b" value="Bahasa Inggris" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom13_331" value="Bahasa Inggris" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10806,7 +10729,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom14_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom14_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10817,7 +10740,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom15_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom15_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10828,7 +10751,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom16_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom16_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10839,7 +10762,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom17_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom17_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10850,14 +10773,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom18_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom18_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 4 -->
                                     <div class="col-md-12">
                                         <b>Penggunaan Teknologi Informasi</b>
-                                        <input type="hidden" name="kolom19_331b" value="Penggunaan Teknologi Informasi" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom19_331" value="Penggunaan Teknologi Informasi" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10869,7 +10792,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom20_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom20_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10880,7 +10803,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom21_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom21_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10891,7 +10814,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom22_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom22_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10902,7 +10825,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom23_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom23_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10913,14 +10836,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom24_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom24_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 5 -->
                                     <div class="col-md-12">
                                         <b>Komunikasi</b>
-                                        <input type="hidden" name="kolom25_331b" value="Komunikasi" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom25_331" value="Komunikasi" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10932,7 +10855,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom26_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom26_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10943,7 +10866,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom27_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom27_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10954,7 +10877,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom28_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom28_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10965,7 +10888,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom29_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom29_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -10976,14 +10899,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom30_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom30_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 6 -->
                                     <div class="col-md-12">
                                         <b>Kerjasama tim</b>
-                                        <input type="hidden" name="kolom31_331b" value="Kerjasama tim" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom31_331" value="Kerjasama tim" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -10995,7 +10918,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom32_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom32_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -11006,7 +10929,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom33_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom33_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -11017,7 +10940,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom34_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom34_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -11028,7 +10951,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom35_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom35_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -11039,14 +10962,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom36_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom36_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 7 -->
                                     <div class="col-md-12">
                                         <b>Pengembangan diri</b>
-                                        <input type="hidden" name="kolom37_331b" value="Pengembangan diri" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom37_331" value="Pengembangan diri" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -11058,7 +10981,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom38_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom38_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -11069,7 +10992,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom39_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom39_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -11080,7 +11003,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom40_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom40_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -11091,7 +11014,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom41_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom41_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -11102,7 +11025,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom42_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom42_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -11111,12 +11034,6 @@
                                         <b>Isian / Catatan :</b>
                                     </div>
                                 <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom43_331b" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                            </textarea>
-                                        </div>
-                                    </div>
                                     <p>Catatan :  Sediakan dokumen pendukung pada saat asesmen lapangan</p>
                                         <p>(*) persentase tanggapan pihak pengguna = [(jumlah tanggapan pada peringkat) : (jumlah tanggapan yang ada)] x 100</p>
                                 </div>
@@ -35580,8 +35497,8 @@
         </div>
         <!-- Tutup Modal Update 313 -->
 
-        <!-- Molda Update Tabel 331b -->
-        <div class="modal fade" id="update331b" tabindex="-1" role="dialog">
+        <!-- Molda Update Tabel 331 -->
+        <div class="modal fade" id="update331" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -35593,16 +35510,16 @@
                     //   $attributes = array('class' => 'form-horizontal', 'id' => 'myform');
                     //   echo form_open('c_borang/update', $attributes);
                     $attributes = array('id' => 'myform');
-                    echo form_open('C_isian/updateisian331b', $attributes);
+                    echo form_open('C_isian/updateisian331_buku', $attributes);
                     // echo form_open('c_borang/update');
                 ?>
                     <div class="row clearfix">
-                        <input type="hidden" name="id331b" id="id331b" />
+                        <input type="hidden" name="id331" id="id331" />
                         <input type="hidden" name="331id_butir" id="331id_butir" value="<?php echo $isiannya; ?>" />
-                        <input type="hidden" name="id_butir331btabel" id="id_butir331btabel" />
+                        <input type="hidden" name="id_butir331tabel" id="id_butir331tabel" />
                         <div class="col-md-12">
                                         <b>Integritas (etika dan moral)</b>
-                                        <input type="hidden" name="kolom1_331b" id="kolom1_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom1_331" id="kolom1_331" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -35614,7 +35531,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom2_331b" id="kolom2_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom2_331" id="kolom2_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35625,7 +35542,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom3_331b" id="kolom3_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom3_331" id="kolom3_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35636,7 +35553,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom4_331b" id="kolom4_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom4_331" id="kolom4_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35647,7 +35564,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom5_331b" id="kolom5_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom5_331" id="kolom5_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35658,14 +35575,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom6_331b" id="kolom6_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom6_331" id="kolom6_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                             <!-- nomor 2 -->
                                     <div class="col-md-12">
                                         <b>Keahlian berdasarkan bidang ilmu (profesionalisme)</b>
-                                        <input type="hidden" name="kolom7_331b" id="kolom7_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom7_331" id="kolom7_331" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -35677,7 +35594,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom8_331b" id="kolom8_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom8_331" id="kolom8_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35688,7 +35605,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom9_331b" id="kolom9_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom9_331" id="kolom9_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35699,7 +35616,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom10_331b" id="kolom10_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom10_331" id="kolom10_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35710,7 +35627,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom11_331b" id="kolom11_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom11_331" id="kolom11_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35721,14 +35638,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom12_331b" id="kolom12_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom12_331" id="kolom12_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 3 -->
                                     <div class="col-md-12">
                                         <b>Bahasa Inggris</b>
-                                        <input type="hidden" name="kolom13_331b" id="kolom13_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom13_331" id="kolom13_331" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -35740,7 +35657,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom14_331b" id="kolom14_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom14_331" id="kolom14_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35751,7 +35668,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom15_331b" id="kolom15_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom15_331" id="kolom15_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35762,7 +35679,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom16_331b" id="kolom16_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom16_331" id="kolom16_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35773,7 +35690,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom17_331b" id="kolom17_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom17_331" id="kolom17_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35784,14 +35701,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom18_331b" id="kolom18_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom18_331" id="kolom18_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 4 -->
                                     <div class="col-md-12">
                                         <b>Penggunaan Teknologi Informasi</b>
-                                        <input type="hidden" name="kolom19_331b" id="kolom19_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom19_331" id="kolom19_331" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -35803,7 +35720,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom20_331b" id="kolom20_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom20_331" id="kolom20_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35814,7 +35731,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom21_331b" id="kolom21_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom21_331" id="kolom21_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35825,7 +35742,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom22_331b" id="kolom22_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom22_331" id="kolom22_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35836,7 +35753,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom23_331b" id="kolom23_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom23_331" id="kolom23_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35847,14 +35764,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom24_331b" id="kolom24_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom24_331" id="kolom24_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 5 -->
                                     <div class="col-md-12">
                                         <b>Komunikasi</b>
-                                        <input type="hidden" name="kolom25_331b" id="kolom25_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom25_331" id="kolom25_331" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -35866,7 +35783,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom26_331b" id="kolom26_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom26_331" id="kolom26_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35877,7 +35794,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom27_331b" id="kolom27_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom27_331" id="kolom27_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35888,7 +35805,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom28_331b" id="kolom28_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom28_331" id="kolom28_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35899,7 +35816,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom29_331b" id="kolom29_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom29_331" id="kolom29_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35910,14 +35827,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom30_331b" id="kolom30_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom30_331" id="kolom30_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 6 -->
                                     <div class="col-md-12">
                                         <b>Komunikasi</b>
-                                        <input type="hidden" name="kolom31_331b" id="kolom31_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom31_331" id="kolom31_331" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -35929,7 +35846,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom32_331b" id="kolom32_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom32_331" id="kolom32_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35940,7 +35857,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom33_331b" id="kolom33_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom33_331" id="kolom33_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35951,7 +35868,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom34_331b" id="kolom34_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom34_331" id="kolom34_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35962,7 +35879,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom35_331b" id="kolom35_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom35_331" id="kolom35_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -35973,14 +35890,14 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom36_331b" id="kolom36_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom36_331" id="kolom36_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
                         <!-- nomor 7 -->
                                     <div class="col-md-12">
                                         <b>Pengembangan diri</b>
-                                        <input type="hidden" name="kolom37_331b" id="kolom37_331b" class="form-control" placeholder="Ex: 500">
+                                        <input type="hidden" name="kolom37_331" id="kolom37_331" class="form-control" placeholder="Ex: 500">
                                     </div>
                                     <div class="col-md-12">
                                         <b>Tanggapan Pihak Pengguna :</b>
@@ -35992,7 +35909,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom38_331b" id="kolom38_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom38_331" id="kolom38_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -36003,7 +35920,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom39_331b" id="kolom39_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom39_331" id="kolom39_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -36014,7 +35931,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom40_331b" id="kolom40_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom40_331" id="kolom40_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -36025,7 +35942,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom41_331b" id="kolom41_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom41_331" id="kolom41_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -36036,7 +35953,7 @@
                                                 <i class="material-icons">dialpad</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" name="kolom42_331b" id="kolom42_331b" class="form-control" placeholder="Ex: 500">
+                                                <input type="text" name="kolom42_331" id="kolom42_331" class="form-control" placeholder="Ex: 500">
                                             </div>
                                         </div>
                                     </div>
@@ -36050,7 +35967,7 @@
                 </div>
             </div>
         </div>
-        <!-- Tutup Modal Update 331b -->
+        <!-- Tutup Modal Update 331 -->
 
         <!-- Molda Update Tabel 431 -->
         <div class="modal fade" id="update431" tabindex="-1" role="dialog">
@@ -44377,11 +44294,11 @@
 
     });
 
-    $('#update331b').on('shown.bs.modal', function (event) {
+    $('#update331').on('shown.bs.modal', function (event) {
         //ajax call to get isian Borang Informatin from database
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever');
-        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl";
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl_buku";
         $.ajax({
             method: "POST",
             url: link,
@@ -44390,50 +44307,50 @@
           })
           .done(function( msg ) {
               var buku = JSON.parse(msg);
-              $('#id331b').val(buku[0]['id']);
-              $('#id_butir331btabel').val(buku[0]['id_butir']);
-              $('#kolom1_331b').val(buku[0]['kolom1']);
-              $('#kolom2_331b').val(buku[0]['kolom2']);
-              $('#kolom3_331b').val(buku[0]['kolom3']);
-              $('#kolom4_331b').val(buku[0]['kolom4']);
-              $('#kolom5_331b').val(buku[0]['kolom5']);
-              $('#kolom6_331b').val(buku[0]['kolom6']);
-              $('#kolom7_331b').val(buku[0]['kolom7']);
-              $('#kolom8_331b').val(buku[0]['kolom8']);
-              $('#kolom9_331b').val(buku[0]['kolom9']);
-              $('#kolom10_331b').val(buku[0]['kolom10']);
-              $('#kolom11_331b').val(buku[0]['kolom11']);
-              $('#kolom12_331b').val(buku[0]['kolom12']);
-              $('#kolom13_331b').val(buku[0]['kolom13']);
-              $('#kolom14_331b').val(buku[0]['kolom14']);
-              $('#kolom15_331b').val(buku[0]['kolom15']);
-              $('#kolom16_331b').val(buku[0]['kolom16']);
-              $('#kolom17_331b').val(buku[0]['kolom17']);
-              $('#kolom18_331b').val(buku[0]['kolom18']);
-              $('#kolom19_331b').val(buku[0]['kolom19']);
-              $('#kolom20_331b').val(buku[0]['kolom20']);
-              $('#kolom21_331b').val(buku[0]['kolom21']);
-              $('#kolom22_331b').val(buku[0]['kolom22']);
-              $('#kolom23_331b').val(buku[0]['kolom23']);
-              $('#kolom24_331b').val(buku[0]['kolom24']);
-              $('#kolom25_331b').val(buku[0]['kolom25']);
-              $('#kolom26_331b').val(buku[0]['kolom26']);
-              $('#kolom27_331b').val(buku[0]['kolom27']);
-              $('#kolom28_331b').val(buku[0]['kolom28']);
-              $('#kolom29_331b').val(buku[0]['kolom29']);
-              $('#kolom30_331b').val(buku[0]['kolom30']);
-              $('#kolom31_331b').val(buku[0]['kolom31']);
-              $('#kolom32_331b').val(buku[0]['kolom32']);
-              $('#kolom33_331b').val(buku[0]['kolom33']);
-              $('#kolom34_331b').val(buku[0]['kolom34']);
-              $('#kolom35_331b').val(buku[0]['kolom35']);
-              $('#kolom36_331b').val(buku[0]['kolom36']);
-              $('#kolom37_331b').val(buku[0]['kolom37']);
-              $('#kolom38_331b').val(buku[0]['kolom38']);
-              $('#kolom39_331b').val(buku[0]['kolom39']);
-              $('#kolom40_331b').val(buku[0]['kolom40']);
-              $('#kolom41_331b').val(buku[0]['kolom41']);
-              $('#kolom42_331b').val(buku[0]['kolom42']);
+              $('#id331').val(buku[0]['id']);
+              $('#id_butir331tabel').val(buku[0]['id_butir']);
+              $('#kolom1_331').val(buku[0]['kolom1']);
+              $('#kolom2_331').val(buku[0]['kolom2']);
+              $('#kolom3_331').val(buku[0]['kolom3']);
+              $('#kolom4_331').val(buku[0]['kolom4']);
+              $('#kolom5_331').val(buku[0]['kolom5']);
+              $('#kolom6_331').val(buku[0]['kolom6']);
+              $('#kolom7_331').val(buku[0]['kolom7']);
+              $('#kolom8_331').val(buku[0]['kolom8']);
+              $('#kolom9_331').val(buku[0]['kolom9']);
+              $('#kolom10_331').val(buku[0]['kolom10']);
+              $('#kolom11_331').val(buku[0]['kolom11']);
+              $('#kolom12_331').val(buku[0]['kolom12']);
+              $('#kolom13_331').val(buku[0]['kolom13']);
+              $('#kolom14_331').val(buku[0]['kolom14']);
+              $('#kolom15_331').val(buku[0]['kolom15']);
+              $('#kolom16_331').val(buku[0]['kolom16']);
+              $('#kolom17_331').val(buku[0]['kolom17']);
+              $('#kolom18_331').val(buku[0]['kolom18']);
+              $('#kolom19_331').val(buku[0]['kolom19']);
+              $('#kolom20_331').val(buku[0]['kolom20']);
+              $('#kolom21_331').val(buku[0]['kolom21']);
+              $('#kolom22_331').val(buku[0]['kolom22']);
+              $('#kolom23_331').val(buku[0]['kolom23']);
+              $('#kolom24_331').val(buku[0]['kolom24']);
+              $('#kolom25_331').val(buku[0]['kolom25']);
+              $('#kolom26_331').val(buku[0]['kolom26']);
+              $('#kolom27_331').val(buku[0]['kolom27']);
+              $('#kolom28_331').val(buku[0]['kolom28']);
+              $('#kolom29_331').val(buku[0]['kolom29']);
+              $('#kolom30_331').val(buku[0]['kolom30']);
+              $('#kolom31_331').val(buku[0]['kolom31']);
+              $('#kolom32_331').val(buku[0]['kolom32']);
+              $('#kolom33_331').val(buku[0]['kolom33']);
+              $('#kolom34_331').val(buku[0]['kolom34']);
+              $('#kolom35_331').val(buku[0]['kolom35']);
+              $('#kolom36_331').val(buku[0]['kolom36']);
+              $('#kolom37_331').val(buku[0]['kolom37']);
+              $('#kolom38_331').val(buku[0]['kolom38']);
+              $('#kolom39_331').val(buku[0]['kolom39']);
+              $('#kolom40_331').val(buku[0]['kolom40']);
+              $('#kolom41_331').val(buku[0]['kolom41']);
+              $('#kolom42_331').val(buku[0]['kolom42']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
