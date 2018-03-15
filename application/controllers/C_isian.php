@@ -4545,10 +4545,10 @@ class C_isian extends CI_Controller {
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian');
-        $id=$_POST['id_butir56'];
+        $id=$_POST['id_butir56tabel'];
         $this->M_isian->update_isian56_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian_buku/'.$_POST['id_butir56']);
+        redirect('isian_buku/'.$_POST['id_butir56tabel']);
     }
 
     // 53
