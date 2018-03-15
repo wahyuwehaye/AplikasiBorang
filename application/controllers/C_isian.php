@@ -4077,10 +4077,23 @@ class C_isian extends CI_Controller {
         $this->load->model('M_butir');
         $this->load->model('M_borang');
         $this->load->model('M_isian');
-        $id=$_POST['id_butir331'];
+        $id=$_POST['id_butir331tabel'];
         $this->M_isian->update_isian331_buku();
         $_SESSION['suksesupdate'] = '';
-        redirect('isian_buku/'.$_POST['id_butir331']);
+        redirect('isian_buku/'.$_POST['id_butir331tabel']);
+    }
+
+    // UPDATE ISIANNYA SAJA
+    public function updatengisi331_buku(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['331id_butir'];
+        $this->M_isian->updatengisi331_buku();
+        $_SESSION['suksesupdate'] = '';
+        redirect('isian_buku/'.$_POST['331id_butir']);
     }
 
     // 19
