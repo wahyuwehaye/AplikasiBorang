@@ -2008,6 +2008,32 @@ class C_isian extends CI_Controller {
         redirect('isian_buku/'.$_POST['id_butir621']);
     }
 
+    // INPUT TABEL 1
+    public function ngisi621_buku_tabel1(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir621_t1'];
+        $this->M_isian->ngisi621_buku_tabel1();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['id_butir621_t1']);
+    }
+
+    // INPUT TABEL 2
+    public function ngisi621_buku_tabel2(){
+        //load needed library,helper,model
+        $this->load->library('form_validation');
+        $this->load->model('M_butir');
+        $this->load->model('M_borang');
+        $this->load->model('M_isian');
+        $id=$_POST['id_butir621_t2'];
+        $this->M_isian->ngisi621_buku_tabel2();
+        $_SESSION['suksesinput'] = '';
+        redirect('isian_buku/'.$_POST['id_butir621_t2']);
+    }
+
     // 60
     // TANPA ARRAY
     public function ngisi622_buku(){

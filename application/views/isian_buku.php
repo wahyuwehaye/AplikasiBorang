@@ -27741,457 +27741,1126 @@
                             <?php
                                 }
                         }elseif ($getbutir=='6.2.1') {
-                            if (count($dataisian)>0) {
-                            for($i=0;$i<count($dataisian);$i++){
-                            ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/updateisian621">
-                        <input type="hidden" name="id621" id="id621" value="<?php echo $dataisian[$i]['id'] ?>" />
-                        <input type="hidden" name="id_butir621" id="id_butir621" value="<?php echo $dataisian[$i]['id_butir'] ?>" />
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">History : <a type="button" data-color="orange" class="btn bg-orange waves-effect btn-xs" data-toggle="modal" data-target="#viewVersion" data-placement="top" title="View Version" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><?php echo $dataisian[$i]['version_no'] ?></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Lihat Buku : <a type="button" data-color="green" class="btn bg-green waves-effect btn-xs" data-toggle="tooltip" data-placement="top" title="View Book" href="<?php echo base_url();?>viewbookbutir/<?php echo $dataisian[$i]['id_butir']; ?>" data-whatever="<?php echo $dataisian[$i]['id_butir']; ?>"><i class="material-icons">book</i></a></h2>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="card-inside-title">Delete Isian Butir : <a id="del" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_isian/destroyisian1kolom/'.$dataisian[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $dataisian[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a></h2>
-                        </div>
-                        <h2 class="card-inside-title">Perolehan dan Alokasi Dana</h2>
-                        <h2 class="card-inside-title">Tuliskan realisasi perolehan dan alokasi dana (termasuk hibah) dalam juta rupiah termasuk gaji,  selama tiga tahun terakhir, pada tabel berikut:</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_621" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $dataisian[$i]['kolom1'] ?></textarea>
+                        ?>
+                        <!-- DETAIL PANDUAN -->
+                        <div class="body">
+                            <div class="btn-group">
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">DETAIL PANDUAN</button>
+                                    <button type="button" class="btn bg-pink waves-effect" data-parent="#accordion_1" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                            </div>
+                            <div class="collapse" id="collapseExample1">
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#default" data-toggle="tab">DEFAULT KONTEN ISIAN</a></li>
+                                <li role="presentation"><a href="#listkonten" data-toggle="tab">LIST KONTEN</a></li>
+                                <li role="presentation"><a href="#referensi" data-toggle="tab">DOKUMEN REFERENSI</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="default">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-indigo">
+                                                    <h2>
+                                                        <code>Default Konten Isian Butir Borang</code>
+                                                    </h2>
+                                                </div>
+                                                <?php
+                                                    $attributes = array('id' => 'myform');
+                                                    echo form_open('C_butir/update_butir_buku_penjelasan', $attributes);
+                                                ?>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="hidden" name="id_butir" value="<?php echo $this->uri->segment(2, 0); ?>">
+                                                            <textarea id="tin1" name="penjelasan" rows="25" class="form-control no-resize" placeholder="Please type what you want...">
+                                                                <?php echo $butir[0]['penjelasan'] ?>
+                                                            </textarea>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="submit" class="btn btn-block btn-lg bg-indigo waves-effect">UPDATE</button>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                <?php echo form_close(); ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- #END# Hover Rows -->
                                 </div>
+                                <div role="tabpanel" class="tab-pane fade" id="listkonten">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-light-blue">
+                                                    <h2>
+                                                        <code>List Konten Isian Butir</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body">
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="10" class="form-control no-resize" placeholder="Please type what you want..."><?php echo $butir[0]['keterangan'] ?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #END# Hover Rows -->
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="referensi">
+                                    <!-- Hover Rows -->
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="card">
+                                                <div class="header bg-cyan">
+                                                    <h2>
+                                                        <?php if(($_SESSION['role']=="Admin")){ ?>
+                                                        <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadreferensi" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
+                                                        <?php } ?>
+                                                        <code>Download Dokumen Referensi</code>
+                                                    </h2>
+                                                </div>
+                                                <div class="body table-responsive">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php 
+                                                                $CI =& get_instance();
+                                                                $list=1;
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "6.%" and id %2 <> 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-hover">
+                                                            <tbody>
+                                                                <?php
+                                                                $getlistbukti =$CI->db->query('select * from dok_ref where butir like "6.%" and id %2 = 0');
+                                                                foreach ($getlistbukti->result() as $bar){
+                                                                ?>
+                                                                <tr>
+                                                                    <th scope="row"><?php echo $list ?></th>
+                                                                    <td><?php echo $bar->nama ?></td>
+                                                                    <?php
+                                                                    if ($bar->filename!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo base_url();?>uploadspm/<?php echo $bar->filename ?>" data-toggle="tooltip" type="button" data-color="teal" class="btn bg-teal waves-effect btn-xs" data-placement="top" title="Download Dokumen"><i class="material-icons">file_download</i></a></td>
+                                                                    <?php
+                                                                    }else if ($bar->link_dok!=="") {
+                                                                    ?>
+                                                                    <td><a target="_blank" href="<?php echo $bar->link_dok ?>" data-toggle="tooltip" type="button" data-color="cyan" class="btn bg-cyan waves-effect btn-xs" data-placement="top" title="Link Dokumen/Bukti"><i class="material-icons">touch_app</i></a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tr>
+                                                                <?php $list=$list+1;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #END# Hover Rows -->
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                        <input type="hidden" name="version_no621" id="version_no621" value="<?php echo $dataisian[$i]['version_no'] ?>">
-                        <input type="hidden" name="created_at621" id="created_at621" value="<?php echo $dataisian[$i]['updated_at'] ?>">
-                        <button type="submit" class="btn btn-primary waves-effect">UPDATE</button>
-                        </form>
-                        <?php }
-                                }else{
+                        <!-- Tutup DETAIL PANDUAN -->
+                        <?php
+                            if (count($dataisian)>0) {
                             ?>
-                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi621">
-                        <input type="hidden" name="id_butir621" id="id_butir621" value="<?php echo $isiannya; ?>" />
+                        <div class="icon-button-demo">
+                            <button style="float: right;" onclick="deleisi(<?php echo $dataisian[0]['id_butir']; ?>)" data-placement="top" data-toggle="tooltip" title="Delete Isian Butir" type="button" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float">
+                                    <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                         <h2 class="card-inside-title">Perolehan dan Alokasi Dana</h2>
                         <h2 class="card-inside-title">Tuliskan realisasi perolehan dan alokasi dana (termasuk hibah) dalam juta rupiah termasuk gaji,  selama tiga tahun terakhir, pada tabel berikut:</h2>
-                        <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea name="kolom1_621" id="tin1" rows="4" class="form-control no-resize" placeholder="Please type what you want...">
-                                    <p>&nbsp;</p>
-                                    <table style="height: 657px;" border="1" width="1070" cellspacing="0" cellpadding="0">
-                                    <tbody>
+                        <!-- Tabel Edit -->
+                        <div class="header">
+                            <h2>
+                                Edit Tabel Butir <?php echo $butir[0]['butir'] ?>
+                                <small><?php echo $butir[0]['bakumutu'] ?></small>
+                            </h2>
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
                                     <tr style="height: 16px;">
-                                    <td style="width: 201.6px; height: 13px; background-color: #c9c9c9; text-align: center;" rowspan="2">
-                                    <p><strong>Sumber Dana</strong></p>
-                                    </td>
-                                    <td style="width: 201.6px; height: 13px; background-color: #c9c9c9; text-align: center;" rowspan="2">
-                                    <p><strong>Jenis Dana</strong></p>
-                                    </td>
-                                    <td style="width: 201.6px; height: 16px; background-color: #c9c9c9; text-align: center;" colspan="3">
-                                    <p><strong>Jumlah Dana (Juta Rupiah)</strong></p>
-                                    </td>
+                                        <td style="width: 201.6px; height: 13px; background-color: #c9c9c9; text-align: center;" rowspan="2"><strong>Sumber Dana</strong></td>
+                                        <td style="width: 201.6px; height: 13px; background-color: #c9c9c9; text-align: center;" rowspan="2"><strong>Jenis Dana</strong></td>
+                                        <td style="width: 201.6px; height: 16px; background-color: #c9c9c9; text-align: center;" colspan="3"><strong>Jumlah Dana (Juta Rupiah)</strong></td>
+                                        <td style="width: 201.6px; height: 13px; background-color: #c9c9c9; text-align: center;" rowspan="2"><strong>Pengaturan</strong></td>
                                     </tr>
                                     <tr style="height: 27.6px;">
-                                    <td style="width: 201.6px; height: 27.6px; background-color: #c9c9c9; text-align: center;">
-                                    <p><strong>TS-2</strong></p>
-                                    </td>
-                                    <td style="width: 201.6px; height: 27.6px; background-color: #c9c9c9; text-align: center;">
-                                    <p><strong>TS-1</strong></p>
-                                    </td>
-                                    <td style="width: 201.6px; height: 27.6px; background-color: #c9c9c9; text-align: center;">
-                                    <p><strong>TS</strong></p>
-                                    </td>
+                                        <td style="width: 201.6px; height: 27.6px; background-color: #c9c9c9; text-align: center;"><strong>TS-2</strong></td>
+                                        <td style="width: 201.6px; height: 27.6px; background-color: #c9c9c9; text-align: center;"><strong>TS-1</strong></td>
+                                        <td style="width: 201.6px; height: 27.6px; background-color: #c9c9c9; text-align: center;"><strong>TS</strong></td>
                                     </tr>
                                     <tr style="height: 35px;">
-                                    <td style="width: 201.6px; height: 35px; text-align: center;">
-                                    <p><strong>(1)</strong></p>
-                                    </td>
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p><strong>(2)</strong></p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p><strong>(3)</strong></p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p><strong>(4)</strong></p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p><strong>(5)</strong></p>
-                                    </td>
+                                        <th scope="row" style="width: 52px; text-align: center; height: 13px;">(1)</th>
+                                        <td style="width: 310.4px; height: 35px; text-align: center;"><strong>(2)</strong></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><strong>(3)</strong></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><strong>(4)</strong></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><strong>(5)</strong></td>
+                                        <td style="width: 52px; text-align: center; height: 13px;"><strong>#</strong></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="height: 35px;">
+                                        <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo 0 ?>"><p>PT sendiri</p></td>
+                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                     </tr>
                                     <tr style="height: 35px;">
-                                    <td style="width: 201.6px; height: 105px; text-align: left;" rowspan="3">
-                                    <p>PT sendiri</p>
-                                    </td>
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
+                                        <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo 0 ?>"><p>Yayasan</p></td>
+                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                     </tr>
                                     <tr style="height: 35px;">
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
+                                        <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo 0 ?>"><p>Diknas</p></td>
+                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                     </tr>
                                     <tr style="height: 35px;">
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 201.6px; height: 105px; text-align: left;" rowspan="3">
-                                    <p>Yayasan</p>
-                                    </td>
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 201.6px; height: 105px; text-align: left;" rowspan="3">
-                                    <p>Diknas</p>
-                                    </td>
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 201.6px; height: 105px; text-align: left;" rowspan="3">
-                                    <p>Sumber lain</p>
-                                    </td>
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 35px;">
-                                    <td style="width: 310.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 35px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
+                                        <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo 0 ?>"><p>Sumber lain</p></td>
+                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                     </tr>
                                     <tr style="height: 36px;">
-                                    <td style="width: 517.6px; height: 36px; text-align: left;" colspan="2">
-                                    <p>Total</p>
-                                    </td>
-                                    <td style="width: 168.8px; height: 36px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 178.4px; height: 36px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 179.2px; height: 36px; text-align: center;">
-                                    <p>&nbsp;</p>
-                                    </td>
+                                        <td style="width: 517.6px; height: 36px; text-align: left;" colspan="2"><p>Total</p></td>
+                                        <td style="width: 168.8px; height: 36px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 178.4px; height: 36px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 36px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                     </tr>
-                                    </tbody>
-                                    </table>
-                                    <p>Penggunaan dana:</p>
-                                    <table style="height: 410px;" border="1" width="1067" cellspacing="0" cellpadding="0">
-                                    <tbody>
-                                    <tr style="height: 15px;">
-                                    <td style="width: 89.6px; height: 17.8px; background-color: #c9c9c9; text-align: center;" rowspan="2">
-                                    <p><strong>No.</strong></p>
-                                    </td>
-                                    <td style="width: 89.6px; height: 17.8px; background-color: #c9c9c9; text-align: center;" rowspan="2">
-                                    <p><strong>Jenis Penggunaan</strong></p>
-                                    </td>
-                                    <td style="width: 89.6px; height: 15px; background-color: #c9c9c9; text-align: center;" colspan="3">
-                                    <p><strong>Persentase Dana </strong></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 2.8px;">
-                                    <td style="width: 89.6px; height: 2.8px; background-color: #c9c9c9; text-align: center;">
-                                    <p><strong>TS-2</strong></p>
-                                    </td>
-                                    <td style="width: 89.6px; height: 2.8px; background-color: #c9c9c9; text-align: center;">
-                                    <p><strong>TS-1</strong></p>
-                                    </td>
-                                    <td style="width: 89.6px; height: 2.8px; background-color: #c9c9c9; text-align: center;">
-                                    <p><strong>TS</strong></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 38px;">
-                                    <td style="width: 89.6px; text-align: center; height: 38px;">
-                                    <p><strong>(1)</strong></p>
-                                    </td>
-                                    <td style="width: 317.6px; text-align: center; height: 38px;">
-                                    <p><strong>(2)</strong></p>
-                                    </td>
-                                    <td style="width: 217.6px; text-align: center; height: 38px;">
-                                    <p><strong>(3)</strong></p>
-                                    </td>
-                                    <td style="width: 204.8px; text-align: center; height: 38px;">
-                                    <p><strong>(4)</strong></p>
-                                    </td>
-                                    <td style="width: 205.6px; text-align: center; height: 38px;">
-                                    <p><strong>(5)</strong></p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 38px;">
-                                    <td style="width: 89.6px; text-align: center; height: 38px;">
-                                    <p>1</p>
-                                    </td>
-                                    <td style="width: 317.6px; height: 38px; text-align: left;">
-                                    <p>Pendidikan</p>
-                                    </td>
-                                    <td style="width: 217.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 204.8px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 205.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 38px;">
-                                    <td style="width: 89.6px; text-align: center; height: 38px;">
-                                    <p>2</p>
-                                    </td>
-                                    <td style="width: 317.6px; height: 38px; text-align: left;">
-                                    <p>Penelitian</p>
-                                    </td>
-                                    <td style="width: 217.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 204.8px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 205.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 38px;">
-                                    <td style="width: 89.6px; text-align: center; height: 38px;">
-                                    <p>3</p>
-                                    </td>
-                                    <td style="width: 317.6px; height: 38px; text-align: left;">
-                                    <p>Pengabdian kepada Masyarakat</p>
-                                    </td>
-                                    <td style="width: 217.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 204.8px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 205.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 38px;">
-                                    <td style="width: 89.6px; text-align: center; height: 38px;">
-                                    <p>4</p>
-                                    </td>
-                                    <td style="width: 317.6px; height: 38px; text-align: left;">
-                                    <p>Investasi prasarana</p>
-                                    </td>
-                                    <td style="width: 217.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 204.8px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 205.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 38px;">
-                                    <td style="width: 89.6px; text-align: center; height: 38px;">
-                                    <p>5</p>
-                                    </td>
-                                    <td style="width: 317.6px; height: 38px; text-align: left;">
-                                    <p>Investasi sarana</p>
-                                    </td>
-                                    <td style="width: 217.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 204.8px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 205.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 38px;">
-                                    <td style="width: 89.6px; text-align: center; height: 38px;">
-                                    <p>6</p>
-                                    </td>
-                                    <td style="width: 317.6px; height: 38px; text-align: left;">
-                                    <p>Investasi SDM</p>
-                                    </td>
-                                    <td style="width: 217.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 204.8px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 205.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    <tr style="height: 38px;">
-                                    <td style="width: 89.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 317.6px; height: 38px; text-align: left;">
-                                    <p>Lain-lain</p>
-                                    </td>
-                                    <td style="width: 217.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 204.8px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    <td style="width: 205.6px; text-align: center; height: 38px;">
-                                    <p>&nbsp;</p>
-                                    </td>
-                                    </tr>
-                                    </tbody>
-                                    </table>
-                                    <p>&nbsp;</p>
-                                            </textarea>
+                                </tbody>
+                            </table>
+                        </div>
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi621_buku_tabel1">
+                        <input type="hidden" name="id_butir621_t1" id="id_butir621_t1" value="<?php echo $isiannya; ?>" />
+                        <!-- Input -->
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+                                    <div class="header bg-cyan">
+                                        <h2>
+                                            Perolehan dan Alokasi Dana
+                                            <small><?php echo $butir[0]['bakumutu'] ?></small>
+                                        </h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <b>Sumber Dana</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <select name="kolom1_621_t1" class="form-control show-tick">
+                                                        <option value="">-- Please select --</option>
+                                                        <option value="ptsendiri">PT sendiri</option>
+                                                        <option value="yayasan">Yayasan</option>
+                                                        <option value="diknas">Diknas</option>
+                                                        <option value="sumberlain">Sumber lain</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Jenis Dana</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom2_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Jumlah Dana (Juta Rupiah)</b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom3_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom4_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom5_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="kolom6_621_t1" value="tabel1">
                                         </div>
+                                        <button type="submit" class="btn btn-primary waves-effect">TAMBAH</button>
                                     </div>
                                 </div>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary waves-effect">SIMPAN</button>
+                        <!-- #END# Input -->
                         </form>
+        <!-- Tutup Tabel Edit -->
+        <!-- Tabel Edit Penggunaan dana: -->
+                        <div class="header">
+                            <h2>
+                                Penggunaan dana:
+                            </h2>
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr style="height: 16px;">
+                                        <td style="width: 89.6px; height: 17.8px; background-color: #c9c9c9; text-align: center;" rowspan="2"><strong>No.</strong></td>
+                                        <td style="width: 89.6px; height: 17.8px; background-color: #c9c9c9; text-align: center;" rowspan="2"><strong>Jenis Penggunaan</strong></td>
+                                        <td style="width: 89.6px; height: 15px; background-color: #c9c9c9; text-align: center;" colspan="3"><strong>Persentase Dana </strong></td>
+                                        <td style="width: 89.6px; height: 13px; background-color: #c9c9c9; text-align: center;" rowspan="2"><strong>Pengaturan</strong></td>
+                                    </tr>
+                                    <tr style="height: 27.6px;">
+                                        <td style="width: 89.6px; height: 27.6px; background-color: #c9c9c9; text-align: center;"><strong>TS-2</strong></td>
+                                        <td style="width: 89.6px; height: 27.6px; background-color: #c9c9c9; text-align: center;"><strong>TS-1</strong></td>
+                                        <td style="width: 89.6px; height: 27.6px; background-color: #c9c9c9; text-align: center;"><strong>TS</strong></td>
+                                    </tr>
+                                    <tr style="height: 35px;">
+                                        <th scope="row" style="width: 89.6px; text-align: center; height: 13px;">(1)</th>
+                                        <td style="width: 89.6px; height: 35px; text-align: center;"><strong>(2)</strong></td>
+                                        <td style="width: 89.6px; height: 35px; text-align: center;"><strong>(3)</strong></td>
+                                        <td style="width: 89.6px; height: 35px; text-align: center;"><strong>(4)</strong></td>
+                                        <td style="width: 89.6px; height: 35px; text-align: center;"><strong>(5)</strong></td>
+                                        <td style="width: 89.6px; text-align: center; height: 13px;"><strong>#</strong></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="height: 35px;">
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>1&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>Pendidikan&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                    </tr>
+                                    <tr style="height: 35px;">
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>2&nbsp;</p></td>
+                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Penelitian&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                    </tr>
+                                    <tr style="height: 35px;">
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>3&nbsp;</p></td>
+                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Pengabdian kepada Masyarakat&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                    </tr>
+                                    <tr style="height: 35px;">
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>4&nbsp;</p></td>
+                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Investasi prasarana&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                    </tr>
+                                    <tr style="height: 35px;">
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>5&nbsp;</p></td>
+                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Investasi sarana&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                    </tr>
+                                    <tr style="height: 35px;">
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>6&nbsp;</p></td>
+                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Investasi SDM&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                    </tr>
+                                    <tr style="height: 35px;">
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Lain-lain&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi621_buku_tabel2">
+                        <input type="hidden" name="id_butir621_t2" id="id_butir621_t2" value="<?php echo $isiannya; ?>" />
+                        <!-- Input -->
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+                                    <div class="header bg-cyan">
+                                        <h2>
+                                            Penggunaan Dana
+                                            <small><?php echo $butir[0]['bakumutu'] ?></small>
+                                        </h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row clearfix">
+                                            <div class="col-md-12">
+                                                <code><b>Jenis Penggunaan</b></code>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Pendidikan</b>
+                                                <input type="hidden" name="kolom1_621_t2" value="Pendidikan" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom2_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom3_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom4_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Penelitian</b>
+                                                <input type="hidden" name="kolom5_621_t2" value="Penelitian" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom6_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom7_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom8_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Pengabdian kepada Masyarakat</b>
+                                                <input type="hidden" name="kolom9_621_t2" value="Pengabdian kepada Masyarakat" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom10_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom11_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom12_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Investasi prasarana</b>
+                                                <input type="hidden" name="kolom13_621_t2" value="Investasi prasarana" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom14_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom15_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom16_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Investasi sarana</b>
+                                                <input type="hidden" name="kolom17_621_t2" value="Investasi sarana" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom18_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom19_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom20_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Investasi SDM</b>
+                                                <input type="hidden" name="kolom21_621_t2" value="Investasi SDM" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom22_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom23_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom24_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Lain-lain</b>
+                                                <input type="hidden" name="kolom25_621_t2" value="Lain-lain" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom26_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom27_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom28_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="kolom29_621_t2" value="tabel2">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary waves-effect">TAMBAH</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- #END# Input -->
+                        </form>
+        <!-- Tutup Tabel Edit -->
+                        <?php 
+                        for($i=0;$i<count($dataisian);$i++){
+                        }
+                                }else{
+                            ?>
+                        <h2 class="card-inside-title">Perolehan dan Alokasi Dana</h2>
+                        <h2 class="card-inside-title">Tuliskan realisasi perolehan dan alokasi dana (termasuk hibah) dalam juta rupiah termasuk gaji,  selama tiga tahun terakhir, pada format berikut:</h2>
+                        <!-- Input -->
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi621_buku_tabel1">
+                        <input type="hidden" name="id_butir621_t1" id="id_butir621_t1" value="<?php echo $isiannya; ?>" />
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+                                    <div class="header bg-cyan">
+                                        <h2>
+                                            Perolehan dan Alokasi Dana
+                                            <small><?php echo $butir[0]['bakumutu'] ?></small>
+                                        </h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <b>Sumber Dana</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <select name="kolom1_621_t1" class="form-control show-tick">
+                                                        <option value="">-- Please select --</option>
+                                                        <option value="ptsendiri">PT sendiri</option>
+                                                        <option value="yayasan">Yayasan</option>
+                                                        <option value="diknas">Diknas</option>
+                                                        <option value="sumberlain">Sumber lain</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Jenis Dana</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom2_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Jumlah Dana (Juta Rupiah)</b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom3_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom4_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom5_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="tabel6_621_t1" value="tabel1">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary waves-effect">TAMBAH</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                        <!-- #END# Input -->
+                        <!-- Input Penggunaan Dana -->
+                        <form method="POST" action="<?php echo base_url()?>C_isian/ngisi621_buku_tabel2">
+                        <input type="hidden" name="id_butir621_t2" id="id_butir621_t2" value="<?php echo $isiannya; ?>" />
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card">
+                                    <div class="header bg-cyan">
+                                        <h2>
+                                            Penggunaan Dana
+                                            <small><?php echo $butir[0]['bakumutu'] ?></small>
+                                        </h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row clearfix">
+                                            <div class="col-md-12">
+                                                <code><b>Jenis Penggunaan</b></code>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Pendidikan</b>
+                                                <input type="hidden" name="kolom1_621_t2" value="Pendidikan" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom2_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom3_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom4_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Penelitian</b>
+                                                <input type="hidden" name="kolom5_621_t2" value="Penelitian" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom6_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom7_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom8_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Pengabdian kepada Masyarakat</b>
+                                                <input type="hidden" name="kolom9_621_t2" value="Pengabdian kepada Masyarakat" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom10_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom11_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom12_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Investasi prasarana</b>
+                                                <input type="hidden" name="kolom13_621_t2" value="Investasi prasarana" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom14_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom15_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom16_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Investasi sarana</b>
+                                                <input type="hidden" name="kolom17_621_t2" value="Investasi sarana" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom18_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom19_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom20_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Investasi SDM</b>
+                                                <input type="hidden" name="kolom21_621_t2" value="Investasi SDM" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom22_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom23_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom24_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Lain-lain</b>
+                                                <input type="hidden" name="kolom25_621_t2" value="Lain-lain" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <b>Persentase Dana </b>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-2</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom26_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS-1</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom27_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <b>TS</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">dialpad</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="kolom28_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="tabel29_621_t2" value="tabel2">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary waves-effect">TAMBAH</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                        <!-- #END# Input -->
+                        
                             <?php
                                 }
                         }elseif ($getbutir=='6.2.2') {
