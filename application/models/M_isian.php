@@ -9587,6 +9587,120 @@ class M_isian extends CI_Model {
                 $this->db->insert('log', $data);
         }
 
+        // UPDATE TABEL 1 621
+        public function updateisian621_buku_tabel1()
+        {
+                 $data = array(
+                        'kolom2' => $this->input->post('kolom2_621_t1'),
+                        'kolom3' => $this->input->post('kolom3_621_t1'),
+                        'kolom4' => $this->input->post('kolom4_621_t1'),
+                        'kolom5' => $this->input->post('kolom5_621_t1'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id621_t1')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir621tabel_t1'),
+                        'kolom2' => $this->input->post('kolom2_621_t1'),
+                        'kolom3' => $this->input->post('kolom3_621_t1'),
+                        'kolom4' => $this->input->post('kolom4_621_t1'),
+                        'kolom5' => $this->input->post('kolom5_621_t1'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                 $this->db->insert('isian_16kolom_version', $data);
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir621tabel_t1'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
+        // UPDATE TABEL 2 621
+        public function updateisian621_buku_tabel2()
+        {
+                 $data = array(
+                        'kolom1' => $this->input->post('kolom1_621_t2'),
+                        'kolom2' => $this->input->post('kolom2_621_t2'),
+                        'kolom3' => $this->input->post('kolom3_621_t2'),
+                        'kolom4' => $this->input->post('kolom4_621_t2'),
+                        'kolom5' => $this->input->post('kolom5_621_t2'),
+                        'kolom6' => $this->input->post('kolom6_621_t2'),
+                        'kolom7' => $this->input->post('kolom7_621_t2'),
+                        'kolom8' => $this->input->post('kolom8_621_t2'),
+                        'kolom9' => $this->input->post('kolom9_621_t2'),
+                        'kolom10' => $this->input->post('kolom10_621_t2'),
+                        'kolom11' => $this->input->post('kolom11_621_t2'),
+                        'kolom12' => $this->input->post('kolom12_621_t2'),
+                        'kolom13' => $this->input->post('kolom13_621_t2'),
+                        'kolom14' => $this->input->post('kolom14_621_t2'),
+                        'kolom15' => $this->input->post('kolom15_621_t2'),
+                        'kolom16' => $this->input->post('kolom16_621_t2'),
+                        'kolom17' => $this->input->post('kolom17_621_t2'),
+                        'kolom18' => $this->input->post('kolom18_621_t2'),
+                        'kolom19' => $this->input->post('kolom19_621_t2'),
+                        'kolom20' => $this->input->post('kolom20_621_t2'),
+                        'kolom21' => $this->input->post('kolom21_621_t2'),
+                        'kolom22' => $this->input->post('kolom22_621_t2'),
+                        'kolom23' => $this->input->post('kolom23_621_t2'),
+                        'kolom24' => $this->input->post('kolom24_621_t2'),
+                        'kolom25' => $this->input->post('kolom25_621_t2'),
+                        'kolom26' => $this->input->post('kolom26_621_t2'),
+                        'kolom27' => $this->input->post('kolom27_621_t2'),
+                        'kolom28' => $this->input->post('kolom28_621_t2'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                 $this->db->update('isian_16kolom_buku', $data, array('id' => $this->input->post('id621_t2')));
+
+                 $data = array(
+                        'id_kolom' => $this->input->post('id_butir621tabel_t2'),
+                        'kolom1' => $this->input->post('kolom1_621_t2'),
+                        'kolom2' => $this->input->post('kolom2_621_t2'),
+                        'kolom3' => $this->input->post('kolom3_621_t2'),
+                        'kolom4' => $this->input->post('kolom4_621_t2'),
+                        'kolom5' => $this->input->post('kolom5_621_t2'),
+                        'kolom6' => $this->input->post('kolom6_621_t2'),
+                        'kolom7' => $this->input->post('kolom7_621_t2'),
+                        'kolom8' => $this->input->post('kolom8_621_t2'),
+                        'kolom9' => $this->input->post('kolom9_621_t2'),
+                        'kolom10' => $this->input->post('kolom10_621_t2'),
+                        'kolom11' => $this->input->post('kolom11_621_t2'),
+                        'kolom12' => $this->input->post('kolom12_621_t2'),
+                        'kolom13' => $this->input->post('kolom13_621_t2'),
+                        'kolom14' => $this->input->post('kolom14_621_t2'),
+                        'kolom15' => $this->input->post('kolom15_621_t2'),
+                        'kolom16' => $this->input->post('kolom16_621_t2'),
+                        'kolom17' => $this->input->post('kolom17_621_t2'),
+                        'kolom18' => $this->input->post('kolom18_621_t2'),
+                        'kolom19' => $this->input->post('kolom19_621_t2'),
+                        'kolom20' => $this->input->post('kolom20_621_t2'),
+                        'kolom21' => $this->input->post('kolom21_621_t2'),
+                        'kolom22' => $this->input->post('kolom22_621_t2'),
+                        'kolom23' => $this->input->post('kolom23_621_t2'),
+                        'kolom24' => $this->input->post('kolom24_621_t2'),
+                        'kolom25' => $this->input->post('kolom25_621_t2'),
+                        'kolom26' => $this->input->post('kolom26_621_t2'),
+                        'kolom27' => $this->input->post('kolom27_621_t2'),
+                        'kolom28' => $this->input->post('kolom28_621_t2'),
+                        'updated_at'=> date('Y-m-d H:i:s'),
+                );
+
+                 $this->db->insert('isian_16kolom_version', $data);
+
+                $data = array(
+                        'user'=> $_SESSION['name'],
+                        'action' => "Mengubah Isian Tabel dari butir : ".$this->input->post('id_butir621tabel_t2'),
+                        'created_at'=> date('Y-m-d H:i:s')
+                );
+
+                $this->db->insert('log', $data);
+        }
+
         // 60
         public function update_isian622_buku()
         {
@@ -13997,6 +14111,65 @@ class M_isian extends CI_Model {
                 $this->db->where($column,$id);
                 $this->db->order_by("id","desc");
                 $this->db->limit(5);
+                $this->db->from('isian_16kolom_buku');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisianptsendiri_buku($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->where('kolom1','PT sendiri');
+                $this->db->where('kolom6','tabel1');
+                $this->db->order_by("id","desc");
+                // $this->db->limit(6);
+                $this->db->from('isian_16kolom_buku');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisianyayasan_buku($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->where('kolom1','Yayasan');
+                $this->db->where('kolom6','tabel1');
+                $this->db->order_by("id","desc");
+                // $this->db->limit(6);
+                $this->db->from('isian_16kolom_buku');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisiandiknas_buku($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->where('kolom1','Diknas');
+                $this->db->where('kolom6','tabel1');
+                $this->db->order_by("id","desc");
+                // $this->db->limit(6);
+                $this->db->from('isian_16kolom_buku');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisiansumberlain_buku($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->where('kolom1','Sumber lain');
+                $this->db->where('kolom6','tabel1');
+                $this->db->order_by("id","desc");
+                // $this->db->limit(6);
+                $this->db->from('isian_16kolom_buku');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisianpenggunaan_buku($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->where('kolom29','tabel2');
+                $this->db->order_by("id","desc");
+                $this->db->limit(1);
                 $this->db->from('isian_16kolom_buku');
                 $query=$this->db->get();
                 return $query->result_array();

@@ -27938,14 +27938,117 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                    $nil = 0;
+                                    $ptsendiri1 = 0;
+                                    $ptsendiri2 = 0;
+                                    $ptsendiri3 = 0;
+                                    $yayasan1 = 0;
+                                    $yayasan2 = 0;
+                                    $yayasan3 = 0;
+                                    $diknas1 = 0;
+                                    $diknas2 = 0;
+                                    $diknas3 = 0;
+                                    $sumberlain1 = 0;
+                                    $sumberlain2 = 0;
+                                    $sumberlain3 = 0;
+                                    $jum1 = 0;
+                                    $jum2 = 0;
+                                    $jum3 = 0;
+                                    $diloopptsendiri = count($ptsendiri);
+                                    if ($diloopptsendiri>0) {
+                                        for($i=0;$i<count($ptsendiri);$i++){
+                                            $nil = $nil + 1;
+                                            $ptsendiri1 = $ptsendiri1 + $ptsendiri[$i]['kolom3'];
+                                            $ptsendiri2 = $ptsendiri2 + $ptsendiri[$i]['kolom4'];
+                                            $ptsendiri3 = $ptsendiri3 + $ptsendiri[$i]['kolom5'];
+                                            if ($i==0) {
+                                            ?>
+                                        <tr style="height: 35px;">
+                                            <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo $diloopptsendiri; ?>"><p><?php echo $ptsendiri[$i]['kolom1'] ?></p></td>
+                                            <td style="width: 310.4px; height: 35px; text-align: center;"><p><?php echo $ptsendiri[$i]['kolom2'] ?>&nbsp;</p></td>
+                                            <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $ptsendiri[$i]['kolom3'] ?></p></td>
+                                            <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $ptsendiri[$i]['kolom4'] ?></p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $ptsendiri[$i]['kolom5'] ?></p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $ptsendiri[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                    <a id="del" onclick="deletabelbutir(<?php echo $ptsendiri[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$ptsendiri[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $ptsendiri[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                            <?php
+                                            } else if($i>0){
+                                            ?>
+                                        <tr style="height: 35px;">
+                                            <td style="width: 310.4px; height: 35px; text-align: center;"><p><?php echo $ptsendiri[$i]['kolom2'] ?>&nbsp;</p></td>
+                                            <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $ptsendiri[$i]['kolom3'] ?>&nbsp;</p></td>
+                                            <td style="width: 178.4px; height: 35px; text-align: center;"><p><?php echo $ptsendiri[$i]['kolom4'] ?>&nbsp;</p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;"><p><?php echo $ptsendiri[$i]['kolom5'] ?>&nbsp;</p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $ptsendiri[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                    <a id="del" onclick="deletabelbutir(<?php echo $ptsendiri[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$ptsendiri[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $ptsendiri[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                            <?php
+                                            }
+                                        }
+                                    }else{
+                                    ?>
                                     <tr style="height: 35px;">
-                                        <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo 0 ?>"><p>PT sendiri</p></td>
+                                        <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo 0 ?>"><p>PT Sendiri</p></td>
                                         <td style="width: 310.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                         <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                         <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                         <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                         <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                     </tr>
+                                    <?php
+                                    }
+                                    $diloopyayasan = count($yayasan);
+                                    if ($diloopyayasan>0) {
+                                        for($i=0;$i<count($yayasan);$i++){
+                                            $nil = $nil + 1;
+                                            $yayasan1 = $yayasan1 + $yayasan[$i]['kolom3'];
+                                            $yayasan2 = $yayasan2 + $yayasan[$i]['kolom4'];
+                                            $yayasan3 = $yayasan3 + $yayasan[$i]['kolom5'];
+                                            if ($i==0) {
+                                            ?>
+                                        <tr style="height: 35px;">
+                                            <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo $diloopyayasan; ?>"><p><?php echo $yayasan[$i]['kolom1'] ?></p></td>
+                                            <td style="width: 310.4px; height: 35px; text-align: center;"><p><?php echo $yayasan[$i]['kolom2'] ?>&nbsp;</p></td>
+                                            <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $yayasan[$i]['kolom3'] ?></p></td>
+                                            <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $yayasan[$i]['kolom4'] ?></p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $yayasan[$i]['kolom5'] ?></p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $yayasan[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                    <a id="del" onclick="deletabelbutir(<?php echo $yayasan[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$yayasan[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $yayasan[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                            <?php
+                                            } else if($i>0){
+                                            ?>
+                                        <tr style="height: 35px;">
+                                            <td style="width: 310.4px; height: 35px; text-align: center;"><p><?php echo $yayasan[$i]['kolom2'] ?>&nbsp;</p></td>
+                                            <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $yayasan[$i]['kolom3'] ?>&nbsp;</p></td>
+                                            <td style="width: 178.4px; height: 35px; text-align: center;"><p><?php echo $yayasan[$i]['kolom4'] ?>&nbsp;</p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;"><p><?php echo $yayasan[$i]['kolom5'] ?>&nbsp;</p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $yayasan[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                    <a id="del" onclick="deletabelbutir(<?php echo $yayasan[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$yayasan[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $yayasan[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                            <?php
+                                            }
+                                        }
+                                    }else{
+                                    ?>
                                     <tr style="height: 35px;">
                                         <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo 0 ?>"><p>Yayasan</p></td>
                                         <td style="width: 310.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
@@ -27954,14 +28057,102 @@
                                         <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                         <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                     </tr>
+                                    <?php
+                                    }
+                                    $diloopdiknas = count($diknas);
+                                    if ($diloopdiknas>0) {
+                                        for($i=0;$i<count($diknas);$i++){
+                                            $nil = $nil + 1;
+                                            $diknas1 = $diknas1 + $diknas[$i]['kolom3'];
+                                            $diknas2 = $diknas2 + $diknas[$i]['kolom4'];
+                                            $diknas3 = $diknas3 + $diknas[$i]['kolom5'];
+                                            if ($i==0) {
+                                            ?>
+                                        <tr style="height: 35px;">
+                                            <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo $diloopdiknas; ?>"><p><?php echo $diknas[$i]['kolom1'] ?></p></td>
+                                            <td style="width: 310.4px; height: 35px; text-align: center;"><p><?php echo $diknas[$i]['kolom2'] ?>&nbsp;</p></td>
+                                            <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $diknas[$i]['kolom3'] ?></p></td>
+                                            <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $diknas[$i]['kolom4'] ?></p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $diknas[$i]['kolom5'] ?></p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $diknas[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                    <a id="del" onclick="deletabelbutir(<?php echo $diknas[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$diknas[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $diknas[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                            <?php
+                                            } else if($i>0){
+                                            ?>
+                                        <tr style="height: 35px;">
+                                            <td style="width: 310.4px; height: 35px; text-align: center;"><p><?php echo $diknas[$i]['kolom2'] ?>&nbsp;</p></td>
+                                            <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $diknas[$i]['kolom3'] ?>&nbsp;</p></td>
+                                            <td style="width: 178.4px; height: 35px; text-align: center;"><p><?php echo $diknas[$i]['kolom4'] ?>&nbsp;</p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;"><p><?php echo $diknas[$i]['kolom5'] ?>&nbsp;</p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $diknas[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                    <a id="del" onclick="deletabelbutir(<?php echo $diknas[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$diknas[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $diknas[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                            <?php
+                                            }
+                                        }
+                                    }else{
+                                    ?>
                                     <tr style="height: 35px;">
                                         <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo 0 ?>"><p>Diknas</p></td>
                                         <td style="width: 310.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 168.8px; height: 35px; text-align: center;"></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                         <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                         <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                         <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                     </tr>
+                                    <?php
+                                    }
+                                    $diloopsumberlain = count($sumberlain);
+                                    if ($diloopsumberlain>0) {
+                                        for($i=0;$i<count($sumberlain);$i++){
+                                            $nil = $nil + 1;
+                                            $sumberlain1 = $sumberlain1 + $sumberlain[$i]['kolom3'];
+                                            $sumberlain2 = $sumberlain2 + $sumberlain[$i]['kolom4'];
+                                            $sumberlain3 = $sumberlain3 + $sumberlain[$i]['kolom5'];
+                                            if ($i==0) {
+                                            ?>
+                                        <tr style="height: 35px;">
+                                            <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo $diloopsumberlain; ?>"><p><?php echo $sumberlain[$i]['kolom1'] ?></p></td>
+                                            <td style="width: 310.4px; height: 35px; text-align: center;"><p><?php echo $sumberlain[$i]['kolom2'] ?>&nbsp;</p></td>
+                                            <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $sumberlain[$i]['kolom3'] ?></p></td>
+                                            <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $sumberlain[$i]['kolom4'] ?></p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;<?php echo $sumberlain[$i]['kolom5'] ?></p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $sumberlain[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                    <a id="del" onclick="deletabelbutir(<?php echo $sumberlain[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$sumberlain[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $sumberlain[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                            <?php
+                                            } else if($i>0){
+                                            ?>
+                                        <tr style="height: 35px;">
+                                            <td style="width: 310.4px; height: 35px; text-align: center;"><p><?php echo $sumberlain[$i]['kolom2'] ?>&nbsp;</p></td>
+                                            <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $sumberlain[$i]['kolom3'] ?>&nbsp;</p></td>
+                                            <td style="width: 178.4px; height: 35px; text-align: center;"><p><?php echo $sumberlain[$i]['kolom4'] ?>&nbsp;</p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;"><p><?php echo $sumberlain[$i]['kolom5'] ?>&nbsp;</p></td>
+                                            <td style="width: 179.2px; height: 35px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t1" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $sumberlain[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                    <a id="del" onclick="deletabelbutir(<?php echo $sumberlain[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$sumberlain[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $sumberlain[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                            <?php
+                                            }
+                                        }
+                                    }else{
+                                    ?>
                                     <tr style="height: 35px;">
                                         <td style="width: 201.6px; height: 35px; text-align: left;" rowspan="<?php echo 0 ?>"><p>Sumber lain</p></td>
                                         <td style="width: 310.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
@@ -27970,11 +28161,17 @@
                                         <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                         <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                     </tr>
+                                    <?php
+                                    }
+                                    $jum1 = $ptsendiri1+$yayasan1+$diknas1+$sumberlain1;
+                                    $jum2 = $ptsendiri2+$yayasan2+$diknas2+$sumberlain2;
+                                    $jum3 = $ptsendiri3+$yayasan3+$diknas3+$sumberlain3;
+                                    ?>
                                     <tr style="height: 36px;">
                                         <td style="width: 517.6px; height: 36px; text-align: left;" colspan="2"><p>Total</p></td>
-                                        <td style="width: 168.8px; height: 36px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 178.4px; height: 36px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 36px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 168.8px; height: 36px; text-align: center;"><p><?php echo $jum1 ?>&nbsp;</p></td>
+                                        <td style="width: 178.4px; height: 36px; text-align: center;"><p><?php echo $jum2 ?>&nbsp;</p></td>
+                                        <td style="width: 179.2px; height: 36px; text-align: center;"><p><?php echo $jum3 ?>&nbsp;</p></td>
                                         <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
                                     </tr>
                                 </tbody>
@@ -28002,10 +28199,10 @@
                                                     </span>
                                                     <select name="kolom1_621_t1" class="form-control show-tick">
                                                         <option value="">-- Please select --</option>
-                                                        <option value="ptsendiri">PT sendiri</option>
-                                                        <option value="yayasan">Yayasan</option>
-                                                        <option value="diknas">Diknas</option>
-                                                        <option value="sumberlain">Sumber lain</option>
+                                                        <option value="PT sendiri">PT sendiri</option>
+                                                        <option value="Yayasan">Yayasan</option>
+                                                        <option value="Diknas">Diknas</option>
+                                                        <option value="Sumber lain">Sumber lain</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -28067,6 +28264,13 @@
                         </form>
         <!-- Tutup Tabel Edit -->
         <!-- Tabel Edit Penggunaan dana: -->
+                        <?php
+                        $nil = 0;
+                        $jum1 = 0;
+                        $jumlahpenggunaan = count($penggunaan);
+                        if ($jumlahpenggunaan>0) {
+                        ?>
+                        <!-- Buka Tabel Edit -->
                         <div class="header">
                             <h2>
                                 Penggunaan dana:
@@ -28096,65 +28300,110 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                    for($i=0;$i<count($penggunaan);$i++){
+                                    ?>
                                     <tr style="height: 35px;">
-                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>1&nbsp;</p></td>
-                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>Pendidikan&nbsp;</p></td>
-                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p><?php echo $nil = $nil+1 ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom1'] ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom2'] ?></p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom3'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom4'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t2" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $penggunaan[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$penggunaan[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr style="height: 35px;">
-                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>2&nbsp;</p></td>
-                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Penelitian&nbsp;</p></td>
-                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p><?php echo $nil = $nil+1 ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom5'] ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom6'] ?></p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom7'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom8'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t2" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $penggunaan[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$penggunaan[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr style="height: 35px;">
-                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>3&nbsp;</p></td>
-                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Pengabdian kepada Masyarakat&nbsp;</p></td>
-                                        <td style="width: 168.8px; height: 35px; text-align: center;"></td>
-                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p><?php echo $nil = $nil+1 ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom9'] ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom10'] ?></p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom11'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom12'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t2" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $penggunaan[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$penggunaan[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr style="height: 35px;">
-                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>4&nbsp;</p></td>
-                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Investasi prasarana&nbsp;</p></td>
-                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p><?php echo $nil = $nil+1 ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom13'] ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom14'] ?></p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom15'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom16'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t2" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $penggunaan[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$penggunaan[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr style="height: 35px;">
-                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>5&nbsp;</p></td>
-                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Investasi sarana&nbsp;</p></td>
-                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p><?php echo $nil = $nil+1 ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom17'] ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom18'] ?></p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom19'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom20'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t2" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $penggunaan[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$penggunaan[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr style="height: 35px;">
-                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>6&nbsp;</p></td>
-                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Investasi SDM&nbsp;</p></td>
-                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p><?php echo $nil = $nil+1 ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom21'] ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom22'] ?></p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom23'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom24'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t2" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $penggunaan[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$penggunaan[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr style="height: 35px;">
-                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 310.4px; height: 35px; text-align: center;"><p>Lain-lain&nbsp;</p></td>
-                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
-                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p>&nbsp;</p></td>
+                                        <td style="width: 35.4px; height: 35px; text-align: center;"><p><?php echo $nil = $nil+1 ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom25'] ?></p></td>
+                                        <td style="width: 168.8px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom26'] ?></p></td>
+                                        <td style="width: 178.4px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom27'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;"><p><?php echo $penggunaan[$i]['kolom28'] ?></p></td>
+                                        <td style="width: 179.2px; height: 35px; text-align: center;">
+                                            <div class="js-sweetalert">
+                                                <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update621_t2" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                                <a id="del" onclick="deletabelbutir(<?php echo $penggunaan[$i]['id']; ?>)" type="button" data-color="red" class="btn bg-red waves-effect btn-xs" data-toggle="tooltip" data-url="<?php echo site_url('C_butir/destroy/'.$penggunaan[$i]['id']); ?>" data-placement="top" title="Delete" href="javascript:void(0)" data-whatever="<?php echo $penggunaan[$i]['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </div>
+                                        </td>
                                     </tr>
+                                    <?php
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
+                        <!-- Tutup Tabel Edit -->
+                        <?php
+                        }else{
+                        ?>
                         <form method="POST" action="<?php echo base_url()?>C_isian/ngisi621_buku_tabel2">
                         <input type="hidden" name="id_butir621_t2" id="id_butir621_t2" value="<?php echo $isiannya; ?>" />
                         <!-- Input -->
@@ -28461,11 +28710,10 @@
                         </div>
                         <!-- #END# Input -->
                         </form>
-        <!-- Tutup Tabel Edit -->
-                        <?php 
-                        for($i=0;$i<count($dataisian);$i++){
+                        <?php
                         }
-                                }else{
+
+                        }else{
                             ?>
                         <h2 class="card-inside-title">Perolehan dan Alokasi Dana</h2>
                         <h2 class="card-inside-title">Tuliskan realisasi perolehan dan alokasi dana (termasuk hibah) dalam juta rupiah termasuk gaji,  selama tiga tahun terakhir, pada format berikut:</h2>
@@ -28491,10 +28739,10 @@
                                                     </span>
                                                     <select name="kolom1_621_t1" class="form-control show-tick">
                                                         <option value="">-- Please select --</option>
-                                                        <option value="ptsendiri">PT sendiri</option>
-                                                        <option value="yayasan">Yayasan</option>
-                                                        <option value="diknas">Diknas</option>
-                                                        <option value="sumberlain">Sumber lain</option>
+                                                        <option value="PT sendiri">PT sendiri</option>
+                                                        <option value="Yayasan">Yayasan</option>
+                                                        <option value="Diknas">Diknas</option>
+                                                        <option value="Sumber lain">Sumber lain</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -28545,7 +28793,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="tabel6_621_t1" value="tabel1">
+                                            <input type="hidden" name="kolom6_621_t1" value="tabel1">
                                         </div>
                                         <button type="submit" class="btn btn-primary waves-effect">TAMBAH</button>
                                     </div>
@@ -28851,7 +29099,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="tabel29_621_t2" value="tabel2">
+                                            <input type="hidden" name="kolom29_621_t2" value="tabel2">
                                         </div>
                                         <button type="submit" class="btn btn-primary waves-effect">TAMBAH</button>
                                     </div>
@@ -41510,6 +41758,394 @@
         </div>
         <!-- Tutup Modal Update 56 -->
 
+        <!-- Molda Update Tabel 621 tabel 1 -->
+        <div class="modal fade" id="update621_t1" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian621_buku_tabel1', $attributes);
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id621_t1" id="id621_t1" />
+                        <input type="hidden" name="621id_butir_t1" id="621id_butir_t1" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir621tabel_t1" id="id_butir621tabel_t1" />
+                                    <div class="col-md-12">
+                                        <b>Jenis Dana</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_621_t1" id="kolom2_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Jumlah Dana (Juta Rupiah)</b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_621_t1" id="kolom3_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_621_t1" id="kolom4_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom5_621_t1" id="kolom5_621_t1" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 621 tabel 1 -->
+
+        <!-- Molda Update Tabel 621 tabel 2 -->
+        <div class="modal fade" id="update621_t2" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian621_buku_tabel2', $attributes);
+                ?>
+                    <div class="row clearfix">
+                        <input type="hidden" name="id621_t2" id="id621_t2" />
+                        <input type="hidden" name="621id_butir_t2" id="621id_butir_t2" value="<?php echo $isiannya; ?>" />
+                        <input type="hidden" name="id_butir621tabel_t2" id="id_butir621tabel_t2" />
+                                    <div class="col-md-12">
+                                        <code><b>Jenis Penggunaan</b></code>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Pendidikan</b>
+                                        <input type="hidden" name="kolom1_621_t2" id="kolom1_621_t2" value="Pendidikan" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Persentase Dana </b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom2_621_t2" id="kolom2_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom3_621_t2" id="kolom3_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom4_621_t2" id="kolom4_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Penelitian</b>
+                                        <input type="hidden" name="kolom5_621_t2" id="kolom5_621_t2" value="Penelitian" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Persentase Dana </b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom6_621_t2" id="kolom6_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom7_621_t2" id="kolom7_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom8_621_t2" id="kolom8_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Pengabdian kepada Masyarakat</b>
+                                        <input type="hidden" name="kolom9_621_t2" id="kolom9_621_t2" value="Pengabdian kepada Masyarakat" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Persentase Dana </b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom10_621_t2" id="kolom10_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom11_621_t2" id="kolom11_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom12_621_t2" id="kolom12_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Investasi prasarana</b>
+                                        <input type="hidden" name="kolom13_621_t2" id="kolom13_621_t2" value="Investasi prasarana" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Persentase Dana </b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom14_621_t2" id="kolom14_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom15_621_t2" id="kolom15_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom16_621_t2" id="kolom16_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Investasi sarana</b>
+                                        <input type="hidden" name="kolom17_621_t2" id="kolom17_621_t2" value="Investasi sarana" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Persentase Dana </b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom18_621_t2" id="kolom18_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom19_621_t2" id="kolom19_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom20_621_t2" id="kolom20_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Investasi SDM</b>
+                                        <input type="hidden" name="kolom21_621_t2" id="kolom21_621_t2" value="Investasi SDM" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Persentase Dana </b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom22_621_t2" id="kolom22_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom23_621_t2" id="kolom23_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom24_621_t2" id="kolom24_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Lain-lain</b>
+                                        <input type="hidden" name="kolom25_621_t2" id="kolom25_621_t2" value="Lain-lain" class="form-control" placeholder="Tuliskan disini">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b>Persentase Dana </b>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-2</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom26_621_t2" id="kolom26_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS-1</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom27_621_t2" id="kolom27_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TS</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">dialpad</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="kolom28_621_t2" id="kolom28_621_t2" class="form-control" placeholder="Tuliskan disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 621 tabel 2 -->
+
         <!-- Molda Update Tabel 622 -->
         <div class="modal fade" id="update622" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
@@ -48072,6 +48708,80 @@
               $('#kolom3_56').val(buku[0]['kolom3']);
               $('#version_no56').val(buku[0]['version_no']);
               $('#created_at56').val(buku[0]['created_at']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    // BUAT TABEL 1
+    $('#update621_t1').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl_buku";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id621_t1').val(buku[0]['id']);
+              $('#id_butir621tabel_t1').val(buku[0]['id_butir']);
+              $('#kolom2_621_t1').val(buku[0]['kolom2']);
+              $('#kolom3_621_t1').val(buku[0]['kolom3']);
+              $('#kolom4_621_t1').val(buku[0]['kolom4']);
+              $('#kolom5_621_t1').val(buku[0]['kolom5']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    // BUAT TABEL 2
+    $('#update621_t2').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl_buku";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id621_t2').val(buku[0]['id']);
+              $('#id_butir621tabel_t2').val(buku[0]['id_butir']);
+              $('#kolom1_621_t2').val(buku[0]['kolom1']);
+              $('#kolom2_621_t2').val(buku[0]['kolom2']);
+              $('#kolom3_621_t2').val(buku[0]['kolom3']);
+              $('#kolom4_621_t2').val(buku[0]['kolom4']);
+              $('#kolom5_621_t2').val(buku[0]['kolom5']);
+              $('#kolom6_621_t2').val(buku[0]['kolom6']);
+              $('#kolom7_621_t2').val(buku[0]['kolom7']);
+              $('#kolom8_621_t2').val(buku[0]['kolom8']);
+              $('#kolom9_621_t2').val(buku[0]['kolom9']);
+              $('#kolom10_621_t2').val(buku[0]['kolom10']);
+              $('#kolom11_621_t2').val(buku[0]['kolom11']);
+              $('#kolom12_621_t2').val(buku[0]['kolom12']);
+              $('#kolom13_621_t2').val(buku[0]['kolom13']);
+              $('#kolom14_621_t2').val(buku[0]['kolom14']);
+              $('#kolom15_621_t2').val(buku[0]['kolom15']);
+              $('#kolom16_621_t2').val(buku[0]['kolom16']);
+              $('#kolom17_621_t2').val(buku[0]['kolom17']);
+              $('#kolom18_621_t2').val(buku[0]['kolom18']);
+              $('#kolom19_621_t2').val(buku[0]['kolom19']);
+              $('#kolom20_621_t2').val(buku[0]['kolom20']);
+              $('#kolom21_621_t2').val(buku[0]['kolom21']);
+              $('#kolom22_621_t2').val(buku[0]['kolom22']);
+              $('#kolom23_621_t2').val(buku[0]['kolom23']);
+              $('#kolom24_621_t2').val(buku[0]['kolom24']);
+              $('#kolom25_621_t2').val(buku[0]['kolom25']);
+              $('#kolom26_621_t2').val(buku[0]['kolom26']);
+              $('#kolom27_621_t2').val(buku[0]['kolom27']);
+              $('#kolom28_621_t2').val(buku[0]['kolom28']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 
