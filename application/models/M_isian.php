@@ -2882,6 +2882,22 @@ class M_isian extends CI_Model {
                         'kolom1' => $this->input->post('kolom1_641a'),
                         'kolom2' => $this->input->post('kolom2_641a'),
                         'kolom3' => $this->input->post('kolom3_641a'),
+                        'kolom4' => $this->input->post('kolom4_641a'),
+                        'kolom5' => $this->input->post('kolom5_641a'),
+                        'kolom6' => $this->input->post('kolom6_641a'),
+                        'kolom7' => $this->input->post('kolom7_641a'),
+                        'kolom8' => $this->input->post('kolom8_641a'),
+                        'kolom9' => $this->input->post('kolom9_641a'),
+                        'kolom10' => $this->input->post('kolom10_641a'),
+                        'kolom11' => $this->input->post('kolom11_641a'),
+                        'kolom12' => $this->input->post('kolom12_641a'),
+                        'kolom13' => $this->input->post('kolom13_641a'),
+                        'kolom14' => $this->input->post('kolom14_641a'),
+                        'kolom15' => $this->input->post('kolom15_641a'),
+                        'kolom16' => $this->input->post('kolom16_641a'),
+                        'kolom17' => $this->input->post('kolom17_641a'),
+                        'kolom18' => $this->input->post('kolom18_641a'),
+                        'kolom19' => "tabel1",
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -2894,6 +2910,22 @@ class M_isian extends CI_Model {
                         'kolom1' => $this->input->post('kolom1_641a'),
                         'kolom2' => $this->input->post('kolom2_641a'),
                         'kolom3' => $this->input->post('kolom3_641a'),
+                        'kolom4' => $this->input->post('kolom4_641a'),
+                        'kolom5' => $this->input->post('kolom5_641a'),
+                        'kolom6' => $this->input->post('kolom6_641a'),
+                        'kolom7' => $this->input->post('kolom7_641a'),
+                        'kolom8' => $this->input->post('kolom8_641a'),
+                        'kolom9' => $this->input->post('kolom9_641a'),
+                        'kolom10' => $this->input->post('kolom10_641a'),
+                        'kolom11' => $this->input->post('kolom11_641a'),
+                        'kolom12' => $this->input->post('kolom12_641a'),
+                        'kolom13' => $this->input->post('kolom13_641a'),
+                        'kolom14' => $this->input->post('kolom14_641a'),
+                        'kolom15' => $this->input->post('kolom15_641a'),
+                        'kolom16' => $this->input->post('kolom16_641a'),
+                        'kolom17' => $this->input->post('kolom17_641a'),
+                        'kolom18' => $this->input->post('kolom18_641a'),
+                        'kolom19' => "tabel1",
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -2919,7 +2951,7 @@ class M_isian extends CI_Model {
                         'kolom2' => $this->input->post('kolom2_641b'),
                         'kolom3' => $this->input->post('kolom3_641b'),
                         'kolom4' => $this->input->post('kolom4_641b'),
-                        'kolom5' => $this->input->post('kolom5_641b'),
+                        'kolom5' => "tabel2",
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -2933,7 +2965,7 @@ class M_isian extends CI_Model {
                         'kolom2' => $this->input->post('kolom2_641b'),
                         'kolom3' => $this->input->post('kolom3_641b'),
                         'kolom4' => $this->input->post('kolom4_641b'),
-                        'kolom5' => $this->input->post('kolom5_641b'),
+                        'kolom5' => "tabel2",
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -3212,6 +3244,7 @@ class M_isian extends CI_Model {
                 $data = array(
                         'id_butir' => $this->input->post('id_butir712'),
                         'kolom1' => $this->input->post('kolom1_712'),
+                        'kolom2' => $this->input->post('kolom2_712'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -3222,6 +3255,7 @@ class M_isian extends CI_Model {
                 $data = array(
                         'id_kolom' => $this->input->post('id_butir712'),
                         'kolom1' => $this->input->post('kolom1_712'),
+                        'kolom2' => $this->input->post('kolom2_712'),
                         'version_no' => "1",
                         'created_at'=> date('Y-m-d H:i:s'),
                         'updated_at'=> date('Y-m-d H:i:s'),
@@ -9928,6 +9962,21 @@ class M_isian extends CI_Model {
                         'kolom1' => $this->input->post('kolom1_641a'),
                         'kolom2' => $this->input->post('kolom2_641a'),
                         'kolom3' => $this->input->post('kolom3_641a'),
+                        'kolom4' => $this->input->post('kolom4_641a'),
+                        'kolom5' => $this->input->post('kolom5_641a'),
+                        'kolom6' => $this->input->post('kolom6_641a'),
+                        'kolom7' => $this->input->post('kolom7_641a'),
+                        'kolom8' => $this->input->post('kolom8_641a'),
+                        'kolom9' => $this->input->post('kolom9_641a'),
+                        'kolom10' => $this->input->post('kolom10_641a'),
+                        'kolom11' => $this->input->post('kolom11_641a'),
+                        'kolom12' => $this->input->post('kolom12_641a'),
+                        'kolom13' => $this->input->post('kolom13_641a'),
+                        'kolom14' => $this->input->post('kolom14_641a'),
+                        'kolom15' => $this->input->post('kolom15_641a'),
+                        'kolom16' => $this->input->post('kolom16_641a'),
+                        'kolom17' => $this->input->post('kolom17_641a'),
+                        'kolom18' => $this->input->post('kolom18_641a'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -9939,6 +9988,21 @@ class M_isian extends CI_Model {
                         'kolom1' => $this->input->post('kolom1_641a'),
                         'kolom2' => $this->input->post('kolom2_641a'),
                         'kolom3' => $this->input->post('kolom3_641a'),
+                        'kolom4' => $this->input->post('kolom4_641a'),
+                        'kolom5' => $this->input->post('kolom5_641a'),
+                        'kolom6' => $this->input->post('kolom6_641a'),
+                        'kolom7' => $this->input->post('kolom7_641a'),
+                        'kolom8' => $this->input->post('kolom8_641a'),
+                        'kolom9' => $this->input->post('kolom9_641a'),
+                        'kolom10' => $this->input->post('kolom10_641a'),
+                        'kolom11' => $this->input->post('kolom11_641a'),
+                        'kolom12' => $this->input->post('kolom12_641a'),
+                        'kolom13' => $this->input->post('kolom13_641a'),
+                        'kolom14' => $this->input->post('kolom14_641a'),
+                        'kolom15' => $this->input->post('kolom15_641a'),
+                        'kolom16' => $this->input->post('kolom16_641a'),
+                        'kolom17' => $this->input->post('kolom17_641a'),
+                        'kolom18' => $this->input->post('kolom18_641a'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -9964,7 +10028,6 @@ class M_isian extends CI_Model {
                         'kolom2' => $this->input->post('kolom2_641b'),
                         'kolom3' => $this->input->post('kolom3_641b'),
                         'kolom4' => $this->input->post('kolom4_641b'),
-                        'kolom5' => $this->input->post('kolom5_641b'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -9977,7 +10040,6 @@ class M_isian extends CI_Model {
                         'kolom2' => $this->input->post('kolom2_641b'),
                         'kolom3' => $this->input->post('kolom3_641b'),
                         'kolom4' => $this->input->post('kolom4_641b'),
-                        'kolom5' => $this->input->post('kolom5_641b'),
                         'version_no' => $new_version,
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
@@ -10086,6 +10148,7 @@ class M_isian extends CI_Model {
                         'id_kolom' => $this->input->post('id_butir651'),
                         'kolom1' => $this->input->post('kolom1_651'),
                         'version_no' => $new_version,
+                        'created_at'=> $this->input->post('created_at651'),
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
 
@@ -10159,6 +10222,7 @@ class M_isian extends CI_Model {
                         'kolom21' => $this->input->post('kolom21_652'),
                         'kolom22' => $this->input->post('kolom22_652'),
                         'version_no' => $new_version,
+                        'created_at'=> $this->input->post('created_at652'),
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
 
@@ -10259,6 +10323,7 @@ class M_isian extends CI_Model {
                         'id_kolom' => $this->input->post('id_butir712tabel'),
                         'kolom1' => $this->input->post('kolom1_712'),
                         'version_no' => $new_version,
+                        'created_at'=> $this->input->post('created_at712'),
                         'updated_at'=> date('Y-m-d H:i:s'),
                 );
 
@@ -14170,6 +14235,58 @@ class M_isian extends CI_Model {
                 $this->db->where('kolom29','tabel2');
                 $this->db->order_by("id","desc");
                 $this->db->limit(1);
+                $this->db->from('isian_16kolom_buku');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisianrekapitulasi_buku($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->where('kolom19','tabel1');
+                $this->db->order_by("id","desc");
+                $this->db->limit(1);
+                $this->db->from('isian_16kolom_buku');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisianjurnal1_buku($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->where('kolom1','Jurnal Terakreditasi DIKTI *');
+                $this->db->where('kolom5','tabel2');
+                $this->db->order_by("id","desc");
+                $this->db->from('isian_16kolom_buku');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisianjurnal2_buku($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->where('kolom1','Jurnal Internasional *');
+                $this->db->where('kolom5','tabel2');
+                $this->db->order_by("id","desc");
+                $this->db->from('isian_16kolom_buku');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisianidlab_buku($column,$id){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->order_by("id","desc");
+                $this->db->from('isian_16kolom_buku');
+                $query=$this->db->get();
+                return $query->result_array();
+        }
+
+        public function findisiannamalab_buku($column,$id,$namalabnya){
+                $this->db->select('*');
+                $this->db->where($column,$id);
+                $this->db->where('kolom1',$namalabnya);
+                $this->db->order_by("id","desc");
                 $this->db->from('isian_16kolom_buku');
                 $query=$this->db->get();
                 return $query->result_array();
