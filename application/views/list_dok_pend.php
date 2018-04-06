@@ -21,9 +21,9 @@
                 <div class="card">
                     <div class="header bg-cyan">
                         <h2>
-                            <?php if(($_SESSION['role']=="Admin")){ ?>
+                            <!-- <?php if(($_SESSION['role']=="Admin")){ ?> -->
                             <button type="button" class="btn bg-pink btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#uploadpendukung" data-placement="top" title="Tambah Dokumen" href="javascript:void(0)"><i class="material-icons">library_add</i></button>
-                    <?php } ?>
+                    <!-- <?php } ?> -->
                     <!-- <code>List Dokumen Pendukung</code> -->
                     <?php 
                     $CI =& get_instance();
@@ -69,7 +69,8 @@
                             ?>
                             <tr>
                                 <th scope="row"><?php echo $list ?></th>
-                                <td><?php echo $bar->filename ?></td>
+                                <td><?php echo $bar->nama ?></td>
+                                <!-- <td><?php echo $bar->filename ?></td> -->
                                 <?php
                                 if ($bar->filename!=="") {
                                 ?>
@@ -108,6 +109,14 @@
                 ?>
                 <input type="hidden" name="id_pendukung" value="<?php echo $this->uri->segment(2, 0); ?>">
                     <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <label class="form-label">Nama Dokumen</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="namafile" id="namafile" class="form-control">
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-sm-12">
                             <label class="form-label">Upload Bukti</label>
                             <div class="form-group">

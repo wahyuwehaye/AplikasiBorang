@@ -206,6 +206,7 @@ class C_dokumen extends CI_Controller {
 		$id=$_POST['id_pendukung'];
 		$data = array(
 				'id_pendukung' => $this->input->post('id_pendukung'),
+				'nama' => $this->input->post('namafile'),
 				'created_at' => date('Y-m-d H:i:s'),
 			);
 
@@ -444,7 +445,7 @@ class C_dokumen extends CI_Controller {
 	private function _do_upload()
 	{
 		$config['upload_path']          = 'bukti/';
-        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
+        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|pptx|csv';
         $config['max_size']             = 0; //set max size allowed in Kilobyte
         $config['max_width']            = 0; // set max width image allowed
         $config['max_height']           = 0; // set max height allowed
@@ -466,7 +467,7 @@ class C_dokumen extends CI_Controller {
 	private function _do_uploadunit()
 	{
 		$config['upload_path']          = 'dokumen/';
-        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
+        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|pptx|csv';
         $config['max_size']             = 0; //set max size allowed in Kilobyte
         $config['max_width']            = 0; // set max width image allowed
         $config['max_height']           = 0; // set max height allowed
@@ -488,7 +489,7 @@ class C_dokumen extends CI_Controller {
 	private function _do_uploadreferensi()
 	{
 		$config['upload_path']          = 'uploadspm/';
-        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
+        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|pptx|csv';
         $config['max_size']             = 0; //set max size allowed in Kilobyte
         $config['max_width']            = 0; // set max width image allowed
         $config['max_height']           = 0; // set max height allowed
@@ -510,7 +511,7 @@ class C_dokumen extends CI_Controller {
 	private function _do_uploadpendukung()
 	{
 		$config['upload_path']          = 'pendukung/';
-        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
+        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|pptx|csv';
         $config['max_size']             = 0; //set max size allowed in Kilobyte
         $config['max_width']            = 0; // set max width image allowed
         $config['max_height']           = 0; // set max height allowed
@@ -532,7 +533,7 @@ class C_dokumen extends CI_Controller {
 	private function _do_uploadlampiran()
 	{
 		$config['upload_path']          = 'lampiran/';
-        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|csv';
+        $config['allowed_types']        = 'docx|doc|pdf|rar|zip|xls|xlsx|7Z|7-Zip|jpg|jpeg|gif|png|ppt|pptx|csv';
         $config['max_size']             = 0; //set max size allowed in Kilobyte
         $config['max_width']            = 0; // set max width image allowed
         $config['max_height']           = 0; // set max height allowed

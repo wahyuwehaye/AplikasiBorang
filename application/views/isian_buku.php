@@ -200,13 +200,25 @@
 
                     // ketika menggunakan jaringan selain tune
                     $link = 'https://igracias.telkomuniversity.ac.id/';
+                    // $link = 'http://igracias.telkomuniversity.ac.id/';
 
                     // ketika menggunakan jaringan tune (lokal kampus)
                     // $link = 'http://10.252.252.174/';
 
                     // GET KODE PRODI BERDASARKAN HALAMAN YANG DIBUKA
                     $urlKodeProdi = $link.'api/borang/borang.php?data=prodi'; // path to your JSON file
-                    $dataKodeProdi = file_get_contents($urlKodeProdi); // put the contents of the file into a variable
+
+                    $stream_opts = [
+                          "ssl" => [
+                              "verify_peer"=>false,
+                              "verify_peer_name"=>false,
+                          ]
+                      ];  
+                       
+                      $dataKodeProdi = file_get_contents($urlKodeProdi,
+                                     false, stream_context_create($stream_opts));
+
+                    // $dataKodeProdi = file_get_contents($urlKodeProdi); // put the contents of the file into a variable
                     $KodeProdi = json_decode($dataKodeProdi, true); // decode the JSON feed
                     foreach ($KodeProdi as $keyProdi => $valueProdi) {
                         $prodinya = stripos(($buku[0]['fakpro']), ($valueProdi['NAMA_PRODI']));
@@ -217,7 +229,18 @@
                     
                     // GET KODE PRODI DOSEN BERDASARKAN HALAMAN YANG DIBUKA
                     $urlKodeProdiDosen = $link.'api/borang/borang.php?data=prodidosen'; // path to your JSON file
-                    $dataKodeProdiDosen = file_get_contents($urlKodeProdiDosen); // put the contents of the file into a variable
+
+                    $stream_opts = [
+                          "ssl" => [
+                              "verify_peer"=>false,
+                              "verify_peer_name"=>false,
+                          ]
+                      ];  
+                       
+                      $dataKodeProdiDosen = file_get_contents($urlKodeProdiDosen,
+                                     false, stream_context_create($stream_opts));
+
+                    // $dataKodeProdiDosen = file_get_contents($urlKodeProdiDosen); // put the contents of the file into a variable
                     $KodeProdiDosen = json_decode($dataKodeProdiDosen, true); // decode the JSON feed
                     $kalimat = $buku[0]['fakpro']; //mengambil nama prodi
                     $sub_kalimat = substr($kalimat,7); //memotong nama prodi agar sesuai dengan apa yang akan dicari nantinya
@@ -5448,12 +5471,6 @@
                                                         $TS4 = $tahun - 4;
                                                         $TS5 = $tahun - 5;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -5473,7 +5490,18 @@
                                                     <?php
 
                                                     $urlTS4 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS5.$TS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS4 = file_get_contents($urlTS4); // put the contents of the file into a variable
+
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS4 = file_get_contents($urlTS4,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                    // $dataTS4 = file_get_contents($urlTS4); // put the contents of the file into a variable
                                                     $charactersTS4 = json_decode($dataTS4, true); // decode the JSON feed
 
                                                     ?>
@@ -5505,7 +5533,18 @@
                                                     <?php
 
                                                     $urlTS3 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS4.$TS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS3 = file_get_contents($urlTS3); // put the contents of the file into a variable
+
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS3 = file_get_contents($urlTS3,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                    // $dataTS3 = file_get_contents($urlTS3); // put the contents of the file into a variable
                                                     $charactersTS3 = json_decode($dataTS3, true); // decode the JSON feed
 
                                                     ?>
@@ -5537,7 +5576,18 @@
                                                     <?php
 
                                                     $urlTS2 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS2 = file_get_contents($urlTS2,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                    // $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
                                                     ?>
@@ -5569,7 +5619,18 @@
                                                     <?php
 
                                                     $urlTS1 = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS1 = file_get_contents($urlTS1,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                    // $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
                                                     ?>
@@ -5601,7 +5662,18 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+                                                      
+                                                    // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
                                                     // foreach ($charactersTS as $keyTS => $valueTS) {
                                                     ?>
@@ -5652,7 +5724,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=mahasiswajumlahlulusan&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $characters = json_decode($data, true); // decode the JSON feed
                                                     // foreach ($characters as $keyTS => $valueTS) {
                                                     ?>
@@ -6524,12 +6606,6 @@
                                                         $TS4 = $tahun - 4;
                                                         $TS5 = $tahun - 5;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -6547,7 +6623,18 @@
                                                     <?php
 
                                                     $urlTS4 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS5.$TS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS4 = file_get_contents($urlTS4); // put the contents of the file into a variable
+
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS4 = file_get_contents($urlTS4,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                    // $dataTS4 = file_get_contents($urlTS4); // put the contents of the file into a variable
                                                     $charactersTS4 = json_decode($dataTS4, true); // decode the JSON feed
 
                                                     ?>
@@ -6570,7 +6657,18 @@
                                                     <?php
 
                                                     $urlTS3 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS4.$TS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS3 = file_get_contents($urlTS3); // put the contents of the file into a variable
+
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS3 = file_get_contents($urlTS3,
+                                                                     false, stream_context_create($stream_opts));
+                                                      
+                                                    // $dataTS3 = file_get_contents($urlTS3); // put the contents of the file into a variable
                                                     $charactersTS3 = json_decode($dataTS3, true); // decode the JSON feed
 
                                                     ?>
@@ -6593,7 +6691,17 @@
                                                     <?php
 
                                                     $urlTS2 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                            $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS2 = file_get_contents($urlTS2,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
                                                     ?>
@@ -6616,7 +6724,17 @@
                                                     <?php
 
                                                     $urlTS1 = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS1 = file_get_contents($urlTS1,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
                                                     ?>
@@ -6639,7 +6757,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     ?>
@@ -6679,7 +6807,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=mahasiswanonreguler&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $characters = json_decode($data, true); // decode the JSON feed
 
                                                     // echo $characters[0]['STUDENTSCHOOLYEAR'];
@@ -7292,12 +7430,6 @@
                                                         $TS2 = $tahun - 2;
                                                         $TS3 = $tahun - 3;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -7315,7 +7447,17 @@
                                                     <?php
 
                                                     $urlTS2 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                            $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS2 = file_get_contents($urlTS2,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
                                                     foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
                                                     ?>
@@ -7337,7 +7479,17 @@
                                                     <?php
 
                                                     $urlTS1 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS1 = file_get_contents($urlTS1,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
                                                     foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
                                                     ?>
@@ -7360,7 +7512,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
                                                     ?>
@@ -7401,7 +7563,17 @@
                                                     <?php
 
                                                     $urlTS2 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                            $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS2 = file_get_contents($urlTS2,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
                                                     foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
                                                     ?>
@@ -7436,7 +7608,17 @@
                                                     <?php
 
                                                     $urlTS1 = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS1 = file_get_contents($urlTS1,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
                                                     foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
                                                     ?>
@@ -7472,7 +7654,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=mahasiswaprestasi&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
                                                     ?>
@@ -7935,12 +8127,6 @@
                                                         $TS6 = $tahun - 6;
                                                         $TS7 = $tahun - 7;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -7957,7 +8143,17 @@
                                                     <?php
 
                                                     $urlFTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS7.$TS6.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataFTS = file_get_contents($urlFTS); // put the contenFTS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataFTS = file_get_contents($urlFTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataFTS = file_get_contents($urlFTS); // put the contenFTS of the file into a variable
                                                     $charactersFTS = json_decode($dataFTS, true); // decode the JSON feed
 
                                                     ?>
@@ -7975,29 +8171,39 @@
                                                         <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[5]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[5]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[6]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[6]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                     <!-- DATA ANGKATAN TS 5 -->
                                                     <?php
 
                                                     // 0
                                                     $urlETS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS6.$TS5.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataETS = file_get_contents($urlETS); // put the contenETS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataETS = file_get_contents($urlETS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataETS = file_get_contents($urlETS); // put the contenETS of the file into a variable
                                                     $charactersETS = json_decode($dataETS, true); // decode the JSON feed
 
                                                     ?>
@@ -8011,32 +8217,42 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k2_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
                                                         <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[5]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[5]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                     <!-- DATA ANGKATAN TS 4 -->
                                                     <?php
 
                                                     // 0
                                                     $urlDTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS5.$TS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataDTS = file_get_contents($urlDTS); // put the contenDTS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataDTS = file_get_contents($urlDTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataDTS = file_get_contents($urlDTS); // put the contenDTS of the file into a variable
                                                     $charactersDTS = json_decode($dataDTS, true); // decode the JSON feed
 
                                                     ?>
@@ -8050,25 +8266,25 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k3_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k3_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
                                                         <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
                                                         
 
                                                     <!-- DATA ANGKATAN TS 3 -->
@@ -8076,7 +8292,17 @@
 
                                                     // 0
                                                     $urlCTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS4.$TS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataCTS = file_get_contents($urlCTS); // put the contenCTS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataCTS = file_get_contents($urlCTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataCTS = file_get_contents($urlCTS); // put the contenCTS of the file into a variable
                                                     $charactersCTS = json_decode($dataCTS, true); // decode the JSON feed
 
                                                     ?>
@@ -8090,32 +8316,42 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
                                                         <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                     <!-- DATA ANGKATAN TS 2 -->
                                                     <?php
 
                                                     // 0
                                                     $urlBTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataBTS = file_get_contents($urlBTS); // put the contenBTS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataBTS = file_get_contents($urlBTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataBTS = file_get_contents($urlBTS); // put the contenBTS of the file into a variable
                                                     $charactersBTS = json_decode($dataBTS, true); // decode the JSON feed
 
                                                     ?>
@@ -8129,32 +8365,42 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
                                                         <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="<?php echo $charactersBTS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="<?php echo $charactersBTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k5_314[]" class="form-control" value="<?php echo $charactersBTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="<?php echo $charactersBTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k5_314[]" class="form-control" value="<?php echo $charactersBTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                     <!-- DATA ANGKATAN TS 1 -->
                                                     <?php
 
                                                     // 0
                                                     $urlATS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataATS = file_get_contents($urlATS); // put the contenATS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataATS = file_get_contents($urlATS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataATS = file_get_contents($urlATS); // put the contenATS of the file into a variable
                                                     $charactersATS = json_decode($dataATS, true); // decode the JSON feed
 
                                                     ?>
@@ -8168,32 +8414,42 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
                                                         <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="<?php echo $charactersATS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="<?php echo $charactersATS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k6_314[]" class="form-control" value="<?php echo $charactersATS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                     <!-- DATA ANGKATAN TS  -->
                                                     <?php
 
                                                     // 0
                                                     $urlTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     ?>
@@ -8207,22 +8463,22 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS -->
                                                         <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="<?php echo $charactersTS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
@@ -8249,7 +8505,17 @@
                                                     <?php
 
                                                     $urlFTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS7.$TS6.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataFTS = file_get_contents($urlFTS); // put the contenFTS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataFTS = file_get_contents($urlFTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataFTS = file_get_contents($urlFTS); // put the contenFTS of the file into a variable
                                                     $charactersFTS = json_decode($dataFTS, true); // decode the JSON feed
 
                                                     ?>
@@ -8267,29 +8533,39 @@
                                                         <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[5]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[5]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom1_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[6]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k1_314[]" class="form-control" value="<?php echo $charactersFTS[6]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                     <!-- DATA ANGKATAN TS 5 -->
                                                     <?php
 
                                                     // 0
                                                     $urlETS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS6.$TS5.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataETS = file_get_contents($urlETS); // put the contenETS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataETS = file_get_contents($urlETS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataETS = file_get_contents($urlETS); // put the contenETS of the file into a variable
                                                     $charactersETS = json_decode($dataETS, true); // decode the JSON feed
 
                                                     ?>
@@ -8303,32 +8579,42 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k2_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
                                                         <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom2_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[5]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k2_314[]" class="form-control" value="<?php echo $charactersETS[5]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                     <!-- DATA ANGKATAN TS 4 -->
                                                     <?php
 
                                                     // 0
                                                     $urlDTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS5.$TS4.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataDTS = file_get_contents($urlDTS); // put the contenDTS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataDTS = file_get_contents($urlDTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataDTS = file_get_contents($urlDTS); // put the contenDTS of the file into a variable
                                                     $charactersDTS = json_decode($dataDTS, true); // decode the JSON feed
 
                                                     ?>
@@ -8342,25 +8628,25 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k3_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k3_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
                                                         <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom3_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k3_314[]" class="form-control" value="<?php echo $charactersDTS[4]['JUMLAH']; ?>" placeholder="Ex: 500">
                                                         
 
                                                     <!-- DATA ANGKATAN TS 3 -->
@@ -8368,7 +8654,17 @@
 
                                                     // 0
                                                     $urlCTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS4.$TS3.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataCTS = file_get_contents($urlCTS); // put the contenCTS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataCTS = file_get_contents($urlCTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataCTS = file_get_contents($urlCTS); // put the contenCTS of the file into a variable
                                                     $charactersCTS = json_decode($dataCTS, true); // decode the JSON feed
 
                                                     ?>
@@ -8382,32 +8678,42 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k4_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
                                                         <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom4_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k4_314[]" class="form-control" value="<?php echo $charactersCTS[3]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                     <!-- DATA ANGKATAN TS 2 -->
                                                     <?php
 
                                                     // 0
                                                     $urlBTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS3.$TS2.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataBTS = file_get_contents($urlBTS); // put the contenBTS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataBTS = file_get_contents($urlBTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataBTS = file_get_contents($urlBTS); // put the contenBTS of the file into a variable
                                                     $charactersBTS = json_decode($dataBTS, true); // decode the JSON feed
 
                                                     ?>
@@ -8421,32 +8727,42 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k5_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
                                                         <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="<?php echo $charactersBTS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="<?php echo $charactersBTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k5_314[]" class="form-control" value="<?php echo $charactersBTS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom5_314[]" id="k5_314[]" class="form-control" value="<?php echo $charactersBTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k5_314[]" class="form-control" value="<?php echo $charactersBTS[2]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                     <!-- DATA ANGKATAN TS 1 -->
                                                     <?php
 
                                                     // 0
                                                     $urlATS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS2.$TS1.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataATS = file_get_contents($urlATS); // put the contenATS of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataATS = file_get_contents($urlATS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataATS = file_get_contents($urlATS); // put the contenATS of the file into a variable
                                                     $charactersATS = json_decode($dataATS, true); // decode the JSON feed
 
                                                     ?>
@@ -8460,32 +8776,42 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k6_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
                                                         <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="<?php echo $charactersATS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                         <!-- TS -->
-                                                        <input type="hidden" name="kolom6_314[]" id="k6_314[]" class="form-control" value="<?php echo $charactersATS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom7_314[]" id="k6_314[]" class="form-control" value="<?php echo $charactersATS[1]['JUMLAH']; ?>" placeholder="Ex: 500">
 
                                                     <!-- DATA ANGKATAN TS  -->
                                                     <?php
 
                                                     // 0
                                                     $urlTS = $link.'api/borang/borang.php?data=mahasiswareguler&schoolyear='.$TS1.$TS.'&studyprogramid='.$getKodeProdi; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     ?>
@@ -8499,22 +8825,22 @@
                                                         <input type="hidden" name="load[]" value="<?php echo $this->uri->segment(1, 0); ?>">
                                                         
                                                         <!-- TS 6 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom1_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
                                                         
                                                         <!-- TS 5 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom2_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 4 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom3_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 3 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom4_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 2 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom5_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS 1 -->
-                                                        <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
+                                                        <input type="hidden" name="kolom6_314[]" id="k7_314[]" class="form-control" value="0" placeholder="Ex: 500">
 
                                                         <!-- TS -->
                                                         <input type="hidden" name="kolom7_314[]" id="k7_314[]" class="form-control" value="<?php echo $charactersTS[0]['JUMLAH']; ?>" placeholder="Ex: 500">
@@ -8573,9 +8899,10 @@
                         <input type="hidden" name="314id_butir" id="314id_butir" value="<?php echo $isiannya; ?>" />
                         <input type="hidden" name="id_butir314" id="id_butir314" value="<?php echo $getidbutir; ?>" />
                         <div class="icon-button-demo">
-                            <button style="float: right;" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" data-placement="top" data-toggle="tooltip" title="Delete Isian Butir" type="button" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float">
-                                    <i class="material-icons">delete</i>
-                            </button>
+                            <button style="float: right;" onclick="deleisi(<?php echo $dataisian[$i]['id_butir']; ?>)" data-placement="top" data-toggle="tooltip" title="Delete Isian Butir" type="button" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">delete</i></button>
+                        </div>
+                        <div class="icon-button-demo">
+                            <button style="float: right;" type="button" class="btn bg-cyan btn-circle-lg waves-effect waves-circle waves-float" data-toggle="modal" data-target="#update314" data-placement="top" title="Edit Tabel" href="javascript:void(0)" data-whatever="<?php echo $dataisian[0]['id']; ?>"><i class="material-icons">mode_edit</i></button>
                         </div>
                         <h2 class="card-inside-title">Mahasiswa</h2>
                         <h2 class="card-inside-title">Data jumlah mahasiswa reguler tujuh tahun terakhir</h2>
@@ -8590,10 +8917,11 @@
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable" id="table313">
                                     <thead>
                                         <tr style="height: 35px;">
-                                            <td style="width: 50px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2"><p><strong>No</strong></p></td>
-                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2"><p><strong>Tahun Masuk</strong></p></td>
-                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 35px;" colspan="7"><p><strong>Jumlah Mahasiswa Reguler per Angkatan pada Tahun*</strong></p></td>
-                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2"><p><strong>Jumlah Lulusan s.d. TS</strong></p><p><strong>(dari Mahasiswa Reguler)</strong></p></td>
+                                            <td style="width: 50px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2"><strong>No</strong></td>
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2"><strong>Tahun Masuk</strong></td>
+                                            <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 35px;" colspan="7"><strong>Jumlah Mahasiswa Reguler per Angkatan pada Tahun*</strong></td>
+                                            <td style="width: 50; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2"><strong>Jumlah Lulusan s.d. TS</strong><strong>(dari Mahasiswa Reguler)</strong></td>
+                                            <td style="width: 50px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2"><strong>Aksi</strong></td>
                                         </tr>
                                         <tr style="height: 4px;">
                                             <td style="width: 102px; background-color: #9e9e9e; text-align: center; height: 4px;"><strong><?php echo $TS7.'/'.$TS6; ?></strong></td>
@@ -8615,10 +8943,32 @@
                                             <td style="width: 109px; text-align: center; height: 35px;"><strong>(8)</strong></td>
                                             <td style="width: 281px; text-align: center; height: 35px;"><strong>(9)</strong></td>
                                             <td style="width: 281px; text-align: center; height: 35px;"><strong>(10)</strong></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><strong>(11)</strong></td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php 
+                                        $ts0x1 = 0;
+                                        $ts0x2 = 0;
+                                        $ts0x3 = 0;
+                                        $ts1x1 = 0;
+                                        $ts1x2 = 0;
+                                        $ts1x3 = 0;
+                                        $ts2x1 = 0;
+                                        $ts2x2 = 0;
+                                        $ts2x3 = 0;
+                                        $ts3x1 = 0;
+                                        $ts3x2 = 0;
+                                        $ts3x3 = 0;
+                                        $ts4x1 = 0;
+                                        $ts4x2 = 0;
+                                        $ts4x3 = 0;
+                                        $ts5x1 = 0;
+                                        $ts5x2 = 0;
+                                        $ts5x3 = 0;
+                                        $ts6x1 = 0;
+                                        $ts6x2 = 0;
+                                        $ts6x3 = 0;
                                         $jum1 = 0;
                                         $jum2 = 0;
                                         $jum3 = 0;
@@ -8640,353 +8990,198 @@
                                         $nil = $nil + 1;
                                     ?>
                                         <tr style="height: 35px;">
-                                            <td style="width: 50px; text-align: center;"><p>1. </p>
-                                            </td>
-                                            <td style="width: 102px; text-align: center; height: 35px;"><p><?php echo $TS7.'/'.$TS6; ?></p></td>
+                                            <td style="width: 50px; text-align: center;">1. </td>
+                                            <td style="width: 102px; text-align: center; height: 35px;"><?php echo $TS7.'/'.$TS6; ?></td>
                                             <?php
-                                            for($ts6=0;$ts6<$sisacol;$ts6++){
-                                                if ($ts6==0) {
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;(a)=</em></p></td>
-                                                    <?php
-                                                }else if ($ts6==6) {
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;(b)=</em></p></td>
-                                                    <?php
-                                                }else{
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
-                                                    <?php
-                                                }
-                                            ?>
-                                            
-                                            <?php }
                                             for($ts6a=0;$ts6a<count($dataisian);$ts6a++){
-                                                $jum1 = $jum1 + $dataisian[$ts6a]['kolom1'];
+                                                $ts0x1 = $dataisian[0]['kolom1'] - $dataisian[0]['kolom2'];
+                                                $ts0x2 = $dataisian[0]['kolom2'] - $dataisian[0]['kolom3'];
+                                                $ts0x3 = $dataisian[0]['kolom7'];
+                                                $jum1 = ($dataisian[0]['kolom1'] - $ts0x1 - $ts0x2) - $ts0x3;
                                                 if (!empty($dataisian[0]['id'])){
                                                     $id1 = $dataisian[0]['id'];
                                                 }else{
                                                     $id1 = 0;
                                                 }
-
-                                                if (($ts6a==0) && (count($dataisian)==7)) {
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>(a)=<?php echo $dataisian[$ts6a]['kolom1'] ?></em></p></td>
-                                                    <?php
-                                                }else if (($ts6a==0) && (count($dataisian)==1) || ($ts6a==1) && (count($dataisian)==2) || ($ts6a==2) && (count($dataisian)==3) || ($ts6a==3) && (count($dataisian)==4) || ($ts6a==4) && (count($dataisian)==5) || ($ts6a==5) && (count($dataisian)==6) || (($ts6a==6) && (count($dataisian)==7))) {
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>(b)=<?php echo $dataisian[$ts6a]['kolom1'] ?></em></p></td>
-                                                    <?php
-                                                }else{
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$ts6a]['kolom1'] ?></em></p></td>
-                                                    <?php
-                                                }
                                             }?>
-                                            <td style="width: 281px; text-align: center; height: 35px;"><p><em>(c)=<?php echo $jum1; ?></em></p></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em>(a)=&nbsp; <?php echo $dataisian[0]['kolom1'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[0]['kolom2'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[0]['kolom3'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[0]['kolom4'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[0]['kolom5'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[0]['kolom6'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em>(b)=&nbsp; <?php echo $dataisian[0]['kolom7'] ?></em></td>
+                                            <td style="width: 281px; text-align: center; height: 35px;"><em>(c)=&nbsp; <?php echo $jum1; ?></em></td>
+                                            <td style="width: 50px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update314" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[0]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr style="height: 36px;">
-                                            <td style="width: 50px; text-align: center;"><p>2. </p></td>
-                                            <td style="width: 102px; text-align: center; height: 36px;"><p><?php echo $TS6.'/'.$TS5; ?></p></td>
-                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <td style="width: 50px; text-align: center;">2. </td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><?php echo $TS6.'/'.$TS5; ?></td>
                                             <?php
-                                            for($ts5=0;$ts5<($sisacol);$ts5++){
-                                                if ($ts5<1) {
-                                                    ?>
-                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                    <?php
-                                                }else{
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
-                                                    <?php
-                                                }
-                                            }
                                             for($ts5a=0;$ts5a<(count($dataisian));$ts5a++){
-                                                $jum2 = $jum2 + $dataisian[$ts5a]['kolom2'];
+                                                $ts1x1 = $dataisian[1]['kolom2'] - $dataisian[1]['kolom3'];
+                                                $ts1x2 = $dataisian[1]['kolom3'] - $dataisian[1]['kolom4'];
+                                                $ts1x3 = $dataisian[1]['kolom7'];
+                                                $jum2 = ($dataisian[1]['kolom2'] - $ts1x1 - $ts1x2) - $ts1x3;
                                                 if (!empty($dataisian[1]['id'])){
                                                     $id2 = $dataisian[1]['id'];
                                                 }else{
                                                     $id2 = 0;
                                                 }
-
-                                                if ((($ts5a<1) && ((count($dataisian)==7)))) {
-                                                    if (($ts5a==0)) {
-                                                        ?>
-                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$ts5a]['kolom2'] ?></em></p></td>
-                                                        <?php
-                                                    }
-                                                }else{
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$ts5a]['kolom2'] ?></em></p></td>
-                                                    <?php
-                                                }
                                             }?>
-                                            <td style="width: 281px; text-align: center; height: 35px;"><p><em><?php echo $jum2; ?></em></p></td>
-                                            <!-- <td style="width: 92px; text-align: center; height: 36px;"><p><em>&nbsp;</em></p></td>
-                                            <td style="width: 93px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 93px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 109px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 281px; text-align: center; height: 36px;"><p><em>&nbsp;</em></p></td> -->
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[1]['kolom2'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[1]['kolom3'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[1]['kolom4'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[1]['kolom5'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[1]['kolom6'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[1]['kolom7'] ?></em></td>
+                                            <td style="width: 281px; text-align: center; height: 35px;"><em><?php echo $jum2; ?></em></td>
+                                            <td style="width: 50px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update314" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[1]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr style="height: 36px;">
-                                            <td style="width: 50px; text-align: center;"><p>3. </p></td>
-                                            <td style="width: 102px; text-align: center; height: 36px;"><p><?php echo $TS5.'/'.$TS4; ?></p></td>
-                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <td style="width: 50px; text-align: center;">3. </td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><?php echo $TS5.'/'.$TS4; ?></td>
                                             <?php
-                                            for($ts4=0;$ts4<($sisacol);$ts4++){
-                                                if ($ts4<2) {
-                                                    ?>
-                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                    <?php
-                                                }else{
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
-                                                    <?php
-                                                }
-                                            }
                                             for($ts4a=0;$ts4a<(count($dataisian));$ts4a++){
-                                                $jum3 = $jum3 + $dataisian[$ts4a]['kolom3'];
+                                                $ts2x1 = $dataisian[2]['kolom3'] - $dataisian[2]['kolom4'];
+                                                $ts2x2 = $dataisian[2]['kolom4'] - $dataisian[2]['kolom5'];
+                                                $ts2x3 = $dataisian[2]['kolom7'];
+                                                $jum3 = ($dataisian[2]['kolom3'] - $ts2x1 - $ts2x2) - $ts2x3;
                                                 if (!empty($dataisian[2]['id'])){
                                                     $id3 = $dataisian[2]['id'];
                                                 }else{
                                                     $id3 = 0;
                                                 }
-
-                                                if ((($ts4a<2) && ((count($dataisian)==7) || (count($dataisian)==6)))) {
-                                                    if (($ts4a==0) || (($ts4a==1) && (count($dataisian)>2))) {
-                                                        ?>
-                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$ts4a]['kolom3'] ?></em></p></td>
-                                                        <?php
-                                                    }
-                                                }else{
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$ts4a]['kolom3'] ?></em></p></td>
-                                                    <?php
-                                                }
                                             }?>
-                                            <td style="width: 281px; text-align: center; height: 35px;"><p><em><?php echo $jum3; ?></em></p></td>
-                                            <!-- td style="width: 93px; text-align: center; height: 36px;"><p><em>&nbsp;</em></p></td>
-                                            <td style="width: 93px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 109px; text-align: center; height: 36px;"><p><em>&nbsp;</em></p></td>
-                                            <td style="width: 281px; text-align: center; height: 36px;"><p><em>&nbsp;</em></p></td> -->
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[2]['kolom3'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[2]['kolom3'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[2]['kolom4'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[2]['kolom5'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[2]['kolom6'] ?></em></td>
+                                            <td style="width: 281px; text-align: center; height: 35px;"><em><?php echo $jum3; ?></em></td>
+                                            <td style="width: 50px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update314" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[2]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr style="height: 36px;">
-                                            <td style="width: 50px; text-align: center;"><p>4. </p></td>
-                                            <td style="width: 102px; text-align: center; height: 36px;"><p><?php echo $TS4.'/'.$TS3; ?></p></td>
-                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <td style="width: 50px; text-align: center;">4. </td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><?php echo $TS4.'/'.$TS3; ?></td>
                                             <?php
-                                            for($ts3=0;$ts3<($sisacol);$ts3++){
-                                                if ($ts3<3) {
-                                                    ?>
-                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                    <?php
-                                                }else{
-                                                    if ($ts3==3) {
-                                                        ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;(d) =</em></p></td>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
-                                                        <?php
-                                                    }
-                                                }
-                                            }
                                             for($ts3a=0;$ts3a<count($dataisian);$ts3a++){
-                                                $jum4 = $jum4 + $dataisian[$ts3a]['kolom4'];
+                                                $ts3x1 = $dataisian[3]['kolom4'] - $dataisian[3]['kolom5'];
+                                                $ts3x2 = $dataisian[3]['kolom5'] - $dataisian[3]['kolom6'];
+                                                $ts3x3 = $dataisian[3]['kolom7'];
+                                                $jum4 = ($dataisian[3]['kolom4'] - $ts3x1 - $ts3x2) - $ts3x3;
                                                 if (!empty($dataisian[3]['id'])){
                                                     $id4 = $dataisian[3]['id'];
                                                 }else{
                                                     $id4 = 0;
                                                 }
-
-                                                if ((($ts3a<3) && ((count($dataisian)==7) || (count($dataisian)==6) || (count($dataisian)==5)))) {
-                                                    if (($ts3a==0) || (($ts3a==1) && (count($dataisian)>2)) || (($ts3a==2) && (count($dataisian)>3))) {
-                                                        ?>
-                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>(d) = <?php echo $dataisian[$ts3a]['kolom4'] ?></em></p></td>
-                                                        <?php
-                                                    }
-                                                }else{
-                                                    if (($ts3a==0) && (count($dataisian)==1) || ($ts3a==1) && (count($dataisian)==2) || ($ts3a==2) && (count($dataisian)==3) || ($ts3a==3) && (count($dataisian)==4) || ($ts3a==4) && (count($dataisian)==5) || ($ts3a==5) && (count($dataisian)==6) || (($ts3a==6) && (count($dataisian)==7))) {
-                                                        ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>(e) = <?php echo $dataisian[$ts3a]['kolom4'] ?></em></p></td>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$ts3a]['kolom4'] ?></em></p></td>
-                                                        <?php
-                                                    }
-                                                }
                                             }?>
-                                            <td style="width: 281px; text-align: center; height: 35px;"><p><em>(f) = <?php echo $jum4; ?></em></p></td>
-                                            <!-- <td style="width: 93px; text-align: center; height: 36px;"><p><em>(d) =</em></p></td>
-                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 109px; text-align: center; height: 36px;"><p><em>(e) =</em></p></td>
-                                            <td style="width: 281px; text-align: center; height: 36px;"><p><em>(f) =</em></p></td> -->
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em>(d)=&nbsp; <?php echo $dataisian[3]['kolom4'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[3]['kolom5'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[3]['kolom6'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em>(e)=&nbsp; <?php echo $dataisian[3]['kolom7'] ?></em></td>
+                                            <td style="width: 281px; text-align: center; height: 35px;"><em>(f)=&nbsp; <?php echo $jum4; ?></em></td>
+                                            <td style="width: 50px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update314" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[3]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr style="height: 36px;">
-                                            <td style="width: 50px; text-align: center;"><p>5. </p></td>
-                                            <td style="width: 102px; text-align: center; height: 36px;"><p><?php echo $TS3.'/'.$TS2; ?></p></td>
-                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <td style="width: 50px; text-align: center;">5. </td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><?php echo $TS3.'/'.$TS2; ?></td>
                                             <?php
-                                            for($ts2=0;$ts2<($sisacol);$ts2++){
-                                                if ($ts2<4) {
-                                                    ?>
-                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                    <?php
-                                                }else{
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
-                                                    <?php
-                                                }
-                                            }
                                             for($ts2a=0;$ts2a<(count($dataisian));$ts2a++){
-                                                $jum5 = $jum5 + $dataisian[$ts2a]['kolom5'];
+                                                $jum5 = $jum5 + $dataisian[4]['kolom5'];
                                                 if (!empty($dataisian[4]['id'])){
                                                     $id5 = $dataisian[4]['id'];
                                                 }else{
                                                     $id5 = 0;
                                                 }
-
-                                                if ((($ts2a<4) && ((count($dataisian)==7) || (count($dataisian)==6) || (count($dataisian)==5) || (count($dataisian)==4)))) {
-                                                    if (($ts2a==0) || (($ts2a==1) && (count($dataisian)>2)) || (($ts2a==2) && (count($dataisian)>3)) || (($ts2a==3) && (count($dataisian)>4))) {
-                                                        ?>
-                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$ts2a]['kolom5'] ?></em></p></td>
-                                                        <?php
-                                                    }
-                                                }else{
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$ts2a]['kolom5'] ?></em></p></td>
-                                                    <?php
-                                                }
                                             }?>
-                                            <!-- <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 109px; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
-                                            <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[4]['kolom5'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[4]['kolom6'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[4]['kolom7'] ?></em></td>
+                                            <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                            <td style="width: 50px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update314" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[4]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr style="height: 36px;">
-                                            <td style="width: 50px; text-align: center;"><p>6. </p></td>
-                                            <td style="width: 102px; text-align: center; height: 36px;"><p><?php echo $TS2.'/'.$TS1; ?></p></td>
-                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <td style="width: 50px; text-align: center;">6. </td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><?php echo $TS2.'/'.$TS1; ?></td>
                                             <?php
-                                            for($ts1=0;$ts1<($sisacol);$ts1++){
-                                                if ($ts1<5) {
-                                                        ?>
-                                                <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                                <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
-                                                        <?php
-                                                }
-                                            }
                                             for($ts1a=0;$ts1a<(count($dataisian));$ts1a++){
-                                                $jum7 = $jum7 + $dataisian[$ts1a]['kolom6'];
-                                                if (!empty($dataisian[6]['id'])){
-                                                    $id7 = $dataisian[6]['id'];
+                                                $jum7 = $jum7 + $dataisian[5]['kolom6'];
+                                                if (!empty($dataisian[5]['id'])){
+                                                    $id7 = $dataisian[5]['id'];
                                                 }else{
                                                     $id7 = 0;
                                                 }
-
-                                                if (($ts1a<5) && ((count($dataisian)==7) || (count($dataisian)==6) || (count($dataisian)==5) || (count($dataisian)==4) || (count($dataisian)==3))) {
-                                                    if (($ts1a==0) || (($ts1a==1) && (count($dataisian)>2)) || (($ts1a==2) && (count($dataisian)>3)) || (($ts1a==3) && (count($dataisian)>4)) || (($ts1a==4) && (count($dataisian)>5))) {
-                                                        ?>
-                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$ts1a]['kolom6'] ?></em></p></td>
-                                                        <?php
-                                                    }
-                                                }else{
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$ts1a]['kolom6'] ?></em></p></td>
-                                                    <?php
-                                                }
                                             }?>
-                                            <!-- <td style="width: 100px; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 109px; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
-                                            <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[5]['kolom6'] ?></em></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[5]['kolom7'] ?></em></td>
+                                            <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;">&nbsp;</td>
+                                            <td style="width: 50px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update314" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[5]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr style="height: 36px;">
-                                            <td style="width: 50px; text-align: center;"><p>7. </p></td>
-                                            <td style="width: 102px; text-align: center; height: 36px;"><p><?php echo $TS1.'/'.$TS; ?></p></td>
-                                            <!-- <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                            <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
+                                            <td style="width: 50px; text-align: center;">7. </td>
+                                            <td style="width: 102px; text-align: center; height: 36px;"><?php echo $TS1.'/'.$TS; ?></td>
                                             <?php
-                                            for($ts=0;$ts<($sisacol);$ts++){
-                                                if ($ts<6) {
-                                                        ?>
-                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em>&nbsp;</em></p></td>
-                                                        <?php
-                                                }
-                                            }
                                             for($tsa=0;$tsa<(count($dataisian));$tsa++){
-                                                $jum7 = $jum7 + $dataisian[$tsa]['kolom7'];
+                                                $jum7 = $jum7 + $dataisian[6]['kolom7'];
                                                 if (!empty($dataisian[6]['id'])){
                                                     $id7 = $dataisian[6]['id'];
                                                 }else{
                                                     $id7 = 0;
                                                 }
-
-                                                if ((($tsa<6) && ((count($dataisian)==7) || (count($dataisian)==6) || (count($dataisian)==5) || (count($dataisian)==4) || (count($dataisian)==3) || (count($dataisian)==2)))) {
-                                                    if (($tsa==0) || (($tsa==1) && (count($dataisian)>2)) || (($tsa==2) && (count($dataisian)>3)) || (($tsa==3) && (count($dataisian)>4)) || (($tsa==4) && (count($dataisian)>5)) || (($tsa==5) && (count($dataisian)>6))) {
-                                                        ?>
-                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"><p>&nbsp;</p></td>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$tsa]['kolom7'] ?></em></p></td>
-                                                        <?php
-                                                    }
-                                                }else{
-                                                    ?>
-                                            <td style="width: 92px; text-align: center; height: 35px;"><p><em><?php echo $dataisian[$tsa]['kolom7'] ?></em></p></td>
-                                                    <?php
-                                                }
                                             }?>
-                                            <!-- <td style="width: 109px; text-align: center; height: 36px;"><p>&nbsp;</p></td> -->
-                                            <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;"><p>&nbsp;</p></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                            <td style="width: 92px; text-align: center; height: 35px;"><em><?php echo $dataisian[6]['kolom7'] ?></em></td>
+                                            <td style="width: 281px; background-color: #9c9c9c; text-align: center; height: 36px;">&nbsp;</td>
+                                            <td style="width: 50px; text-align: center;">
+                                                <div class="js-sweetalert">
+                                                    <a type="button" data-color="light-blue" class="btn bg-light-blue waves-effect btn-xs" data-toggle="modal" data-target="#update314" data-placement="top" title="Edit" href="javascript:void(0)" data-whatever="<?php echo $dataisian[6]['id']; ?>"><i class="glyphicon glyphicon-edit"></i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                         </tbody>
                                 </table>
@@ -11856,12 +12051,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -11879,7 +12068,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -11939,7 +12138,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -12530,12 +12739,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -12553,7 +12756,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -12613,7 +12826,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenkeahlian&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -13198,12 +13421,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -13221,7 +13438,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenkeahliansesuai&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
                                                     if(!empty($charactersTS)){
                                                         foreach ($charactersTS as $keyTS => $valueTS) {
@@ -13284,7 +13511,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenkeahliansesuai&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $characters = json_decode($dataTS, true); // decode the JSON feed
 
                                                     if(!empty($characters)){
@@ -13982,12 +14219,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -14005,7 +14236,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -14064,7 +14305,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -14675,12 +14926,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -14698,7 +14943,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -14757,7 +15012,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenaktivitasmengajar&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -15369,12 +15634,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -15392,7 +15651,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosentidaktetap&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -15451,7 +15720,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosentidaktetap&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -16040,12 +16319,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -16063,7 +16336,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenaktivitastidaktetap&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -16122,7 +16405,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenaktivitastidaktetap&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -17527,12 +17820,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -17550,7 +17837,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenseminar&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -17607,7 +17904,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenseminar&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -18150,12 +18457,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -18173,7 +18474,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenprestasi&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -18229,7 +18540,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenprestasi&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -19105,12 +19426,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -19128,7 +19443,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=tenagakependidikan'; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     // data buat isi tabel
@@ -19328,7 +19653,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=tenagakependidikan'; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     // data buat isi tabel
@@ -24472,12 +24807,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -24495,7 +24824,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenperwalian&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -24550,7 +24889,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenperwalian&dosenprodi='.$getKodeProdiDosen.'&schoolyear='.$TS1.$TS; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -25452,12 +25801,6 @@
                                                         $TS = $tahun;
                                                         $TS1 = $tahun - 1;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -25475,7 +25818,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenbimbingan&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -25528,7 +25881,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenbimbingan&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -29145,12 +29508,6 @@
                                                         $TS2 = $tahun - 2;
                                                         $TS3 = $tahun - 3;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -29168,7 +29525,17 @@
                                                     <?php
 
                                                     $urlTS2 = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid='.$getKodeProdi.'&year='.$TS2; // path to your JSON file
-                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                            $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS2 = file_get_contents($urlTS2,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
                                                     foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
@@ -29206,7 +29573,17 @@
                                                     <?php
 
                                                     $urlTS1 = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid='.$getKodeProdi.'&year='.$TS1; // path to your JSON file
-                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS1 = file_get_contents($urlTS1,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
                                                     foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
@@ -29245,7 +29622,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid='.$getKodeProdi.'&year='.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -29301,7 +29688,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=danapenelitian&studyprogramid='.$getKodeProdi.'&year='.$TS; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -29806,12 +30203,6 @@
                                                         $TS2 = $tahun - 2;
                                                         $TS3 = $tahun - 3;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -29829,7 +30220,17 @@
                                                     <?php
 
                                                     $urlTS2 = $link.'api/borang/borang.php?data=danakegiatanabdimas&studyprogramid='.$getKodeProdi.'&year='.$TS2; // path to your JSON file
-                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                            $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS2 = file_get_contents($urlTS2,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
                                                     foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
@@ -29867,7 +30268,17 @@
                                                     <?php
 
                                                     $urlTS1 = $link.'api/borang/borang.php?data=danakegiatanabdimas&studyprogramid='.$getKodeProdi.'&year='.$TS1; // path to your JSON file
-                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS1 = file_get_contents($urlTS1,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
                                                     foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
@@ -29906,7 +30317,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=danakegiatanabdimas&studyprogramid='.$getKodeProdi.'&year='.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -29962,7 +30383,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=danakegiatanabdimas&studyprogramid='.$getKodeProdi.'&year='.$TS; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -34826,12 +35257,6 @@
                                                         $TS2 = $tahun - 2;
                                                         $TS3 = $tahun - 3;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -34849,7 +35274,17 @@
                                                     <?php
 
                                                     $urlTS2 = $link.'api/borang/borang.php?data=dosenjumlahpenelitian&dosenprodi='.$getKodeProdiDosen.'&year='.$TS2; // path to your JSON file
-                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                            $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS2 = file_get_contents($urlTS2,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
                                                     foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
@@ -34893,7 +35328,17 @@
                                                     <?php
 
                                                     $urlTS1 = $link.'api/borang/borang.php?data=dosenjumlahpenelitian&dosenprodi='.$getKodeProdiDosen.'&year='.$TS1; // path to your JSON file
-                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS1 = file_get_contents($urlTS1,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
                                                     foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
@@ -34930,7 +35375,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenjumlahpenelitian&dosenprodi='.$getKodeProdiDosen.'&year='.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -34986,7 +35441,17 @@
                                                     <?php
 
                                                     $urlTS2 = $link.'api/borang/borang.php?data=dosenjumlahpenelitian&dosenprodi='.$getKodeProdiDosen.'&year='.$TS2; // path to your JSON file
-                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                            $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS2 = file_get_contents($urlTS2,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
                                                     foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
@@ -35030,7 +35495,17 @@
                                                     <?php
 
                                                     $urlTS1 = $link.'api/borang/borang.php?data=dosenjumlahpenelitian&dosenprodi='.$getKodeProdiDosen.'&year='.$TS1; // path to your JSON file
-                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS1 = file_get_contents($urlTS1,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
                                                     foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
@@ -35067,7 +35542,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenjumlahpenelitian&dosenprodi='.$getKodeProdiDosen.'&year='.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -36101,12 +36586,6 @@
                                                         $TS2 = $tahun - 2;
                                                         $TS3 = $tahun - 3;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -36124,7 +36603,17 @@
                                                     <?php
 
                                                     $urlTS2 = $link.'api/borang/borang.php?data=dosenjudulartikelbuku&dosenprodi='.$getKodeProdiDosen.'&year='.$TS2; // path to your JSON file
-                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                            $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS2 = file_get_contents($urlTS2,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
                                                     foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
@@ -36193,7 +36682,17 @@
                                                     <?php
 
                                                     $urlTS1 = $link.'api/borang/borang.php?data=dosenjudulartikelbuku&dosenprodi='.$getKodeProdiDosen.'&year='.$TS1; // path to your JSON file
-                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS1 = file_get_contents($urlTS1,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
                                                     foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
@@ -36263,7 +36762,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenjudulartikelbuku&dosenprodi='.$getKodeProdiDosen.'&year='.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -36350,7 +36859,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenjudulartikelbuku&dosenprodi='.$getKodeProdiDosen.'&year='.$TS; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -36998,12 +37517,6 @@
                                                         $TS2 = $tahun - 2;
                                                         $TS3 = $tahun - 3;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -37021,7 +37534,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenhki&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -37072,7 +37595,17 @@
                                                     <?php
 
                                                     $url = $link.'api/borang/borang.php?data=dosenhki&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $data = file_get_contents($url); // put the contents of the file into a variable
+                                                    $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $data = file_get_contents($url,
+                                                                     false, stream_context_create($stream_opts));
+
+// $data = file_get_contents($url); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($data, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -37455,12 +37988,6 @@
                                                         $TS2 = $tahun - 2;
                                                         $TS3 = $tahun - 3;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -37478,7 +38005,17 @@
                                                     <?php
 
                                                     $urlTS2 = $link.'api/borang/borang.php?data=dosenabdimas&dosenprodi='.$getKodeProdiDosen.'&year='.$TS2; // path to your JSON file
-                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                            $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS2 = file_get_contents($urlTS2,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
                                                     foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
@@ -37523,7 +38060,17 @@
                                                     <?php
 
                                                     $urlTS1 = $link.'api/borang/borang.php?data=dosenabdimas&dosenprodi='.$getKodeProdiDosen.'&year='.$TS1; // path to your JSON file
-                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS1 = file_get_contents($urlTS1,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
                                                     foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
@@ -37561,7 +38108,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenabdimas&dosenprodi='.$getKodeProdiDosen.'&year='.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -37617,7 +38174,17 @@
                                                     <?php
 
                                                     $urlTS2 = $link.'api/borang/borang.php?data=dosenabdimas&dosenprodi='.$getKodeProdiDosen.'&year='.$TS2; // path to your JSON file
-                                                    $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
+                                            $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS2 = file_get_contents($urlTS2,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS2 = file_get_contents($urlTS2); // put the contents of the file into a variable
                                                     $charactersTS2 = json_decode($dataTS2, true); // decode the JSON feed
 
                                                     foreach ($charactersTS2 as $keyTS2 => $valueTS2) {
@@ -37662,7 +38229,17 @@
                                                     <?php
 
                                                     $urlTS1 = $link.'api/borang/borang.php?data=dosenabdimas&dosenprodi='.$getKodeProdiDosen.'&year='.$TS1; // path to your JSON file
-                                                    $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS1 = file_get_contents($urlTS1,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS1 = file_get_contents($urlTS1); // put the contents of the file into a variable
                                                     $charactersTS1 = json_decode($dataTS1, true); // decode the JSON feed
 
                                                     foreach ($charactersTS1 as $keyTS1 => $valueTS1) {
@@ -37700,7 +38277,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dosenabdimas&dosenprodi='.$getKodeProdiDosen.'&year='.$TS; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
 
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
@@ -38738,12 +39325,6 @@
                                                         $TS2 = $tahun - 2;
                                                         $TS3 = $tahun - 3;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -38761,7 +39342,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dokumeninstansi&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
                                                     ?>
@@ -38805,7 +39396,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dokumeninstansi&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
                                                    
@@ -39339,12 +39940,6 @@
                                                         $TS2 = $tahun - 2;
                                                         $TS3 = $tahun - 3;
 
-                                                        // ketika menggunakan jaringan selain tune
-                                                        $link = 'https://igracias.telkomuniversity.ac.id/';
-
-                                                        // ketika menggunakan jaringan tune (lokal kampus)
-                                                        // $link = 'http://10.252.252.174/';
-
                                                         // MENDAPATKAN NILAI TS TAHUN BERJALAN
                                                         $getTS = 0;
                                                         $idTS = 0;
@@ -39362,7 +39957,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dokumeninstansiinternasional&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
                                                     ?>
@@ -39406,7 +40011,17 @@
                                                     <?php
 
                                                     $urlTS = $link.'api/borang/borang.php?data=dokumeninstansiinternasional&dosenprodi='.$getKodeProdiDosen; // path to your JSON file
-                                                    $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
+                                                $stream_opts = [
+                                                          "ssl" => [
+                                                              "verify_peer"=>false,
+                                                              "verify_peer_name"=>false,
+                                                          ]
+                                                      ];  
+                                                       
+                                                      $dataTS = file_get_contents($urlTS,
+                                                                     false, stream_context_create($stream_opts));
+
+                                                      // $dataTS = file_get_contents($urlTS); // put the contents of the file into a variable
                                                     $charactersTS = json_decode($dataTS, true); // decode the JSON feed
                                                     foreach ($charactersTS as $keyTS => $valueTS) {
                                                    
@@ -39787,20 +40402,22 @@
                             <thead>
                                 <tr>
                                     <th width="5%">No</th>
+                                    <th width="30%">Aspek</th>
                                     <th width="40%">Bukti yang harus disiapkan</th>
                                     <!-- <th width="30%">Nama File</th> -->
-                                    <th width="10%">Status</th>
-                                    <th width="10%">Tanggal Upload</th>
+                                    <!-- <th width="10%">Status</th>
+                                    <th width="10%">Tanggal Upload</th> -->
                                     <th width="10%">Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th width="5%">No</th>
-                                    <th width="25%">Bukti yang harus disiapkan</th>
+                                    <th width="30%">Aspek</th>
+                                    <th width="40%">Bukti yang harus disiapkan</th>
                                     <!-- <th width="20%">Nama File</th> -->
-                                    <th width="10%">Status</th>
-                                    <th width="10%">Tanggal Upload</th>
+                                    <!-- <th width="10%">Status</th>
+                                    <th width="10%">Tanggal Upload</th> -->
                                     <th width="10%">Action</th>
                                 </tr>
                             </tfoot>
@@ -39847,10 +40464,11 @@
                                         ?>
                                 <tr>
                                     <td class='<?php echo($warnanya) ?>'><?php echo $list ?> </td>
+                                    <td class='<?php echo($warnanya) ?>'><?php echo $bar->aspek ?> </td>
                                     <td class='<?php echo($warnanya) ?>'><?php echo $bar->dokumen ?> </td>
                                     <!-- <td class='<?php echo($warnanya) ?>'><?php echo $filename ?> </td> -->
-                                    <td class='<?php echo($warnanya) ?>'><?php echo $status ?> </td>
-                                    <td class='<?php echo($warnanya) ?>'><?php echo $tanggal ?> </td>
+                                    <!-- <td class='<?php echo($warnanya) ?>'><?php echo $status ?> </td>
+                                    <td class='<?php echo($warnanya) ?>'><?php echo $tanggal ?> </td> -->
                                     <td class='<?php echo($warnanya) ?>'>
                                         <div class="js-sweetalert">
                                     <?php
@@ -40624,6 +41242,159 @@
             </div>
         </div>
         <!-- Tutup Modal Update 313 -->
+
+        <!-- Molda Update Tabel 314 -->
+        <div class="modal fade" id="update314" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="defaultModalLabel">Update Isian Tabel</h1>
+                    </div>
+                    <div class="modal-body">
+                <!-- form start -->
+                <?php
+                    $attributes = array('id' => 'myform');
+                    echo form_open('C_isian/updateisian314_buku', $attributes);
+                ?>
+                <!-- <form method="POST" action="<?php echo base_url()?>C_isian/updateisian314_buku"> -->
+                    <div class="row clearfix">
+                        <input type="hidden" name="id314[]" id="id314" />
+                        <input type="hidden" name="id_butir314tabel" id="id_butir314tabel" />
+                            <div class="col-md-12 table-responsive">
+                                <table style="margin-left: auto; margin-right: auto; height: 383px; width: 1083px;" border="1" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                <tr style="height: 35px;">
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 25px;" rowspan="2"><strong>Tahun Masuk</strong></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 35px;" colspan="7"><strong>Jumlah Mahasiswa Reguler per Angkatan pada Tahun*</strong> </td>
+                                </tr>
+                                <tr style="height: 4px;">
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 4px;"><strong><?php echo $TS7.'/'.$TS6; ?></strong></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 4px;"><strong><?php echo $TS6.'/'.$TS5; ?></strong></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 4px;"><strong><?php echo $TS5.'/'.$TS4; ?></strong></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 4px;"><strong><?php echo $TS4.'/'.$TS3; ?></strong></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 4px;"><strong><?php echo $TS3.'/'.$TS2; ?></strong></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 4px;"><strong><?php echo $TS2.'/'.$TS1; ?></strong></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 4px;"><strong><?php echo $TS1.'/'.$TS; ?></strong></td>
+                                </tr>
+                                <tr style="height: 35px;">
+                                    <td style="width: 92px; text-align: center; height: 35px;"><strong>(1)</strong></td>
+                                    <td style="width: 92px; text-align: center; height: 35px;"><strong>(1)</strong></td>
+                                    <td style="width: 92px; text-align: center; height: 35px;"><strong>(2)</strong></td>
+                                    <td style="width: 92px; text-align: center; height: 35px;"><strong>(3)</strong></td>
+                                    <td style="width: 92px; text-align: center; height: 35px;"><strong>(4)</strong></td>
+                                    <td style="width: 92px; text-align: center; height: 35px;"><strong>(5)</strong></td>
+                                    <td style="width: 92px; text-align: center; height: 35px;"><strong>(6)</strong></td>
+                                    <td style="width: 92px; text-align: center; height: 35px;"><strong>(7)</strong></td>
+                                </tr>
+                                <tr style="height: 35px;">
+                                    <td style="width: 92px; text-align: center; height: 35px;"><input type="text" name="kolom9_314" id="kolom9_314" readonly class="form-control"></p></td>
+                                    <td style="width: 92px; text-align: center; height: 35px;"><input type="text" name="kolom1_314" id="kolom1_314" class="form-control"></td>
+                                    <td style="width: 92px; text-align: center; height: 35px;"><input type="text" name="kolom2_314" id="kolom2_314" class="form-control"></td>
+                                    <td style="width: 93px; text-align: center; height: 35px;"><input type="text" name="kolom3_314" id="kolom3_314" class="form-control"></td>
+                                    <td style="width: 93px; text-align: center; height: 35px;"><input type="text" name="kolom4_314" id="kolom4_314" class="form-control"></td>
+                                    <td style="width: 100px; text-align: center; height: 35px;"><input type="text" name="kolom5_314" id="kolom5_314" class="form-control"></td>
+                                    <td style="width: 100px; text-align: center; height: 35px;"><input type="text" name="kolom6_314" id="kolom6_314" class="form-control"></td>
+                                    <td style="width: 109px; text-align: center; height: 35px;"><input type="text" name="kolom7_314" id="kolom7_314" class="form-control"></td>
+                                </tr>
+                                <!-- <tr style="height: 36px;">
+                                    <td style="width: 92px; text-align: center; height: 36px;"><?php echo $TS6.'/'.$TS5; ?></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                    <input type="hidden" name="kolom1_314[]" value="0">
+                                    <td style="width: 92px; text-align: center; height: 36px;"><input type="text" name="kolom2_314[]" value="<?php echo $dataisian[1]['kolom2'] ?>" class="form-control"></td>
+                                    <td style="width: 93px; text-align: center; height: 36px;"><input type="text" name="kolom3_314[]" value="<?php echo $dataisian[1]['kolom3'] ?>" class="form-control"></td>
+                                    <td style="width: 93px; text-align: center; height: 36px;"><input type="text" name="kolom4_314[]" value="<?php echo $dataisian[1]['kolom4'] ?>" class="form-control"></td>
+                                    <td style="width: 100px; text-align: center; height: 36px;"><input type="text" name="kolom5_314[]" value="<?php echo $dataisian[1]['kolom5'] ?>" class="form-control"></td>
+                                    <td style="width: 100px; text-align: center; height: 36px;"><input type="text" name="kolom6_314[]" value="<?php echo $dataisian[1]['kolom6'] ?>" class="form-control"></td>
+                                    <td style="width: 109px; text-align: center; height: 36px;"><input type="text" name="kolom7_314[]" value="<?php echo $dataisian[1]['kolom7'] ?>" class="form-control"></td>
+                                </tr>
+                                <tr style="height: 36px;">
+                                    <td style="width: 92px; text-align: center; height: 36px;"><?php echo $TS5.'/'.$TS4; ?></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <input type="hidden" name="kolom1_314[]" value="0">
+                                    <input type="hidden" name="kolom2_314[]" value="0">
+                                    <td style="width: 93px; text-align: center; height: 36px;"><input type="text" name="kolom3_314[]" value="<?php echo $dataisian[2]['kolom3'] ?>" class="form-control"></td>
+                                    <td style="width: 93px; text-align: center; height: 36px;"><input type="text" name="kolom4_314[]" value="<?php echo $dataisian[2]['kolom4'] ?>" class="form-control"></td>
+                                    <td style="width: 100px; text-align: center; height: 36px;"><input type="text" name="kolom5_314[]" value="<?php echo $dataisian[2]['kolom5'] ?>" class="form-control"></td>
+                                    <td style="width: 100px; text-align: center; height: 36px;"><input type="text" name="kolom6_314[]" value="<?php echo $dataisian[2]['kolom6'] ?>" class="form-control"></td>
+                                    <td style="width: 109px; text-align: center; height: 36px;"><input type="text" name="kolom7_314[]" value="<?php echo $dataisian[2]['kolom7'] ?>" class="form-control"></td>
+                                </tr>
+                                <tr style="height: 36px;">
+                                    <td style="width: 92px; text-align: center; height: 36px;"><?php echo $TS4.'/'.$TS3; ?></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <input type="hidden" name="kolom1_314[]" value="0">
+                                    <input type="hidden" name="kolom2_314[]" value="0">
+                                    <input type="hidden" name="kolom3_314[]" value="0">
+                                    <td style="width: 93px; text-align: center; height: 36px;"><input type="text" name="kolom4_314[]" value="<?php echo $dataisian[3]['kolom4'] ?>" class="form-control"></td>
+                                    <td style="width: 100px; text-align: center; height: 36px;"><input type="text" name="kolom5_314[]" value="<?php echo $dataisian[3]['kolom5'] ?>" class="form-control"></td>
+                                    <td style="width: 100px; text-align: center; height: 36px;"><input type="text" name="kolom6_314[]" value="<?php echo $dataisian[3]['kolom6'] ?>" class="form-control"></td>
+                                    <td style="width: 109px; text-align: center; height: 36px;"><input type="text" name="kolom7_314[]" value="<?php echo $dataisian[3]['kolom7'] ?>" class="form-control"></td>
+                                </tr>
+                                <tr style="height: 36px;">
+                                    <td style="width: 92px; text-align: center; height: 36px;"><?php echo $TS3.'/'.$TS2; ?></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <input type="hidden" name="kolom1_314[]" value="0">
+                                    <input type="hidden" name="kolom2_314[]" value="0">
+                                    <input type="hidden" name="kolom3_314[]" value="0">
+                                    <input type="hidden" name="kolom4_314[]" value="0">
+                                    <td style="width: 100px; text-align: center; height: 36px;"><input type="text" name="kolom5_314[]" value="<?php echo $dataisian[4]['kolom5'] ?>" class="form-control"></td>
+                                    <td style="width: 100px; text-align: center; height: 36px;"><input type="text" name="kolom6_314[]" value="<?php echo $dataisian[4]['kolom6'] ?>" class="form-control"></td>
+                                    <td style="width: 109px; text-align: center; height: 36px;"><input type="text" name="kolom7_314[]" value="<?php echo $dataisian[4]['kolom7'] ?>" class="form-control"></td>
+                                </tr>
+                                <tr style="height: 36px;">
+                                    <td style="width: 92px; text-align: center; height: 36px;"><?php echo $TS2.'/'.$TS1; ?></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <input type="hidden" name="kolom1_314[]" value="0">
+                                    <input type="hidden" name="kolom2_314[]" value="0">
+                                    <input type="hidden" name="kolom3_314[]" value="0">
+                                    <input type="hidden" name="kolom4_314[]" value="0">
+                                    <input type="hidden" name="kolom5_314[]" value="0">
+                                    <td style="width: 100px; text-align: center; height: 36px;"><input type="text" name="kolom6_314[]" value="<?php echo $dataisian[5]['kolom6'] ?>" class="form-control"></td>
+                                    <td style="width: 109px; text-align: center; height: 36px;"><input type="text" name="kolom7_314[]" value="<?php echo $dataisian[5]['kolom7'] ?>" class="form-control"></td>
+                                </tr>
+                                <tr style="height: 36px;">
+                                    <td style="width: 92px; text-align: center; height: 36px;"><?php echo $TS1.'/'.$TS; ?></td>
+                                    <td style="width: 92px; background-color: #9e9e9e; text-align: center; height: 36px;"></td>
+                                    <td style="width: 92px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <td style="width: 93px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <td style="width: 100px; background-color: #9c9c9c; text-align: center; height: 36px;"></td>
+                                    <input type="hidden" name="kolom1_314[]" value="0">
+                                    <input type="hidden" name="kolom2_314[]" value="0">
+                                    <input type="hidden" name="kolom3_314[]" value="0">
+                                    <input type="hidden" name="kolom4_314[]" value="0">
+                                    <input type="hidden" name="kolom5_314[]" value="0">
+                                    <input type="hidden" name="kolom6_314[]" value="0">
+                                    <td style="width: 109px; text-align: center; height: 36px;"><input type="text" name="kolom7_314[]" value="<?php echo $dataisian[6]['kolom7'] ?>" class="form-control"></td>
+                                </tr> -->
+                                </tbody>
+                                </table>
+                                <p><br />* Tidak memasukkan mahasiswa transfer.</p>
+                                <p>Catatan&nbsp;: huruf-huruf a, b, c, d, e dan f harus tetap tercantum pada tabel di atas.</p>
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                            </div>
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Tutup Modal Update 314 -->
 
         <!-- Molda Update Tabel 331 -->
         <div class="modal fade" id="update331" tabindex="-1" role="dialog">
@@ -49907,6 +50678,34 @@
               $('#kolom1_313').val(buku[0]['kolom1']);
               $('#kolom2_313').val(buku[0]['kolom2']);
               $('#kolom3_313').val(buku[0]['kolom3']);
+          });
+          //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
+
+    });
+
+    $('#update314').on('shown.bs.modal', function (event) {
+        //ajax call to get isian Borang Informatin from database
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever');
+        var link="<?php echo base_url(); ?>index.php/C_isian/findUpdateTbl_buku";
+        $.ajax({
+            method: "POST",
+            url: link,
+            cache: false,
+            data: { id: recipient }
+          })
+          .done(function( msg ) {
+              var buku = JSON.parse(msg);
+              $('#id314').val(buku[0]['id']);
+              $('#id_butir314tabel').val(buku[0]['id_butir']);
+              $('#kolom1_314').val(buku[0]['kolom1']);
+              $('#kolom2_314').val(buku[0]['kolom2']);
+              $('#kolom3_314').val(buku[0]['kolom3']);
+              $('#kolom4_314').val(buku[0]['kolom4']);
+              $('#kolom5_314').val(buku[0]['kolom5']);
+              $('#kolom6_314').val(buku[0]['kolom6']);
+              $('#kolom7_314').val(buku[0]['kolom7']);
+              $('#kolom9_314').val(buku[0]['kolom9']);
           });
           //show input field "fakultas/prodi" if user choose fakultas/prodi in field jenis borang
 

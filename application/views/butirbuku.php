@@ -61,8 +61,8 @@
                                 <?php
                             }elseif ($butirs1!==false) {
                                  ?>
-                        <!-- <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3AS1(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button> -->
-                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" onclick="buatbutir3AS1(<?php echo $this->uri->segment(2, 0); ?>)" data-toggle="tooltip" data-placement="top" title="Buat Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button>
+                        <!-- <button type="button" data-color="light-blue" class="btn bg-green waves-effect btn-xs" data-toggle="modal" data-target="#addButir" data-placement="top" title="Tambah Butir Borang" href="javascript:void(0)"><i class="material-icons">add</i></button> -->
                                 <?php
                             }elseif ($butirs2!==false) {
                                  ?>
